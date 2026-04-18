@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://ymirtool.com/sitemap.xml
+
+Disallow: /static/script/
+Disallow: /static/layui/
