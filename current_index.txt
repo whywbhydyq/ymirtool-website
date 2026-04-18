@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Ymir Tool - 浣犵殑鍦ㄧ嚎宸ュ叿鍔╃悊</title>
+    <link rel="canonical" href="{$Think.config.web.index.canonical}"/>
+    <meta name="applicable-device" content="pc,mobile"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="keywords" content="鍦ㄧ嚎宸ュ叿,寮€鍙戜汉鍛樺伐鍏?json鏍煎紡鍖栥€乯son鍘嬬缉銆乵d5鍔犲瘑銆佽В瀵?浜岀淮鐮?姝ｅ垯琛ㄨ揪寮?鐓х墖鍘嬬缉,pdf鍚堝苟"/>
+    <meta name="description" content="Ymir Tool涓烘偍鎻愪緵json鏍煎紡鍖?鏍煎紡杞崲,鍔犺В瀵嗙紪鐮?璁＄畻鍣?ip鍦板潃褰掑睘鍦版煡璇?json鏍￠獙瑙ｆ瀽,json鏁扮粍瑙ｆ瀽,json杞瑇ml,xml杞琷son,json瑙ｆ瀽,json鍦ㄧ嚎瑙ｆ瀽,json鍦ㄧ嚎瑙ｆ瀽鍙婃牸寮忓寲,unix鏃堕棿鎴宠浆鎹?CSS缇庡寲鍘嬬缉,json缇庡寲,json鏍煎紡鍖栬緭鍑?json鏁扮粍,json瀹炰綋绫?json瑙嗗浘绛?/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/style/tool.css" rel="stylesheet" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<link rel="canonical" href="https://ymirtool.com/index/" />
+<meta property="og:title" content="Ymir Tool - 浣犵殑鍦ㄧ嚎宸ュ叿鍔╃悊" />
+<meta property="og:description" content="Ymir Tool涓烘偍鎻愪緵json鏍煎紡鍖?鏍煎紡杞崲,鍔犺В瀵嗙紪鐮?璁＄畻鍣?ip鍦板潃褰掑睘鍦版煡璇?json鏍￠獙瑙ｆ瀽,json鏁扮粍瑙ｆ瀽,json杞瑇ml,xml杞琷son,json瑙ｆ瀽,json鍦ㄧ嚎瑙ｆ瀽,json鍦ㄧ嚎瑙ｆ瀽鍙婃牸寮忓寲,unix鏃堕棿鎴宠浆鎹?CSS缇庡寲鍘嬬缉,json缇庡寲,json鏍煎紡鍖栬緭鍑?json鏁扮粍,json瀹炰綋绫?json瑙嗗浘绛? />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ymirtool.com/index/" />
+<meta property="og:site_name" content="Ymir Tool" />
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top navbar-fixed-top">
+    <div class="jz container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Ymir Tool</span> <span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/" title="Ymir Tool"><em class="logo_ico glyphicon glyphicon-wrench"></em>Ymir Tool</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav" id="top_menu">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">JSON宸ュ叿<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/json/">Json鏍煎紡鍖?/a></li>
+                        <li><a href="/jsonudview/"> Json鏍煎紡鍖?涓婁笅)</a></li>
+                        <li><a href="/jsonlrview/">Json鏍煎紡鍖?宸﹀彸)</a></li>
+                        <li><a href="/jsonzip/">Json鍦ㄧ嚎鍘嬬缉杞箟</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/json2cs/">Json鐢熸垚C#瀹炰綋绫?/a></li>
+                        <li><a href="/json2java/"> Json鐢熸垚Java瀹炰綋绫?/a></li>
+                        <li><a href="/json2go/">Json鐢熸垚Go缁撴瀯浣?/a></li>
+                        <li><a href="/sql2java/">SQL杞琂ava瀹炰綋绫?/a></li>
+                        <li><a href="/json2xml/">XML鍜孞son鍦ㄧ嚎浜掕浆</a></li>
+                        <li><a href="/excel2json/">Excel/CSV杞琂son鏍煎紡</a></li>
+                        <li><a href="/json2excel/">Json杞珽xcel/CSV鏍煎紡</a></li>
+                        <li><a href="/json2get/">JSON鍜孏ET鍙傛暟浜掕浆</a></li>
+                        <li><a href="/json2yaml/">JSON杞琘AML</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">鏍煎紡鍖栬浆鎹?span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/formathtml/">HTML鏍煎紡鍖?鍘嬬缉</a></li>
+                        <li><a href="/formatcss/" style="color:#f30"> CSS鏍煎紡鍖?鍘嬬缉</a></li>
+                        <li><a href="/formatjs/">JS鏍煎紡鍖?鍘嬬缉</a></li>
+                        <li><a href="/endecodejs/">JS鍔犲瘑/瑙ｅ瘑</a></li>
+                        <li><a href="/confundirjs/"> JS浠ｇ爜娣峰悎鍔犲瘑</a></li>
+                        <li><a href="/formatsql/">SQL鍘嬬缉/鏍煎紡鍖?/a></li>
+                        <li><a href="/formatphp/">PHP浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                        <li><a href="/formatxml/">XML鍘嬬缉/鏍煎紡鍖?</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/htmloutjs/" style="color:#f30">Html/JS浜掕浆</a></li>
+                        <li><a href="/htmlescape/"> Html杞箟宸ュ叿</a></li>
+                        <li><a href="/html2cj/"> Html杞珻#/JSP</a></li>
+                        <li><a href="/html2php/">Html杞琍HP浠ｇ爜</a></li>
+                        <li><a href="/html2all/">Html杞珹SP/Perl</a></li>
+                        <li><a href="/htmlfromcsv/">Excel杞琀TML琛ㄦ牸</a></li>
+                        <li><a href="/htmltable/">Html琛ㄦ牸鐢熸垚鍣?/a></li>
+                        <li><a href="/htmlmarkdown/">HTML/MarkDown浜掕浆</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/regex/" style="color:green">姝ｅ垯琛ㄨ揪寮忔祴璇曞伐鍏?/a></li>
+                        <li><a href="/regexcode/">姝ｅ垯鐢熸垚浠ｇ爜</a></li>
+                        <li><a href="/formatfilter/">Html杩囨护宸ュ叿</a></li>
+                        <li><a href="/runjs/">杩愯Js/html/css</a></li>
+                        <li><a href="/xpath/">Xpath宸ュ叿</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">鍔犺В瀵嗙紪鐮?span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/md5/">MD5鍔犲瘑宸ュ叿</a></li>
+                        <li><a href="/urlcode/">URL缃戝潃16杩涘埗鍔犲瘑</a></li>
+                        <li><a href="/urlthunder/">杩呴浄鏃嬮URL鍔犺В瀵?/a></li>
+                        <li><a href="/base64/"> Base64鍔犲瘑/瑙ｅ瘑</a></li>
+                        <li><a href="/escape/">Escape鍔犲瘑/瑙ｅ瘑</a></li>
+                        <li><a href="/deencrypt/">瀵圭О鍔犲瘑/瑙ｅ瘑</a></li>
+                        <li><a href="/shaencrypt/">SHA/SHA256鍔犲瘑</a></li>
+                        <li><a href="/allencrypt/">鏁ｅ垪/鍝堝笇鍔犲瘑澶у叏</a></li>
+                        <li><a href="/morse/">鎽╁皵鏂數鐮佸姞瑙ｅ瘑</a></li>
+                        <li><a href="/password/">瀵嗙爜鐢熸垚鍣?/a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/uuid/">UUID鍦ㄧ嚎鐢熸垚</a></li>
+                        <li><a href="/guid/">GUID鍦ㄧ嚎鐢熸垚</a></li>
+                        <li><a href="/barcode/">鏉″舰鐮佺敓鎴愬櫒</a></li>
+                        <li><a href="/ip2long/">IP/鏁板瓧鍦板潃杞崲</a></li>
+                        <li><a href="/img2base64/" style="color:#f00"> 鍥剧墖杞珺ase64</a></li>
+                        <li><a href="/utf8/">UTF-8杞珿BK</a></li>
+                        <li><a href="/unicode/">Unicode/ASCII杞崲</a></li>
+                        <li><a href="/ascii/">ASCII缂栫爜/瑙ｇ爜</a></li>
+                        <li><a href="/urlencode/">URL缂栫爜/瑙ｇ爜</a></li>
+                        <li><a href="/keyboardcode/">KeyCode閿洏鎸夐敭鐮?/a></li>
+                        <li><a href="/androidkeycode/">Android鎸夐敭鐮?/a></li>
+                        <li><a href="/keyboardtest/">閿洏娴嬭瘯宸ュ叿</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">鏂囨湰鏁板瓧<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/editor/">Html鍦ㄧ嚎缂栬緫鍣?/a></li>
+                        <li><a href="/autoformat/" style="color:#f30"> 鏂囩珷鑷姩鎺掔増</a></li>
+                        <li><a href="/jianfan/">绠€绻佸瓧浣撹浆鎹?/a></li>
+                        <li><a href="/pinyin/">姹夊瓧杞负鎷奸煶</a></li>
+                        <li><a href="/huoxingwen/">鐏槦鏂囪浆鎹㈠櫒</a></li>
+                        <li><a href="/txtreplace/">鏂囨湰鍐呭鏇挎崲</a></li>
+                        <li><a href="/textdiff/"> 鏂囨湰鍐呭瀵规瘮</a></li>
+                        <li><a href="/txtcount/">鍦ㄧ嚎缁熻瀛楁暟宸ュ叿</a></li>
+                        <li><a href="/quchong/">鍐呭鍘婚噸宸ュ叿</a></li>
+                        <li><a href="/wenzitexiao/">鏂囧瓧鐗规晥宸ュ叿</a></li>
+                        <li><a href="/zipstringtext/">瀛楃涓叉枃鏈帇缂╁伐鍏?/a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/camelcase/" style="color:blue">椹煎嘲涓庝笅鍒掔嚎浜掕浆</a></li>
+                        <li><a href="/quanbaojiao/">鍏ㄨ鍗婅杞崲</a></li>
+                        <li><a href="/enlower/">鑻辨枃瀛楁瘝澶у皬鍐欒浆鎹?/a></li>
+                        <li><a href="/rmbdaxie/">浜烘皯甯佸ぇ鍐欒浆鎹㈠伐鍏?/a></li>
+                        <li><a href="/random/">闅忔満鏁扮敓鎴愬櫒</a></li>
+                        <li><a href="/unixtime/"> Unix鏃堕棿鎴冲湪绾胯浆鎹?/a></li>
+                        <li><a href="/hexconvert/">甯哥敤杩涘埗杞崲宸ュ叿</a></li>
+                        <li><a href="/hexrgb/"> RGB棰滆壊鍦ㄧ嚎杞崲</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">缃戠粶<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/websocket/">Websocket娴嬭瘯</a></li>
+                        <li><a href="/browserinfo/">鑾峰彇娴忚鍣ㄤ俊鎭?/a></li>
+                        <li><a href="/dns/">鍏叡DNS</a></li>
+                        <li><a href="/alldns/">鍚勫湴鍖哄叕鍏盌NS</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">绔欓暱<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/htaccess2nginx/" style="color:green">htaccess杞琻ginx</a></li>
+                        <li><a href="/shortcut/">鐢熸垚妗岄潰蹇嵎鏂瑰紡</a></li>
+                        <li><a href="/px2rem/">rem涓巔x杞崲宸ュ叿</a></li>
+                        <li><a href="/createmeta/">鐢熸垚缃戦〉Meta鏍囩</a></li>
+                        <li><a href="/refresh/">鍦ㄧ嚎瀹氭椂鍒锋柊缃戝潃</a></li>
+                        <li><a href="/tiaoseban/">鍦ㄧ嚎璋冭壊鏉?/a></li>
+                        <li role="separator" class="divider"></li>
+                        </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">璁＄畻<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/nianlvli/">鍒╃巼璁＄畻鍣ㄥ湪绾?/a></li>
+                        <li><a href="/subnetmask/">瀛愮綉鎺╃爜璁＄畻鍣?/a></li>
+                        <li><a href="/calculator/">鍦ㄧ嚎绉戝璁＄畻鍣?/a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">鍏朵粬<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/tuya/">鍦ㄧ嚎娑傞甫鐢绘澘</a></li>
+                        <li><a href="/shizhong/">鍦ㄧ嚎鏃堕挓</a></li>
+                        <li><a href="/worldtime/">涓栫晫鍚勫湴鏃堕棿</a></li>
+                        <li><a href="/capital/">涓栫晫鍚勫浗棣栭兘鏌ヨ</a></li>
+                        <li><a href="/currency/">涓栫晫鍚勫湴璐у竵鏌ヨ</a></li>
+                        <li><a href="/areacode/">涓栫晫鍚勫浗鍖哄彿鏃跺樊鏌ヨ</a></li>
+                        <li><a href="/jieri/">涓栫晫鑺傛棩鏌ヨ</a></li>
+                        <li><a href="/shaoshuminzu/">鍏ㄥ浗灏戞暟姘戞棌鍒嗗竷鏌ヨ</a></li>
+                        <li><a href="/chaodai/">涓浗鍘嗗彶鏈濅唬鏃堕棿鏌ヨ琛?/a></li>
+                        <li><a href="/tesufuhao/">鐗规畩绗﹀彿澶у叏</a></li>
+                        </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">瀵圭収鍒楄〃<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/useragent/">甯哥敤User-Agent</a></li>
+                        <li><a href="/contenttype/">Content-Type瀵圭収琛?/a></li>
+                        <li><a href="/requestmethod/">Request璇锋眰澶у叏</a></li>
+                        <li><a href="/httpheader/">HTTP璇锋眰澶村ぇ鍏?/a></li>
+                        <li><a href="/pagecode/"> HTTP鐘舵€佺爜</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/asciicode/">ASCII瀵圭収琛?/a></li>
+                        <li><a href="/htmlescapechar/">HTML鐗规畩瀛楃杞箟</a></li>
+                        <li><a href="/ports/">甯歌绔彛澶у叏</a></li>
+                        <li><a href="/bootstrapicon/">Bootstrap瀛椾綋鍥炬爣</a></li>
+                        <li><a href="/androidmanifest/"> Android Manifest鏉冮檺澶у叏</a></li>
+                        <li><a href="/linuxcmd/">Linux甯哥敤鍛戒护澶у叏</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 footer-nav">
+            <ul class="list-inline list-inline-bg">
+                <h3><span>JSON宸ュ叿</span></h3>
+                <li><span></span><a href="/json/">Json鏍煎紡鍖?/a></li>
+                <li><span></span><a href="/jsonudview/"> Json鏍煎紡鍖?涓婁笅)</a></li>
+                <li><span></span><a href="/jsonlrview/">Json鏍煎紡鍖?宸﹀彸)</a></li>
+                <li><span></span><a href="/jsonzip/">Json鍦ㄧ嚎鍘嬬缉杞箟</a></li>
+                <li><span></span><a href="/json2cs/">Json鐢熸垚C#瀹炰綋绫?/a></li>
+                <li><span></span><a href="/json2java/"> Json鐢熸垚Java瀹炰綋绫?/a></li>
+                <li><span></span><a href="/json2go/">Json鐢熸垚Go缁撴瀯浣?/a></li>
+                <li><span></span><a href="/sql2java/">SQL杞琂ava瀹炰綋绫?/a></li>
+                <li><span></span><a href="/json2xml/">XML鍜孞son鍦ㄧ嚎浜掕浆</a></li>
+                <li><span></span><a href="/excel2json/">Excel/CSV杞琂son鏍煎紡</a></li>
+                <li><span></span><a href="/json2excel/">Json杞珽xcel/CSV鏍煎紡</a></li>
+                <li><span></span><a href="/json2get/">JSON鍜孏ET鍙傛暟浜掕浆</a></li>
+                <li><span></span><a href="/json2yaml/">JSON杞琘AML</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>鏍煎紡鍖栬浆鎹?/span></h3>
+                <li><span></span><a href="/formathtml/">HTML鏍煎紡鍖?鍘嬬缉</a></li>
+                <li><span></span><a href="/formatcss/" style="color:#f30"> CSS鏍煎紡鍖?鍘嬬缉</a></li>
+                <li><span></span><a href="/formatjs/">JS鏍煎紡鍖?鍘嬬缉</a></li>
+                <li><span></span><a href="/endecodejs/">JS鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/confundirjs/"> JS浠ｇ爜娣峰悎鍔犲瘑</a></li>
+                <li><span></span><a href="/formatsql/">SQL鍘嬬缉/鏍煎紡鍖?/a></li>
+                <li><span></span><a href="/formatphp/">PHP浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatxml/">XML鍘嬬缉/鏍煎紡鍖?</a></li>
+                <li><span></span><a href="/formatcs/">C#浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatjava/">JAVA浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatcsql/">SQL浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatpy/">Python浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatruby/">Ruby浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatc/">C璇█浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatcpp/">C++浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatperl/">Perl浠ｇ爜鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/formatvbs/">VBScript鏍煎紡鍖栧伐鍏?/a></li>
+                <li><span></span><a href="/html2js/"> Html杞琂S</a></li>
+                <li><span></span><a href="/htmloutjs/" style="color:#f30">Html/JS浜掕浆</a></li>
+                <li><span></span><a href="/htmlescape/"> Html杞箟宸ュ叿</a></li>
+                <li><span></span><a href="/html2cj/"> Html杞珻#/JSP</a></li>
+                <li><span></span><a href="/html2php/">Html杞琍HP浠ｇ爜</a></li>
+                <li><span></span><a href="/html2all/">Html杞珹SP/Perl</a></li>
+                <li><span></span><a href="/htmlfromcsv/">Excel杞琀TML琛ㄦ牸</a></li>
+                <li><span></span><a href="/htmltable/">Html琛ㄦ牸鐢熸垚鍣?/a></li>
+                <li><span></span><a href="/html2ubb/">HTML/UBB浜掕浆</a></li>
+                <li><span></span><a href="/htmlmarkdown/">HTML/MarkDown浜掕浆</a></li>
+                <li><span></span><a href="/regex/" style="color:green">姝ｅ垯琛ㄨ揪寮忔祴璇曞伐鍏?/a></li>
+                <li><span></span><a href="/regexcode/">姝ｅ垯鐢熸垚浠ｇ爜</a></li>
+                <li><span></span><a href="/formatfilter/">Html杩囨护宸ュ叿</a></li>
+                <li><span></span><a href="/regexdso/">甯哥敤姝ｅ垯琛ㄨ揪寮?/a></li>
+                <li><span></span><a href="/regexsucha/">姝ｅ垯琛ㄨ揪寮忚娉曢€熸煡</a></li>
+                <li><span></span><a href="/runjs/">杩愯Js/html/css</a></li>
+                <li><span></span><a href="/xpath/">Xpath宸ュ叿</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>鍔犺В瀵嗙紪鐮?/span></h3>
+                <li><span></span><a href="/md5/">MD5鍔犲瘑宸ュ叿</a></li>
+                <li><span></span><a href="/urlcode/">URL缃戝潃16杩涘埗鍔犲瘑</a></li>
+                <li><span></span><a href="/urlthunder/">杩呴浄鏃嬮URL鍔犺В瀵?/a></li>
+                <li><span></span><a href="/base64/"> Base64鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/escape/">Escape鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/deencrypt/">瀵圭О鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/aesencrypt/">AES鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/desencrypt/">DES鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/rc4encrypt/">RC4鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/rabbitencrypt/">Rabbit鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/tripledes/">TripleDES鍔犲瘑/瑙ｅ瘑</a></li>
+                <li><span></span><a href="/shaencrypt/">SHA/SHA256鍔犲瘑</a></li>
+                <li><span></span><a href="/allencrypt/">鏁ｅ垪/鍝堝笇鍔犲瘑澶у叏</a></li>
+                <li><span></span><a href="/morse/">鎽╁皵鏂數鐮佸姞瑙ｅ瘑</a></li>
+                <li><span></span><a href="/password/">瀵嗙爜鐢熸垚鍣?/a></li>
+                <li><span></span><a href="/uuid/">UUID鍦ㄧ嚎鐢熸垚</a></li>
+                <li><span></span><a href="/guid/">GUID鍦ㄧ嚎鐢熸垚</a></li>
+                <li><span></span><a href="/htpasswd/">htpasswd鐢熸垚</a></li>
+                <li><span></span><a href="/barcode/">鏉″舰鐮佺敓鎴愬櫒</a></li>
+                <li><span></span><a href="/ip2long/">IP/鏁板瓧鍦板潃杞崲</a></li>
+                <li><span></span><a href="/img2base64/" style="color:#f00"> 鍥剧墖杞珺ase64</a></li>
+                <li><span></span><a href="/utf8/">UTF-8杞珿BK</a></li>
+                <li><span></span><a href="/unicode/">Unicode/ASCII杞崲</a></li>
+                <li><span></span><a href="/ascii/">ASCII缂栫爜/瑙ｇ爜</a></li>
+                <li><span></span><a href="/urlencode/">URL缂栫爜/瑙ｇ爜</a></li>
+                <li><span></span><a href="/navtiveunicode/">Native/Unicode缂栫爜杞崲</a></li>
+                <li><span></span><a href="/keyboardcode/">KeyCode閿洏鎸夐敭鐮?/a></li>
+                <li><span></span><a href="/androidkeycode/">Android鎸夐敭鐮?/a></li>
+                <li><span></span><a href="/keyboardtest/">閿洏娴嬭瘯宸ュ叿</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>鏂囨湰鏁板瓧</span></h3>
+                <li><span></span><a href="/editor/">Html鍦ㄧ嚎缂栬緫鍣?/a></li>
+                <li><span></span><a href="/autoformat/" style="color:#f30"> 鏂囩珷鑷姩鎺掔増</a></li>
+                <li><span></span><a href="/jianfan/">绠€绻佸瓧浣撹浆鎹?/a></li>
+                <li><span></span><a href="/pinyin/">姹夊瓧杞负鎷奸煶</a></li>
+                <li><span></span><a href="/huoxingwen/">鐏槦鏂囪浆鎹㈠櫒</a></li>
+                <li><span></span><a href="/txtreplace/">鏂囨湰鍐呭鏇挎崲</a></li>
+                <li><span></span><a href="/textdiff/"> 鏂囨湰鍐呭瀵规瘮</a></li>
+                <li><span></span><a href="/txtcount/">鍦ㄧ嚎缁熻瀛楁暟宸ュ叿</a></li>
+                <li><span></span><a href="/shupai/">鏂囧瓧绔栨帓宸ュ叿</a></li>
+                <li><span></span><a href="/textflip/">鏂囧瓧缈昏浆宸ュ叿</a></li>
+                <li><span></span><a href="/quchong/">鍐呭鍘婚噸宸ュ叿</a></li>
+                <li><span></span><a href="/wenzitexiao/">鏂囧瓧鐗规晥宸ュ叿</a></li>
+                <li><span></span><a href="/zipstringtext/">瀛楃涓叉枃鏈帇缂╁伐鍏?/a></li>
+                <li><span></span><a href="/camelcase/" style="color:blue">椹煎嘲涓庝笅鍒掔嚎浜掕浆</a></li>
+                <li><span></span><a href="/quanbaojiao/">鍏ㄨ鍗婅杞崲</a></li>
+                <li><span></span><a href="/enlower/">鑻辨枃瀛楁瘝澶у皬鍐欒浆鎹?/a></li>
+                <li><span></span><a href="/rmbdaxie/">浜烘皯甯佸ぇ鍐欒浆鎹㈠伐鍏?/a></li>
+                <li><span></span><a href="/random/">闅忔満鏁扮敓鎴愬櫒</a></li>
+                <li><span></span><a href="/unixtime/"> Unix鏃堕棿鎴冲湪绾胯浆鎹?/a></li>
+                <li><span></span><a href="/hexconvert/">甯哥敤杩涘埗杞崲宸ュ叿</a></li>
+                <li><span></span><a href="/hexrgb/"> RGB棰滆壊鍦ㄧ嚎杞崲</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>缃戠粶</span></h3>
+                <li><span></span><a href="/websocket/">Websocket娴嬭瘯</a></li>
+                <li><span></span><a href="/browserinfo/">鑾峰彇娴忚鍣ㄤ俊鎭?/a></li>
+                <li><span></span><a href="/dns/">鍏叡DNS</a></li>
+                <li><span></span><a href="/alldns/">鍚勫湴鍖哄叕鍏盌NS</a></li>
+                <li><span></span><a href="/dnsdx/">鍚勫湴鐢典俊DNS</a></li>
+                <li><span></span><a href="/dnslt/">鍚勫湴鑱旈€欴NS</a></li>
+                <li><span></span><a href="/dnsyd/">鍚勫湴绉诲姩DNS</a></li>
+                <li><span></span><a href="/dnstt/">鍚勫湴閾侀€欴NS</a></li>
+                <li><span></span><a href="/dnsedu/">鏁欒偛缃慏NS</a></li>
+                <li><span></span><a href="/dnsusa/">缇庡浗DNS</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>绔欓暱</span></h3>
+                <li><span></span><a href="/htaccess2nginx/" style="color:green">htaccess杞琻ginx</a></li>
+                <li><span></span><a href="/shortcut/">鐢熸垚妗岄潰蹇嵎鏂瑰紡</a></li>
+                <li><span></span><a href="/px2rem/">rem涓巔x杞崲宸ュ叿</a></li>
+                <li><span></span><a href="/createmeta/">鐢熸垚缃戦〉Meta鏍囩</a></li>
+                <li><span></span><a href="/refresh/">鍦ㄧ嚎瀹氭椂鍒锋柊缃戝潃</a></li>
+                <li><span></span><a href="/tiaoseban/">鍦ㄧ嚎璋冭壊鏉?/a></li>
+                </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>璁＄畻</span></h3>
+                <li><span></span><a href="/nianlvli/">鍒╃巼璁＄畻鍣ㄥ湪绾?/a></li>
+                <li><span></span><a href="/subnetmask/">瀛愮綉鎺╃爜璁＄畻鍣?/a></li>
+                <li><span></span><a href="/calculator/">鍦ㄧ嚎绉戝璁＄畻鍣?/a></li>
+                <li><span></span><a href="/calcarea/">闈㈢Н鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcheat/">鐑噺鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcvolume/">浣撶Н鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcpressure/">鍘嬪姏鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcpower/">鍔熺巼鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calclength/">闀垮害鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calctemperature/">娓╁害鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calctime/">鏃堕棿鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcspeed/">閫熷害鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcangle/">瑙掑害鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcdata/">鏁版嵁澶у皬鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcthickness/">瀵嗗害鎹㈢畻鍣?/a></li>
+                <li><span></span><a href="/calcforce/">鍔涙崲绠楀櫒</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>鍏朵粬</span></h3>
+                <li><span></span><a href="/tuya/">鍦ㄧ嚎娑傞甫鐢绘澘</a></li>
+                <li><span></span><a href="/shizhong/">鍦ㄧ嚎鏃堕挓</a></li>
+                <li><span></span><a href="/worldtime/">涓栫晫鍚勫湴鏃堕棿</a></li>
+                <li><span></span><a href="/capital/">涓栫晫鍚勫浗棣栭兘鏌ヨ</a></li>
+                <li><span></span><a href="/currency/">涓栫晫鍚勫湴璐у竵鏌ヨ</a></li>
+                <li><span></span><a href="/areacode/">涓栫晫鍚勫浗鍖哄彿鏃跺樊鏌ヨ</a></li>
+                <li><span></span><a href="/jieri/">涓栫晫鑺傛棩鏌ヨ</a></li>
+                <li><span></span><a href="/shaoshuminzu/">鍏ㄥ浗灏戞暟姘戞棌鍒嗗竷鏌ヨ</a></li>
+                <li><span></span><a href="/chaodai/">涓浗鍘嗗彶鏈濅唬鏃堕棿鏌ヨ琛?/a></li>
+                <li><span></span><a href="/tesufuhao/">鐗规畩绗﹀彿澶у叏</a></li>
+                </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>瀵圭収鍒楄〃</span></h3>
+                <li><span></span><a href="/useragent/">甯哥敤User-Agent</a></li>
+                <li><span></span><a href="/contenttype/">Content-Type瀵圭収琛?/a></li>
+                <li><span></span><a href="/requestmethod/">Request璇锋眰澶у叏</a></li>
+                <li><span></span><a href="/httpheader/">HTTP璇锋眰澶村ぇ鍏?/a></li>
+                <li><span></span><a href="/pagecode/"> HTTP鐘舵€佺爜</a></li>
+                <li><span></span><a href="/asciicode/">ASCII瀵圭収琛?/a></li>
+                <li><span></span><a href="/htmlescapechar/">HTML鐗规畩瀛楃杞箟</a></li>
+                <li><span></span><a href="/ports/">甯歌绔彛澶у叏</a></li>
+                <li><span></span><a href="/bootstrapicon/">Bootstrap瀛椾綋鍥炬爣</a></li>
+                <li><span></span><a href="/androidmanifest/"> Android Manifest鏉冮檺澶у叏</a></li>
+                <li><span></span><a href="/linuxcmd/">Linux甯哥敤鍛戒护澶у叏</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/static/script/tool.js" type="text/javascript"></script>
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-sm-12"><p>鍙嬫儏閾炬帴锛?
+        	 <a href="https://gitapp.cn" target="_blank">绋嬪簭璁捐缃?/a>
+				<a href="https://csdn.net" target="_blank">CSDN</a>
+				<a href="https://cnblogs.com" target="_blank">鍗氬鍥?/a>
+				<a href="https://m3u8player.org" target="_blank">鍦ㄧ嚎鎾斁鍣?/a>
+				<a href="https://ps.gitapp.cn" target="_blank">鍦ㄧ嚎PS</a>
+        </div>
+    </div>
+</div>
+<div class="copyright" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span>
+                    Copyright 漏2026
+                    <a href="/">
+                        绋嬪簭璁捐Ymir Tool
+                    </a>
+                </span>
+                |
+                <span>
+                    <a href="/about.html">鍏充簬鎴戜滑</a> | <a href="/privacy.html">闅愮鏀跨瓥</a> | <a href="/contact.html">鑱旂郴鎴戜滑</a>
+                </span>
+            </div>
+            <script>
+
+            </script>
+        </div>
+    </div>
+</div>
+<a class="gotop" href="#top" title="杩斿洖椤堕儴" style="display: none;">
+    <span class="arrow">
+    </span>
+    <span class="arrow lit">
+    </span>
+</a>
+
+
+</body>
+</html>
+
