@@ -1,9 +1,9 @@
-[build]
-  publish = "."
+﻿[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=UTF-8"
 
 [[headers]]
-  for = "/*"
+  for = "/robots.txt"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Type = "text/plain; charset=UTF-8"
