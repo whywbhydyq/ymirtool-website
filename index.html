@@ -17,18 +17,18 @@
     <link href="/static/style/tool.css" rel="stylesheet"/>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
     <style>
-    .hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:60px 0 50px;margin-top:-20px;text-align:center;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:30px 0 25px;margin-top:-20px;text-align:center;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(52,152,219,0.08) 0%,transparent 50%);animation:pulse 6s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-    .hero h1{font-size:42px;font-weight:700;margin-bottom:15px;letter-spacing:1px;position:relative}
+    .hero h1{font-size:30px;font-weight:700;margin-bottom:15px;letter-spacing:1px;position:relative}
     .hero h1 span{color:#3498db}
-    .hero p.lead{font-size:18px;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto 30px;position:relative}
-    .hero-stats{display:flex;justify-content:center;gap:40px;margin-top:25px;position:relative}
+    .hero p.lead{font-size:15px;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto 15px;position:relative}
+    .hero-stats{display:flex;justify-content:center;gap:30px;margin-top:12px;position:relative}
     .hero-stats .stat{text-align:center}
-    .hero-stats .stat-num{font-size:32px;font-weight:700;color:#3498db}
-    .hero-stats .stat-label{font-size:13px;color:rgba(255,255,255,0.5);margin-top:2px}
+    .hero-stats .stat-num{font-size:24px;font-weight:700;color:#3498db}
+    .hero-stats .stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:1px}
     .search-box{max-width:500px;margin:0 auto;position:relative}
-    .search-box input{width:100%;padding:12px 20px 12px 45px;border:none;border-radius:50px;font-size:15px;background:rgba(255,255,255,0.15);color:#fff;outline:none;transition:all .3s}
+    .search-box input{width:100%;padding:10px 18px 10px 40px;border:none;border-radius:50px;font-size:14px;background:rgba(255,255,255,0.15);color:#fff;outline:none;transition:all .3s}
     .search-box input::placeholder{color:rgba(255,255,255,0.4)}
     .search-box input:focus{background:rgba(255,255,255,0.25);box-shadow:0 0 20px rgba(52,152,219,0.3)}
     .search-box .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:16px}
@@ -41,11 +41,11 @@
     .cat-header h3{margin:0;font-size:17px;font-weight:600;color:#333}
     .cat-header .cat-count{margin-left:auto;font-size:12px;color:#999;background:#f5f5f5;padding:2px 10px;border-radius:20px}
     .cat-links{display:flex;flex-wrap:wrap;gap:8px}
-    .cat-links a{display:inline-block;padding:6px 14px;background:#f8f9fa;color:#555;border-radius:6px;font-size:13px;text-decoration:none;transition:all .2s;border:1px solid transparent}
-    .cat-links a:hover{background:#3498db;color:#fff;border-color:#3498db;transform:translateY(-1px)}
-    .cat-links a.hot{color:#e74c3c;font-weight:500}
+    .cat-links a{display:inline-block;padding:8px 16px;background:#f0f4f8;color:#2c3e50;border-radius:8px;font-size:14px;text-decoration:none;transition:all .2s;border:1px solid #dce3eb;font-weight:500}
+    .cat-links a:hover{background:#3498db;color:#fff;border-color:#3498db;transform:translateY(-2px);box-shadow:0 4px 12px rgba(52,152,219,0.3)}
+    .cat-links a.hot{color:#e74c3c;font-weight:700;border-color:#e74c3c;background:#fff5f5}
     .cat-links a.hot:hover{background:#e74c3c;color:#fff;border-color:#e74c3c}
-    .cat-links a.new{color:#27ae60;font-weight:500}
+    .cat-links a.new{color:#27ae60;font-weight:700;border-color:#27ae60;background:#f0fff4}
     .cat-links a.new:hover{background:#27ae60;color:#fff;border-color:#27ae60}
     .features{padding:40px 0;background:#f8f9fa}
     .features .container{max-width:1100px}
@@ -111,39 +111,39 @@
 <div class="cat-section" id="catSection">
     <div class="container">
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#3498db,#2980b9)"><span class="glyphicon glyphicon-list-alt"></span></div><h3>JSON 工具</h3><span class="cat-count">13 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#3498db,#2980b9)"><span style="font-size:20px">&#x1F4CB;"></span></div><h3>JSON 工具</h3><span class="cat-count">13 个工具</span></div>
             <div class="cat-links"><a href="/json/" class="hot">Json格式化</a><a href="/jsonudview/">Json格式化(上下)</a><a href="/jsonlrview/">Json格式化(左右)</a><a href="/jsonzip/">Json在线压缩转义</a><a href="/json2cs/">Json生成C#实体类</a><a href="/json2java/">Json生成Java实体类</a><a href="/json2go/">Json生成Go结构体</a><a href="/sql2java/">SQL转Java实体类</a><a href="/json2xml/">XML和Json互转</a><a href="/excel2json/">Excel/CSV转Json</a><a href="/json2excel/">Json转Excel/CSV</a><a href="/json2get/">JSON和GET参数互转</a><a href="/json2yaml/">JSON转YAML</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#e74c3c,#c0392b)"><span class="glyphicon glyphicon-code"></span></div><h3>格式化转换</h3><span class="cat-count">35 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#e74c3c,#c0392b)"><span style="font-size:20px">&#x1F4DD;"></span></div><h3>格式化转换</h3><span class="cat-count">35 个工具</span></div>
             <div class="cat-links"><a href="/formathtml/" class="hot">HTML格式化/压缩</a><a href="/formatcss/" class="hot">CSS格式化/压缩</a><a href="/formatjs/" class="hot">JS格式化/压缩</a><a href="/endecodejs/">JS加密/解密</a><a href="/confundirjs/">JS代码混合加密</a><a href="/formatsql/">SQL压缩/格式化</a><a href="/formatphp/">PHP代码格式化</a><a href="/formatxml/">XML压缩/格式化</a><a href="/formatcs/">C#代码格式化</a><a href="/formatjava/">JAVA代码格式化</a><a href="/formatcsql/">SQL代码格式化</a><a href="/formatpy/">Python代码格式化</a><a href="/formatruby/">Ruby代码格式化</a><a href="/formatc/">C语言代码格式化</a><a href="/formatcpp/">C++代码格式化</a><a href="/formatperl/">Perl代码格式化</a><a href="/formatvbs/">VBScript格式化</a><a href="/htmloutjs/" class="hot">Html/JS互转</a><a href="/htmlescape/">Html转义工具</a><a href="/html2cj/">Html转C#/JSP</a><a href="/html2php/">Html转PHP代码</a><a href="/html2all/">Html转ASP/Perl</a><a href="/htmlfromcsv/">Excel转HTML表格</a><a href="/htmltable/">Html表格生成器</a><a href="/html2ubb/">HTML/UBB互转</a><a href="/htmlmarkdown/">HTML/MarkDown互转</a><a href="/regex/" class="new">正则表达式测试</a><a href="/regexcode/">正则生成代码</a><a href="/formatfilter/">Html过滤工具</a><a href="/regexdso/">常用正则表达式</a><a href="/regexsucha/">正则语法速查</a><a href="/runjs/">运行Js/html/css</a><a href="/xpath/">Xpath工具</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)"><span class="glyphicon glyphicon-lock"></span></div><h3>加密解密编码</h3><span class="cat-count">29 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)"><span style="font-size:20px">&#x1F512;"></span></div><h3>加密解密编码</h3><span class="cat-count">29 个工具</span></div>
             <div class="cat-links"><a href="/md5/" class="hot">MD5加密</a><a href="/base64/" class="hot">Base64加密/解密</a><a href="/escape/">Escape加密/解密</a><a href="/deencrypt/">对称加密/解密</a><a href="/aesencrypt/">AES加密/解密</a><a href="/desencrypt/">DES加密/解密</a><a href="/rc4encrypt/">RC4加密/解密</a><a href="/rabbitencrypt/">Rabbit加密/解密</a><a href="/tripledes/">TripleDES加密/解密</a><a href="/shaencrypt/">SHA/SHA256加密</a><a href="/allencrypt/">散列/哈希加密大全</a><a href="/morse/">摩尔斯电码加解密</a><a href="/password/">密码生成器</a><a href="/uuid/">UUID在线生成</a><a href="/guid/">GUID在线生成</a><a href="/htpasswd/">htpasswd生成</a><a href="/barcode/">条形码生成器</a><a href="/ip2long/">IP/数字地址转换</a><a href="/img2base64/" class="hot">图片转Base64</a><a href="/utf8/">UTF-8转GBK</a><a href="/unicode/">Unicode/ASCII转换</a><a href="/ascii/">ASCII编码/解码</a><a href="/urlencode/">URL编码/解码</a><a href="/navtiveunicode/">Native/Unicode转换</a><a href="/keyboardcode/">KeyCode按键码</a><a href="/androidkeycode/">Android按键码</a><a href="/keyboardtest/">键盘测试工具</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#f39c12,#e67e22)"><span class="glyphicon glyphicon-font"></span></div><h3>文本数字</h3><span class="cat-count">21 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#f39c12,#e67e22)"><span style="font-size:20px">&#x270F;"></span></div><h3>文本数字</h3><span class="cat-count">21 个工具</span></div>
             <div class="cat-links"><a href="/editor/">Html在线编辑器</a><a href="/autoformat/" class="hot">文章自动排版</a><a href="/jianfan/">简繁字体转换</a><a href="/pinyin/">汉字转为拼音</a><a href="/huoxingwen/">火星文转换器</a><a href="/txtreplace/">文本内容替换</a><a href="/textdiff/">文本内容对比</a><a href="/txtcount/">在线统计字数</a><a href="/shupai/">文字竖排工具</a><a href="/textflip/">文字翻转工具</a><a href="/quchong/">内容去重工具</a><a href="/wenzitexiao/">文字特效工具</a><a href="/zipstringtext/">字符串文本压缩</a><a href="/camelcase/" class="new">驼峰与下划线互转</a><a href="/quanbaojiao/">全角半角转换</a><a href="/enlower/">字母大小写转换</a><a href="/rmbdaxie/">人民币大写转换</a><a href="/random/">随机数生成器</a><a href="/unixtime/">Unix时间戳转换</a><a href="/hexconvert/">进制转换工具</a><a href="/hexrgb/">RGB颜色转换</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#1abc9c,#16a085)"><span class="glyphicon glyphicon-globe"></span></div><h3>网络工具</h3><span class="cat-count">10 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#1abc9c,#16a085)"><span style="font-size:20px">&#x1F310;"></span></div><h3>网络工具</h3><span class="cat-count">10 个工具</span></div>
             <div class="cat-links"><a href="/websocket/">Websocket测试</a><a href="/browserinfo/">获取浏览器信息</a><a href="/dns/">公共DNS</a><a href="/alldns/">各地区公共DNS</a><a href="/dnsdx/">各地电信DNS</a><a href="/dnslt/">各地联通DNS</a><a href="/dnsyd/">各地移动DNS</a><a href="/dnstt/">各地铁通DNS</a><a href="/dnsedu/">教育网DNS</a><a href="/dnsusa/">美国DNS</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#34495e,#2c3e50)"><span class="glyphicon glyphicon-cog"></span></div><h3>站长工具</h3><span class="cat-count">6 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#34495e,#2c3e50)"><span style="font-size:20px">&#x2699;"></span></div><h3>站长工具</h3><span class="cat-count">6 个工具</span></div>
             <div class="cat-links"><a href="/htaccess2nginx/" class="new">htaccess转nginx</a><a href="/shortcut/">生成桌面快捷方式</a><a href="/px2rem/">rem与px转换</a><a href="/createmeta/">生成网页Meta标签</a><a href="/refresh/">在线定时刷新网址</a><a href="/tiaoseban/">在线调色板</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#e67e22,#d35400)"><span class="glyphicon glyphicon-calculator"></span></div><h3>计算换算</h3><span class="cat-count">16 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#e67e22,#d35400)"><span style="font-size:20px">&#x1F522;"></span></div><h3>计算换算</h3><span class="cat-count">16 个工具</span></div>
             <div class="cat-links"><a href="/nianlvli/">利率计算器</a><a href="/subnetmask/">子网掩码计算器</a><a href="/calculator/">在线科学计算器</a><a href="/calcarea/">面积换算器</a><a href="/calcheat/">热量换算器</a><a href="/calcvolume/">体积换算器</a><a href="/calcpressure/">压力换算器</a><a href="/calcpower/">功率换算器</a><a href="/calclength/">长度换算器</a><a href="/calctemperature/">温度换算器</a><a href="/calctime/">时间换算器</a><a href="/calcspeed/">速度换算器</a><a href="/calcangle/">角度换算器</a><a href="/calcdata/">数据大小换算器</a><a href="/calcthickness/">密度换算器</a><a href="/calcforce/">力换算器</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#2ecc71,#27ae60)"><span class="glyphicon glyphicon-th-large"></span></div><h3>生活查询</h3><span class="cat-count">10 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#2ecc71,#27ae60)"><span style="font-size:20px">&#x1F3A8;"></span></div><h3>生活查询</h3><span class="cat-count">10 个工具</span></div>
             <div class="cat-links"><a href="/tuya/">在线涂鸦画板</a><a href="/shizhong/">在线时钟</a><a href="/worldtime/">世界各地时间</a><a href="/capital/">世界各国首都查询</a><a href="/currency/">世界各地货币查询</a><a href="/areacode/">各国区号时差查询</a><a href="/jieri/">世界节日查询</a><a href="/shaoshuminzu/">少数民族分布查询</a><a href="/chaodai/">历史朝代时间查询</a><a href="/tesufuhao/">特殊符号大全</a></div>
         </div>
         <div class="cat-card">
-            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#7f8c8d,#636e72)"><span class="glyphicon glyphicon-book"></span></div><h3>对照表</h3><span class="cat-count">11 个工具</span></div>
+            <div class="cat-header"><div class="cat-icon" style="background:linear-gradient(135deg,#7f8c8d,#636e72)"><span style="font-size:20px">&#x1F4D6;"></span></div><h3>对照表</h3><span class="cat-count">11 个工具</span></div>
             <div class="cat-links"><a href="/useragent/">常用User-Agent</a><a href="/contenttype/">Content-Type对照表</a><a href="/requestmethod/">Request请求大全</a><a href="/httpheader/">HTTP请求头大全</a><a href="/pagecode/">HTTP状态码</a><a href="/asciicode/">ASCII对照表</a><a href="/htmlescapechar/">HTML特殊字符转义</a><a href="/ports/">常见端口大全</a><a href="/bootstrapicon/">Bootstrap字体图标</a><a href="/androidmanifest/">Android Manifest权限</a><a href="/linuxcmd/">Linux常用命令大全</a></div>
         </div>
     </div>
