@@ -21,31 +21,31 @@
     <link href="/static/style/tool.css" rel="stylesheet"/>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
     <style>
-    .hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:30px 0 25px;margin-top:-20px;text-align:center;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:22px 0 18px;margin-top:-20px;text-align:center;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(52,152,219,0.08) 0%,transparent 50%);animation:pulse 6s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-    .hero h1{font-size:30px;font-weight:700;margin-bottom:15px;letter-spacing:1px;position:relative}
+    .hero h1{font-size:26px;font-weight:700;margin-bottom:15px;letter-spacing:1px;position:relative}
     .hero h1 span{color:#3498db}
-    .hero p.lead{font-size:15px;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto 15px;position:relative}
-    .hero-stats{display:flex;justify-content:center;gap:30px;margin-top:12px;position:relative}
+    .hero p.lead{font-size:15px;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto 10px;position:relative}
+    .hero-stats{display:flex;justify-content:center;gap:0;margin-top:8px;position:relative}
     .hero-stats .stat{text-align:center}
     .hero-stats .stat-num{font-size:24px;font-weight:700;color:#3498db}
     .hero-stats .stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:1px}
     .search-box{max-width:500px;margin:0 auto;position:relative}
-    .search-box input{width:100%;padding:10px 18px 10px 40px;border:none;border-radius:50px;font-size:14px;background:rgba(255,255,255,0.15);color:#fff;outline:none;transition:all .3s}
-    .search-box input::placeholder{color:rgba(255,255,255,0.4)}
-    .search-box input:focus{background:rgba(255,255,255,0.25);box-shadow:0 0 20px rgba(52,152,219,0.3)}
-    .search-box .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:16px}
-    .cat-section{padding:40px 0 20px}
+    .search-box input{width:100%;padding:12px 20px 12px 44px;border:2px solid rgba(255,255,255,0.4);border-radius:50px;font-size:15px;background:rgba(255,255,255,0.2);color:#fff;outline:none;transition:all .3s;font-weight:500}
+    .search-box input::placeholder{color:rgba(255,255,255,0.6)}
+    .search-box input:focus{background:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.7);box-shadow:0 0 25px rgba(52,152,219,0.4)}
+    .search-box .search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.6);font-size:18px}
+    .cat-section{padding:25px 0 15px}
     .cat-section .container{max-width:1100px}
-    .cat-card{background:#fff;border-radius:10px;padding:25px;margin-bottom:25px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid #f0f0f0;transition:all .3s}
+    .cat-card{background:#fff;border-radius:10px;padding:20px 22px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid #f0f0f0;transition:all .3s}
     .cat-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px)}
-    .cat-header{display:flex;align-items:center;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid #f5f5f5}
+    .cat-header{display:flex;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
     .cat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-right:12px;color:#fff;flex-shrink:0}
     .cat-header h3{margin:0;font-size:17px;font-weight:600;color:#333}
     .cat-header .cat-count{margin-left:auto;font-size:12px;color:#5a5a5a;background:#e8e8e8;padding:2px 10px;border-radius:20px;font-weight:600}
-    .cat-links{display:flex;flex-wrap:wrap;gap:8px}
-    .cat-links a{display:inline-block;padding:8px 16px;background:#f0f4f8;color:#2c3e50;border-radius:8px;font-size:14px;text-decoration:none;transition:all .2s;border:1px solid #dce3eb;font-weight:500}
+    .cat-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+    .cat-links a{display:inline-flex;align-items:center;padding:8px 16px;background:#f0f4f8;color:#2c3e50;border-radius:8px;font-size:14px;text-decoration:none;transition:all .2s;border:1px solid #dce3eb;font-weight:500;min-height:38px}
     .cat-links a:hover{background:#3498db;color:#fff;border-color:#3498db;transform:translateY(-2px);box-shadow:0 4px 12px rgba(52,152,219,0.3)}
     .cat-links a.hot{color:#c0392b;font-weight:700;border-color:#c0392b;background:#fde8e8}
     .cat-links a.hot:hover{background:#e74c3c;color:#fff;border-color:#e74c3c}
@@ -54,7 +54,7 @@
     .features{padding:40px 0;background:#f8f9fa}
     .features .container{max-width:1100px}
     .feat-item{text-align:center;padding:25px 15px}
-    .feat-item .feat-icon{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:24px}
+    .feat-item .feat-icon{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:24px}
     .feat-item h4{font-size:16px;font-weight:700;color:#2c3e50;margin-bottom:8px}
     .feat-item p{font-size:13px;color:#5a5a5a;line-height:1.6}
     .hide-link{display:none}
@@ -123,8 +123,6 @@ body{margin-top:50px}
         <div class="hero-stats">
             <div class="stat"><div class="stat-num">150+</div><div class="stat-label">在线工具</div>
         </div></div>
-            <div class="stat"><div class="stat-num">10</div><div class="stat-label">工具分类</div></div>
-            <div class="stat"><div class="stat-num">0</div><div class="stat-label">需要安装</div></div>
         </div>
     </div>
 </div>
