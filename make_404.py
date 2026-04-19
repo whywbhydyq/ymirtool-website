@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿html = '''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
@@ -25,4 +25,8 @@
     <a class="btn-home" href="/">返回首页</a>
 </div>
 </body>
-</html>
+</html>'''
+
+with open('./404.html','w',encoding='utf-8') as f:
+    f.write(html)
+print('404.html created')

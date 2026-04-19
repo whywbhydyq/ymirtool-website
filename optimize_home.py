@@ -1,15 +1,20 @@
-<!DOCTYPE html>
+﻿import os
+
+out = '.'
+fp = os.path.join(out, 'index.html')
+
+html = '''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
     <meta name="robots" content="index, follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ymir Tool - 免费在线工具箱 | JSON格式化、MD5加密、代码格式化、Base64编解码</title>
-    <meta name="description" content="Ymir Tool免费在线工具箱，提供JSON格式化验证、MD5加密解密、Base64编解码、HTML/CSS/JS代码格式化、文本处理替换对比、单位换算计算器等150+开发者常用工具。所有工具无需注册安装，打开浏览器即可使用，数据均在本地处理，保障您的隐私安全。"/>
+    <title>Ymir Tool - 150+免费在线工具箱 | JSON格式化/MD5/代码美化</title>
+    <meta name="description" content="Ymir Tool免费在线工具箱，提供JSON格式化、MD5加密、Base64编解码、代码格式化、文本处理、单位换算等150+工具。无需安装，打开即用，数据浏览器本地处理保障隐私安全。"/>
     <meta name="keywords" content="在线工具,JSON格式化,MD5加密,Base64,代码格式化,开发者工具,文本处理,单位换算,编码转换"/>
     <link rel="canonical" href="https://ymirtool.com/"/>
     <meta property="og:title" content="Ymir Tool - 你的在线工具箱"/>
-    <meta property="og:description" content="Ymir Tool提供150+免费在线工具，包括JSON格式化、MD5加密、代码格式化、文本处理等，无需安装，数据本地处理保障隐私"/>
+    <meta property="og:description" content="150+免费在线开发者工具，无需安装，打开即用"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://ymirtool.com/"/>
     <meta property="og:site_name" content="Ymir Tool"/>
@@ -27,18 +32,17 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"Ymir Tool","url":"https://ymirtool.com/","description":"免费在线工具箱，提供150+开发者工具","datePublished":"2026-01-01","dateModified":"2026-07-18"}
     </script>
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="@ymirtool"/>
     <meta name="twitter:title" content="Ymir Tool - 150+免费在线工具箱"/>
     <meta name="twitter:description" content="JSON格式化、MD5加密、代码格式化等150+免费工具，无需安装，打开即用"/>
     <meta name="twitter:image" content="https://ymirtool.com/static/images/og.svg"/>
     <style>
     *{box-sizing:border-box}
-    body{margin-top:50px;padding-top:0;background:#f5f6fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+    body{margin-top:50px;background:#f5f6fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif}
     .navbar{min-height:50px}
-    .hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f3460 100%);color:#fff;padding:28px 0 22px;margin-top:-70px;text-align:center;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f3460 100%);color:#fff;padding:28px 0 22px;margin-top:-20px;text-align:center;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(59,130,246,0.12) 0%,transparent 50%);pointer-events:none}
     .hero h1{font-size:26px;font-weight:700;margin:0 0 8px;letter-spacing:.5px;position:relative}
-    .hero h1 span{background:linear-gradient(90deg,#3b82f6,#60a5fa);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero h1 span{background:linear-gradient(90deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .hero p.lead{font-size:14px;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 14px;position:relative}
     .search-box{max-width:460px;margin:0 auto;position:relative}
     .search-box input{width:100%;padding:11px 18px 11px 42px;border:2px solid rgba(59,130,246,0.4);border-radius:10px;font-size:14px;background:rgba(255,255,255,0.08);color:#fff;outline:none;transition:all .25s;font-weight:500}
@@ -57,10 +61,10 @@
     .cat-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.07)}
     .cat-header{display:flex;align-items:center;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f1f5f9}
     .cat-dot{width:7px;height:7px;border-radius:50%;margin-right:8px;flex-shrink:0}
-    .cat-header h3{margin:0;font-size:14px;font-weight:700;color:#0f172a}
+    .cat-header h3{margin:0;font-size:14px;font-weight:700;color:#1e293b}
     .cat-header .cat-count{margin-left:auto;font-size:11px;color:#94a3b8;font-weight:500}
     .cat-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:5px}
-    .cat-links a{display:flex;align-items:center;justify-content:center;padding:6px 8px;background:#eef2f7;color:#1e293b;border-radius:6px;font-size:13px;text-decoration:none;transition:all .15s;border:1px solid #cbd5e1;font-weight:500;min-height:32px;text-align:center;line-height:1.3}
+    .cat-links a{display:flex;align-items:center;justify-content:center;padding:6px 8px;background:#f8fafc;color:#334155;border-radius:6px;font-size:13px;text-decoration:none;transition:all .15s;border:1px solid #f1f5f9;font-weight:500;min-height:32px;text-align:center;line-height:1.3}
     .cat-links a:hover{background:#3b82f6;color:#fff;border-color:#3b82f6;transform:translateY(-1px);box-shadow:0 2px 8px rgba(59,130,246,0.2)}
     .cat-links a.hot{color:#dc2626;font-weight:700;border-color:#fecaca;background:#fef2f2}
     .cat-links a.hot:hover{background:#dc2626;color:#fff;border-color:#dc2626}
@@ -232,4 +236,8 @@ document.getElementById('toolSearch').addEventListener('input',function(){
 });
 </script>
 </body>
-</html>
+</html>'''
+
+with open(fp, 'w', encoding='utf-8') as f:
+    f.write(html)
+print('首页已全面优化')
