@@ -12,5 +12,3 @@
     }
   ]
 }
-'@
-[System.IO.File]::WriteAllText("$(Get-Location)\vercel.json", $json)
