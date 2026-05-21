@@ -1,98 +1,143 @@
 $(function () {
-    /*
-     var ht = "p"; ht += "c"; ht +="j"; ht+="s"; ht+="o"; ht+="n";
-      var host = 'www.'+ht+'.com';
-        if (window.location.host != host){
-              window.location.href="Net://" + host + window.location.pathname + window.location.search;
-         }
-    debugger;
-    */
     var goTop = $('.gotop');
     goTop.fadeOut();
-    $(window, document).scroll(function () {
+
+    $(window).on('scroll', function () {
         $(this).scrollTop() > 100 ? goTop.fadeIn() : goTop.fadeOut();
     });
-    $('button[data-loading-text]').click(function () {
+
+    $('button[data-loading-text]').on('click', function () {
         var btn = $(this).button('loading');
         setTimeout(function () {
             btn.button('reset');
         }, 1500);
     });
-    $('#copyallcode').click(function () {
-        copyTxtToClipboard($(this).attr("data-clipboard-target"));
-    });
-    $("#top_menu a,.footer-nav li a,.hbflag li a").click(function () {
-        if ("javascript:;" != $(this).attr("href")) {
-            localStorage.getItem("visit_history");
-            var a = [];
-            if ($(this).text() == "") return;
-            a.push($(this).text() + "-" + $(this).attr("href"));
-            //console.log(localStorage.getItem("visit_history"));
-            if (localStorage.getItem("visit_history")) {
-                var d = localStorage.getItem("visit_history").split("|"),
-                    c = $(this).text() + "-" + $(this).attr("href"),
-                    e = d.length;
-                7 < e && (e = 7);
-                for (var b = 0; b < e; b++) d[b] != c && a.push(d[b]);
-                localStorage.setItem("visit_history", a.join("|"))
-            }
-            localStorage.setItem("visit_history", a.join("|"))
-        }
-    });
-    if (localStorage.getItem("visit_history") != null) {
-        var a = "",
-            c = localStorage.getItem("visit_history").split("|"),
-            f;
-        for (f in c){
-            var g = c[f].split("-"),
-                a = a + ('<a class="btn btn-success btn-xs" style="margin-left:5px;display:inline-block;" href="' + g[1] + '">' + g[0] + "</a>");
-        }
-        a && ($("#visit_history").parent().show(), $("#visit_history").html(a))
-    } else {
-        $("#foot-history").hide();
-    }
 
+    $('#copyallcode').on('click', function () {
+        copyTxtToClipboard($(this).attr('data-clipboard-target'));
+    });
+
+    $('#top_menu a,.footer-nav li a,.hbflag li a').on('click', function () {
+        var href = $(this).attr('href');
+        var text = $.trim($(this).text());
+
+        if (!href || href === 'javascript:;' || !text) {
+            return;
+        }
+
+        try {
+            var current = text + '-' + href;
+            var history = localStorage.getItem('visit_history');
+            var items = history ? history.split('|') : [];
+            var next = [current];
+
+            for (var i = 0; i < items.length && next.length < 8; i++) {
+                if (items[i] && items[i] !== current) {
+                    next.push(items[i]);
+                }
+            }
+
+            localStorage.setItem('visit_history', next.join('|'));
+        } catch (err) {
+            // Ignore storage errors in private mode or restricted browsers.
+        }
+    });
+
+    try {
+        var visitHistory = localStorage.getItem('visit_history');
+        if (visitHistory) {
+            var html = '';
+            var entries = visitHistory.split('|');
+            for (var j = 0; j < entries.length; j++) {
+                var index = entries[j].lastIndexOf('-');
+                if (index <= 0) continue;
+                var label = entries[j].slice(0, index);
+                var url = entries[j].slice(index + 1);
+                html += '<a class="btn btn-success btn-xs" style="margin-left:5px;display:inline-block;" href="' + escapeAttr(url) + '">' + escapeHtml(label) + '</a>';
+            }
+            if (html) {
+                $('#visit_history').parent().show();
+                $('#visit_history').html(html);
+            }
+        } else {
+            $('#foot-history').hide();
+        }
+    } catch (err) {
+        $('#foot-history').hide();
+    }
 });
 
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (char) {
+        return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[char];
+    });
+}
+
+function escapeAttr(value) {
+    var text = String(value || '');
+    if (/^\s*javascript:/i.test(text)) {
+        return '#';
+    }
+    return escapeHtml(text);
+}
+
 function pcjson_com_msg(target, msg) {
-    target.attr("data-original-title", msg);
+    target.attr('data-original-title', msg);
     $('[data-toggle="tooltip"]').tooltip();
     target.tooltip('show');
     target.focus();
-    var id = setTimeout(function () {
-        target.attr("data-original-title", "");
+    setTimeout(function () {
+        target.attr('data-original-title', '');
         target.tooltip('hide');
     }, 4000);
 }
 
-$("#BtnClear").click(function () {
-    $("#content").val("");
-    $("#result").val("");
+$('#BtnClear').on('click', function () {
+    $('#content').val('');
+    $('#result').val('');
 });
-var setJS = function (cssArr) {
-    var i = 0, len = cssArr.length;
-    for (i; i < len; i++) {
-        // document.write('<script async type="text/javascript" src="' + cssArr[i] + '"></script>');
 
-        // document.write 改成 appendChild()
-        let script = document.createElement('script');
-        script.setAttribute('src', cssArr[i]);
+var setJS = function (jsArr) {
+    var i = 0, len = jsArr.length;
+    for (i; i < len; i++) {
+        var script = document.createElement('script');
+        script.setAttribute('src', jsArr[i]);
         script.setAttribute('type', 'text/javascript');
         document.body.appendChild(script);
     }
 };
 
 function copyTxtToClipboard(id, selector) {
-    selector = (typeof (selector) == "undefined" || selector == '') ? "#copyallcode" : selector;
+    selector = (typeof selector === 'undefined' || selector === '') ? '#copyallcode' : selector;
     var text = $(id).text();
-    if (text == '' && $(id).length > 0) {
+    if (text === '' && $(id).length > 0) {
         text = $(id).val();
     }
-    if (text == '') {
-        pcjson_com_msg($(selector), "复制失败，请手动复制");
+    if (text === '') {
+        pcjson_com_msg($(selector), '复制失败，请手动复制');
         return false;
     }
-    var textArea = document.createElement("textarea");
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () {
+            pcjson_com_msg($(selector), '复制成功');
+        }).catch(function () {
+            legacyCopyText(text, selector);
+        });
+        return true;
+    }
+
+    return legacyCopyText(text, selector);
+}
+
+function legacyCopyText(text, selector) {
+    var textArea = document.createElement('textarea');
     textArea.style.position = 'fixed';
     textArea.style.top = 0;
     textArea.style.left = 0;
@@ -105,45 +150,40 @@ function copyTxtToClipboard(id, selector) {
     textArea.style.background = 'transparent';
     textArea.value = text;
     document.body.appendChild(textArea);
+    textArea.focus();
     textArea.select();
     try {
         var msg = document.execCommand('copy') ? '成功' : '失败';
-        pcjson_com_msg($(selector), "复制" + msg);
+        pcjson_com_msg($(selector), '复制' + msg);
     } catch (err) {
-        pcjson_com_msg($(selector), "复制失败,请手动复制");
+        pcjson_com_msg($(selector), '复制失败,请手动复制');
     }
     document.body.removeChild(textArea);
+    return true;
 }
 
 function tj() {
-    //document.write("<div style=\'display:none\'><script type=\'text/javascript\' src=\'\'></script></div>");
+    // Reserved for optional analytics hooks.
 }
 
 function pcjson_convert(type, t) {
-    var text = $("#content").val();
-    t = (typeof (t) == "undefined" || t == '') ? 0 : t;
-    return text.length <= 0 ? (pcjson_com_msg($("#content"), "请输入要处理的内容"), $("#content").focus(), !1) : 6e3 < text.length ? (pcjson_com_msg($("#content"), "需处理的内容长度不能超过6000!"), $("#content").focus(), !1) : (void $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "/api/",
+    var text = $('#content').val();
+    t = (typeof t === 'undefined' || t === '') ? 0 : t;
+    return text.length <= 0 ? (pcjson_com_msg($('#content'), '请输入要处理的内容'), $('#content').focus(), !1) : 6e3 < text.length ? (pcjson_com_msg($('#content'), '需处理的内容长度不能超过6000!'), $('#content').focus(), !1) : (void $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/api/',
         data: {
             text: text,
             id: t,
             type: type
         },
-        beforeSend: function () {
-
-        },
         success: function (t) {
-            if (1 != t.status) return pcjson_com_msg($("#content"), t.msg),
-                !1;
+            if (1 != t.status) return pcjson_com_msg($('#content'), t.msg), !1;
             hightout(t.msg);
         },
-        complete: function () {
-
-        },
         error: function () {
-            pcjson_com_msg($("#content"), "处理失败");
+            pcjson_com_msg($('#content'), '处理失败');
         }
-    }))
+    }));
 }
