@@ -2,6 +2,8 @@ $(function () {
     var goTop = $('.gotop');
     goTop.fadeOut();
 
+    injectHomepageGuideEntry();
+
     $(window).on('scroll', function () {
         $(this).scrollTop() > 100 ? goTop.fadeIn() : goTop.fadeOut();
     });
@@ -66,6 +68,40 @@ $(function () {
         $('#foot-history').hide();
     }
 });
+
+function injectHomepageGuideEntry() {
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+        return;
+    }
+
+    if ($('#ymir-guide-entry').length || !$('.quick-section').length) {
+        return;
+    }
+
+    var guideHtml = '' +
+        '<section id="ymir-guide-entry" class="container" style="max-width:1100px;margin:10px auto 12px;">' +
+        '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.04);">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px;">' +
+        '<div><h2 style="font-size:16px;margin:0 0 4px;color:#0f172a;font-weight:700;">使用指南与新手入口</h2>' +
+        '<p style="margin:0;color:#64748b;font-size:13px;line-height:1.6;">不知道从哪个工具开始？先阅读指南，了解 JSON、代码格式化、编码、哈希、文本处理和常见问题排查。</p></div>' +
+        '<a href="/guides.html" style="display:inline-block;padding:7px 14px;border-radius:7px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;font-size:13px;">查看全部指南</a>' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;">' +
+        '<a href="/online-toolbox-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">在线工具箱指南</a>' +
+        '<a href="/json-format-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">JSON 格式化指南</a>' +
+        '<a href="/code-formatting-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">代码格式化指南</a>' +
+        '<a href="/encoding-tools-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">编码转换指南</a>' +
+        '<a href="/common-errors-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">常见问题排查</a>' +
+        '</div>' +
+        '</div>' +
+        '</section>';
+
+    $('.quick-section').after(guideHtml);
+
+    if ($('#top_menu a[href="/guides.html"]').length === 0) {
+        $('#top_menu').append('<li><a href="/guides.html">指南</a></li>');
+    }
+}
 
 function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, function (char) {
