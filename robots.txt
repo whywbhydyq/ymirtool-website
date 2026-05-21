@@ -2,5 +2,8 @@ User-agent: *
 Allow: /
 Sitemap: https://ymirtool.com/sitemap.xml
 
+# Site summary for AI assistants
+# https://ymirtool.com/llms.txt
+
 Disallow: /static/script/
 Disallow: /static/layui/
