@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MD5 哈希工具使用说明 - Ymir Tool</title>
+<meta name="description" content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。"/>
+<link rel="canonical" href="https://ymirtool.com/md5-hash-guide.html"/>
+<meta property="og:title" content="MD5 哈希工具使用说明 - Ymir Tool"/>
+<meta property="og:description" content="了解 MD5 是摘要算法而不是可逆加密，适合一致性对比但不适合保护密码。"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://ymirtool.com/md5-hash-guide.html"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/tool.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:80px;min-height:600px;max-width:900px;line-height:1.8;">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / MD5 说明</p>
+<h1>MD5 哈希工具使用说明</h1>
+<p>MD5 是哈希摘要算法，不是可逆加密。它适合快速生成文本摘要，用于一致性对比、缓存键、测试数据核对和低风险场景下的重复判断。</p>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/md5/">MD5 工具</a></li>
+<li><a href="/shaencrypt/">SHA / SHA256 工具</a></li>
+<li><a href="/allencrypt/">哈希摘要工具集合</a></li>
+<li><a href="/hash-tools-guide.html">哈希工具指南</a></li>
+</ul>
+<h2>使用步骤</h2>
+<ol>
+<li>粘贴需要生成摘要的文本。</li>
+<li>生成 32 位或 16 位摘要，并确认大小写格式。</li>
+<li>与目标摘要对比前，确认原文没有多余空格、换行或不可见字符。</li>
+</ol>
+<h2>常见误区</h2>
+<ul>
+<li>MD5 不是加密，不能真正“解密”。</li>
+<li>MD5 不适合单独用于保存密码。</li>
+<li>同一文本只要多一个空格或换行，结果就会不同。</li>
+<li>大小写展示不同不一定代表摘要不同，比较前应统一格式。</li>
+</ul>
+<h2>安全边界</h2>
+<p>MD5 可以用于普通文本的一致性检查，但不要把它当作安全保护机制。涉及密码、签名、安全验证、生产系统和合规要求时，应使用更合适的方案，并结合盐值、强哈希算法或专业系统。</p>
+<h2>FAQ</h2>
+<h3>MD5 可以还原原文吗？</h3>
+<p>标准 MD5 是单向摘要，不能可靠还原原文。网上所谓 MD5 解密通常是查表或猜测，并不是真正解密。</p>
+<h3>为什么两个看起来一样的文本 MD5 不同？</h3>
+<p>通常是空格、换行、编码、大小写或不可见字符不同。建议先复制到纯文本环境中检查。</p>
+<h3>什么时候该用 SHA256？</h3>
+<p>如果你需要更强的摘要算法或安全性要求更高的场景，优先考虑 SHA256，并结合具体业务安全要求评估。</p>
+<p><a href="/md5/" class="btn btn-primary">打开 MD5 工具</a></p>
+</div>
+</body>
+</html>
