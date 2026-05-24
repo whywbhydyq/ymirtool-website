@@ -1,623 +1,93 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="robots" content="index, follow"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>MD5在线加密,MD5加密工具,16位32位不可逆加密 - Ymir Tool</title>
-    <meta name="applicable-device" content="pc,mobile"/>
-    <meta http-equiv="Cache-Control" content="no-transform"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <meta name="keywords" content="MD5在线加密,MD5加密工具,不可逆加密,16位及32位加密工具"/>
-    <meta name="description" content="MD5在线加密工具为您提供MD5在线加密,MD5加密工具,不可逆加密,16位及32位加密工具,实现32位大小写加密和16位大小写加密,可根据不同md5加密需求,选择不同的加密算法,MD5在线加密算法工具等"/>
-    <meta name="renderer" content="webkit"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon"/>
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="/static/style/tool.css" rel="stylesheet" type="text/css"/>
-    <!--[if lt IE 9]>
-    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
-<link rel="canonical" href="https://ymirtool.com/md5/" />
-<meta property="og:title" content="MD5在线加密,MD5加密工具,16位32位不可逆加密 - Ymir Tool" />
-<meta property="og:description" content="MD5在线加密工具为您提供MD5在线加密,MD5加密工具,不可逆加密,16位及32位加密工具,实现32位大小写加密和16位大小写加密,可根据不同md5加密需求,选择不同的加密算法,MD5在线加密算法工具等" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ymirtool.com/md5/" />
-<meta property="og:site_name" content="Ymir Tool" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "MD5在线加密,MD5加密工具,16位32位不可逆加密",
-  "url": "https://ymirtool.com/md5/",
-  "description": "MD5在线加密工具为您提供MD5在线加密,MD5加密工具,不可逆加密,16位及32位加密工具,实现32位大小写加密和16位大小写加密,可根据不同md5加密需求,选择不同的加密算法,MD5在线加密算法工具等",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "CNY"
-  },
-  "datePublished": "2026-01-01",
-  "dateModified": "2026-07-18"
-}
-</script>
-<meta property="og:image" content="https://ymirtool.com/static/images/og.svg" />
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MD5 哈希摘要生成工具 - Ymir Tool</title>
+<meta name="description" content="Ymir Tool MD5 哈希工具可在浏览器中生成文本的 32 位和 16 位 MD5 摘要，适合一致性对比、缓存键和测试数据核对。MD5 不是可逆加密。"/>
+<link rel="canonical" href="https://ymirtool.com/md5/"/>
+<meta property="og:title" content="MD5 哈希摘要生成工具 - Ymir Tool"/>
+<meta property="og:description" content="生成文本 MD5 哈希摘要，支持 32 位和 16 位大小写结果。MD5 不是可逆加密。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://ymirtool.com/md5/"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta property="og:image" content="https://ymirtool.com/static/images/og.svg"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MD5在线加密,MD5加密工具,16位32位不可逆加密 - Ymir Tool"/>
-<meta name="baidu-site-verification" content="codeva-UksONlLJGB" />
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script></head>
-<body><div class="navbar navbar-default navbar-static-top navbar-fixed-top">
-    <div class="jz container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Ymir Tool</span> <span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/" title="Ymir Tool"><em class="logo_ico glyphicon glyphicon-wrench"></em>Ymir Tool</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" role="navigation">
-            <ul class="nav navbar-nav" id="top_menu">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">JSON工具<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/json/">Json格式化</a></li>
-                        <li><a href="/jsonudview/"> Json格式化(上下)</a></li>
-                        <li><a href="/jsonlrview/">Json格式化(左右)</a></li>
-                        <li><a href="/jsonzip/">Json在线压缩转义</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/json2cs/">Json生成C#实体类</a></li>
-                        <li><a href="/json2java/"> Json生成Java实体类</a></li>
-                        <li><a href="/json2go/">Json生成Go结构体</a></li>
-                        <li><a href="/sql2java/">SQL转Java实体类</a></li>
-                        <li><a href="/json2xml/">XML和Json在线互转</a></li>
-                        <li><a href="/excel2json/">Excel/CSV转Json格式</a></li>
-                        <li><a href="/json2excel/">Json转Excel/CSV格式</a></li>
-                        <li><a href="/json2get/">JSON和GET参数互转</a></li>
-                        <li><a href="/json2yaml/">JSON转YAML</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">格式化转换<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/formathtml/">HTML格式化/压缩</a></li>
-                        <li><a href="/formatcss/" style="color:#f30"> CSS格式化/压缩</a></li>
-                        <li><a href="/formatjs/">JS格式化/压缩</a></li>
-                        <li><a href="/endecodejs/">JS加密/解密</a></li>
-                        <li><a href="/confundirjs/"> JS代码混合加密</a></li>
-                        <li><a href="/formatsql/">SQL压缩/格式化</a></li>
-                        <li><a href="/formatphp/">PHP代码格式化工具</a></li>
-                        <li><a href="/formatxml/">XML压缩/格式化 </a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/htmloutjs/" style="color:#f30">Html/JS互转</a></li>
-                        <li><a href="/htmlescape/"> Html转义工具</a></li>
-                        <li><a href="/html2cj/"> Html转C#/JSP</a></li>
-                        <li><a href="/html2php/">Html转PHP代码</a></li>
-                        <li><a href="/html2all/">Html转ASP/Perl</a></li>
-                        <li><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
-                        <li><a href="/htmltable/">Html表格生成器</a></li>
-                        <li><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/regex/" style="color:green">正则表达式测试工具</a></li>
-                        <li><a href="/regexcode/">正则生成代码</a></li>
-                        <li><a href="/formatfilter/">Html过滤工具</a></li>
-                        <li><a href="/runjs/">运行Js/html/css</a></li>
-                        <li><a href="/xpath/">Xpath工具</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">加解密编码<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/md5/">MD5加密工具</a></li>
-                        <li><a href="/urlcode/">URL网址16进制加密</a></li>
-                        <li><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
-                        <li><a href="/base64/"> Base64加密/解密</a></li>
-                        <li><a href="/escape/">Escape加密/解密</a></li>
-                        <li><a href="/deencrypt/">对称加密/解密</a></li>
-                        <li><a href="/shaencrypt/">SHA/SHA256加密</a></li>
-                        <li><a href="/allencrypt/">散列/哈希加密大全</a></li>
-                        <li><a href="/morse/">摩尔斯电码加解密</a></li>
-                        <li><a href="/password/">密码生成器</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/uuid/">UUID在线生成</a></li>
-                        <li><a href="/guid/">GUID在线生成</a></li>
-                        <li><a href="/barcode/">条形码生成器</a></li>
-                        <li><a href="/ip2long/">IP/数字地址转换</a></li>
-                        <li><a href="/img2base64/" style="color:#f00"> 图片转Base64</a></li>
-                        <li><a href="/utf8/">UTF-8转GBK</a></li>
-                        <li><a href="/unicode/">Unicode/ASCII转换</a></li>
-                        <li><a href="/ascii/">ASCII编码/解码</a></li>
-                        <li><a href="/urlencode/">URL编码/解码</a></li>
-                        <li><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
-                        <li><a href="/androidkeycode/">Android按键码</a></li>
-                        <li><a href="/keyboardtest/">键盘测试工具</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">文本数字<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/editor/">Html在线编辑器</a></li>
-                        <li><a href="/autoformat/" style="color:#f30"> 文章自动排版</a></li>
-                        <li><a href="/jianfan/">简繁字体转换</a></li>
-                        <li><a href="/pinyin/">汉字转为拼音</a></li>
-                        <li><a href="/huoxingwen/">火星文转换器</a></li>
-                        <li><a href="/txtreplace/">文本内容替换</a></li>
-                        <li><a href="/textdiff/"> 文本内容对比</a></li>
-                        <li><a href="/txtcount/">在线统计字数工具</a></li>
-                        <li><a href="/quchong/">内容去重工具</a></li>
-                        <li><a href="/wenzitexiao/">文字特效工具</a></li>
-                        <li><a href="/zipstringtext/">字符串文本压缩工具</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/camelcase/" style="color:blue">驼峰与下划线互转</a></li>
-                        <li><a href="/quanbaojiao/">全角半角转换</a></li>
-                        <li><a href="/enlower/">英文字母大小写转换</a></li>
-                        <li><a href="/rmbdaxie/">人民币大写转换工具</a></li>
-                        <li><a href="/random/">随机数生成器</a></li>
-                        <li><a href="/unixtime/"> Unix时间戳在线转换</a></li>
-                        <li><a href="/hexconvert/">常用进制转换工具</a></li>
-                        <li><a href="/hexrgb/"> RGB颜色在线转换</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">网络<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/websocket/">Websocket测试</a></li>
-                        <li><a href="/browserinfo/">获取浏览器信息</a></li>
-                        <li><a href="/dns/">公共DNS</a></li>
-                        <li><a href="/alldns/">各地区公共DNS</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">站长<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/htaccess2nginx/" style="color:green">htaccess转nginx</a></li>
-                        <li><a href="/shortcut/">生成桌面快捷方式</a></li>
-                        <li><a href="/px2rem/">rem与px转换工具</a></li>
-                        <li><a href="/createmeta/">生成网页Meta标签</a></li>
-                        <li><a href="/refresh/">在线定时刷新网址</a></li>
-                        <li><a href="/tiaoseban/">在线调色板</a></li>
-                        <li role="separator" class="divider"></li>
-                        </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">计算<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/nianlvli/">利率计算器在线</a></li>
-                        <li><a href="/subnetmask/">子网掩码计算器</a></li>
-                        <li><a href="/calculator/">在线科学计算器</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">其他<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/tuya/">在线涂鸦画板</a></li>
-                        <li><a href="/shizhong/">在线时钟</a></li>
-                        <li><a href="/worldtime/">世界各地时间</a></li>
-                        <li><a href="/capital/">世界各国首都查询</a></li>
-                        <li><a href="/currency/">世界各地货币查询</a></li>
-                        <li><a href="/areacode/">世界各国区号时差查询</a></li>
-                        <li><a href="/jieri/">世界节日查询</a></li>
-                        <li><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
-                        <li><a href="/chaodai/">中国历史朝代时间查询表</a></li>
-                        <li><a href="/tesufuhao/">特殊符号大全</a></li>
-                        </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">对照列表<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/useragent/">常用User-Agent</a></li>
-                        <li><a href="/contenttype/">Content-Type对照表</a></li>
-                        <li><a href="/requestmethod/">Request请求大全</a></li>
-                        <li><a href="/httpheader/">HTTP请求头大全</a></li>
-                        <li><a href="/pagecode/"> HTTP状态码</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/asciicode/">ASCII对照表</a></li>
-                        <li><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
-                        <li><a href="/ports/">常见端口大全</a></li>
-                        <li><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
-                        <li><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
-                        <li><a href="/linuxcmd/">Linux常用命令大全</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<meta name="twitter:title" content="MD5 哈希摘要生成工具 - Ymir Tool"/>
+<meta name="twitter:description" content="生成文本 MD5 哈希摘要，支持 32 位和 16 位大小写结果。"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/tool.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"MD5 哈希摘要生成工具","url":"https://ymirtool.com/md5/","description":"生成文本 MD5 哈希摘要，支持 32 位和 16 位大小写结果。MD5 不是可逆加密。","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-05-24"}
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<style>
+body{margin-top:70px;background:#f5f6fa}.tool-wrap{max-width:980px}.tool-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.tool-title{font-size:24px;font-weight:700;margin:0 0 8px;color:#111827}.tool-desc{color:#64748b;line-height:1.7;margin-bottom:16px}.result-box{background:#0f172a;color:#e2e8f0;border-radius:8px;padding:14px;line-height:1.9;word-break:break-all}.result-box strong{color:#fff}.footer-links{margin:18px 0;color:#64748b}.footer-links a{margin-right:12px}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container tool-wrap">
+    <div class="navbar-header"><a class="navbar-brand" href="/">Ymir Tool</a></div>
+    <ul class="nav navbar-nav hidden-xs">
+      <li><a href="/json/">JSON 格式化</a></li>
+      <li class="active"><a href="/md5/">MD5 哈希</a></li>
+      <li><a href="/base64/">Base64 编解码</a></li>
+      <li><a href="/formatjs/">JavaScript 格式化</a></li>
+      <li><a href="/guides.html">指南</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="container tool-wrap">
+  <div class="tool-card">
+    <h1 class="tool-title">MD5 哈希摘要生成工具</h1>
+    <p class="tool-desc">输入文本后在浏览器中生成 MD5 摘要。MD5 适合一致性对比和测试数据核对，不是可逆加密，也不适合单独用于保存密码。</p>
+    <div class="form-group">
+      <textarea id="txt_md5" class="form-control" rows="10" placeholder="输入需要生成 MD5 摘要的文本"></textarea>
     </div>
-</div>
-<main><div class="container">
-    <div class="row">
-        <div class="col-md-12 col10main"><h1 style="font-size:22px;font-weight:600;color:#333;margin:15px 0;padding-bottom:10px;border-bottom:2px solid #3498db">MD5在线加密,MD5加密工具,16位32位不可逆加密</h1>
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <ul class="nav nav-tabs hbflag">
-                        <li role="presentation" class="active"><a href="/md5/">MD5加密工具</a></li>
-                        <li role="presentation"><a href="/urlcode/">URL网址16进制加密</a></li>
-                        <li role="presentation"><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
-                        <li role="presentation"><a href="/base64/"> Base64加密/解密</a></li>
-                        <li role="presentation"><a href="/escape/">Escape加密/解密</a></li>
-                    </ul>
-                    <div class="panel">
-                        <form id="form1" class="form-horizontal" onsubmit="return false">
-                            <div class="form-group">
-                                <div class="col-sm-12"><textarea class="form-control" id="txt_md5" name="txt_md5"
-                                                                 rows="10" placeholder="要加密的字符串"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12 text-center">
-                                    <button class="btn btn-success" type="button" onclick="doMd5()">MD5加密</button>
-                                    <span id="copyallcode" class="btn btn-default"
-                                          data-clipboard-target="#result">复制</span>
-                                    <button type="button" class="btn btn-default" onclick="ClearAll()">清空</button>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12 text-left"><pre style="display: block;"><code id="result" class="hljs yaml">32位大写：<strong><span id="r32u"></span></strong>
-32位小写：<strong><span id="r32l"></span></strong>
-16位大写：<strong><span id="r16u"></span></strong>
-16位小写：<strong><span id="r16l"></span></strong>
-</code></pre>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="alert alert alert-success alert-dismissible"><h4>MD5加密</h4>
-                    <p>
-                        MD5加密是一种不可逆的加密算法,可根据加密值比较结果是否相等，MD5在线加密工具为您提供MD5在线加密,MD5加密工具,不可逆加密,16位及32位加密工具,实现32位大小写加密和16位大小写加密,可根据不同md5加密需求,选择不同的加密算法，MD5能够生成数据或文件的“数字指纹”，就像每个人都有自己独一无二的指纹一样，MD5生成的这个“数字指纹”也是独一无二的，可以用来验证数据或文件的一致性。本站不会记录您的任何信息,请放心使用。</p>
-                </div>
-                <div class="accordion-group"></div>
-            </div>
-        </div>
+    <div class="form-group text-center">
+      <button class="btn btn-success" type="button" onclick="doMd5()">生成 MD5</button>
+      <button class="btn btn-default" type="button" onclick="copyResult()">复制结果</button>
+      <button class="btn btn-default" type="button" onclick="clearAll()">清空</button>
     </div>
-</div>
-<script src="https://cdn.staticfile.org/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/static/script/tool.js" type="text/javascript"></script>
-<script src="/static/script/hightout.js"></script>
-<script>is_show();</script>
-<div class="container" id="foot-history">
-    <div class="row">
-        <div class="col-md-12"><span>您的足迹：</span><span id="visit_history"></span></div>
-        <div class="col-md-12" style="margin-top:10px">
-            <!-- 广告区1 -->
-
-
-
-
-
-        </div>
+    <div class="result-box" id="resultBox">
+      <div>32 位大写：<strong id="r32u"></strong></div>
+      <div>32 位小写：<strong id="r32l"></strong></div>
+      <div>16 位大写：<strong id="r16u"></strong></div>
+      <div>16 位小写：<strong id="r16l"></strong></div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 footer-nav">
-            <h2>站内导航</h2>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>JSON工具</span></h3>
-                <li><span></span><a href="/json/">Json格式化</a></li>
-                <li><span></span><a href="/jsonudview/"> Json格式化(上下)</a></li>
-                <li><span></span><a href="/jsonlrview/">Json格式化(左右)</a></li>
-                <li><span></span><a href="/jsonzip/">Json在线压缩转义</a></li>
-                <li><span></span><a href="/json2cs/">Json生成C#实体类</a></li>
-                <li><span></span><a href="/json2java/"> Json生成Java实体类</a></li>
-                <li><span></span><a href="/json2go/">Json生成Go结构体</a></li>
-                <li><span></span><a href="/sql2java/">SQL转Java实体类</a></li>
-                <li><span></span><a href="/json2xml/">XML和Json在线互转</a></li>
-                <li><span></span><a href="/excel2json/">Excel/CSV转Json格式</a></li>
-                <li><span></span><a href="/json2excel/">Json转Excel/CSV格式</a></li>
-                <li><span></span><a href="/json2get/">JSON和GET参数互转</a></li>
-                <li><span></span><a href="/json2yaml/">JSON转YAML</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>格式化转换</span></h3>
-                <li><span></span><a href="/formathtml/">HTML格式化/压缩</a></li>
-                <li><span></span><a href="/formatcss/" style="color:#f30"> CSS格式化/压缩</a></li>
-                <li><span></span><a href="/formatjs/">JS格式化/压缩</a></li>
-                <li><span></span><a href="/endecodejs/">JS加密/解密</a></li>
-                <li><span></span><a href="/confundirjs/"> JS代码混合加密</a></li>
-                <li><span></span><a href="/formatsql/">SQL压缩/格式化</a></li>
-                <li><span></span><a href="/formatphp/">PHP代码格式化工具</a></li>
-                <li><span></span><a href="/formatxml/">XML压缩/格式化 </a></li>
-                <li><span></span><a href="/formatcs/">C#代码格式化工具</a></li>
-                <li><span></span><a href="/formatjava/">JAVA代码格式化工具</a></li>
-                <li><span></span><a href="/formatcsql/">SQL代码格式化工具</a></li>
-                <li><span></span><a href="/formatpy/">Python代码格式化工具</a></li>
-                <li><span></span><a href="/formatruby/">Ruby代码格式化工具</a></li>
-                <li><span></span><a href="/formatc/">C语言代码格式化工具</a></li>
-                <li><span></span><a href="/formatcpp/">C++代码格式化工具</a></li>
-                <li><span></span><a href="/formatperl/">Perl代码格式化工具</a></li>
-                <li><span></span><a href="/formatvbs/">VBScript格式化工具</a></li>
-                <li><span></span><a href="/html2js/"> Html转JS</a></li>
-                <li><span></span><a href="/htmloutjs/" style="color:#f30">Html/JS互转</a></li>
-                <li><span></span><a href="/htmlescape/"> Html转义工具</a></li>
-                <li><span></span><a href="/html2cj/"> Html转C#/JSP</a></li>
-                <li><span></span><a href="/html2php/">Html转PHP代码</a></li>
-                <li><span></span><a href="/html2all/">Html转ASP/Perl</a></li>
-                <li><span></span><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
-                <li><span></span><a href="/htmltable/">Html表格生成器</a></li>
-                <li><span></span><a href="/html2ubb/">HTML/UBB互转</a></li>
-                <li><span></span><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
-                <li><span></span><a href="/regex/" style="color:green">正则表达式测试工具</a></li>
-                <li><span></span><a href="/regexcode/">正则生成代码</a></li>
-                <li><span></span><a href="/formatfilter/">Html过滤工具</a></li>
-                <li><span></span><a href="/regexdso/">常用正则表达式</a></li>
-                <li><span></span><a href="/regexsucha/">正则表达式语法速查</a></li>
-                <li><span></span><a href="/runjs/">运行Js/html/css</a></li>
-                <li><span></span><a href="/xpath/">Xpath工具</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>加解密编码</span></h3>
-                <li><span></span><a href="/md5/">MD5加密工具</a></li>
-                <li><span></span><a href="/urlcode/">URL网址16进制加密</a></li>
-                <li><span></span><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
-                <li><span></span><a href="/base64/"> Base64加密/解密</a></li>
-                <li><span></span><a href="/escape/">Escape加密/解密</a></li>
-                <li><span></span><a href="/deencrypt/">对称加密/解密</a></li>
-                <li><span></span><a href="/aesencrypt/">AES加密/解密</a></li>
-                <li><span></span><a href="/desencrypt/">DES加密/解密</a></li>
-                <li><span></span><a href="/rc4encrypt/">RC4加密/解密</a></li>
-                <li><span></span><a href="/rabbitencrypt/">Rabbit加密/解密</a></li>
-                <li><span></span><a href="/tripledes/">TripleDES加密/解密</a></li>
-                <li><span></span><a href="/shaencrypt/">SHA/SHA256加密</a></li>
-                <li><span></span><a href="/allencrypt/">散列/哈希加密大全</a></li>
-                <li><span></span><a href="/morse/">摩尔斯电码加解密</a></li>
-                <li><span></span><a href="/password/">密码生成器</a></li>
-                <li><span></span><a href="/uuid/">UUID在线生成</a></li>
-                <li><span></span><a href="/guid/">GUID在线生成</a></li>
-                <li><span></span><a href="/htpasswd/">htpasswd生成</a></li>
-                <li><span></span><a href="/barcode/">条形码生成器</a></li>
-                <li><span></span><a href="/ip2long/">IP/数字地址转换</a></li>
-                <li><span></span><a href="/img2base64/" style="color:#f00"> 图片转Base64</a></li>
-                <li><span></span><a href="/utf8/">UTF-8转GBK</a></li>
-                <li><span></span><a href="/unicode/">Unicode/ASCII转换</a></li>
-                <li><span></span><a href="/ascii/">ASCII编码/解码</a></li>
-                <li><span></span><a href="/urlencode/">URL编码/解码</a></li>
-                <li><span></span><a href="/navtiveunicode/">Native/Unicode编码转换</a></li>
-                <li><span></span><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
-                <li><span></span><a href="/androidkeycode/">Android按键码</a></li>
-                <li><span></span><a href="/keyboardtest/">键盘测试工具</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>文本数字</span></h3>
-                <li><span></span><a href="/editor/">Html在线编辑器</a></li>
-                <li><span></span><a href="/autoformat/" style="color:#f30"> 文章自动排版</a></li>
-                <li><span></span><a href="/jianfan/">简繁字体转换</a></li>
-                <li><span></span><a href="/pinyin/">汉字转为拼音</a></li>
-                <li><span></span><a href="/huoxingwen/">火星文转换器</a></li>
-                <li><span></span><a href="/txtreplace/">文本内容替换</a></li>
-                <li><span></span><a href="/textdiff/"> 文本内容对比</a></li>
-                <li><span></span><a href="/txtcount/">在线统计字数工具</a></li>
-                <li><span></span><a href="/shupai/">文字竖排工具</a></li>
-                <li><span></span><a href="/textflip/">文字翻转工具</a></li>
-                <li><span></span><a href="/quchong/">内容去重工具</a></li>
-                <li><span></span><a href="/wenzitexiao/">文字特效工具</a></li>
-                <li><span></span><a href="/zipstringtext/">字符串文本压缩工具</a></li>
-                <li><span></span><a href="/camelcase/" style="color:blue">驼峰与下划线互转</a></li>
-                <li><span></span><a href="/quanbaojiao/">全角半角转换</a></li>
-                <li><span></span><a href="/enlower/">英文字母大小写转换</a></li>
-                <li><span></span><a href="/rmbdaxie/">人民币大写转换工具</a></li>
-                <li><span></span><a href="/random/">随机数生成器</a></li>
-                <li><span></span><a href="/unixtime/"> Unix时间戳在线转换</a></li>
-                <li><span></span><a href="/hexconvert/">常用进制转换工具</a></li>
-                <li><span></span><a href="/hexrgb/"> RGB颜色在线转换</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>网络</span></h3>
-                <li><span></span><a href="/websocket/">Websocket测试</a></li>
-                <li><span></span><a href="/browserinfo/">获取浏览器信息</a></li>
-                <li><span></span><a href="/dns/">公共DNS</a></li>
-                <li><span></span><a href="/alldns/">各地区公共DNS</a></li>
-                <li><span></span><a href="/dnsdx/">各地电信DNS</a></li>
-                <li><span></span><a href="/dnslt/">各地联通DNS</a></li>
-                <li><span></span><a href="/dnsyd/">各地移动DNS</a></li>
-                <li><span></span><a href="/dnstt/">各地铁通DNS</a></li>
-                <li><span></span><a href="/dnsedu/">教育网DNS</a></li>
-                <li><span></span><a href="/dnsusa/">美国DNS</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>站长</span></h3>
-                <li><span></span><a href="/htaccess2nginx/" style="color:green">htaccess转nginx</a></li>
-                <li><span></span><a href="/shortcut/">生成桌面快捷方式</a></li>
-                <li><span></span><a href="/px2rem/">rem与px转换工具</a></li>
-                <li><span></span><a href="/createmeta/">生成网页Meta标签</a></li>
-                <li><span></span><a href="/refresh/">在线定时刷新网址</a></li>
-                <li><span></span><a href="/tiaoseban/">在线调色板</a></li>
-                </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>计算</span></h3>
-                <li><span></span><a href="/nianlvli/">利率计算器在线</a></li>
-                <li><span></span><a href="/subnetmask/">子网掩码计算器</a></li>
-                <li><span></span><a href="/calculator/">在线科学计算器</a></li>
-                <li><span></span><a href="/calcarea/">面积换算器</a></li>
-                <li><span></span><a href="/calcheat/">热量换算器</a></li>
-                <li><span></span><a href="/calcvolume/">体积换算器</a></li>
-                <li><span></span><a href="/calcpressure/">压力换算器</a></li>
-                <li><span></span><a href="/calcpower/">功率换算器</a></li>
-                <li><span></span><a href="/calclength/">长度换算器</a></li>
-                <li><span></span><a href="/calctemperature/">温度换算器</a></li>
-                <li><span></span><a href="/calctime/">时间换算器</a></li>
-                <li><span></span><a href="/calcspeed/">速度换算器</a></li>
-                <li><span></span><a href="/calcangle/">角度换算器</a></li>
-                <li><span></span><a href="/calcdata/">数据大小换算器</a></li>
-                <li><span></span><a href="/calcthickness/">密度换算器</a></li>
-                <li><span></span><a href="/calcforce/">力换算器</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>其他</span></h3>
-                <li><span></span><a href="/tuya/">在线涂鸦画板</a></li>
-                <li><span></span><a href="/shizhong/">在线时钟</a></li>
-                <li><span></span><a href="/worldtime/">世界各地时间</a></li>
-                <li><span></span><a href="/capital/">世界各国首都查询</a></li>
-                <li><span></span><a href="/currency/">世界各地货币查询</a></li>
-                <li><span></span><a href="/areacode/">世界各国区号时差查询</a></li>
-                <li><span></span><a href="/jieri/">世界节日查询</a></li>
-                <li><span></span><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
-                <li><span></span><a href="/chaodai/">中国历史朝代时间查询表</a></li>
-                <li><span></span><a href="/tesufuhao/">特殊符号大全</a></li>
-                </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>对照列表</span></h3>
-                <li><span></span><a href="/useragent/">常用User-Agent</a></li>
-                <li><span></span><a href="/contenttype/">Content-Type对照表</a></li>
-                <li><span></span><a href="/requestmethod/">Request请求大全</a></li>
-                <li><span></span><a href="/httpheader/">HTTP请求头大全</a></li>
-                <li><span></span><a href="/pagecode/"> HTTP状态码</a></li>
-                <li><span></span><a href="/asciicode/">ASCII对照表</a></li>
-                <li><span></span><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
-                <li><span></span><a href="/ports/">常见端口大全</a></li>
-                <li><span></span><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
-                <li><span></span><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
-                <li><span></span><a href="/linuxcmd/">Linux常用命令大全</a></li>
-            </ul>
-        </div>
+    <div class="footer-links">
+      <a href="/md5-hash-guide.html">MD5 使用说明</a>
+      <a href="/shaencrypt/">SHA / SHA256 摘要</a>
+      <a href="/allencrypt/">哈希摘要工具集合</a>
+      <a href="/privacy.html">隐私政策</a>
     </div>
-</div>
+  </div>
 </main>
-<div class="copyright" id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <span>
-                    Copyright ©2026
-                    <a href="/">
-                        程序设计Ymir Tool
-                    </a>
-                </span>
-                |
-                <span>
-                    <a href="/about.html">关于我们</a> | <a href="/privacy.html">隐私政策</a> | <a href="/contact.html">联系我们</a>
-                </span>
-            </div>
-            <script>
-
-            </script>
-        </div>
-    </div>
-</div>
-<a class="gotop" href="#top" title="返回顶部" style="display: none;">
-    <span class="arrow">
-    </span>
-    <span class="arrow lit">
-    </span>
-</a>
-
-
-
+<footer class="container tool-wrap footer-links">
+  <span>Copyright ©2026 <a href="/">Ymir Tool</a></span>
+  <a href="/about.html">关于我们</a>
+  <a href="/terms.html">使用条款</a>
+  <a href="/disclaimer.html">免责声明</a>
+  <a href="/contact.html">联系我们</a>
+</footer>
+<script src="/static/script/tool.js"></script>
 <script>
-// 1. 核心加密逻辑 (已将 md5str 暴露至全局作用域)
-var hex_chr = '0123456789abcdef'.split('');
-
-function md5cycle(x, k) {
-    var a = x[0], b = x[1], c = x[2], d = x[3];
-    a = ff(a, b, c, d, k[0], 7, -680876936); d = ff(d, a, b, c, k[1], 12, -389564586);
-    c = ff(c, d, a, b, k[2], 17, 606105819); b = ff(b, c, d, a, k[3], 22, -1044525330);
-    a = ff(a, b, c, d, k[4], 7, -176418897); d = ff(d, a, b, c, k[5], 12, 1200080426);
-    c = ff(c, d, a, b, k[6], 17, -1473231341); b = ff(b, c, d, a, k[7], 22, -45705983);
-    a = ff(a, b, c, d, k[8], 7, 1770035416); d = ff(d, a, b, c, k[9], 12, -1958414417);
-    c = ff(c, d, a, b, k[10], 17, -42063); b = ff(b, c, d, a, k[11], 22, -1990404162);
-    a = ff(a, b, c, d, k[12], 7, 1804603682); d = ff(d, a, b, c, k[13], 12, -40341101);
-    c = ff(c, d, a, b, k[14], 17, -1502002290); b = ff(b, c, d, a, k[15], 22, 1236535329);
-    a = gg(a, b, c, d, k[1], 5, -165796510); d = gg(d, a, b, c, k[6], 9, -1069501632);
-    c = gg(c, d, a, b, k[11], 14, 643717713); b = gg(b, c, d, a, k[0], 20, -373897302);
-    a = gg(a, b, c, d, k[5], 5, -701558691); d = gg(d, a, b, c, k[10], 9, 38016083);
-    c = gg(c, d, a, b, k[15], 14, -660478335); b = gg(b, c, d, a, k[4], 20, -405537848);
-    a = gg(a, b, c, d, k[9], 5, 568446438); d = gg(d, a, b, c, k[14], 9, -1019803690);
-    c = gg(c, d, a, b, k[3], 14, -187363961); b = gg(b, c, d, a, k[8], 20, 1163531501);
-    a = gg(a, b, c, d, k[13], 5, -1444681467); d = gg(d, a, b, c, k[2], 9, -51403784);
-    c = gg(c, d, a, b, k[7], 14, 1735328473); b = gg(b, c, d, a, k[12], 20, -1926607734);
-    a = hh(a, b, c, d, k[5], 4, -378558); d = hh(d, a, b, c, k[8], 11, -2022574463);
-    c = hh(c, d, a, b, k[11], 16, 1839030562); b = hh(b, c, d, a, k[14], 23, -35309556);
-    a = hh(a, b, c, d, k[1], 4, -1530992060); d = hh(d, a, b, c, k[4], 11, 1272893353);
-    c = hh(c, d, a, b, k[7], 16, -155497632); b = hh(b, c, d, a, k[10], 23, -1094730640);
-    a = hh(a, b, c, d, k[13], 4, 681279174); d = hh(d, a, b, c, k[0], 11, -358537222);
-    c = hh(c, d, a, b, k[3], 16, -722521979); b = hh(b, c, d, a, k[6], 23, 76029189);
-    a = hh(a, b, c, d, k[9], 4, -640364487); d = hh(d, a, b, c, k[12], 11, -421815835);
-    c = hh(c, d, a, b, k[15], 16, 530742520); b = hh(b, c, d, a, k[2], 23, -995338651);
-    a = ii(a, b, c, d, k[0], 6, -198630844); d = ii(d, a, b, c, k[7], 10, 1126891415);
-    c = ii(c, d, a, b, k[14], 15, -1416354905); b = ii(b, c, d, a, k[5], 21, -57434055);
-    a = ii(a, b, c, d, k[12], 6, 1700485571); d = ii(d, a, b, c, k[3], 10, -1894986606);
-    c = ii(c, d, a, b, k[10], 15, -1051523); b = ii(b, c, d, a, k[1], 21, -2054922799);
-    a = ii(a, b, c, d, k[8], 6, 1873313359); d = ii(d, a, b, c, k[15], 10, -30611744);
-    c = ii(c, d, a, b, k[6], 15, -1560198380); b = ii(b, c, d, a, k[13], 21, 1309151649);
-    a = ii(a, b, c, d, k[4], 6, -145523070); d = ii(d, a, b, c, k[11], 10, -1120210379);
-    c = ii(c, d, a, b, k[2], 15, 718787259); b = ii(b, c, d, a, k[9], 21, -343485551);
-    x[0] = add32(a, x[0]); x[1] = add32(b, x[1]); x[2] = add32(c, x[2]); x[3] = add32(d, x[3]);
-}
-
-function cmn(q, a, b, x, s, t) { a = add32(add32(a, q), add32(x, t)); return add32((a << s) | (a >>> (32 - s)), b); }
-function ff(a, b, c, d, x, s, t) { return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
-function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
-function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
-function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | (~d)), a, b, x, s, t); }
-
-function md51(s) {
-    var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i;
-    for (i = 64; i <= n; i += 64) { md5cycle(state, md5blk(s.substring(i - 64, i))) }
-    s = s.substring(i - 64);
-    var tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for (i = 0; i < s.length; i++) tail[i >> 2] |= s.charCodeAt(i) << ((i % 4) << 3);
-    tail[i >> 2] |= 0x80 << ((i % 4) << 3);
-    if (i > 55) { md5cycle(state, tail); for (i = 0; i < 16; i++) tail[i] = 0 }
-    tail[14] = n * 8; md5cycle(state, tail);
-    return state;
-}
-
-function md5blk(s) {
-    var md5blks = [], i;
-    for (i = 0; i < 64; i += 4) { md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24) }
-    return md5blks;
-}
-
-function rhex(n) {
-    var s = '', j = 0;
-    for (; j < 4; j++) s += hex_chr[(n >> (j * 8 + 4)) & 0x0f] + hex_chr[(n >> (j * 8)) & 0x0f];
-    return s;
-}
-
-function hex(x) {
-    for (var i = 0; i < x.length; i++) x[i] = rhex(x[i]);
-    return x.join('');
-}
-
-function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
-
-function md5str(s) { return hex(md51(s)); }
-
-// 2. 界面交互逻辑
-function doMd5() {
-    var txt = document.getElementById('txt_md5').value;
-    if (!txt) {
-        alert('请输入要加密的字符串');
-        return;
-    }
-    var r32 = md5str(txt);
-    var r16 = r32.substring(8, 24);
-    
-    document.getElementById('r32u').innerText = r32.toUpperCase();
-    document.getElementById('r32l').innerText = r32.toLowerCase();
-    document.getElementById('r16u').innerText = r16.toUpperCase();
-    document.getElementById('r16l').innerText = r16.toLowerCase();
-}
-
-function ClearAll() {
-    document.getElementById('txt_md5').value = "";
-    document.getElementById('r32u').innerText = "";
-    document.getElementById('r32l').innerText = "";
-    document.getElementById('r16u').innerText = "";
-    document.getElementById('r16l').innerText = "";
-}
+var hex_chr='0123456789abcdef'.split('');
+function md5cycle(x,k){var a=x[0],b=x[1],c=x[2],d=x[3];a=ff(a,b,c,d,k[0],7,-680876936);d=ff(d,a,b,c,k[1],12,-389564586);c=ff(c,d,a,b,k[2],17,606105819);b=ff(b,c,d,a,k[3],22,-1044525330);a=ff(a,b,c,d,k[4],7,-176418897);d=ff(d,a,b,c,k[5],12,1200080426);c=ff(c,d,a,b,k[6],17,-1473231341);b=ff(b,c,d,a,k[7],22,-45705983);a=ff(a,b,c,d,k[8],7,1770035416);d=ff(d,a,b,c,k[9],12,-1958414417);c=ff(c,d,a,b,k[10],17,-42063);b=ff(b,c,d,a,k[11],22,-1990404162);a=ff(a,b,c,d,k[12],7,1804603682);d=ff(d,a,b,c,k[13],12,-40341101);c=ff(c,d,a,b,k[14],17,-1502002290);b=ff(b,c,d,a,k[15],22,1236535329);a=gg(a,b,c,d,k[1],5,-165796510);d=gg(d,a,b,c,k[6],9,-1069501632);c=gg(c,d,a,b,k[11],14,643717713);b=gg(b,c,d,a,k[0],20,-373897302);a=gg(a,b,c,d,k[5],5,-701558691);d=gg(d,a,b,c,k[10],9,38016083);c=gg(c,d,a,b,k[15],14,-660478335);b=gg(b,c,d,a,k[4],20,-405537848);a=gg(a,b,c,d,k[9],5,568446438);d=gg(d,a,b,c,k[14],9,-1019803690);c=gg(c,d,a,b,k[3],14,-187363961);b=gg(b,c,d,a,k[8],20,1163531501);a=gg(a,b,c,d,k[13],5,-1444681467);d=gg(d,a,b,c,k[2],9,-51403784);c=gg(c,d,a,b,k[7],14,1735328473);b=gg(b,c,d,a,k[12],20,-1926607734);a=hh(a,b,c,d,k[5],4,-378558);d=hh(d,a,b,c,k[8],11,-2022574463);c=hh(c,d,a,b,k[11],16,1839030562);b=hh(b,c,d,a,k[14],23,-35309556);a=hh(a,b,c,d,k[1],4,-1530992060);d=hh(d,a,b,c,k[4],11,1272893353);c=hh(c,d,a,b,k[7],16,-155497632);b=hh(b,c,d,a,k[10],23,-1094730640);a=hh(a,b,c,d,k[13],4,681279174);d=hh(d,a,b,c,k[0],11,-358537222);c=hh(c,d,a,b,k[3],16,-722521979);b=hh(b,c,d,a,k[6],23,76029189);a=hh(a,b,c,d,k[9],4,-640364487);d=hh(d,a,b,c,k[12],11,-421815835);c=hh(c,d,a,b,k[15],16,530742520);b=hh(b,c,d,a,k[2],23,-995338651);a=ii(a,b,c,d,k[0],6,-198630844);d=ii(d,a,b,c,k[7],10,1126891415);c=ii(c,d,a,b,k[14],15,-1416354905);b=ii(b,c,d,a,k[5],21,-57434055);a=ii(a,b,c,d,k[12],6,1700485571);d=ii(d,a,b,c,k[3],10,-1894986606);c=ii(c,d,a,b,k[10],15,-1051523);b=ii(b,c,d,a,k[1],21,-2054922799);a=ii(a,b,c,d,k[8],6,1873313359);d=ii(d,a,b,c,k[15],10,-30611744);c=ii(c,d,a,b,k[6],15,-1560198380);b=ii(b,c,d,a,k[13],21,1309151649);a=ii(a,b,c,d,k[4],6,-145523070);d=ii(d,a,b,c,k[11],10,-1120210379);c=ii(c,d,a,b,k[2],15,718787259);b=ii(b,c,d,a,k[9],21,-343485551);x[0]=add32(a,x[0]);x[1]=add32(b,x[1]);x[2]=add32(c,x[2]);x[3]=add32(d,x[3]);}
+function cmn(q,a,b,x,s,t){a=add32(add32(a,q),add32(x,t));return add32((a<<s)|(a>>>(32-s)),b)}function ff(a,b,c,d,x,s,t){return cmn((b&c)|((~b)&d),a,b,x,s,t)}function gg(a,b,c,d,x,s,t){return cmn((b&d)|(c&(~d)),a,b,x,s,t)}function hh(a,b,c,d,x,s,t){return cmn(b^c^d,a,b,x,s,t)}function ii(a,b,c,d,x,s,t){return cmn(c^(b|(~d)),a,b,x,s,t)}
+function md51(s){var n=s.length,state=[1732584193,-271733879,-1732584194,271733878],i;for(i=64;i<=n;i+=64)md5cycle(state,md5blk(s.substring(i-64,i)));s=s.substring(i-64);var tail=new Array(16).fill(0);for(i=0;i<s.length;i++)tail[i>>2]|=s.charCodeAt(i)<<((i%4)<<3);tail[i>>2]|=0x80<<((i%4)<<3);if(i>55){md5cycle(state,tail);tail=new Array(16).fill(0)}tail[14]=n*8;md5cycle(state,tail);return state}
+function md5blk(s){var b=[],i;for(i=0;i<64;i+=4)b[i>>2]=s.charCodeAt(i)+(s.charCodeAt(i+1)<<8)+(s.charCodeAt(i+2)<<16)+(s.charCodeAt(i+3)<<24);return b}
+function rhex(n){var s='',j=0;for(;j<4;j++)s+=hex_chr[(n>>(j*8+4))&15]+hex_chr[(n>>(j*8))&15];return s}function hex(x){for(var i=0;i<x.length;i++)x[i]=rhex(x[i]);return x.join('')}function add32(a,b){return(a+b)&4294967295}function md5(s){return hex(md51(unescape(encodeURIComponent(s))))}
+function doMd5(){var txt=document.getElementById('txt_md5').value;if(!txt){alert('请输入需要生成摘要的文本');return}var r32=md5(txt),r16=r32.substring(8,24);document.getElementById('r32u').innerText=r32.toUpperCase();document.getElementById('r32l').innerText=r32.toLowerCase();document.getElementById('r16u').innerText=r16.toUpperCase();document.getElementById('r16l').innerText=r16.toLowerCase()}
+function clearAll(){document.getElementById('txt_md5').value='';['r32u','r32l','r16u','r16l'].forEach(function(id){document.getElementById(id).innerText=''})}
+function copyResult(){var text=document.getElementById('resultBox').innerText;if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){alert('已复制')});}else{var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);alert('已复制')}}
 </script>
 </body>
 </html>
