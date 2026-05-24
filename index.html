@@ -4,16 +4,16 @@
     <meta charset="utf-8"/>
     <meta name="robots" content="index, follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ymir Tool - 免费在线工具箱 | JSON格式化、MD5加密、代码格式化、Base64编解码</title>
-    <meta name="description" content="Ymir Tool免费在线工具箱，提供JSON格式化验证、MD5加密解密、Base64编解码、HTML/CSS/JS代码格式化、文本处理替换对比、单位换算计算器等150+开发者常用工具。所有工具无需注册安装，打开浏览器即可使用，数据均在本地处理，保障您的隐私安全。"/>
-    <meta name="keywords" content="在线工具,JSON格式化,MD5加密,Base64,代码格式化,开发者工具,文本处理,单位换算,编码转换"/>
+    <title>Ymir Tool - 免费在线工具箱 | JSON格式化、MD5哈希、代码格式化、Base64编解码</title>
+    <meta name="description" content="Ymir Tool 免费在线工具箱，提供 JSON 格式化验证、MD5 哈希摘要、Base64 编解码、HTML/CSS/JavaScript 代码格式化、文本处理、单位换算等 150+ 常用工具。无需注册安装，打开浏览器即可使用；多数文本、编码和格式化工具在浏览器中处理，涉及远程请求或外部服务的功能以具体页面说明为准。"/>
     <link rel="canonical" href="https://ymirtool.com/"/>
     <meta property="og:title" content="Ymir Tool - 你的在线工具箱"/>
-    <meta property="og:description" content="Ymir Tool提供150+免费在线工具，包括JSON格式化、MD5加密、代码格式化、文本处理等，无需安装，数据本地处理保障隐私"/>
+    <meta property="og:description" content="Ymir Tool 提供 150+ 免费在线工具，包括 JSON 格式化、MD5 哈希、Base64 编解码、代码格式化、文本处理和单位换算。"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://ymirtool.com/"/>
     <meta property="og:site_name" content="Ymir Tool"/>
     <meta property="og:image" content="https://ymirtool.com/static/images/og.svg"/>
+    <meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
     <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
@@ -24,12 +24,12 @@
     <link rel="preload" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin/>
     <meta name="baidu-site-verification" content="codeva-UksONlLJGB" />
     <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Ymir Tool","url":"https://ymirtool.com/","description":"免费在线工具箱，提供150+开发者工具","datePublished":"2026-01-01","dateModified":"2026-07-18"}
+{"@context":"https://schema.org","@type":"WebSite","name":"Ymir Tool","url":"https://ymirtool.com/","description":"免费在线工具箱，提供150+开发者工具","datePublished":"2026-01-01","dateModified":"2026-05-24"}
     </script>
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@ymirtool"/>
     <meta name="twitter:title" content="Ymir Tool - 150+免费在线工具箱"/>
-    <meta name="twitter:description" content="JSON格式化、MD5加密、代码格式化等150+免费工具，无需安装，打开即用"/>
+    <meta name="twitter:description" content="JSON 格式化、MD5 哈希、Base64 编解码、代码格式化等 150+ 免费工具，无需安装，打开即用"/>
     <meta name="twitter:image" content="https://ymirtool.com/static/images/og.svg"/>
     <style>
     *{box-sizing:border-box}
@@ -39,7 +39,7 @@
     .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(59,130,246,0.12) 0%,transparent 50%);pointer-events:none}
     .hero h1{font-size:26px;font-weight:700;margin:0 0 8px;letter-spacing:.5px;position:relative}
     .hero h1 span{background:linear-gradient(90deg,#3b82f6,#60a5fa);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p.lead{font-size:14px;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 14px;position:relative}
+    .hero p.lead{font-size:14px;color:rgba(255,255,255,0.6);max-width:640px;margin:0 auto 14px;position:relative}
     .search-box{max-width:460px;margin:0 auto;position:relative}
     .search-box input{width:100%;padding:11px 18px 11px 42px;border:2px solid rgba(59,130,246,0.4);border-radius:10px;font-size:14px;background:rgba(255,255,255,0.08);color:#fff;outline:none;transition:all .25s;font-weight:500}
     .search-box input::placeholder{color:rgba(255,255,255,0.5)}
@@ -94,8 +94,8 @@
         <div id="navbar" class="navbar-collapse collapse" role="navigation">
             <ul class="nav navbar-nav" id="top_menu">
                 <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">JSON工具<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/json/">Json格式化</a></li><li><a href="/jsonudview/">Json格式化(上下)</a></li><li><a href="/jsonlrview/">Json格式化(左右)</a></li><li><a href="/jsonzip/">Json在线压缩转义</a></li><li role="separator" class="divider"></li><li><a href="/json2cs/">Json生成C#实体类</a></li><li><a href="/json2java/">Json生成Java实体类</a></li><li><a href="/json2go/">Json生成Go结构体</a></li><li><a href="/sql2java/">SQL转Java实体类</a></li><li><a href="/json2xml/">XML和Json在线互转</a></li><li><a href="/excel2json/">Excel/CSV转Json格式</a></li><li><a href="/json2excel/">Json转Excel/CSV格式</a></li><li><a href="/json2get/">JSON和GET参数互转</a></li><li><a href="/json2yaml/">JSON转YAML</a></li></ul></li>
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">格式化转换<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/formathtml/">HTML格式化/压缩</a></li><li><a href="/formatcss/">CSS格式化/压缩</a></li><li><a href="/formatjs/">JS格式化/压缩</a></li><li><a href="/endecodejs/">JS加密/解密</a></li><li><a href="/confundirjs/">JS代码混合加密</a></li><li><a href="/formatsql/">SQL压缩/格式化</a></li><li><a href="/formatphp/">PHP代码格式化</a></li><li><a href="/formatxml/">XML压缩/格式化</a></li><li role="separator" class="divider"></li><li><a href="/htmloutjs/">Html/JS互转</a></li><li><a href="/htmlescape/">Html转义工具</a></li><li><a href="/html2cj/">Html转C#/JSP</a></li><li><a href="/html2php/">Html转PHP代码</a></li><li><a href="/html2all/">Html转ASP/Perl</a></li><li><a href="/htmlfromcsv/">Excel转HTML表格</a></li><li><a href="/htmltable/">Html表格生成器</a></li><li><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li><li role="separator" class="divider"></li><li><a href="/regex/">正则表达式测试</a></li><li><a href="/regexcode/">正则生成代码</a></li><li><a href="/formatfilter/">Html过滤工具</a></li><li><a href="/runjs/">运行Js/html/css</a></li><li><a href="/xpath/">Xpath工具</a></li></ul></li>
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">加密解密<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/md5/">MD5加密工具</a></li><li><a href="/base64/">Base64加密/解密</a></li><li><a href="/escape/">Escape加密/解密</a></li><li><a href="/deencrypt/">对称加密/解密</a></li><li><a href="/aesencrypt/">AES加密/解密</a></li><li><a href="/desencrypt/">DES加密/解密</a></li><li><a href="/shaencrypt/">SHA/SHA256加密</a></li><li><a href="/allencrypt/">散列/哈希加密大全</a></li><li><a href="/morse/">摩尔斯电码加解密</a></li><li role="separator" class="divider"></li><li><a href="/password/">密码生成器</a></li><li><a href="/uuid/">UUID在线生成</a></li><li><a href="/guid/">GUID在线生成</a></li><li><a href="/barcode/">条形码生成器</a></li><li><a href="/img2base64/">图片转Base64</a></li><li><a href="/unicode/">Unicode/ASCII转换</a></li><li><a href="/ascii/">ASCII编码/解码</a></li><li><a href="/urlencode/">URL编码/解码</a></li><li><a href="/keyboardcode/">KeyCode键盘按键码</a></li><li><a href="/keyboardtest/">键盘测试工具</a></li></ul></li>
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">格式化转换<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/formathtml/">HTML格式化/压缩</a></li><li><a href="/formatcss/">CSS格式化/压缩</a></li><li><a href="/formatjs/">JavaScript格式化/压缩</a></li><li><a href="/endecodejs/">JS加密/解密</a></li><li><a href="/confundirjs/">JS代码混合加密</a></li><li><a href="/formatsql/">SQL压缩/格式化</a></li><li><a href="/formatphp/">PHP代码格式化</a></li><li><a href="/formatxml/">XML压缩/格式化</a></li><li role="separator" class="divider"></li><li><a href="/htmloutjs/">Html/JS互转</a></li><li><a href="/htmlescape/">Html转义工具</a></li><li><a href="/html2cj/">Html转C#/JSP</a></li><li><a href="/html2php/">Html转PHP代码</a></li><li><a href="/html2all/">Html转ASP/Perl</a></li><li><a href="/htmlfromcsv/">Excel转HTML表格</a></li><li><a href="/htmltable/">Html表格生成器</a></li><li><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li><li role="separator" class="divider"></li><li><a href="/regex/">正则表达式测试</a></li><li><a href="/regexcode/">正则生成代码</a></li><li><a href="/formatfilter/">Html过滤工具</a></li><li><a href="/runjs/">运行Js/html/css</a></li><li><a href="/xpath/">Xpath工具</a></li></ul></li>
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">加密解密<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/md5/">MD5哈希工具</a></li><li><a href="/base64/">Base64编解码</a></li><li><a href="/escape/">Escape编码/解码</a></li><li><a href="/deencrypt/">对称加密/解密</a></li><li><a href="/aesencrypt/">AES加密/解密</a></li><li><a href="/desencrypt/">DES加密/解密</a></li><li><a href="/shaencrypt/">SHA/SHA256摘要</a></li><li><a href="/allencrypt/">哈希摘要工具集合</a></li><li><a href="/morse/">摩尔斯电码加解密</a></li><li role="separator" class="divider"></li><li><a href="/password/">密码生成器</a></li><li><a href="/uuid/">UUID在线生成</a></li><li><a href="/guid/">GUID在线生成</a></li><li><a href="/barcode/">条形码生成器</a></li><li><a href="/img2base64/">图片转Base64</a></li><li><a href="/unicode/">Unicode/ASCII转换</a></li><li><a href="/ascii/">ASCII编码/解码</a></li><li><a href="/urlencode/">URL编码/解码</a></li><li><a href="/keyboardcode/">KeyCode键盘按键码</a></li><li><a href="/keyboardtest/">键盘测试工具</a></li></ul></li>
                 <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">文本数字<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/autoformat/">文章自动排版</a></li><li><a href="/jianfan/">简繁字体转换</a></li><li><a href="/pinyin/">汉字转为拼音</a></li><li><a href="/txtreplace/">文本内容替换</a></li><li><a href="/textdiff/">文本内容对比</a></li><li><a href="/txtcount/">在线统计字数</a></li><li><a href="/quchong/">内容去重工具</a></li><li><a href="/wenzitexiao/">文字特效工具</a></li><li><a href="/camelcase/">驼峰与下划线互转</a></li><li><a href="/quanbaojiao/">全角半角转换</a></li><li><a href="/enlower/">字母大小写转换</a></li><li><a href="/rmbdaxie/">人民币大写转换</a></li><li><a href="/random/">随机数生成器</a></li><li><a href="/unixtime/">Unix时间戳转换</a></li><li><a href="/hexconvert/">进制转换工具</a></li><li><a href="/hexrgb/">RGB颜色转换</a></li></ul></li>
                 <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">网络<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/websocket/">Websocket测试</a></li><li><a href="/browserinfo/">获取浏览器信息</a></li><li><a href="/dns/">公共DNS</a></li><li><a href="/alldns/">各地区公共DNS</a></li></ul></li>
                 <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown">站长<span class="caret"></span></a><ul class="dropdown-menu ul-list"><li><a href="/htaccess2nginx/">htaccess转nginx</a></li><li><a href="/shortcut/">生成桌面快捷方式</a></li><li><a href="/px2rem/">rem与px转换</a></li><li><a href="/createmeta/">生成网页Meta标签</a></li><li><a href="/refresh/">在线定时刷新网址</a></li><li><a href="/tiaoseban/">在线调色板</a></li></ul></li>
@@ -109,10 +109,10 @@
 <div class="hero">
     <div class="container">
         <h1><span>Ymir Tool</span> · 你的在线工具箱</h1>
-        <p class="lead">150+ 免费在线工具，无需安装，打开即用。数据在浏览器本地处理，安全放心。</p>
+        <p class="lead">150+ 免费在线工具，无需安装，打开即用。多数文本、编码和格式化工具在浏览器中处理。</p>
         <div class="search-box">
             <span class="search-icon glyphicon glyphicon-search"></span>
-            <input type="text" id="toolSearch" placeholder="搜索工具，如：JSON、MD5、加密、格式化..." autocomplete="off"/>
+            <input type="text" id="toolSearch" placeholder="搜索工具，如：JSON、MD5、哈希、格式化..." autocomplete="off"/>
         </div>
     </div>
 </div>
@@ -122,9 +122,9 @@
         <div class="quick-title">常用工具</div>
         <div class="quick-grid">
             <a class="quick-link" href="/json/">JSON格式化</a>
-            <a class="quick-link" href="/md5/">MD5加密</a>
+            <a class="quick-link" href="/md5/">MD5哈希</a>
             <a class="quick-link" href="/base64/">Base64编解码</a>
-            <a class="quick-link" href="/formatjs/">JS格式化</a>
+            <a class="quick-link" href="/formatjs/">JavaScript格式化</a>
             <a class="quick-link" href="/urlencode/">URL编码</a>
             <a class="quick-link" href="/unixtime/">时间戳转换</a>
             <a class="quick-link" href="/regex/">正则测试</a>
@@ -148,11 +148,11 @@
         </div>
         <div class="cat-card" style="border-left-color:#ef4444">
             <div class="cat-header"><span class="cat-dot" style="background:#ef4444"></span><h3>格式化转换</h3><span class="cat-count">35 个</span></div>
-            <div class="cat-links"><a href="/formathtml/" class="hot">HTML格式化/压缩</a><a href="/formatcss/" class="hot">CSS格式化/压缩</a><a href="/formatjs/" class="hot">JS格式化/压缩</a><a href="/endecodejs/">JS加密/解密</a><a href="/confundirjs/">JS代码混合加密</a><a href="/formatsql/">SQL压缩/格式化</a><a href="/formatphp/">PHP代码格式化</a><a href="/formatxml/">XML压缩/格式化</a><a href="/formatcs/">C#代码格式化</a><a href="/formatjava/">JAVA代码格式化</a><a href="/formatcsql/">SQL代码格式化</a><a href="/formatpy/">Python代码格式化</a><a href="/formatruby/">Ruby代码格式化</a><a href="/formatc/">C语言代码格式化</a><a href="/formatcpp/">C++代码格式化</a><a href="/formatperl/">Perl代码格式化</a><a href="/formatvbs/">VBScript格式化</a><a href="/htmloutjs/" class="hot">Html/JS互转</a><a href="/htmlescape/">Html转义工具</a><a href="/html2cj/">Html转C#/JSP</a><a href="/html2php/">Html转PHP代码</a><a href="/html2all/">Html转ASP/Perl</a><a href="/htmlfromcsv/">Excel转HTML表格</a><a href="/htmltable/">Html表格生成器</a><a href="/html2ubb/">HTML/UBB互转</a><a href="/htmlmarkdown/">HTML/MarkDown互转</a><a href="/regex/" class="new">正则表达式测试</a><a href="/regexcode/">正则生成代码</a><a href="/formatfilter/">Html过滤工具</a><a href="/regexdso/">常用正则表达式</a><a href="/regexsucha/">正则语法速查</a><a href="/runjs/">运行Js/html/css</a><a href="/xpath/">Xpath工具</a></div>
+            <div class="cat-links"><a href="/formathtml/" class="hot">HTML格式化/压缩</a><a href="/formatcss/" class="hot">CSS格式化/压缩</a><a href="/formatjs/" class="hot">JavaScript格式化/压缩</a><a href="/endecodejs/">JS加密/解密</a><a href="/confundirjs/">JS代码混合加密</a><a href="/formatsql/">SQL压缩/格式化</a><a href="/formatphp/">PHP代码格式化</a><a href="/formatxml/">XML压缩/格式化</a><a href="/formatcs/">C#代码格式化</a><a href="/formatjava/">JAVA代码格式化</a><a href="/formatcsql/">SQL代码格式化</a><a href="/formatpy/">Python代码格式化</a><a href="/formatruby/">Ruby代码格式化</a><a href="/formatc/">C语言代码格式化</a><a href="/formatcpp/">C++代码格式化</a><a href="/formatperl/">Perl代码格式化</a><a href="/formatvbs/">VBScript格式化</a><a href="/htmloutjs/" class="hot">Html/JS互转</a><a href="/htmlescape/">Html转义工具</a><a href="/html2cj/">Html转C#/JSP</a><a href="/html2php/">Html转PHP代码</a><a href="/html2all/">Html转ASP/Perl</a><a href="/htmlfromcsv/">Excel转HTML表格</a><a href="/htmltable/">Html表格生成器</a><a href="/html2ubb/">HTML/UBB互转</a><a href="/htmlmarkdown/">HTML/MarkDown互转</a><a href="/regex/" class="new">正则表达式测试</a><a href="/regexcode/">正则生成代码</a><a href="/formatfilter/">Html过滤工具</a><a href="/regexdso/">常用正则表达式</a><a href="/regexsucha/">正则语法速查</a><a href="/runjs/">运行Js/html/css</a><a href="/xpath/">Xpath工具</a></div>
         </div>
         <div class="cat-card" style="border-left-color:#a855f7">
             <div class="cat-header"><span class="cat-dot" style="background:#a855f7"></span><h3>加密解密编码</h3><span class="cat-count">29 个</span></div>
-            <div class="cat-links"><a href="/md5/" class="hot">MD5加密</a><a href="/base64/" class="hot">Base64加密/解密</a><a href="/escape/">Escape加密/解密</a><a href="/deencrypt/">对称加密/解密</a><a href="/aesencrypt/">AES加密/解密</a><a href="/desencrypt/">DES加密/解密</a><a href="/rc4encrypt/">RC4加密/解密</a><a href="/rabbitencrypt/">Rabbit加密/解密</a><a href="/tripledes/">TripleDES加密/解密</a><a href="/shaencrypt/">SHA/SHA256加密</a><a href="/allencrypt/">散列/哈希加密大全</a><a href="/morse/">摩尔斯电码加解密</a><a href="/password/">密码生成器</a><a href="/uuid/">UUID在线生成</a><a href="/guid/">GUID在线生成</a><a href="/htpasswd/">htpasswd生成</a><a href="/barcode/">条形码生成器</a><a href="/ip2long/">IP/数字地址转换</a><a href="/img2base64/" class="hot">图片转Base64</a><a href="/utf8/">UTF-8转GBK</a><a href="/unicode/">Unicode/ASCII转换</a><a href="/ascii/">ASCII编码/解码</a><a href="/urlencode/">URL编码/解码</a><a href="/navtiveunicode/">Native/Unicode转换</a><a href="/keyboardcode/">KeyCode按键码</a><a href="/androidkeycode/">Android按键码</a><a href="/keyboardtest/">键盘测试工具</a></div>
+            <div class="cat-links"><a href="/md5/" class="hot">MD5哈希</a><a href="/base64/" class="hot">Base64编解码</a><a href="/escape/">Escape编码/解码</a><a href="/deencrypt/">对称加密/解密</a><a href="/aesencrypt/">AES加密/解密</a><a href="/desencrypt/">DES加密/解密</a><a href="/rc4encrypt/">RC4加密/解密</a><a href="/rabbitencrypt/">Rabbit加密/解密</a><a href="/tripledes/">TripleDES加密/解密</a><a href="/shaencrypt/">SHA/SHA256摘要</a><a href="/allencrypt/">哈希摘要工具集合</a><a href="/morse/">摩尔斯电码加解密</a><a href="/password/">密码生成器</a><a href="/uuid/">UUID在线生成</a><a href="/guid/">GUID在线生成</a><a href="/htpasswd/">htpasswd生成</a><a href="/barcode/">条形码生成器</a><a href="/ip2long/">IP/数字地址转换</a><a href="/img2base64/" class="hot">图片转Base64</a><a href="/utf8/">UTF-8转GBK</a><a href="/unicode/">Unicode/ASCII转换</a><a href="/ascii/">ASCII编码/解码</a><a href="/urlencode/">URL编码/解码</a><a href="/navtiveunicode/">Native/Unicode转换</a><a href="/keyboardcode/">KeyCode按键码</a><a href="/androidkeycode/">Android按键码</a><a href="/keyboardtest/">键盘测试工具</a></div>
         </div>
         <div class="cat-card" style="border-left-color:#f59e0b">
             <div class="cat-header"><span class="cat-dot" style="background:#f59e0b"></span><h3>文本数字</h3><span class="cat-count">21 个</span></div>
@@ -186,7 +186,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 col-xs-6"><div class="feat-item"><div class="feat-icon" style="background:#eff6ff;color:#3b82f6"><span class="glyphicon glyphicon-flash"></span></div><h4>即开即用</h4><p>无需注册安装，打开即用</p></div></div>
-            <div class="col-sm-3 col-xs-6"><div class="feat-item"><div class="feat-icon" style="background:#fef3c7;color:#f59e0b"><span class="glyphicon glyphicon-lock"></span></div><h4>隐私安全</h4><p>数据本地处理，不上传</p></div></div>
+            <div class="col-sm-3 col-xs-6"><div class="feat-item"><div class="feat-icon" style="background:#fef3c7;color:#f59e0b"><span class="glyphicon glyphicon-lock"></span></div><h4>本地优先</h4><p>多数文本工具在浏览器处理</p></div></div>
             <div class="col-sm-3 col-xs-6"><div class="feat-item"><div class="feat-icon" style="background:#f0fdf4;color:#22c55e"><span class="glyphicon glyphicon-gift"></span></div><h4>完全免费</h4><p>150+工具全部免费</p></div></div>
             <div class="col-sm-3 col-xs-6"><div class="feat-item"><div class="feat-icon" style="background:#faf5ff;color:#a855f7"><span class="glyphicon glyphicon-refresh"></span></div><h4>持续更新</h4><p>不断添加新工具</p></div></div>
         </div>
@@ -198,7 +198,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <span>Copyright &copy;2026 <a href="/">Ymir Tool</a></span> |
-                <span><a href="/about.html">关于我们</a> | <a href="/privacy.html">隐私政策</a> | <a href="/contact.html">联系我们</a></span>
+                <span><a href="/about.html">关于我们</a> | <a href="/privacy.html">隐私政策</a> | <a href="/terms.html">使用条款</a> | <a href="/disclaimer.html">免责声明</a> | <a href="/contact.html">联系我们</a></span>
             </div>
         </div>
     </div>
