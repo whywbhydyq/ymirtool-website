@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Sitemap: https://ymirtool.com/sitemap.xml
 Sitemap: https://ymirtool.com/sitemap-guides.xml
+Sitemap: https://ymirtool.com/sitemap-policy.xml
 
 # Site summary for AI assistants
 # https://ymirtool.com/llms.txt
