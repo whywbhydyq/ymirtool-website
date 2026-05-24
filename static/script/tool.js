@@ -1,279 +1,31 @@
-(function () {
-    function onReady(callback) {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', callback);
-        } else {
-            callback();
-        }
-    }
-
-    onReady(function () {
-        injectHomepageGuideEntry();
-        initJqueryFeatures(0);
-    });
-
-    function initJqueryFeatures(retryCount) {
-        if (!window.jQuery) {
-            if (retryCount < 80) {
-                setTimeout(function () {
-                    initJqueryFeatures(retryCount + 1);
-                }, 50);
-            }
-            return;
-        }
-
-        var $ = window.jQuery;
-
-        $(function () {
-            var goTop = $('.gotop');
-            goTop.fadeOut();
-
-            $(window).on('scroll', function () {
-                $(this).scrollTop() > 100 ? goTop.fadeIn() : goTop.fadeOut();
-            });
-
-            $('button[data-loading-text]').on('click', function () {
-                var btn = $(this).button('loading');
-                setTimeout(function () {
-                    btn.button('reset');
-                }, 1500);
-            });
-
-            $('#copyallcode').on('click', function () {
-                copyTxtToClipboard($(this).attr('data-clipboard-target'));
-            });
-
-            $('#top_menu a,.footer-nav li a,.hbflag li a').on('click', function () {
-                var href = $(this).attr('href');
-                var text = $.trim($(this).text());
-
-                if (!href || href === 'javascript:;' || !text) {
-                    return;
-                }
-
-                try {
-                    var current = text + '-' + href;
-                    var history = localStorage.getItem('visit_history');
-                    var items = history ? history.split('|') : [];
-                    var next = [current];
-
-                    for (var i = 0; i < items.length && next.length < 8; i++) {
-                        if (items[i] && items[i] !== current) {
-                            next.push(items[i]);
-                        }
-                    }
-
-                    localStorage.setItem('visit_history', next.join('|'));
-                } catch (err) {
-                    // Ignore storage errors in private mode or restricted browsers.
-                }
-            });
-
-            try {
-                var visitHistory = localStorage.getItem('visit_history');
-                if (visitHistory) {
-                    var html = '';
-                    var entries = visitHistory.split('|');
-                    for (var j = 0; j < entries.length; j++) {
-                        var index = entries[j].lastIndexOf('-');
-                        if (index <= 0) continue;
-                        var label = entries[j].slice(0, index);
-                        var url = entries[j].slice(index + 1);
-                        html += '<a class="btn btn-success btn-xs" style="margin-left:5px;display:inline-block;" href="' + escapeAttr(url) + '">' + escapeHtml(label) + '</a>';
-                    }
-                    if (html) {
-                        $('#visit_history').parent().show();
-                        $('#visit_history').html(html);
-                    }
-                } else {
-                    $('#foot-history').hide();
-                }
-            } catch (err) {
-                $('#foot-history').hide();
-            }
-        });
-    }
-})();
-
-function injectHomepageGuideEntry() {
-    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        return;
-    }
-
-    if (document.getElementById('ymir-guide-entry')) {
-        return;
-    }
-
-    var quickSection = document.querySelector('.quick-section');
-    if (!quickSection) {
-        return;
-    }
-
-    var guideHtml = '' +
-        '<section id="ymir-guide-entry" class="container" style="max-width:1100px;margin:10px auto 12px;">' +
-        '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.04);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px;">' +
-        '<div><h2 style="font-size:16px;margin:0 0 4px;color:#0f172a;font-weight:700;">使用指南与新手入口</h2>' +
-        '<p style="margin:0;color:#64748b;font-size:13px;line-height:1.6;">不知道从哪个工具开始？先阅读指南，了解 JSON、代码格式化、编码、哈希、文本处理和常见问题排查。</p></div>' +
-        '<a href="/guides.html" style="display:inline-block;padding:7px 14px;border-radius:7px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;font-size:13px;">查看全部指南</a>' +
-        '</div>' +
-        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;">' +
-        '<a href="/online-toolbox-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">在线工具箱指南</a>' +
-        '<a href="/json-format-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">JSON 格式化指南</a>' +
-        '<a href="/code-formatting-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">代码格式化指南</a>' +
-        '<a href="/encoding-tools-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">编码转换指南</a>' +
-        '<a href="/common-errors-guide.html" style="padding:8px 10px;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#1e293b;text-decoration:none;font-size:13px;font-weight:600;text-align:center;">常见问题排查</a>' +
-        '</div>' +
-        '</div>' +
-        '</section>';
-
-    quickSection.insertAdjacentHTML('afterend', guideHtml);
-
-    var topMenu = document.getElementById('top_menu');
-    if (topMenu && !topMenu.querySelector('a[href="/guides.html"]')) {
-        topMenu.insertAdjacentHTML('beforeend', '<li><a href="/guides.html">指南</a></li>');
-    }
-}
-
-function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, function (char) {
-        return ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;'
-        })[char];
-    });
-}
-
-function escapeAttr(value) {
-    var text = String(value || '');
-    if (/^\s*javascript:/i.test(text)) {
-        return '#';
-    }
-    return escapeHtml(text);
-}
-
-function pcjson_com_msg(target, msg) {
-    if (!window.jQuery || !target || typeof target.attr !== 'function') {
-        return;
-    }
-    target.attr('data-original-title', msg);
-    window.jQuery('[data-toggle="tooltip"]').tooltip();
-    target.tooltip('show');
-    target.focus();
-    setTimeout(function () {
-        target.attr('data-original-title', '');
-        target.tooltip('hide');
-    }, 4000);
-}
-
-function getElementTextOrValue(id) {
-    if (window.jQuery) {
-        var $ = window.jQuery;
-        var text = $(id).text();
-        if (text === '' && $(id).length > 0) {
-            text = $(id).val();
-        }
-        return text;
-    }
-    var element = document.querySelector(id);
-    return element ? (element.textContent || element.value || '') : '';
-}
-
-function bindClearButtonWhenReady() {
-    if (!window.jQuery) {
-        setTimeout(bindClearButtonWhenReady, 50);
-        return;
-    }
-    window.jQuery('#BtnClear').on('click', function () {
-        window.jQuery('#content').val('');
-        window.jQuery('#result').val('');
-    });
-}
-bindClearButtonWhenReady();
-
-var setJS = function (jsArr) {
-    var i = 0, len = jsArr.length;
-    for (i; i < len; i++) {
-        var script = document.createElement('script');
-        script.setAttribute('src', jsArr[i]);
-        script.setAttribute('type', 'text/javascript');
-        document.body.appendChild(script);
-    }
+(function(){
+'use strict';
+function ready(fn){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fn):fn();}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function safe(v){v=String(v||'');return /^\s*javascript:/i.test(v)?'#':esc(v);}
+function meta(n,c){var m=document.querySelector('meta[name="'+n+'"]');if(!m){m=document.createElement('meta');m.name=n;document.head.appendChild(m);}m.content=c;}
+function prop(n,c){var m=document.querySelector('meta[property="'+n+'"]');if(!m){m=document.createElement('meta');m.setAttribute('property',n);document.head.appendChild(m);}m.content=c;}
+function rm(n){document.querySelectorAll('meta[name="'+n+'"]').forEach(function(x){x.parentNode.removeChild(x);});}
+function pre(h){if(document.querySelector('link[rel="preconnect"][href="'+h+'"]'))return;var l=document.createElement('link');l.rel='preconnect';l.href=h;l.crossOrigin='anonymous';document.head.appendChild(l);}
+function path(){var p=location.pathname.replace(/\/index\.html$/i,'/');return p.charAt(p.length-1)==='/'?p:p+'/';}
+var P={
+'/json/':['JSON 格式化工具','JSON 格式化、校验、压缩与转义 - Ymir Tool','Ymir Tool JSON 格式化工具用于整理、校验、压缩和转义 JSON，适合接口调试、日志排查、配置检查和数据结构阅读。','/json-formatter-examples.html','整理接口响应、日志片段、配置文件和前后端调试数据。格式化能让对象、数组、字段层级和布尔值更容易核对。','键名必须使用双引号；末尾多逗号、字符串未闭合、括号不成对都会导致校验失败；JavaScript 对象字面量不等于标准 JSON。'],
+'/md5/':['MD5 哈希摘要工具','MD5 哈希摘要生成与校验 - Ymir Tool','Ymir Tool MD5 工具用于生成文本哈希摘要，适合一致性对比、缓存键、测试数据核对和低风险重复判断。MD5 不是可逆加密。','/md5-hash-guide.html','MD5 是哈希摘要算法，不是可逆加密。它适合快速生成摘要、对比文本是否完全一致、排查空格换行差异。','MD5 不能真正解密，也不适合单独用于保存密码或安全验证；多一个空格、换行或大小写差异都会生成不同结果。'],
+'/base64/':['Base64 编解码工具','Base64 编码解码与 Data URI 处理 - Ymir Tool','Ymir Tool Base64 工具用于文本编码、解码和常见乱码排查。Base64 是编码方式，不是加密方式。','/base64-encoding-guide.html','Base64 用于把文本或二进制数据转换成便于传输和存储的可见字符，常见于接口参数、邮件内容、配置片段和图片 Data URI。','Base64 是编码不是加密；结尾等号通常是填充字符；乱码常来自字符集不一致、复制不完整或 Base64 变体不一致。'],
+'/urlencode/':['URL 编码解码工具','URL 编码解码、查询参数与特殊字符处理 - Ymir Tool','Ymir Tool URL 编码解码工具用于处理中文、空格、百分号、查询参数和重复编码问题，适合接口调试和跳转排查。','/url-encoding-guide.html','URL 编码用于把中文、空格、百分号、问号、等号、斜杠等特殊字符转换成适合 URL 传输的形式。','先判断处理的是完整 URL 还是参数值；避免重复编码产生 %25；注意加号、空格和 %20 在不同上下文中的差异。'],
+'/formatjs/':['JavaScript 格式化工具','JavaScript 格式化、压缩脚本阅读与代码整理 - Ymir Tool','Ymir Tool JavaScript 格式化工具用于整理压缩脚本、检查括号层级、阅读函数结构和辅助代码排查。格式化不等于代码安全审计。','/javascript-formatter-guide.html','JavaScript 格式化适合阅读压缩脚本、整理片段、检查函数边界、排查括号层级和学习代码结构。','格式化不能判断代码是否安全；不要把格式化后的代码直接覆盖生产文件；混淆代码通常不能自动还原成原始源码。']
 };
-
-function copyTxtToClipboard(id, selector) {
-    selector = (typeof selector === 'undefined' || selector === '') ? '#copyallcode' : selector;
-    var text = getElementTextOrValue(id);
-    if (text === '') {
-        if (window.jQuery) pcjson_com_msg(window.jQuery(selector), '复制失败，请手动复制');
-        return false;
-    }
-
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () {
-            if (window.jQuery) pcjson_com_msg(window.jQuery(selector), '复制成功');
-        }).catch(function () {
-            legacyCopyText(text, selector);
-        });
-        return true;
-    }
-
-    return legacyCopyText(text, selector);
-}
-
-function legacyCopyText(text, selector) {
-    var textArea = document.createElement('textarea');
-    textArea.style.position = 'fixed';
-    textArea.style.top = 0;
-    textArea.style.left = 0;
-    textArea.style.width = '2em';
-    textArea.style.height = '2em';
-    textArea.style.padding = 0;
-    textArea.style.border = 'none';
-    textArea.style.outline = 'none';
-    textArea.style.boxShadow = 'none';
-    textArea.style.background = 'transparent';
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-        var msg = document.execCommand('copy') ? '成功' : '失败';
-        if (window.jQuery) pcjson_com_msg(window.jQuery(selector), '复制' + msg);
-    } catch (err) {
-        if (window.jQuery) pcjson_com_msg(window.jQuery(selector), '复制失败,请手动复制');
-    }
-    document.body.removeChild(textArea);
-    return true;
-}
-
-function tj() {
-    // Reserved for optional analytics hooks.
-}
-
-function pcjson_convert(type, t) {
-    if (!window.jQuery) return false;
-    var $ = window.jQuery;
-    var text = $('#content').val();
-    t = (typeof t === 'undefined' || t === '') ? 0 : t;
-    return text.length <= 0 ? (pcjson_com_msg($('#content'), '请输入要处理的内容'), $('#content').focus(), !1) : 6e3 < text.length ? (pcjson_com_msg($('#content'), '需处理的内容长度不能超过6000!'), $('#content').focus(), !1) : (void $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: '/api/',
-        data: {
-            text: text,
-            id: t,
-            type: type
-        },
-        success: function (t) {
-            if (1 != t.status) return pcjson_com_msg($('#content'), t.msg), !1;
-            hightout(t.msg);
-        },
-        error: function () {
-            pcjson_com_msg($('#content'), '处理失败');
-        }
-    }));
-}
+function fixHead(d){document.title=d[1];meta('description',d[2]);meta('google-adsense-account','ca-pub-1653188471819736');meta('twitter:title',d[1]);meta('twitter:description',d[2]);prop('og:title',d[1]);prop('og:description',d[2]);rm('keywords');pre('https://pagead2.googlesyndication.com');var v=document.querySelector('meta[name="viewport"]');if(v)v.content='width=device-width, initial-scale=1.0';document.querySelectorAll('script[type="application/ld+json"]').forEach(function(s){s.textContent=(s.textContent||'').replace(/"dateModified"\s*:\s*"[^"]+"/g,'"dateModified": "2026-05-24"');});}
+function rels(p){var r={'/json/':[['/jsonzip/','JSON 压缩转义'],['/json2yaml/','JSON 转 YAML'],['/json2get/','JSON 和 GET 参数互转']],'/md5/':[['/shaencrypt/','SHA / SHA256 工具'],['/allencrypt/','哈希摘要工具集合'],['/hash-tools-guide.html','哈希工具指南']],'/base64/':[['/img2base64/','图片转 Base64'],['/urlencode/','URL 编码/解码'],['/encoding-tools-guide.html','编码工具指南']],'/urlencode/':[['/unicode/','Unicode / ASCII 转换'],['/json2get/','JSON 和 GET 参数互转'],['/encoding-tools-guide.html','编码工具指南']],'/formatjs/':[['/formathtml/','HTML 格式化/压缩'],['/formatcss/','CSS 格式化/压缩'],['/code-formatting-guide.html','代码格式化指南']]};return r[p]||[];}
+function links(a){return a.map(function(x){return '<a class="yt-link" href="'+safe(x[0])+'">'+esc(x[1])+'</a>';}).join('');}
+function enhance(){var p=path(),d=P[p];if(!d||document.getElementById('ymir-tool-enhancement'))return;fixHead(d);document.querySelectorAll('a[href="/md5/"]').forEach(function(a){a.textContent='MD5 哈希工具';});document.querySelectorAll('a[href="/base64/"]').forEach(function(a){a.textContent='Base64 编解码';});document.querySelectorAll('a[href="/formatjs/"]').forEach(function(a){a.textContent='JavaScript 格式化/压缩';});var t=document.querySelector('.col10main')||document.querySelector('main .container')||document.querySelector('main')||document.body;var html='<section id="ymir-tool-enhancement" style="margin:22px 0 18px;font-size:14px;line-height:1.75;color:#1f2937"><style>#ymir-tool-enhancement .yt-card{background:#fff;border:1px solid #dbe3ef;border-radius:10px;padding:16px 18px;margin:12px 0;box-shadow:0 1px 3px rgba(15,23,42,.05)}#ymir-tool-enhancement h2{font-size:20px;margin:0 0 10px;color:#0f172a;font-weight:700}#ymir-tool-enhancement h3{font-size:16px;margin:14px 0 8px;color:#111827;font-weight:700}#ymir-tool-enhancement .yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}#ymir-tool-enhancement .yt-link{display:block;padding:9px 11px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#1e40af;text-decoration:none;font-weight:600}#ymir-tool-enhancement .yt-note{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}#ymir-tool-enhancement .yt-primary{display:inline-block;margin-top:8px;padding:8px 13px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700}</style><div class="yt-card"><h2>'+esc(d[0])+'：使用说明</h2><p>'+esc(d[4])+'</p><a class="yt-primary" href="'+safe(d[3])+'">查看完整指南</a></div><div class="yt-grid"><div class="yt-card"><h3>推荐使用方式</h3><ol><li>先保留原始内容副本。</li><li>确认输入类型、单位或编码规则。</li><li>执行处理后核对结果和边界情况。</li><li>重要结果不要只依赖单一工具，应二次复核。</li></ol></div><div class="yt-card"><h3>常见误区</h3><p>'+esc(d[5])+'</p></div></div><div class="yt-card yt-note"><h3>隐私与输入边界</h3><p>本工具适合普通文本、代码片段和测试内容。不要提交账号资料、接口凭据、内部地址或不适合在线处理的业务资料。</p></div><div class="yt-card"><h3>相关工具与指南</h3><div class="yt-grid">'+links(rels(p).concat([[d[3],'完整使用指南'],['/privacy.html','隐私政策'],['/terms.html','使用条款'],['/disclaimer.html','免责声明']]))+'</div></div><div class="yt-card"><h3>FAQ</h3><p><b>工具会保存输入吗？</b> 多数常规处理在浏览器中完成，但仍不建议输入不适合在线处理的资料。</p><p><b>结果可以直接用于生产吗？</b> 重要结果应结合原始内容、业务规则和专业工具复核。</p><p><b>为什么和其他工具结果不同？</b> 常见原因是编码、空格、换行、大小写、单位或输入格式不同。</p></div></section>';t.insertAdjacentHTML('beforeend',html);}
+function home(){if(location.pathname!=='/'&&location.pathname!=='/index.html')return;if(document.getElementById('ymir-guide-entry'))return;var q=document.querySelector('.quick-section');if(!q)return;q.insertAdjacentHTML('afterend','<section id="ymir-guide-entry" class="container" style="max-width:1100px;margin:10px auto 12px"><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px"><h2 style="font-size:16px;margin:0 0 6px">使用指南与新手入口</h2><p style="margin:0 0 10px;color:#64748b">先阅读指南，了解 JSON、代码格式化、编码、哈希、文本处理和常见问题排查。</p><a href="/guides.html" style="display:inline-block;padding:8px 13px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700">查看全部指南</a></div></section>');}
+ready(function(){home();enhance();});
+window.setJS=function(a){for(var i=0;i<a.length;i++){var s=document.createElement('script');s.src=a[i];s.type='text/javascript';document.body.appendChild(s);}};
+window.pcjson_com_msg=function(t,m){if(!window.jQuery||!t||typeof t.attr!=='function')return;t.attr('data-original-title',m);window.jQuery('[data-toggle="tooltip"]').tooltip();t.tooltip('show').focus();setTimeout(function(){t.attr('data-original-title','').tooltip('hide');},3000);};
+window.getElementTextOrValue=function(id){var e=document.querySelector(id);return e?(e.value||e.textContent||''):'';};
+window.copyTxtToClipboard=function(id,selector){selector=selector||'#copyallcode';var text=window.getElementTextOrValue(id);if(!text){if(window.jQuery)window.pcjson_com_msg(window.jQuery(selector),'复制失败，请手动复制');return false;}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(function(){if(window.jQuery)window.pcjson_com_msg(window.jQuery(selector),'复制成功');});return true;}var a=document.createElement('textarea');a.value=text;a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(a);if(window.jQuery)window.pcjson_com_msg(window.jQuery(selector),'复制成功');return true;};
+window.legacyCopyText=function(text,selector){var a=document.createElement('textarea');a.value=text||'';a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(a);if(window.jQuery)window.pcjson_com_msg(window.jQuery(selector||'#copyallcode'),'复制成功');return true;};
+window.tj=function(){};
+window.pcjson_convert=function(type,t){if(!window.jQuery)return false;var $=window.jQuery,text=$('#content').val();t=(typeof t==='undefined'||t==='')?0:t;if(!text){window.pcjson_com_msg($('#content'),'请输入要处理的内容');return false;}if(text.length>6000){window.pcjson_com_msg($('#content'),'需处理的内容长度不能超过6000');return false;}return $.ajax({type:'POST',dataType:'json',url:'/api/',data:{text:text,id:t,type:type},success:function(r){if(r.status!==1)return window.pcjson_com_msg($('#content'),r.msg),false;if(typeof hightout==='function')hightout(r.msg);},error:function(){window.pcjson_com_msg($('#content'),'处理失败');}});};
+})();
