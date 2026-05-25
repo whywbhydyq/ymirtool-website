@@ -64,35 +64,9 @@ function init() {
         $('#headerText').html('JSONLint<span class="light">Lite</span>')
     }
 $('#get_remote').click(function() {
-    var jsonVal = $.trim($('#txt_url').val());
-    if (jsonVal.substring(0, 4).toLowerCase() === "Net") {
-        $.ajax({
-            url: "/index/api.html",
-            type: "post",
-            data: {
-                type: "remotejson",
-                url: jsonVal
-            },
-            dataType: 'json',
-			beforeSend: function () {
-				$("#get_remote").html('正在获取json...');
-			},
-            success: function(data) {
-                $('#content').val(data.msg);
-                validate();
-            },  
-			complete: function () {
-				$("#get_remote").html('远程获取Json');
-			},
-			error : function() {  
-				$("#get_remote").html('重新获取Json');
-			   pcjson_com_msg($("#txt_url"), "远程json获取失败");
-		 } 
-        })
-    } else {
-        validate();
-    }
-	return false;
+    pcjson_com_msg($('#txt_url'), '为保证隐私和稳定性，静态版本不支持远程 URL 抓取。请直接粘贴 JSON 内容后格式化。');
+    validate();
+    return false;
 });
 $('#validate').click(function() {
 	 validate();return false;

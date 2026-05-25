@@ -232,25 +232,12 @@ function tj() {
 }
 
 function pcjson_convert(type, t) {
-    if (!window.jQuery) return false;
-    var $ = window.jQuery;
-    var text = $('#content').val();
-    t = (typeof t === 'undefined' || t === '') ? 0 : t;
-    return text.length <= 0 ? (pcjson_com_msg($('#content'), '请输入要处理的内容'), $('#content').focus(), !1) : 6e3 < text.length ? (pcjson_com_msg($('#content'), '需处理的内容长度不能超过6000!'), $('#content').focus(), !1) : (void $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: '/api/',
-        data: {
-            text: text,
-            id: t,
-            type: type
-        },
-        success: function (t) {
-            if (1 != t.status) return pcjson_com_msg($('#content'), t.msg), !1;
-            hightout(t.msg);
-        },
-        error: function () {
-            pcjson_com_msg($('#content'), '处理失败');
-        }
-    }));
+    var target = document.getElementById('content');
+    var value = getElementTextOrValue(target).trim();
+    if (value === '') {
+        pcjson_com_msg($('#content'), '请输入要处理的内容');
+        return false;
+    }
+    pcjson_com_msg($('#content'), '当前静态版本不再请求远程接口，请使用页面内的本地转换功能。');
+    return false;
 }

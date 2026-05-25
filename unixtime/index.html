@@ -1,34 +1,52 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta name="robots" content="index, follow"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Unix 时间戳转换工具 - Ymir Tool</title>
-<meta name="description" content="Ymir Tool Unix 时间戳转换工具可进行秒级、毫秒级时间戳与本地时间互转，适合接口、日志和数据库时间排查。"/>
-<link rel="canonical" href="https://ymirtool.com/unixtime/"/>
-<meta property="og:title" content="Unix 时间戳转换工具 - Ymir Tool"/>
-<meta property="og:description" content="在线转换秒级、毫秒级时间戳和本地时间。"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://ymirtool.com/unixtime/"/>
-<meta property="og:site_name" content="Ymir Tool"/>
-<meta property="og:image" content="https://ymirtool.com/static/images/og.svg"/>
-<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
-<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-<link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unix Timestamp Converter - Ymir Tool</title>
+<meta content="Convert Unix timestamps to dates and convert dates back to seconds or milliseconds in your browser." name="description"/>
+<link href="https://ymirtool.com/unixtime/" rel="canonical"/>
+<meta content="Unix Timestamp Converter - Ymir Tool" property="og:title"/>
+<meta content="Convert Unix timestamps to dates and convert dates back to seconds or milliseconds in your browser." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/unixtime/" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://cdn.staticfile.org" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/static/style/tool.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<link href="/static/style/font-fix.css" rel="stylesheet"/><link href="/static/style/tool.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unix 时间戳转换工具","url":"https://ymirtool.com/unixtime/","description":"在线转换秒级、毫秒级时间戳和本地时间。","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"dateModified":"2026-05-24"}</script>
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<style>body{margin-top:70px;background:#f5f6fa}.tool-wrap{max-width:980px}.tool-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.tool-title{font-size:24px;font-weight:700;margin:0 0 8px;color:#111827}.tool-desc{color:#64748b;line-height:1.7;margin-bottom:16px}.result-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;line-height:1.9}.footer-links{margin:18px 0;color:#64748b}.footer-links a{margin-right:12px}</style>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top"><div class="container tool-wrap"><div class="navbar-header"><a class="navbar-brand" href="/">Ymir Tool</a></div><ul class="nav navbar-nav hidden-xs"><li><a href="/json/">JSON 格式化</a></li><li class="active"><a href="/unixtime/">时间戳</a></li><li><a href="/shizhong/">在线时钟</a></li><li><a href="/guides.html">指南</a></li></ul></div></nav>
-<main class="container tool-wrap"><div class="tool-card"><h1 class="tool-title">Unix 时间戳转换工具</h1><p class="tool-desc">支持秒级和毫秒级时间戳与本地时间互转，适合接口、日志和数据库时间排查。</p><div class="form-group"><input id="timestamp" class="form-control" placeholder="输入 10 位秒级或 13 位毫秒级时间戳"/></div><div class="form-group text-center"><button class="btn btn-success" onclick="tsToDate()">时间戳转时间</button> <button class="btn btn-primary" onclick="nowTime()">当前时间戳</button></div><div class="result-box" id="result"></div><hr/><div class="form-group"><input id="dateInput" class="form-control" placeholder="输入时间，例如 2026-05-24 12:00:00"/></div><div class="form-group text-center"><button class="btn btn-default" onclick="dateToTs()">时间转时间戳</button> <button class="btn btn-default" onclick="clearAll()">清空</button></div><div class="footer-links"><a href="/unix-time-guide.html">时间戳说明</a><a href="/time-tools-guide.html">时间工具指南</a><a href="/privacy.html">隐私政策</a></div></div></main>
-<footer class="container tool-wrap footer-links"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span> <a href="/about.html">关于我们</a><a href="/terms.html">使用条款</a><a href="/disclaimer.html">免责声明</a><a href="/contact.html">联系我们</a></footer>
-<script src="/static/script/tool.js"></script>
-<script>function show(d){document.getElementById('result').innerHTML=d}function tsToDate(){var v=document.getElementById('timestamp').value.trim();if(!/^\d+$/.test(v)){show('请输入数字时间戳');return}var n=Number(v.length===13?v:Number(v)*1000),d=new Date(n);show('本地时间：'+d.toLocaleString()+'<br>ISO 时间：'+d.toISOString()+'<br>秒级：'+Math.floor(n/1000)+'<br>毫秒级：'+n)}function nowTime(){var n=Date.now();document.getElementById('timestamp').value=n;show('当前秒级：'+Math.floor(n/1000)+'<br>当前毫秒级：'+n+'<br>本地时间：'+new Date(n).toLocaleString())}function dateToTs(){var d=new Date(document.getElementById('dateInput').value.replace(/-/g,'/'));if(isNaN(d.getTime())){show('时间格式无法识别');return}show('秒级：'+Math.floor(d.getTime()/1000)+'<br>毫秒级：'+d.getTime()+'<br>本地时间：'+d.toLocaleString())}function clearAll(){document.getElementById('timestamp').value='';document.getElementById('dateInput').value='';show('')}</script>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
+<main class="ymir-page" data-ymir-tool="unixtime">
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Time Tool</div><h1 class="ymir-hero-title">Unix Timestamp Converter</h1><p class="ymir-hero-subtitle">Convert Unix timestamps to readable dates and convert dates back to seconds or milliseconds.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Runs in your browser</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Current timestamp</h2></div><div class="ymir-panel-body"><label>Seconds</label><input class="ymir-input" id="currentSeconds" readonly=""/><label>Milliseconds</label><input class="ymir-input" id="currentMilliseconds" readonly=""/></div></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Convert timestamp to date</h2></div><div class="ymir-panel-body"><input class="ymir-input" id="timestampInput" placeholder="Seconds or milliseconds"/><textarea class="ymir-textarea ymir-textarea-sm" id="dateOutput" readonly=""></textarea></div></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Convert date to timestamp</h2></div><div class="ymir-panel-body"><input class="ymir-input" id="dateInput" placeholder="2026-05-25 12:00:00"/><textarea class="ymir-textarea ymir-textarea-sm" id="timestampOutput" readonly=""></textarea></div></div></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="time-now" type="button">Load Example / Current Time</button><button class="ymir-btn ymir-btn-secondary" data-action="timestamp-to-date" type="button">Timestamp to Date</button><button class="ymir-btn ymir-btn-secondary" data-action="date-to-timestamp" type="button">Date to Timestamp</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-date" type="button">Copy Result</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div></section>
+<section class="ymir-container ymir-help ymir-card">
+<h2>How to use this tool / 使用说明</h2>
+<p>Unix timestamps are commonly represented in seconds or milliseconds. Ten-digit values are usually seconds; thirteen-digit values are usually milliseconds.</p><p>Displayed dates use your browser and system timezone. ISO output remains useful for cross-system debugging.</p>
+</section>
+<section class="ymir-container ymir-privacy-note">
+<h2>Privacy note / 隐私说明</h2>
+<p>Most text, encoding, hashing, and formatting actions on this page run in your browser. Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online tool.</p>
+</section>
+<section class="ymir-container ymir-faq ymir-card">
+<h2>FAQ / 常见问题</h2>
+<h3>Seconds or milliseconds?</h3><p>Most server logs use seconds, while JavaScript Date.now() uses milliseconds.</p><h3>Which timezone is used?</h3><p>The readable local date uses your browser timezone; ISO output is UTC.</p><h3>Can I copy the current timestamp?</h3><p>Yes. Use the copy button after loading or converting a value.</p>
+</section>
+<section class="ymir-container ymir-related ymir-card">
+<h2>Related tools / 相关工具</h2>
+<div class="ymir-related-grid"><a href="/worldtime/">World Time</a><a href="/shizhong/">Online Clock</a><a href="/time-tools-guide.html">Date tools guide</a><a href="/calculator/">Calculator</a></div>
+</section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Most text and encoding tools run in your browser.</span></footer>
+<script src="/static/script/ymir-ui.js"></script>
+<script src="/static/script/ymir-tools.js"></script>
 </body>
 </html>

@@ -1,44 +1,55 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta name="robots" content="index, follow"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>JavaScript 格式化与压缩工具 - Ymir Tool</title>
-<meta name="description" content="Ymir Tool JavaScript 工具可对 JavaScript 片段进行基础格式化和压缩，适合阅读压缩脚本、整理代码片段和排查括号层级。"/>
-<link rel="canonical" href="https://ymirtool.com/formatjs/"/>
-<meta property="og:title" content="JavaScript 格式化与压缩工具 - Ymir Tool"/>
-<meta property="og:description" content="在线进行 JavaScript 片段基础格式化和压缩。"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://ymirtool.com/formatjs/"/>
-<meta property="og:site_name" content="Ymir Tool"/>
-<meta property="og:image" content="https://ymirtool.com/static/images/og.svg"/>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="JavaScript 格式化与压缩工具 - Ymir Tool"/>
-<meta name="twitter:description" content="在线进行 JavaScript 片段基础格式化和压缩。"/>
-<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
-<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-<link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JavaScript Formatter and Minifier - Ymir Tool</title>
+<meta content="Format JavaScript snippets for readability or run a lightweight minify pass directly in your browser." name="description"/>
+<link href="https://ymirtool.com/formatjs/" rel="canonical"/>
+<meta content="JavaScript Formatter and Minifier - Ymir Tool" property="og:title"/>
+<meta content="Format JavaScript snippets for readability or run a lightweight minify pass directly in your browser." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/formatjs/" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="JavaScript Formatter and Minifier - Ymir Tool" name="twitter:title"/>
+<meta content="Format JavaScript snippets for readability or run a lightweight minify pass directly in your browser." name="twitter:description"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://cdn.staticfile.org" rel="preconnect"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/static/style/tool.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<link href="/static/style/font-fix.css" rel="stylesheet"/><link href="/static/style/tool.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JavaScript 格式化与压缩工具","url":"https://ymirtool.com/formatjs/","description":"在线进行 JavaScript 片段基础格式化和压缩。","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-05-24"}</script>
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<style>body{margin-top:70px;background:#f5f6fa}.tool-wrap{max-width:1100px}.tool-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.tool-title{font-size:24px;font-weight:700;margin:0 0 8px;color:#111827}.tool-desc{color:#64748b;line-height:1.7;margin-bottom:16px}.footer-links{margin:18px 0;color:#64748b}.footer-links a{margin-right:12px}</style>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top"><div class="container tool-wrap"><div class="navbar-header"><a class="navbar-brand" href="/">Ymir Tool</a></div><ul class="nav navbar-nav hidden-xs"><li><a href="/json/">JSON 格式化</a></li><li><a href="/base64/">Base64 编解码</a></li><li class="active"><a href="/formatjs/">JavaScript 格式化</a></li><li><a href="/formatcss/">CSS 格式化</a></li><li><a href="/guides.html">指南</a></li></ul></div></nav>
-<main class="container tool-wrap"><div class="tool-card"><h1 class="tool-title">JavaScript 格式化与压缩工具</h1><p class="tool-desc">粘贴 JavaScript 片段后可进行基础格式化或压缩。格式化用于提高可读性，不等于代码安全审计。</p><div class="row"><div class="col-sm-6"><textarea id="source" class="form-control" rows="18" placeholder="输入 JavaScript 代码"></textarea></div><div class="col-sm-6"><textarea id="result" class="form-control" rows="18" placeholder="处理结果" readonly></textarea></div></div><div class="form-group text-center" style="margin-top:15px"><button class="btn btn-success" onclick="formatJs()">格式化</button> <button class="btn btn-primary" onclick="minifyJs()">压缩</button> <button class="btn btn-default" onclick="copyText()">复制结果</button> <button class="btn btn-default" onclick="clearAll()">清空</button></div><div class="footer-links"><a href="/javascript-formatter-guide.html">JavaScript 使用说明</a><a href="/formathtml/">HTML 格式化</a><a href="/formatcss/">CSS 格式化</a><a href="/privacy.html">隐私政策</a></div></div></main>
-<footer class="container tool-wrap footer-links"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span> <a href="/about.html">关于我们</a><a href="/terms.html">使用条款</a><a href="/disclaimer.html">免责声明</a><a href="/contact.html">联系我们</a></footer>
-<script src="/static/script/tool.js"></script>
-<script>
-function basicFormat(code){var out='',indent=0,str=null,esc=false;for(var i=0;i<code.length;i++){var c=code[i];if(str){out+=c;if(esc){esc=false}else if(c==='\\'){esc=true}else if(c===str){str=null}continue}if(c==='"'||c==="'"||c==='`'){str=c;out+=c;continue}if(c==='{'||c==='['||c==='('){out+=c+'\n'+Array(++indent+1).join('  ');continue}if(c==='}'||c===']'||c===')'){out+='\n'+Array(Math.max(--indent,0)+1).join('  ')+c;continue}if(c===';'){out+=c+'\n'+Array(indent+1).join('  ');continue}if(c===','){out+=c+' ';continue}if(!/\s/.test(c)||!out.endsWith(' '))out+=c}return out.replace(/\n\s*\n/g,'\n').trim()}
-function basicMinify(code){return code.replace(/\/\*[\s\S]*?\*\//g,'').replace(/(^|[^:])\/\/.*$/gm,'$1').replace(/\s+/g,' ').replace(/\s*([{}()[\];,:+\-*/%<>=!&|?])\s*/g,'$1').trim()}
-function formatJs(){document.getElementById('result').value=basicFormat(document.getElementById('source').value)}
-function minifyJs(){document.getElementById('result').value=basicMinify(document.getElementById('source').value)}
-function copyText(){var r=document.getElementById('result');r.select();document.execCommand('copy')}
-function clearAll(){document.getElementById('source').value='';document.getElementById('result').value=''}
-</script>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
+<main class="ymir-page" data-ymir-tool="formatjs">
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Code Formatting Tool</div><h1 class="ymir-hero-title">JavaScript Formatter and Minifier</h1><p class="ymir-hero-subtitle">Format JavaScript snippets for readability or run a quick lightweight minify pass. This is not a linter or compiler.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Runs in your browser</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">JavaScript Input</h2></div><textarea class="ymir-textarea" id="toolInput" placeholder="Paste JavaScript here"></textarea></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Formatted Output</h2></div><textarea class="ymir-textarea" id="toolOutput" placeholder="Result" readonly=""></textarea></div></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="js-format" type="button">Format JavaScript</button><button class="ymir-btn ymir-btn-secondary" data-action="js-minify" type="button">Minify</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-output" type="button">Copy Result</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div></section>
+<section class="ymir-container ymir-help ymir-card">
+<h2>How to use this tool / 使用说明</h2>
+<p>Use this page for readable formatting, quick cleanup, and inspecting copied JavaScript snippets. It does not guarantee the code is safe or valid in every runtime.</p><p>If code has missing braces, broken strings, or unsupported syntax, formatting may be incomplete.</p>
+</section>
+<section class="ymir-container ymir-privacy-note">
+<h2>Privacy note / 隐私说明</h2>
+<p>Most text, encoding, hashing, and formatting actions on this page run in your browser. Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online tool.</p>
+</section>
+<section class="ymir-container ymir-faq ymir-card">
+<h2>FAQ / 常见问题</h2>
+<h3>Is this a JavaScript compiler?</h3><p>No. It only formats or lightly minifies text.</p><h3>Can it fix broken code?</h3><p>No. It can make code easier to read but does not repair syntax.</p><h3>Should I paste private source code?</h3><p>Avoid pasting proprietary or sensitive code into any online tool.</p>
+</section>
+<section class="ymir-container ymir-related ymir-card">
+<h2>Related tools / 相关工具</h2>
+<div class="ymir-related-grid"><a href="/formathtml/">HTML Formatter</a><a href="/formatcss/">CSS Formatter</a><a href="/json/">JSON Formatter</a><a href="/javascript-formatter-guide.html">JS guide</a></div>
+</section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Most text and encoding tools run in your browser.</span></footer>
+<script src="/static/script/ymir-ui.js"></script>
+<script src="/static/script/ymir-tools.js"></script>
 </body>
 </html>
