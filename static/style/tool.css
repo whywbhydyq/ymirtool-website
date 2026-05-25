@@ -433,3 +433,58 @@ body.ymir-modern-body{background:var(--ymir-bg);color:var(--ymir-text);font-fami
 .ymir-textarea-sm{min-height:120px;}
 .ymir-textarea-md{min-height:150px;}
 /* === Ymir Tool 2.0 UI Shell END === */
+
+
+/* === Ymir Tool 2.1 Density and Bilingual Polish START === */
+body.ymir-modern-body{margin-top:-70px;}
+body.ymir-modern-body .ymir-topbar-inner{min-height:56px;padding:8px 18px;}
+body.ymir-modern-body .ymir-page{padding:18px 0 38px;}
+body.ymir-modern-body .ymir-home-hero{padding-top:30px;padding-bottom:18px;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero{padding-top:24px;padding-bottom:14px;}
+body.ymir-modern-body .ymir-hero-eyebrow{margin-bottom:7px;}
+body.ymir-modern-body .ymir-hero-title{font-size:32px;line-height:1.12;margin-bottom:9px;}
+body.ymir-modern-body .ymir-home-hero .ymir-hero-title{font-size:36px;max-width:860px;margin-left:auto;margin-right:auto;}
+body.ymir-modern-body .ymir-hero-subtitle{line-height:1.55;margin-bottom:10px;}
+body.ymir-modern-body .ymir-trust-row{margin-top:10px;}
+body.ymir-modern-body .ymir-search{margin:16px auto 6px;}
+body.ymir-modern-body .ymir-card{padding:18px;margin-bottom:14px;}
+body.ymir-modern-body .ymir-section-title{margin-bottom:7px;}
+body.ymir-modern-body .ymir-section-subtitle{margin:0 0 12px;}
+body.ymir-modern-body .ymir-featured-grid{gap:10px;}
+body.ymir-modern-body .ymir-tool-link{position:relative;min-height:132px;padding:13px 13px 34px;cursor:pointer;}
+body.ymir-modern-body .ymir-tool-link:focus{outline:3px solid rgba(37,99,235,.22);outline-offset:2px;border-color:#93c5fd;}
+body.ymir-modern-body .ymir-link-cta{position:absolute;left:13px;bottom:12px;color:var(--ymir-primary);font-size:12px;font-style:normal;font-weight:800;}
+body.ymir-modern-body .ymir-tool-workspace{margin-top:6px;margin-bottom:16px;}
+body.ymir-modern-body .ymir-panel-header{padding:10px 13px;}
+body.ymir-modern-body .ymir-actions{gap:8px;margin:10px 0;}
+body.ymir-modern-body .ymir-btn{min-height:38px;padding:8px 12px;}
+body.ymir-modern-body .ymir-textarea{min-height:240px;}
+body.ymir-modern-body .ymir-textarea-compact{min-height:150px;}
+body.ymir-modern-body .ymir-textarea-sm{min-height:120px;}
+body.ymir-modern-body .ymir-textarea-large{min-height:280px;}
+body.ymir-modern-body .ymir-status{margin-top:8px;}
+@media (max-width:900px){
+  body.ymir-modern-body .ymir-home-hero .ymir-hero-title,body.ymir-modern-body .ymir-hero-title{font-size:29px;}
+  body.ymir-modern-body .ymir-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  body.ymir-modern-body .ymir-tool-link{min-height:124px;}
+}
+@media (max-width:640px){
+  body.ymir-modern-body{margin-top:-70px;}
+  body.ymir-modern-body .ymir-topbar-inner{align-items:flex-start;gap:8px;padding:8px 14px;}
+  body.ymir-modern-body .ymir-nav{gap:7px 10px;}
+  body.ymir-modern-body .ymir-nav a{font-size:12px;}
+  body.ymir-modern-body .ymir-page{padding-top:12px;}
+  body.ymir-modern-body .ymir-home-hero{padding-top:20px;padding-bottom:12px;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero{padding-top:18px;padding-bottom:10px;}
+  body.ymir-modern-body .ymir-home-hero .ymir-hero-title,body.ymir-modern-body .ymir-hero-title{font-size:25px;}
+  body.ymir-modern-body .ymir-hero-subtitle{font-size:14px;}
+  body.ymir-modern-body .ymir-search input{height:46px;font-size:14px;}
+  body.ymir-modern-body .ymir-featured-grid{grid-template-columns:1fr;}
+  body.ymir-modern-body .ymir-tool-link{min-height:auto;padding-bottom:32px;}
+  body.ymir-modern-body .ymir-textarea{min-height:210px;}
+  body.ymir-modern-body .ymir-textarea-compact{min-height:132px;}
+  body.ymir-modern-body .ymir-textarea-sm{min-height:110px;}
+  body.ymir-modern-body .ymir-textarea-large{min-height:230px;}
+  body.ymir-modern-body .ymir-btn{width:auto;flex:1 1 auto;}
+}
+/* === Ymir Tool 2.1 Density and Bilingual Polish END === */
