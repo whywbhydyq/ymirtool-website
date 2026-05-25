@@ -6,6 +6,9 @@
   function setStatus(targetId, type, message) {
     var el = byId(targetId);
     if (!el) return;
+    if (window.YmirI18n && typeof window.YmirI18n.translateMessage === 'function') {
+      message = window.YmirI18n.translateMessage(message);
+    }
     el.className = 'ymir-status is-visible ymir-status-' + (type || 'info');
     el.textContent = message || '';
   }
