@@ -11,10 +11,10 @@ function bind(action, fn) {
   function input() { return UI.getValue('toolInput'); }
   function output() { return UI.getValue('toolOutput'); }
   function setOutput(v) { UI.setValue('toolOutput', v); }
-  function copyOutput(status) { UI.copyText(output()).then(function(){ UI.setStatus(status || 'toolStatus','success','Copied result to clipboard.'); }).catch(function(e){ UI.setStatus(status || 'toolStatus','error',e.message || 'Copy failed.'); }); }
+  function copyOutput(status) { var value = output(); if (!value) { UI.setStatus(status || 'toolStatus','warning','Generate a result before copying.'); return; } UI.copyText(value).then(function(){ UI.setStatus(status || 'toolStatus','success','Copied result to clipboard.'); }).catch(function(e){ UI.setStatus(status || 'toolStatus','error',e.message || 'Copy failed.'); }); }
   function clearIO(status) { UI.clearValue('toolInput'); UI.clearValue('toolOutput'); UI.clearStatus(status || 'toolStatus'); }
   var examples = {
-    json: '{\n  "name": "Ymir Tool",\n  "features": ["format", "validate", "copy"],\n  "localProcessing": true\n}',
+    json: '{\n  "name": "Ymir Tool",\n  "features": ["format", "validate", "copy"],\n  "mode": "format-and-validate"\n}',
     base64: 'Ymir Tool 支持 UTF-8 文本 Base64 编码。',
     formatjs: 'function hello(name){if(name){console.log("Hello, "+name)}else{console.log("Hello, Ymir Tool")}}',
     urlencode: 'https://ymirtool.com/search?q=中文 test&source=工具箱',
@@ -25,17 +25,17 @@ function bind(action, fn) {
     textB: 'Project scope:\n- Landing page design\n- 3 revision rounds\n- Delivery by Monday\n- Final handoff files'
   };
   function initJson(){
-    bind('json-format',function(){try{setOutput(JSON.stringify(JSON.parse(input()),null,2));UI.setStatus('toolStatus','success','Valid JSON. Formatted with 2-space indentation.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
-    bind('json-minify',function(){try{setOutput(JSON.stringify(JSON.parse(input())));UI.setStatus('toolStatus','success','Valid JSON. Minified output is ready.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
-    bind('json-validate',function(){try{JSON.parse(input());UI.setStatus('toolStatus','success','Valid JSON. No syntax errors found.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
+    bind('json-format',function(){if(!input().trim()){UI.setStatus('toolStatus','warning','Paste JSON before formatting.');return}try{setOutput(JSON.stringify(JSON.parse(input()),null,2));UI.setStatus('toolStatus','success','Valid JSON. Formatted with 2-space indentation.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
+    bind('json-minify',function(){if(!input().trim()){UI.setStatus('toolStatus','warning','Paste JSON before minifying.');return}try{setOutput(JSON.stringify(JSON.parse(input())));UI.setStatus('toolStatus','success','Valid JSON. Minified output is ready.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
+    bind('json-validate',function(){if(!input().trim()){UI.setStatus('toolStatus','warning','Paste JSON before validating.');return}try{JSON.parse(input());UI.setStatus('toolStatus','success','Valid JSON. No syntax errors found.')}catch(e){UI.setStatus('toolStatus','error','Invalid JSON: '+e.message)}});
     bind('load-example',function(){UI.loadExample('toolInput',examples.json);UI.setStatus('toolStatus','info','Example loaded. Click Format JSON to see the result.')});
     bind('copy-output',function(){copyOutput('toolStatus')}); bind('clear-all',function(){clearIO('toolStatus')});
   }
   function initBase64(){
     function enc(str){var bytes=new TextEncoder().encode(str),bin='';for(var i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);return btoa(bin)}
     function dec(str){var bin=atob(str.replace(/\s+/g,'')),bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return new TextDecoder().decode(bytes)}
-    bind('base64-encode',function(){setOutput(enc(input()));UI.setStatus('toolStatus','success','Encoded as Base64. Base64 is encoding, not encryption.')});
-    bind('base64-decode',function(){try{setOutput(dec(input()));UI.setStatus('toolStatus','success','Decoded Base64 text.')}catch(e){UI.setStatus('toolStatus','error','Invalid Base64 input or unsupported binary data.')}});
+    bind('base64-encode',function(){if(!input()){UI.setStatus('toolStatus','warning','Enter text before encoding.');return}setOutput(enc(input()));UI.setStatus('toolStatus','success','Encoded as Base64. Base64 is encoding, not encryption.')});
+    bind('base64-decode',function(){if(!input()){UI.setStatus('toolStatus','warning','Enter Base64 text before decoding.');return}try{setOutput(dec(input()));UI.setStatus('toolStatus','success','Decoded Base64 text.')}catch(e){UI.setStatus('toolStatus','error','Invalid Base64 input or unsupported binary data.')}});
     bind('load-example',function(){UI.loadExample('toolInput',examples.base64);UI.setStatus('toolStatus','info','Example loaded. Click Encode to convert it.')});
     bind('copy-output',function(){copyOutput('toolStatus')}); bind('clear-all',function(){clearIO('toolStatus')});
   }
@@ -68,7 +68,7 @@ function bind(action, fn) {
     bind('time-now',now); bind('timestamp-to-date',toDate); bind('date-to-timestamp',toTs); bind('copy-date',function(){UI.copyText(UI.getValue('dateOutput')||UI.getValue('timestampOutput')||('Seconds: '+UI.getValue('currentSeconds')+'\nMilliseconds: '+UI.getValue('currentMilliseconds'))).then(function(){UI.setStatus('toolStatus','success','Copied timestamp result.');}).catch(function(e){UI.setStatus('toolStatus','error',e.message)})}); bind('clear-all',function(){['timestampInput','dateOutput','dateInput','timestampOutput'].forEach(UI.clearValue);UI.clearStatus('toolStatus')}); now();
   }
   function initTextDiff(){
-    function compare(){var a=UI.getValue('textA').split(/\r?\n/),b=UI.getValue('textB').split(/\r?\n/),max=Math.max(a.length,b.length),out=[],added=0,removed=0,changed=0;for(var i=0;i<max;i++){if(a[i]===b[i]){continue}else if(a[i]===undefined){added++;out.push('+ '+b[i])}else if(b[i]===undefined){removed++;out.push('- '+a[i])}else{changed++;out.push('- '+a[i]);out.push('+ '+b[i])}}UI.setValue('toolOutput',out.join('\n')||'No line-level differences found.');UI.setStatus('toolStatus',out.length?'success':'info','Added lines: '+added+' · Removed lines: '+removed+' · Changed line pairs: '+changed);}
+    function compare(){if(!UI.getValue('textA')&&!UI.getValue('textB')){UI.setStatus('toolStatus','warning','Paste two text blocks before comparing.');return}var a=UI.getValue('textA').split(/\r?\n/),b=UI.getValue('textB').split(/\r?\n/),max=Math.max(a.length,b.length),out=[],added=0,removed=0,changed=0;for(var i=0;i<max;i++){if(a[i]===b[i]){continue}else if(a[i]===undefined){added++;out.push('+ '+b[i])}else if(b[i]===undefined){removed++;out.push('- '+a[i])}else{changed++;out.push('- '+a[i]);out.push('+ '+b[i])}}UI.setValue('toolOutput',out.join('\n')||'No line-level differences found.');UI.setStatus('toolStatus',out.length?'success':'info','Added lines: '+added+' · Removed lines: '+removed+' · Changed line pairs: '+changed);}
     bind('diff-compare',compare); bind('load-example',function(){UI.setValue('textA',examples.textA);UI.setValue('textB',examples.textB);compare();}); bind('copy-output',function(){copyOutput('toolStatus')}); bind('clear-all',function(){['textA','textB','toolOutput'].forEach(UI.clearValue);UI.clearStatus('toolStatus')});
   }
   function initTxtCount(){
