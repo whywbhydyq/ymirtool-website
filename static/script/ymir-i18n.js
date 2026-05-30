@@ -100,14 +100,14 @@
   var tools = {
     json: { eyebrow: ['开发者工具', 'Developer Tool'], title: ['JSON 格式化与校验', 'JSON Formatter and Validator'], subtitle: ['粘贴 JSON，格式化、校验、压缩并复制结果。', 'Paste JSON, format, validate, minify, and copy the result.'], panels: [['JSON 输入', '格式化输出'], ['JSON Input', 'Formatted Output']], placeholders: { toolInput: ['在这里粘贴 JSON', 'Paste JSON here'], toolOutput: ['结果', 'Result'] } },
     base64: { eyebrow: ['编码工具', 'Encoding Tool'], title: ['Base64 编码与解码', 'Base64 Encoder and Decoder'], subtitle: ['编码或解码 UTF-8 文本。Base64 是编码，不是加密。', 'Encode or decode UTF-8 text. Base64 is encoding, not encryption.'], panels: [['文本或 Base64 输入', '输出'], ['Text or Base64 Input', 'Output']], placeholders: { toolInput: ['粘贴文本或 Base64', 'Paste text or Base64 here'], toolOutput: ['结果', 'Result'] } },
-    md5: { eyebrow: ['哈希工具', 'Hash Tool'], title: ['MD5 哈希生成器', 'MD5 Hash Generator'], subtitle: ['生成 32 位和 16 位 MD5 哈希。MD5 不是加密。', 'Generate 32-character and 16-character MD5 hashes. MD5 is not encryption.'], panels: [['文本输入', '32 位小写 MD5', '32 位大写 MD5', '16 位小写 MD5', '16 位大写 MD5'], ['Text Input', '32-character lowercase MD5', '32-character uppercase MD5', '16-character lowercase MD5', '16-character uppercase MD5']], placeholders: { toolInput: ['输入要生成哈希的文本', 'Enter text to hash'] } },
+    md5: { eyebrow: ['哈希工具', 'Hash Tool'], title: ['MD5 哈希生成器', 'MD5 Hash Generator'], subtitle: ['生成 32 位和 16 位 MD5 哈希。MD5 不是加密。', 'Generate 32-character and 16-character MD5 hashes. MD5 is not encryption.'], panels: [['文本输入', '32 位小写 MD5', '32 位大写 MD5', '16 位小写 MD5', '16 位大写 MD5'], ['Text Input', '32-character lowercase MD5', '32-character uppercase MD5', '16-character lowercase MD5', '16-character uppercase MD5']], placeholders: { toolInput: ['输入要生成哈希的文本', 'Enter text to hash'], md5Lower32: ['运行后生成', 'Generated after running'], md5Upper32: ['运行后生成', 'Generated after running'], md5Lower16: ['运行后生成', 'Generated after running'], md5Upper16: ['运行后生成', 'Generated after running'] } },
     formatjs: { eyebrow: ['代码格式化工具', 'Code Formatting Tool'], title: ['JavaScript 格式化与压缩', 'JavaScript Formatter and Minifier'], subtitle: ['格式化或轻量压缩 JavaScript 片段。', 'Format or lightly minify JavaScript snippets.'], panels: [['JavaScript 输入', '格式化输出'], ['JavaScript Input', 'Formatted Output']], placeholders: { toolInput: ['粘贴 JavaScript', 'Paste JavaScript here'], toolOutput: ['结果', 'Result'] } },
     urlencode: { eyebrow: ['编码工具', 'Encoding Tool'], title: ['URL 编码与解码', 'URL Encoder and Decoder'], subtitle: ['编码或解码 URL、查询字符串、中文和空格。', 'Encode or decode URLs, query strings, Chinese characters, and spaces.'], panels: [['URL 或文本输入', '输出'], ['URL or Text Input', 'Output']], placeholders: { toolInput: ['粘贴 URL 或文本', 'Paste URL or text here'], toolOutput: ['结果', 'Result'] } },
     unixtime: { eyebrow: ['时间工具', 'Time Tool'], title: ['Unix 时间戳转换器', 'Unix Timestamp Converter'], subtitle: ['时间戳与可读日期互转。', 'Convert timestamps and readable dates.'], panels: [['当前时间戳', '时间戳转日期', '日期转时间戳'], ['Current timestamp', 'Convert timestamp to date', 'Convert date to timestamp']], placeholders: { timestampInput: ['秒或毫秒', 'Seconds or milliseconds'], dateInput: ['2026-05-25 12:00:00', '2026-05-25 12:00:00'] } },
     textdiff: { eyebrow: ['文本工具', 'Text Tool'], title: ['文本对比工具', 'Text Diff Checker'], subtitle: ['逐行比较两段文本差异。', 'Compare two text blocks line by line.'], panels: [['原始文本', '修改后文本', '差异摘要'], ['Original text', 'Changed text', 'Diff summary']], placeholders: { textA: ['粘贴原始文本', 'Paste original text'], textB: ['粘贴修改后文本', 'Paste changed text'], toolOutput: ['对比结果', 'Comparison result'] } },
     txtcount: { eyebrow: ['文本工具', 'Text Tool'], title: ['字数与字符统计', 'Word and Character Counter'], subtitle: ['实时统计字符、单词、行数和字节。', 'Count characters, words, lines, and bytes as you type.'], panels: [['文本输入', '摘要'], ['Text Input', 'Summary']], placeholders: { toolInput: ['粘贴文本', 'Paste text here'] } },
     regex: { eyebrow: ['开发者工具', 'Developer Tool'], title: ['正则表达式测试', 'Regex Tester'], subtitle: ['测试正则表达式并查看匹配结果。', 'Test regex patterns and inspect matches.'], panels: [['表达式输入', '匹配结果', '测试文本'], ['Pattern input', 'Matches result', 'Test text']], placeholders: { regexPattern: ['输入正则表达式，不需要斜杠', 'Enter regular expression without slashes'], regexText: ['粘贴要测试的文本', 'Paste text to test'] } },
-    calculator: { eyebrow: ['计算工具', 'Calculator Tool'], title: ['在线科学计算器', 'Online Scientific Calculator'], subtitle: ['快速计算数字、括号、百分号和基础运算符。', 'Calculate numbers, parentheses, percentages, and basic operators quickly.'], panels: [['表达式', '结果'], ['Expression', 'Result']], placeholders: { calcInput: ['(128 + 256) / 3', '(128 + 256) / 3'] } },
+    calculator: { eyebrow: ['计算工具', 'Calculator Tool'], title: ['在线科学计算器', 'Online Scientific Calculator'], subtitle: ['快速计算数字、括号、百分号和基础运算符。', 'Calculate numbers, parentheses, percentages, and basic operators quickly.'], panels: [['表达式', '结果'], ['Expression', 'Result']], placeholders: { calcInput: ['(128 + 256) / 3', '(128 + 256) / 3'], calcResult: ['结果显示在这里', 'Result appears here'] } },
     guid: { eyebrow: ['生成工具', 'Generator Tool'], title: ['GUID 生成器', 'GUID Generator'], subtitle: ['生成一个或多个 GUID / UUID 值。', 'Generate one or many GUID / UUID values.'], panels: [['生成 GUID 值'], ['Generate GUID values']], placeholders: { toolOutput: ['生成的 GUID 值', 'Generated GUID values'] } },
     password: { eyebrow: ['生成工具', 'Generator Tool'], title: ['密码生成器', 'Password Generator'], subtitle: ['使用长度和字符集选项生成随机密码。', 'Generate random passwords with length and character-set controls.'], panels: [['密码选项'], ['Password options']], placeholders: { toolOutput: ['生成的密码', 'Generated password'] } }
   };
@@ -137,6 +137,7 @@
   };
 
   var messageExact = {
+    'Generate a result before copying.': '请先生成结果再复制。', 'Paste JSON before formatting.': '请先粘贴 JSON 再格式化。', 'Paste JSON before minifying.': '请先粘贴 JSON 再压缩。', 'Paste JSON before validating.': '请先粘贴 JSON 再校验。', 'Enter text before encoding.': '请先输入要编码的文本。', 'Enter Base64 text before decoding.': '请先输入 Base64 文本再解码。', 'Paste two text blocks before comparing.': '请先粘贴两段文本再对比。', 'Password generated quickly.': '密码已生成。',
     'Copy failed': '复制失败', 'Nothing to copy': '没有可复制的内容', 'Copied result to clipboard.': '结果已复制到剪贴板。',
     'Valid JSON. Formatted with 2-space indentation.': 'JSON 有效，已按 2 个空格缩进格式化。', 'Valid JSON. Minified output is ready.': 'JSON 有效，压缩结果已生成。', 'Valid JSON. No syntax errors found.': 'JSON 有效，未发现语法错误。',
     'Example loaded. Click Format JSON to see the result.': '示例已载入。点击“格式化 JSON”查看结果。', 'Encoded as Base64. Base64 is encoding, not encryption.': '已编码为 Base64。Base64 是编码，不是加密。', 'Decoded Base64 text.': '已解码 Base64 文本。', 'Invalid Base64 input or unsupported binary data.': 'Base64 输入无效或包含不支持的二进制数据。', 'Example loaded. Click Encode to convert it.': '示例已载入。点击“编码”进行转换。',
@@ -165,13 +166,27 @@
 
   function injectToggle() {
     var inner = document.querySelector('.ymir-topbar-inner');
-    if (!inner || inner.querySelector('.ymir-lang-toggle')) return;
-    var wrap = document.createElement('div');
-    wrap.className = 'ymir-lang-toggle';
-    wrap.setAttribute('aria-label', 'Language');
-    wrap.innerHTML = '<button type="button" data-ymir-lang-option="zh">中文</button><button type="button" data-ymir-lang-option="en">EN</button>';
-    inner.appendChild(wrap);
-    wrap.addEventListener('click', function (e) {
+    if (inner && !inner.querySelector('.ymir-lang-toggle')) {
+      var wrap = document.createElement('div');
+      wrap.className = 'ymir-lang-toggle';
+      wrap.setAttribute('aria-label', 'Language');
+      wrap.innerHTML = '<button type="button" data-ymir-lang-option="zh">中文</button><button type="button" data-ymir-lang-option="en">EN</button>';
+      inner.appendChild(wrap);
+      wrap.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-ymir-lang-option]');
+        if (!btn) return;
+        setLanguage(btn.getAttribute('data-ymir-lang-option'), true);
+      });
+      return;
+    }
+    var legacy = document.querySelector('.navbar .navbar-header') || document.querySelector('.navbar .container') || document.querySelector('.navbar');
+    if (!legacy || legacy.querySelector('.ymir-legacy-lang-toggle')) return;
+    var legacyWrap = document.createElement('div');
+    legacyWrap.className = 'ymir-legacy-lang-toggle ymir-lang-toggle';
+    legacyWrap.setAttribute('aria-label', 'Language');
+    legacyWrap.innerHTML = '<button type="button" data-ymir-lang-option="zh">中文</button><button type="button" data-ymir-lang-option="en">EN</button>';
+    legacy.appendChild(legacyWrap);
+    legacyWrap.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-ymir-lang-option]');
       if (!btn) return;
       setLanguage(btn.getAttribute('data-ymir-lang-option'), true);
@@ -196,7 +211,7 @@
     if (foot) foot.textContent = textFor(common.footer);
   }
   function applyHome() {
-    if (!document.querySelector('.ymir-home-hero')) return;
+    if (!document.querySelector('.ymir-home-hero') && !document.querySelector('.ymir-home-dashboard')) return;
     setBySelector('.ymir-hero-eyebrow', textFor(home.eyebrow));
     setBySelector('.ymir-hero-title', textFor(home.title));
     setBySelector('.ymir-hero-subtitle', textFor(home.subtitle));
@@ -227,12 +242,56 @@
     var no = document.getElementById('noResult');
     if (no) no.textContent = textFor(home.noResult);
   }
+
+  var toolStaticText = {
+    'Use cases and limits': ['使用场景与限制', 'Use cases and limits'],
+    'Safe use note': ['安全使用提示', 'Safe use note'],
+    'FAQ': ['常见问题', 'FAQ'],
+    'Related tools': ['相关工具', 'Related tools'],
+    'How to use this tool / 使用说明': ['使用说明', 'How to use this tool'],
+    'Usage notes / 使用说明': ['使用说明', 'Usage notes'],
+    'Seconds, milliseconds, and timezones': ['秒、毫秒与时区', 'Seconds, milliseconds, and timezones'],
+    'Length': ['长度', 'Length'],
+    'Count': ['数量', 'Count'],
+    'Uppercase': ['大写字母', 'Uppercase'],
+    'Lowercase': ['小写字母', 'Lowercase'],
+    'Numbers': ['数字', 'Numbers'],
+    'Symbols': ['符号', 'Symbols'],
+    'Global': ['全局匹配', 'Global'],
+    'Ignore case': ['忽略大小写', 'Ignore case'],
+    'Multiline': ['多行模式', 'Multiline'],
+    'Use this tool when API responses, logs, configuration snippets, or JSON samples need readable indentation, compact output, or a quick syntax check.': ['当 API 响应、日志、配置片段或 JSON 示例需要缩进、压缩或快速语法检查时使用此工具。', 'Use this tool when API responses, logs, configuration snippets, or JSON samples need readable indentation, compact output, or a quick syntax check.'],
+    'The validator checks strict JSON syntax. Common failures include trailing commas, single quotes, comments, missing quotes around keys, and HTML error pages returned instead of JSON.': ['校验器检查严格 JSON 语法。常见错误包括尾随逗号、单引号、注释、键名缺少引号，以及误把 HTML 错误页当作 JSON 粘贴。', 'The validator checks strict JSON syntax. Common failures include trailing commas, single quotes, comments, missing quotes around keys, and HTML error pages returned instead of JSON.'],
+    'Avoid pasting secrets, production credentials, private keys, access tokens, or sensitive personal data into any online tool. Use the output for formatting, review, and copying only.': ['不要把密钥、生产凭据、私钥、访问令牌或敏感个人信息粘贴到任何在线工具中。输出仅用于格式化、检查和复制。', 'Avoid pasting secrets, production credentials, private keys, access tokens, or sensitive personal data into any online tool. Use the output for formatting, review, and copying only.'],
+    'Use this tool for text snippets that need Base64 encoding or decoding, such as test payloads, small configuration values, or examples in documentation.': ['此工具适合对测试 payload、小型配置值或文档示例等文本片段进行 Base64 编码或解码。', 'Use this tool for text snippets that need Base64 encoding or decoding, such as test payloads, small configuration values, or examples in documentation.'],
+    'Base64 does not protect data. Anyone with the encoded string can decode it, so do not use Base64 as a password, encryption method, or access-control mechanism.': ['Base64 不会保护数据。拿到编码字符串的人可以解码，因此不要把 Base64 当作密码、加密方式或访问控制机制。', 'Base64 does not protect data. Anyone with the encoded string can decode it, so do not use Base64 as a password, encryption method, or access-control mechanism.'],
+    'MD5 can be useful for legacy checksums, cache keys, sample data, and quick text comparisons where cryptographic security is not required.': ['MD5 可用于旧校验和、缓存键、示例数据或不需要密码学安全性的快速文本对比。', 'MD5 can be useful for legacy checksums, cache keys, sample data, and quick text comparisons where cryptographic security is not required.'],
+    'Do not use MD5 for password storage, signatures, or security-sensitive verification. Use modern password hashing or cryptographic algorithms appropriate to your system.': ['不要将 MD5 用于密码存储、签名或安全敏感校验。请使用适合系统的现代密码哈希或加密算法。', 'Do not use MD5 for password storage, signatures, or security-sensitive verification. Use modern password hashing or cryptographic algorithms appropriate to your system.'],
+    'Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online hash generator. Treat the result as a utility checksum, not a security guarantee.': ['不要把密钥、生产凭据、私钥或敏感个人信息粘贴到任何在线哈希生成器中。请把结果当作工具性校验值，而不是安全保证。', 'Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online hash generator. Treat the result as a utility checksum, not a security guarantee.'],
+    'Use this tool for drafts, configuration snippets, short documents, release notes, and small text changes where line-level comparison is enough.': ['此工具适合草稿、配置片段、短文档、发布说明和只需行级对比的小文本变更。', 'Use this tool for drafts, configuration snippets, short documents, release notes, and small text changes where line-level comparison is enough.'],
+    'For large files, binary files, or repository-level code review, use a dedicated diff tool or Git. This page focuses on quick pasted-text comparison.': ['大型文件、二进制文件或代码仓库级审查应使用专门的 diff 工具或 Git。本页专注于快速粘贴文本对比。', 'For large files, binary files, or repository-level code review, use a dedicated diff tool or Git. This page focuses on quick pasted-text comparison.'],
+    'Use this page for quick cleanup, readable indentation, and inspecting copied JavaScript snippets. It does not guarantee that code is safe, valid, or compatible with every runtime.': ['此页面用于快速整理缩进、提高可读性和检查复制来的 JavaScript 片段。它不保证代码安全、有效或兼容所有运行环境。', 'Use this page for quick cleanup, readable indentation, and inspecting copied JavaScript snippets. It does not guarantee that code is safe, valid, or compatible with every runtime.'],
+    'Choose a length, select the character sets allowed by the target service, click': ['选择长度和目标服务允许的字符集，然后点击', 'Choose a length, select the character sets allowed by the target service, click'],
+    'Use a password manager to store generated passwords. Do not reuse the same password across important accounts.': ['使用密码管理器保存生成的密码。不要在重要账号之间重复使用同一个密码。', 'Use a password manager to store generated passwords. Do not reuse the same password across important accounts.']
+  };
+  function translateStaticText(root) {
+    root = root || document;
+    root.querySelectorAll('h2,h3,p,label,a,small,strong,span').forEach(function (el) {
+      if (el.closest('.ymir-nav') || el.closest('.ymir-lang-toggle') || el.closest('.ymir-actions') || el.closest('.ymir-footer') || el.closest('.ymir-related-grid')) return;
+      var key = el.getAttribute('data-i18n-key') || el.textContent.trim();
+      var value = toolStaticText[key];
+      if (!value) return;
+      if (!el.getAttribute('data-i18n-key')) el.setAttribute('data-i18n-key', key);
+      el.textContent = value[currentLang === 'zh' ? 0 : 1];
+    });
+  }
+
   function applyTool() {
     var page = document.querySelector('[data-ymir-tool]');
-    if (!page) return;
+    if (!page) { translateStaticText(document); return; }
     var key = page.getAttribute('data-ymir-tool');
     var data = tools[key];
-    if (!data) return;
+    if (!data) { translateStaticText(document); return; }
     var index = currentLang === 'zh' ? 0 : 1;
     setBySelector('.ymir-hero-eyebrow', data.eyebrow[index]);
     setBySelector('.ymir-hero-title', data.title[index]);
@@ -243,11 +302,12 @@
       var value = actionText[btn.getAttribute('data-action')];
       if (value) btn.textContent = value[index];
     });
-    document.querySelectorAll('h2,h3,span').forEach(function (el) {
+    document.querySelectorAll('h2,h3,span,label').forEach(function (el) {
       var raw = el.textContent.trim();
       var value = exactText[raw];
       if (value) el.textContent = value[index];
     });
+    translateStaticText(page);
   }
   function setLanguage(lang, persist) {
     currentLang = normalizeLang(lang) || 'en';

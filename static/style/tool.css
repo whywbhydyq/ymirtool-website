@@ -1034,3 +1034,96 @@ body:not(.ymir-modern-body) .row{margin-left:-8px!important;margin-right:-8px!im
 body:not(.ymir-modern-body) [class*="col-"]{padding-left:8px!important;padding-right:8px!important;}
 @media(max-width:768px){body:not(.ymir-modern-body) h1{font-size:24px!important;}body:not(.ymir-modern-body) .col10main{padding:14px!important;}body:not(.ymir-modern-body) textarea.form-control{min-height:130px!important;}}
 /* === Legacy Tool UI Bridge v10 END === */
+
+/* === Ymir Tool Page Visual System v11 START === */
+html:has(body.ymir-modern-body){padding-top:0!important;}
+body.ymir-modern-body .ymir-topbar{background:rgba(255,255,255,.97)!important;border-bottom:1px solid #e6edf6!important;box-shadow:0 1px 0 rgba(15,23,42,.04)!important;}
+body.ymir-modern-body .ymir-topbar-inner{max-width:1280px!important;min-height:60px!important;padding:8px 28px!important;display:grid!important;grid-template-columns:auto minmax(280px,1fr) auto!important;align-items:center!important;gap:24px!important;}
+body.ymir-modern-body .ymir-brand{font-size:20px!important;font-weight:900!important;letter-spacing:.01em!important;color:#0f172a!important;}
+body.ymir-modern-body .ymir-nav{justify-content:center!important;gap:28px!important;}
+body.ymir-modern-body .ymir-nav a{font-size:14px!important;font-weight:850!important;color:#0f172a!important;}
+body.ymir-modern-body .ymir-lang-toggle{justify-self:end!important;margin-left:0!important;background:#f8fafc!important;border:1px solid #d7e3f4!important;border-radius:999px!important;box-shadow:none!important;padding:3px!important;gap:2px!important;}
+body.ymir-modern-body .ymir-lang-toggle:before{content:none!important;}
+body.ymir-modern-body .ymir-lang-toggle button{font-size:12px!important;font-weight:850!important;padding:6px 9px!important;border-radius:999px!important;color:#46566c!important;}
+body.ymir-modern-body .ymir-lang-toggle button.is-active{background:#2563eb!important;color:#fff!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool]{width:min(1240px,calc(100% - 48px))!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:14px 18px!important;padding-bottom:42px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-hero{grid-column:1/-1!important;padding:22px 0 8px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero-title{font-size:clamp(30px,2.35vw,40px)!important;line-height:1.05!important;margin:0 0 8px!important;letter-spacing:-.045em!important;max-width:820px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero-subtitle{max-width:780px!important;font-size:15px!important;line-height:1.55!important;color:#52637a!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-tool-workspace{grid-column:1/-1!important;border-radius:20px!important;padding:18px!important;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(248,251,255,.82))!important;border:1px solid #d9e5f2!important;box-shadow:0 18px 42px rgba(15,23,42,.085)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel{background:#fff!important;border:1px solid #dce7f4!important;border-radius:16px!important;box-shadow:none!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel-header{padding:9px 12px!important;background:linear-gradient(180deg,#f8fbff,#f2f7fc)!important;border-bottom:1px solid #dce7f4!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel-title{font-size:13px!important;line-height:1.2!important;color:#0f172a!important;font-weight:900!important;letter-spacing:.005em!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-input{background:#fbfdff!important;color:#0f172a!important;font-size:13.5px!important;line-height:1.5!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-input{min-height:44px!important;padding:10px 12px!important;border-top:0!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] input[readonly],
+body.ymir-modern-body .ymir-page[data-ymir-tool] textarea[readonly]{background:#f8fbff!important;color:#1e293b!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea{height:clamp(148px,22vh,210px)!important;min-height:0!important;padding:12px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea-large{height:clamp(160px,23vh,220px)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea-compact{height:clamp(104px,16vh,146px)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea-sm{height:92px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-actions{gap:8px!important;margin-top:12px!important;align-items:center!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn{min-height:38px!important;border-radius:11px!important;font-size:13px!important;font-weight:850!important;padding:9px 13px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-status{min-height:0!important;margin-top:8px!important;font-size:13px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-status:not(.is-visible){display:none!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-privacy-note,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-faq,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-related{padding:18px!important;border-radius:18px!important;box-shadow:0 8px 22px rgba(15,23,42,.045)!important;background:rgba(255,255,255,.86)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help{grid-column:1/span 6!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-privacy-note{grid-column:7/span 6!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-faq{grid-column:1/span 6!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-related{grid-column:7/span 6!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note h2{font-size:16px!important;line-height:1.25!important;margin:0 0 10px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help p,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq p,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note p{font-size:13px!important;line-height:1.58!important;margin:0 0 8px!important;color:#53647a!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq h3{font-size:13.5px!important;margin:10px 0 4px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid a{background:#f8fbff!important;border-color:#dce7f4!important;min-height:40px!important;display:flex!important;align-items:center!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-tool-workspace,
+body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-tool-workspace,
+body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-tool-workspace,
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-tool-workspace{grid-template-columns:minmax(290px,.82fr) minmax(420px,1.18fr)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] #toolInput{height:112px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-tool-workspace > .ymir-grid{gap:12px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-tool-workspace > .ymir-grid .ymir-panel{min-height:78px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-input{font-size:12.8px!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="textdiff"] #textA,
+body.ymir-modern-body .ymir-page[data-ymir-tool="textdiff"] #textB{height:clamp(132px,18vh,168px)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="textdiff"] #toolOutput{height:clamp(100px,14vh,136px)!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metrics{grid-template-columns:repeat(6,minmax(0,1fr))!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metric{background:#fff!important;border-color:#dce7f4!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-tool-workspace > .ymir-grid:first-child{grid-column:1/-1!important;grid-row:1!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-tool-workspace > .ymir-actions{grid-column:1/-1!important;grid-row:2!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-tool-workspace > .ymir-status{grid-column:1/-1!important;grid-row:3!important;}
+body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-tool-workspace .ymir-grid-2{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+body:not(.ymir-modern-body) .ymir-legacy-lang-toggle{float:right;margin:8px 0 0 12px;display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid #d7e3f4;border-radius:999px;background:#fff;}
+body:not(.ymir-modern-body) .ymir-legacy-lang-toggle button{border:0;background:transparent;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800;color:#475569;line-height:1;}
+body:not(.ymir-modern-body) .ymir-legacy-lang-toggle button.is-active{background:#2563eb;color:#fff;}
+@media(max-width:980px){
+  body.ymir-modern-body .ymir-topbar-inner{grid-template-columns:1fr!important;gap:8px!important;justify-items:start!important;}
+  body.ymir-modern-body .ymir-lang-toggle{justify-self:start!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool]{width:calc(100% - 28px)!important;grid-template-columns:1fr!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-privacy-note,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-faq,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-related{grid-column:1/-1!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-tool-workspace,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-tool-workspace,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-tool-workspace,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-tool-workspace{display:block!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-tool-workspace .ymir-grid-2{grid-template-columns:1fr!important;}
+}
+@media(max-width:560px){
+  body.ymir-modern-body .ymir-nav{gap:10px 14px!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool]{width:calc(100% - 22px)!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea{height:140px!important;}
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metrics{grid-template-columns:1fr!important;}
+}
+/* === Ymir Tool Page Visual System v11 END === */
