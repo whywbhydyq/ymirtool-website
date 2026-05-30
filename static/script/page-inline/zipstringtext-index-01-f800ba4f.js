@@ -1,1 +1,0 @@
-function StrReplace(){var StrInput=$("#content").val();StrInput=formatStr(StrInput);StrInput=replaceSpace(StrInput);hightout(StrInput)}function formatStr(strInput){strInput=strInput.replace(/\r/ig,"");strInput=strInput.replace(/\n/ig,"");strInput=strInput.replace(/\s/ig,"");return strInput}function replaceSpace(strInput){return strInput.replace(/[ ]/g,"")}
