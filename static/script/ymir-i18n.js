@@ -51,17 +51,17 @@
       '/json/': { zh: 'JSON', en: 'JSON' },
       '/base64/': { zh: 'Base64', en: 'Base64' },
       '/md5/': { zh: 'MD5', en: 'MD5' },
-      '/formatjs/': { zh: 'JS 格式化', en: 'JavaScript' },
-      '/textdiff/': { zh: '文本对比', en: 'Text Diff' },
-      '/guides.html': { zh: '指南', en: 'Guides' }
+      '/formatjs/': { zh: 'JS Formatter', en: 'JS Formatter' },
+      '/textdiff/': { zh: 'Text Diff', en: 'Text Diff' },
+      '/guides.html': { zh: 'Guides', en: 'Guides' }
     },
     trust: {
-      zh: ['浏览器本地处理', '无需注册', '免费使用'],
-      en: ['Runs in your browser', 'No registration', 'Free to use']
+      zh: ['无需注册', '打开即用', '150+ 工具', '快速复制'],
+      en: ['No sign-up', 'Ready to use', '150+ tools', 'Quick copy']
     },
     footer: {
-      zh: '多数文本和编码工具在浏览器中处理。',
-      en: 'Most text and encoding tools run in your browser.'
+      zh: '打开工具，快速处理并复制结果。',
+      en: 'Open tools quickly and copy results when ready.'
     }
   };
 
@@ -77,7 +77,7 @@
     '/regex/': { zh: ['正则测试', '用样本文本测试正则表达式。'], en: ['Regex Tester', 'Test patterns against sample text.'] },
     '/calculator/': { zh: ['科学计算器', '快速运行基础计算。'], en: ['Scientific Calculator', 'Run basic calculations quickly.'] },
     '/guid/': { zh: ['GUID 生成器', '生成一个或多个 GUID 值。'], en: ['GUID Generator', 'Generate one or many GUID values.'] },
-    '/password/': { zh: ['密码生成器', '在本地创建随机密码。'], en: ['Password Generator', 'Create local random passwords.'] }
+    '/password/': { zh: ['密码生成器', '快速创建随机密码。'], en: ['Password Generator', 'Create random passwords quickly.'] }
   };
 
   var home = {
@@ -89,8 +89,8 @@
     featuredSubtitle: { zh: '高频工具直接打开，输入后立即处理。', en: 'Open high-frequency tools and process input immediately.' },
     whyTitle: { zh: '轻量说明', en: 'Notes' },
     whyTexts: {
-      zh: ['无需注册，直接粘贴、处理、复制。', '文本、编码、哈希和格式化工具优先在浏览器中处理。'],
-      en: ['No signup. Paste, process, and copy directly.', 'Text, encoding, hashing, and formatting tools run in your browser first.']
+      zh: ['无需注册，直接粘贴、处理、复制。', '常用工具打开即用，结果可快速复制。'],
+      en: ['No signup. Paste, process, and copy directly.', 'Common tools are ready to use, with quick result copying.']
     },
     directoryTitle: { zh: '全部工具目录', en: 'Full tool directory' },
     directorySubtitle: { zh: '搜索支持中英文、别名和目录链接。', en: 'Search supports English, Chinese, aliases, and directory links.' },
@@ -107,9 +107,9 @@
     textdiff: { eyebrow: ['文本工具', 'Text Tool'], title: ['文本对比工具', 'Text Diff Checker'], subtitle: ['逐行比较两段文本差异。', 'Compare two text blocks line by line.'], panels: [['原始文本', '修改后文本', '差异摘要'], ['Original text', 'Changed text', 'Diff summary']], placeholders: { textA: ['粘贴原始文本', 'Paste original text'], textB: ['粘贴修改后文本', 'Paste changed text'], toolOutput: ['对比结果', 'Comparison result'] } },
     txtcount: { eyebrow: ['文本工具', 'Text Tool'], title: ['字数与字符统计', 'Word and Character Counter'], subtitle: ['实时统计字符、单词、行数和字节。', 'Count characters, words, lines, and bytes as you type.'], panels: [['文本输入', '摘要'], ['Text Input', 'Summary']], placeholders: { toolInput: ['粘贴文本', 'Paste text here'] } },
     regex: { eyebrow: ['开发者工具', 'Developer Tool'], title: ['正则表达式测试', 'Regex Tester'], subtitle: ['测试正则表达式并查看匹配结果。', 'Test regex patterns and inspect matches.'], panels: [['表达式输入', '匹配结果', '测试文本'], ['Pattern input', 'Matches result', 'Test text']], placeholders: { regexPattern: ['输入正则表达式，不需要斜杠', 'Enter regular expression without slashes'], regexText: ['粘贴要测试的文本', 'Paste text to test'] } },
-    calculator: { eyebrow: ['计算工具', 'Calculator Tool'], title: ['在线科学计算器', 'Online Scientific Calculator'], subtitle: ['在浏览器中快速计算数字、括号、百分号和基础运算符。', 'Run quick browser-based calculations with numbers, parentheses, percentages, and basic operators.'], panels: [['表达式', '结果'], ['Expression', 'Result']], placeholders: { calcInput: ['(128 + 256) / 3', '(128 + 256) / 3'] } },
-    guid: { eyebrow: ['生成工具', 'Generator Tool'], title: ['GUID 生成器', 'GUID Generator'], subtitle: ['在浏览器中本地生成一个或多个 GUID / UUID 值。', 'Generate one or many GUID / UUID values locally in your browser.'], panels: [['生成 GUID 值'], ['Generate GUID values']], placeholders: { toolOutput: ['生成的 GUID 值', 'Generated GUID values'] } },
-    password: { eyebrow: ['生成工具', 'Generator Tool'], title: ['密码生成器', 'Password Generator'], subtitle: ['使用长度和字符集选项在本地生成随机密码。', 'Generate random passwords locally with length and character-set controls.'], panels: [['密码选项'], ['Password options']], placeholders: { toolOutput: ['生成的密码', 'Generated password'] } }
+    calculator: { eyebrow: ['计算工具', 'Calculator Tool'], title: ['在线科学计算器', 'Online Scientific Calculator'], subtitle: ['快速计算数字、括号、百分号和基础运算符。', 'Calculate numbers, parentheses, percentages, and basic operators quickly.'], panels: [['表达式', '结果'], ['Expression', 'Result']], placeholders: { calcInput: ['(128 + 256) / 3', '(128 + 256) / 3'] } },
+    guid: { eyebrow: ['生成工具', 'Generator Tool'], title: ['GUID 生成器', 'GUID Generator'], subtitle: ['生成一个或多个 GUID / UUID 值。', 'Generate one or many GUID / UUID values.'], panels: [['生成 GUID 值'], ['Generate GUID values']], placeholders: { toolOutput: ['生成的 GUID 值', 'Generated GUID values'] } },
+    password: { eyebrow: ['生成工具', 'Generator Tool'], title: ['密码生成器', 'Password Generator'], subtitle: ['使用长度和字符集选项生成随机密码。', 'Generate random passwords with length and character-set controls.'], panels: [['密码选项'], ['Password options']], placeholders: { toolOutput: ['生成的密码', 'Generated password'] } }
   };
 
   var actionText = {
@@ -125,7 +125,7 @@
 
   var exactText = {
     'How to use this tool / 使用说明': ['使用说明', 'How to use this tool'],
-    'Privacy note / 隐私说明': ['隐私说明', 'Privacy note'],
+    'Usage notes / 使用说明': ['使用说明', 'Usage notes'],
     'FAQ / 常见问题': ['常见问题', 'FAQ'],
     'Related tools / 相关工具': ['相关工具', 'Related tools'],
     'Characters': ['字符数', 'Characters'],
@@ -140,11 +140,11 @@
     'Copy failed': '复制失败', 'Nothing to copy': '没有可复制的内容', 'Copied result to clipboard.': '结果已复制到剪贴板。',
     'Valid JSON. Formatted with 2-space indentation.': 'JSON 有效，已按 2 个空格缩进格式化。', 'Valid JSON. Minified output is ready.': 'JSON 有效，压缩结果已生成。', 'Valid JSON. No syntax errors found.': 'JSON 有效，未发现语法错误。',
     'Example loaded. Click Format JSON to see the result.': '示例已载入。点击“格式化 JSON”查看结果。', 'Encoded as Base64. Base64 is encoding, not encryption.': '已编码为 Base64。Base64 是编码，不是加密。', 'Decoded Base64 text.': '已解码 Base64 文本。', 'Invalid Base64 input or unsupported binary data.': 'Base64 输入无效或包含不支持的二进制数据。', 'Example loaded. Click Encode to convert it.': '示例已载入。点击“编码”进行转换。',
-    'Enter text before generating an MD5 hash.': '请先输入要生成 MD5 的文本。', 'MD5 hashes generated in your browser. MD5 is not encryption.': 'MD5 哈希已在浏览器中生成。MD5 不是加密。', 'Copied 32-character lowercase MD5.': '已复制 32 位小写 MD5。', 'Copied 32-character uppercase MD5.': '已复制 32 位大写 MD5。',
+    'Enter text before generating an MD5 hash.': '请先输入要生成 MD5 的文本。', 'MD5 hashes generated. MD5 is not encryption.': 'MD5 哈希已生成。MD5 不是加密。', 'Copied 32-character lowercase MD5.': '已复制 32 位小写 MD5。', 'Copied 32-character uppercase MD5.': '已复制 32 位大写 MD5。',
     'JavaScript formatted for readability.': 'JavaScript 已格式化，便于阅读。', 'Basic minified output is ready. This is not a full compiler.': '基础压缩结果已生成。此功能不是完整编译器。', 'Example loaded. Click Format JavaScript.': '示例已载入。点击“格式化 JavaScript”。',
     'Encoded with encodeURIComponent.': '已使用 encodeURIComponent 编码。', 'Decoded with decodeURIComponent.': '已使用 decodeURIComponent 解码。', 'Encoded with encodeURI.': '已使用 encodeURI 编码。', 'Decoded with decodeURI.': '已使用 decodeURI 解码。', 'Example loaded. Try Encode URI Component.': '示例已载入。可尝试“编码 URI 组件”。',
     'Current browser time loaded.': '已载入当前浏览器时间。', 'Enter a Unix timestamp.': '请输入 Unix 时间戳。', 'Timestamp must be a number.': '时间戳必须是数字。', 'Invalid timestamp.': '时间戳无效。', 'Timestamp converted using your browser timezone display.': '已按浏览器时区显示转换结果。', 'Enter a date/time value.': '请输入日期或时间。', 'Invalid date/time value.': '日期或时间无效。', 'Date converted to Unix timestamp.': '日期已转换为 Unix 时间戳。', 'Copied timestamp result.': '时间戳结果已复制。',
-    'No line-level differences found.': '未发现行级差异。', 'Text statistics updated.': '文本统计已更新。', 'No matches found.': '未找到匹配项。', 'Enter a calculation first.': '请先输入计算表达式。', 'Only numbers, parentheses, and basic operators are supported.': '仅支持数字、括号和基础运算符。', 'Calculation complete.': '计算完成。', 'Result is not finite. Check division by zero.': '结果不是有限数，请检查是否除以零。', 'Copied result.': '结果已复制。', 'Select at least one character set.': '请至少选择一种字符集。', 'Password generated locally in your browser.': '密码已在浏览器中本地生成。'
+    'No line-level differences found.': '未发现行级差异。', 'Text statistics updated.': '文本统计已更新。', 'No matches found.': '未找到匹配项。', 'Enter a calculation first.': '请先输入计算表达式。', 'Only numbers, parentheses, and basic operators are supported.': '仅支持数字、括号和基础运算符。', 'Calculation complete.': '计算完成。', 'Result is not finite. Check division by zero.': '结果不是有限数，请检查是否除以零。', 'Copied result.': '结果已复制。', 'Select at least one character set.': '请至少选择一种字符集。', 'Password generated.': '密码已生成。'
   };
 
   function translateMessage(message) {
@@ -159,7 +159,7 @@
     if (msg.indexOf('Matches found:') === 0) return msg.replace('Matches found:', '匹配数量：');
     if (msg.indexOf('Regex error:') === 0) return '正则错误：' + msg.slice(12).trim();
     if (msg.indexOf('Calculation error:') === 0) return '计算错误：' + msg.slice(18).trim();
-    if (msg.indexOf('Generated ') === 0 && msg.indexOf(' GUID value') > -1) return msg.replace('Generated ', '已生成 ').replace(' GUID values', ' 个 GUID').replace(' GUID value', ' 个 GUID').replace(' in your browser.', '。');
+    if (msg.indexOf('Generated ') === 0 && msg.indexOf(' GUID value') > -1) return msg.replace('Generated ', '已生成 ').replace(' GUID values', ' 个 GUID').replace(' GUID value', ' 个 GUID').replace('.', '。');
     return msg;
   }
 
