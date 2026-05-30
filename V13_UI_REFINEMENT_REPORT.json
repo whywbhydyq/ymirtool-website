@@ -1,0 +1,21 @@
+{
+  "version": "v13",
+  "scope": "legacy UI bridge second pass and modern tool page visual polish",
+  "build": "not run",
+  "tests": "not run",
+  "lint": "not run",
+  "typecheck": "not run",
+  "modern_tool_pages": 12,
+  "legacy_tool_pages": 138,
+  "changes": [
+    "Upgraded static resource query strings from v12 to v13",
+    "Added v13 modern tool-page visual refinement rules",
+    "Made modern tool headers more compact and card-based",
+    "Reduced textarea height and tightened workbench spacing",
+    "Improved generator pages, especially MD5, GUID, Password and Calculator layouts",
+    "Improved Text Diff, Regex, Word Counter and Unix Time tool-specific sizing",
+    "Refined secondary area cards for help, boundary notes, FAQ and related tools",
+    "Added v13 legacy Bootstrap UI bridge rules for navbar, panels, inputs, buttons, alerts and legacy content packs",
+    "Improved tool-page i18n navigation labels and tool-specific trust badges"
+  ]
+}

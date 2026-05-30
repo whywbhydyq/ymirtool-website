@@ -51,9 +51,9 @@
       '/json/': { zh: 'JSON', en: 'JSON' },
       '/base64/': { zh: 'Base64', en: 'Base64' },
       '/md5/': { zh: 'MD5', en: 'MD5' },
-      '/formatjs/': { zh: 'JS Formatter', en: 'JS Formatter' },
-      '/textdiff/': { zh: 'Text Diff', en: 'Text Diff' },
-      '/guides.html': { zh: 'Guides', en: 'Guides' }
+      '/formatjs/': { zh: 'JS 格式化', en: 'JS Formatter' },
+      '/textdiff/': { zh: '文本对比', en: 'Text Diff' },
+      '/guides.html': { zh: '指南', en: 'Guides' }
     },
     trust: {
       zh: ['无需注册', '打开即用', '150+ 工具', '快速复制'],
@@ -110,6 +110,21 @@
     calculator: { eyebrow: ['计算工具', 'Calculator Tool'], title: ['在线科学计算器', 'Online Scientific Calculator'], subtitle: ['快速计算数字、括号、百分号和基础运算符。', 'Calculate numbers, parentheses, percentages, and basic operators quickly.'], panels: [['表达式', '结果'], ['Expression', 'Result']], placeholders: { calcInput: ['(128 + 256) / 3', '(128 + 256) / 3'], calcResult: ['结果显示在这里', 'Result appears here'] } },
     guid: { eyebrow: ['生成工具', 'Generator Tool'], title: ['GUID 生成器', 'GUID Generator'], subtitle: ['生成一个或多个 GUID / UUID 值。', 'Generate one or many GUID / UUID values.'], panels: [['生成 GUID 值'], ['Generate GUID values']], placeholders: { toolOutput: ['生成的 GUID 值', 'Generated GUID values'] } },
     password: { eyebrow: ['生成工具', 'Generator Tool'], title: ['密码生成器', 'Password Generator'], subtitle: ['使用长度和字符集选项生成随机密码。', 'Generate random passwords with length and character-set controls.'], panels: [['密码选项'], ['Password options']], placeholders: { toolOutput: ['生成的密码', 'Generated password'] } }
+  };
+
+  var toolBadges = {
+    json: [['格式化 JSON','校验语法','复制结果'], ['Format JSON','Validate syntax','Copy result']],
+    base64: [['文本编码','文本解码','复制结果'], ['Encode text','Decode text','Copy result']],
+    md5: [['32 位 MD5','16 位 MD5','复制哈希'], ['32-character MD5','16-character MD5','Copy hash']],
+    formatjs: [['整理缩进','基础压缩','复制代码'], ['Clean indentation','Basic minify','Copy code']],
+    urlencode: [['URI 组件','完整 URI','复制结果'], ['URI component','Full URI','Copy result']],
+    unixtime: [['秒 / 毫秒','日期互转','复制结果'], ['Seconds / milliseconds','Date conversion','Copy result']],
+    textdiff: [['双文本输入','行级对比','复制摘要'], ['Two text inputs','Line diff','Copy summary']],
+    txtcount: [['字符统计','单词统计','字节统计'], ['Character count','Word count','Byte count']],
+    regex: [['模式测试','匹配结果','错误提示'], ['Pattern test','Match result','Error feedback']],
+    calculator: [['表达式输入','快速计算','复制结果'], ['Expression input','Quick calculate','Copy result']],
+    guid: [['批量生成','GUID / UUID','复制结果'], ['Batch generate','GUID / UUID','Copy result']],
+    password: [['长度选项','字符集选项','复制结果'], ['Length option','Character sets','Copy result']]
   };
 
   var actionText = {
@@ -296,6 +311,12 @@
     setBySelector('.ymir-hero-eyebrow', data.eyebrow[index]);
     setBySelector('.ymir-hero-title', data.title[index]);
     setBySelector('.ymir-hero-subtitle', data.subtitle[index]);
+    var badgeData = toolBadges[key];
+    if (badgeData) {
+      document.querySelectorAll('.ymir-trust-badge').forEach(function (badge, i) {
+        if (badgeData[index] && badgeData[index][i]) badge.textContent = badgeData[index][i];
+      });
+    }
     setByAll('.ymir-panel-title', data.panels[index]);
     Object.keys(data.placeholders || {}).forEach(function (id) { setPlaceholder(id, data.placeholders[id][index]); });
     document.querySelectorAll('button[data-action]').forEach(function (btn) {
