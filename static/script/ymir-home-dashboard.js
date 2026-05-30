@@ -62,8 +62,8 @@
     }
     var best = scored.slice(0, 1);
     var feat = scored.filter(function (t) { return featured.some(function (f) { return f.href === t.href; }); }).filter(function (t) { return !best.some(function (b) { return b.href === t.href; }); }).slice(0, 3);
-    var rest = scored.filter(function (t) { return !best.concat(feat).some(function (b) { return b.href === t.href; }); }).slice(0, 3);
-    lastResults = best.concat(feat).concat(rest).slice(0, 7);
+    var rest = scored.filter(function (t) { return !best.concat(feat).some(function (b) { return b.href === t.href; }); }).slice(0, 1);
+    lastResults = best.concat(feat).concat(rest).slice(0, 5);
     if (activeIndex >= lastResults.length) activeIndex = 0;
     var bestHtml = best.map(function (t, i) { return resultLink(t, i); }).join('');
     var featHtml = feat.map(function (t, i) { return resultLink(t, best.length + i); }).join('');
