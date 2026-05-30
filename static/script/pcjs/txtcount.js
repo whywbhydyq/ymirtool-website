@@ -5,7 +5,7 @@ function Empty() {
     $('zhongwenbiaodian').innerText = "0";
     $('yingwen').innerText = "0";
     $('shuzi').innerText = "0";
-    document.getElementById("numwords").innerHTML = "0";
+    document.getElementById("numwords").textContent = "0";
     document.getElementById("content").select();
 }
 
@@ -29,7 +29,7 @@ if ($("content")) {
     EventUtil.addEventHandler($('content'), 'propertychange', CountChineseCharacters);
     EventUtil.addEventHandler($('content'), 'input', CountChineseCharacters);
 }
-window.onload = CountChineseCharacters();
+window.addEventListener('load', CountChineseCharacters, false);
 
 function showit(Word) {
     alert(Word);
@@ -79,5 +79,5 @@ function CountChineseCharacters() {
     $('zhongwenbiaodian').innerText = sTotal;
     $('yingwen').innerText = eTotal;
     $('shuzi').innerText = inum;
-    document.getElementById("totalwords").innerHTML = iTotal * 2 + (sTotal - iTotal) * 2 + eTotal;
+    document.getElementById("totalwords").textContent = iTotal * 2 + (sTotal - iTotal) * 2 + eTotal;
 }

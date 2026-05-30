@@ -163,6 +163,48 @@ function Encryption() {
     }
 }
 
+function renderDecodedUrl(target, id, url) {
+    target.replaceChildren();
+
+    var wrapper = document.createElement("div");
+    wrapper.style.wordBreak = "break-all";
+    wrapper.style.marginBottom = "10px";
+
+    var table = document.createElement("table");
+    table.setAttribute("border", "0");
+    table.setAttribute("cellspacing", "0");
+    table.setAttribute("cellpadding", "5");
+
+    var row = document.createElement("tr");
+    var labelCell = document.createElement("td");
+    var label = document.createElement("span");
+    label.textContent = "ԭʼ��ַ��";
+    labelCell.appendChild(label);
+
+    var valueCell = document.createElement("td");
+    valueCell.setAttribute("width", "730");
+    var span = document.createElement("span");
+    span.setAttribute("align", "left");
+    span.id = id;
+
+    if (/^(https?|ftp|magnet):/i.test(url)) {
+        var link = document.createElement("a");
+        link.href = url;
+        link.textContent = url;
+        link.rel = "noopener noreferrer";
+        span.appendChild(link);
+    }
+    else {
+        span.textContent = url;
+    }
+
+    valueCell.appendChild(span);
+    row.appendChild(labelCell);
+    row.appendChild(valueCell);
+    table.appendChild(row);
+    wrapper.appendChild(table);
+    target.appendChild(wrapper);
+}
 //迅雷、快车、旋风URL解密方法
 function Decryption() {
     $("#errcode").css("display", "none");
@@ -170,17 +212,17 @@ function Decryption() {
     if (str.search(/^thunder/i) != -1) {
         str = str.replace("thunder://", "");
         str = strAnsi2Unicode(decode64(str)).replace(/^AA|ZZ$/gi, "");
-        re.innerHTML = "<div style='word-break:break-all;margin-bottom:10px;'><table border='0' cellspacing='0' cellpadding='5'><tr><td><span>原始地址：</span></td><td width='730'><span align='left' id='rethunder'><a href=" + str + ">" + str + "<\/a></span></td></tr></table></div>";
+        renderDecodedUrl(re, "rethunder", str);
     }
     else if (str.search(/^flashget/i) != -1) {
         str = str.replace("flashget://", "");
         str = str.replace(/&.*$/, "");
         str = strAnsi2Unicode(decode64(str)).replace(/^\[FLASHGET\]|\[FLASHGET\]$/gi, "");
-        re.innerHTML = "<div style='word-break:break-all;margin-bottom:10px;'><table border='0' cellspacing='0' cellpadding='5'><tr><td><span>原始地址：</span></td><td width='730'><span align='left' id='reflashget'><a href=" + str + ">" + str + "<\/a></span></td></tr></table></div>";
+        renderDecodedUrl(re, "reflashget", str);
     } else if (str.search(/^qqdl/i) != -1) {
         str = str.replace("qqdl://", "");
         str = strAnsi2Unicode(decode64(str));
-        re.innerHTML = "<div style='word-break:break-all;margin-bottom:10px;'><table border='0' cellspacing='0' cellpadding='5'><tr><td><span>原始地址：</span></td><td width='730'><span align='left' id='reppdl'><a href=" + str + ">" + str + "<\/a></span></td></tr></table></div>";
+        renderDecodedUrl(re, "reppdl", str);
     }
     else {
         $("#errcode").css("display", "block");

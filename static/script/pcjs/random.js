@@ -4,17 +4,17 @@ $(document).ready(function() {
         var test_2 = /^\d+$/.test($('#randomMinimum').val());
         var test_3 = /^\d+$/.test($('#randomMaximum').val());
         if (parseInt($('#randomMinimum').val()) < 0) {
-            $('#randomNumbers').html('最小值必须≥0');
+            $('#randomNumbers').text('最小值必须≥0');
         } else if (test_1 != true || test_2 != true || test_3 != true) {
-            $('#randomNumbers').html('(必须)请输入：随机数个数，最大值，最小值');
+            $('#randomNumbers').text('(必须)请输入：随机数个数，最大值，最小值');
         } else if (parseInt($('#randomCount').val()) < 1) {
-            $('#randomNumbers').html('(必须)随机数个数 ≥ 1');
+            $('#randomNumbers').text('(必须)随机数个数 ≥ 1');
         } else if (parseInt($('#randomMaximum').val()) < 1) {
-            $('#randomNumbers').html('(必须)最大值 ≥1 ');
+            $('#randomNumbers').text('(必须)最大值 ≥1 ');
         } else if (parseInt($('#randomMaximum').val()) <= parseInt($('#randomMinimum').val())) {
-            $('#randomNumbers').html('(必须)最大值 ＞ 最小值');
+            $('#randomNumbers').text('(必须)最大值 ＞ 最小值');
         } else if ($('#randomType').val() == 'unique' && parseInt($('#randomCount').val()) > (parseInt($('#randomMaximum').val()) + 1 - parseInt($('#randomMinimum').val()))) {
-            $('#randomNumbers').html('(必须)随机数个数 ≤ (最大值 - 最小值)');
+            $('#randomNumbers').text('(必须)随机数个数 ≤ (最大值 - 最小值)');
         } else {
             var mTwister = new MersenneTwister();
             var randomNumbers = new Array();
@@ -33,9 +33,10 @@ $(document).ready(function() {
                     randomNumbers[i] = number;
                 }
             }
-            $('#randomNumbers').html('');
+            var output = $('#randomNumbers').empty();
             for (var i = 0; i < randomNumbers.length; i++) {
-                $('#randomNumbers').html($('#randomNumbers').html() + (i == 0 ? '': ' ') + '<b>' + randomNumbers[i] + '</b>');
+                if (i !== 0) { output.append(document.createTextNode(' ')); }
+                $('<b>').text(randomNumbers[i]).appendTo(output);
             }
         }
     });

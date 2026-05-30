@@ -7,10 +7,10 @@
 <title>网络工具使用指南 - Ymir Tool</title>
 <meta name="description" content="WebSocket 测试、浏览器信息、公共 DNS、各地区 DNS 等网络工具的使用说明和排查建议。"/>
 <link rel="canonical" href="https://ymirtool.com/network-tools-guide.html"/>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
 <link href="/static/style/tool.css" rel="stylesheet"/>
-</head>
-<body><div class="container" style="margin-top:80px;min-height:600px;max-width:900px;line-height:1.8;">
+<link href="/static/style/inline-style-migration.css" rel="stylesheet" type="text/css" /></head>
+<body><div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a></p>
 <h1>网络工具使用指南</h1>
 <p>网络工具适合调试浏览器环境、WebSocket 服务、DNS 配置和基础网络资料。使用这些工具时，建议先明确要排查的是浏览器端、域名解析、服务端响应还是网络链路问题。</p>
@@ -23,4 +23,5 @@
 </ul>
 <h2>排查建议</h2>
 <p>如果 WebSocket 无法连接，先确认协议是 ws 还是 wss，再检查域名、端口、防火墙和服务端日志。DNS 问题通常存在缓存，修改解析后需要等待生效。</p>
-</div></body></html>
+</div>
+</body></html>

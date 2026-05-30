@@ -7,10 +7,10 @@
 <title>编码转换工具使用指南 - Ymir Tool</title>
 <meta name="description" content="Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。"/>
 <link rel="canonical" href="https://ymirtool.com/encoding-tools-guide.html"/>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
 <link href="/static/style/tool.css" rel="stylesheet"/>
-</head>
-<body><div class="container" style="margin-top:80px;min-height:600px;max-width:900px;line-height:1.8;">
+<link href="/static/style/inline-style-migration.css" rel="stylesheet" type="text/css" /></head>
+<body><div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a></p>
 <h1>编码转换工具使用指南</h1>
 <p>编码转换工具常用于接口调试、网页参数处理、日志阅读和跨系统数据整理。不同编码方式解决的问题不同，选择前要先判断输入内容是链接参数、普通文本、二进制内容还是字符编码问题。</p>
@@ -25,4 +25,5 @@
 <p>如果结果看起来仍然是乱码，可能是原始内容经过了多层编码。可以先 URL 解码，再尝试 Base64 或 Unicode 转换。处理接口数据时，建议保留原始文本副本，避免多次转换后无法回退。</p>
 <h2>相关工具</h2>
 <p>如果编码后的内容是 JSON，可以继续使用 <a href="/json/">JSON 格式化</a>；如果内容是网页片段，可以使用 <a href="/htmlescape/">HTML 转义工具</a>。</p>
-</div></body></html>
+</div>
+</body></html>

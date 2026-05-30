@@ -3,6 +3,27 @@ window.ImgCollapsed = "/static/images/collapsed.gif";
 window.ImgExpanded = "/static/images/expanded.gif";
 window.QuoteKeys = true;
 function $id(id) { return document.getElementById(id); }
+
+function ReplaceJsonMarkup(target, html) {
+    var element = typeof target === 'string' ? $id(target) : target;
+    if (!element) return;
+    while (element.firstChild) element.removeChild(element.firstChild);
+    var range = document.createRange();
+    range.selectNode(element);
+    var fragment = range.createContextualFragment(String(html || ''));
+    element.appendChild(fragment);
+}
+function JsonHtmlEncode(value) {
+    return String(value).replace(/[&<>"']/g, function (char) {
+        return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[char];
+    });
+}
 function IsArray(obj) {
     return obj &&
           typeof obj === 'object' &&
@@ -19,14 +40,17 @@ function Process() {
         $("#codeall").css("display", "none");
         $("#codeall2").css("display", "none");
         if (json == "") json = "\"\"";
-        var obj = eval("[" + json + "]");
-        html = ProcessObject(obj[0], 0, false, false, false);
-        $id("Canvas").innerHTML = "<PRE class='CodeContainer'>" + html + "</PRE>";
+        var obj = JSON.parse(json);
+        html = ProcessObject(obj, 0, false, false, false);
+        var pre = document.createElement('pre');
+        pre.className = 'CodeContainer';
+        ReplaceJsonMarkup(pre, html);
+        $id("Canvas").replaceChildren(pre);
     } catch (e) {
         $("#codeall").css("display", "block");
         $("#codeall2").css("display", "block");
-        document.getElementById('errdiv').innerHTML = "输入的JSON数据格式不正确：" + e.message;
-        $id("Canvas").innerHTML = "";
+        document.getElementById('errdiv').textContent = "输入的JSON数据格式不正确：" + e.message;
+        $id("Canvas").replaceChildren();
     }
 }
 window._dateObj = new Date();
@@ -70,7 +94,7 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
 
                     var quote = window.QuoteKeys ? "\"" : "";
 
-                    html += GetRow(indent + 1, "<span class='PropertyName'>" + quote + prop + quote + "</span>: " + ProcessObject(obj[prop], indent + 1, ++j < numProps, false, true));
+                    html += GetRow(indent + 1, "<span class='PropertyName'>" + quote + JsonHtmlEncode(prop) + quote + "</span>: " + ProcessObject(obj[prop], indent + 1, ++j < numProps, false, true));
 
                 }
 
@@ -122,7 +146,7 @@ function FormatLiteral(literal, quote, comma, indent, isArray, style) {
 
     if (typeof literal == 'string')
 
-        literal = literal.split("<").join("&lt;").split(">").join("&gt;");
+        literal = JsonHtmlEncode(literal);
 
     var str = "<span class='" + style + "'>" + quote + literal + quote + comma + "</span>";
 

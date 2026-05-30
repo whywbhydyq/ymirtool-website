@@ -1,21 +1,82 @@
-$(document).ready(function(){var sizeCols="";var sizeRows="";var tableColor="";var tableColor2="";var tableColor2b="";var tableDesign="";var tableInfo="";var tableHighlight=""
-var tableJS="";var tableCSS="";var tableHTML="";var pageTableHTML="";var tableEND="";var newTable="";var newTableCode="";var tfHighlight="";var tfHighlightb="";function makeTableCode(){tableColor=document.getElementById('tableColor').value;tableDesign=document.getElementById('tableDesign').value;sizeCols=document.getElementById('sizeCols').value;sizeRows=document.getElementById('sizeRows').value;if(sizeCols=="0"){sizeCols="5";document.getElementById('sizeCols').value="5"}
-if(sizeRows=="0"){sizeRows="7";document.getElementById('sizeRows').value="7"}
-tableInfo=document.getElementById('tableInfo').value;tableHighlight=document.getElementById('tableHighlight').value;if(tableDesign=="alternating"){tableCSS="";if(tableColor=="Blue"){var blue1="#acc8cc";var blue2="#d4e3e5";var blue3="#729ea5";tableColor2="#d4e3e5";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#d4e3e5;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Green"){var green1="#abd28e";var green2="#bedda7";var green3="#9dcc7a";tableColor2="#bedda7";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#abd28e;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#bedda7;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Grey"){var grey1="#b8b8b8";var grey2="#cdcdcd";var grey3="#a9a9a9";tableColor2="#cdcdcd";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#cdcdcd;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Orange"){var orange1="#e6983b";var orange2="#f0c169";var orange3="#ebab3a";tableColor2="#f0c169";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #ebab3a;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#e6983b;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#f0c169;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Brown"){var brown1="#ded0b0";var brown2="#e9dbbb";var brown3="#bcaf91";tableColor2="#e9dbbb";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #bcaf91;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#ded0b0;border-width: 1px;padding: 8px;border-style: solid;border-color: #bcaf91;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#e9dbbb;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #bcaf91;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Black"){var black1="#171515";var black2="#2f2f2f";var black3="#686767";tableColor2="#2f2f2f"
-tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#fbfbfb;width:100%;border-width: 1px;border-color: #686767;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#2f2f2f;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="None"){}}else if(tableDesign=="minimal"){tableCSS="";if(tableColor=="Blue"){var blue3="#a9c6c9";tableColor2="#ffffff";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#ffffff;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Green"){var green3="#9dcc7a";tableColor2="#ffffff";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#abd28e;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#ffffff;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Grey"){var grey3="#a9a9a9";tableColor2="#ffffff";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#ffffff;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Orange"){var orange3="#e6983b";tableColor2="#ffffff";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #ebab3a;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#e6983b;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#ffffff;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Brown"){var brown3="#ebab3a";tableColor2="#ffffff";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #bcaf91;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#ded0b0;border-width: 1px;padding: 8px;border-style: solid;border-color: #bcaf91;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#ffffff;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #bcaf91;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="Black"){var black3="#ebab3a";tableColor2="#171515";tableCSS+='<style type="text/css">\n';tableCSS+='table.tftable {font-size:12px;color:#fbfbfb;width:100%;border-width: 1px;border-color: #686767;border-collapse: collapse;}\n';tableCSS+='table.tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;text-align:left;}\n';tableCSS+='table.tftable tr {background-color:#171515;}\n';tableCSS+='table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;}\n';tableCSS+='</style>\n\n';}else if(tableColor=="None"){}}else if(tableDesign=="alternatingXY"){tableCSS="<!-- alternatingXY -->\n";}else if(tableDesign=="minimalXY"){tableCSS="<!-- minimalXY -->\n";}else if(tableDesign=="noStyle"){tableCSS="";}
-tableHTML='<table id="tfhover" class="tftable" border="1">\n<tr>';var ii=0;var iii=0;var iiii=0;while(ii<sizeCols){iii=ii+1;tableHTML+='<th>Header '+iii+'</th>';ii++;}
-tableHTML+="</tr>\n";var i=0;while(i<sizeRows-1){tableHTML=tableHTML+"<tr>";var ii=0;while(ii<sizeCols){iii=i+1;iiii=ii+1;if(tableInfo=="yesInfo"){tableHTML=tableHTML+"<td>Row:"+iii+" Cell:"+iiii+"</td>";}else{tableHTML=tableHTML+"<td> </td>";}
-ii++;}
-tableHTML=tableHTML+"</tr>\n";i++;}
-tableHTML+="</table>\n\n";if(tableInfo=="yesInfo"){pageTableHTML='<table id="tfhover" class="tftable" border="1"><tbody><tr><th>Header 1</th><th>Header 2</th><th>Header 3</th><th>Header 4</th><th>Header 5</th></tr><tr><td>Row:1 Cell:1</td><td>Row:1 Cell:2</td><td>Row:1 Cell:3</td><td>Row:1 Cell:4</td><td>Row:1 Cell:5</td></tr><tr><td>Row:2 Cell:1</td><td>Row:2 Cell:2</td><td>Row:2 Cell:3</td><td>Row:2 Cell:4</td><td>Row:2 Cell:5</td></tr><tr><td>Row:3 Cell:1</td><td>Row:3 Cell:2</td><td>Row:3 Cell:3</td><td>Row:3 Cell:4</td><td>Row:3 Cell:5</td></tr><tr><td>Row:4 Cell:1</td><td>Row:4 Cell:2</td><td>Row:4 Cell:3</td><td>Row:4 Cell:4</td><td>Row:4 Cell:5</td></tr><tr><td>Row:5 Cell:1</td><td>Row:5 Cell:2</td><td>Row:5 Cell:3</td><td>Row:5 Cell:4</td><td>Row:5 Cell:5</td></tr><tr><td>Row:6 Cell:1</td><td>Row:6 Cell:2</td><td>Row:6 Cell:3</td><td>Row:6 Cell:4</td><td>Row:6 Cell:5</td></tr></tbody></table>';}else{pageTableHTML='<table id="tfhover" class="tftable" border="1"><tbody><tr><th> </th><th> </th><th> </th><th> </th><th> </th></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr></tbody></table>';}
-tableEND='<p><small>Created with the <a href="Net://www.pcjson.com/htmltable/" target="_blank">HTML Table Generator</a></small></p>';if(tableHighlight!="none"){if(tableColor!="None"){if(tableColor2=="#2f2f2f"){tfHighlightb="#171515";tableColor2b=tableColor2;}else{tfHighlightb="#ffffff";tableColor2b=tableColor2;}
-if(tableDesign=="minimal"){if(tableColor2=="#171515"){tfHighlightb="#565656";tableColor2b=tableColor2;}else{tfHighlightb="#f3f8aa";tableColor2b="#ffffff";}}}}
-if(tableHighlight=="none"){tableJS="";}else if(tableHighlight=="row"){tableJS="<!-- Row Highlight Javascript -->\n";tableJS+="<script type=\"text/javascript\">\n";tableJS+="	window.onload=function(){\n";tableJS+="	var tfrow = document.getElementById('tfhover').rows.length;\n";tableJS+="	var tbRow=[];\n";tableJS+="	for (var i=1;i<tfrow;i++) {\n";tableJS+="		tbRow[i]=document.getElementById('tfhover').rows[i];\n";tableJS+="		tbRow[i].onmouseover = function(){\n";tableJS+="		  this.style.backgroundColor = '"+tfHighlightb+"';\n";tableJS+="		};\n";tableJS+="		tbRow[i].onmouseout = function() {\n";tableJS+="		  this.style.backgroundColor = '"+tableColor2b+"';\n";tableJS+="		};\n";tableJS+="	}\n";tableJS+="};\n"
-tableJS+="</script>\n\n";}
-newTable=tableCSS+tableHTML;newTableCode=tableJS+tableCSS+tableHTML+tableEND;document.getElementById('newTable').innerHTML=newTable;document.getElementById('newCode').value=newTableCode;if(tableHighlight!="none"){if(tableColor!="None"){if(tableDesign=="minimal"){if(tableColor2=="#171515"){tfHighlight="#565656";}else{tfHighlight="#f3f8aa";tableColor2="#ffffff";}}else{if(tableColor2=="#2f2f2f"){tfHighlight="#171515";}else{tfHighlight="#ffffff";}}
-var tfrow=document.getElementById('tfhover').rows.length;var tbRow=[];for(var i=1;i<tfrow;i++){tbRow[i]=document.getElementById('tfhover').rows[i];tbRow[i].onmouseover=function(){this.style.backgroundColor=tfHighlight;};tbRow[i].onmouseout=function(){this.style.backgroundColor=tableColor2;};}}}}
-var el1=document.getElementById('sizeCols');el1.onkeyup=function(){sizeCols=document.getElementById('sizeCols').value;sizeCols=sizeCols.replace(/[^0-9]+/g,'').replace(/\s+/,'');document.getElementById("sizeCols").value=sizeCols;makeTableCode();};var el2=document.getElementById('sizeRows');el2.onkeyup=function(){sizeRows=document.getElementById("sizeRows").value;sizeRows=sizeRows.replace(/[^0-9]+/g,'').replace(/\s+/,'');document.getElementById("sizeRows").value=sizeRows;makeTableCode();};var el3=document.getElementById('tableColor');el3.onchange=function(){tableColor=document.getElementById('tableColor').value;tableDesign=document.getElementById('tableDesign').value;if(tableColor=="None"){document.getElementById("tableDesign").selectedIndex=2;}
-if(tableColor!="None"&&tableDesign=="noStyle"){document.getElementById("tableDesign").selectedIndex=0;}
-makeTableCode();};var el4=document.getElementById('tableDesign');el4.onchange=function(){tableColor=document.getElementById('tableColor').value;tableDesign=document.getElementById('tableDesign').value;if(tableDesign=="noStyle"){document.getElementById("tableColor").selectedIndex=6;}
-if(tableDesign!="noStyle"&&tableColor=="None"){document.getElementById("tableColor").selectedIndex=0;}
-makeTableCode();};var el5=document.getElementById('tableHighlight');el5.onchange=function(){makeTableCode()};var el6=document.getElementById('tableInfo');el6.onchange=function(){makeTableCode();};makeTableCode();});
+$(function () {
+    var colorStyles = {
+        Blue: { border: '#729ea5', head: '#acc8cc', row: '#d4e3e5', text: '#333333', hover: '#ffffff' },
+        Green: { border: '#9dcc7a', head: '#abd28e', row: '#bedda7', text: '#333333', hover: '#ffffff' },
+        Grey: { border: '#a9a9a9', head: '#b8b8b8', row: '#cdcdcd', text: '#333333', hover: '#ffffff' },
+        Orange: { border: '#ebab3a', head: '#e6983b', row: '#f0c169', text: '#333333', hover: '#ffffff' },
+        Brown: { border: '#bcaf91', head: '#ded0b0', row: '#e9dbbb', text: '#333333', hover: '#ffffff' },
+        Black: { border: '#686767', head: '#171515', row: '#2f2f2f', text: '#fbfbfb', hover: '#171515' }
+    };
+    function cleanInt(id, fallback, max) {
+        var input = document.getElementById(id);
+        var value = input ? input.value.replace(/[^0-9]+/g, '') : '';
+        var number = parseInt(value, 10);
+        if (!Number.isFinite(number) || number < 1) { number = fallback; }
+        if (max && number > max) { number = max; }
+        if (input) { input.value = String(number); }
+        return number;
+    }
+    function cssFor(design, color, highlight) {
+        if (color === 'None' || design === 'noStyle') { return ''; }
+        var palette = colorStyles[color] || colorStyles.Blue;
+        var row = design === 'minimal' ? '#ffffff' : palette.row;
+        var hover = highlight === 'row' ? palette.hover : row;
+        var css = '<style type="text/css">\n';
+        css += 'table.tftable {font-size:12px;color:' + palette.text + ';width:100%;border-width:1px;border-color:' + palette.border + ';border-collapse:collapse;}\n';
+        css += 'table.tftable th {font-size:12px;background-color:' + palette.head + ';border-width:1px;padding:8px;border-style:solid;border-color:' + palette.border + ';text-align:left;}\n';
+        css += 'table.tftable tr {background-color:' + row + ';}\n';
+        css += 'table.tftable td {font-size:12px;border-width:1px;padding:8px;border-style:solid;border-color:' + palette.border + ';}\n';
+        if (highlight === 'row') {
+            css += 'table.tftable tr:hover {background-color:' + hover + ';}\n';
+        }
+        css += '</style>\n\n';
+        return css;
+    }
+    function tableHtml(cols, rows, withInfo) {
+        var html = '<table id="tfhover" class="tftable" border="1">\n<tr>';
+        for (var c = 1; c <= cols; c++) { html += '<th>Header ' + c + '</th>'; }
+        html += '</tr>\n';
+        for (var r = 1; r < rows; r++) {
+            html += '<tr>';
+            for (var cc = 1; cc <= cols; cc++) {
+                html += withInfo ? '<td>Row:' + r + ' Cell:' + cc + '</td>' : '<td> </td>';
+            }
+            html += '</tr>\n';
+        }
+        html += '</table>\n\n';
+        return html;
+    }
+    function renderPreview(markup) {
+        var host = document.getElementById('newTable');
+        if (!host) { return; }
+        while (host.firstChild) { host.removeChild(host.firstChild); }
+        var frame = document.createElement('iframe');
+        frame.title = 'Sandboxed HTML table preview';
+        frame.setAttribute('sandbox','');
+        frame.style.width = '100%';
+        frame.style.minHeight = '220px';
+        frame.style.border = '1px solid #ddd';
+        frame.srcdoc = '<!doctype html><meta charset="utf-8"><base target="_blank">' + markup;
+        host.appendChild(frame);
+    }
+    window.makeTableCode = function () {
+        var cols = cleanInt('sizeCols', 5, 50);
+        var rows = cleanInt('sizeRows', 7, 200);
+        var color = ($('#tableColor').val() || 'Blue');
+        var design = ($('#tableDesign').val() || 'all');
+        var highlight = ($('#tableHighlight').val() || 'none');
+        var withInfo = ($('#tableInfo').val() || '') === 'yesInfo';
+        if (color === 'None') { $('#tableDesign').val('noStyle'); design = 'noStyle'; }
+        if (design === 'noStyle') { $('#tableColor').val('None'); color = 'None'; }
+        var css = cssFor(design, color, highlight);
+        var html = tableHtml(cols, rows, withInfo);
+        var footer = '<p><small>Created with the HTML Table Generator</small></p>';
+        var output = css + html + footer;
+        renderPreview(css + html);
+        var newCode = document.getElementById('newCode');
+        if (newCode) { newCode.value = output; }
+    };
+    $('#sizeCols,#sizeRows').on('keyup change', window.makeTableCode);
+    $('#tableColor,#tableDesign,#tableHighlight,#tableInfo').on('change', window.makeTableCode);
+    window.makeTableCode();
+});

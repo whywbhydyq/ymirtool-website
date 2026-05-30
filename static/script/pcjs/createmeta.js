@@ -42,7 +42,7 @@ function create(form) {
 }
 function Empty() {
     $("input").val("");
-    $("#result").html("");
+    $("#result").text("");
 	is_hide();
     document.getElementById("title").select();
 }

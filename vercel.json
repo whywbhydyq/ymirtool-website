@@ -37,6 +37,18 @@
         {
           "key": "X-Permitted-Cross-Domain-Policies",
           "value": "none"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://pagead2.googlesyndication.com https://cdn.vercel-insights.com; style-src 'self'; img-src 'self' https://pagead2.googlesyndication.com data: blob:; font-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com https://pagead2.googlesyndication.com ws: wss:; frame-src 'self' data: blob:; worker-src 'self' blob:; upgrade-insecure-requests; report-uri /api/csp-report; report-to ymir-csp-report"
+        },
+        {
+          "key": "Reporting-Endpoints",
+          "value": "ymir-csp-report=\"/api/csp-report\""
+        },
+        {
+          "key": "Report-To",
+          "value": "{\"group\":\"ymir-csp-report\",\"max_age\":604800,\"endpoints\":[{\"url\":\"/api/csp-report\"}],\"include_subdomains\":true}"
         }
       ]
     }

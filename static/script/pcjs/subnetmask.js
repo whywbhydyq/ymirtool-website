@@ -890,10 +890,22 @@ function ClearAll(f) {
     f.snmbitsc.value = "";
     f.dec1b.value = "";
 }
+
+function renderSubnetList(markup) {
+    var target = document.getElementById("netlist");
+    if (!target) return;
+    target.replaceChildren();
+    var range = document.createRange();
+    range.selectNode(target);
+    target.appendChild(range.createContextualFragment(String(markup || "")));
+    jQuery(".ObtLClose").off("click.ymirSubnet").on("click.ymirSubnet", function () {
+        jQuery(".ObtainList").addClass("autohide");
+    });
+}
 function listsubnets(f) {
     jQuery(".ObtainList").removeClass("autohide");
 
-    jQuery("#netlist").html("");
+    jQuery("#netlist").empty();
     var str = "";
     //compute(f);
     if (f.nwclass.value != "Illegal") {
@@ -903,7 +915,7 @@ function listsubnets(f) {
         if (f.subsuper.value == "子网是") {
             var count = 0;
             if (f.nwclass1.value == "C类网") {
-                str += "网络 " + eval(f.snm1.value & f.oct1.value) + "." + eval(f.snm2.value & f.oct2.value) + "." + eval(f.snm3.value & f.oct3.value) + ".0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
+                str += "网络 " + (f.snm1.value & f.oct1.value) + "." + (f.snm2.value & f.oct2.value) + "." + (f.snm3.value & f.oct3.value) + ".0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
                 str += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
                 str += "<tbody><tr><th rowspan=\"2\">网络</th><th colspan=\"2\">主机</th><th rowspan=\"2\">广播地址</th></tr><tr><th>起始</th><th>结束</th></tr>";
                 nodes = ((256 / networks));
@@ -920,7 +932,7 @@ function listsubnets(f) {
                 }
             }
             if (f.nwclass1.value == "B类网") {
-                str += "网络 " + eval(f.snm1.value & f.oct1.value) + "." + eval(f.snm2.value & f.oct2.value) + ".0.0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
+                str += "网络 " + (f.snm1.value & f.oct1.value) + "." + (f.snm2.value & f.oct2.value) + ".0.0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
                 str += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
                 str += "<tbody><tr><th rowspan=\"2\">网络</th><th colspan=\"2\">主机</th><th rowspan=\"2\">广播地址</th></tr><tr><th>起始</th><th>结束</th></tr>";
                 nodes = ((65536 / networks));
@@ -945,7 +957,7 @@ function listsubnets(f) {
                 }
             }
             if (f.nwclass1.value == "A类网") {
-                str += "网络 " + eval(f.snm1.value & f.oct1.value) + ".0.0.0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
+                str += "网络 " + (f.snm1.value & f.oct1.value) + ".0.0.0 ，掩码" + f.snm1.value + "." + f.snm2.value + "." + f.snm3.value + "." + f.snm4.value + "</span><a href=\"javascript:\" class=\"ObtLClose\">×</a></h4>";
                 str += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
                 str += "<tbody><tr><th rowspan=\"2\">网络</th><th colspan=\"2\">主机</th><th rowspan=\"2\">广播地址</th></tr><tr><th>起始</th><th>结束</th></tr>";
                 nodes = ((16777216 / networks));
@@ -986,8 +998,7 @@ function listsubnets(f) {
             str += "<tr><td>" + f.nw1a.value + "." + f.nw2a.value + "." + f.nw3a.value + "." + f.nw4a.value + "</td><td>" + f.nw1a.value + "." + f.nw2a.value + "." + f.nw3a.value + "." + i + "</td><td>" + f.broad1a.value + "." + f.broad2a.value + "." + f.broad3a.value + "." + j + "</td><td>" + f.broad1a.value + "." + f.broad2a.value + "." + f.broad3a.value + "." + f.broad4a.value + "</td></tr>";
         } 
         str += "</tbody></table>";
-        jQuery("#netlist").html(str);
-        jQuery("#netlist").append("<script type=\"text/javascript\">jQuery(\".ObtLClose\").on(\"click\",function(){jQuery(\".ObtainList\").addClass(\" autohide\");});</script>");
+        renderSubnetList(str);
     }
 }
 function compute2(f) {
@@ -1001,7 +1012,7 @@ function compute2(f) {
 //        if (node > 0) {
 //            nw = 0;
 //            f.network.options.selectedIndex = 0;
-//            node = eval(eval(node));
+//            node = Number(node);
 //        }
     } else {
         //var i = f.node.selectedIndex;
@@ -1180,14 +1191,14 @@ function compute(f) {
     if (f.snm2a.value > 255) f.snm2a.value = 255;
     if (f.snm3a.value > 255) f.snm3a.value = 255;
     if (f.snm4a.value > 255) f.snm4a.value = 255;
-    f.nw1a.value = eval(f.snm1a.value & f.oct1a.value);
-    f.nw2a.value = eval(f.snm2a.value & f.oct2a.value);
-    f.nw3a.value = eval(f.snm3a.value & f.oct3a.value);
-    f.nw4a.value = eval(f.snm4a.value & f.oct4a.value);
-    f.node1a.value = eval(~f.snm1a.value & f.oct1a.value);
-    f.node2a.value = eval(~f.snm2a.value & f.oct2a.value);
-    f.node3a.value = eval(~f.snm3a.value & f.oct3a.value);
-    f.node4a.value = eval(~f.snm4a.value & f.oct4a.value);
+    f.nw1a.value = f.snm1a.value & f.oct1a.value;
+    f.nw2a.value = f.snm2a.value & f.oct2a.value;
+    f.nw3a.value = f.snm3a.value & f.oct3a.value;
+    f.nw4a.value = f.snm4a.value & f.oct4a.value;
+    f.node1a.value = ~f.snm1a.value & f.oct1a.value;
+    f.node2a.value = ~f.snm2a.value & f.oct2a.value;
+    f.node3a.value = ~f.snm3a.value & f.oct3a.value;
+    f.node4a.value = ~f.snm4a.value & f.oct4a.value;
     f.broad1a.value = ((f.nw1a.value) ^ (~f.snm1a.value) & 255);
     f.broad2a.value = ((f.nw2a.value) ^ (~f.snm2a.value) & 255);
     f.broad3a.value = ((f.nw3a.value) ^ (~f.snm3a.value) & 255);
@@ -1206,7 +1217,7 @@ function compute3(f) {
     f.hex2b.value = d2h(f.oct2b.value);
     f.hex3b.value = d2h(f.oct3b.value);
     f.hex4b.value = d2h(f.oct4b.value);
-    f.dec1b.value = eval(f.oct1b.value * 16777216) + eval(f.oct2b.value * 65536) + eval(f.oct3b.value * 256) + eval(f.oct4b.value);
+    f.dec1b.value = (f.oct1b.value * 16777216) + (f.oct2b.value * 65536) + (f.oct3b.value * 256) + Number(f.oct4b.value);
 }
 function compute4(f) {
     f.oct1b.value = b2d(f.bin1b.value);
@@ -1217,7 +1228,7 @@ function compute4(f) {
     f.hex2b.value = d2h(f.oct2b.value);
     f.hex3b.value = d2h(f.oct3b.value);
     f.hex4b.value = d2h(f.oct4b.value);
-    f.dec1b.value = eval(f.oct1b.value * 16777216) + eval(f.oct2b.value * 65536) + eval(f.oct3b.value * 256) + eval(f.oct4b.value);
+    f.dec1b.value = (f.oct1b.value * 16777216) + (f.oct2b.value * 65536) + (f.oct3b.value * 256) + Number(f.oct4b.value);
 }
 function compute5(f) {
     f.oct1b.value = h2d(f.hex1b.value);
@@ -1228,7 +1239,7 @@ function compute5(f) {
     f.bin2b.value = d2b(f.oct2b.value);
     f.bin3b.value = d2b(f.oct3b.value);
     f.bin4b.value = d2b(f.oct4b.value);
-    f.dec1b.value = eval(f.oct1b.value * 16777216) + eval(f.oct2b.value * 65536) + eval(f.oct3b.value * 256) + eval(f.oct4b.value);
+    f.dec1b.value = (f.oct1b.value * 16777216) + (f.oct2b.value * 65536) + (f.oct3b.value * 256) + Number(f.oct4b.value);
 }
 function compute6(f) {
     f.oct1b.value = f.dec1b.value >>> 24;

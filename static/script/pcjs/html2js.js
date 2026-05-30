@@ -6,7 +6,7 @@ function tojs() {
 function tohtml() {
     var v = $("#content").val().replace(/var sd=\"/g, "").replace(/sd\+\=\"/g, "").replace(/"\;/g, "").replace(/\\\"/g, "\"").replace(/\\\'/g, "\'").replace(/\\\//g, "\/").replace(/\\\\/g, "\\")
 	$("pre").show();
-	$('#result').html(hljs.highlightAuto(v).value);
+	$('#result').text(v);
 }
 function htmltoarray() {
     var contentstr = $("#content").val();
@@ -177,6 +177,6 @@ function htmlCov(type) {
 }
 function hightout(v){
 	$("pre").show();
-	$('#result').html(hljs.highlightAuto(v).value);
+	$('#result').text(v);
 }
-function Empty() { $("#content").val(""); $("#result").html(''); $("#content").select();$("pre").hide(); }
+function Empty() { $("#content").val(""); $("#result").text(''); $("#content").select();$("pre").hide(); }

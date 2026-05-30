@@ -158,9 +158,8 @@ function beautify() {
     var source = $('#content').val();
     if (source) {
         var v = beautifier.beautify(source);
-		var highCode = hljs.highlightAuto(v).value;
 		$("pre").show();
-		$('#result').html(highCode);
+		$('#result').text(v);
     }
     else {
         pcjson_com_msg($("#content"), "请输入要美化格式化VBScript代码");

@@ -58,10 +58,10 @@ function init() {
     compress = reformatParam === 'compress',
     jsonParam = getURLParameter('json');
     if (compress) {
-        $('#headerText').html('JSONLint<span class="light">Compressor</span>')
+        $('#headerText').empty().append(document.createTextNode('JSONLint')).append($('<span>').addClass('light').text('Compressor'))
     }
     if (!reformat) {
-        $('#headerText').html('JSONLint<span class="light">Lite</span>')
+        $('#headerText').empty().append(document.createTextNode('JSONLint')).append($('<span>').addClass('light').text('Lite'))
     }
 $('#get_remote').click(function() {
     pcjson_com_msg($('#txt_url'), '为保证隐私和稳定性，静态版本不支持远程 URL 抓取。请直接粘贴 JSON 内容后格式化。');
@@ -72,5 +72,5 @@ $('#validate').click(function() {
 	 validate();return false;
 });
 	$('#reset').click(function(){$('#content').val('').focus()});$('#faqButton').click(function(){$('#faq').slideToggle()});if(jsonParam){$('#content').val(jsonParam);$('#validate').click()}}return{'init':init}}());$(function(){jsl.interactions.init()});
-function empty(){$("#content").val("");$("#results").removeClass('alert-success').addClass('alert-danger');$("#results").html("请输入Json字符串 或者 Url接口地址");$('#content').focus()}
+function empty(){$("#content").val("");$("#results").removeClass('alert-success').addClass('alert-danger');$("#results").text("请输入Json字符串 或者 Url接口地址");$('#content').focus()}
 //beforeSend:function() {$("#loading").show();},success:

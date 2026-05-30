@@ -38,11 +38,26 @@ var Fjson = (function () {
         return '<span class="json_number">' + object + '</span>';
     }
 
+    function htmlEncode(object) {
+        return String(object).replace(/[&<>"']/g, function (char) {
+            return ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[char];
+        });
+    }
+
+    function attrEncode(object) {
+        return htmlEncode(object).replace(/`/g, '&#96;');
+    }
+
     function _format_string(object) {
-        object = object.replace(/\</g, "&lt;");
-        object = object.replace(/\>/g, "&gt;");
+        object = htmlEncode(object);
         if (0 <= object.search(/^http/)) {
-            object = '<a href="' + object + '" target="_blank" class="json_link">' + object + '</a>'
+            object = '<a href="' + attrEncode(object) + '" target="_blank" rel="noopener noreferrer" class="json_link">' + object + '</a>'
         }
         return '<span class="json_string">"' + object + '"</span>';
     }
@@ -52,7 +67,7 @@ var Fjson = (function () {
         for (var i = 0, size = object.length; i < size; ++i) {
             tmp_array.push(indent_tab(indent_count) + format(object[i], indent_count + 1));
         }
-        return '<span data-type="array" data-size="' + tmp_array.length + '"><i  style="cursor:pointer;" class="fa fa-minus-square-o" onclick="hide(this)"></i>[<br/>'
+        return '<span data-type="array" data-size="' + tmp_array.length + '"><i class="fa fa-minus-square-o json_toggle" data-json-toggle="hide"></i>[<br/>'
             + tmp_array.join(',<br/>')
             + '<br/>' + indent_tab(indent_count - 1) + ']</span>';
     }
@@ -60,9 +75,9 @@ var Fjson = (function () {
     function _format_object(object, indent_count) {
         var tmp_array = [];
         for (var key in object) {
-            tmp_array.push(indent_tab(indent_count) + '<span class="json_key">"' + key + '"</span>:' + format(object[key], indent_count + 1));
+            tmp_array.push(indent_tab(indent_count) + '<span class="json_key">"' + htmlEncode(key) + '"</span>:' + format(object[key], indent_count + 1));
         }
-        return '<span  data-type="object"><i  style="cursor:pointer;" class="fa fa-minus-square-o" onclick="hide(this)"></i>{<br/>'
+        return '<span  data-type="object"><i class="fa fa-minus-square-o json_toggle" data-json-toggle="hide"></i>{<br/>'
             + tmp_array.join(',<br/>')
             + '<br/>' + indent_tab(indent_count - 1) + '}</span>';
     }
@@ -102,11 +117,9 @@ var Fjson = (function () {
         '.json_string{ color: #3ab54a;font-weight:bold;}',
         '.json_number{ color: #25aae2;font-weight:bold;}',
         '.json_link{ color: #717171;font-weight:bold;}',
-        '.json_array_brackets{}');
+        '.json_array_brackets{}', '.json_toggle{cursor:pointer;}');
 
     var _Fjson = function (origin_data) {
-        //this.data = origin_data ? origin_data :
-        //JSON && JSON.parse ? JSON.parse(origin_data) : eval('(' + origin_data + ')');
         this.data = JSON.parse(origin_data);
     };
 
@@ -122,18 +135,62 @@ var Fjson = (function () {
 })();
 var last_html = '';
 function hide(obj) {
-    var data_type = obj.parentNode.getAttribute('data-type');
-    var data_size = obj.parentNode.getAttribute('data-size');
-    obj.parentNode.setAttribute('data-inner', obj.parentNode.innerHTML);
-    if (data_type === 'array') {
-        obj.parentNode.innerHTML = '<i  style="cursor:pointer;" class="fa fa-plus-square-o" onclick="show(this)"></i>Array[<span class="json_number">' + data_size + '</span>]';
+    var parent = obj.parentNode;
+    var data_type = parent.getAttribute('data-type');
+    var data_size = parent.getAttribute('data-size');
+    if (!parent._ymirExpandedNodes) {
+        parent._ymirExpandedNodes = [];
+        while (parent.firstChild) {
+            parent._ymirExpandedNodes.push(parent.removeChild(parent.firstChild));
+        }
     } else {
-        obj.parentNode.innerHTML = '<i  style="cursor:pointer;" class="fa fa-plus-square-o" onclick="show(this)"></i>Object{...}';
+        while (parent.firstChild) { parent.removeChild(parent.firstChild); }
     }
-
+    var icon = document.createElement('i');
+    icon.className = 'fa fa-plus-square-o json_toggle';
+    icon.setAttribute('data-json-toggle', 'show');
+    parent.appendChild(icon);
+    if (data_type === 'array') {
+        parent.appendChild(document.createTextNode('Array['));
+        var size = document.createElement('span');
+        size.className = 'json_number';
+        size.textContent = data_size || '0';
+        parent.appendChild(size);
+        parent.appendChild(document.createTextNode(']'));
+    } else {
+        parent.appendChild(document.createTextNode('Object{...}'));
+    }
 }
 
 function show(obj) {
-    var innerHtml = obj.parentNode.getAttribute('data-inner');
-    obj.parentNode.innerHTML = innerHtml;
+    var parent = obj.parentNode;
+    var nodes = parent._ymirExpandedNodes || [];
+    while (parent.firstChild) { parent.removeChild(parent.firstChild); }
+    for (var i = 0; i < nodes.length; i++) {
+        parent.appendChild(nodes[i]);
+    }
+    parent._ymirExpandedNodes = null;
 }
+
+
+(function bindJsonToggle() {
+    if (window.__ymirJsonToggleBound) {
+        return;
+    }
+    window.__ymirJsonToggleBound = true;
+    document.addEventListener('click', function (event) {
+        var target = event.target;
+        while (target && target !== document) {
+            if (target.getAttribute && target.getAttribute('data-json-toggle')) {
+                event.preventDefault();
+                if (target.getAttribute('data-json-toggle') === 'show') {
+                    show(target);
+                } else {
+                    hide(target);
+                }
+                return;
+            }
+            target = target.parentNode;
+        }
+    }, false);
+})();

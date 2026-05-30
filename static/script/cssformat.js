@@ -50,6 +50,6 @@ function format_css(s) {
         return false
     }
 	$("pre").show();
-	$('#result').html(hljs.highlightAuto(content).value);
+	$('#result').text(content);
 }
-function Empty() { $("#content").val(""); $("#result").html(''); $("#content").select();$("pre").hide(); }
+function Empty() { $("#content").val(""); $("#result").text(''); $("#content").select();$("pre").hide(); }

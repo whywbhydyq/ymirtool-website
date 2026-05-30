@@ -1,32 +1,75 @@
-var toMarkdown = function (string) { var ELEMENTS = [{ patterns: 'p', replacement: function (str, attrs, innerHTML) { return innerHTML ? '\n\n' + innerHTML + '\n' : ''; } }, { patterns: 'br', type: 'void', replacement: '\n' }, { patterns: 'h([1-6])', replacement: function (str, hLevel, attrs, innerHTML) { var hPrefix = ''; for (var i = 0; i < hLevel; i++) { hPrefix += '#'; } return '\n\n' + hPrefix + ' ' + innerHTML + '\n'; } }, { patterns: 'hr', type: 'void', replacement: '\n\n* * *\n' }, { patterns: 'a', replacement: function (str, attrs, innerHTML) { var href = attrs.match(attrRegExp('href')), title = attrs.match(attrRegExp('title')); return href ? '[' + innerHTML + ']' + '(' + href[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')' : str; } }, { patterns: ['b', 'strong'], replacement: function (str, attrs, innerHTML) { return innerHTML ? '**' + innerHTML + '**' : ''; } }, { patterns: ['i', 'em'], replacement: function (str, attrs, innerHTML) { return innerHTML ? '_' + innerHTML + '_' : ''; } }, { patterns: 'code', replacement: function (str, attrs, innerHTML) { return innerHTML ? '`' + innerHTML + '`' : ''; } }, { patterns: 'img', type: 'void', replacement: function (str, attrs, innerHTML) { var src = attrs.match(attrRegExp('src')), alt = attrs.match(attrRegExp('alt')), title = attrs.match(attrRegExp('title')); return '![' + (alt && alt[1] ? alt[1] : '') + ']' + '(' + src[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')'; } }]; for (var i = 0, len = ELEMENTS.length; i < len; i++) { if (typeof ELEMENTS[i].patterns === 'string') { string = replaceEls(string, { tag: ELEMENTS[i].patterns, replacement: ELEMENTS[i].replacement, type: ELEMENTS[i].type }); } else { for (var j = 0, pLen = ELEMENTS[i].patterns.length; j < pLen; j++) { string = replaceEls(string, { tag: ELEMENTS[i].patterns[j], replacement: ELEMENTS[i].replacement, type: ELEMENTS[i].type }); } } } function replaceEls(html, elProperties) { var pattern = elProperties.type === 'void' ? '<' + elProperties.tag + '\\b([^>]*)\\/?>' : '<' + elProperties.tag + '\\b([^>]*)>([\\s\\S]*?)<\\/' + elProperties.tag + '>', regex = new RegExp(pattern, 'gi'), markdown = ''; if (typeof elProperties.replacement === 'string') { markdown = html.replace(regex, elProperties.replacement); } else { markdown = html.replace(regex, function (str, p1, p2, p3) { return elProperties.replacement.call(this, str, p1, p2, p3); }); } return markdown; } function attrRegExp(attr) { return new RegExp(attr + '\\s*=\\s*["\']?([^"\']*)["\']?', 'i'); } string = string.replace(/<pre\b[^>]*>`([\s\S]*)`<\/pre>/gi, function (str, innerHTML) { innerHTML = innerHTML.replace(/^\t+/g, '  '); innerHTML = innerHTML.replace(/\n/g, '\n    '); return '\n\n    ' + innerHTML + '\n'; }); string = string.replace(/^(\s{0,3}\d+)\. /g, '$1\\. '); var noChildrenRegex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi; while (string.match(noChildrenRegex)) { string = string.replace(noChildrenRegex, function (str) { return replaceLists(str); }); } function replaceLists(html) { html = html.replace(/<(ul|ol)\b[^>]*>([\s\S]*?)<\/\1>/gi, function (str, listType, innerHTML) { var lis = innerHTML.split('</li>'); lis.splice(lis.length - 1, 1); for (i = 0, len = lis.length; i < len; i++) { if (lis[i]) { var prefix = (listType === 'ol') ? (i + 1) + ".  " : "*   "; lis[i] = lis[i].replace(/\s*<li[^>]*>([\s\S]*)/i, function (str, innerHTML) { innerHTML = innerHTML.replace(/^\s+/, ''); innerHTML = innerHTML.replace(/\n\n/g, '\n\n    '); innerHTML = innerHTML.replace(/\n([ ]*)+(\*|\d+\.) /g, '\n$1    $2 '); return prefix + innerHTML; }); } } return lis.join('\n'); }); return '\n\n' + html.replace(/[ \t]+\n|\s+$/g, ''); } var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi; while (string.match(deepest)) { string = string.replace(deepest, function (str) { return replaceBlockquotes(str); }); } function replaceBlockquotes(html) { html = html.replace(/<blockquote\b[^>]*>([\s\S]*?)<\/blockquote>/gi, function (str, inner) { inner = inner.replace(/^\s+|\s+$/g, ''); inner = cleanUp(inner); inner = inner.replace(/^/gm, '> '); inner = inner.replace(/^(>([ \t]{2,}>)+)/gm, '> >'); return inner; }); return html; } function cleanUp(string) { string = string.replace(/^[\t\r\n]+|[\t\r\n]+$/g, ''); string = string.replace(/\n\s+\n/g, '\n\n'); string = string.replace(/\n{3,}/g, '\n\n'); return string; } return cleanUp(string); }; if (typeof exports === 'object') { exports.toMarkdown = toMarkdown; }
-   var demo = "# MarkDown示例代码"
-			   + "\n"
-			   + "### Header 3"
-			   + "\n"
-				+ "> This is a blockquote.www.pcjson.com\n"
-				+ ">\n "
-				+ "> This is the second paragraph in the blockquote.\n"
-				+ ">\n"
-				+ "> ## This is an H2 in a blockquote";
+var toMarkdown = function (htmlText) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(String(htmlText == null ? '' : htmlText), 'text/html');
 
-	function markdowndemo() {
-		$("#content").val(demo);
-	}
-	function html2markdown() {
-		var content = $('#content').val();
-		if (!content) {
-			pcjson_com_msg($("#content"), "请输入要处理的HTML内容");
-		}
-		else {
-			hightout(toMarkdown(content));
-		}
-	}
-	function markdown2html() {
-		var content = $('#content').val();
-		if (!content) {
-			pcjson_com_msg($("#content"), "请输入要处理的MarkDown内容");
-		}
-		else {
-			hightout(markdown.toHTML(content));
-		}
-	}
+    function text(node) {
+        if (!node) return '';
+        if (node.nodeType === 3) return node.nodeValue;
+        if (node.nodeType !== 1) return '';
+        var tag = node.tagName.toLowerCase();
+        var children = Array.prototype.map.call(node.childNodes, text).join('');
+        switch (tag) {
+            case 'p': return '\n\n' + children.trim() + '\n';
+            case 'br': return '\n';
+            case 'h1': return '\n\n# ' + children.trim() + '\n';
+            case 'h2': return '\n\n## ' + children.trim() + '\n';
+            case 'h3': return '\n\n### ' + children.trim() + '\n';
+            case 'h4': return '\n\n#### ' + children.trim() + '\n';
+            case 'h5': return '\n\n##### ' + children.trim() + '\n';
+            case 'h6': return '\n\n###### ' + children.trim() + '\n';
+            case 'strong':
+            case 'b': return '**' + children + '**';
+            case 'em':
+            case 'i': return '_' + children + '_';
+            case 'code': return '`' + children + '`';
+            case 'pre': return '\n\n```\n' + node.textContent.replace(/^\n|\n$/g, '') + '\n```\n';
+            case 'a':
+                var href = node.getAttribute('href') || '';
+                return href ? '[' + children + '](' + href + ')' : children;
+            case 'img':
+                var src = node.getAttribute('src') || '';
+                var alt = node.getAttribute('alt') || '';
+                return src ? '![' + alt + '](' + src + ')' : '';
+            case 'li': return '* ' + children.trim() + '\n';
+            case 'ul':
+            case 'ol': return '\n' + children + '\n';
+            case 'blockquote': return '\n' + children.trim().replace(/^/gm, '> ') + '\n';
+            default: return children;
+        }
+    }
+
+    return Array.prototype.map.call(doc.body.childNodes, text).join('').replace(/\n{3,}/g, '\n\n').trim();
+};
+
+var demo = "# MarkDown示例代码"
+    + "\n"
+    + "### Header 3"
+    + "\n"
+    + "> This is a blockquote.www.pcjson.com\n"
+    + ">\n "
+    + "> This is the second paragraph in the blockquote.\n"
+    + ">\n"
+    + "> ## This is an H2 in a blockquote";
+
+function markdowndemo() {
+    $("#content").val(demo);
+}
+function html2markdown() {
+    var content = $('#content').val();
+    if (!content) {
+        pcjson_com_msg($("#content"), "请输入要处理的HTML内容");
+    }
+    else {
+        hightout(toMarkdown(content));
+    }
+}
+function markdown2html() {
+    var content = $('#content').val();
+    if (!content) {
+        pcjson_com_msg($("#content"), "请输入要处理的MarkDown内容");
+    }
+    else {
+        hightout(markdown.toHTML(content));
+    }
+}
+if (typeof exports === 'object') { exports.toMarkdown = toMarkdown; }

@@ -76,7 +76,7 @@
                                 if (Hex == "F")
                                     Value = 15;
                                 else
-                                    Value = eval(Hex)
+                                    Value = parseInt(Hex, 10)
             return Value;
         }
         function GiveHex(RGB) {

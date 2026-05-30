@@ -5,16 +5,16 @@ $(function()
 	const formattedEmptyInputMsg = ''+emptyInputMsg+'';
 	const formattedEmptyOutputMsg = ''+emptyOutputMsg+'';
 
-__=['\x23\x69\x6e\x70\x75\x74',"\x76\x61\x6c","\x74\x72\x69\x6d",'\x23\x6f\x75\x74\x70\x75\x74',"\x68\x74\x6d\x6c","",'\x23\x69\x6e\x6c\x69\x6e\x65',"\x69\x73",'\x3a\x63\x68\x65\x63\x6b\x65\x64',"\x65\x72\x72\x6f\x72",'\x3c\x73\x70\x61\x6e \x63\x6c\x61\x73\x73\x3d\x22\x63\x6c\x72\x2d\x72\x65\x64\x22\x3e','\x3c\x2f\x73\x70\x61\x6e\x3e',"\x6c\x6f\x67","\x45\x52\x52\x4f\x52\x3a","\x6d\x61\x74\x63\x68","\x6c\x65\x6e\x67\x74\x68","\x67\x6f",'\x66\x75\x6e\x63\x74\x69\x6f\x6e',"\x68\x69\x67\x68\x6c\x69\x67\x68\x74","\x76\x61\x6c\x75\x65"];function doConversion(){var QWPX1 = $(__[0])[__[1]]()[__[2]]();if (!QWPX1 || QWPX1 == emptyInputMsg){$(__[3])[__[4]](formattedEmptyOutputMsg);return;};let output = jsonToGo(QWPX1, __[5], !$(__[6])[__[7]](__[8]), false);if (output[__[9]]){$(__[3])[__[4]](__[10]+output[__[9]]+__[11]);console[__[12]](__[13], output, output[__[9]]);var UTMENsHr2 = output[__[9]][__[14]](/Unexpected token .+ in JSON at position (\d+)/);if (UTMENsHr2) {try {var JTwdRb$OM3 = UTMENsHr2[__[15]] == 2 && UTMENsHr2[1] && window["\x70\x61\x72\x73\x65\x49\x6e\x74"](UTMENsHr2[1]);JTwdRb$OM3 && $(__[3])[__[4]](constructJSONErrorHTML(output[__[9]], JTwdRb$OM3, QWPX1));} catch(e) {};}}else{var drrp4 = output[__[16]];if (typeof gofmt === __[17]);drrp4 = gofmt(output[__[16]]);var q5 = hljs[__[18]](__[16], drrp4);$(__[3])[__[4]](q5[__[19]]);}}
+__=['\x23\x69\x6e\x70\x75\x74',"\x76\x61\x6c","\x74\x72\x69\x6d",'\x23\x6f\x75\x74\x70\x75\x74',"text","",'\x23\x69\x6e\x6c\x69\x6e\x65',"\x69\x73",'\x3a\x63\x68\x65\x63\x6b\x65\x64',"\x65\x72\x72\x6f\x72",'\x3c\x73\x70\x61\x6e \x63\x6c\x61\x73\x73\x3d\x22\x63\x6c\x72\x2d\x72\x65\x64\x22\x3e','\x3c\x2f\x73\x70\x61\x6e\x3e',"\x6c\x6f\x67","\x45\x52\x52\x4f\x52\x3a","\x6d\x61\x74\x63\x68","\x6c\x65\x6e\x67\x74\x68","\x67\x6f",'\x66\x75\x6e\x63\x74\x69\x6f\x6e',"\x68\x69\x67\x68\x6c\x69\x67\x68\x74","\x76\x61\x6c\x75\x65"];function doConversion(){var QWPX1 = $(__[0])[__[1]]()[__[2]]();if (!QWPX1 || QWPX1 == emptyInputMsg){$(__[3])[__[4]](formattedEmptyOutputMsg);return;};let output = jsonToGo(QWPX1, __[5], !$(__[6])[__[7]](__[8]), false);if (output[__[9]]){$(__[3]).text(output[__[9]]);console[__[12]](__[13], output, output[__[9]]);var UTMENsHr2 = output[__[9]][__[14]](/Unexpected token .+ in JSON at position (\d+)/);if (UTMENsHr2) {try {var JTwdRb$OM3 = UTMENsHr2[__[15]] == 2 && UTMENsHr2[1] && window["\x70\x61\x72\x73\x65\x49\x6e\x74"](UTMENsHr2[1]);JTwdRb$OM3 && $(__[3]).text(output[__[9]]);} catch(e) {};}}else{var drrp4 = output[__[16]];if (typeof gofmt === __[17]);drrp4 = gofmt(output[__[16]]);$(__[3]).text(drrp4);}}
 	$('#input').on('focus', function()
 	{
 		var val = $(this).text();
 		if (!val)
 		{
-			$(this).html(formattedEmptyInputMsg);
-			$('#output').html(formattedEmptyOutputMsg);
+			$(this).text(formattedEmptyInputMsg);
+			$('#output').text(formattedEmptyOutputMsg);
 		}else if (val == emptyInputMsg){
-			$(this).html("");
+			$(this).text("");
 		}
 	});
 
@@ -23,8 +23,8 @@ __=['\x23\x69\x6e\x70\x75\x74',"\x76\x61\x6c","\x74\x72\x69\x6d",'\x23\x6f\x75\x
 		var val = $(this).text();
 		if (!val)
 		{
-			$(this).html(formattedEmptyInputMsg);
-			$('#output').html(formattedEmptyOutputMsg);
+			$(this).text(formattedEmptyInputMsg);
+			$('#output').text(formattedEmptyOutputMsg);
 		}
 	}).blur();
 
@@ -81,11 +81,11 @@ __=['\x23\x69\x6e\x70\x75\x74',"\x76\x61\x6c","\x74\x72\x69\x6d",'\x23\x6f\x75\x
 		if(!dark)
 		{
 			$("head").append("<link rel='stylesheet' href='resources/css/dark.css' id='dark-css'>");
-			$("#dark").html("light mode");
+			$("#dark").text("light mode");
 		} else
 		{
 			$("#dark-css").remove();
-			$("#dark").html("dark mode");
+			$("#dark").text("dark mode");
 		}
 		dark = !dark;
 	});
@@ -221,6 +221,6 @@ var sampleJson1 = [
 ];
 function Empty(){
 	$("#input").val('');
-	$("#output").html('');
+	$("#output").text('');
 
 }

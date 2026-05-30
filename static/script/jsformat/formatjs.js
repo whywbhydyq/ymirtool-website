@@ -30,7 +30,7 @@ function pack_js(base64) {
 function Empty() {
     document.getElementById("content").value = "";
     document.getElementById("content").select();
-	$("#result").html('');
+	var result = document.getElementById("result"); if (result) result.textContent = "";
 }
 function GetFocus() {
     document.getElementById("content").focus();

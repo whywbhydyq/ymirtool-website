@@ -7,11 +7,12 @@ function formatDate(now) {
     var second = now.getSeconds();
     return year + "-" + (month = month < 10 ? ("0" + month) : month) + "-" + (date = date < 10 ? ("0" + date) : date) + " " + (hour = hour < 10 ? ("0" + hour) : hour) + ":" + (minute = minute < 10 ? ("0" + minute) : minute) + ":" + (second = second < 10 ? ("0" + second) : second);
 }
+
 var output;
 var websocket;
+
 function init() {
     output = document.getElementById("output");
-    testWebSocket();
 }
 
 function addsocket() {
@@ -28,30 +29,29 @@ function closesocket() {
         websocket.close();
     }
     else {
-        writeToScreen("<span style='color:red'>Websocket未连接，无需进行断开操作！</span>");
+        writeStatus('error', 'Websocket未连接，无需进行断开操作！');
     }
 }
 
 function StartWebSocket(wsUri) {
     websocket = new WebSocket(wsUri);
-    websocket.onopen = function (evt) { onOpen(evt) };
-    websocket.onclose = function (evt) { onClose(evt) };
-    websocket.onmessage = function (evt) { onMessage(evt) };
-    websocket.onerror = function (evt) { onError(evt) };
+    websocket.addEventListener('open', onOpen);
+    websocket.addEventListener('close', onClose);
+    websocket.addEventListener('message', onMessage);
+    websocket.addEventListener('error', onError);
 }
 
 function onOpen(evt) {
-    writeToScreen("<span style='color:red'>连接成功，现在你可以发送信息进行测试了！</span>");
+    writeStatus('error', '连接成功，现在你可以发送信息进行测试了！');
 }
 function onClose(evt) {
-    writeToScreen("<span style='color:red'>Websocket连接已断开！</span>");
-    websocket.close();
+    writeStatus('error', 'Websocket连接已断开！');
 }
 function onMessage(evt) {
-    writeToScreen('<span style="color:blue">服务端回应&nbsp;' + formatDate(new Date()) + '</span><br/><span>' + evt.data + '</span>');
+    writeMessage('blue', '服务端回应 ' + formatDate(new Date()), evt.data);
 }
 function onError(evt) {
-    writeToScreen('<span style="color: red;">发生错误:</span> ' + evt.data);
+    writeStatus('error', '发生错误: ' + (evt && evt.data ? evt.data : '连接失败'));
 }
 function SendMessage() {
     var message = $("#message").val();
@@ -69,31 +69,65 @@ function SendMessage() {
         return false;
     }
     $("#message").val('');
-    writeToScreen('<span style="color:green">你发送的信息&nbsp;' + formatDate(new Date()) + '</span><br/>' + message);
+    writeMessage('green', '你发送的信息 ' + formatDate(new Date()), message);
     websocket.send(message);
 }
-function writeToScreen(message) {
-    var div = "<div>" + message + "</div>";
-    var d = $("#output");
-    var d = d[0];
-    var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
-    $("#output").append(div);
+
+function appendOutput(entry) {
+    var target = output || document.getElementById('output');
+    if (!target) return;
+    var doScroll = target.scrollTop == target.scrollHeight - target.clientHeight;
+    target.appendChild(entry);
     if (doScroll) {
-        d.scrollTop = d.scrollHeight - d.clientHeight;
+        target.scrollTop = target.scrollHeight - target.clientHeight;
     }
 }
+
+function writeStatus(type, message) {
+    var div = document.createElement('div');
+    var span = document.createElement('span');
+    span.style.color = type === 'error' ? 'red' : type;
+    span.textContent = message;
+    div.appendChild(span);
+    appendOutput(div);
+}
+
+function writeMessage(color, title, message) {
+    var div = document.createElement('div');
+    var titleSpan = document.createElement('span');
+    titleSpan.style.color = color;
+    titleSpan.textContent = title;
+    div.appendChild(titleSpan);
+    div.appendChild(document.createElement('br'));
+    var bodySpan = document.createElement('span');
+    bodySpan.textContent = String(message == null ? '' : message);
+    div.appendChild(bodySpan);
+    appendOutput(div);
+}
+
+function writeToScreen(message) {
+    writeStatus('black', String(message == null ? '' : message));
+}
+
 function en(event) {
-    var evt = evt ? evt : (window.event ? window.event : null);
-    if (evt.keyCode == 13) {
-        SendMessage()
+    var evt = event || window.event;
+    if (evt && evt.keyCode == 13) {
+        SendMessage();
     }
 }
-$("#demo1").click(function(){
-	var src = (document.location.protocol == "Net:") ?"ws://echo.websocket.org":"wss://echo.websocket.org";
-	wsaddr.value=src;
+
+$(function () {
+    init();
+    $("#demo1").click(function () {
+        var src = (document.location.protocol == "Net:") ? "ws://echo.websocket.org" : "wss://echo.websocket.org";
+        var wsaddr = document.getElementById('wsaddr');
+        if (wsaddr) wsaddr.value = src;
+    });
 });
+
 function Empty() {
     $("#wsaddr").val("");
     $("#message").val("");
-    $("#output").html("");
+    var target = document.getElementById('output');
+    if (target) target.textContent = '';
 }

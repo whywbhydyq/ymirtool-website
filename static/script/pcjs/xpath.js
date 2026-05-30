@@ -19,12 +19,16 @@
 				switch(t){
 					case 1:
 					if($("#showImg").is(":checked")){
-						$("#res").append("<img src='"+$(this).attr("src")+"' style='margin-left:2px'> ");
+						var img = document.createElement("img");
+						img.src = $(this).attr("src") || "";
+						img.style.marginLeft = "2px";
+						var res = document.getElementById("res");
+						if (res) { res.appendChild(img); res.appendChild(document.createTextNode(" ")); }
 					}
 					html+=$(this).attr("src")+"\r\n";
 					break;
 					case 2:
-					html+=$(this).html()+"\r\n";
+					html += (this.innerHTML || "") + "\r\n";
 					break;
 					case 3:
 					//if($(this).attr("href").indexOf("Net://")>=0||$(this).attr("href").indexOf("https://")>=0){

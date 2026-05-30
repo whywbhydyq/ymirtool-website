@@ -10,7 +10,7 @@ function textDiff() {
     }
     var sm = new difflib.SequenceMatcher(base, newtxt);
     var opcodes = sm.get_opcodes();
-    $("#diffoutput").html(diffview.buildView({
+    $("#diffoutput").empty().append(diffview.buildView({
         baseTextLines: base,
         newTextLines: newtxt,
         opcodes: opcodes,
@@ -23,6 +23,6 @@ function textDiff() {
 function Empty() {
     $("#baseText").val("");
     $("#newText").val("");
-    $("#diffoutput").html("");
+    $("#diffoutput").empty();
     $("#baseText").select();
 }

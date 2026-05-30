@@ -226,6 +226,37 @@ function getTypeFromJsonVal(val, key, attrClassAry) {
         }
     }
 }
+
+function setJavaStatus(message, isSuccess) {
+    var box = document.getElementById('resule_text');
+    if (!box) { return; }
+    box.textContent = '';
+    var alert = document.createElement('div');
+    alert.className = 'alert ' + (isSuccess ? 'alert-success' : 'alert-danger');
+    alert.style.maxWidth = '99%';
+    alert.textContent = message;
+    box.appendChild(alert);
+}
+function appendJavaResult(beanName, beanText, isSmallText) {
+    var list = document.getElementById('result-list');
+    if (!list) { return; }
+    var row = document.createElement('div');
+    row.className = 'row result_row';
+    var label = document.createElement('span');
+    label.className = 'greentag';
+    label.textContent = '类名：' + beanName;
+    row.appendChild(label);
+    row.appendChild(document.createElement('br'));
+    var pre = document.createElement('pre');
+    pre.style.maxHeight = '500px';
+    var code = document.createElement('code');
+    code.className = 'java' + (isSmallText ? ' small-text' : '');
+    code.textContent = beanText;
+    pre.appendChild(code);
+    row.appendChild(pre);
+    list.appendChild(row);
+}
+
 function download_zip() {
 	var kk='P';kk+='c';kk+='j';kk+='s';kk+='o';kk+='n';
     var package_name = $('#package_name').val();
@@ -255,20 +286,13 @@ function gen() {
             //把本程序定义的数据格式转换为文本
             $.each(beans, function (i, v) {
                 var beanText = toBeanText(v, package_name);
-                var textCss = "";
-                if (i != 0) {
-                    textCss = "small-text";
-                }
-
-                var html = '<div class="row result_row">' + "<span class=\"greentag\">类名：" + v.name + "</span>" + "<br>" + '<pre style="max-height:500px;"><code class="java">' + beanText + '</code></pre></div>';
-
-                $("#result-list").append(html);
+                appendJavaResult(v.name, beanText, i != 0);
             })
-            $('#resule_text').html('<div class="alert alert-success" style="max-width: 99%;">成功生成JavaBean代码!</div>');
+            setJavaStatus('成功生成JavaBean代码!', true);
         }
         else {
             $('#json_content').select();
-            $('#resule_text').html('<div class="alert alert-danger" style="max-width: 99%;">请贴入要生成JavaBean的Json代码</div>');
+            setJavaStatus('请贴入要生成JavaBean的Json代码', false);
         }
     }
     catch (err) {
@@ -279,11 +303,11 @@ function gen() {
         else {
             tip = "parse error,makesure the json is right";
         }
-        $('#resule_text').html('<div class="alert alert-danger" style="max-width: 99%;">' + tip + '</div>');
+        setJavaStatus(tip, false);
     }
 }
 function empty() {
     $("#json_content").val("");
     $('#json_content').select();
-    $('#resule_text').html('<div class="alert alert-danger" style="max-width: 99%;">请贴入要生成JavaBean的Json代码</div>');
+    setJavaStatus('请贴入要生成JavaBean的Json代码', false);
 }

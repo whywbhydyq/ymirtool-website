@@ -27,7 +27,7 @@ function startRefresh() {
         endButton.show();
         var frequency = parseInt($('#frequency').val());
         refresh();
-        timer = setInterval("refresh()", frequency * 1000);
+        timer = setInterval(refresh, frequency * 1000);
     } catch (Exception) {
         startButton.show();
         endButton.hide();

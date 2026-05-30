@@ -10,6 +10,7 @@
     onReady(function () {
         initJqueryFeatures(0);
         refineLegacyLabels();
+        initRunJsSandbox();
     });
 
     function initJqueryFeatures(retryCount) {
@@ -72,18 +73,33 @@
             try {
                 var visitHistory = localStorage.getItem('visit_history');
                 if (visitHistory) {
-                    var html = '';
+                    var container = document.getElementById('visit_history');
                     var entries = visitHistory.split('|');
-                    for (var j = 0; j < entries.length; j++) {
-                        var index = entries[j].lastIndexOf('-');
-                        if (index <= 0) continue;
-                        var label = entries[j].slice(0, index);
-                        var url = entries[j].slice(index + 1);
-                        html += '<a class="btn btn-success btn-xs" style="margin-left:5px;display:inline-block;" href="' + escapeAttr(url) + '">' + escapeHtml(label) + '</a>';
+                    var added = 0;
+                    if (container) {
+                        while (container.firstChild) {
+                            container.removeChild(container.firstChild);
+                        }
+                        for (var j = 0; j < entries.length; j++) {
+                            var index = entries[j].lastIndexOf('-');
+                            if (index <= 0) continue;
+                            var label = entries[j].slice(0, index);
+                            var url = escapeAttr(entries[j].slice(index + 1));
+                            if (!url || url === '#') continue;
+                            var link = document.createElement('a');
+                            link.className = 'btn btn-success btn-xs';
+                            link.style.marginLeft = '5px';
+                            link.style.display = 'inline-block';
+                            link.setAttribute('href', url);
+                            link.textContent = label;
+                            container.appendChild(link);
+                            added++;
+                        }
                     }
-                    if (html) {
+                    if (added) {
                         $('#visit_history').parent().show();
-                        $('#visit_history').html(html);
+                    } else {
+                        $('#foot-history').hide();
                     }
                 } else {
                     $('#foot-history').hide();
@@ -92,6 +108,35 @@
                 $('#foot-history').hide();
             }
         });
+    }
+
+    function initRunJsSandbox() {
+        var content = document.getElementById('content');
+        if (!content || typeof window.webdebug !== 'function') {
+            return;
+        }
+
+        var runButton = document.querySelector('input[onclick="webdebug();"]');
+        if (!runButton) {
+            return;
+        }
+
+        window.webdebug = function () {
+            var frame = document.getElementById('ymir-runjs-preview');
+            if (!frame) {
+                frame = document.createElement('iframe');
+                frame.id = 'ymir-runjs-preview';
+                frame.title = 'Sandboxed HTML/CSS/JS preview';
+                frame.setAttribute('sandbox', 'allow-scripts');
+                frame.style.width = '100%';
+                frame.style.minHeight = '420px';
+                frame.style.marginTop = '12px';
+                frame.style.border = '1px solid #ddd';
+                frame.style.background = '#fff';
+                runButton.parentNode.parentNode.parentNode.appendChild(frame);
+            }
+            frame.srcdoc = content.value || '';
+        };
     }
 })();
 
@@ -130,6 +175,41 @@ function escapeAttr(value) {
         return '#';
     }
     return escapeHtml(text);
+}
+
+
+function ymirSafeSetText(target, value) {
+    var node = typeof target === 'string' ? document.querySelector(target) : target;
+    if (node) {
+        node.textContent = value == null ? '' : String(value);
+    }
+    return node;
+}
+function ymirSafeClear(target) {
+    var node = typeof target === 'string' ? document.querySelector(target) : target;
+    if (node) {
+        while (node.firstChild) {
+            node.removeChild(node.firstChild);
+        }
+    }
+    return node;
+}
+function ymirSafeStatus(selector, message, addClass, removeClass) {
+    var node = ymirSafeSetText(selector, message);
+    if (node && window.jQuery) {
+        var $node = jQuery(node);
+        if (removeClass) { $node.removeClass(removeClass); }
+        if (addClass) { $node.addClass(addClass); }
+        $node.removeClass('d-none').addClass('d-block');
+    }
+    return node;
+}
+function ymirSafeUrl(value) {
+    var url = String(value || '').trim();
+    if (!url || /^\s*(javascript|data|vbscript):/i.test(url)) {
+        return '';
+    }
+    return url;
 }
 
 function pcjson_com_msg(target, msg) {
@@ -171,14 +251,81 @@ function bindClearButtonWhenReady() {
 }
 bindClearButtonWhenReady();
 
-var setJS = function (jsArr) {
-    var i = 0, len = jsArr.length;
-    for (i; i < len; i++) {
-        var script = document.createElement('script');
-        script.setAttribute('src', jsArr[i]);
-        script.setAttribute('type', 'text/javascript');
-        document.body.appendChild(script);
+var setJS = function (jsArr, callback) {
+    var list = Array.isArray(jsArr) ? jsArr.slice() : [];
+    var index = 0;
+    var done = false;
+    var callbacks = [];
+
+    function finish() {
+        if (done) {
+            return;
+        }
+        done = true;
+        if (typeof callback === 'function') {
+            callbacks.push(callback);
+        }
+        while (callbacks.length) {
+            var fn = callbacks.shift();
+            try {
+                fn();
+            } catch (err) {
+                setTimeout(function () { throw err; }, 0);
+            }
+        }
     }
+
+    function loadNext() {
+        if (index >= list.length) {
+            finish();
+            return;
+        }
+
+        var src = list[index++];
+        if (!src) {
+            loadNext();
+            return;
+        }
+
+        var existing = document.querySelector('script[src="' + src.replace(/"/g, '\"') + '"]');
+        if (existing && existing.getAttribute('data-ymir-loaded') === 'true') {
+            loadNext();
+            return;
+        }
+
+        var script = existing || document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        script.async = false;
+        script.onload = function () {
+            script.setAttribute('data-ymir-loaded', 'true');
+            loadNext();
+        };
+        script.onerror = function () {
+            script.setAttribute('data-ymir-load-error', 'true');
+            loadNext();
+        };
+        if (!existing) {
+            script.setAttribute('src', src);
+            document.body.appendChild(script);
+        } else {
+            loadNext();
+        }
+    }
+
+    loadNext();
+
+    return {
+        then: function (fn) {
+            if (typeof fn !== 'function') {
+                return;
+            }
+            if (done) {
+                fn();
+            } else {
+                callbacks.push(fn);
+            }
+        }
+    };
 };
 
 function copyTxtToClipboard(id, selector) {
@@ -241,3 +388,32 @@ function pcjson_convert(type, t) {
     pcjson_com_msg($('#content'), '当前静态版本不再请求远程接口，请使用页面内的本地转换功能。');
     return false;
 }
+
+
+(function () {
+    function renderRunJsPreview() {
+        var content = document.getElementById('content');
+        if (!content) { return; }
+        var frame = document.getElementById('ymir-runjs-preview');
+        if (!frame) {
+            frame = document.createElement('iframe');
+            frame.id = 'ymir-runjs-preview';
+            frame.title = 'Sandboxed HTML/CSS/JS preview';
+            frame.setAttribute('sandbox', 'allow-scripts');
+            frame.style.width = '100%';
+            frame.style.minHeight = '420px';
+            frame.style.marginTop = '12px';
+            frame.style.border = '1px solid #ddd';
+            frame.style.background = '#fff';
+            var form = content.closest ? content.closest('form') : null;
+            (form || document.body).appendChild(frame);
+        }
+        frame.srcdoc = content.value || '';
+    }
+    window.ymirRunJsSandbox = renderRunJsPreview;
+    document.addEventListener('DOMContentLoaded', function () {
+        if (document.getElementById('content') && /\/runjs\/?$/.test(window.location.pathname)) {
+            window.webdebug = renderRunJsPreview;
+        }
+    });
+}());

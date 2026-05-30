@@ -25,6 +25,11 @@ $("#generator").click(function(){
         };
         passwords.push(password);
     };
-    $("#result").html(passwords.join("<br>\n"));
+    var result = document.getElementById("result");
+    result.replaceChildren();
+    passwords.forEach(function (password, index) {
+        if (index > 0) result.appendChild(document.createElement("br"));
+        result.appendChild(document.createTextNode(password));
+    });
 });
 

@@ -31,7 +31,7 @@ function GetCode() {
 }
 function Empty() {
     $("#searchText").val("");
-    $("#result").html("");
+    $("#result").empty();
     $("#searchText").select();
 	$("pre").hide();
 }

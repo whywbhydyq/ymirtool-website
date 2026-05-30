@@ -1,72 +1,72 @@
 var line_color = '#000';
 var line_size = 3;
-$(function() {
-    $('.tool .color div').click(function() {
-        $('.tool .color div').removeClass('active');
-        $(this).addClass('active');
-        line_color = $(this).data('color');
-        mouseDot.fill = line_color;
-    });
-
-    $('.tool .size div').click(function() {
-        $('.tool .size div').removeClass('active');
-        $(this).addClass('active');
-        line_size = $(this).data('size');
-        mouseDot.radius = Math.max(line_size / 2, 3);
-    });
-});
-
-
-var childrens = new Array();
-
-var c = document.querySelector("#canvas"),
-    ctx = c.getContext("2d");
-// c.width = window.innerWidth;
-// c.height = window.innerHeight;
-c.addEventListener("touchmove", function(e) {
-    e.preventDefault();
-}, false);
-
-
-var cs = oCanvas.create({
-    canvas: "#canvas",
-    background: "#fff",
-    fps: 30,
-    disableScrolling: true
-});
-
+var childrens = [];
+var c = document.querySelector('#canvas');
+var ctx = c ? c.getContext('2d') : null;
+var cs = null;
 var isDraw = false;
 var xx = 0;
 var yy = 0;
 var mouseDot;
 
-clearAll();
+function ymirHuabanReady(fn) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+    } else {
+        fn();
+    }
+}
 
-cs.bind('mousedown', function() {
-    drawBegin(cs.mouse.x, cs.mouse.y);
-}).bind('touchstart tap', function() {
-    drawBegin(cs.touch.x, cs.touch.y);
-}).bind('mouseup touchend', function() {
-    isDraw = false;
-}).bind('mousemove', function() {
-    drawMove(cs.mouse.x, cs.mouse.y);
-}).bind('touchmove', function() {
-    drawMove(cs.touch.x, cs.touch.y);
-});
+function ymirHuabanNumber(value, fallback) {
+    var parsed = parseFloat(value);
+    return Number.isFinite(parsed) ? parsed : fallback;
+}
 
-/*
-cs.setLoop(function () {
-	mouseDot.x = cs.mouse.x;
-	mouseDot.y = cs.mouse.y;
-}).start();
-*/
+function ymirHuabanInitControls() {
+    document.querySelectorAll('.tool .color div').forEach(function (node) {
+        node.addEventListener('click', function () {
+            document.querySelectorAll('.tool .color div').forEach(function (item) { item.classList.remove('active'); });
+            node.classList.add('active');
+            line_color = node.getAttribute('data-color') || line_color;
+            if (mouseDot) mouseDot.fill = line_color;
+        });
+    });
+
+    document.querySelectorAll('.tool .size div').forEach(function (node) {
+        node.addEventListener('click', function () {
+            document.querySelectorAll('.tool .size div').forEach(function (item) { item.classList.remove('active'); });
+            node.classList.add('active');
+            line_size = ymirHuabanNumber(node.getAttribute('data-size'), line_size);
+            if (mouseDot) mouseDot.radius = Math.max(line_size / 2, 3);
+        });
+    });
+}
+
+function clearAll() {
+    if (!cs) return;
+    cs.reset();
+    cs.mouse.hide();
+    mouseDot = cs.display.arc({
+        x: -100,
+        y: -100,
+        radius: Math.max(line_size / 2, 3),
+        start: 0,
+        end: 360,
+        fill: line_color,
+        shadow: '0 0 5px #333'
+    });
+    cs.addChild(mouseDot);
+}
+
+function add_child(d) {
+    childrens.push(d);
+}
 
 function drawBegin(x, y) {
+    if (!cs) return;
     isDraw = true;
-
     xx = x;
     yy = y;
-
     var dot = cs.display.arc({
         x: x,
         y: y,
@@ -75,26 +75,19 @@ function drawBegin(x, y) {
         end: 360,
         fill: line_color
     });
-
     cs.addChild(dot);
     add_child(dot);
 }
 
 function drawMove(x, y) {
+    if (!cs || !mouseDot) return;
     if (isDraw) {
         var line = cs.display.line({
-            start: {
-                x: xx,
-                y: yy
-            },
-            end: {
-                x: x,
-                y: y
-            },
+            start: { x: xx, y: yy },
+            end: { x: x, y: y },
             stroke: '' + line_size + 'px ' + line_color,
-            cap: "round"
+            cap: 'round'
         });
-
         cs.addChild(line);
         add_child(line);
         xx = x;
@@ -106,30 +99,8 @@ function drawMove(x, y) {
     }
 }
 
-function clearAll() {
-    cs.reset();
-
-    // 处理鼠标
-    cs.mouse.hide();
-
-    mouseDot = cs.display.arc({
-        x: -100,
-        y: -100,
-        radius: Math.max(line_size / 2, 3),
-        start: 0,
-        end: 360,
-        fill: line_color,
-        shadow: '0 0 5px #333'
-    });
-
-    cs.addChild(mouseDot);
-}
-
-function add_child(d) {
-    childrens.push(d);
-}
-
 function re_draw() {
+    if (!cs) return;
     var child = childrens.pop();
     if (child) {
         cs.removeChild(child);
@@ -138,8 +109,35 @@ function re_draw() {
 }
 
 function saveImageInfo() {
-    var mycanvas = document.getElementById("canvas");
-    var image = mycanvas.toDataURL("image/png");
+    var mycanvas = document.getElementById('canvas');
+    if (!mycanvas) return;
+    var image = mycanvas.toDataURL('image/png');
     var w = window.open('about:blank', 'image_from_atool');
-    w.document.write("<img src='" + image + "' alt='image_from_atool'/>");
+    if (!w || !w.document) return;
+    w.document.title = 'image_from_atool';
+    if (w.document.body) {
+        w.document.body.textContent = '';
+        var img = w.document.createElement('img');
+        img.src = image;
+        img.alt = 'image_from_atool';
+        w.document.body.appendChild(img);
+    }
 }
+
+ymirHuabanReady(function () {
+    if (!c || !window.oCanvas) return;
+    c.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+    cs = oCanvas.create({
+        canvas: '#canvas',
+        background: '#fff',
+        fps: 30,
+        disableScrolling: true
+    });
+    clearAll();
+    cs.bind('mousedown', function () { drawBegin(cs.mouse.x, cs.mouse.y); })
+        .bind('touchstart tap', function () { drawBegin(cs.touch.x, cs.touch.y); })
+        .bind('mouseup touchend', function () { isDraw = false; })
+        .bind('mousemove', function () { drawMove(cs.mouse.x, cs.mouse.y); })
+        .bind('touchmove', function () { drawMove(cs.touch.x, cs.touch.y); });
+    ymirHuabanInitControls();
+});

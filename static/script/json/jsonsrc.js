@@ -3,6 +3,26 @@ var current_json_str = '';
 var xml_flag = false;
 var zip_flag = false;
 $('.tip').tooltip();
+
+function replaceJsonTargetMarkup(markup) {
+    var target = document.getElementById('json-target');
+    if (!target) return;
+    while (target.firstChild) target.removeChild(target.firstChild);
+    var range = document.createRange();
+    range.selectNode(target);
+    target.appendChild(range.createContextualFragment(String(markup || '')));
+}
+function jsonViewEscapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (char) {
+        return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[char];
+    });
+}
 function init() {
     xml_flag = false;
     zip_flag = false;
@@ -18,9 +38,9 @@ $('#json-src').keyup(function () {
                 var json_obj = $.xml2json(content);
                 content = JSON.stringify(json_obj);
             } catch (e) {
-                result = '解析错误：<span style="color: #f1592a;font-weight:bold;">' + e.message + '</span>';
+                result = '解析错误：<span style="color: #f1592a;font-weight:bold;">' + jsonViewEscapeHtml(e.message) + '</span>';
                 current_json_str = result;
-                $('#json-target').html(result);
+                replaceJsonTargetMarkup(result);
                 return false;
             }
 
@@ -30,13 +50,13 @@ $('#json-src').keyup(function () {
             current_json_str = JSON.stringify(current_json);
             result = new Fjson(content, 4).toString();
         } catch (e) {
-            result = '<span style="color: #f1592a;font-weight:bold;">' + e + '</span>';
+            result = '<span style="color: #f1592a;font-weight:bold;">' + jsonViewEscapeHtml(e) + '</span>';
             current_json_str = result;
         }
 
-        $('#json-target').html(result);
+        replaceJsonTargetMarkup(result);
     } else {
-        $('#json-target').html('');
+        $('#json-target').empty();
     }
 
 });
@@ -45,7 +65,9 @@ $('#xml').click(function () {
         $('#json-src').keyup();
     } else {
         var result = $.json2xml(current_json);
-        $('#json-target').html('<textarea style="width:100%;height:100%;border:0;resize:none;">' + result + '</textarea>');
+        var textarea = $('<textarea style="width:100%;height:100%;border:0;resize:none;"></textarea>');
+        textarea.val(result);
+        $('#json-target').empty().append(textarea);
         xml_flag = true;
     }
 });
@@ -53,7 +75,7 @@ $('#zip').click(function () {
     if (zip_flag) {
         $('#json-src').keyup();
     } else {
-        $('#json-target').html(current_json_str);
+        $('#json-target').text(current_json_str);
         zip_flag = true;
     
     }
@@ -61,7 +83,7 @@ $('#zip').click(function () {
 });
 $('#clear').click(function () {
     $('#json-src').val('');
-    $('#json-target').html('');
+    $('#json-target').empty();
 });
 $('.save').click(function () {
     var content = JSON.stringify(current_json);

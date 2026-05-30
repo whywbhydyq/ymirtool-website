@@ -55,6 +55,6 @@ $("#changebtn").click(function () {
 });
 function Empty() {
     $("#content").val("");
-    $("#result").html("");
+    $("#result").empty();
     $("#content").select();
 }

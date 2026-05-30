@@ -5,9 +5,8 @@ function finishTabifier(code) {
     code = code.replace(/\n\s*\n/g, '\n');  //blank lines
     code = code.replace(/^[\s\n]*/, ''); //leading space
     code = code.replace(/[\s\n]*$/, ''); //trailing space
-	var highCode = hljs.highlightAuto(code).value;
 	$("pre").show();
-    $('#result').html(highCode);
+    $('#result').text(code);
     level = 0;
 }
 
@@ -386,7 +385,7 @@ function cleanJson(code) {
     cleanAsync();
 }
 
-function Empty() { $("#content").val(""); $("#result").html(''); $("#content").select();$("pre").hide(); }
+function Empty() { $("#content").val(""); $("#result").text(''); $("#content").select();$("pre").hide(); }
 function runTabifier(lan) {
 	lan = (typeof(lan) == "undefined" || lan == '') ? "程序" : lan;
 	var msg ='请输入要格式化美化的'+lan+'代码';

@@ -47,7 +47,7 @@ function dataToTable() {
     }
     newText = "<table>\n" + newText + "</table>\n";
 	$("pre").show();
-	$('#result').html(hljs.highlightAuto(newText).value);
+	$('#result').text(newText);
 }
 $("pre").hide();
-function Empty() { $("#content").val(""); $("#result").html(""); $("#content").select();$("pre").hide(); }
+function Empty() { $("#content").val(""); $("#result").text(""); $("#content").select();$("pre").hide(); }

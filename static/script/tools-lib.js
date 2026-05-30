@@ -1,3 +1,17 @@
+function legacyBindEvent(element, eventName, handler) {
+    if (!element || typeof handler !== 'function') return;
+    element.addEventListener(eventName, function (event) {
+        return handler.call(element, event);
+    }, false);
+}
+
+function legacyBindEvents(element, eventNames, handler) {
+    if (!element || !eventNames) return;
+    eventNames.split(/\s+/).forEach(function (eventName) {
+        if (eventName) legacyBindEvent(element, eventName, handler);
+    });
+}
+
 var tools = {
     clear: function (array) {
         for (var i = 0; i < array.length; i++) {
@@ -44,20 +58,33 @@ var tools = {
     },
     webdebugger: {
         Webtest: function () {
-            var win = window.open();
-            win.document.open();
-            win.document.write($('#content').val());
-            win.document.close();
+            var frame = document.getElementById('legacy-webdebugger-preview');
+            if (!frame) {
+                frame = document.createElement('iframe');
+                frame.id = 'legacy-webdebugger-preview';
+                frame.title = 'Sandboxed HTML/CSS/JS preview';
+                frame.setAttribute('sandbox', 'allow-scripts');
+                frame.style.width = '100%';
+                frame.style.minHeight = '420px';
+                frame.style.marginTop = '12px';
+                frame.style.border = '1px solid #ddd';
+                frame.style.background = '#fff';
+                $('#content').closest('form').append(frame);
+            }
+            frame.srcdoc = $('#content').val();
         },
         saveCode: function () {
-            if (!document.all) {
-                alert('此功能在IE有效');
-                return;
-            }
-            var win = window.open('', '', 'top=10000,left=10000');
-            win.document.write(document.all.content.innerText)
-            win.document.execCommand('SaveAs', '', '文件名称.htm')
-            win.close();
+            var content = document.getElementById('content');
+            var html = content ? content.value : '';
+            var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'ymirtool-preview.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         },
         init: function () {
             var _this = this;
@@ -182,7 +209,7 @@ var tools = {
     },
     openweb: {
         openAttr: function (istest) {
-            var address = $("input[name='url']").val();
+            var address = typeof ymirSafeUrl === "function" ? ymirSafeUrl($("input[name='url']").val()) : $("input[name='url']").val();
             var op_tool = $("input[name='tool']").val() ? "toolbar=yes," : "";
             var op_loc = $("input[name='loc']").val() ? "location=yes," : "";
             var op_stat = $("input[name='stat']").val() ? "status=yes," : "";
@@ -202,12 +229,12 @@ var tools = {
                 tempopenstyle = tempopenstyle;
             }
             if (istest) {
-                if (address == "Net://" || !address) { $("#errorinfo").text("请输入URL！").show(); return; }
+                if (address == "Net://" || !address) { $("#errorinfo").text("请输入有效URL！").show(); return; }
                 window.open(address, op_selfopen, tempopenstyle);
                 return;
             }
             $("#errorinfo").text("").hide();
-            return "window.open('" + address + "','" + op_selfopen + "'" + (tempopenstyle ? ",'" + tempopenstyle + "'" : "") + ")";
+            return "window.open(" + JSON.stringify(address) + "," + JSON.stringify(op_selfopen) + (tempopenstyle ? "," + JSON.stringify(tempopenstyle) : "") + ")";
         },
         init: function (path) {
             tools.checkbox();
@@ -248,7 +275,7 @@ var tools = {
         checkReg: function () {
             var f = RegexPal.fields,
     o = f.options;
-            onresize = function (e) {
+            var resizeRegexPal = function (e) {
                 var isIE1 = !!window.ActiveXObject;
                 var isIE61 = isIE1 && !window.XMLHttpRequest;
                 f.input.field.style.height = "200px";
@@ -257,20 +284,21 @@ var tools = {
                 f.search.setDimensions();
                 f.input.setDimensions()
             };
-            onresize();
+            window.addEventListener('resize', resizeRegexPal, false);
+            resizeRegexPal();
             RegexPal.highlightSearchSyntax();
             RegexPal.highlightMatches();
             for (var flag in o.flags) {
-                o.flags[flag].onclick = RegexPal.highlightMatches
+                legacyBindEvent(o.flags[flag], "click", RegexPal.highlightMatches)
             };
-            o.highlightSyntax.onclick = RegexPal.highlightSearchSyntax;
-            o.highlightMatches.onclick = RegexPal.highlightMatches;
-            o.invertMatches.onclick = RegexPal.highlightMatches;
+            legacyBindEvent(o.highlightSyntax, "click", RegexPal.highlightSearchSyntax);
+            legacyBindEvent(o.highlightMatches, "click", RegexPal.highlightMatches);
+            legacyBindEvent(o.invertMatches, "click", RegexPal.highlightMatches);
             function makeResetter(field) {
                 return function () {
                     field.clearBg();
                     field.textbox.value = "";
-                    field.textbox.onfocus = null
+                    field.textbox.removeAttribute("onfocus")
                 }
             };
         },
@@ -319,7 +347,10 @@ var tools = {
                 }
                 $("#result").show();
                 $("#result textarea").val(str);
-                $("#result p").html("匹配到 <strong>" + arr.length + "</strong> 条结果：");
+                var resultLabel = $("#result p").empty();
+                resultLabel.append(document.createTextNode("匹配到 "));
+                resultLabel.append($("<strong>").text(arr.length));
+                resultLabel.append(document.createTextNode(" 条结果："));
             });
         },
         languageCode: {
@@ -415,84 +446,83 @@ var tools = {
         },
         wordspell: function () {
             var forms = document.forms[0];
-            forms.content.onclick = function () {
+            legacyBindEvent(forms.content, "click", function () {
                 $(this).removeClass("col-gray");
-            };
-            forms.trans.onclick = function () {
+            });
+            legacyBindEvent(forms.trans, "click", function () {
                 var str = toPinyin({ str: forms.content.value, dz: forms.hidesel.value, sym: forms.sym.checked, sym1: forms.sym1.checked, sym2: forms.sym2.checked });
                 forms.result.value = str;
-                if (jQuery("textarea[name=\"result\"]").val()) $("textarea[name=\"result\"]").siblings().hide();
+                if (jQuery('textarea[name="result"]').val()) $('textarea[name="result"]').siblings().hide();
                 $(forms.result).removeClass("col-gray");
-            }
+            });
             var clear = getid("clear");
-            clear.onclick = function () {
+            legacyBindEvent(clear, "click", function () {
                 forms.result.value = '';
                 forms.content.value = '';
-            }
+            });
         },
         gbbig: function () {
             var forms = document.forms[0];
-            forms.tosim.onclick = function () {
+            legacyBindEvent(forms.tosim, "click", function () {
                 convert(0); $(forms.result).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.totra.onclick = function () {
+            });
+            legacyBindEvent(forms.totra, "click", function () {
                 convert(1); $(forms.result).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.toother.onclick = function () {
+            });
+            legacyBindEvent(forms.toother, "click", function () {
                 convert(2); $(forms.result).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.clear.onclick = function () {
+            });
+            legacyBindEvent(forms.clear, "click", function () {
                 forms.result.value = '';
                 forms.textarea.value = '';
-            }
+            });
         },
         pinyindictionary: function (path) {
             var forms = getid('fm');
-            forms.content.onclick = function () {
+            legacyBindEvent(forms.content, "click", function () {
                 $(this).removeClass("col-gray");
-            };
-            forms.seach.onclick = function () {
+            });
+            legacyBindEvent(forms.seach, "click", function () {
                 trans(); $(forms.result).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.clear.onclick = function () {
+            });
+            legacyBindEvent(forms.clear, "click", function () {
                 forms.result.value = '';
                 forms.content.value = '';
-            }
+            });
             tools.clipfn(path);
         },
         lowtoupp: function (path) {
             tools.clipfn(path, "clip");
             tools.clipfn(path, "clip1");
             var forms = getid('fm');
-            //forms.num.onkeydown = function (e) { entNumber(e); $(forms.trans).removeClass("col-gray"); $(forms.num).removeClass("col-gray"); }
             $("#num").keydown(function (e) {
                 entNumber(e);
                 $(forms.trans).removeClass("col-gray");
                 $(forms.num).removeClass("col-gray");
             });
-            forms.seach.onclick = function () {
+            legacyBindEvent(forms.seach, "click", function () {
                 TransConvert();
                 if (jQuery("#trans").val()) $("#trans").siblings().hide();
-            }
-            forms.clear.onclick = function () { tools.clear([getid('trans'), getid('num')]); }
-            forms.toupp.onclick = function () {
+            });
+            legacyBindEvent(forms.clear, "click", function () { tools.clear([getid('trans'), getid('num')]); });
+            legacyBindEvent(forms.toupp, "click", function () {
                 englishConvert('touppercase'); $(forms.content).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.tolow.onclick = function () {
+            });
+            legacyBindEvent(forms.tolow, "click", function () {
                 englishConvert('tolowercase'); $(forms.content).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.firstupp.onclick = function () {
+            });
+            legacyBindEvent(forms.firstupp, "click", function () {
                 englishConvert('touppercaseF'); $(forms.content).removeClass("col-gray");
                 if (jQuery("#result").val()) $("#result").siblings().hide();
-            }
-            forms.clear1.onclick = function () { tools.clear([getid('content')]); }
-            forms.content.onclick = function () { $(this).removeClass("col-gray"); }
+            });
+            legacyBindEvent(forms.clear1, "click", function () { tools.clear([getid('content')]); });
+            legacyBindEvent(forms.content, "click", function () { $(this).removeClass("col-gray"); });
         },
         qrcode: {
             loadSWF: function () {
@@ -545,10 +575,10 @@ var tools = {
                     var length = jQuery.trim(v).length;
                     if (length > 199) {
                         jQuery(this).val(v.substr(0, 200));
-                        jQuery("#fontnum").html('200');
+                        jQuery("#fontnum").text('200');
                         return
                     };
-                    jQuery("#fontnum").html(length)
+                    jQuery("#fontnum").text(length)
                 });
                 _this.loadSWF();
                 $("#generate").click(function () {
@@ -556,7 +586,7 @@ var tools = {
                         $("#decodingbox").addClass("autohide");
                         $("#generatebox").removeClass("autohide");
                         if ($("#imgdiv").length) $("#imgdiv").removeClass("autohide");
-                        $("#fsUploadProgress").html('');
+                        $("#fsUploadProgress").empty();
                         $(this).addClass("currtBtn").removeClass("LinkBrn");
                         $("#decoding").addClass("LinkBrn").removeClass("currtBtn");
                     } else {
@@ -701,8 +731,15 @@ var tools = {
                 } else {
                     charOrChars = " Characters";
                 }
-                str = '<strong class="col-blue02 pr10">{5}</strong><span class="pr40">Total</span><strong class="col-blue02 pr10">{0}</strong><span class="pr40">{1}</span><strong class="col-blue02 pr10">{2}</strong><span class="pr40">{3}</span><strong class="col-blue02 pr10">{4}</strong><span>Chinese</span>';
-                $(".counted").html(str.format(count['words'], wordOrWords, count['chars'], charOrChars, count['chinese'], $("#box").val().length));
+                var counted = $(".counted").empty();
+                counted.append($("<strong>").addClass("col-blue02 pr10").text($("#box").val().length));
+                counted.append($("<span>").addClass("pr40").text("Total"));
+                counted.append($("<strong>").addClass("col-blue02 pr10").text(count['words']));
+                counted.append($("<span>").addClass("pr40").text(wordOrWords));
+                counted.append($("<strong>").addClass("col-blue02 pr10").text(count['chars']));
+                counted.append($("<span>").addClass("pr40").text(charOrChars));
+                counted.append($("<strong>").addClass("col-blue02 pr10").text(count['chinese']));
+                counted.append($("<span>").text("Chinese"));
             },
             displayTextBoxes: function (count) {
                 $("#word_count").text(count['words']);
@@ -1175,7 +1212,7 @@ var tools = {
             currentTime: function () {
                 var _this = ted.unixtime;
                 var timeNow = new Date();
-                document.getElementById("currentunixtime").innerHTML = Math.round(timeNow.getTime() / 1000);
+                document.getElementById("currentunixtime").textContent = Math.round(timeNow.getTime() / 1000);
                 if (_this.currentTimeActive) {
                     this.unixTimer = setTimeout(function () { _this.currentTime() }, 1000);
                 }
@@ -1301,14 +1338,14 @@ var tools = {
         htmljs: function () {
             var oresul = getid("oresult");
             var osource = getid("osource");
-            oresul.onfocus = oresul.onkeyup = function () {
+            legacyBindEvents(oresul, 'focus keyup', function () {
                 getid('re').value = getid('oresult').value.replace(/document.writeln\("/g, "").replace(/\\\"/g, "\"").replace(/\\\'/g, "\'").replace(/\\\//g, "\/").replace(/\\\\/g, "\\").replace(/"\);/g, "");
                 if (jQuery("#re").val()) $("#re").siblings().hide();
-            }
-            osource.onfocus = osource.onkeyup = function () {
+            });
+            legacyBindEvents(osource, 'focus keyup', function () {
                 getid('oresult2').value = "document.writeln(\"" + getid('osource').value.replace(/\\/g, "\\\\").replace(/\"/g, "'").replace(/\\/g, "\\/").replace(/\'/g, "\\\'").replace(/\"/g, "\\\"").split('\n').join("\");\ndocument.writeln(\"") + "\");";
                 if (jQuery("#oresult2").val()) $("#oresult2").siblings().hide();
-            }
+            });
         },
         htmlubb: {
             pattern: function (str) {
@@ -1378,8 +1415,8 @@ var tools = {
                 var Hsource = getid("Hsource");
                 var Usource = getid("Usource");
                 var _this = this;
-                Hsource.onfocus = Hsource.onkeyup = _this.htmltoubb;
-                Usource.onfocus = Usource.onkeyup = _this.ubbtohtml;
+                legacyBindEvents(Hsource, 'focus keyup', _this.htmltoubb);
+                legacyBindEvents(Usource, 'focus keyup', _this.ubbtohtml);
             }
 
         },
@@ -1848,7 +1885,7 @@ var tools = {
                         return false;
                     }
                     try {
-                        var v = eval("(" + document.getElementById("jsonval").value + ")");
+                        var v = JSON.parse(document.getElementById("jsonval").value);
                         var res = "";
                         if ($("#showtype").val() == 0)
                             res = _this.JSON2CSharp.convert(v);
@@ -2078,7 +2115,7 @@ var tools = {
                     return false;
                 }
                 try {
-                    var json = eval("(" + $("#xmljsonval").val() + ")");
+                    var json = JSON.parse($("#xmljsonval").val());
                     $("#result").val(formatXml(xmlobjtree.writeXML(json))).siblings("b").hide();
                 } catch (e) {
                     alert("转XML异常，请检查JSON是否错误。");

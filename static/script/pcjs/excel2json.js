@@ -71,6 +71,6 @@ $("#changebtn").click(function () {
 });
 function Empty() {
     $("#content").val("");
-    $("#result").html("");
+    $("#result").text("");
     $("#content").select();
 }

@@ -56,7 +56,7 @@ function decrypt() {
 function resetAll() {
     $("#pwd").val("");
     $("#content").val("");
-    $("#result").html("");
+    $("#result").text("");
     document.getElementById("content").select();
 	$("pre").hide();
 }

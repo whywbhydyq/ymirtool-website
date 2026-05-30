@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
     $('select').change(beautify);
 });
 var the = {
@@ -10,18 +10,12 @@ var the = {
 function run_tests() {
     var st = new SanityTest();
     run_beautifier_tests(st, Urlencoded, js_beautify, html_beautify, css_beautify);
-    JavascriptObfuscator.run_tests(st);
-    P_A_C_K_E_R.run_tests(st);
-    Urlencoded.run_tests(st);
-    MyObfuscate.run_tests(st);
-    var results = st.results_raw()
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/ /g, '&nbsp;')
-                .replace(/\r/g, '·')
-                .replace(/\n/g, '<br>');
-    $('#testresults').html(results).show();
+    if (window.JavascriptObfuscator && JavascriptObfuscator.run_tests) JavascriptObfuscator.run_tests(st);
+    if (window.P_A_C_K_E_R && P_A_C_K_E_R.run_tests) P_A_C_K_E_R.run_tests(st);
+    if (window.Urlencoded && Urlencoded.run_tests) Urlencoded.run_tests(st);
+    if (window.MyObfuscate && MyObfuscate.run_tests) MyObfuscate.run_tests(st);
+    var results = st.results_raw();
+    $('#testresults').text(results).show();
 }
 
 
@@ -50,7 +44,10 @@ function unpacker_filter(source) {
         }
     } while (found);
 
-    var unpackers = [P_A_C_K_E_R, Urlencoded, /*JavascriptObfuscator,*/MyObfuscate];
+    var unpackers = [];
+    if (window.P_A_C_K_E_R) unpackers.push(P_A_C_K_E_R);
+    if (window.Urlencoded) unpackers.push(Urlencoded);
+    if (window.MyObfuscate) unpackers.push(MyObfuscate);
     for (var i = 0; i < unpackers.length; i++) {
         if (unpackers[i].detect(source)) {
             unpacked = unpackers[i].unpack(source);
@@ -115,5 +112,5 @@ function looks_like_html(source) {
 
 function Clean() {
     $('#code').val("");
-    the.editor.setValue("");
+    if (the.editor) the.editor.setValue("");
 }

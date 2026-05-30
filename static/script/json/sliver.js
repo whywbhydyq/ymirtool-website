@@ -24,13 +24,9 @@ function getSilverlightVersion() {
 
             if (navigator.plugins['Silverlight Plug-In']) {
 
-                container = document.createElement('div');
-
-                document.body.appendChild(container);
-
-                container.innerHTML = '<embed type="application/x-silverlight" src="data:," />';
-
-                control = container.childNodes[0];
+                // Legacy Silverlight embed probing is disabled. Modern CSP blocks plugins
+                // with object-src 'none', and creating plugin elements is unnecessary risk.
+                control = null;
 
             }
 

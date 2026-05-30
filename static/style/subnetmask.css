@@ -165,7 +165,7 @@
 .filter-contlist .item li.PLcx,.filter-contlist .item li{float:left;margin-right:6px;height:20px;line-height:20px;overflow:hidden; position:relative;}
 .filter-contlist .item li.PLcx{margin: 0px 10px 0;}
 .filter-contlist .item li input{position:absolute;top:0;left:0;opacity:.01;filter:alpha(opacity=0.1)}
-.filter-contlist .item li p,.filter-contlist .item li p.rado{float:left;display:inline;padding:0 4px 0 25px;background:url(http://www.ab173.com/static/tools/images/ico-del.png) 0px -12px no-repeat; color:#333; } 
+.filter-contlist .item li p,.filter-contlist .item li p.rado{float:left;display:inline;padding:0 4px 0 25px;background:none; color:#333; } 
 .filter-contlist .item li p label,.filter-contlist .item li p.rado lable{display:inline-block; cursor:pointer;}
 .filter-contlist .item li p:hover,.filter-contlist .item li p.rado hover{background-position:0px -47px}
 .filter-contlist .item li.selected p{background-color:#55a7e3;color:#fff;background-position:0px -78px}
@@ -201,7 +201,7 @@
 .RegularSearWrite-btn{width:110px; background:#55a7e3; color:#fff;font-size: 14px;height:30px;padding: 0px;border: 0px none;cursor: pointer;}
 .RegularSearWrite-btn:hover{ filter: alpha(opacity=80);opacity: 0.8;}
 .RegularSearWrite-left .wbtnLink{ font-size:12px; color:#0474c8; line-height:30px; height:30px;letter-spacing:normal; *width:55px;}
-.RegularSearWrite-left .quickdelete{background:url(http://www.ab173.com/static/tools/images/quickdelete.png) 7px 7px no-repeat; width:32px; height:22px; position:absolute; right:0; top:0; display:none;}
+.RegularSearWrite-left .quickdelete{background:none; width:32px; height:22px; position:absolute; right:0; top:0; display:none;}
 .RegularSearWrite-left .search-hint,.RegularSearWrite-left .search-hint02{font-size:14px; color:#c0c1c4; position:absolute; left:13px;margin-top:5px; *margin-top:7px;letter-spacing:normal; font-weight:normal; z-index:0; top:0;}
 
 
@@ -398,7 +398,7 @@
 .ScErWeimaImg{ width:150px; height:150px; border:1px solid #c6cede;}
 
 .PjErWeimaWrap{ padding-top:30px; padding-bottom:30px;}
-.PjErqrcode{width: 213px;height: 80px; border: 1px solid #f1f9ff; cursor:pointer; background: url(http://www.ab173.com/static/tools/images/tool-pus.png) center center #f1f9ff no-repeat;}
+.PjErqrcode{width: 213px;height: 80px; border: 1px solid #f1f9ff; cursor:pointer; background:#f1f9ff;}
 .PjErqrcode #SWFUpload_0{ width:213px; height:80px; cursor:pointer;} 
 
 /*web-Font-DanCiTongJi-begin*/
@@ -636,16 +636,16 @@
 	
 /*webscan-begin*/
 .jg_conlist{float: left;overflow: hidden;padding-left: 10px;width: 185px;}
-.jg_dangerous, .jg_serious, .jg_warning, .jg_security, .jg_weizhi, .jg_conlist dd, .jg_tips2 a, .fc_warning, .fc_security, .fc_dangerous, .fc_serious, .fc_weizhi, #sub_conlist dd{ background:url(http://css.tools.chinaz.com/tools/images/webscan/icon-wbes-tips.png) no-repeat;}
+.jg_dangerous, .jg_serious, .jg_warning, .jg_security, .jg_weizhi, .jg_conlist dd, .jg_tips2 a, .fc_warning, .fc_security, .fc_dangerous, .fc_serious, .fc_weizhi, #sub_conlist dd{ background:none;}
 #jg_tips{font-size: 14px;font-weight: bold;height: 26px;left: 85px;line-height: 26px;overflow: hidden;position: absolute;text-align: left;text-indent: 26px;top: 1px;width: 60px;}
 .jg_serious{background-position: 2px -24px;color: #fc3b2c;}
 .jg_conlist dl{background:none;border: 0 none;font-size: 100%;margin: 0;outline: 0 none;padding: 0 0 10px 15px;vertical-align: baseline;}
-.jg_conlist dt{background:url(http://css.tools.chinaz.com/tools/images/webscan/icon-wbes-allbg.jpg) no-repeat scroll left top;color: #333333;font-size: 14px;font-weight: bold;height: 28px;line-height: 28px;margin-bottom: 10px;position: relative;text-align: left;text-indent: 12px;}
+.jg_conlist dt{background:none;color: #333333;font-size: 14px;font-weight: bold;height: 28px;line-height: 28px;margin-bottom: 10px;position: relative;text-align: left;text-indent: 12px;}
 .jg-bipin{float: left;overflow: hidden;position: relative;width: 280px;}
 .jg-bp-title{font-size: 14px;font-weight: bold;padding-bottom: 20px;padding-top: 10px;position: relative;text-align: left;}
 .jg-fenshu{color: #333333;font-size: 16px;font-weight: bold;margin-top: 8px;padding-bottom: 15px;padding-left: 20px;text-align: left;text-indent: 20px;}
 .jg-fenshu span{font-size: 100px;font-weight: bold;}
-.jg-fenshu-info{background:url(http://css.tools.chinaz.com/tools/images/webscan/icon-wbes-jibaibg.png) no-repeat;display: none;height: 110px;left: 218px;position: absolute;top: 10px;width: 245px;}
+.jg-fenshu-info{background:none;display: none;height: 110px;left: 218px;position: absolute;top: 10px;width: 245px;}
 .jg-fenshu-info p{line-height: 21px;padding: 12px;}
 #dabai_text .ratevul{color: green;font-size: 16px;padding: 4px;}
 .jg_showbox{position: absolute;right: -50px;top: 17px;width: 440px;z-index: 50;}
@@ -656,7 +656,7 @@
 .jg_showbox p{line-height: 25px;padding-left: 35px;}
 .fc_serious{background-position: 10px -26px;color: #fc3b2c;}
 .fc_security{background-position: 10px -172px;color: green;}
-.login-user-check2{height: 155px;margin-left: 5px;margin-top: 13px;padding:5px 10px 0px 15px;width: 140px; background:url(http://css.tools.chinaz.com/tools/images/webscan/icon-wbes-lsbg.jpg) no-repeat;}
+.login-user-check2{height: 155px;margin-left: 5px;margin-top: 13px;padding:5px 10px 0px 15px;width: 140px; background:none;}
 .login-user-check2 ul{background: #ffffff;margin-left: 10px;}
 .login-user-check2 li{padding-left: 10px;}
 .login-user-check li{line-height: 33px;}
@@ -733,7 +733,7 @@
 /*Seo-plugin-end*/
  		 
 /*errorr*/		 
-.ErrorWrap { width:740px; padding-top:260px; margin:60px auto; background:url(http://css.tools.chinaz.com/tools/images/tool/404error.png) top center no-repeat;}
+.ErrorWrap { width:740px; padding-top:260px; margin:60px auto; background:none;}
 .ErrorWrap .linkE a:hover{ text-decoration:none;}
 .ErrorWrap .linkE,.textsE p {text-align:center; line-height:24px;}
 .textsE p { color:#777777;}

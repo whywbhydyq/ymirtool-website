@@ -61,18 +61,18 @@ JSON2CSharp = {
 function startConvert() {
     try {
         $("#codeall").css("display", "none");
-        var v = eval("(" + document.getElementById("jsonStr").value + ")");
+        var v = JSON.parse(document.getElementById("jsonStr").value);
        // document.getElementById("result").className = "prettyprint";
         var r = JSON2CSharp.convert(v).toString();
 		hightout(r);
         document.getElementById("jsonStr").focus();
     } catch (e) {
         $("#codeall").css("display", "block");
-        $("#errdiv").html("输入的JSON数据格式不正确：" + e.message);
+        $("#errdiv").text("输入的JSON数据格式不正确：" + e.message);
     }
 }
 function Empty() {
     document.getElementById("jsonStr").value = "";
-    $("#class").html("<br>");
+    $("#class").empty().append(document.createElement("br"));
     document.getElementById("jsonStr").select();
 }

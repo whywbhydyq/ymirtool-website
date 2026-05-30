@@ -16,9 +16,8 @@
 <meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://cdn.staticfile.org" rel="preconnect"/>
 <link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
 <link href="/static/style/font-fix.css" rel="stylesheet"/><link href="/static/style/tool.css" rel="stylesheet"/>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"文本对比工具","url":"https://ymirtool.com/textdiff/","description":"在线对比两段文本，查看新增、删除和修改内容。","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"dateModified":"2026-05-24"}</script>
@@ -26,8 +25,8 @@
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
-<main class="ymir-page ymir-tool-first-page" data-ymir-tool="textdiff">
-<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Text Tool</div><h1 class="ymir-hero-title">文本对比工具</h1><p class="ymir-hero-subtitle">逐行比较两段文本差异。</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Runs in your browser</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Original text</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="textA" placeholder="Paste original text"></textarea></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Changed text</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="textB" placeholder="Paste changed text"></textarea></div></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="diff-compare" type="button">Compare</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-output" type="button">Copy Result</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Diff summary</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="toolOutput" placeholder="Comparison result" readonly=""></textarea></div></section>
+<main class="ymir-page" data-ymir-tool="textdiff">
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Text Tool</div><h1 class="ymir-hero-title">Text Diff Checker</h1><p class="ymir-hero-subtitle">Compare two text blocks line by line and see added, removed, or changed lines.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Runs in your browser</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Original text</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="textA" placeholder="Paste original text"></textarea></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Changed text</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="textB" placeholder="Paste changed text"></textarea></div></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="diff-compare" type="button">Compare</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-output" type="button">Copy Result</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Diff summary</h2></div><textarea class="ymir-textarea ymir-textarea-large" id="toolOutput" placeholder="Comparison result" readonly=""></textarea></div></section>
 <section class="ymir-container ymir-help ymir-card">
 <h2>How to use this tool / 使用说明</h2>
 <p>Use this tool for drafts, configuration snippets, short documents, and copy changes where line-level comparison is enough.</p><p>For very large files or code repositories, use a dedicated diff tool or Git.</p>
@@ -47,7 +46,6 @@
 </main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Most text and encoding tools run in your browser.</span></footer>
 <script src="/static/script/ymir-ui.js"></script>
-<script src="/static/script/ymir-i18n.js"></script>
 <script src="/static/script/ymir-tools.js"></script>
 </body>
 </html>

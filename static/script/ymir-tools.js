@@ -80,17 +80,91 @@ function bind(action, fn) {
     function test(){try{var re=new RegExp(UI.getValue('regexPattern'),flags()),s=UI.getValue('regexText'),res=[],m;if(flags().indexOf('g')>-1){while((m=re.exec(s))!==null){res.push('Match '+(res.length+1)+' at '+m.index+': '+m[0]);if(m.index===re.lastIndex)re.lastIndex++;}}else{m=re.exec(s);if(m)res.push('Match at '+m.index+': '+m[0]);}UI.setValue('toolOutput',res.join('\n')||'No matches found.');UI.setStatus('toolStatus',res.length?'success':'info','Matches found: '+res.length);}catch(e){UI.setStatus('toolStatus','error','Regex error: '+e.message)}}
     bind('regex-test',test);bind('load-example',function(){UI.setValue('regexPattern',examples.regexPattern);UI.setValue('regexText',examples.regexText);test();});bind('copy-output',function(){copyOutput('toolStatus')});bind('clear-all',function(){['regexPattern','regexText','toolOutput'].forEach(UI.clearValue);UI.clearStatus('toolStatus')});
   }
+  function evaluateBasicExpression(expression) {
+    var source = String(expression || '');
+    if (!/^[0-9+\-*/().%\s]+$/.test(source)) {
+      throw new Error('Only numbers, parentheses, and basic operators are supported.');
+    }
+    var index = 0;
+    function skipWhitespace() {
+      while (/\s/.test(source.charAt(index))) index++;
+    }
+    function parseNumber() {
+      skipWhitespace();
+      var start = index;
+      var sawDigit = false;
+      while (/[0-9]/.test(source.charAt(index))) { index++; sawDigit = true; }
+      if (source.charAt(index) === '.') {
+        index++;
+        while (/[0-9]/.test(source.charAt(index))) { index++; sawDigit = true; }
+      }
+      if (!sawDigit) {
+        throw new Error('Expected a number at position ' + (index + 1) + '.');
+      }
+      return Number(source.slice(start, index));
+    }
+    function parsePrimary() {
+      skipWhitespace();
+      var ch = source.charAt(index);
+      if (ch === '+') { index++; return parsePrimary(); }
+      if (ch === '-') { index++; return -parsePrimary(); }
+      if (ch === '(') {
+        index++;
+        var value = parseExpression();
+        skipWhitespace();
+        if (source.charAt(index) !== ')') {
+          throw new Error('Expected closing parenthesis at position ' + (index + 1) + '.');
+        }
+        index++;
+        return value;
+      }
+      return parseNumber();
+    }
+    function parseTerm() {
+      var value = parsePrimary();
+      while (true) {
+        skipWhitespace();
+        var op = source.charAt(index);
+        if (op !== '*' && op !== '/' && op !== '%') break;
+        index++;
+        var right = parsePrimary();
+        if (op === '*') value *= right;
+        else if (op === '/') value /= right;
+        else value %= right;
+      }
+      return value;
+    }
+    function parseExpression() {
+      var value = parseTerm();
+      while (true) {
+        skipWhitespace();
+        var op = source.charAt(index);
+        if (op !== '+' && op !== '-') break;
+        index++;
+        var right = parseTerm();
+        value = op === '+' ? value + right : value - right;
+      }
+      return value;
+    }
+    var result = parseExpression();
+    skipWhitespace();
+    if (index !== source.length) {
+      throw new Error('Unexpected input at position ' + (index + 1) + '.');
+    }
+    return result;
+  }
   function initCalculator(){
-    function calc(){var expr=UI.getValue('calcInput').trim();if(!expr){UI.setStatus('toolStatus','warning','Enter a calculation first.');return}if(!/^[0-9+\-*/().%\s]+$/.test(expr)){UI.setStatus('toolStatus','error','Only numbers, parentheses, and basic operators are supported.');return}try{var v=Function('"use strict";return ('+expr+')')();UI.setValue('calcResult',String(v));UI.setStatus(!isFinite(v)?'toolStatus':'toolStatus',isFinite(v)?'success':'warning',isFinite(v)?'Calculation complete.':'Result is not finite. Check division by zero.')}catch(e){UI.setStatus('toolStatus','error','Calculation error: '+e.message)}}
+    function calc(){var expr=UI.getValue('calcInput').trim();if(!expr){UI.setStatus('toolStatus','warning','Enter a calculation first.');return}try{var v=evaluateBasicExpression(expr);UI.setValue('calcResult',String(v));UI.setStatus('toolStatus',isFinite(v)?'success':'warning',isFinite(v)?'Calculation complete.':'Result is not finite. Check division by zero.')}catch(e){UI.setStatus('toolStatus','error','Calculation error: '+e.message)}}
     bind('calc-run',calc);bind('load-example',function(){UI.setValue('calcInput','(128 + 256) / 3');calc();});bind('copy-output',function(){UI.copyText(UI.getValue('calcResult')).then(function(){UI.setStatus('toolStatus','success','Copied result.');}).catch(function(e){UI.setStatus('toolStatus','error',e.message)})});bind('clear-all',function(){['calcInput','calcResult'].forEach(UI.clearValue);UI.clearStatus('toolStatus')});
   }
   function initGuid(){
-    function one(){if(crypto&&crypto.randomUUID)return crypto.randomUUID();return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&3|8);return v.toString(16)})}
-    function gen(){var n=Math.max(1,Math.min(100,parseInt(UI.getValue('guidCount')||'1',10)));var out=[];for(var i=0;i<n;i++)out.push(one());UI.setValue('toolOutput',out.join('\n'));UI.setStatus('toolStatus','success','Generated '+n+' GUID value'+(n>1?'s':'')+' in your browser.');}
+    function getCrypto(){return window.crypto||window.msCrypto}
+    function one(){var c=getCrypto();if(c&&c.randomUUID)return c.randomUUID();if(!c||!c.getRandomValues)throw new Error('Secure random generation is not available in this browser.');var bytes=new Uint8Array(16);c.getRandomValues(bytes);bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;var hex=[];for(var i=0;i<bytes.length;i++)hex.push((bytes[i]+256).toString(16).slice(1));return hex[0]+hex[1]+hex[2]+hex[3]+'-'+hex[4]+hex[5]+'-'+hex[6]+hex[7]+'-'+hex[8]+hex[9]+'-'+hex[10]+hex[11]+hex[12]+hex[13]+hex[14]+hex[15]}
+    function gen(){try{var n=Math.max(1,Math.min(100,parseInt(UI.getValue('guidCount')||'1',10)));var out=[];for(var i=0;i<n;i++)out.push(one());UI.setValue('toolOutput',out.join('\n'));UI.setStatus('toolStatus','success','Generated '+n+' GUID value'+(n>1?'s':'')+' in your browser.');}catch(e){UI.setStatus('toolStatus','error',e.message)}}
     bind('guid-generate',gen);bind('load-example',gen);bind('copy-output',function(){copyOutput('toolStatus')});bind('clear-all',function(){UI.setValue('guidCount','1');UI.clearValue('toolOutput');UI.clearStatus('toolStatus')});gen();
   }
   function initPassword(){
-    function gen(){var len=Math.max(8,Math.min(128,parseInt(UI.getValue('passwordLength')||'16',10))),sets=[];if(UI.byId('pwUpper').checked)sets.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');if(UI.byId('pwLower').checked)sets.push('abcdefghijklmnopqrstuvwxyz');if(UI.byId('pwNumbers').checked)sets.push('0123456789');if(UI.byId('pwSymbols').checked)sets.push('!@#$%^&*()-_=+[]{};:,.?/');if(!sets.length){UI.setStatus('toolStatus','error','Select at least one character set.');return}var chars=sets.join(''),arr=new Uint32Array(len),out='';if(crypto&&crypto.getRandomValues){crypto.getRandomValues(arr);for(var i=0;i<len;i++)out+=chars[arr[i]%chars.length];}else{for(var j=0;j<len;j++)out+=chars[Math.floor(Math.random()*chars.length)];}UI.setValue('toolOutput',out);UI.setStatus('toolStatus','success','Password generated locally in your browser.');}
+    function gen(){var c=window.crypto||window.msCrypto;if(!c||!c.getRandomValues){UI.setStatus('toolStatus','error','Secure random generation is not available in this browser.');return}var len=Math.max(8,Math.min(128,parseInt(UI.getValue('passwordLength')||'16',10))),sets=[];if(UI.byId('pwUpper').checked)sets.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');if(UI.byId('pwLower').checked)sets.push('abcdefghijklmnopqrstuvwxyz');if(UI.byId('pwNumbers').checked)sets.push('0123456789');if(UI.byId('pwSymbols').checked)sets.push('!@#$%^&*()-_=+[]{};:,.?/');if(!sets.length){UI.setStatus('toolStatus','error','Select at least one character set.');return}var chars=sets.join(''),arr=new Uint32Array(len),out='';c.getRandomValues(arr);for(var i=0;i<len;i++)out+=chars[arr[i]%chars.length];UI.setValue('toolOutput',out);UI.setStatus('toolStatus','success','Password generated locally in your browser.');}
     bind('password-generate',gen);bind('load-example',gen);bind('copy-output',function(){copyOutput('toolStatus')});bind('clear-all',function(){UI.setValue('passwordLength','16');UI.clearValue('toolOutput');UI.clearStatus('toolStatus')});gen();
   }
   document.addEventListener('DOMContentLoaded',function(){var page=document.querySelector('[data-ymir-tool]');if(!page)return;var tool=page.getAttribute('data-ymir-tool');({json:initJson,base64:initBase64,md5:initMd5,formatjs:initFormatJs,urlencode:initUrlEncode,unixtime:initUnixTime,textdiff:initTextDiff,txtcount:initTxtCount,regex:initRegex,calculator:initCalculator,guid:initGuid,password:initPassword}[tool]||function(){})();});
