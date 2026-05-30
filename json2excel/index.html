@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="google-adsense-account" content="ca-pub-1653188471819736"/><title>Json转Excel/Csv/xls工具 - Ymir Tool</title><meta name="applicable-device" content="pc,mobile" /><meta http-equiv="Cache-Control" content="no-transform" /><meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="description" content="Json转Excel/Csv/xls工具用于JSON / 数据转换场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。" /><meta name="renderer" content="webkit" /><meta name="apple-mobile-web-app-capable" content="yes" /><link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon" /><link href="/static/style/bootstrap-compat.css?v=20260530-v16" rel="stylesheet" type="text/css" /><link href="/static/style/tool.css?v=20260530-v16" rel="stylesheet" type="text/css" />
+<link href="/static/style/ymir-legacy-bridge.css?v=20260530-v16" rel="stylesheet"/><link href="/static/style/inline-style-migration.css?v=20260530-v16" rel="stylesheet" type="text/css" /><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script><link rel="canonical" href="https://ymirtool.com/json2excel/" />
+<meta property="og:title" content="Json转Excel/Csv/xls工具 - Ymir Tool" />
+<meta property="og:description" content="Json转Excel/Csv/xls工具用于JSON / 数据转换场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ymirtool.com/json2excel/" />
+<meta property="og:site_name" content="Ymir Tool" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Json转Excel/Csv/xls工具",
+  "url": "https://ymirtool.com/json2excel/",
+  "description": "Json转Excel/Csv/xls工具用于JSON / 数据转换场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-07-18"
+}
+</script>
+<meta property="og:image" content="https://ymirtool.com/static/images/og.svg" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Json转Excel/Csv/xls工具 - Ymir Tool"/>
+<meta name="baidu-site-verification" content="codeva-UksONlLJGB" />
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script></head><body><div class="navbar navbar-default navbar-static-top navbar-fixed-top">
+    <div class="jz container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Ymir Tool</span> <span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/" title="Ymir Tool"><em class="logo_ico glyphicon glyphicon-wrench"></em>Ymir Tool</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav" id="top_menu">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">JSON工具<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/json/">Json格式化</a></li>
+                        <li><a href="/jsonudview/"> Json格式化(上下)</a></li>
+                        <li><a href="/jsonlrview/">Json格式化(左右)</a></li>
+                        <li><a href="/jsonzip/">Json在线压缩转义</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/json2cs/">Json生成C#实体类</a></li>
+                        <li><a href="/json2java/"> Json生成Java实体类</a></li>
+                        <li><a href="/json2go/">Json生成Go结构体</a></li>
+                        <li><a href="/sql2java/">SQL转Java实体类</a></li>
+                        <li><a href="/json2xml/">XML和Json在线互转</a></li>
+                        <li><a href="/excel2json/">Excel/CSV转Json格式</a></li>
+                        <li><a href="/json2excel/">Json转Excel/CSV格式</a></li>
+                        <li><a href="/json2get/">JSON和GET参数互转</a></li>
+                        <li><a href="/json2yaml/">JSON转YAML</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">格式化转换<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/formathtml/">HTML格式化/压缩</a></li>
+                        <li><a class="ymir-is-da52fea525" href="/formatcss/"> CSS格式化/压缩</a></li>
+                        <li><a href="/formatjs/">JS格式化/压缩</a></li>
+                        <li><a href="/endecodejs/">JS加密/解密</a></li>
+                        <li><a href="/confundirjs/"> JS代码混合加密</a></li>
+                        <li><a href="/formatsql/">SQL压缩/格式化</a></li>
+                        <li><a href="/formatphp/">PHP代码格式化工具</a></li>
+                        <li><a href="/formatxml/">XML压缩/格式化 </a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="ymir-is-da52fea525" href="/htmloutjs/">Html/JS互转</a></li>
+                        <li><a href="/htmlescape/"> Html转义工具</a></li>
+                        <li><a href="/html2cj/"> Html转C#/JSP</a></li>
+                        <li><a href="/html2php/">Html转PHP代码</a></li>
+                        <li><a href="/html2all/">Html转ASP/Perl</a></li>
+                        <li><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
+                        <li><a href="/htmltable/">Html表格生成器</a></li>
+                        <li><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="ymir-is-9cdf81d40c" href="/regex/">正则表达式测试工具</a></li>
+                        <li><a href="/regexcode/">正则生成代码</a></li>
+                        <li><a href="/formatfilter/">Html过滤工具</a></li>
+                        <li><a href="/runjs/">运行Js/html/css</a></li>
+                        <li><a href="/xpath/">Xpath工具</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">加解密编码<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/md5/">MD5加密工具</a></li>
+                        <li><a href="/urlcode/">URL网址16进制加密</a></li>
+                        <li><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
+                        <li><a href="/base64/"> Base64加密/解密</a></li>
+                        <li><a href="/escape/">Escape加密/解密</a></li>
+                        <li><a href="/deencrypt/">对称加密/解密</a></li>
+                        <li><a href="/shaencrypt/">SHA/SHA256加密</a></li>
+                        <li><a href="/allencrypt/">散列/哈希加密大全</a></li>
+                        <li><a href="/morse/">摩尔斯电码加解密</a></li>
+                        <li><a href="/password/">密码生成器</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/uuid/">UUID在线生成</a></li>
+                        <li><a href="/guid/">GUID在线生成</a></li>
+                        <li><a href="/barcode/">条形码生成器</a></li>
+                        <li><a href="/ip2long/">IP/数字地址转换</a></li>
+                        <li><a class="ymir-is-c20ca7a696" href="/img2base64/"> 图片转Base64</a></li>
+                        <li><a href="/utf8/">UTF-8转GBK</a></li>
+                        <li><a href="/unicode/">Unicode/ASCII转换</a></li>
+                        <li><a href="/ascii/">ASCII编码/解码</a></li>
+                        <li><a href="/urlencode/">URL编码/解码</a></li>
+                        <li><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
+                        <li><a href="/androidkeycode/">Android按键码</a></li>
+                        <li><a href="/keyboardtest/">键盘测试工具</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">文本数字<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a href="/editor/">Html在线编辑器</a></li>
+                        <li><a class="ymir-is-da52fea525" href="/autoformat/"> 文章自动排版</a></li>
+                        <li><a href="/jianfan/">简繁字体转换</a></li>
+                        <li><a href="/pinyin/">汉字转为拼音</a></li>
+                        <li><a href="/huoxingwen/">火星文转换器</a></li>
+                        <li><a href="/txtreplace/">文本内容替换</a></li>
+                        <li><a href="/textdiff/"> 文本内容对比</a></li>
+                        <li><a href="/txtcount/">在线统计字数工具</a></li>
+                        <li><a href="/quchong/">内容去重工具</a></li>
+                        <li><a href="/wenzitexiao/">文字特效工具</a></li>
+                        <li><a href="/zipstringtext/">字符串文本压缩工具</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="ymir-is-0c59aabd13" href="/camelcase/">驼峰与下划线互转</a></li>
+                        <li><a href="/quanbaojiao/">全角半角转换</a></li>
+                        <li><a href="/enlower/">英文字母大小写转换</a></li>
+                        <li><a href="/rmbdaxie/">人民币大写转换工具</a></li>
+                        <li><a href="/random/">随机数生成器</a></li>
+                        <li><a href="/unixtime/"> Unix时间戳在线转换</a></li>
+                        <li><a href="/hexconvert/">常用进制转换工具</a></li>
+                        <li><a href="/hexrgb/"> RGB颜色在线转换</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">网络<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/websocket/">Websocket测试</a></li>
+                        <li><a href="/browserinfo/">获取浏览器信息</a></li>
+                        <li><a href="/dns/">公共DNS</a></li>
+                        <li><a href="/alldns/">各地区公共DNS</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">站长<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu ul-list">
+                        <li><a class="ymir-is-9cdf81d40c" href="/htaccess2nginx/">htaccess转nginx</a></li>
+                        <li><a href="/shortcut/">生成桌面快捷方式</a></li>
+                        <li><a href="/px2rem/">rem与px转换工具</a></li>
+                        <li><a href="/createmeta/">生成网页Meta标签</a></li>
+                        <li><a href="/refresh/">在线定时刷新网址</a></li>
+                        <li><a href="/tiaoseban/">在线调色板</a></li>
+                        <li role="separator" class="divider"></li>
+                        </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">计算<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/nianlvli/">利率计算器在线</a></li>
+                        <li><a href="/subnetmask/">子网掩码计算器</a></li>
+                        <li><a href="/calculator/">在线科学计算器</a></li>
+                    </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">其他<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/tuya/">在线涂鸦画板</a></li>
+                        <li><a href="/shizhong/">在线时钟</a></li>
+                        <li><a href="/worldtime/">世界各地时间</a></li>
+                        <li><a href="/capital/">世界各国首都查询</a></li>
+                        <li><a href="/currency/">世界各地货币查询</a></li>
+                        <li><a href="/areacode/">世界各国区号时差查询</a></li>
+                        <li><a href="/jieri/">世界节日查询</a></li>
+                        <li><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
+                        <li><a href="/chaodai/">中国历史朝代时间查询表</a></li>
+                        <li><a href="/tesufuhao/">特殊符号大全</a></li>
+                        </ul>
+                <li class="dropdown">
+                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">对照列表<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/useragent/">常用User-Agent</a></li>
+                        <li><a href="/contenttype/">Content-Type对照表</a></li>
+                        <li><a href="/requestmethod/">Request请求大全</a></li>
+                        <li><a href="/httpheader/">HTTP请求头大全</a></li>
+                        <li><a href="/pagecode/"> HTTP状态码</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/asciicode/">ASCII对照表</a></li>
+                        <li><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
+                        <li><a href="/ports/">常见端口大全</a></li>
+                        <li><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
+                        <li><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
+                        <li><a href="/linuxcmd/">Linux常用命令大全</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<main><div class="container"><div class="row"><div class="col-md-12 col10main"><h1 class="ymir-is-1db58a2676">Json转Excel/Csv/xls工具</h1><div class="accordion" id="accordion2"><div class="accordion-group">
+<ul class="nav nav-tabs hbflag"><li role="presentation"><a href="/json/">Json格式化</a></li><li role="presentation"><a href="/jsonudview/"> Json格式化(上下)</a></li><li role="presentation"><a href="/jsonlrview/">Json格式化(左右)</a></li><li role="presentation"><a href="/jsonzip/">Json在线压缩转义</a></li><li role="presentation"><a href="/json2cs/">Json生成C#实体类</a></li><li role="presentation"><a href="/json2java/"> Json生成Java实体类</a></li><li role="presentation" class="active"><a href="/json2excel/">Json转Excel/CSV格式</a></li><li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">更多工具<span class="caret"> </span></a><ul class="dropdown-menu"><li role="presentation"><a href="/json2go/">Json生成Go结构体</a></li><li role="presentation"><a href="/sql2java/">SQL转Java实体类</a></li><li role="presentation"><a href="/json2xml/">XML和Json在线互转</a></li><li role="presentation"><a href="/excel2json/">Excel/CSV转Json格式</a></li><li role="presentation"><a href="/json2get/">JSON和GET参数互转</a></li><li role="presentation"><a href="/json2yaml/">JSON转YAML</a></li></ul></li></ul><div class="panel"><form id="form1" class="form-horizontal" method="post"><div class="form-group"><div class="col-sm-12"><textarea class="form-control js-csp-json2excel-index-001" id="content" name="RawJson" rows="12" placeholder="请输入JSON数据"></textarea></div></div><div class="form-group"><div class="col-sm-12"><input type="text" class="form-control" id="fgfstr" placeholder="请输入分隔符，默认是制表符" aria-describedby="basic-addon1"></div></div><div class="form-group navi"><div class="col-sm-12 text-center"><button type="button" class="btn btn-success" id="changebtn">转换为Excel/Csv</button><span id="copyallcode" class="btn btn-default" data-clipboard-target="#result">复制结果</span><button type="button" class="btn btn-success" id="download">下载Csv文件</button><input type="button" value="清空" class="btn btn-default js-csp-json2excel-index-002"><button type="button" class="btn btn-default" id="testcase">示例Demo</button><input type="hidden" id="ctype" value="0" /></div></div><div class="form-group"><div class="col-sm-12"><pre><code id="result"></code></pre></div></div></form></div></div><div class="alert alert alert-success alert-dismissible" role="alert"><h4>Json转Excel工具</h4><p>1、支持将Json格式转换为Excel/Csv格式</p><p>2、支持一键下载转换成功的Excel/Csv数据文件</p><p>3、提供示例Demo供开发者测试转换后的Json演示，测试Json转换为Excel的全过程</p></div> <div class="accordion-group"> </div></div></div></div></div><script src="/static/script/jquery-1.11.3.min.js" type="text/javascript"></script><script src="/static/script/bootstrap.min.js" type="text/javascript"></script><script src="/static/script/tool.js" type="text/javascript"></script><script src="/static/script/hightout.js" type="text/javascript"></script><script src="/static/script/page-inline/json2excel-index-01-21c49a75.js" type="text/javascript"></script><div class="container" id="foot-history">
+    <div class="row">
+        <div class="col-md-12"><span>您的足迹：</span><span id="visit_history"></span></div>
+        <div class="col-md-12 ymir-is-d2c171b18b">
+            <!-- 广告区1 -->
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 footer-nav">
+            <h2>站内导航</h2>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>JSON工具</span></h3>
+                <li><span></span><a href="/json/">Json格式化</a></li>
+                <li><span></span><a href="/jsonudview/"> Json格式化(上下)</a></li>
+                <li><span></span><a href="/jsonlrview/">Json格式化(左右)</a></li>
+                <li><span></span><a href="/jsonzip/">Json在线压缩转义</a></li>
+                <li><span></span><a href="/json2cs/">Json生成C#实体类</a></li>
+                <li><span></span><a href="/json2java/"> Json生成Java实体类</a></li>
+                <li><span></span><a href="/json2go/">Json生成Go结构体</a></li>
+                <li><span></span><a href="/sql2java/">SQL转Java实体类</a></li>
+                <li><span></span><a href="/json2xml/">XML和Json在线互转</a></li>
+                <li><span></span><a href="/excel2json/">Excel/CSV转Json格式</a></li>
+                <li><span></span><a href="/json2excel/">Json转Excel/CSV格式</a></li>
+                <li><span></span><a href="/json2get/">JSON和GET参数互转</a></li>
+                <li><span></span><a href="/json2yaml/">JSON转YAML</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>格式化转换</span></h3>
+                <li><span></span><a href="/formathtml/">HTML格式化/压缩</a></li>
+                <li><span></span><a class="ymir-is-da52fea525" href="/formatcss/"> CSS格式化/压缩</a></li>
+                <li><span></span><a href="/formatjs/">JS格式化/压缩</a></li>
+                <li><span></span><a href="/endecodejs/">JS加密/解密</a></li>
+                <li><span></span><a href="/confundirjs/"> JS代码混合加密</a></li>
+                <li><span></span><a href="/formatsql/">SQL压缩/格式化</a></li>
+                <li><span></span><a href="/formatphp/">PHP代码格式化工具</a></li>
+                <li><span></span><a href="/formatxml/">XML压缩/格式化 </a></li>
+                <li><span></span><a href="/formatcs/">C#代码格式化工具</a></li>
+                <li><span></span><a href="/formatjava/">JAVA代码格式化工具</a></li>
+                <li><span></span><a href="/formatcsql/">SQL代码格式化工具</a></li>
+                <li><span></span><a href="/formatpy/">Python代码格式化工具</a></li>
+                <li><span></span><a href="/formatruby/">Ruby代码格式化工具</a></li>
+                <li><span></span><a href="/formatc/">C语言代码格式化工具</a></li>
+                <li><span></span><a href="/formatcpp/">C++代码格式化工具</a></li>
+                <li><span></span><a href="/formatperl/">Perl代码格式化工具</a></li>
+                <li><span></span><a href="/formatvbs/">VBScript格式化工具</a></li>
+                <li><span></span><a href="/html2js/"> Html转JS</a></li>
+                <li><span></span><a class="ymir-is-da52fea525" href="/htmloutjs/">Html/JS互转</a></li>
+                <li><span></span><a href="/htmlescape/"> Html转义工具</a></li>
+                <li><span></span><a href="/html2cj/"> Html转C#/JSP</a></li>
+                <li><span></span><a href="/html2php/">Html转PHP代码</a></li>
+                <li><span></span><a href="/html2all/">Html转ASP/Perl</a></li>
+                <li><span></span><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
+                <li><span></span><a href="/htmltable/">Html表格生成器</a></li>
+                <li><span></span><a href="/html2ubb/">HTML/UBB互转</a></li>
+                <li><span></span><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
+                <li><span></span><a class="ymir-is-9cdf81d40c" href="/regex/">正则表达式测试工具</a></li>
+                <li><span></span><a href="/regexcode/">正则生成代码</a></li>
+                <li><span></span><a href="/formatfilter/">Html过滤工具</a></li>
+                <li><span></span><a href="/regexdso/">常用正则表达式</a></li>
+                <li><span></span><a href="/regexsucha/">正则表达式语法速查</a></li>
+                <li><span></span><a href="/runjs/">运行Js/html/css</a></li>
+                <li><span></span><a href="/xpath/">Xpath工具</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>加解密编码</span></h3>
+                <li><span></span><a href="/md5/">MD5加密工具</a></li>
+                <li><span></span><a href="/urlcode/">URL网址16进制加密</a></li>
+                <li><span></span><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
+                <li><span></span><a href="/base64/"> Base64加密/解密</a></li>
+                <li><span></span><a href="/escape/">Escape加密/解密</a></li>
+                <li><span></span><a href="/deencrypt/">对称加密/解密</a></li>
+                <li><span></span><a href="/aesencrypt/">AES加密/解密</a></li>
+                <li><span></span><a href="/desencrypt/">DES加密/解密</a></li>
+                <li><span></span><a href="/rc4encrypt/">RC4加密/解密</a></li>
+                <li><span></span><a href="/rabbitencrypt/">Rabbit加密/解密</a></li>
+                <li><span></span><a href="/tripledes/">TripleDES加密/解密</a></li>
+                <li><span></span><a href="/shaencrypt/">SHA/SHA256加密</a></li>
+                <li><span></span><a href="/allencrypt/">散列/哈希加密大全</a></li>
+                <li><span></span><a href="/morse/">摩尔斯电码加解密</a></li>
+                <li><span></span><a href="/password/">密码生成器</a></li>
+                <li><span></span><a href="/uuid/">UUID在线生成</a></li>
+                <li><span></span><a href="/guid/">GUID在线生成</a></li>
+                <li><span></span><a href="/htpasswd/">htpasswd生成</a></li>
+                <li><span></span><a href="/barcode/">条形码生成器</a></li>
+                <li><span></span><a href="/ip2long/">IP/数字地址转换</a></li>
+                <li><span></span><a class="ymir-is-c20ca7a696" href="/img2base64/"> 图片转Base64</a></li>
+                <li><span></span><a href="/utf8/">UTF-8转GBK</a></li>
+                <li><span></span><a href="/unicode/">Unicode/ASCII转换</a></li>
+                <li><span></span><a href="/ascii/">ASCII编码/解码</a></li>
+                <li><span></span><a href="/urlencode/">URL编码/解码</a></li>
+                <li><span></span><a href="/navtiveunicode/">Native/Unicode编码转换</a></li>
+                <li><span></span><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
+                <li><span></span><a href="/androidkeycode/">Android按键码</a></li>
+                <li><span></span><a href="/keyboardtest/">键盘测试工具</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>文本数字</span></h3>
+                <li><span></span><a href="/editor/">Html在线编辑器</a></li>
+                <li><span></span><a class="ymir-is-da52fea525" href="/autoformat/"> 文章自动排版</a></li>
+                <li><span></span><a href="/jianfan/">简繁字体转换</a></li>
+                <li><span></span><a href="/pinyin/">汉字转为拼音</a></li>
+                <li><span></span><a href="/huoxingwen/">火星文转换器</a></li>
+                <li><span></span><a href="/txtreplace/">文本内容替换</a></li>
+                <li><span></span><a href="/textdiff/"> 文本内容对比</a></li>
+                <li><span></span><a href="/txtcount/">在线统计字数工具</a></li>
+                <li><span></span><a href="/shupai/">文字竖排工具</a></li>
+                <li><span></span><a href="/textflip/">文字翻转工具</a></li>
+                <li><span></span><a href="/quchong/">内容去重工具</a></li>
+                <li><span></span><a href="/wenzitexiao/">文字特效工具</a></li>
+                <li><span></span><a href="/zipstringtext/">字符串文本压缩工具</a></li>
+                <li><span></span><a class="ymir-is-0c59aabd13" href="/camelcase/">驼峰与下划线互转</a></li>
+                <li><span></span><a href="/quanbaojiao/">全角半角转换</a></li>
+                <li><span></span><a href="/enlower/">英文字母大小写转换</a></li>
+                <li><span></span><a href="/rmbdaxie/">人民币大写转换工具</a></li>
+                <li><span></span><a href="/random/">随机数生成器</a></li>
+                <li><span></span><a href="/unixtime/"> Unix时间戳在线转换</a></li>
+                <li><span></span><a href="/hexconvert/">常用进制转换工具</a></li>
+                <li><span></span><a href="/hexrgb/"> RGB颜色在线转换</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>网络</span></h3>
+                <li><span></span><a href="/websocket/">Websocket测试</a></li>
+                <li><span></span><a href="/browserinfo/">获取浏览器信息</a></li>
+                <li><span></span><a href="/dns/">公共DNS</a></li>
+                <li><span></span><a href="/alldns/">各地区公共DNS</a></li>
+                <li><span></span><a href="/dnsdx/">各地电信DNS</a></li>
+                <li><span></span><a href="/dnslt/">各地联通DNS</a></li>
+                <li><span></span><a href="/dnsyd/">各地移动DNS</a></li>
+                <li><span></span><a href="/dnstt/">各地铁通DNS</a></li>
+                <li><span></span><a href="/dnsedu/">教育网DNS</a></li>
+                <li><span></span><a href="/dnsusa/">美国DNS</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>站长</span></h3>
+                <li><span></span><a class="ymir-is-9cdf81d40c" href="/htaccess2nginx/">htaccess转nginx</a></li>
+                <li><span></span><a href="/shortcut/">生成桌面快捷方式</a></li>
+                <li><span></span><a href="/px2rem/">rem与px转换工具</a></li>
+                <li><span></span><a href="/createmeta/">生成网页Meta标签</a></li>
+                <li><span></span><a href="/refresh/">在线定时刷新网址</a></li>
+                <li><span></span><a href="/tiaoseban/">在线调色板</a></li>
+                </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>计算</span></h3>
+                <li><span></span><a href="/nianlvli/">利率计算器在线</a></li>
+                <li><span></span><a href="/subnetmask/">子网掩码计算器</a></li>
+                <li><span></span><a href="/calculator/">在线科学计算器</a></li>
+                <li><span></span><a href="/calcarea/">面积换算器</a></li>
+                <li><span></span><a href="/calcheat/">热量换算器</a></li>
+                <li><span></span><a href="/calcvolume/">体积换算器</a></li>
+                <li><span></span><a href="/calcpressure/">压力换算器</a></li>
+                <li><span></span><a href="/calcpower/">功率换算器</a></li>
+                <li><span></span><a href="/calclength/">长度换算器</a></li>
+                <li><span></span><a href="/calctemperature/">温度换算器</a></li>
+                <li><span></span><a href="/calctime/">时间换算器</a></li>
+                <li><span></span><a href="/calcspeed/">速度换算器</a></li>
+                <li><span></span><a href="/calcangle/">角度换算器</a></li>
+                <li><span></span><a href="/calcdata/">数据大小换算器</a></li>
+                <li><span></span><a href="/calcthickness/">密度换算器</a></li>
+                <li><span></span><a href="/calcforce/">力换算器</a></li>
+            </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>其他</span></h3>
+                <li><span></span><a href="/tuya/">在线涂鸦画板</a></li>
+                <li><span></span><a href="/shizhong/">在线时钟</a></li>
+                <li><span></span><a href="/worldtime/">世界各地时间</a></li>
+                <li><span></span><a href="/capital/">世界各国首都查询</a></li>
+                <li><span></span><a href="/currency/">世界各地货币查询</a></li>
+                <li><span></span><a href="/areacode/">世界各国区号时差查询</a></li>
+                <li><span></span><a href="/jieri/">世界节日查询</a></li>
+                <li><span></span><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
+                <li><span></span><a href="/chaodai/">中国历史朝代时间查询表</a></li>
+                <li><span></span><a href="/tesufuhao/">特殊符号大全</a></li>
+                </ul>
+            <ul class="list-inline list-inline-bg">
+                <h3><span>对照列表</span></h3>
+                <li><span></span><a href="/useragent/">常用User-Agent</a></li>
+                <li><span></span><a href="/contenttype/">Content-Type对照表</a></li>
+                <li><span></span><a href="/requestmethod/">Request请求大全</a></li>
+                <li><span></span><a href="/httpheader/">HTTP请求头大全</a></li>
+                <li><span></span><a href="/pagecode/"> HTTP状态码</a></li>
+                <li><span></span><a href="/asciicode/">ASCII对照表</a></li>
+                <li><span></span><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
+                <li><span></span><a href="/ports/">常见端口大全</a></li>
+                <li><span></span><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
+                <li><span></span><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
+                <li><span></span><a href="/linuxcmd/">Linux常用命令大全</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Ymir legacy content pack v12 START -->
+<section class="container ymir-legacy-content-pack" aria-label="Json转Excel/Csv/xls工具 使用说明">
+  <div class="ymir-legacy-pack-grid">
+    <article class="ymir-legacy-pack-card ymir-legacy-pack-card-primary">
+      <p class="ymir-legacy-pack-kicker">JSON / 数据转换</p>
+      <h2>如何使用 Json转Excel/Csv/xls工具</h2>
+      <p>将 JSON、表格或结构化数据粘贴到工具中，按页面按钮生成格式化结果、转换结果或实体类代码。</p>
+      <a class="ymir-legacy-pack-cta" href="#top">回到工具区</a>
+    </article>
+    <article class="ymir-legacy-pack-card">
+      <h2>结果怎么用</h2>
+      <p>输出结果适合复制到代码、接口文档、配置文件或调试记录中。生成类代码时仍应按项目字段规范复核类型和命名。</p>
+    </article>
+    <article class="ymir-legacy-pack-card">
+      <h2>使用边界</h2>
+      <p>不要粘贴访问令牌、生产密钥、真实用户数据或不可公开的接口响应。</p>
+    </article>
+    <article class="ymir-legacy-pack-card ymir-legacy-related-card">
+      <h2>相关工具</h2>
+      <div class="ymir-legacy-related-links"><a href="/json/">JSON 格式化</a><a href="/jsonzip/">JSON 压缩转义</a><a href="/json2yaml/">JSON 转 YAML</a><a href="/excel2json/">Excel / CSV 转 JSON</a></div>
+    </article>
+  </div>
+</section><!-- Ymir legacy content pack v12 END -->
+</main>
+<div class="copyright" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span>
+                    Copyright ©2026
+                    <a href="/">
+                        程序设计Ymir Tool
+                    </a>
+                </span>
+                |
+                <span>
+                    <a href="/about.html">关于我们</a> | <a href="/privacy.html">隐私政策</a> | <a href="/contact.html">联系我们</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="gotop ymir-is-f2892a2e8a" href="#top" title="返回顶部">
+    <span class="arrow">
+    </span>
+    <span class="arrow lit">
+    </span>
+</a>
+<script src="/static/script/page-listeners/json2excel-index.js" type="text/javascript"></script>
+<script src="/static/script/ymir-i18n.js?v=20260530-v16"></script></body></html>

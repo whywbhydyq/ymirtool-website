@@ -1,0 +1,25 @@
+{
+  "version": "v14",
+  "changes": [
+    "Set all 12 modern tool pages to initial html lang=\"en\" so source language matches initial visible content.",
+    "Updated homepage and site-wide static asset versions to 20260530-v14, including older bootstrap/font resources.",
+    "Added static/style/ymir-modern-tools.css as the forward modern tool-page override layer.",
+    "Added static/style/ymir-legacy-bridge.css as the forward legacy Bootstrap bridge layer.",
+    "Loaded split CSS files after tool.css on modern and legacy tool pages without changing tool algorithms."
+  ],
+  "modern_pages": [
+    "base64",
+    "calculator",
+    "formatjs",
+    "guid",
+    "json",
+    "md5",
+    "password",
+    "regex",
+    "textdiff",
+    "txtcount",
+    "unixtime",
+    "urlencode"
+  ],
+  "no_build_test_lint_typecheck": true
+}

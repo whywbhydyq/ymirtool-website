@@ -1,0 +1,1 @@
+var bs=[1,24,0.1428571,1440.0000288,86400,86400000,0.0027397];var num=0;$(".BtnHS").on("click",function(){num=$(this).prev().val();if(num!=""&&!isNaN(num)){var tag=num/bs[$(".TimeCountCent li").index($(this).parent())];$(".TimeCountCent li").each(function(ind){$(this).find(".TimeTxt").val(bs[ind]*tag)})}});$("#reset").on("click",function(){$("input[type='text']").val("")});;

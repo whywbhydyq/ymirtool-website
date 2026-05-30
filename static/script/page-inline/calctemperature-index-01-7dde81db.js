@@ -1,0 +1,1 @@
+var bs=[1,33.8,274.15,493.47,0.8];var num=0;$(".BtnHS").on("click",function(){num=$(this).prev().val();if(num!=""&&!isNaN(num)){var tag=num/bs[$(".TemperatureCountCent li").index($(this).parent())];$(".TemperatureCountCent li").each(function(ind){$(this).find(".TemperatureTxt").val(bs[ind]*tag)})}});$("#reset").on("click",function(){$("input[type='text']").val("")});

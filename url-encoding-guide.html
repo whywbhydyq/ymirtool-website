@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>URL 编码解码使用说明 - Ymir Tool</title>
+<meta name="description" content="URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。"/>
+<link rel="canonical" href="https://ymirtool.com/url-encoding-guide.html"/>
+<meta property="og:title" content="URL 编码解码使用说明 - Ymir Tool"/>
+<meta property="og:description" content="了解 URL 编码、解码、查询参数、中文和特殊符号处理。"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://ymirtool.com/url-encoding-guide.html"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link href="/static/style/bootstrap-compat.css?v=20260530-v16" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260530-v16" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260530-v16" rel="stylesheet" type="text/css" /></head>
+<body>
+<div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / URL 编码</p>
+<h1>URL 编码解码使用说明</h1>
+<p>URL 编码用于把中文、空格、百分号、井号、问号、等号、斜杠等特殊字符转换成适合放在 URL 中的形式。排查接口和跳转问题时，应先判断要处理的是完整 URL，还是单个参数值。</p>
+<section class="ymir-guide-cta" aria-label="工具入口">
+  <div>
+    <strong>URL 编码解码说明</strong>
+    <p>处理查询参数、中文链接和特殊字符时，可直接粘贴并复制编码结果。</p>
+  </div>
+  <a class="ymir-guide-cta-button" href="/urlencode/">打开 URL 编码/解码工具</a>
+</section>
+
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/urlencode/">URL 编码/解码工具</a></li>
+<li><a href="/unicode/">Unicode / ASCII 转换</a></li>
+<li><a href="/json2get/">JSON 和 GET 参数互转</a></li>
+<li><a href="/encoding-tools-guide.html">编码转换工具指南</a></li>
+</ul>
+<h2>常见场景</h2>
+<ul>
+<li>接口查询参数包含中文或空格。</li>
+<li>回调地址作为另一个 URL 的参数传递。</li>
+<li>日志中的 URL 需要还原成人类可读文本。</li>
+<li>排查重复编码导致的跳转失败。</li>
+</ul>
+<h2>常见错误</h2>
+<ul>
+<li>把完整 URL 和参数值混在一起编码。</li>
+<li>对已经编码过的内容再次编码。</li>
+<li>忘记处理百分号、加号和空格。</li>
+<li>复制 URL 时漏掉问号、等号或连接符。</li>
+</ul>
+<h2>隐私边界</h2>
+<p>URL 中可能包含访问令牌、邮箱、手机号、订单号或内部路径。公开分享或粘贴到工具前，应先确认内容是否适合处理。</p>
+<h2>FAQ</h2>
+<h3>什么时候只编码参数值？</h3>
+<p>当你要把一段文本放进 query 参数里，通常只编码参数值，不要把整个 URL 全部编码。</p>
+<h3>为什么出现 %25？</h3>
+<p>%25 通常代表百分号本身被编码，常见于重复编码或手动拼接错误。</p>
+<h3>加号和空格有什么关系？</h3>
+<p>在部分表单编码场景中，加号可以表示空格；但不同上下文的规则并不完全相同，调试时要结合具体接口确认。</p>
+<p><a href="/urlencode/" class="btn btn-primary">打开 URL 编码工具</a></p>
+
+<section class="ymir-guide-related" aria-label="相关工具入口">
+  <h2>相关工具入口</h2>
+  <div class="ymir-guide-related-grid">
+    <a href="/base64/">Base64 编解码</a>
+    <a href="/unicode/">Unicode 编解码</a>
+    <a href="/utf8/">UTF-8 编码转换</a>
+    <a href="/encoding-tools-guide.html">编码工具指南</a>
+  </div>
+</section>
+</div>
+</body>
+</html>

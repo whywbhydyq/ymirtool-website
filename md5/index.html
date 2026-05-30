@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html class="ymir-modern-html" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MD5 Hash Generator | 32-bit and 16-bit MD5 | Ymir Tool</title>
+<meta content="Generate lowercase and uppercase MD5 hashes from text. Use for checksums and test data, not password storage or security-sensitive verification." name="description"/>
+<link href="https://ymirtool.com/md5/" rel="canonical"/>
+<meta content="MD5 Hash Generator | 32-bit and 16-bit MD5 | Ymir Tool" property="og:title"/>
+<meta content="Generate lowercase and uppercase MD5 hashes from text. Use for checksums and test data, not password storage or security-sensitive verification." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/md5/" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="MD5 Hash Generator | 32-bit and 16-bit MD5 | Ymir Tool" name="twitter:title"/>
+<meta content="Generate lowercase and uppercase MD5 hashes from text. Use for checksums and test data, not password storage or security-sensitive verification." name="twitter:description"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<link href="/static/style/bootstrap-compat.css?v=20260530-v16" rel="stylesheet"/>
+<link href="/static/style/font-fix.css?v=20260530-v16" rel="stylesheet"/><link href="/static/style/tool.css?v=20260530-v16" rel="stylesheet"/>
+<link href="/static/style/ymir-modern-tools.css?v=20260530-v16" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MD5 Hash Generator","url":"https://ymirtool.com/md5/","description":"Generate lowercase and uppercase MD5 hashes from text for non-security checksum use cases.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-05-30","inLanguage":"en"}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
+<main class="ymir-page" data-ymir-tool="md5">
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Hash Tool</div><h1 class="ymir-hero-title">MD5 Hash Generator</h1><p class="ymir-hero-subtitle">Generate 32-character and 16-character MD5 hashes in lowercase and uppercase. MD5 is a legacy hash and should not be used for passwords.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">32-character MD5</span><span class="ymir-trust-badge">16-character MD5</span><span class="ymir-trust-badge">Copy hash</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Text input</h2></div><textarea class="ymir-textarea ymir-textarea-compact" id="toolInput" placeholder="Enter text to hash"></textarea></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="md5-generate" type="button">Generate Hash</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-lower32" type="button">Copy Lowercase</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-upper32" type="button">Copy Uppercase</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">32-character lowercase MD5</h2></div><input class="ymir-input" id="md5Lower32" placeholder="Generated after running" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">32-character uppercase MD5</h2></div><input class="ymir-input" id="md5Upper32" placeholder="Generated after running" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">16-character lowercase MD5</h2></div><input class="ymir-input" id="md5Lower16" placeholder="Generated after running" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">16-character uppercase MD5</h2></div><input class="ymir-input" id="md5Upper16" placeholder="Generated after running" readonly=""/></div></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Use cases and limits</h2><p>MD5 can be useful for legacy checksums, cache keys, sample data, and quick text comparisons where cryptographic security is not required.</p><p>Do not use MD5 for password storage, signatures, or security-sensitive verification. Use modern password hashing or cryptographic algorithms appropriate to your system.</p></section>
+<section class="ymir-container ymir-privacy-note"><h2>Safe use note</h2><p>Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online hash generator. Treat the result as a utility checksum, not a security guarantee.</p></section>
+<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2><h3>Is MD5 reversible?</h3><p>No. MD5 is a hash, not reversible encryption. The same input produces the same hash, but the original text is not decoded from the hash.</p><h3>Can I use MD5 for passwords?</h3><p>No. Use modern password hashing such as bcrypt, scrypt, Argon2, or a platform-approved password storage method.</p><h3>Why do tiny input changes create different hashes?</h3><p>Hash functions are designed so small input changes produce very different output strings.</p></section>
+<section class="ymir-container ymir-related ymir-card">
+<h2>Related tools</h2>
+<div class="ymir-related-grid"><a href="/shaencrypt/">SHA tools</a><a href="/base64/">Base64</a><a href="/password/">Password Generator</a><a href="/hash-tools-guide.html">Hash tools guide</a></div>
+</section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Open a tool, process the input, and copy the result.</span></footer>
+<script src="/static/script/ymir-ui.js?v=20260530-v16"></script>
+<script src="/static/script/ymir-i18n.js?v=20260530-v16"></script>
+<script src="/static/script/ymir-tools.js?v=20260530-v16"></script>
+</body>
+</html>
