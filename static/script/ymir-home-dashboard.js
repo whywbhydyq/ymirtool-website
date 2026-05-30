@@ -313,7 +313,7 @@
     var input = document.getElementById('toolSearch');
     if (input) {
       renderCommand('');
-      setPanelOpen(true);
+      setPanelOpen(false);
       input.addEventListener('focus', function () { openCommand(input); });
       input.addEventListener('input', function () { activeIndex = 0; setPanelOpen(true); renderCommand(input.value); });
       input.addEventListener('keydown', function (e) {
@@ -344,6 +344,28 @@
       }
     });
     document.addEventListener('click', function (e) {
+
+      var quickTab = e.target.closest('[data-quick-tab]');
+      if (quickTab) {
+        var qid = quickTab.getAttribute('data-quick-tab');
+        document.querySelectorAll('[data-quick-tab]').forEach(function (b) { b.classList.toggle('is-active', b === quickTab); });
+        document.querySelectorAll('[data-quick-panel]').forEach(function (p) {
+          var on = p.getAttribute('data-quick-panel') === qid;
+          p.hidden = !on;
+          p.classList.toggle('is-active', on);
+        });
+        return;
+      }
+      var patternTab = e.target.closest('[data-pattern-tab]');
+      if (patternTab) {
+        var pid2 = patternTab.getAttribute('data-pattern-tab');
+        document.querySelectorAll('[data-pattern-tab]').forEach(function (b) { b.classList.toggle('is-active', b === patternTab); });
+        document.querySelectorAll('[data-pattern-panel]').forEach(function (p) {
+          var on2 = p.getAttribute('data-pattern-panel') === pid2;
+          p.hidden = !on2;
+        });
+        return;
+      }
       var patternBtn = e.target.closest('[data-pattern-action]');
       if (patternBtn) { e.preventDefault(); runPatternAction(patternBtn.getAttribute('data-pattern-action')); return; }
       var tryBtn = e.target.closest('[data-try-query]');
@@ -380,7 +402,13 @@
         return;
       }
       if (e.target.closest('[data-clear-recent]')) { writeStore(RECENT_KEY, []); renderSide(); return; }
-      if (e.target.closest('[data-toggle-favorites]')) { favoritesExpanded = !favoritesExpanded; renderSide(); return; }
+      if (e.target.closest('[data-toggle-favorites]')) {
+        favoritesExpanded = !favoritesExpanded;
+        var favTab = document.querySelector('[data-quick-tab="favorites"]');
+        if (favTab) favTab.click();
+        renderSide();
+        return;
+      }
       if (panelOpen && !e.target.closest('.ymir-command-area')) closeCommand();
     });
     window.addEventListener('ymir-language-applied', function () {
