@@ -764,3 +764,60 @@ body.ymir-modern-body .ymir-container{max-width:1540px;padding-left:30px;padding
 @media (max-width:760px){body.ymir-modern-body .ymir-topbar-inner{padding:8px 16px;align-items:flex-start;gap:10px}.ymir-home-dashboard{grid-template-columns:1fr;padding-top:18px}.ymir-home-side{grid-template-columns:1fr}.ymir-value-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}.ymir-command-grid{grid-template-columns:1fr}.ymir-command-panel{max-height:none;overflow:visible}.ymir-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.ymir-directory-list{grid-template-columns:1fr}.ymir-pattern-grid{grid-template-columns:1fr}}
 @media (max-width:520px){body.ymir-modern-body .ymir-container{padding-left:14px;padding-right:14px}body.ymir-modern-body .ymir-nav{gap:14px;flex-wrap:wrap;justify-content:flex-start}.ymir-feature-grid{grid-template-columns:1fr}.ymir-home-intro h1{font-size:30px}.ymir-feature-card{min-height:70px}.ymir-tool-open{display:none}}
 /* === Ymir home dashboard v3 END === */
+
+/* === Ymir home dashboard v4 polish START === */
+body.ymir-modern-body .ymir-topbar-inner{max-width:1820px;min-height:64px;padding:8px 56px;}
+body.ymir-modern-body .ymir-brand{font-size:24px;gap:12px;}
+body.ymir-modern-body .ymir-brand-mark{width:38px;height:38px;border-radius:7px;}
+body.ymir-modern-body .ymir-nav{gap:56px;}
+body.ymir-modern-body .ymir-nav a{font-size:16px;}
+body.ymir-modern-body .ymir-container{max-width:1820px;padding-left:56px;padding-right:56px;}
+.ymir-home-dashboard{grid-template-columns:minmax(430px,520px) minmax(620px,800px) minmax(360px,420px);gap:42px;padding-top:38px;padding-bottom:22px;}
+.ymir-home-intro h1{font-size:clamp(42px,2.65vw,52px);line-height:1.05;letter-spacing:-.06em;max-width:560px;margin-bottom:18px;}
+.ymir-home-intro p{font-size:17px;line-height:1.65;max-width:520px;margin-bottom:30px;}
+.ymir-value-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:520px;}
+.ymir-value-card{min-height:62px;border-radius:10px;padding:10px 13px;}
+.ymir-value-icon{width:24px;height:24px;font-size:18px;}
+.ymir-value-card strong{font-size:14px;}
+.ymir-value-card small{font-size:12px;}
+.ymir-command-area{padding-top:4px;}
+.ymir-command-search{border-radius:10px;box-shadow:0 12px 30px rgba(37,99,235,.12);}
+.ymir-command-search input{height:62px;font-size:16px;padding-left:62px;}
+.ymir-search-icon{left:20px;font-size:22px;}
+.ymir-quick-try{margin:16px 0 10px;font-size:14px;}
+.ymir-command-panel{border-radius:13px;padding:16px 20px;max-height:360px;}
+.ymir-command-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 34px;}
+.ymir-command-group h3{font-size:13px;margin-bottom:10px;}
+.ymir-command-result{padding:8px 7px;gap:12px;}
+.ymir-command-result-icon{width:25px;height:25px;}
+.ymir-command-result strong{font-size:15px;}.ymir-command-result span:last-child{font-size:13px;}
+.ymir-home-side{gap:16px;padding-top:0;}
+.ymir-side-card{border-radius:13px;padding:18px 20px;min-height:118px;}
+.ymir-side-head h2{font-size:17px;}
+.ymir-mini-list{gap:7px;}.ymir-mini-tool-row{font-size:14px;padding:3px 0;}.ymir-mini-icon{width:22px;height:22px;}
+.ymir-feature-section{padding-top:18px;}.ymir-feature-section .ymir-section-title{font-size:25px;margin-bottom:12px;}
+.ymir-feature-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 22px;}
+.ymir-feature-card{min-height:76px;border-radius:10px;padding:13px 14px;gap:14px;}
+.ymir-feature-icon{width:36px;height:36px;border-radius:8px;}
+.ymir-feature-body strong{font-size:14px;}.ymir-feature-body span[data-card-desc]{font-size:12.5px;line-height:1.32;}
+.ymir-tool-open{padding:6px 14px;font-size:12px;border-radius:7px;}
+.ymir-home-lower{grid-template-columns:minmax(500px,560px) 1fr;gap:18px;padding-top:16px;}.ymir-directory-panel,.ymir-pattern-panel{border-radius:13px;padding:18px 20px;}
+.ymir-directory-panel .ymir-section-title,.ymir-pattern-panel .ymir-section-title{font-size:20px;margin-bottom:12px;}
+.ymir-pattern-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.ymir-pattern-card-live{padding:14px;min-height:206px;}
+.ymir-pattern-card-live h3{font-size:14px;margin-bottom:10px;}
+.ymir-pattern-live-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ymir-pattern-diff-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.ymir-pattern-card-live label{display:grid;gap:5px;margin:0;font-size:11.5px;font-weight:800;color:#334155;}
+.ymir-pattern-card-live textarea{width:100%;min-height:72px;resize:vertical;border:1px solid #dbe3ef;border-radius:7px;background:#f8fafc;color:#0f172a;font-size:11.5px;line-height:1.35;padding:8px;box-sizing:border-box;box-shadow:none;outline:0;}
+.ymir-pattern-card-live textarea:focus{border-color:#93c5fd;background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.10);}
+.ymir-pattern-card-live textarea[readonly]{background:#fbfdff;}
+.ymir-pattern-actions button{font-size:11px;border:1px solid #dbe3ef;background:#fff;border-radius:6px;padding:5px 8px;font-weight:800;color:#0f172a;cursor:pointer;}
+.ymir-pattern-actions button:hover{border-color:#93c5fd;color:#2563eb;background:#f8fbff;}
+.ymir-pattern-status{min-height:16px;margin:8px 0 0;color:#64748b;font-size:11px;line-height:1.35;}
+@media (max-width:1500px){body.ymir-modern-body .ymir-container{padding-left:44px;padding-right:44px}.ymir-home-dashboard{grid-template-columns:minmax(360px,450px) minmax(540px,1fr) minmax(330px,380px);gap:32px}.ymir-home-intro h1{font-size:40px}.ymir-home-intro p{font-size:16px}.ymir-home-lower{grid-template-columns:minmax(420px,500px) 1fr}}
+@media (max-width:1260px){body.ymir-modern-body .ymir-topbar-inner{padding:8px 32px}body.ymir-modern-body .ymir-container{padding-left:32px;padding-right:32px}.ymir-home-dashboard{grid-template-columns:minmax(300px,380px) minmax(430px,1fr) minmax(280px,320px);gap:22px}.ymir-home-intro h1{font-size:34px}.ymir-value-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:280px}.ymir-feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.ymir-home-lower{grid-template-columns:1fr}.ymir-pattern-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media (max-width:980px){body.ymir-modern-body .ymir-nav{gap:22px}.ymir-home-dashboard{grid-template-columns:1fr 1fr;gap:20px}.ymir-home-side{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0}.ymir-command-area{padding-top:0}.ymir-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.ymir-pattern-grid{grid-template-columns:1fr}.ymir-pattern-diff-grid{grid-template-columns:1fr}.ymir-directory-list{grid-template-columns:1fr}}
+@media (max-width:760px){body.ymir-modern-body .ymir-topbar-inner{padding:8px 16px;align-items:flex-start;gap:10px}.ymir-home-dashboard{grid-template-columns:1fr;padding-top:18px}.ymir-home-side{grid-template-columns:1fr}.ymir-value-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}.ymir-command-grid{grid-template-columns:1fr}.ymir-command-panel{max-height:360px;overflow-y:auto}.ymir-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.ymir-directory-list{grid-template-columns:1fr}.ymir-pattern-grid{grid-template-columns:1fr}.ymir-pattern-live-grid{grid-template-columns:1fr}}
+@media (max-width:520px){body.ymir-modern-body .ymir-container{padding-left:14px;padding-right:14px}body.ymir-modern-body .ymir-nav{gap:14px;flex-wrap:wrap;justify-content:flex-start}.ymir-feature-grid{grid-template-columns:1fr}.ymir-home-intro h1{font-size:30px}.ymir-feature-card{min-height:70px}.ymir-tool-open{display:none}}
+/* === Ymir home dashboard v4 polish END === */

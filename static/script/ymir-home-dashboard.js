@@ -74,9 +74,9 @@
   function renderCommand(query) {
     var p = panel();
     if (!p) return;
-    var all = allTools();
+    var q = norm(query);
     var featured = featuredTools();
-    var scored = all.map(function (t) {
+    var scored = allTools().map(function (t) {
       t._score = scoreTool(t, query);
       return t;
     }).filter(function (t) {
@@ -91,26 +91,19 @@
       return;
     }
 
-    var best = scored.slice(0, 1);
-    var feat = scored.filter(function (t) {
-      return featured.some(function (f) { return f.href === t.href; });
-    }).filter(function (t) {
+    var best = q ? scored.slice(0, 3) : featured.slice(0, 2);
+    var hotSource = q ? scored : featured;
+    var hot = hotSource.filter(function (t) {
       return !best.some(function (b) { return b.href === t.href; });
-    }).slice(0, 3);
-    var taken = best.concat(feat);
-    var rest = scored.filter(function (t) {
-      return !taken.some(function (b) { return b.href === t.href; });
-    }).slice(0, 3);
-    lastResults = best.concat(feat).concat(rest).slice(0, 7);
+    }).slice(0, 4);
+    lastResults = best.concat(hot).slice(0, 7);
     if (activeIndex >= lastResults.length) activeIndex = 0;
 
     var bestHtml = best.map(function (t, i) { return resultLink(t, i); }).join('');
-    var featHtml = feat.map(function (t, i) { return resultLink(t, best.length + i); }).join('');
-    var restHtml = rest.map(function (t, i) { return resultLink(t, best.length + feat.length + i); }).join('');
+    var hotHtml = hot.map(function (t, i) { return resultLink(t, best.length + i); }).join('');
     p.innerHTML = '<div class="ymir-command-grid">' +
       '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '最佳匹配' : 'Best match') + '</h3>' + bestHtml + '</div>' +
-      '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '热门工具' : 'Featured tools') + '</h3>' + featHtml + '</div>' +
-      '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '全部工具' : 'All tools') + '</h3>' + restHtml + '</div>' +
+      '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '热门工具' : 'Featured tools') + '</h3>' + hotHtml + '</div>' +
       '</div><div class="ymir-command-footer"><a href="#toolDirectory">' + (lang() === 'zh' ? '查看所有搜索结果' : 'View all search results') + ' →</a></div>';
   }
   function rememberTool(t) {
@@ -163,7 +156,11 @@
     allTools().forEach(function (t) { toolsById[t.id] = t; });
     if (recentBox) {
       var recent = readStore(RECENT_KEY).slice(0, 4);
-      recentBox.innerHTML = recent.length ? recent.map(function (t) { return row(t, relativeTime(t.time)); }).join('') : '<p class="ymir-mini-empty">' + (lang() === 'zh' ? '打开工具后会显示在这里。' : 'Tools you open will appear here.') + '</p>';
+      if (recent.length) {
+        recentBox.innerHTML = recent.map(function (t) { return row(t, relativeTime(t.time)); }).join('');
+      } else {
+        recentBox.innerHTML = featuredTools().slice(0, 4).map(function (t) { return row(t, lang() === 'zh' ? '建议' : 'start'); }).join('');
+      }
     }
     if (favBox) {
       var ids = getFavoriteIds();
@@ -204,11 +201,119 @@
   function closeCommand() {
     setPanelOpen(false);
   }
+  function patternText(zh, en) {
+    return lang() === 'zh' ? zh : en;
+  }
+  function patternInput(name) {
+    return document.querySelector('[data-pattern-input="' + name + '"]');
+  }
+  function patternOutput(name) {
+    return document.querySelector('[data-pattern-output="' + name + '"]');
+  }
+  function patternStatus(name, message) {
+    var el = document.querySelector('[data-pattern-status="' + name + '"]');
+    if (el) el.textContent = message || '';
+  }
+  function copyText(text, name) {
+    if (!text) { patternStatus(name, patternText('没有可复制的内容。', 'Nothing to copy.')); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        patternStatus(name, patternText('已复制结果。', 'Copied result.'));
+      }, function () {
+        patternStatus(name, patternText('复制失败，请手动选择复制。', 'Copy failed. Select and copy manually.'));
+      });
+    } else {
+      patternStatus(name, patternText('浏览器不支持自动复制，请手动选择复制。', 'Clipboard is unavailable. Select and copy manually.'));
+    }
+  }
+  function encodeUtf8(str) {
+    var bytes = new TextEncoder().encode(str);
+    var binary = '';
+    bytes.forEach(function (b) { binary += String.fromCharCode(b); });
+    return btoa(binary);
+  }
+  function decodeUtf8(str) {
+    var binary = atob(str.replace(/\s+/g, ''));
+    var bytes = new Uint8Array(binary.length);
+    for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+  function runPatternAction(action) {
+    if (action.indexOf('json-') === 0) {
+      var jsonIn = patternInput('json');
+      var jsonOut = patternOutput('json');
+      var raw = jsonIn ? jsonIn.value : '';
+      if (action === 'json-copy') { copyText(jsonOut && jsonOut.value, 'json'); return; }
+      try {
+        var parsed = JSON.parse(raw);
+        if (action === 'json-minify') jsonOut.value = JSON.stringify(parsed);
+        else jsonOut.value = JSON.stringify(parsed, null, 2);
+        patternStatus('json', action === 'json-validate' ? patternText('JSON 有效。', 'Valid JSON.') : patternText('结果已更新。', 'Result updated.'));
+      } catch (err) {
+        patternStatus('json', patternText('JSON 无效：', 'Invalid JSON: ') + err.message);
+      }
+      return;
+    }
+    if (action.indexOf('base64-') === 0) {
+      var bIn = patternInput('base64');
+      var bOut = patternOutput('base64');
+      var value = bIn ? bIn.value : '';
+      if (action === 'base64-clear') {
+        if (bIn) bIn.value = '';
+        if (bOut) bOut.value = '';
+        patternStatus('base64', patternText('已清空。', 'Cleared.'));
+        return;
+      }
+      if (action === 'base64-copy') { copyText(bOut && bOut.value, 'base64'); return; }
+      try {
+        bOut.value = action === 'base64-decode' ? decodeUtf8(value) : encodeUtf8(value);
+        patternStatus('base64', action === 'base64-decode' ? patternText('已解码。', 'Decoded.') : patternText('已编码。', 'Encoded.'));
+      } catch (err2) {
+        patternStatus('base64', patternText('Base64 输入无效。', 'Invalid Base64 input.'));
+      }
+      return;
+    }
+    if (action.indexOf('diff-') === 0) {
+      var a = patternInput('diff-a');
+      var b = patternInput('diff-b');
+      var out = patternOutput('textdiff');
+      if (action === 'diff-clear') {
+        if (a) a.value = '';
+        if (b) b.value = '';
+        if (out) out.value = '';
+        patternStatus('textdiff', patternText('已清空。', 'Cleared.'));
+        return;
+      }
+      if (action === 'diff-copy') { copyText(out && out.value, 'textdiff'); return; }
+      var left = (a && a.value ? a.value : '').split(/\r?\n/);
+      var right = (b && b.value ? b.value : '').split(/\r?\n/);
+      var max = Math.max(left.length, right.length);
+      var lines = [];
+      var added = 0, removed = 0, changed = 0;
+      for (var i = 0; i < max; i++) {
+        var l = left[i];
+        var r = right[i];
+        if (l === r) { if (l !== undefined && l !== '') lines.push('  ' + l); continue; }
+        if (l === undefined) { lines.push('+ ' + r); added++; continue; }
+        if (r === undefined) { lines.push('- ' + l); removed++; continue; }
+        lines.push('~ ' + l + ' → ' + r); changed++;
+      }
+      if (out) out.value = lines.join('\n') || patternText('没有差异。', 'No differences.');
+      patternStatus('textdiff', patternText('新增 ', 'Added ') + added + patternText('，删除 ', ', removed ') + removed + patternText('，修改 ', ', changed ') + changed + '。');
+      return;
+    }
+  }
+  function initPatternTools() {
+    runPatternAction('json-format');
+    runPatternAction('base64-encode');
+    runPatternAction('diff-compare');
+  }
+
   function attach() {
     var input = document.getElementById('toolSearch');
     if (input) {
       renderCommand('');
-      closeCommand();
+      setPanelOpen(true);
       input.addEventListener('focus', function () { openCommand(input); });
       input.addEventListener('input', function () { activeIndex = 0; setPanelOpen(true); renderCommand(input.value); });
       input.addEventListener('keydown', function (e) {
@@ -239,6 +344,8 @@
       }
     });
     document.addEventListener('click', function (e) {
+      var patternBtn = e.target.closest('[data-pattern-action]');
+      if (patternBtn) { e.preventDefault(); runPatternAction(patternBtn.getAttribute('data-pattern-action')); return; }
       var tryBtn = e.target.closest('[data-try-query]');
       if (tryBtn && input) { input.value = tryBtn.getAttribute('data-try-query'); input.focus(); openCommand(input); return; }
       var result = e.target.closest('.ymir-command-result');
@@ -285,6 +392,7 @@
     updateCardText();
     syncStars();
     renderSide();
+    initPatternTools();
   }
   document.addEventListener('DOMContentLoaded', attach);
 })();
