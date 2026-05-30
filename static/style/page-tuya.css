@@ -1,0 +1,17 @@
+.tool{position:absolute; top:200px; left:16px; border:solid 1px #aaa; background-color:#eee; border-radius:5px; padding-right:5px;}
+.tool .color {float:left; margin:5px; width:30px;}
+.tool .color div{width:24px; height:24px; border:solid 2px #aaa; margin-bottom:5px; opacity:0.5;}
+.tool .color div:hover{opacity:1; cursor:pointer;}
+.tool .color .active{opacity:1; border:solid 2px #000;}
+
+.tool .size {float:left; margin:5px; width:30px; margin-left:0;}
+.tool .size div{width:30px; height:30px; border:solid 2px #aaa; margin-bottom:5px; opacity:0.5;}
+.tool .size div:hover{opacity:1; cursor:pointer;}
+.tool .size .active{opacity:1; border:solid 2px #000;}
+.tool .size span{display:block; margin:3px auto; height:24px; background-color:black;}
+
+.btntool {clear:both; margin-bottom:5px; text-align:center;}
+.btntool input {padding:3px 15px;}
+#canvas {
+    border:1px solid #E5E5DB;width: 100%;
+}

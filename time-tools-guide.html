@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>时间工具使用指南 - Ymir Tool</title>
+<meta name="description" content="Unix 时间戳、在线时钟、世界时间、时间换算等时间工具的使用说明和常见排查场景。"/>
+<link rel="canonical" href="https://ymirtool.com/time-tools-guide.html"/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
+<link href="/static/style/tool.css" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css" rel="stylesheet" type="text/css" /></head>
+<body><div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a></p>
+<h1>时间工具使用指南</h1>
+<p>时间工具适合日志排查、跨时区沟通、时间戳转换和日常时间查询。开发场景里最常见的问题是秒级时间戳和毫秒级时间戳混用，或者本地时区与服务器时区不一致。</p>
+<h2>常用入口</h2>
+<ul>
+<li><a href="/unixtime/">Unix 时间戳转换</a>：适合把日志中的数字时间转换为可读时间。</li>
+<li><a href="/shizhong/">在线时钟</a>：适合快速查看当前时间。</li>
+<li><a href="/worldtime/">世界各地时间</a>：适合跨时区沟通和排期。</li>
+<li><a href="/calctime/">时间换算</a>：适合不同时间单位之间的换算。</li>
+</ul>
+<h2>使用建议</h2>
+<p>排查时间问题时，先确认时间戳单位、时区、夏令时和服务器时间。记录问题时最好同时保存原始值和转换后的可读时间。</p>
+</div>
+</body></html>

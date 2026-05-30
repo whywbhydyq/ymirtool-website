@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MD5 Hash Generator - Ymir Tool</title>
+<meta content="Generate 32-character and 16-character MD5 hashes locally in your browser with lowercase and uppercase output." name="description"/>
+<link href="https://ymirtool.com/md5/" rel="canonical"/>
+<meta content="MD5 Hash Generator - Ymir Tool" property="og:title"/>
+<meta content="Generate 32-character and 16-character MD5 hashes locally in your browser with lowercase and uppercase output." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/md5/" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="MD5 Hash Generator - Ymir Tool" name="twitter:title"/>
+<meta content="Generate 32-character and 16-character MD5 hashes locally in your browser with lowercase and uppercase output." name="twitter:description"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
+<link href="/static/style/font-fix.css" rel="stylesheet"/><link href="/static/style/tool.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MD5 哈希摘要生成工具","url":"https://ymirtool.com/md5/","description":"生成文本 MD5 哈希摘要，支持 32 位和 16 位大小写结果。MD5 不是可逆加密。","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-05-24"}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
+<main class="ymir-page" data-ymir-tool="md5">
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Hash Tool</div><h1 class="ymir-hero-title">MD5 Hash Generator</h1><p class="ymir-hero-subtitle">Generate 32-character and 16-character MD5 hashes in lowercase and uppercase. MD5 is not encryption.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Runs in your browser</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Text Input</h2></div><textarea class="ymir-textarea ymir-textarea-compact" id="toolInput" placeholder="Enter text to hash"></textarea></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="md5-generate" type="button">Generate Hash</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-lower32" type="button">Copy Lowercase</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-upper32" type="button">Copy Uppercase</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">32-character lowercase MD5</h2></div><input class="ymir-input" id="md5Lower32" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">32-character uppercase MD5</h2></div><input class="ymir-input" id="md5Upper32" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">16-character lowercase MD5</h2></div><input class="ymir-input" id="md5Lower16" readonly=""/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">16-character uppercase MD5</h2></div><input class="ymir-input" id="md5Upper16" readonly=""/></div></div></section>
+<section class="ymir-container ymir-help ymir-card">
+<h2>How to use this tool / 使用说明</h2>
+<p>MD5 can be useful for non-security checksums, cache keys, and quick test-data comparison. It should not be used for password storage or security-sensitive verification.</p><p>The same input always creates the same MD5 output. Any small change in the input creates a different hash.</p>
+</section>
+<section class="ymir-container ymir-privacy-note">
+<h2>Privacy note / 隐私说明</h2>
+<p>Most text, encoding, hashing, and formatting actions on this page run in your browser. Avoid pasting secrets, production credentials, private keys, or sensitive personal data into any online tool.</p>
+</section>
+<section class="ymir-container ymir-faq ymir-card">
+<h2>FAQ / 常见问题</h2>
+<h3>Is MD5 reversible?</h3><p>No. MD5 is a hash, not a reversible encryption method.</p><h3>Can I use MD5 for passwords?</h3><p>No. Use modern password hashing such as bcrypt, scrypt, or Argon2.</p><h3>Does this upload my text?</h3><p>No. The hash is generated in your browser.</p>
+</section>
+<section class="ymir-container ymir-related ymir-card">
+<h2>Related tools / 相关工具</h2>
+<div class="ymir-related-grid"><a href="/shaencrypt/">SHA tools</a><a href="/base64/">Base64</a><a href="/password/">Password Generator</a><a href="/hash-tools-guide.html">Hash tools guide</a></div>
+</section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Most text and encoding tools run in your browser.</span></footer>
+<script src="/static/script/ymir-ui.js"></script>
+<script src="/static/script/ymir-tools.js"></script>
+</body>
+</html>

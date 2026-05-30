@@ -1,0 +1,1 @@
+setJS(["/static/script/pcjs/crypto-js.js","/static/script/pcjs/aes.js","/static/script/pcjs/rabbit.js","/static/script/pcjs/rc4.js","/static/script/pcjs/tripledes.js","/static/script/pcjs/deencrypt.js"]);

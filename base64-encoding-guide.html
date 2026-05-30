@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Base64 编解码使用说明 - Ymir Tool</title>
+<meta name="description" content="Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。"/>
+<link rel="canonical" href="https://ymirtool.com/base64-encoding-guide.html"/>
+<meta property="og:title" content="Base64 编解码使用说明 - Ymir Tool"/>
+<meta property="og:description" content="了解 Base64 编码、解码、Data URI、乱码和填充字符等常见问题。"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://ymirtool.com/base64-encoding-guide.html"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link href="/static/style/bootstrap-compat.css" rel="stylesheet"/>
+<link href="/static/style/tool.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link href="/static/style/inline-style-migration.css" rel="stylesheet" type="text/css" /></head>
+<body>
+<div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Base64 说明</p>
+<h1>Base64 编解码使用说明</h1>
+<p>Base64 是一种编码方式，用于把文本或二进制数据转换成便于传输和存储的可见字符。它不是加密方式，任何人拿到完整内容后通常都可以解码。</p>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/base64/">Base64 编解码工具</a></li>
+<li><a href="/img2base64/">图片转 Base64</a></li>
+<li><a href="/urlencode/">URL 编码/解码</a></li>
+<li><a href="/encoding-tools-guide.html">编码转换工具指南</a></li>
+</ul>
+<h2>常见场景</h2>
+<ul>
+<li>接口参数中传递文本片段。</li>
+<li>调试邮件、配置或日志里的编码内容。</li>
+<li>生成图片 Data URI。</li>
+<li>在不适合直接传输二进制内容的地方使用文本形式。</li>
+</ul>
+<h2>常见错误</h2>
+<ul>
+<li>把 Base64 当成加密，误以为能保护隐私。</li>
+<li>复制时漏掉结尾的等号填充字符。</li>
+<li>把 URL-safe Base64 和普通 Base64 混用。</li>
+<li>解码后乱码，实际原因是原文编码或复制内容不完整。</li>
+</ul>
+<h2>隐私边界</h2>
+<p>Base64 不提供保密能力。不要把密码、令牌、Cookie、证件号、内部配置或其他重要内容仅靠 Base64 处理后公开传输。</p>
+<h2>FAQ</h2>
+<h3>Base64 是加密吗？</h3>
+<p>不是。Base64 只是编码，目的是转换表示形式，不是隐藏内容。</p>
+<h3>为什么 Base64 结尾有等号？</h3>
+<p>等号通常是填充字符，用来补齐编码分组。复制时不要随意删除。</p>
+<h3>为什么解码后乱码？</h3>
+<p>常见原因是原始内容不是文本、字符集不一致、内容复制不完整，或使用了不同的 Base64 变体。</p>
+<p><a href="/base64/" class="btn btn-primary">打开 Base64 工具</a></p>
+</div>
+</body>
+</html>
