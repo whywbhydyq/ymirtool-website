@@ -1,1 +1,0 @@
-function Replace() {var s = $("#content").val();if (s != "") {s = s.replace(new RegExp($("#preplace").val(), 'g'), $("#nextplace").val());$("#content").val(s);hightout(s);}else {pcjson_com_msg($("#content"), "请输入要替换的内容文本");}}function Empty() {$("#content").val("");$("#result").val("");$("#preplace").val("");$("#nextplace").val("");$("#content").select();}
