@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JSON 格式化示例与错误排查 - Ymir Tool</title>
+<meta name="description" content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。"/>
+<link rel="canonical" href="https://ymirtool.com/json-formatter-examples.html"/>
+<meta property="og:title" content="JSON 格式化示例与错误排查 - Ymir Tool"/>
+<meta property="og:description" content="通过示例了解 JSON 格式化、压缩、转义、校验和常见错误排查。"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://ymirtool.com/json-formatter-examples.html"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://cdn.staticfile.org" crossorigin/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/static/style/tool.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:80px;min-height:600px;max-width:900px;line-height:1.8;">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 示例</p>
+<h1>JSON 格式化示例与错误排查</h1>
+<p>JSON 格式化工具适合整理接口返回值、日志片段、配置文件和前后端调试数据。它的核心价值不是“把文本变好看”，而是帮助你确认层级、字段、数组结构和常见语法错误。</p>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/json/">JSON 格式化工具</a></li>
+<li><a href="/jsonzip/">JSON 压缩转义</a></li>
+<li><a href="/json2yaml/">JSON 转 YAML</a></li>
+<li><a href="/json2get/">JSON 和 GET 参数互转</a></li>
+</ul>
+<h2>示例输入</h2>
+<pre>{"user":{"id":123,"name":"demo"},"roles":["admin","editor"],"active":true}</pre>
+<p>格式化后应能清楚看到 user 对象、roles 数组和 active 布尔值。排查接口时，建议先保存原始响应，再格式化副本，避免覆盖原始证据。</p>
+<h2>常见错误</h2>
+<ul>
+<li>对象键名没有使用双引号。</li>
+<li>字符串没有闭合。</li>
+<li>数组或对象末尾多了逗号。</li>
+<li>复制日志时漏掉开头或结尾括号。</li>
+<li>把 JavaScript 对象字面量当作标准 JSON。</li>
+</ul>
+<h2>隐私边界</h2>
+<p>粘贴普通 JSON 片段通常适合在浏览器中处理。不要粘贴访问令牌、Cookie、用户隐私资料、内部接口地址或其他不适合在线处理的内容。如果使用远程获取功能，请确认你有权访问该 URL。</p>
+<h2>FAQ</h2>
+<h3>JSON 格式化会改变字段值吗？</h3>
+<p>正常情况下，格式化只改变缩进和换行，不应改变字段值。正式使用前仍应保留原始内容并复核。</p>
+<h3>为什么复制来的 JSON 校验失败？</h3>
+<p>常见原因是日志前后混入了额外文本、字符串转义不完整、末尾多逗号，或复制时少了括号。</p>
+<h3>JSON 压缩和转义有什么区别？</h3>
+<p>压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。</p>
+<p><a href="/json/" class="btn btn-primary">打开 JSON 格式化工具</a></p>
+</div>
+</body>
+</html>
