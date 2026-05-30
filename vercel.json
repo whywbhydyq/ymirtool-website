@@ -49,6 +49,10 @@
         {
           "key": "Report-To",
           "value": "{\"group\":\"ymir-csp-report\",\"max_age\":604800,\"endpoints\":[{\"url\":\"/api/csp-report\"}],\"include_subdomains\":true}"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
