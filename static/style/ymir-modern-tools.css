@@ -509,3 +509,165 @@ body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metrics{grid-t
   body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea-large{height:132px!important;}
   body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metrics{grid-template-columns:1fr!important;}
 }
+
+/* === Contrast pass v16 START === */
+body.ymir-modern-body{
+  --tool-page-bg:#eaf0f7;
+  --tool-page-bg-2:#f3f6fb;
+  --tool-surface:#ffffff;
+  --tool-surface-muted:#f8fafc;
+  --tool-surface-strong:#eaf2ff;
+  --tool-surface-output:#f1f5f9;
+  --tool-border:#c7d7ea;
+  --tool-border-strong:#9fb2c9;
+  --tool-text:#0f172a;
+  --tool-muted:#475569;
+  --tool-primary:#1d4ed8;
+  --tool-primary-dark:#1e40af;
+  --tool-ring:rgba(37,99,235,.16);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37,99,235,.12), transparent 34%),
+    linear-gradient(180deg,var(--tool-page-bg) 0%,var(--tool-page-bg-2) 52%,#eef3f8 100%)!important;
+}
+body.ymir-modern-body .ymir-topbar{
+  background:rgba(255,255,255,.96)!important;
+  border-bottom:1px solid var(--tool-border)!important;
+  box-shadow:0 2px 14px rgba(15,23,42,.06)!important;
+}
+body.ymir-modern-body .ymir-brand-mark{
+  box-shadow:0 8px 20px rgba(29,78,216,.22)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-hero{
+  padding:18px 0 10px!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero-title{
+  color:var(--tool-text)!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.75)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-hero-subtitle{
+  color:var(--tool-muted)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-tool-workspace{
+  position:relative!important;
+  background:var(--tool-surface)!important;
+  border:1px solid var(--tool-border)!important;
+  box-shadow:0 24px 60px rgba(15,23,42,.13)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-tool-workspace:before{
+  content:"";
+  position:absolute;
+  top:0;left:20px;right:20px;height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#2563eb,#06b6d4,#22c55e);
+  opacity:.95;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel{
+  background:var(--tool-surface)!important;
+  border:1px solid var(--tool-border)!important;
+  box-shadow:0 10px 26px rgba(15,23,42,.075)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel-header{
+  background:var(--tool-surface-strong)!important;
+  border-bottom:1px solid var(--tool-border)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel-title{
+  color:var(--tool-text)!important;
+  font-weight:900!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel-body{
+  background:var(--tool-surface)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-input{
+  background:var(--tool-surface-muted)!important;
+  border:1px solid var(--tool-border-strong)!important;
+  color:var(--tool-text)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-textarea:focus,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-input:focus{
+  background:#fff!important;
+  border-color:var(--tool-primary)!important;
+  box-shadow:0 0 0 3px var(--tool-ring)!important;
+  outline:none!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] textarea[readonly],
+body.ymir-modern-body .ymir-page[data-ymir-tool] input[readonly],
+body.ymir-modern-body .ymir-page[data-ymir-tool] #toolOutput{
+  background:var(--tool-surface-output)!important;
+  border-color:var(--tool-border-strong)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel:has(textarea[readonly]),
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel:has(input[readonly]),
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-panel:has(#toolOutput){
+  border-left:3px solid var(--tool-primary)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-actions{
+  background:#eef4fb!important;
+  border:1px solid var(--tool-border)!important;
+  border-radius:14px!important;
+  padding:10px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn-primary{
+  background:linear-gradient(135deg,var(--tool-primary),var(--tool-primary-dark))!important;
+  border-color:var(--tool-primary-dark)!important;
+  color:#fff!important;
+  box-shadow:0 8px 18px rgba(29,78,216,.22)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn-secondary{
+  background:#fff!important;
+  border-color:var(--tool-border-strong)!important;
+  color:#1e293b!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn-secondary:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn-secondary:focus{
+  background:#eff6ff!important;
+  border-color:var(--tool-primary)!important;
+  color:var(--tool-primary-dark)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-btn-danger{
+  background:#fff5f5!important;
+  border-color:#f3b5b5!important;
+  color:#b91c1c!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-status.is-visible{
+  background:#eff6ff!important;
+  border:1px solid #bfdbfe!important;
+  color:#1e3a8a!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-privacy-note,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-faq,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-related{
+  background:#f8fafc!important;
+  border:1px solid #cbd5e1!important;
+  box-shadow:0 8px 22px rgba(15,23,42,.055)!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help:before,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-privacy-note:before,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-faq:before,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-related:before{
+  background:#93c5fd!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid a{
+  background:#ffffff!important;
+  border-color:#cbd5e1!important;
+  color:#0f172a!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid a:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid a:focus{
+  border-color:var(--tool-primary)!important;
+  color:var(--tool-primary-dark)!important;
+  background:#eff6ff!important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metric{
+  background:#fff!important;
+  border:1px solid var(--tool-border)!important;
+  box-shadow:0 8px 20px rgba(15,23,42,.06)!important;
+}
+@media(max-width:980px){
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-tool-workspace{
+    box-shadow:0 16px 38px rgba(15,23,42,.11)!important;
+  }
+}
+/* === Contrast pass v16 END === */
