@@ -1,0 +1,60 @@
+{
+  "version": "v20-vue-all-modern-tools",
+  "date": "2026-05-30",
+  "base": "ymirtool-website-ui-v19-vue-json.zip",
+  "scope": {
+    "vue_replaced_tools": [
+      "json",
+      "base64",
+      "formatjs",
+      "urlencode",
+      "textdiff",
+      "regex",
+      "txtcount",
+      "md5",
+      "guid",
+      "password",
+      "calculator",
+      "unixtime"
+    ],
+    "legacy_bootstrap_tools_changed": false,
+    "homepage_changed": false,
+    "root_build_chain_changed": false,
+    "vue_pilot_removed": true,
+    "old_json_only_vue_bridge_removed": true
+  },
+  "added_or_updated_files": [
+    "static/script/ymir-vue-tools-app.js",
+    "static/style/ymir-vue-element.css",
+    "static/vendor/vue/vue.global.prod.js",
+    "static/vendor/element-plus/index.full.min.js",
+    "static/vendor/element-plus/index.css"
+  ],
+  "removed_files_or_dirs": [
+    "vue-pilot/",
+    "V18_VUE3_ELEMENT_PLUS_PILOT_REPORT.json",
+    "static/script/ymir-vue-json-app.js",
+    "V19_VUE_JSON_PRODUCTION_BRIDGE_REPORT.json"
+  ],
+  "checks": {
+    "npm_run_build": "not run",
+    "tests_lint_typecheck": "not run",
+    "node_check": [
+      "static/script/ymir-vue-tools-app.js",
+      "static/script/ymir-ui.js",
+      "static/script/ymir-i18n.js"
+    ],
+    "css_brace_balance": "passed",
+    "modern_pages_vue_root": 12,
+    "modern_pages_removed_ymir_tools_js": 12,
+    "json_ld_parse_errors": 0,
+    "duplicate_html_ids": 0,
+    "missing_internal_assets_excluding_vercel_runtime": 0,
+    "file_count": 573
+  },
+  "notes": [
+    "The 12 modern tool workbenches now mount one shared Vue 3 + Element Plus production app.",
+    "The 138 legacy Bootstrap pages are left untouched.",
+    "No root package.json or Vite build step is introduced."
+  ]
+}

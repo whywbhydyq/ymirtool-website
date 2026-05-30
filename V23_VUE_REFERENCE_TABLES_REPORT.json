@@ -1,0 +1,75 @@
+{
+  "version": "v23",
+  "artifact": "ymirtool-website-ui-v23-vue-reference-tables.zip",
+  "base": "ymirtool-website-ui-v22-vue-unit-converters.zip",
+  "scope": [
+    "contenttype",
+    "httpheader",
+    "pagecode",
+    "ports",
+    "requestmethod",
+    "useragent",
+    "androidmanifest",
+    "androidkeycode",
+    "linuxcmd"
+  ],
+  "converted_count": 9,
+  "notes": [
+    "Converted reference/query legacy pages to Vue 3 + Element Plus searchable tables.",
+    "Used curated high-value rows rather than attempting to mirror full official registries.",
+    "Did not modify homepage, root package.json, Vercel build chain, or complex algorithm pages.",
+    "Did not run npm build, tests, lint, or typecheck."
+  ],
+  "sources": [
+    {
+      "topic": "Media types",
+      "source": "IANA Media Types registry",
+      "url": "https://www.iana.org/assignments/media-types/"
+    },
+    {
+      "topic": "HTTP headers",
+      "source": "MDN HTTP headers reference",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers"
+    },
+    {
+      "topic": "HTTP field names",
+      "source": "IANA HTTP Field Name Registry",
+      "url": "https://www.iana.org/assignments/http-fields"
+    },
+    {
+      "topic": "HTTP status codes",
+      "source": "IANA HTTP Status Code Registry",
+      "url": "https://www.iana.org/assignments/http-status-codes"
+    },
+    {
+      "topic": "HTTP status codes",
+      "source": "MDN HTTP response status codes",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status"
+    },
+    {
+      "topic": "HTTP methods",
+      "source": "MDN HTTP request methods",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods"
+    },
+    {
+      "topic": "Port numbers",
+      "source": "IANA Service Name and Transport Protocol Port Number Registry",
+      "url": "https://www.iana.org/assignments/service-names-port-numbers"
+    },
+    {
+      "topic": "Android manifest permissions",
+      "source": "Android Developers Manifest.permission / uses-permission",
+      "url": "https://developer.android.com/reference/android/Manifest.permission"
+    },
+    {
+      "topic": "Linux commands",
+      "source": "Linux man-pages project",
+      "url": "https://man7.org/linux/man-pages/"
+    },
+    {
+      "topic": "GNU coreutils",
+      "source": "GNU Coreutils manual",
+      "url": "https://www.gnu.org/software/coreutils/manual/coreutils.html"
+    }
+  ]
+}

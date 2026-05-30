@@ -17,9 +17,10 @@
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
-<link href="/static/style/bootstrap-compat.css?v=20260530-v16" rel="stylesheet"/>
-<link href="/static/style/font-fix.css?v=20260530-v16" rel="stylesheet"/><link href="/static/style/tool.css?v=20260530-v16" rel="stylesheet"/>
-<link href="/static/style/ymir-modern-tools.css?v=20260530-v16" rel="stylesheet"/>
+<link href="/static/style/bootstrap-compat.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/font-fix.css?v=20260530-v34" rel="stylesheet"/><link href="/static/style/tool.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/ymir-modern-tools.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-components.css?v=20260530-v34" rel="stylesheet"/><link href="/static/vendor/element-plus/index.css?v=20260530-v34" rel="stylesheet"/><link href="/static/style/ymir-vue-element.css?v=20260530-v34" rel="stylesheet"/>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"在线计算器","url":"https://ymirtool.com/calculator/","description":"在线进行加、减、乘、除、百分比和小数计算。","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"dateModified":"2026-05-24"}</script>
 <script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
@@ -27,7 +28,7 @@
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div></div></nav>
 <main class="ymir-page" data-ymir-tool="calculator">
-<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Calculator Tool</div><h1 class="ymir-hero-title">Online Scientific Calculator</h1><p class="ymir-hero-subtitle">Run quick browser-based calculations with numbers, parentheses, percentages, and basic operators.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Ready to use</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section class="ymir-container ymir-tool-workspace"><div class="ymir-grid ymir-grid-2"><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Expression</h2></div><input class="ymir-input" id="calcInput" placeholder="(128 + 256) / 3"/></div><div class="ymir-panel"><div class="ymir-panel-header"><h2 class="ymir-panel-title">Result</h2></div><input class="ymir-input" id="calcResult" placeholder="Result appears here" readonly=""/></div></div><div class="ymir-actions"><button class="ymir-btn ymir-btn-primary" data-action="calc-run" type="button">Calculate</button><button class="ymir-btn ymir-btn-secondary" data-action="load-example" type="button">Load Example</button><button class="ymir-btn ymir-btn-secondary" data-action="copy-output" type="button">Copy Result</button><button class="ymir-btn ymir-btn-danger" data-action="clear-all" type="button">Clear</button></div><div aria-live="polite" class="ymir-status" id="toolStatus"></div></section>
+<section class="ymir-hero ymir-container"><div class="ymir-hero-eyebrow">Calculator Tool</div><h1 class="ymir-hero-title">Online Scientific Calculator</h1><p class="ymir-hero-subtitle">Run quick browser-based calculations with numbers, parentheses, percentages, and basic operators.</p><div class="ymir-trust-row"><span class="ymir-trust-badge">Ready to use</span><span class="ymir-trust-badge">No registration</span><span class="ymir-trust-badge">Free to use</span></div></section><section aria-label="calculator Vue workbench" class="ymir-vue-tool-root" data-tool="calculator" id="ymir-vue-tool-app"></section><noscript><div class="ymir-vue-noscript">This tool needs JavaScript to run. Please enable JavaScript and reload the page.</div></noscript>
 <section class="ymir-container ymir-help ymir-card">
 <h2>How to use this tool / 使用说明</h2>
 <p>This calculator is designed for quick arithmetic and everyday numeric checks. It is not a full spreadsheet or symbolic math engine.</p><p>For complex finance, engineering, or legal calculations, verify the result with a specialized calculator.</p>
@@ -46,8 +47,9 @@
 </section>
 </main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Open a tool, process the input, and copy the result.</span></footer>
-<script src="/static/script/ymir-ui.js?v=20260530-v16"></script>
-<script src="/static/script/ymir-i18n.js?v=20260530-v16"></script>
-<script src="/static/script/ymir-tools.js?v=20260530-v16"></script>
+<script src="/static/script/ymir-ui.js?v=20260530-v34"></script>
+<script src="/static/script/ymir-i18n.js?v=20260530-v34"></script><script src="/static/vendor/vue/vue.global.prod.js?v=20260530-v34"></script><script src="/static/vendor/element-plus/index.full.min.js?v=20260530-v34"></script>
+<script src="/static/script/ymir-vue-loader.js?v=20260530-v34"></script>
+
 </body>
 </html>

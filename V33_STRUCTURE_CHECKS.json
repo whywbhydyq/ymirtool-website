@@ -1,0 +1,64 @@
+{
+  "version": "20260530-v34",
+  "js_checked": 14,
+  "css_brace_balance": "pass",
+  "html_files": 182,
+  "vue_pages": 150,
+  "old_version_residual": 0,
+  "loader_missing": 0,
+  "direct_batch_app_refs": 0,
+  "duplicate_id_pages": 0,
+  "jsonld_errors": 0,
+  "missing_internal_refs_excluding_vercel_runtime": 0,
+  "shared_delegation": {
+    "ymir-vue-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 2,
+      "shared_lang_refs": 3,
+      "shared_metric_refs": 3
+    },
+    "ymir-vue-legacy-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 3,
+      "shared_metric_refs": 2
+    },
+    "ymir-vue-converter-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 2,
+      "shared_metric_refs": 0
+    },
+    "ymir-vue-reference-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 2,
+      "shared_metric_refs": 0
+    },
+    "ymir-vue-dns-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 2,
+      "shared_metric_refs": 0
+    },
+    "ymir-vue-utility-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 0,
+      "shared_metric_refs": 0
+    },
+    "ymir-vue-data-code-tools-app.js": {
+      "uses_shared": true,
+      "clipboard_fallbacks": 0,
+      "shared_copy_refs": 1,
+      "shared_lang_refs": 0,
+      "shared_metric_refs": 1
+    }
+  }
+}

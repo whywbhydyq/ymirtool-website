@@ -1,0 +1,53 @@
+{
+  "version": "v30",
+  "batch": "crypto_htpasswd_js_encode",
+  "date": "2026-05-30",
+  "changed_pages": [
+    "aesencrypt",
+    "allencrypt",
+    "confundirjs",
+    "deencrypt",
+    "desencrypt",
+    "endecodejs",
+    "htpasswd",
+    "rabbitencrypt",
+    "rc4encrypt",
+    "tripledes"
+  ],
+  "vue_replaced_total_after_v30": 147,
+  "remaining_unreplaced_estimate": [
+    "editor",
+    "runjs",
+    "websocket"
+  ],
+  "shared_components_used": [
+    "YmirToolFrame",
+    "YmirEditorPanel",
+    "YmirActionButtons",
+    "YmirMetricTags",
+    "copyText",
+    "getLang",
+    "setLang",
+    "mount"
+  ],
+  "new_files": [
+    "static/script/ymir-vue-crypto-code-tools-app.js"
+  ],
+  "modified_files": [
+    "static/style/ymir-vue-element.css",
+    "aesencrypt/index.html",
+    "allencrypt/index.html",
+    "confundirjs/index.html",
+    "deencrypt/index.html",
+    "desencrypt/index.html",
+    "endecodejs/index.html",
+    "htpasswd/index.html",
+    "rabbitencrypt/index.html",
+    "rc4encrypt/index.html",
+    "tripledes/index.html"
+  ],
+  "notes": [
+    "No npm install/build/test/lint/typecheck was run.",
+    "Legacy crypto libraries are retained only as direct browser assets for compatibility tools."
+  ]
+}

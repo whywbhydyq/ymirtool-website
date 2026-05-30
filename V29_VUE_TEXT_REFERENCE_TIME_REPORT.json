@@ -1,0 +1,60 @@
+{
+  "version": "v29",
+  "title": "Vue text, reference, calendar, time and network tools replacement",
+  "replaced_pages": [
+    "jianfan",
+    "huoxingwen",
+    "pinyin",
+    "wenzitexiao",
+    "zipstringtext",
+    "areacode",
+    "currency",
+    "jieri",
+    "shaoshuminzu",
+    "chaodai",
+    "bootstrapicon",
+    "tesufuhao",
+    "nianlvli",
+    "shizhong",
+    "worldtime",
+    "subnetmask",
+    "tiaoseban"
+  ],
+  "count": 17,
+  "previous_vue_count": 120,
+  "new_vue_total": 137,
+  "shared_component_runtime": "static/script/ymir-vue-shared.js",
+  "batch_app": "static/script/ymir-vue-text-reference-tools-app.js",
+  "component_reuse": {
+    "used": true,
+    "shared_components": [
+      "YmirToolFrame",
+      "YmirEditorPanel",
+      "YmirActionButtons",
+      "copyText",
+      "getLang",
+      "setLang",
+      "mount"
+    ],
+    "legacy_algorithm_reuse": [
+      "pcjs/jianfan.js for Simplified/Traditional/Mars text",
+      "pcjs/pinyin.js dictionary for pinyin page"
+    ],
+    "new_batch_components": [
+      "searchable Element Plus table layout",
+      "symbol copy grid",
+      "clock cards",
+      "calculator result stack",
+      "color palette chips"
+    ]
+  },
+  "scope_exclusions": [
+    "homepage",
+    "root build chain",
+    "encryption pages",
+    "editor/runjs/websocket",
+    "js obfuscation pages",
+    "npm install/build/test/lint/typecheck"
+  ],
+  "version_token": "20260530-v31"
+}

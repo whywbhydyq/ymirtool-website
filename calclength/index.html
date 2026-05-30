@@ -1,463 +1,67 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="google-adsense-account" content="ca-pub-1653188471819736"/><title>在线长度换算器,长度单位换算 - Ymir Tool</title><meta name="applicable-device" content="pc,mobile" /><meta http-equiv="Cache-Control" content="no-transform" /><meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="description" content="在线长度换算器,长度单位换算用于计算 / 单位换算场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。" /><meta name="renderer" content="webkit" /><meta name="apple-mobile-web-app-capable" content="yes" /><link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon" /><link href="/static/style/bootstrap-compat.css?v=20260530-v16" rel="stylesheet" type="text/css" /><link href="/static/style/tool.css?v=20260530-v16" rel="stylesheet" type="text/css" />
-<link href="/static/style/ymir-legacy-bridge.css?v=20260530-v16" rel="stylesheet"/><link href="/static/style/inline-style-migration.css?v=20260530-v16" rel="stylesheet" type="text/css" /><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script><link rel="canonical" href="https://ymirtool.com/calclength/" />
-<meta property="og:title" content="在线长度换算器,长度单位换算 - Ymir Tool" />
-<meta property="og:description" content="在线长度换算器,长度单位换算用于计算 / 单位换算场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ymirtool.com/calclength/" />
-<meta property="og:site_name" content="Ymir Tool" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "在线长度换算器,长度单位换算",
-  "url": "https://ymirtool.com/calclength/",
-  "description": "在线长度换算器,长度单位换算用于计算 / 单位换算场景，帮助你输入、查询或转换内容，查看结果并复制到代码、配置、文档或排查记录中。请按页面边界复核敏感或生产用途。",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "CNY"
-  },
-  "datePublished": "2026-01-01",
-  "dateModified": "2026-07-18"
-}
-</script>
-<meta property="og:image" content="https://ymirtool.com/static/images/og.svg" />
+<!DOCTYPE html>
+<html class="ymir-modern-html" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Length Converter | Ymir Tool</title>
+<meta name="description" content="Convert metric, imperial, nautical, and common Chinese length units locally."/>
+<link rel="canonical" href="https://ymirtool.com/calclength/"/>
+<meta property="og:title" content="Length Converter | Ymir Tool"/>
+<meta property="og:description" content="Convert metric, imperial, nautical, and common Chinese length units locally."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://ymirtool.com/calclength/"/>
+<meta property="og:site_name" content="Ymir Tool"/>
+<meta property="og:image" content="https://ymirtool.com/static/images/og.svg"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在线长度换算器,长度单位换算 - Ymir Tool"/>
-<meta name="baidu-site-verification" content="codeva-UksONlLJGB" />
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script></head><body><div class="navbar navbar-default navbar-static-top navbar-fixed-top">
-    <div class="jz container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Ymir Tool</span> <span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/" title="Ymir Tool"><em class="logo_ico glyphicon glyphicon-wrench"></em>Ymir Tool</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" role="navigation">
-            <ul class="nav navbar-nav" id="top_menu">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">JSON工具<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/json/">Json格式化</a></li>
-                        <li><a href="/jsonudview/"> Json格式化(上下)</a></li>
-                        <li><a href="/jsonlrview/">Json格式化(左右)</a></li>
-                        <li><a href="/jsonzip/">Json在线压缩转义</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/json2cs/">Json生成C#实体类</a></li>
-                        <li><a href="/json2java/"> Json生成Java实体类</a></li>
-                        <li><a href="/json2go/">Json生成Go结构体</a></li>
-                        <li><a href="/sql2java/">SQL转Java实体类</a></li>
-                        <li><a href="/json2xml/">XML和Json在线互转</a></li>
-                        <li><a href="/excel2json/">Excel/CSV转Json格式</a></li>
-                        <li><a href="/json2excel/">Json转Excel/CSV格式</a></li>
-                        <li><a href="/json2get/">JSON和GET参数互转</a></li>
-                        <li><a href="/json2yaml/">JSON转YAML</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">格式化转换<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/formathtml/">HTML格式化/压缩</a></li>
-                        <li><a class="ymir-is-da52fea525" href="/formatcss/"> CSS格式化/压缩</a></li>
-                        <li><a href="/formatjs/">JS格式化/压缩</a></li>
-                        <li><a href="/endecodejs/">JS加密/解密</a></li>
-                        <li><a href="/confundirjs/"> JS代码混合加密</a></li>
-                        <li><a href="/formatsql/">SQL压缩/格式化</a></li>
-                        <li><a href="/formatphp/">PHP代码格式化工具</a></li>
-                        <li><a href="/formatxml/">XML压缩/格式化 </a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a class="ymir-is-da52fea525" href="/htmloutjs/">Html/JS互转</a></li>
-                        <li><a href="/htmlescape/"> Html转义工具</a></li>
-                        <li><a href="/html2cj/"> Html转C#/JSP</a></li>
-                        <li><a href="/html2php/">Html转PHP代码</a></li>
-                        <li><a href="/html2all/">Html转ASP/Perl</a></li>
-                        <li><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
-                        <li><a href="/htmltable/">Html表格生成器</a></li>
-                        <li><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a class="ymir-is-9cdf81d40c" href="/regex/">正则表达式测试工具</a></li>
-                        <li><a href="/regexcode/">正则生成代码</a></li>
-                        <li><a href="/formatfilter/">Html过滤工具</a></li>
-                        <li><a href="/runjs/">运行Js/html/css</a></li>
-                        <li><a href="/xpath/">Xpath工具</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">加解密编码<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/md5/">MD5加密工具</a></li>
-                        <li><a href="/urlcode/">URL网址16进制加密</a></li>
-                        <li><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
-                        <li><a href="/base64/"> Base64加密/解密</a></li>
-                        <li><a href="/escape/">Escape加密/解密</a></li>
-                        <li><a href="/deencrypt/">对称加密/解密</a></li>
-                        <li><a href="/shaencrypt/">SHA/SHA256加密</a></li>
-                        <li><a href="/allencrypt/">散列/哈希加密大全</a></li>
-                        <li><a href="/morse/">摩尔斯电码加解密</a></li>
-                        <li><a href="/password/">密码生成器</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/uuid/">UUID在线生成</a></li>
-                        <li><a href="/guid/">GUID在线生成</a></li>
-                        <li><a href="/barcode/">条形码生成器</a></li>
-                        <li><a href="/ip2long/">IP/数字地址转换</a></li>
-                        <li><a class="ymir-is-c20ca7a696" href="/img2base64/"> 图片转Base64</a></li>
-                        <li><a href="/utf8/">UTF-8转GBK</a></li>
-                        <li><a href="/unicode/">Unicode/ASCII转换</a></li>
-                        <li><a href="/ascii/">ASCII编码/解码</a></li>
-                        <li><a href="/urlencode/">URL编码/解码</a></li>
-                        <li><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
-                        <li><a href="/androidkeycode/">Android按键码</a></li>
-                        <li><a href="/keyboardtest/">键盘测试工具</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">文本数字<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a href="/editor/">Html在线编辑器</a></li>
-                        <li><a class="ymir-is-da52fea525" href="/autoformat/"> 文章自动排版</a></li>
-                        <li><a href="/jianfan/">简繁字体转换</a></li>
-                        <li><a href="/pinyin/">汉字转为拼音</a></li>
-                        <li><a href="/huoxingwen/">火星文转换器</a></li>
-                        <li><a href="/txtreplace/">文本内容替换</a></li>
-                        <li><a href="/textdiff/"> 文本内容对比</a></li>
-                        <li><a href="/txtcount/">在线统计字数工具</a></li>
-                        <li><a href="/quchong/">内容去重工具</a></li>
-                        <li><a href="/wenzitexiao/">文字特效工具</a></li>
-                        <li><a href="/zipstringtext/">字符串文本压缩工具</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a class="ymir-is-0c59aabd13" href="/camelcase/">驼峰与下划线互转</a></li>
-                        <li><a href="/quanbaojiao/">全角半角转换</a></li>
-                        <li><a href="/enlower/">英文字母大小写转换</a></li>
-                        <li><a href="/rmbdaxie/">人民币大写转换工具</a></li>
-                        <li><a href="/random/">随机数生成器</a></li>
-                        <li><a href="/unixtime/"> Unix时间戳在线转换</a></li>
-                        <li><a href="/hexconvert/">常用进制转换工具</a></li>
-                        <li><a href="/hexrgb/"> RGB颜色在线转换</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">网络<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/websocket/">Websocket测试</a></li>
-                        <li><a href="/browserinfo/">获取浏览器信息</a></li>
-                        <li><a href="/dns/">公共DNS</a></li>
-                        <li><a href="/alldns/">各地区公共DNS</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">站长<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu ul-list">
-                        <li><a class="ymir-is-9cdf81d40c" href="/htaccess2nginx/">htaccess转nginx</a></li>
-                        <li><a href="/shortcut/">生成桌面快捷方式</a></li>
-                        <li><a href="/px2rem/">rem与px转换工具</a></li>
-                        <li><a href="/createmeta/">生成网页Meta标签</a></li>
-                        <li><a href="/refresh/">在线定时刷新网址</a></li>
-                        <li><a href="/tiaoseban/">在线调色板</a></li>
-                        <li role="separator" class="divider"></li>
-                        </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">计算<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/nianlvli/">利率计算器在线</a></li>
-                        <li><a href="/subnetmask/">子网掩码计算器</a></li>
-                        <li><a href="/calculator/">在线科学计算器</a></li>
-                    </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">其他<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/tuya/">在线涂鸦画板</a></li>
-                        <li><a href="/shizhong/">在线时钟</a></li>
-                        <li><a href="/worldtime/">世界各地时间</a></li>
-                        <li><a href="/capital/">世界各国首都查询</a></li>
-                        <li><a href="/currency/">世界各地货币查询</a></li>
-                        <li><a href="/areacode/">世界各国区号时差查询</a></li>
-                        <li><a href="/jieri/">世界节日查询</a></li>
-                        <li><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
-                        <li><a href="/chaodai/">中国历史朝代时间查询表</a></li>
-                        <li><a href="/tesufuhao/">特殊符号大全</a></li>
-                        </ul>
-                <li class="dropdown">
-                <li class="dropdown"><a href="/" class="dropdown-toggle" data-toggle="dropdown"
-                                        role="button" aria-haspopup="true" aria-expanded="false">对照列表<span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/useragent/">常用User-Agent</a></li>
-                        <li><a href="/contenttype/">Content-Type对照表</a></li>
-                        <li><a href="/requestmethod/">Request请求大全</a></li>
-                        <li><a href="/httpheader/">HTTP请求头大全</a></li>
-                        <li><a href="/pagecode/"> HTTP状态码</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/asciicode/">ASCII对照表</a></li>
-                        <li><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
-                        <li><a href="/ports/">常见端口大全</a></li>
-                        <li><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
-                        <li><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
-                        <li><a href="/linuxcmd/">Linux常用命令大全</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<meta name="twitter:title" content="Length Converter | Ymir Tool"/>
+<meta name="twitter:description" content="Convert metric, imperial, nautical, and common Chinese length units locally."/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link href="/static/vendor/element-plus/index.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/ymir-modern-tools.css?v=20260530-v34" rel="stylesheet"/>
+<link href="/static/style/ymir-vue-element.css?v=20260530-v34" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Length Converter","url":"https://ymirtool.com/calclength/","description":"Convert metric, imperial, nautical, and common Chinese length units locally.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"datePublished":"2026-01-01","dateModified":"2026-05-30"}</script>
+</head>
+<body class="ymir-modern-body ymir-vue-page">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/calculator/">Calculator</a><a href="/calclength/">Converters</a><a href="/guides.html">Guides</a></div></div></nav>
+<main class="ymir-modern-main">
+  <section class="ymir-hero ymir-tool-hero">
+    <div class="ymir-hero-copy">
+      <p class="ymir-eyebrow">Unit converter</p>
+      <h1>Length Converter</h1>
+      <p>Convert metric, imperial, nautical, and common Chinese length units locally.</p>
     </div>
-</div>
-<main><div class="container"><div class="row"><div class="col-md-12 col10main"><h1 class="ymir-is-1db58a2676">在线长度换算器,长度单位换算</h1><div class="accordion" id="accordion2"><div class="accordion-group">
-<ul class="nav nav-tabs hbflag"><li role="presentation"><a href="/nianlvli/">利率计算器在线</a></li><li role="presentation"><a href="/subnetmask/">子网掩码计算器</a></li><li role="presentation"><a href="/calculator/">在线科学计算器</a></li><li role="presentation"><a href="/calcarea/">面积换算器</a></li><li role="presentation"><a href="/calcheat/">热量换算器</a></li><li role="presentation"><a href="/calcvolume/">体积换算器</a></li><li role="presentation" class="active"><a href="/calclength/">长度换算器</a></li><li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">更多工具<span class="caret"> </span></a><ul class="dropdown-menu"><li role="presentation"><a href="/calcpressure/">压力换算器</a></li><li role="presentation"><a href="/calcpower/">功率换算器</a></li><li role="presentation"><a href="/calctemperature/">温度换算器</a></li><li role="presentation"><a href="/calctime/">时间换算器</a></li><li role="presentation"><a href="/calcspeed/">速度换算器</a></li><li role="presentation"><a href="/calcangle/">角度换算器</a></li><li role="presentation"><a href="/calcdata/">数据大小换算器</a></li><li role="presentation"><a href="/calcthickness/">密度换算器</a></li><li role="presentation"><a href="/calcforce/">力换算器</a></li></ul></li></ul> <div class="panel"> <div class="form-inline ymir-is-70c485c31f"> <div class="form-group"> <ul class="LengthCountCent ymir-is-13cbe03b9a"> <li> <label> <span>公里</span><span class="mathunit">（km）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-001" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>米</span><span class="mathunit">（m）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-002" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>分米</span><span class="mathunit">（dm）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-003" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>厘米</span><span class="mathunit">（cm）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-004" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>毫米</span><span class="mathunit">（mm）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-005" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>丝</span><span class="mathunit">（dmm）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-006" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>微米</span><span class="mathunit">（um）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-007" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>里</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-008" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>丈</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-009" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>尺</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-010" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>寸</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-011" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>分</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-012" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>厘</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-013" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>海里</span><span class="mathunit">（nmi）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-014" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>英寻</span><span class="mathunit"> </span> </label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-015" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>英里</span><span class="mathunit">（mi）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-016" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>弗隆</span><span class="mathunit">（fur）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-017" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>码</span><span class="mathunit">（yd）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-018" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>英尺</span><span class="mathunit">（ft）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-019" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>英寸</span><span class="mathunit">（in）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-020" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> <li> <label> <span>纳米</span><span class="mathunit">（nm）</span></label> <input type="text" class="form-control LengthTxt js-csp-calclength-index-021" placeholder="请输入数字"><a type="button" class="btn btn-default BtnHS">换算</a></li> </ul> <hr /> <input type="button" id="reset" class="btn btn-warning" value="全部重置"></div> </div> </div></div></div></div></div><div class="alert alert-success alert-dismissible"><h4>在线长度换算器介绍</h4> <p> 1千米(km)= 0.621英里(mile)</p> <p> 1米(m)= 3.281英尺(ft)= 1.094码(yd)</p> <p> 1丝米(dmm)=10忽米(cmm)=10丝=0.01毫米=0.001厘米</p> <p> 1厘米(cm)= 0.394英寸(in)</p> <p> 1厘米（cm)=10毫米（mm)</p> <p> 1,000,000,000纳米 = 1米（m）</p> <p> 1,000,000纳米 = 1毫米（mm）</p> <p> 1,000纳米 = 1微米（µm）</p> <p> 1纳米 = 10 埃米（记为Å）</p> <p> 1埃米=10^-10m</p> <p> 1埃(A)= 10米(m)</p> <p> 1英里(mile)= 1.609千米(km)</p> <p> 1英寻(fm)= 1.829(m) 1英尺(ft)= 0.3048米(m)</p> <p> 1英寸(in)= 2.54厘米(cm)</p> <p> 1海里(n mile)= 1.852千米(km)</p> <p> 1链= 66英尺(ft)= 20.1168米 1码(yd)= 0.9144米(m)</p> <p> 1密耳(mil)= 0.0254毫米(mm)</p> <p> 1英尺(ft)= 12英寸(in)</p> <p> 1码(yd)= 3英尺(ft) 1杆(rad)= 16.5英尺(ft)</p> <p> 1英里(mile)= 5280英尺(ft)</p> <p> 1海里(n mile)= 1.1516英里(mile)</p> <p> <code>市制计量单位：</code></p> <p> 1里=150丈&nbsp;1丈=10尺&nbsp;1尺=10寸&nbsp;1寸=10分&nbsp;1分=10厘&nbsp;1厘=10毫</p></div> <div class="accordion-group"> </div></div><script src="/static/script/jquery-1.11.3.min.js" type="text/javascript"></script><script src="/static/script/bootstrap.min.js" type="text/javascript"></script><script src="/static/script/tool.js" type="text/javascript"></script><script src="/static/script/page-inline/calclength-index-01-b6e3e747.js" type="text/javascript"></script><div class="container" id="foot-history">
-    <div class="row">
-        <div class="col-md-12"><span>您的足迹：</span><span id="visit_history"></span></div>
-        <div class="col-md-12 ymir-is-d2c171b18b">
-            <!-- 广告区1 -->
-
-
-
-
-
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 footer-nav">
-            <h2>站内导航</h2>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>JSON工具</span></h3>
-                <li><span></span><a href="/json/">Json格式化</a></li>
-                <li><span></span><a href="/jsonudview/"> Json格式化(上下)</a></li>
-                <li><span></span><a href="/jsonlrview/">Json格式化(左右)</a></li>
-                <li><span></span><a href="/jsonzip/">Json在线压缩转义</a></li>
-                <li><span></span><a href="/json2cs/">Json生成C#实体类</a></li>
-                <li><span></span><a href="/json2java/"> Json生成Java实体类</a></li>
-                <li><span></span><a href="/json2go/">Json生成Go结构体</a></li>
-                <li><span></span><a href="/sql2java/">SQL转Java实体类</a></li>
-                <li><span></span><a href="/json2xml/">XML和Json在线互转</a></li>
-                <li><span></span><a href="/excel2json/">Excel/CSV转Json格式</a></li>
-                <li><span></span><a href="/json2excel/">Json转Excel/CSV格式</a></li>
-                <li><span></span><a href="/json2get/">JSON和GET参数互转</a></li>
-                <li><span></span><a href="/json2yaml/">JSON转YAML</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>格式化转换</span></h3>
-                <li><span></span><a href="/formathtml/">HTML格式化/压缩</a></li>
-                <li><span></span><a class="ymir-is-da52fea525" href="/formatcss/"> CSS格式化/压缩</a></li>
-                <li><span></span><a href="/formatjs/">JS格式化/压缩</a></li>
-                <li><span></span><a href="/endecodejs/">JS加密/解密</a></li>
-                <li><span></span><a href="/confundirjs/"> JS代码混合加密</a></li>
-                <li><span></span><a href="/formatsql/">SQL压缩/格式化</a></li>
-                <li><span></span><a href="/formatphp/">PHP代码格式化工具</a></li>
-                <li><span></span><a href="/formatxml/">XML压缩/格式化 </a></li>
-                <li><span></span><a href="/formatcs/">C#代码格式化工具</a></li>
-                <li><span></span><a href="/formatjava/">JAVA代码格式化工具</a></li>
-                <li><span></span><a href="/formatcsql/">SQL代码格式化工具</a></li>
-                <li><span></span><a href="/formatpy/">Python代码格式化工具</a></li>
-                <li><span></span><a href="/formatruby/">Ruby代码格式化工具</a></li>
-                <li><span></span><a href="/formatc/">C语言代码格式化工具</a></li>
-                <li><span></span><a href="/formatcpp/">C++代码格式化工具</a></li>
-                <li><span></span><a href="/formatperl/">Perl代码格式化工具</a></li>
-                <li><span></span><a href="/formatvbs/">VBScript格式化工具</a></li>
-                <li><span></span><a href="/html2js/"> Html转JS</a></li>
-                <li><span></span><a class="ymir-is-da52fea525" href="/htmloutjs/">Html/JS互转</a></li>
-                <li><span></span><a href="/htmlescape/"> Html转义工具</a></li>
-                <li><span></span><a href="/html2cj/"> Html转C#/JSP</a></li>
-                <li><span></span><a href="/html2php/">Html转PHP代码</a></li>
-                <li><span></span><a href="/html2all/">Html转ASP/Perl</a></li>
-                <li><span></span><a href="/htmlfromcsv/">Excel转HTML表格</a></li>
-                <li><span></span><a href="/htmltable/">Html表格生成器</a></li>
-                <li><span></span><a href="/html2ubb/">HTML/UBB互转</a></li>
-                <li><span></span><a href="/htmlmarkdown/">HTML/MarkDown互转</a></li>
-                <li><span></span><a class="ymir-is-9cdf81d40c" href="/regex/">正则表达式测试工具</a></li>
-                <li><span></span><a href="/regexcode/">正则生成代码</a></li>
-                <li><span></span><a href="/formatfilter/">Html过滤工具</a></li>
-                <li><span></span><a href="/regexdso/">常用正则表达式</a></li>
-                <li><span></span><a href="/regexsucha/">正则表达式语法速查</a></li>
-                <li><span></span><a href="/runjs/">运行Js/html/css</a></li>
-                <li><span></span><a href="/xpath/">Xpath工具</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>加解密编码</span></h3>
-                <li><span></span><a href="/md5/">MD5加密工具</a></li>
-                <li><span></span><a href="/urlcode/">URL网址16进制加密</a></li>
-                <li><span></span><a href="/urlthunder/">迅雷旋风URL加解密</a></li>
-                <li><span></span><a href="/base64/"> Base64加密/解密</a></li>
-                <li><span></span><a href="/escape/">Escape加密/解密</a></li>
-                <li><span></span><a href="/deencrypt/">对称加密/解密</a></li>
-                <li><span></span><a href="/aesencrypt/">AES加密/解密</a></li>
-                <li><span></span><a href="/desencrypt/">DES加密/解密</a></li>
-                <li><span></span><a href="/rc4encrypt/">RC4加密/解密</a></li>
-                <li><span></span><a href="/rabbitencrypt/">Rabbit加密/解密</a></li>
-                <li><span></span><a href="/tripledes/">TripleDES加密/解密</a></li>
-                <li><span></span><a href="/shaencrypt/">SHA/SHA256加密</a></li>
-                <li><span></span><a href="/allencrypt/">散列/哈希加密大全</a></li>
-                <li><span></span><a href="/morse/">摩尔斯电码加解密</a></li>
-                <li><span></span><a href="/password/">密码生成器</a></li>
-                <li><span></span><a href="/uuid/">UUID在线生成</a></li>
-                <li><span></span><a href="/guid/">GUID在线生成</a></li>
-                <li><span></span><a href="/htpasswd/">htpasswd生成</a></li>
-                <li><span></span><a href="/barcode/">条形码生成器</a></li>
-                <li><span></span><a href="/ip2long/">IP/数字地址转换</a></li>
-                <li><span></span><a class="ymir-is-c20ca7a696" href="/img2base64/"> 图片转Base64</a></li>
-                <li><span></span><a href="/utf8/">UTF-8转GBK</a></li>
-                <li><span></span><a href="/unicode/">Unicode/ASCII转换</a></li>
-                <li><span></span><a href="/ascii/">ASCII编码/解码</a></li>
-                <li><span></span><a href="/urlencode/">URL编码/解码</a></li>
-                <li><span></span><a href="/navtiveunicode/">Native/Unicode编码转换</a></li>
-                <li><span></span><a href="/keyboardcode/">KeyCode键盘按键码</a></li>
-                <li><span></span><a href="/androidkeycode/">Android按键码</a></li>
-                <li><span></span><a href="/keyboardtest/">键盘测试工具</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>文本数字</span></h3>
-                <li><span></span><a href="/editor/">Html在线编辑器</a></li>
-                <li><span></span><a class="ymir-is-da52fea525" href="/autoformat/"> 文章自动排版</a></li>
-                <li><span></span><a href="/jianfan/">简繁字体转换</a></li>
-                <li><span></span><a href="/pinyin/">汉字转为拼音</a></li>
-                <li><span></span><a href="/huoxingwen/">火星文转换器</a></li>
-                <li><span></span><a href="/txtreplace/">文本内容替换</a></li>
-                <li><span></span><a href="/textdiff/"> 文本内容对比</a></li>
-                <li><span></span><a href="/txtcount/">在线统计字数工具</a></li>
-                <li><span></span><a href="/shupai/">文字竖排工具</a></li>
-                <li><span></span><a href="/textflip/">文字翻转工具</a></li>
-                <li><span></span><a href="/quchong/">内容去重工具</a></li>
-                <li><span></span><a href="/wenzitexiao/">文字特效工具</a></li>
-                <li><span></span><a href="/zipstringtext/">字符串文本压缩工具</a></li>
-                <li><span></span><a class="ymir-is-0c59aabd13" href="/camelcase/">驼峰与下划线互转</a></li>
-                <li><span></span><a href="/quanbaojiao/">全角半角转换</a></li>
-                <li><span></span><a href="/enlower/">英文字母大小写转换</a></li>
-                <li><span></span><a href="/rmbdaxie/">人民币大写转换工具</a></li>
-                <li><span></span><a href="/random/">随机数生成器</a></li>
-                <li><span></span><a href="/unixtime/"> Unix时间戳在线转换</a></li>
-                <li><span></span><a href="/hexconvert/">常用进制转换工具</a></li>
-                <li><span></span><a href="/hexrgb/"> RGB颜色在线转换</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>网络</span></h3>
-                <li><span></span><a href="/websocket/">Websocket测试</a></li>
-                <li><span></span><a href="/browserinfo/">获取浏览器信息</a></li>
-                <li><span></span><a href="/dns/">公共DNS</a></li>
-                <li><span></span><a href="/alldns/">各地区公共DNS</a></li>
-                <li><span></span><a href="/dnsdx/">各地电信DNS</a></li>
-                <li><span></span><a href="/dnslt/">各地联通DNS</a></li>
-                <li><span></span><a href="/dnsyd/">各地移动DNS</a></li>
-                <li><span></span><a href="/dnstt/">各地铁通DNS</a></li>
-                <li><span></span><a href="/dnsedu/">教育网DNS</a></li>
-                <li><span></span><a href="/dnsusa/">美国DNS</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>站长</span></h3>
-                <li><span></span><a class="ymir-is-9cdf81d40c" href="/htaccess2nginx/">htaccess转nginx</a></li>
-                <li><span></span><a href="/shortcut/">生成桌面快捷方式</a></li>
-                <li><span></span><a href="/px2rem/">rem与px转换工具</a></li>
-                <li><span></span><a href="/createmeta/">生成网页Meta标签</a></li>
-                <li><span></span><a href="/refresh/">在线定时刷新网址</a></li>
-                <li><span></span><a href="/tiaoseban/">在线调色板</a></li>
-                </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>计算</span></h3>
-                <li><span></span><a href="/nianlvli/">利率计算器在线</a></li>
-                <li><span></span><a href="/subnetmask/">子网掩码计算器</a></li>
-                <li><span></span><a href="/calculator/">在线科学计算器</a></li>
-                <li><span></span><a href="/calcarea/">面积换算器</a></li>
-                <li><span></span><a href="/calcheat/">热量换算器</a></li>
-                <li><span></span><a href="/calcvolume/">体积换算器</a></li>
-                <li><span></span><a href="/calcpressure/">压力换算器</a></li>
-                <li><span></span><a href="/calcpower/">功率换算器</a></li>
-                <li><span></span><a href="/calclength/">长度换算器</a></li>
-                <li><span></span><a href="/calctemperature/">温度换算器</a></li>
-                <li><span></span><a href="/calctime/">时间换算器</a></li>
-                <li><span></span><a href="/calcspeed/">速度换算器</a></li>
-                <li><span></span><a href="/calcangle/">角度换算器</a></li>
-                <li><span></span><a href="/calcdata/">数据大小换算器</a></li>
-                <li><span></span><a href="/calcthickness/">密度换算器</a></li>
-                <li><span></span><a href="/calcforce/">力换算器</a></li>
-            </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>其他</span></h3>
-                <li><span></span><a href="/tuya/">在线涂鸦画板</a></li>
-                <li><span></span><a href="/shizhong/">在线时钟</a></li>
-                <li><span></span><a href="/worldtime/">世界各地时间</a></li>
-                <li><span></span><a href="/capital/">世界各国首都查询</a></li>
-                <li><span></span><a href="/currency/">世界各地货币查询</a></li>
-                <li><span></span><a href="/areacode/">世界各国区号时差查询</a></li>
-                <li><span></span><a href="/jieri/">世界节日查询</a></li>
-                <li><span></span><a href="/shaoshuminzu/">全国少数民族分布查询</a></li>
-                <li><span></span><a href="/chaodai/">中国历史朝代时间查询表</a></li>
-                <li><span></span><a href="/tesufuhao/">特殊符号大全</a></li>
-                </ul>
-            <ul class="list-inline list-inline-bg">
-                <h3><span>对照列表</span></h3>
-                <li><span></span><a href="/useragent/">常用User-Agent</a></li>
-                <li><span></span><a href="/contenttype/">Content-Type对照表</a></li>
-                <li><span></span><a href="/requestmethod/">Request请求大全</a></li>
-                <li><span></span><a href="/httpheader/">HTTP请求头大全</a></li>
-                <li><span></span><a href="/pagecode/"> HTTP状态码</a></li>
-                <li><span></span><a href="/asciicode/">ASCII对照表</a></li>
-                <li><span></span><a href="/htmlescapechar/">HTML特殊字符转义</a></li>
-                <li><span></span><a href="/ports/">常见端口大全</a></li>
-                <li><span></span><a href="/bootstrapicon/">Bootstrap字体图标</a></li>
-                <li><span></span><a href="/androidmanifest/"> Android Manifest权限大全</a></li>
-                <li><span></span><a href="/linuxcmd/">Linux常用命令大全</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- Ymir legacy content pack v12 START -->
-<section class="container ymir-legacy-content-pack" aria-label="在线长度换算器,长度单位换算 使用说明">
-  <div class="ymir-legacy-pack-grid">
-    <article class="ymir-legacy-pack-card ymir-legacy-pack-card-primary">
-      <p class="ymir-legacy-pack-kicker">计算 / 单位换算</p>
-      <h2>如何使用 在线长度换算器,长度单位换算</h2>
-      <p>输入已知数值，选择单位或计算类型，查看换算结果并复制到记录、表格或说明文档中。</p>
-      <a class="ymir-legacy-pack-cta" href="#top">回到工具区</a>
+  </section>
+  <section class="ymir-vue-tool-root" id="ymir-vue-converter-app" data-tool="calclength">
+    <div class="ymir-vue-noscript">Loading converter...</div>
+  </section>
+  <section class="ymir-secondary ymir-tool-secondary">
+    <article class="ymir-help-card">
+      <h2>How to use this converter</h2>
+      <ol>
+        <li>Enter the source value.</li>
+        <li>Select the source unit.</li>
+        <li>Read all converted units in the result cards and copy the values you need.</li>
+      </ol>
     </article>
-    <article class="ymir-legacy-pack-card">
-      <h2>结果怎么用</h2>
-      <p>结果用于日常计算、估算和单位换算；专业工程、财务或安全场景必须按官方标准或专业工具复核。</p>
+    <article class="ymir-help-card">
+      <h2>Conversion notes</h2>
+      <p>This tool runs locally in your browser. Some practical units use conventional factors, such as 30 days for a month, 365 days for a year, and US liquid units for volume pages when applicable.</p>
     </article>
-    <article class="ymir-legacy-pack-card">
-      <h2>使用边界</h2>
-      <p>检查输入单位、数量级和小数位。不要把通用计算结果作为法律、医疗、财务或工程安全结论。</p>
+    <article class="ymir-help-card ymir-related-card">
+      <h2>Related converters</h2>
+      <div class="ymir-related-links"><a href="/calcangle/">Angle Converter</a><a href="/calcarea/">Area Converter</a><a href="/calcdata/">Data Size Converter</a><a href="/calcforce/">Force Converter</a><a href="/calcheat/">Energy and Heat Converter</a><a href="/calcpower/">Power Converter</a><a href="/calcpressure/">Pressure Converter</a><a href="/calcspeed/">Speed Converter</a><a href="/calctemperature/">Temperature Converter</a><a href="/calcthickness/">Thickness Converter</a><a href="/calctime/">Time Converter</a><a href="/calcvolume/">Volume Converter</a></div>
     </article>
-    <article class="ymir-legacy-pack-card ymir-legacy-related-card">
-      <h2>相关工具</h2>
-      <div class="ymir-legacy-related-links"><a href="/calculator/">科学计算器</a><a href="/calclength/">长度换算</a><a href="/calcarea/">面积换算</a><a href="/unixtime/">时间戳转换</a></div>
-    </article>
-  </div>
-</section><!-- Ymir legacy content pack v12 END -->
+  </section>
 </main>
-<div class="copyright" id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <span>
-                    Copyright ©2026
-                    <a href="/">
-                        程序设计Ymir Tool
-                    </a>
-                </span>
-                |
-                <span>
-                    <a href="/about.html">关于我们</a> | <a href="/privacy.html">隐私政策</a> | <a href="/contact.html">联系我们</a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<a class="gotop ymir-is-f2892a2e8a" href="#top" title="返回顶部">
-    <span class="arrow">
-    </span>
-    <span class="arrow lit">
-    </span>
-</a>
-<script src="/static/script/page-listeners/calclength-index.js" type="text/javascript"></script>
-<script src="/static/script/ymir-i18n.js?v=20260530-v16"></script></body></html>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Open a tool, process the input, and copy the result.</span></footer>
+<script src="/static/vendor/vue/vue.global.prod.js?v=20260530-v34"></script>
+<script src="/static/vendor/element-plus/index.full.min.js?v=20260530-v34"></script>
+<script src="/static/script/ymir-vue-loader.js?v=20260530-v34"></script>
+<script src="/static/script/ymir-i18n.js?v=20260530-v34"></script>
+<script src="/static/script/ymir-ui.js?v=20260530-v34"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "version": "v27",
+  "title": "Vue formatter tools replacement with shared component runtime",
+  "replaced_pages": [
+    "formatc",
+    "formatcpp",
+    "formatcs",
+    "formatcsql",
+    "formatjava",
+    "formatperl",
+    "formatphp",
+    "formatpy",
+    "formatruby",
+    "formatvbs"
+  ],
+  "count": 10,
+  "shared_component_runtime": "static/script/ymir-vue-shared.js",
+  "batch_app": "static/script/ymir-vue-formatter-tools-app.js",
+  "component_reuse": {
+    "used": true,
+    "components": [
+      "YmirToolFrame",
+      "YmirEditorPanel",
+      "YmirActionButtons",
+      "YmirMetricTags"
+    ],
+    "note": "v27 starts a shared runtime for subsequent batches. Earlier Vue batches still use per-batch scripts to avoid broad regression risk."
+  },
+  "scope_exclusions": [
+    "homepage",
+    "root build chain",
+    "remaining encryption/image/editor pages",
+    "npm install/build/test/lint/typecheck"
+  ],
+  "version_token": "20260530-v31"
+}

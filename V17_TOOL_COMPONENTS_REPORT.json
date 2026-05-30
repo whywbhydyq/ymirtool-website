@@ -1,0 +1,37 @@
+{
+  "version": "v17",
+  "scope": "Modern tool page static component system",
+  "date": "2026-05-30",
+  "changed_files": [
+    "static/style/ymir-tool-components.css",
+    "json/index.html",
+    "base64/index.html",
+    "formatjs/index.html",
+    "urlencode/index.html",
+    "textdiff/index.html",
+    "md5/index.html",
+    "guid/index.html",
+    "password/index.html",
+    "regex/index.html",
+    "txtcount/index.html",
+    "unixtime/index.html",
+    "calculator/index.html"
+  ],
+  "intent": "Move modern pages from pale form styling toward reusable app-workbench components without React, npm, build, tests, or algorithm changes.",
+  "components": [
+    "ToolHero",
+    "Workbench",
+    "EditorPanel",
+    "ActionToolbar",
+    "StatusBar",
+    "ResultCard styling",
+    "Secondary area"
+  ],
+  "unchanged": [
+    "homepage dashboard",
+    "legacy bootstrap pages",
+    "tool algorithms",
+    "content copy",
+    "i18n dictionaries"
+  ]
+}

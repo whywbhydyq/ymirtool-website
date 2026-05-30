@@ -1,0 +1,53 @@
+{
+  "version": "v22",
+  "scope": "Vue 3 + Element Plus replacement for legacy unit converter pages",
+  "replaced_pages": [
+    "calcangle",
+    "calcarea",
+    "calcdata",
+    "calcforce",
+    "calcheat",
+    "calclength",
+    "calcpower",
+    "calcpressure",
+    "calcspeed",
+    "calctemperature",
+    "calcthickness",
+    "calctime",
+    "calcvolume"
+  ],
+  "count": 13,
+  "previous_vue_pages": 35,
+  "total_vue_pages_after_v22": 48,
+  "not_modified": [
+    "home dashboard",
+    "12 modern Vue pages except version bump",
+    "23 v21 simple legacy Vue pages except version bump",
+    "complex legacy code generators/network pages"
+  ],
+  "checks": [
+    "no npm install",
+    "no npm run build",
+    "no test/lint/typecheck planned",
+    "static syntax and link checks only"
+  ],
+  "static_audit_results": {
+    "npm_run_build": "not run",
+    "test_lint_typecheck": "not run",
+    "node_check": [
+      "static/script/ymir-vue-converter-tools-app.js",
+      "static/script/ymir-vue-legacy-tools-app.js",
+      "static/script/ymir-vue-tools-app.js"
+    ],
+    "css_brace_balance": "pass",
+    "converter_vue_roots": 13,
+    "legacy_simple_vue_roots": 23,
+    "modern_vue_roots": 12,
+    "total_vue_tool_pages": 48,
+    "json_ld_parse_errors": 0,
+    "duplicate_ids": 0,
+    "internal_missing_resources": "0 excluding Vercel runtime /_vercel/insights/script.js",
+    "old_v21_resource_refs": 0,
+    "zip_top_level": "ymirtool-website/"
+  }
+}
