@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v57",
+  "version": "20260531-v58",
   "scope": "AdSense / SEO / UX preflight minimal fixes",
   "changed": [
     "Ensured exactly one AdSense account meta tag on all HTML pages",

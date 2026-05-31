@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "htmlFiles": 182,
+  "toolPages": 150,
+  "v58Css": 182,
+  "themeBefore": 182,
+  "topbarActions": 182,
+  "privacySections": 0,
+  "unsafeText": 0,
+  "cssChecks": {
+    "hasActualLineGutterCss": true,
+    "hasEditorInputCss": true,
+    "hasEditorStatusbarCss": true,
+    "hasStrictActionDock": true,
+    "noWrongLineRailOnly": true,
+    "hasPrimaryContrast": true
+  },
+  "renderChecks": {
+    "editorResizeNone": true,
+    "localizedEditable": true,
+    "statusbarTokenClass": true
+  },
+  "failures": []
+}

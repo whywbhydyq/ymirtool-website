@@ -14,7 +14,7 @@ const indexPath = path.join(root, 'index.html');
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
-const version = toolManifest.version || staticRegistry.version || '20260531-v57';
+const version = toolManifest.version || staticRegistry.version || '20260531-v58';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
 
 function xmlEscape(value) {
@@ -175,7 +175,7 @@ function stripPrivacyNoteSections(html) {
 
 function ensureToolPageV51Styles(html) {
   const href = `/static/style/ymir-tool-page-v51.css?v=${version}`;
-  const aestheticHref = `/static/style/ymir-developer-aesthetics-v56.css?v=${version}`;
+  const aestheticHref = `/static/style/ymir-developer-aesthetics-v58.css?v=${version}`;
   if (html.includes('ymir-tool-page-v51.css')) {
     html = html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
   } else {

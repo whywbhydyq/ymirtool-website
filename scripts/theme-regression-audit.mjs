@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('..', import.meta.url).pathname);
-const version = '20260531-v57';
-const cssFile = 'ymir-developer-aesthetics-v56.css';
+const version = '20260531-v58';
+const cssFile = 'ymir-developer-aesthetics-v58.css';
 const htmlFiles = [];
 
 function walk(dir) {
@@ -32,15 +32,15 @@ const pages = htmlFiles.map((p) => {
     hasThemeScript: themeIndex !== -1,
     hasCss: cssIndex !== -1,
     themeBeforeFirstStylesheet: themeIndex !== -1 && firstCssIndex !== -1 && themeIndex < firstCssIndex,
-    hasOldAestheticCss: /ymir-developer-aesthetics-v5[0-4]\.css/.test(html),
-    hasOldVersion: /20260531-v5[0-4]/.test(html)
+    hasOldAestheticCss: /ymir-developer-aesthetics-v5[0-7]\.css/.test(html),
+    hasOldVersion: /20260531-v5[0-7]/.test(html)
   };
 });
 
 const failures = [];
 for (const page of pages) {
   if (!page.hasThemeScript) failures.push({ type: 'missing-theme-script', file: page.file });
-  if (!page.hasCss) failures.push({ type: 'missing-v56-css', file: page.file });
+  if (!page.hasCss) failures.push({ type: 'missing-v58-css', file: page.file });
   if (!page.themeBeforeFirstStylesheet) failures.push({ type: 'theme-script-after-css', file: page.file });
   if (page.hasOldAestheticCss) failures.push({ type: 'old-aesthetic-css', file: page.file });
   if (page.hasOldVersion) failures.push({ type: 'old-version', file: page.file });
@@ -70,7 +70,7 @@ const cssChecks = {
 for (const [key, ok] of Object.entries(cssChecks)) if (!ok) failures.push({ type: 'theme-css-check', check: key });
 
 const syncChecks = {
-  syncUsesV56Css: sync.includes('ymir-developer-aesthetics-v56.css'),
+  syncUsesV58Css: sync.includes('ymir-developer-aesthetics-v58.css'),
   syncUsesThemeScript: /ymir-theme\.js/.test(sync),
   syncVersionFromManifest: /const version = toolManifest\.version/.test(sync)
 };
@@ -86,6 +86,6 @@ const report = {
   failures,
   pass: failures.length === 0
 };
-fs.writeFileSync(path.join(root, 'V56_THEME_REGRESSION_AUDIT_REPORT.json'), JSON.stringify(report, null, 2) + '\n');
+fs.writeFileSync(path.join(root, 'V58_THEME_REGRESSION_AUDIT_REPORT.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify(report, null, 2));
 if (!report.pass) process.exit(1);

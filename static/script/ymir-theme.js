@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var STORAGE_KEY = 'ymir-theme';
-  var VERSION = '20260531-v57';
+  var VERSION = '20260531-v58';
   var preference = 'system';
   var mql = null;
   var THEME_COLORS = { light: '#f6f8fb', dark: '#070b12' };

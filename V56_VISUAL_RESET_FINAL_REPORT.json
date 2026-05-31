@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v57",
+  "version": "20260531-v58",
   "scope": "visual reset, stronger contrast, stable topbar actions, remove safety-note modules, remove browser-based helper copy",
   "build": "not run",
   "tests": "not run",
@@ -25,7 +25,7 @@
       "failures": []
     },
     "V56_THEME_REGRESSION_AUDIT_REPORT.json": {
-      "version": "20260531-v57",
+      "version": "20260531-v58",
       "checkedAt": "2026-05-31T07:16:53.248Z",
       "html": {
         "count": 182,

@@ -1,6 +1,6 @@
 {
   "version": "20260531-v58",
-  "checkedAt": "2026-05-31T07:34:31.623Z",
+  "checkedAt": "2026-05-31T08:07:01.178Z",
   "html": {
     "count": 182,
     "themeScript": 182,
@@ -27,7 +27,7 @@
     "noOldCssComment": true
   },
   "syncChecks": {
-    "syncUsesV56Css": true,
+    "syncUsesV58Css": true,
     "syncUsesThemeScript": true,
     "syncVersionFromManifest": true
   },

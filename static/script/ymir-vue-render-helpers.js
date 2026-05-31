@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v57';
+  var VERSION = '20260531-v58';
   if (window.YmirVueRenderHelpers && window.YmirVueRenderHelpers.version === VERSION) return;
   var Core = window.YmirVueCore;
   if (!Core) return;
@@ -64,10 +64,11 @@
   }
   function editorStatusTokens(h, options) {
     options = options || {};
+    var lang = getLang ? getLang() : 'en';
     var tokens = [];
-    if (options.modeLabel) tokens.push(h('span', null, options.modeLabel));
-    tokens.push(h('span', null, options.readonly ? 'Readonly' : 'Editable'));
-    if (options.meta) tokens.push(h('span', null, options.meta));
+    if (options.modeLabel) tokens.push(h('span', { class: 'ymir-vue-editor-token' }, options.modeLabel));
+    tokens.push(h('span', { class: 'ymir-vue-editor-token' }, options.readonly ? (lang === 'zh' ? '只读' : 'Readonly') : (lang === 'zh' ? '可编辑' : 'Editable')));
+    if (options.meta) tokens.push(h('span', { class: 'ymir-vue-editor-token' }, options.meta));
     return h('div', { class: 'ymir-vue-editor-statusbar' }, tokens);
   }
   function renderEditorCard(h, El, options) {
@@ -83,7 +84,7 @@
           'onUpdate:modelValue': options.onInput || function () {},
           type: 'textarea',
           rows: rows,
-          resize: 'vertical',
+          resize: 'none',
           readonly: !!options.readonly,
           spellcheck: 'false',
           placeholder: options.placeholder || '',

@@ -67,7 +67,7 @@ if (!sitemapOk) issues.push({ page: 'sitemap.xml', issue: 'sitemap-not-ok' });
 for (const rel of missingPolicyPages) issues.push({ page: rel, issue: 'missing-policy-page' });
 
 const report = {
-  version: '20260531-v57',
+  version: '20260531-v58',
   checkedAt: new Date().toISOString(),
   adsenseMeta: ADSENSE_META,
   adsenseScriptUrl: ADSENSE_SCRIPT_URL,
