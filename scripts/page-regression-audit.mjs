@@ -118,8 +118,8 @@ const directoryIds = [...index.matchAll(/data-directory-tool[^>]*data-tool-id=["
 results.homepage = {
   hasSearch: /id=["']toolSearch["']/.test(index),
   hasCommandPanel: /id=["']ymirCommandPanel["']/.test(index),
-  hasManifestScript: /ymir-tools-manifest\.js\?v=20260531-v49/.test(index),
-  hasDashboardScript: /ymir-home-dashboard\.js\?v=20260531-v49/.test(index),
+  hasManifestScript: /ymir-tools-manifest\.js\?v=20260531-v50/.test(index),
+  hasDashboardScript: /ymir-home-dashboard\.js\?v=20260531-v50/.test(index),
   featuredCount: featuredIds.length,
   directoryCount: directoryIds.length,
   featuredMatchesManifest: JSON.stringify(featuredIds) === JSON.stringify(toolManifest.featured || []),
@@ -129,7 +129,7 @@ results.homepage = {
 
 const loader = read('static/script/ymir-vue-loader.js');
 results.loader = {
-  versionConstant: /VERSION\s*=\s*["']20260531-v49["']/.test(loader),
+  versionConstant: /VERSION\s*=\s*["']20260531-v50["']/.test(loader),
   loadsRuntimeManifest: /ymir-tools-manifest\.js/.test(loader),
   noHardcodedAppByTool: !/APP_BY_TOOL\s*=/.test(loader),
   exposesApi: /window\.YmirVueToolLoader/.test(loader)
@@ -159,7 +159,7 @@ for (const tool of toolManifest.tools) {
     ['canonical', canonical === expectedCanonical, { got: canonical, expected: expectedCanonical }],
     ['main-data-tool', mainTool === id, { got: mainTool, expected: id }],
     ['root-data-tool', rootTool === id, { got: rootTool, expected: id }],
-    ['loader-version', html.includes('ymir-vue-loader.js?v=20260531-v49'), {}],
+    ['loader-version', html.includes('ymir-vue-loader.js?v=20260531-v50'), {}],
     ['jsonld-url', jsonLd && jsonLd.url === expectedCanonical, { got: jsonLd && jsonLd.url, expected: expectedCanonical }],
     ['jsonld-description', jsonLd && jsonLd.description === expectedDescription, { got: jsonLd && jsonLd.description, expected: expectedDescription }]
   ];
@@ -185,7 +185,7 @@ for (const page of staticRegistry.pages || []) {
     ['title', title === expectedTitle, { got: title, expected: expectedTitle }],
     ['description', description === page.description, { got: description, expected: page.description }],
     ['canonical', canonical === page.url, { got: canonical, expected: page.url }],
-    ['version', html.includes('20260531-v49') || rel === '404.html', {}],
+    ['version', html.includes('20260531-v50') || rel === '404.html', {}],
     ['jsonld-url', jsonLd && jsonLd.url === page.url, { got: jsonLd && jsonLd.url, expected: page.url }],
     ['jsonld-description', jsonLd && jsonLd.description === page.description, { got: jsonLd && jsonLd.description, expected: page.description }]
   ];

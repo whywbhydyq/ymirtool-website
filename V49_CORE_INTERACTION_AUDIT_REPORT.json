@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v49",
+  "version": "20260531-v50",
   "checkedAt": "2026-05-31T05:49:04.529Z",
   "checks": {
     "home.safeClosestDelegation": true,

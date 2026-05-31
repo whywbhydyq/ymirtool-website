@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v49';
+  var VERSION = '20260531-v50';
   if (window.YmirVueRenderHelpers && window.YmirVueRenderHelpers.version === VERSION) return;
   var Core = window.YmirVueCore;
   if (!Core) return;
@@ -32,18 +32,21 @@
     options = options || {};
     var onLangChange = typeof options.onLangChange === 'function' ? options.onLangChange : function () {};
     var eyebrow = [options.eyebrow, options.category].filter(Boolean).join(options.eyebrow && options.category ? ' · ' : '');
-    return h('header', { class: 'ymir-vue-workbench__header' }, [
+    var headerNodes = [
       h('div', { class: 'ymir-vue-title-block' }, [
         h('div', { class: 'ymir-vue-tool-icon', 'aria-hidden': 'true' }, options.icon || 'T'),
-        h('div', null, [
+        h('div', { class: 'ymir-vue-title-copy' }, [
           h('p', { class: 'ymir-vue-workbench__eyebrow' }, eyebrow),
           h('h2', null, options.title || ''),
           h('p', null, options.subtitle || options.desc || ''),
           renderTagRow(h, El, options.tags || [], options.tagType || 'primary')
         ])
-      ]),
-      renderLanguageToggle(h, El, options.lang || getLang(), onLangChange)
-    ]);
+      ])
+    ];
+    if (options.showLanguageToggle === true) {
+      headerNodes.push(renderLanguageToggle(h, El, options.lang || getLang(), onLangChange));
+    }
+    return h('header', { class: 'ymir-vue-workbench__header' }, headerNodes);
   }
   function renderPanelHeader(h, title, meta) {
     return h('div', { class: 'ymir-vue-panel__top' }, [

@@ -14,7 +14,7 @@ const indexPath = path.join(root, 'index.html');
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
-const version = toolManifest.version || staticRegistry.version || '20260531-v49';
+const version = toolManifest.version || staticRegistry.version || '20260531-v50';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
 
 function xmlEscape(value) {

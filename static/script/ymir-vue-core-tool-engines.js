@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v49';
+  var VERSION = '20260531-v50';
   if (window.YmirCoreToolEngines && window.YmirCoreToolEngines.version === VERSION) return;
 
   function utf8Base64Encode(str) {

@@ -1,0 +1,12 @@
+{
+  "version": "20260531-v50",
+  "scope": "tool page desktop layout repair",
+  "changes": [
+    "tool Vue root now spans full tool-page grid instead of first column only",
+    "workbench/header/body/panels now enforce full-width desktop layout",
+    "input/output grids remain two columns on desktop and stack on mobile",
+    "internal Vue language toggle hidden and render helper now only shows it when explicitly requested",
+    "textarea min-height and toolbar wrapping hardened for JSON, MD5 and core pages"
+  ],
+  "no_build_test_lint_typecheck": true
+}

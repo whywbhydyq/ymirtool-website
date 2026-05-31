@@ -652,3 +652,121 @@
   .ymir-vue-sandbox-frame { min-height: 360px; }
   .ymir-vue-ws-message-row { grid-template-columns: 1fr; }
 }
+
+
+/* Ymir Vue tool page desktop layout repair v50 */
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-tool-root {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-noscript {
+  grid-column: 1 / -1 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  margin: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 18px !important;
+  padding: 22px 24px 12px !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  flex-direction: row !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-copy {
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header p {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-lang {
+  display: none !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-crypto-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-highrisk-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-textref-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body > *,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid > *,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-panel,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .el-card {
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--diff,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--regex,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--time {
+  align-items: stretch !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-textarea__inner {
+  min-height: 240px !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-vue-body,
+body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-vue-body {
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-app .el-textarea__inner {
+  min-height: 180px !important;
+}
+@media (max-width: 900px) {
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-tool-root {
+    grid-column: 1 / -1 !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-crypto-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-highrisk-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-textref-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-vue-body,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-vue-body {
+    grid-template-columns: 1fr !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+    flex-direction: row !important;
+  }
+}
+@media (max-width: 560px) {
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+    flex-direction: column !important;
+  }
+}
