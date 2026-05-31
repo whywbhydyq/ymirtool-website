@@ -1,11 +1,11 @@
 (function () {
   'use strict';
   window.YmirStaticPagesRegistry = {
-  "version": "20260531-v55",
+  "version": "20260531-v57",
   "site": {
     "origin": "https://ymirtool.com",
     "lastmod": "2026-05-31",
-    "version": "20260531-v55"
+    "version": "20260531-v57"
   },
   "pages": [
     {
@@ -515,7 +515,7 @@
       "group": "system",
       "sitemaps": [],
       "title": "页面未找到 - Ymir Tool",
-      "description": "页面不存在或已移动。返回 Ymir Tool 首页继续使用 JSON 格式化、MD5 加密、Base64 编解码等免费在线工具。",
+      "description": "页面不存在或已移动。返回 Ymir Tool 首页继续使用 JSON 格式化、MD5 哈希、Base64 编解码等免费在线工具。",
       "changefreq": "yearly",
       "priority": "0.0",
       "lastmod": "2026-05-31",

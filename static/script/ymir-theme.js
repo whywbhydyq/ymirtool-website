@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var STORAGE_KEY = 'ymir-theme';
-  var VERSION = '20260531-v55';
+  var VERSION = '20260531-v57';
   var preference = 'system';
   var mql = null;
   var THEME_COLORS = { light: '#f6f8fb', dark: '#070b12' };
@@ -32,9 +32,8 @@
   function isZh(lang) {
     return /^zh/i.test(lang || document.documentElement.lang || '');
   }
-  function labelFor(theme, lang) {
-    if (theme === 'dark') return isZh(lang) ? '浅色' : 'Light';
-    return isZh(lang) ? '深色' : 'Dark';
+  function iconFor(theme) {
+    return theme === 'dark' ? '☀' : '☾';
   }
   function ariaFor(theme, lang) {
     if (theme === 'dark') return isZh(lang) ? '切换到浅色主题' : 'Switch to light theme';
@@ -79,7 +78,7 @@
     var theme = document.documentElement.getAttribute('data-theme') || resolvedTheme(preference);
     var lang = document.documentElement.lang;
     document.querySelectorAll('[data-ymir-theme-toggle]').forEach(function (btn) {
-      btn.textContent = labelFor(theme, lang);
+      btn.textContent = iconFor(theme);
       btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
       btn.setAttribute('aria-label', ariaFor(theme, lang));
       btn.setAttribute('title', ariaFor(theme, lang));
@@ -96,11 +95,10 @@
   }
   function injectToggle() {
     var inner = document.querySelector('.ymir-topbar-inner');
-    if (!inner || inner.querySelector('[data-ymir-theme-toggle]')) { updateToggle(); return; }
+    var target = document.querySelector('.ymir-topbar-actions') || inner;
+    if (!target || target.querySelector('[data-ymir-theme-toggle]')) { updateToggle(); return; }
     var btn = makeButton();
-    var lang = inner.querySelector('.ymir-lang-toggle');
-    if (lang && lang.parentNode === inner) inner.insertBefore(btn, lang);
-    else inner.appendChild(btn);
+    target.appendChild(btn);
     updateToggle();
   }
 

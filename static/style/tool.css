@@ -410,8 +410,8 @@ body.ymir-modern-body{background:var(--ymir-bg);color:var(--ymir-text);font-fami
 .ymir-status-info{background:var(--ymir-info-bg);border-color:#bfdbfe;color:var(--ymir-info);}
 .ymir-help h2,.ymir-faq h2,.ymir-related h2{font-size:20px;margin:0 0 12px;font-weight:850;}
 .ymir-help h3,.ymir-faq h3{font-size:16px;margin:18px 0 8px;font-weight:800;}
-.ymir-help p,.ymir-faq p,.ymir-privacy-note p{color:#475569;line-height:1.75;margin-bottom:10px;}
-.ymir-privacy-note{background:#f8fafc;border:1px solid var(--ymir-border);border-radius:14px;padding:16px;margin-bottom:18px;}
+.ymir-help p,.ymir-faq p,.ymir-obsolete-note p{color:#475569;line-height:1.75;margin-bottom:10px;}
+.ymir-obsolete-note{background:#f8fafc;border:1px solid var(--ymir-border);border-radius:14px;padding:16px;margin-bottom:18px;}
 .ymir-related-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
 .ymir-related-grid a{display:block;background:#f8fafc;border:1px solid #e5edf6;color:#1e293b;border-radius:12px;padding:11px;text-decoration:none;font-weight:700;font-size:13px;}
 .ymir-related-grid a:hover{background:var(--ymir-soft);border-color:#bfdbfe;color:var(--ymir-primary);text-decoration:none;}
@@ -678,7 +678,7 @@ body.ymir-modern-body .ymir-status-info{background:#eff6ff;border-color:#bfdbfe;
 body.ymir-modern-body .ymir-help,
 body.ymir-modern-body .ymir-faq,
 body.ymir-modern-body .ymir-related,
-body.ymir-modern-body .ymir-privacy-note{box-shadow:0 8px 18px rgba(15,23,42,.045);}
+body.ymir-modern-body .ymir-obsolete-note{box-shadow:0 8px 18px rgba(15,23,42,.045);}
 body.ymir-modern-body .ymir-help h2,
 body.ymir-modern-body .ymir-faq h2,
 body.ymir-modern-body .ymir-related h2{font-size:18px;}

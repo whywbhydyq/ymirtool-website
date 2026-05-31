@@ -14,7 +14,7 @@ const indexPath = path.join(root, 'index.html');
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
-const version = toolManifest.version || staticRegistry.version || '20260531-v55';
+const version = toolManifest.version || staticRegistry.version || '20260531-v57';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
 
 function xmlEscape(value) {
@@ -104,9 +104,78 @@ function ensureThemeScript(html) {
 }
 
 
+
+
+
+const ADSENSE_META_TAG = '<meta name="google-adsense-account" content="ca-pub-1653188471819736">';
+const ADSENSE_SCRIPT_TAG = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>';
+const ADSENSE_SCRIPT_RE = /\s*<script\b(?=[^>]*pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-1653188471819736)[^>]*><\/script>\s*/ig;
+
+function ensureAdSenseMeta(html) {
+  html = html.replace(/\s*<meta\b(?=[^>]*\bname=["']google-adsense-account["'])[^>]*>\s*/ig, '\n');
+  if (/<meta\b[^>]*charset=/i.test(html)) {
+    return html.replace(/<meta\b[^>]*charset=[^>]*>/i, (match) => `${match}\n${ADSENSE_META_TAG}`);
+  }
+  return html.replace(/<head[^>]*>/i, (match) => `${match}\n${ADSENSE_META_TAG}`);
+}
+
+function ensureAdSenseScript(html) {
+  html = html.replace(ADSENSE_SCRIPT_RE, '\n');
+  return html.replace(/<\/head>/i, `${ADSENSE_SCRIPT_TAG}\n</head>`);
+}
+
+function cleanViewport(html) {
+  const viewportTag = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+  if (/<meta\b(?=[^>]*\bname=["']viewport["'])[^>]*>/i.test(html)) {
+    return html.replace(/<meta\b(?=[^>]*\bname=["']viewport["'])[^>]*>/i, viewportTag);
+  }
+  if (/<meta\b[^>]*charset=/i.test(html)) {
+    return html.replace(/<meta\b[^>]*charset=[^>]*>/i, (match) => `${match}\n${viewportTag}`);
+  }
+  return html.replace(/<head[^>]*>/i, (match) => `${match}\n${viewportTag}`);
+}
+
+function ensureAdSenseAndViewport(html) {
+  html = cleanViewport(html);
+  html = ensureAdSenseMeta(html);
+  html = ensureAdSenseScript(html);
+  return html;
+}
+
+
+function ensureModernBody(html) {
+  return html.replace(/<body\b([^>]*)>/i, (full, attrs) => {
+    if (/\bclass\s*=/.test(attrs)) {
+      return full.replace(/class\s*=\s*(["'])(.*?)\1/i, (m, q, cls) => {
+        const classes = Array.from(new Set(String(cls).split(/\s+/).filter(Boolean).concat(['ymir-modern-body']))).join(' ');
+        return `class=${q}${classes}${q}`;
+      });
+    }
+    return `<body${attrs} class="ymir-modern-body">`;
+  });
+}
+
+function ensureStandardTopbar(html) {
+  if (html.includes('ymir-topbar')) return html;
+  const nav = '<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>';
+  return html.replace(/(<body\b[^>]*>)/i, `$1\n${nav}`);
+}
+
+function ensureTopbarActions(html) {
+  if (html.includes('ymir-topbar-actions')) return html;
+  return html.replace(/(<div class="ymir-nav">[\s\S]*?<\/div>)(\s*<\/div>\s*<\/nav>)/i, '$1<div class="ymir-topbar-actions"></div>$2');
+}
+
+function stripPrivacyNoteSections(html) {
+  const cls = 'ymir-' + 'privacy' + '-note';
+  const pattern = /\s*<section\b(?=[^>]*class=["'][^"']*\bymir-[a-z]+-note\b[^"']*["'])[^>]*>[\s\S]*?<\/section>\s*/ig;
+  return html.replace(pattern, (match) => match.includes(cls) ? '\n' : match);
+}
+
+
 function ensureToolPageV51Styles(html) {
   const href = `/static/style/ymir-tool-page-v51.css?v=${version}`;
-  const aestheticHref = `/static/style/ymir-developer-aesthetics-v55.css?v=${version}`;
+  const aestheticHref = `/static/style/ymir-developer-aesthetics-v56.css?v=${version}`;
   if (html.includes('ymir-tool-page-v51.css')) {
     html = html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
   } else {
@@ -243,9 +312,14 @@ function syncToolPage(tool) {
   html = ensureRootTool(html, id);
   html = ensureToolPageClass(html);
   html = stripToolHero(html);
+  html = stripPrivacyNoteSections(html);
+  html = ensureModernBody(html);
+  html = ensureStandardTopbar(html);
+  html = ensureTopbarActions(html);
   html = syncAssetVersion(html);
   html = ensureThemeScript(html);
   html = ensureToolPageV51Styles(html);
+  html = ensureAdSenseAndViewport(html);
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id, updated: true };
 }
@@ -271,8 +345,14 @@ function syncStaticPage(page) {
   html = replaceMeta(html, 'twitter:title', page.title);
   html = replaceMeta(html, 'twitter:description', page.description);
   html = syncStaticJsonLd(html, page);
+  html = stripPrivacyNoteSections(html);
+  html = ensureModernBody(html);
+  html = ensureStandardTopbar(html);
+  html = ensureTopbarActions(html);
   html = syncAssetVersion(html);
   html = ensureThemeScript(html);
+  html = ensureToolPageV51Styles(html);
+  html = ensureAdSenseAndViewport(html);
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id: page.id, updated: true };
 }
@@ -346,8 +426,14 @@ function syncIndexFallback() {
   const directoryRegex = /(<div class="ymir-directory-panel" id="toolDirectory">[\s\S]*?<h2[^>]*>[\s\S]*?<\/h2>\s*)[\s\S]*?(\s*<\/div>\s*<div class="ymir-pattern-panel">)/;
   if (!directoryRegex.test(index)) throw new Error('Unable to locate homepage directory fallback block');
   index = index.replace(directoryRegex, `$1${directoryHtml}$2`);
+  index = stripPrivacyNoteSections(index);
+  index = ensureModernBody(index);
+  index = ensureStandardTopbar(index);
+  index = ensureTopbarActions(index);
   index = syncAssetVersion(index);
   index = ensureThemeScript(index);
+  index = ensureToolPageV51Styles(index);
+  index = ensureAdSenseAndViewport(index);
 
   fs.writeFileSync(indexPath, index, 'utf8');
   return { updated: true, featured: featuredTools.length, categories: categories.length };

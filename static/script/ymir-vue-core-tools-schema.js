@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v55';
+  var VERSION = '20260531-v57';
   if (window.YmirCoreToolsSchema && window.YmirCoreToolsSchema.version === VERSION) return;
 
   var labels = {

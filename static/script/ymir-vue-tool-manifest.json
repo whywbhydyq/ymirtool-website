@@ -1,10 +1,10 @@
 {
-  "version": "20260531-v55",
+  "version": "20260531-v57",
   "site": {
     "origin": "https://ymirtool.com",
     "name": "Ymir Tool",
     "lastmod": "2026-05-31",
-    "version": "20260531-v55"
+    "version": "20260531-v57"
   },
   "entrypoint": "/static/script/ymir-vue-loader.js",
   "runtime": {
@@ -1299,7 +1299,7 @@
       "directoryRank": 3,
       "shell": {
         "title": "Online Calculator - Ymir Tool",
-        "description": "Run quick browser-based calculations with numbers, parentheses, percentages, and basic operators.",
+        "description": "Run quick calculations with numbers, parentheses, percentages, and basic operators.",
         "canonical": "https://ymirtool.com/calculator/",
         "heroTitle": "Online Scientific Calculator",
         "schemaName": "在线计算器",

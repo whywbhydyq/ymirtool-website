@@ -6,6 +6,8 @@ const toolManifest = JSON.parse(fs.readFileSync(path.join(root, 'static/script/y
 const staticRegistry = JSON.parse(fs.readFileSync(path.join(root, 'static/script/ymir-static-pages-registry.json'), 'utf8'));
 const version = toolManifest.version;
 const origin = toolManifest.site?.origin || 'https://ymirtool.com';
+const ADSENSE_PUB_ID = 'ca-pub-1653188471819736';
+const ADSENSE_SCRIPT_URL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736';
 
 const riskPatterns = [
   'eval' + '(atob',
@@ -22,7 +24,13 @@ const riskPatterns = [
   'Vue 3 ' + 'UI',
   'Vue 3 + Element ' + 'Plus',
   '本地' + '优先',
-  '浏览器中' + '处理'
+  '浏览器中' + '处理',
+  'MD5 ' + '加密',
+  'Base64 ' + '加密',
+  'SHA ' + '加密',
+  'Safe use ' + 'note',
+  '安全使用' + '提示',
+  'ymir-' + 'privacy' + '-note'
 ];
 
 function read(rel) {
@@ -107,6 +115,7 @@ const results = {
   staticPages: { checked: 0, mismatches: [] },
   sitemaps: {},
   assets: {},
+  adsense: {},
   risks: {},
   samples: {},
   pass: false
@@ -118,8 +127,8 @@ const directoryIds = [...index.matchAll(/data-directory-tool[^>]*data-tool-id=["
 results.homepage = {
   hasSearch: /id=["']toolSearch["']/.test(index),
   hasCommandPanel: /id=["']ymirCommandPanel["']/.test(index),
-  hasManifestScript: /ymir-tools-manifest\.js\?v=20260531-v55/.test(index),
-  hasDashboardScript: /ymir-home-dashboard\.js\?v=20260531-v55/.test(index),
+  hasManifestScript: /ymir-tools-manifest\.js\?v=20260531-v57/.test(index),
+  hasDashboardScript: /ymir-home-dashboard\.js\?v=20260531-v57/.test(index),
   featuredCount: featuredIds.length,
   directoryCount: directoryIds.length,
   featuredMatchesManifest: JSON.stringify(featuredIds) === JSON.stringify(toolManifest.featured || []),
@@ -129,7 +138,7 @@ results.homepage = {
 
 const loader = read('static/script/ymir-vue-loader.js');
 results.loader = {
-  versionConstant: /VERSION\s*=\s*["']20260531-v55["']/.test(loader),
+  versionConstant: /VERSION\s*=\s*["']20260531-v57["']/.test(loader),
   loadsRuntimeManifest: /ymir-tools-manifest\.js/.test(loader),
   noHardcodedAppByTool: !/APP_BY_TOOL\s*=/.test(loader),
   exposesApi: /window\.YmirVueToolLoader/.test(loader)
@@ -159,7 +168,7 @@ for (const tool of toolManifest.tools) {
     ['canonical', canonical === expectedCanonical, { got: canonical, expected: expectedCanonical }],
     ['main-data-tool', mainTool === id, { got: mainTool, expected: id }],
     ['root-data-tool', rootTool === id, { got: rootTool, expected: id }],
-    ['loader-version', html.includes('ymir-vue-loader.js?v=20260531-v55'), {}],
+    ['loader-version', html.includes('ymir-vue-loader.js?v=20260531-v57'), {}],
     ['jsonld-url', jsonLd && jsonLd.url === expectedCanonical, { got: jsonLd && jsonLd.url, expected: expectedCanonical }],
     ['jsonld-description', jsonLd && jsonLd.description === expectedDescription, { got: jsonLd && jsonLd.description, expected: expectedDescription }]
   ];
@@ -185,7 +194,7 @@ for (const page of staticRegistry.pages || []) {
     ['title', title === expectedTitle, { got: title, expected: expectedTitle }],
     ['description', description === page.description, { got: description, expected: page.description }],
     ['canonical', canonical === page.url, { got: canonical, expected: page.url }],
-    ['version', html.includes('20260531-v55') || rel === '404.html', {}],
+    ['version', html.includes('20260531-v57') || rel === '404.html', {}],
     ['jsonld-url', jsonLd && jsonLd.url === page.url, { got: jsonLd && jsonLd.url, expected: page.url }],
     ['jsonld-description', jsonLd && jsonLd.description === page.description, { got: jsonLd && jsonLd.description, expected: page.description }]
   ];
@@ -216,7 +225,27 @@ results.sitemaps = {
 };
 
 const missingAssets = localAssetMissing();
+
 results.assets = { missing: missingAssets.length, sample: missingAssets.slice(0, 20) };
+
+const htmlFiles = collectHtmlFiles();
+const adsenseIssues = [];
+for (const rel of htmlFiles) {
+  const html = read(rel);
+  const metaCount = (html.match(new RegExp(`<meta\\b(?=[^>]*\\bname=["']google-adsense-account["'])(?=[^>]*${ADSENSE_PUB_ID})[^>]*>`, 'gi')) || []).length;
+  const scriptCount = (html.match(/<script\b(?=[^>]*pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-1653188471819736)[^>]*><\/script>/gi) || []).length;
+  const badViewport = /user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?:\.0)?/i.test(html);
+  if (metaCount !== 1) adsenseIssues.push({ page: rel, issue: 'adsense-meta-count', count: metaCount });
+  if (scriptCount !== 1) adsenseIssues.push({ page: rel, issue: 'adsense-script-count', count: scriptCount });
+  if (badViewport) adsenseIssues.push({ page: rel, issue: 'viewport-disables-zoom' });
+}
+results.adsense = {
+  htmlChecked: htmlFiles.length,
+  metaPass: !adsenseIssues.some((item) => item.issue === 'adsense-meta-count'),
+  scriptPass: !adsenseIssues.some((item) => item.issue === 'adsense-script-count'),
+  viewportPass: !adsenseIssues.some((item) => item.issue === 'viewport-disables-zoom'),
+  issues: adsenseIssues
+};
 
 const allTextFiles = [];
 function collectTextFiles(dir = root) {
@@ -249,6 +278,7 @@ const homepagePass = Object.values(results.homepage).every(Boolean);
 const loaderPass = Object.values(results.loader).every(Boolean);
 const sitemapPass = Object.values(results.sitemaps).every(Boolean);
 const riskPass = Object.values(results.risks).every((item) => item.count === 0);
-results.pass = homepagePass && loaderPass && sitemapPass && results.toolPages.mismatches.length === 0 && results.staticPages.mismatches.length === 0 && results.assets.missing === 0 && riskPass;
+const adsensePass = results.adsense.metaPass && results.adsense.scriptPass && results.adsense.viewportPass && results.adsense.issues.length === 0;
+results.pass = homepagePass && loaderPass && sitemapPass && adsensePass && results.toolPages.mismatches.length === 0 && results.staticPages.mismatches.length === 0 && results.assets.missing === 0 && riskPass;
 
 console.log(JSON.stringify(results, null, 2));

@@ -181,12 +181,13 @@
 
   function injectToggle() {
     var inner = document.querySelector('.ymir-topbar-inner');
-    if (inner && !inner.querySelector('.ymir-lang-toggle')) {
+    var target = document.querySelector('.ymir-topbar-actions') || inner;
+    if (target && !target.querySelector('.ymir-lang-toggle')) {
       var wrap = document.createElement('div');
       wrap.className = 'ymir-lang-toggle';
       wrap.setAttribute('aria-label', 'Language');
       wrap.innerHTML = '<button type="button" data-ymir-lang-option="zh">中文</button><button type="button" data-ymir-lang-option="en">EN</button>';
-      inner.appendChild(wrap);
+      target.insertBefore(wrap, target.firstChild || null);
       wrap.addEventListener('click', function (e) {
         var btn = e.target.closest('[data-ymir-lang-option]');
         if (!btn) return;
@@ -260,7 +261,6 @@
 
   var toolStaticText = {
     'Use cases and limits': ['使用场景与限制', 'Use cases and limits'],
-    'Safe use note': ['安全使用提示', 'Safe use note'],
     'FAQ': ['常见问题', 'FAQ'],
     'Related tools': ['相关工具', 'Related tools'],
     'How to use this tool / 使用说明': ['使用说明', 'How to use this tool'],

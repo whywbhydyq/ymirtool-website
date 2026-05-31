@@ -1,0 +1,25 @@
+{
+  "version": "20260531-v57",
+  "scope": "AdSense / SEO / UX preflight minimal fixes",
+  "changed": [
+    "Ensured exactly one AdSense account meta tag on all HTML pages",
+    "Ensured exactly one AdSense Auto Ads script on all HTML pages",
+    "Removed viewport zoom restrictions from all HTML pages",
+    "Replaced MD5 加密 with MD5 哈希",
+    "Updated sync script so generated pages keep these fixes",
+    "Updated regression audits to check AdSense meta/script and viewport zoom restrictions"
+  ],
+  "counts": {
+    "html": 182,
+    "tools": 150,
+    "staticPages": 32,
+    "adsenseMetaOk": 182,
+    "adsenseScriptOk": 182,
+    "viewportOk": 182,
+    "canonicalOfficial": 182
+  },
+  "reports": {
+    "pageRegressionPass": true,
+    "adsensePreflightPass": true
+  }
+}
