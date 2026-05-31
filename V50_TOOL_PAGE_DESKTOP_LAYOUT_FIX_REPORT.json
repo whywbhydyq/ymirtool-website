@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v50",
+  "version": "20260531-v51",
   "scope": "tool page desktop layout repair",
   "changes": [
     "tool Vue root now spans full tool-page grid instead of first column only",

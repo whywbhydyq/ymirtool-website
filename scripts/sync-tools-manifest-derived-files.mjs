@@ -14,7 +14,7 @@ const indexPath = path.join(root, 'index.html');
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
-const version = toolManifest.version || staticRegistry.version || '20260531-v50';
+const version = toolManifest.version || staticRegistry.version || '20260531-v51';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
 
 function xmlEscape(value) {
@@ -91,6 +91,33 @@ function replaceLinkCanonical(html, href) {
 
 function syncAssetVersion(html) {
   return html.replace(/\?v=20260531-v\d+/g, `?v=${version}`);
+}
+
+function ensureToolPageV51Styles(html) {
+  const href = `/static/style/ymir-tool-page-v51.css?v=${version}`;
+  if (html.includes('ymir-tool-page-v51.css')) {
+    return html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
+  }
+  const vueCss = new RegExp(`<link\\b(?=[^>]*ymir-vue-element\\.css)[^>]*>`, 'i');
+  if (vueCss.test(html)) return html.replace(vueCss, (match) => `${match}<link href="${href}" rel="stylesheet"/>`);
+  return html.replace(/<\/head>/i, `<link href="${href}" rel="stylesheet"/>\n</head>`);
+}
+
+function stripToolHero(html) {
+  return html.replace(/\s*<section\b[^>]*class=["'][^"']*\bymir-hero\b[^"']*["'][^>]*>[\s\S]*?<\/section>\s*/i, '\n');
+}
+
+function ensureToolPageClass(html) {
+  return html.replace(/<main\b([^>]*)>/i, (full, attrs) => {
+    if (!/\bdata-ymir-tool\s*=/.test(attrs)) return full;
+    if (/\bclass\s*=/.test(attrs)) {
+      return full.replace(/class\s*=\s*(["'])(.*?)\1/i, (m, q, cls) => {
+        const classes = Array.from(new Set(String(cls).split(/\s+/).filter(Boolean).concat(['ymir-tool-page-v51']))).join(' ');
+        return `class=${q}${classes}${q}`;
+      });
+    }
+    return `<main class="ymir-page ymir-tool-page-v51"${attrs}>`;
+  });
 }
 
 function syncToolJsonLd(html, tool, canonical, description) {
@@ -197,7 +224,10 @@ function syncToolPage(tool) {
   html = syncToolJsonLd(html, tool, canonical, description);
   html = ensureMainTool(html, id);
   html = ensureRootTool(html, id);
+  html = ensureToolPageClass(html);
+  html = stripToolHero(html);
   html = syncAssetVersion(html);
+  html = ensureToolPageV51Styles(html);
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id, updated: true };
 }

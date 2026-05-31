@@ -336,8 +336,15 @@
       return renderActionButtons(h, ElementPlus, this, actions, {
         className: 'ymir-vue-actions',
         labelFor: function (key, item) {
-          if (item.label === 'formatJson') return t(vm, 'format') + ' JSON';
-          if (item.label === 'formatJs') return t(vm, 'format') + ' JavaScript';
+          if (key === 'formatJson') return t(vm, 'format');
+          if (key === 'formatJs') return t(vm, 'format');
+          if (key === 'minifyJson' || key === 'minifyJs') return t(vm, 'minify');
+          if (key === 'validateJson') return t(vm, 'validate');
+          if (key === 'encodeBase64' || key === 'encodeUrl') return t(vm, 'encode');
+          if (key === 'decodeBase64' || key === 'decodeUrl') return t(vm, 'decode');
+          if (key === 'loadSample') return t(vm, 'sample');
+          if (key === 'copyOutput') return t(vm, 'copy');
+          if (key === 'clearAll') return t(vm, 'clear');
           return t(vm, item.label || key);
         },
         onRun: function (key) { runToolAction(vm, key); }

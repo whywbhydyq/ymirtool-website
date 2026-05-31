@@ -1,11 +1,11 @@
 (function () {
   'use strict';
   window.YmirStaticPagesRegistry = {
-  "version": "20260531-v50",
+  "version": "20260531-v51",
   "site": {
     "origin": "https://ymirtool.com",
     "lastmod": "2026-05-31",
-    "version": "20260531-v50"
+    "version": "20260531-v51"
   },
   "pages": [
     {

@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v50';
+  var VERSION = '20260531-v51';
   if (window.YmirVueCore && window.YmirVueCore.version === VERSION) return;
   function toText(value) { return String(value == null ? '' : value); }
   function normalizeLang(value) {

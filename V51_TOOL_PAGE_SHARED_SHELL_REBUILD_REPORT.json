@@ -1,0 +1,20 @@
+{
+  "version": "20260531-v51",
+  "scope": "Rebuilt shared tool page shell for all tool pages; removed tool hero from generated shells; added v51 task-first layout CSS; fixed action button labels.",
+  "changed": [
+    "static/style/ymir-tool-page-v51.css",
+    "static/script/ymir-vue-render-helpers.js",
+    "static/script/ymir-vue-actions.js",
+    "static/script/ymir-vue-core-tools-schema.js",
+    "static/script/ymir-vue-tools-app.js",
+    "scripts/sync-tools-manifest-derived-files.mjs",
+    "150 tool HTML pages"
+  ],
+  "not_run": [
+    "npm install",
+    "npm run build",
+    "test",
+    "lint",
+    "typecheck"
+  ]
+}

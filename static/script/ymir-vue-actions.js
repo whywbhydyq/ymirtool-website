@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v50';
+  var VERSION = '20260531-v51';
   if (window.YmirVueActions && window.YmirVueActions.version === VERSION) return;
   var Core = window.YmirVueCore;
   var Render = window.YmirVueRenderHelpers;
@@ -89,7 +89,12 @@
     var nodes = actions.map(function (action, index) {
       var item = typeof action === 'string' ? { key: action } : (action || {});
       var key = item.key || item.action || item.label;
-      var label = item.label || (typeof options.labelFor === 'function' ? options.labelFor(key, item, index) : key);
+      var rawLabel = item.labelText || item.text || item.label || key;
+      var label = typeof options.labelFor === 'function' ? options.labelFor(key, item, index) : rawLabel;
+      if (label && typeof label === 'object') {
+        var lang = (vm && vm.lang) || (window.YmirVueCore && window.YmirVueCore.getLang && window.YmirVueCore.getLang()) || 'en';
+        label = label[lang] || label.en || label.zh || key;
+      }
       var click = item.onClick || function () { if (options.onRun) options.onRun.call(vm, key, item, index); else if (vm && typeof vm.run === 'function') vm.run(key); };
       return h(ElButton, { type: item.type || (index === 0 && options.primaryFirst !== false ? 'primary' : ''), plain: item.plain, size: item.size, onClick: click }, function () { return label; });
     });

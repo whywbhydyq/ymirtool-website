@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v50';
+  var VERSION = '20260531-v51';
   if (window.YmirVueRenderHelpers && window.YmirVueRenderHelpers.version === VERSION) return;
   var Core = window.YmirVueCore;
   if (!Core) return;
@@ -232,8 +232,8 @@
       nodes.push(renderStatus(h, El, { type: options.statusType, title: options.statusTitle, description: options.statusDescription }));
     }
     if (options.footerTags && options.footerTags.length) nodes.push(renderFooterTags(h, El, options.footerTags));
-    return h('div', { class: ('ymir-vue-app ' + (options.appClass || '')).trim() }, [
-      h('section', { class: ('ymir-vue-workbench ' + (options.workbenchClass || '')).trim() }, [renderToolHeader(h, El, options)].concat(nodes))
+    return h('div', { class: ('ymir-vue-app ymir-tool-shell-v51 ' + (options.appClass || '')).trim() }, [
+      h('section', { class: ('ymir-vue-workbench ' + (options.workbenchClass || '')).trim(), 'aria-label': options.title ? options.title + ' workbench' : 'Tool workbench' }, [renderToolHeader(h, El, options)].concat(nodes))
     ]);
   }
 
