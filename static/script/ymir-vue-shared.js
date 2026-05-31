@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v51';
+  var VERSION = '20260531-v55';
   if (window.YmirVueShared && window.YmirVueShared.version === VERSION) return;
   var Core = window.YmirVueCore || {};
   var Render = window.YmirVueRenderHelpers || {};

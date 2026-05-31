@@ -1,0 +1,1271 @@
+/* Ymir Tool v55 Developer-Aesthetics theme system
+   Scope: light + native dark tokens. No Tailwind/Shadcn, no Monaco/Vite migration. */
+:root {
+  --ymir-bg: #f6f8fb;
+  --ymir-bg-radial: radial-gradient(circle at 12% 8%, rgba(59,130,246,.10), transparent 30%), radial-gradient(circle at 86% 4%, rgba(168,85,247,.08), transparent 28%), linear-gradient(180deg, #fbfdff 0%, #f5f7fb 46%, #f7f9fc 100%);
+  --ymir-surface: rgba(255,255,255,.88);
+  --ymir-surface-solid: #ffffff;
+  --ymir-surface-soft: #f8fafc;
+  --ymir-surface-code: #f8fafc;
+  --ymir-border-subtle: rgba(148,163,184,.22);
+  --ymir-border-strong: rgba(100,116,139,.28);
+  --ymir-text-main: #0f172a;
+  --ymir-text-muted: #64748b;
+  --ymir-text-soft: #94a3b8;
+  --ymir-brand: #2563eb;
+  --ymir-brand-deep: #0f172a;
+  --ymir-brand-soft: rgba(37,99,235,.09);
+  --ymir-brand-ring: rgba(37,99,235,.18);
+  --ymir-danger: #dc2626;
+  --ymir-danger-soft: #fef2f2;
+  --ymir-success: #059669;
+  --ymir-warning: #d97706;
+  --ymir-radius-xl: 24px;
+  --ymir-radius-lg: 18px;
+  --ymir-radius-md: 14px;
+  --ymir-shadow-soft: 0 18px 48px rgba(15,23,42,.065);
+  --ymir-shadow-hover: 0 24px 64px rgba(37,99,235,.12), 0 1px 0 rgba(255,255,255,.7) inset;
+  --ymir-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --ymir-sans: Inter, Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html.ymir-modern-html,
+body.ymir-modern-body {
+  background: var(--ymir-bg-radial) !important;
+  color: var(--ymir-text-main) !important;
+  font-family: var(--ymir-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.ymir-modern-body .ymir-topbar {
+  min-height: 60px !important;
+  border-bottom: 1px solid rgba(226,232,240,.82) !important;
+  background: rgba(255,255,255,.78) !important;
+  backdrop-filter: blur(18px) saturate(1.25) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.72) inset !important;
+}
+body.ymir-modern-body .ymir-topbar-inner {
+  min-height: 60px !important;
+}
+body.ymir-modern-body .ymir-brand {
+  gap: 9px !important;
+  color: #0f172a !important;
+  font-weight: 760 !important;
+  letter-spacing: -.025em !important;
+}
+body.ymir-modern-body .ymir-brand-mark {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 9px !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(15,23,42,.18) !important;
+}
+body.ymir-modern-body .ymir-nav a,
+body.ymir-modern-body .ymir-nav button,
+body.ymir-modern-body .ymir-lang-toggle button {
+  color: #475569 !important;
+  font-weight: 520 !important;
+  letter-spacing: .005em !important;
+  border-radius: 10px !important;
+  transition: color .16s ease, background .16s ease, transform .16s ease !important;
+}
+body.ymir-modern-body .ymir-nav a:hover,
+body.ymir-modern-body .ymir-nav button:hover,
+body.ymir-modern-body .ymir-lang-toggle button:hover {
+  color: #0f172a !important;
+  background: rgba(15,23,42,.045) !important;
+  text-decoration: none !important;
+}
+body.ymir-modern-body .ymir-lang-toggle,
+body.ymir-modern-body .ymir-lang-toggle button,
+body.ymir-modern-body .ymir-lang-toggle a {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Homepage: modern bento launcher */
+body.ymir-modern-body .ymir-home-dashboard {
+  padding-top: 44px !important;
+  gap: 24px !important;
+}
+body.ymir-modern-body .ymir-home-intro h1 {
+  color: #0f172a !important;
+  font-weight: 780 !important;
+  letter-spacing: -.055em !important;
+  line-height: .98 !important;
+}
+body.ymir-modern-body .ymir-home-intro p {
+  max-width: 570px !important;
+  color: #5b677a !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  font-weight: 430 !important;
+}
+body.ymir-modern-body .ymir-value-row {
+  gap: 9px !important;
+}
+body.ymir-modern-body .ymir-value-chip {
+  height: 32px !important;
+  padding: 0 11px !important;
+  border: 1px solid rgba(148,163,184,.22) !important;
+  background: rgba(255,255,255,.62) !important;
+  color: #475569 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  font-weight: 620 !important;
+}
+body.ymir-modern-body .ymir-value-dot {
+  color: #64748b !important;
+  background: transparent !important;
+  font-size: 11px !important;
+}
+body.ymir-modern-body .ymir-command-area,
+body.ymir-modern-body .ymir-quick-access-card,
+body.ymir-modern-body .ymir-directory-panel,
+body.ymir-modern-body .ymir-pattern-panel {
+  border: 1px solid var(--ymir-border-subtle) !important;
+  background: rgba(255,255,255,.78) !important;
+  border-radius: var(--ymir-radius-xl) !important;
+  box-shadow: var(--ymir-shadow-soft) !important;
+  backdrop-filter: blur(20px) saturate(1.18) !important;
+}
+body.ymir-modern-body .ymir-command-area {
+  padding: 18px !important;
+}
+body.ymir-modern-body .ymir-command-search {
+  border: 1px solid rgba(148,163,184,.28) !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+  box-shadow: inset 0 1px 2px rgba(15,23,42,.045), 0 1px 0 rgba(255,255,255,.88) !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease !important;
+}
+body.ymir-modern-body .ymir-command-search:focus-within {
+  border-color: rgba(37,99,235,.42) !important;
+  box-shadow: 0 0 0 4px rgba(37,99,235,.08), 0 0 0 1px rgba(37,99,235,.12), inset 0 1px 2px rgba(15,23,42,.045) !important;
+  transform: translateY(-1px) !important;
+}
+body.ymir-modern-body .ymir-search-icon {
+  color: #94a3b8 !important;
+}
+body.ymir-modern-body .ymir-command-search input {
+  color: #0f172a !important;
+  font-weight: 500 !important;
+}
+body.ymir-modern-body .ymir-command-search input::placeholder {
+  color: #94a3b8 !important;
+}
+body.ymir-modern-body .ymir-quick-try {
+  gap: 8px !important;
+  color: #94a3b8 !important;
+}
+body.ymir-modern-body .ymir-quick-try button {
+  border: 1px solid rgba(148,163,184,.20) !important;
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-radius: 999px !important;
+  padding: 6px 10px !important;
+  font-weight: 620 !important;
+  text-decoration: none !important;
+  transition: background .16s ease, color .16s ease, transform .16s ease, border-color .16s ease !important;
+}
+body.ymir-modern-body .ymir-quick-try button:hover {
+  background: #eef6ff !important;
+  color: #1d4ed8 !important;
+  border-color: rgba(37,99,235,.18) !important;
+  transform: translateY(-1px) !important;
+}
+body.ymir-modern-body .ymir-command-panel {
+  border-color: rgba(148,163,184,.22) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 24px 70px rgba(15,23,42,.14) !important;
+}
+body.ymir-modern-body .ymir-command-result {
+  border-radius: 14px !important;
+}
+body.ymir-modern-body .ymir-quick-tabs {
+  position: relative !important;
+  padding: 4px !important;
+  border: 1px solid rgba(148,163,184,.16) !important;
+  border-radius: 13px !important;
+  background: #f4f7fb !important;
+}
+body.ymir-modern-body .ymir-quick-tab {
+  position: relative !important;
+  z-index: 1 !important;
+  border-radius: 10px !important;
+  font-weight: 650 !important;
+  color: #64748b !important;
+}
+body.ymir-modern-body .ymir-quick-tab.is-active {
+  background: #fff !important;
+  color: #0f172a !important;
+  box-shadow: 0 5px 16px rgba(15,23,42,.08) !important;
+}
+body.ymir-modern-body .ymir-mini-tool-row {
+  border: 1px solid transparent !important;
+  border-radius: 13px !important;
+  font-weight: 600 !important;
+}
+body.ymir-modern-body .ymir-mini-tool-row:hover {
+  background: #f8fafc !important;
+  border-color: rgba(148,163,184,.16) !important;
+}
+body.ymir-modern-body .ymir-mini-icon {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-mini-tool-row small {
+  color: #9aa7b8 !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+}
+body.ymir-modern-body .ymir-section-title {
+  font-weight: 760 !important;
+  letter-spacing: -.045em !important;
+}
+body.ymir-modern-body .ymir-feature-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+body.ymir-modern-body .ymir-feature-card {
+  min-height: 132px !important;
+  padding: 18px !important;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  border: 1px solid rgba(148,163,184,.18) !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.86) !important;
+  box-shadow: 0 14px 36px rgba(15,23,42,.045) !important;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease !important;
+}
+body.ymir-modern-body .ymir-feature-card::before { display: none !important; }
+body.ymir-modern-body .ymir-feature-card:hover,
+body.ymir-modern-body .ymir-feature-card:focus-visible {
+  transform: translateY(-3px) !important;
+  border-color: rgba(37,99,235,.20) !important;
+  background: #fff !important;
+  box-shadow: var(--ymir-shadow-hover) !important;
+}
+body.ymir-modern-body .ymir-feature-icon {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.85), rgba(37,99,235,.10)), #f3f7ff !important;
+  color: #1e40af !important;
+  border: 1px solid rgba(37,99,235,.12) !important;
+  box-shadow: none !important;
+  font-weight: 780 !important;
+}
+body.ymir-modern-body .ymir-feature-card[data-accent] .ymir-feature-icon { background: #f6f8fb !important; color: #334155 !important; }
+body.ymir-modern-body .ymir-feature-number { display: none !important; }
+body.ymir-modern-body .ymir-feature-body strong {
+  color: #0f172a !important;
+  font-weight: 680 !important;
+  font-size: 15px !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.32 !important;
+}
+body.ymir-modern-body .ymir-feature-body > span:last-child {
+  margin-top: 8px !important;
+  color: #64748b !important;
+  font-weight: 430 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+body.ymir-modern-body .ymir-tool-star {
+  opacity: 0 !important;
+  transform: translateY(-3px) scale(.94) !important;
+  transition: opacity .16s ease, transform .16s ease, color .16s ease, background .16s ease !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.82) !important;
+}
+body.ymir-modern-body .ymir-feature-card:hover .ymir-tool-star,
+body.ymir-modern-body .ymir-feature-card:focus-within .ymir-tool-star,
+body.ymir-modern-body .ymir-tool-star.is-active {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+body.ymir-modern-body .ymir-tool-star.is-active { color: #f59e0b !important; }
+body.ymir-modern-body .ymir-directory-tab,
+body.ymir-modern-body .ymir-pattern-tab,
+body.ymir-modern-body .ymir-show-more {
+  font-weight: 650 !important;
+}
+
+/* Tool pages: compact professional workbench */
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51[data-ymir-tool],
+body.ymir-modern-body .ymir-page[data-ymir-tool] {
+  width: min(1220px, calc(100% - 56px)) !important;
+  max-width: 1220px !important;
+  padding: 26px 0 52px !important;
+  gap: 22px !important;
+  background: transparent !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench::before,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench::before,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench::before { display: none !important; }
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__header,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench__header,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+  padding: 0 0 18px !important;
+  border: 0 !important;
+  background: transparent !important;
+  align-items: center !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-title-block,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-title-block,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+  gap: 13px !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-tool-icon,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-tool-icon,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-tool-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 15px !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  box-shadow: 0 14px 32px rgba(15,23,42,.18) !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 13px !important;
+  font-weight: 760 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__eyebrow,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench__eyebrow,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__eyebrow {
+  color: #64748b !important;
+  font-size: 11px !important;
+  font-family: var(--ymir-mono) !important;
+  font-weight: 560 !important;
+  letter-spacing: .02em !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__header h2,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench__header h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header h2 {
+  font-size: clamp(1.55rem, 2.1vw, 2.25rem) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.055em !important;
+  line-height: 1.05 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__header p:not(.ymir-vue-workbench__eyebrow),
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench__header p:not(.ymir-vue-workbench__eyebrow),
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header p:not(.ymir-vue-workbench__eyebrow) {
+  max-width: 720px !important;
+  color: #64748b !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  font-weight: 430 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-tag-row .el-tag,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-tag-row .el-tag,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-tag-row .el-tag {
+  border-color: rgba(148,163,184,.22) !important;
+  background: rgba(255,255,255,.66) !important;
+  color: #475569 !important;
+  font-weight: 560 !important;
+  height: 24px !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-body,
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-grid,
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-crypto-grid,
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-highrisk-grid,
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-textref-grid,
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-websocket-layout,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-body,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid {
+  padding: 0 !important;
+  gap: 18px !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-panel,
+body.ymir-modern-body .ymir-tool-shell-v51 .el-card,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-panel,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-panel {
+  border: 1px solid rgba(148,163,184,.20) !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.86) !important;
+  box-shadow: var(--ymir-shadow-soft) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(18px) saturate(1.14) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-panel:hover,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-panel:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-panel:hover {
+  border-color: rgba(37,99,235,.18) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-app .el-card__header,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-app .el-card__header,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-card__header {
+  padding: 13px 16px !important;
+  background: rgba(248,250,252,.78) !important;
+  border-bottom: 1px solid rgba(148,163,184,.16) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-app .el-card__body,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-app .el-card__body,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-card__body {
+  padding: 0 !important;
+}
+body.ymir-modern-body .ymir-vue-panel__top {
+  align-items: center !important;
+}
+body.ymir-modern-body .ymir-vue-panel__title {
+  color: #334155 !important;
+  font-size: 12px !important;
+  font-weight: 660 !important;
+  letter-spacing: .015em !important;
+}
+body.ymir-modern-body .ymir-vue-panel__dot {
+  width: 7px !important;
+  height: 7px !important;
+  background: #10b981 !important;
+  box-shadow: 0 0 0 5px rgba(16,185,129,.11) !important;
+  animation: ymir-v52-pulse 2.4s ease-in-out infinite !important;
+}
+@keyframes ymir-v52-pulse { 0%,100%{ box-shadow: 0 0 0 4px rgba(16,185,129,.10);} 50%{ box-shadow: 0 0 0 8px rgba(16,185,129,.04);} }
+body.ymir-modern-body .ymir-vue-panel__meta {
+  color: #64748b !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .el-textarea,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .el-textarea,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .el-textarea {
+  display: block !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-app .el-textarea__inner,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-app .el-textarea__inner,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-textarea__inner {
+  min-height: 310px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: var(--ymir-surface-code) !important;
+  background-image: linear-gradient(90deg, #f1f5f9 0 46px, rgba(148,163,184,.20) 46px 47px, transparent 47px), linear-gradient(180deg, rgba(255,255,255,.86), rgba(248,250,252,.92)) !important;
+  color: #0f172a !important;
+  box-shadow: none !important;
+  padding: 18px 18px 18px 60px !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.62 !important;
+  font-weight: 460 !important;
+  caret-color: #2563eb !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-output .el-textarea__inner,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-output .el-textarea__inner,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-output .el-textarea__inner {
+  background-color: #fbfdff !important;
+  background-image: linear-gradient(90deg, #f1f5f9 0 46px, rgba(148,163,184,.18) 46px 47px, transparent 47px), linear-gradient(180deg, #fbfdff, #f7faff) !important;
+  color: #1f2937 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-app .el-textarea__inner:focus,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-app .el-textarea__inner:focus,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-textarea__inner:focus {
+  box-shadow: 0 0 0 3px rgba(37,99,235,.10) inset !important;
+}
+body.ymir-modern-body .ymir-vue-body--generator .el-textarea__inner,
+body.ymir-modern-body .ymir-vue-body--time .el-textarea__inner,
+body.ymir-modern-body .ymir-vue-body--regex .el-textarea__inner { min-height: 220px !important; }
+body.ymir-modern-body .ymir-vue-inline-output .el-textarea__inner { min-height: 132px !important; }
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions {
+  margin: 18px 0 0 !important;
+  padding: 14px !important;
+  border: 1px solid rgba(148,163,184,.18) !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.78) !important;
+  box-shadow: 0 12px 36px rgba(15,23,42,.045) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  flex-wrap: wrap !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions .el-button,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions .el-button,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions .el-button,
+body.ymir-modern-body .ymir-vue-result-copy.el-button {
+  min-height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: 11px !important;
+  border-color: rgba(148,163,184,.28) !important;
+  background: #fff !important;
+  color: #334155 !important;
+  font-weight: 620 !important;
+  letter-spacing: -.005em !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions .el-button:hover,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions .el-button:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions .el-button:hover {
+  border-color: rgba(37,99,235,.25) !important;
+  color: #1d4ed8 !important;
+  background: #f8fbff !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions .el-button--primary,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions .el-button--primary,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions .el-button--primary {
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(15,23,42,.16) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions .el-button--primary:hover,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions .el-button--primary:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions .el-button--primary:hover {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #fff !important;
+  transform: translateY(-1px) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-actions .el-button:last-child:hover,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-actions .el-button:last-child:hover,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions .el-button:last-child:hover {
+  background: var(--ymir-danger-soft) !important;
+  border-color: rgba(220,38,38,.16) !important;
+  color: var(--ymir-danger) !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-status,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-status,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-status {
+  margin: 12px 0 0 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-status .el-alert,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-status .el-alert,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-status .el-alert {
+  border: 1px solid rgba(148,163,184,.18) !important;
+  border-radius: 16px !important;
+  background: rgba(255,255,255,.72) !important;
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-vue-footer-meta { margin-top: 10px !important; }
+body.ymir-modern-body .ymir-vue-result-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+body.ymir-modern-body .ymir-vue-result-card,
+body.ymir-modern-body .ymir-vue-empty-result,
+body.ymir-modern-body .ymir-vue-metric {
+  display: grid !important;
+  grid-template-columns: minmax(96px, 150px) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+  padding: 12px 12px 12px 14px !important;
+  border: 1px solid rgba(148,163,184,.18) !important;
+  border-radius: 16px !important;
+  background: #f8fafc !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-vue-empty-result { display: block !important; color: #64748b !important; font-weight: 520 !important; }
+body.ymir-modern-body .ymir-vue-result-card__label,
+body.ymir-modern-body .ymir-vue-metric span {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+  font-weight: 640 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+}
+body.ymir-modern-body .ymir-vue-result-card code {
+  display: block !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #111827 !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  font-weight: 580 !important;
+}
+body.ymir-modern-body .ymir-vue-result-copy.el-button,
+body.ymir-modern-body .ymir-vue-result-card .el-button {
+  min-width: 34px !important;
+  min-height: 32px !important;
+  padding: 0 9px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #64748b !important;
+  border-color: transparent !important;
+  opacity: 0 !important;
+  transition: opacity .16s ease, background .16s ease, color .16s ease !important;
+}
+body.ymir-modern-body .ymir-vue-result-card:hover .el-button,
+body.ymir-modern-body .ymir-vue-result-card:focus-within .el-button {
+  opacity: 1 !important;
+}
+body.ymir-modern-body .ymir-vue-result-card .el-button:hover {
+  background: #eef6ff !important;
+  color: #1d4ed8 !important;
+}
+body.ymir-modern-body .ymir-vue-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+body.ymir-modern-body .ymir-vue-metric {
+  grid-template-columns: 1fr !important;
+  align-items: start !important;
+}
+body.ymir-modern-body .ymir-vue-metric strong {
+  font-family: var(--ymir-mono) !important;
+  font-size: 20px !important;
+  letter-spacing: -.03em !important;
+}
+body.ymir-modern-body .ymir-vue-field span,
+body.ymir-modern-body .ymir-vue-options label,
+body.ymir-modern-body .ymir-vue-checks label {
+  color: #475569 !important;
+  font-weight: 560 !important;
+}
+body.ymir-modern-body .ymir-vue-checks label {
+  border-color: rgba(148,163,184,.22) !important;
+  background: #fff !important;
+  border-radius: 999px !important;
+}
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-help,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-privacy-note,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-faq,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-related,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related {
+  grid-column: span 6 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 22px !important;
+  border: 1px solid rgba(148,163,184,.18) !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.72) !important;
+  box-shadow: 0 14px 36px rgba(15,23,42,.045) !important;
+}
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-help h2,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-privacy-note h2,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-faq h2,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-related h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related h2 {
+  margin: 0 0 10px !important;
+  color: #0f172a !important;
+  font-size: 16px !important;
+  font-weight: 720 !important;
+  letter-spacing: -.03em !important;
+}
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-help p,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-privacy-note p,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-faq p,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help p,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note p,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq p {
+  color: #64748b !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+body.ymir-modern-body .ymir-related-grid a {
+  border: 1px solid rgba(148,163,184,.18) !important;
+  background: #fff !important;
+  border-radius: 14px !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+body.ymir-modern-body .ymir-related-grid a:hover {
+  border-color: rgba(37,99,235,.22) !important;
+  color: #1d4ed8 !important;
+  background: #f8fbff !important;
+}
+
+@media (max-width: 1320px) {
+  body.ymir-modern-body .ymir-feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 900px) {
+  body.ymir-modern-body .ymir-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-body,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-body,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+  body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-grid,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-help,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-privacy-note,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-faq,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-related,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-help,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-privacy-note,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-faq,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 640px) {
+  body.ymir-modern-body .ymir-feature-grid { grid-template-columns: 1fr !important; }
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51[data-ymir-tool],
+  body.ymir-modern-body .ymir-page[data-ymir-tool] {
+    width: min(100% - 28px, 1220px) !important;
+    padding-top: 18px !important;
+  }
+  body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__header,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench__header,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+    align-items: flex-start !important;
+  }
+  body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-app .el-textarea__inner,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-app .el-textarea__inner,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-textarea__inner {
+    min-height: 230px !important;
+    padding-left: 50px !important;
+    background-image: linear-gradient(90deg, #f1f5f9 0 38px, rgba(148,163,184,.20) 38px 39px, transparent 39px), linear-gradient(180deg, #fbfdff, #f7faff) !important;
+  }
+  body.ymir-modern-body .ymir-vue-result-card { grid-template-columns: 1fr auto !important; }
+  body.ymir-modern-body .ymir-vue-result-card__label { grid-column: 1 / -1 !important; }
+  body.ymir-modern-body .ymir-vue-result-card .el-button { opacity: 1 !important; }
+}
+
+/* Ymir Tool v53 Core editor experience upgrade
+   Lightweight editor chrome: real line-number rail, footer status bar, no Monaco/CodeMirror payload. */
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-editor-panel,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-editor-panel,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-editor-panel {
+  overflow: hidden !important;
+}
+body.ymir-modern-body .ymir-vue-editor-frame {
+  display: grid !important;
+  grid-template-columns: 52px minmax(0, 1fr) !important;
+  grid-template-rows: auto 34px !important;
+  min-width: 0 !important;
+  background: linear-gradient(180deg, #fbfdff, #f7faff) !important;
+}
+body.ymir-modern-body .ymir-vue-editor-frame.is-readonly {
+  background: linear-gradient(180deg, #fbfdff, #f8fbff) !important;
+}
+body.ymir-modern-body .ymir-vue-line-gutter {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+  padding: 18px 8px 18px 0 !important;
+  list-style: none !important;
+  overflow: hidden !important;
+  border-right: 1px solid rgba(148,163,184,.20) !important;
+  background: linear-gradient(180deg, #f1f5f9, #eef4fb) !important;
+  color: #94a3b8 !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+  line-height: 1.62 !important;
+  text-align: right !important;
+  user-select: none !important;
+}
+body.ymir-modern-body .ymir-vue-line-gutter li {
+  height: 21.06px !important;
+  white-space: nowrap !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.ymir-modern-body .ymir-vue-line-gutter .ymir-vue-line-more {
+  color: #64748b !important;
+}
+body.ymir-modern-body .ymir-vue-editor-input {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-editor-frame .el-textarea__inner,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-editor-frame .el-textarea__inner,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-editor-frame .el-textarea__inner {
+  min-height: 310px !important;
+  padding: 18px 20px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  line-height: 1.62 !important;
+  tab-size: 2 !important;
+}
+body.ymir-modern-body .ymir-vue-editor-statusbar {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border-top: 1px solid rgba(148,163,184,.16) !important;
+  background: rgba(248,250,252,.86) !important;
+  color: #64748b !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+  font-weight: 520 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body.ymir-modern-body .ymir-vue-editor-statusbar span {
+  position: relative !important;
+}
+body.ymir-modern-body .ymir-vue-editor-statusbar span + span::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -7px !important;
+  top: 50% !important;
+  width: 3px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: #cbd5e1 !important;
+  transform: translateY(-50%) !important;
+}
+body.ymir-modern-body .ymir-vue-panel__meta {
+  font-variant-numeric: tabular-nums !important;
+}
+body.ymir-modern-body .ymir-vue-body--diff .ymir-vue-span-2 .ymir-vue-editor-frame,
+body.ymir-modern-body .ymir-vue-body--regex .ymir-vue-span-2 .ymir-vue-editor-frame {
+  grid-template-rows: auto 32px !important;
+}
+body.ymir-modern-body .ymir-vue-body--generator .ymir-vue-editor-frame .el-textarea__inner,
+body.ymir-modern-body .ymir-vue-body--time .ymir-vue-editor-frame .el-textarea__inner,
+body.ymir-modern-body .ymir-vue-body--regex .ymir-vue-editor-frame .el-textarea__inner {
+  min-height: 220px !important;
+}
+body.ymir-modern-body .ymir-vue-inline-output .ymir-vue-editor-frame .el-textarea__inner {
+  min-height: 132px !important;
+}
+body.ymir-modern-body .ymir-vue-result-card code {
+  font-size: 13.5px !important;
+  letter-spacing: -.01em !important;
+}
+body.ymir-modern-body .ymir-vue-actions::before {
+  content: 'Actions' !important;
+  margin-right: auto !important;
+  color: #94a3b8 !important;
+  font-family: var(--ymir-mono) !important;
+  font-size: 11px !important;
+  font-weight: 640 !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+}
+html[lang^="zh"] body.ymir-modern-body .ymir-vue-actions::before {
+  content: '操作' !important;
+  letter-spacing: .08em !important;
+}
+@media (max-width: 640px) {
+  body.ymir-modern-body .ymir-vue-editor-frame {
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+  }
+  body.ymir-modern-body .ymir-vue-line-gutter {
+    padding-right: 7px !important;
+    font-size: 10px !important;
+  }
+  body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-editor-frame .el-textarea__inner,
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-editor-frame .el-textarea__inner,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-editor-frame .el-textarea__inner {
+    min-height: 230px !important;
+    padding: 16px !important;
+  }
+  body.ymir-modern-body .ymir-vue-editor-statusbar {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+  }
+}
+
+
+/* Ymir Tool v55 native dark mode
+   Token-first dark palette. Applies through html[data-theme="dark"], with system preference handled by ymir-theme.js. */
+:root {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ymir-bg: #070b12;
+  --ymir-bg-radial: radial-gradient(circle at 12% 6%, rgba(59,130,246,.24), transparent 28%), radial-gradient(circle at 88% 0%, rgba(168,85,247,.20), transparent 26%), linear-gradient(180deg, #08111f 0%, #070b12 48%, #0a0e17 100%);
+  --ymir-surface: rgba(15,23,42,.74);
+  --ymir-surface-solid: #0f172a;
+  --ymir-surface-soft: #111827;
+  --ymir-surface-code: #0b1220;
+  --ymir-border-subtle: rgba(148,163,184,.18);
+  --ymir-border-strong: rgba(148,163,184,.32);
+  --ymir-text-main: #e5edf8;
+  --ymir-text-muted: #9aa8bc;
+  --ymir-text-soft: #64748b;
+  --ymir-brand: #60a5fa;
+  --ymir-brand-deep: #e5edf8;
+  --ymir-brand-soft: rgba(96,165,250,.14);
+  --ymir-brand-ring: rgba(96,165,250,.24);
+  --ymir-danger: #f87171;
+  --ymir-danger-soft: rgba(248,113,113,.12);
+  --ymir-success: #34d399;
+  --ymir-warning: #fbbf24;
+  --ymir-shadow-soft: 0 24px 72px rgba(0,0,0,.34);
+  --ymir-shadow-hover: 0 28px 80px rgba(0,0,0,.42), 0 0 0 1px rgba(96,165,250,.14);
+}
+html[data-theme="dark"] body.ymir-modern-body {
+  background: var(--ymir-bg-radial) !important;
+  color: var(--ymir-text-main) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-topbar {
+  border-bottom-color: rgba(148,163,184,.14) !important;
+  background: rgba(7,11,18,.72) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-brand,
+html[data-theme="dark"] body.ymir-modern-body .ymir-home-intro h1,
+html[data-theme="dark"] body.ymir-modern-body .ymir-section-title,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-title,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-panel__title,
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-body strong,
+html[data-theme="dark"] body.ymir-modern-body .ymir-quick-access-head h2,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-card h3,
+html[data-theme="dark"] body.ymir-modern-body .ymir-card h2,
+html[data-theme="dark"] body.ymir-modern-body .ymir-card h3 {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-brand-mark {
+  background: linear-gradient(135deg,#dbeafe,#93c5fd) !important;
+  color: #07111f !important;
+  box-shadow: 0 12px 32px rgba(96,165,250,.24) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-nav a,
+html[data-theme="dark"] body.ymir-modern-body .ymir-nav button,
+html[data-theme="dark"] body.ymir-modern-body .ymir-lang-toggle button,
+html[data-theme="dark"] body.ymir-modern-body .ymir-theme-toggle,
+html[data-theme="dark"] body.ymir-modern-body .ymir-link-button {
+  color: #a8b3c7 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-nav a:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-nav button:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-lang-toggle button:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-theme-toggle:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-link-button:hover {
+  color: #f8fafc !important;
+  background: rgba(148,163,184,.12) !important;
+}
+body.ymir-modern-body .ymir-theme-toggle {
+  appearance: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #475569 !important;
+  border-radius: 10px !important;
+  padding: 7px 9px !important;
+  font-size: 12px !important;
+  font-weight: 620 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: color .16s ease, background .16s ease, transform .16s ease !important;
+}
+body.ymir-modern-body .ymir-theme-toggle:hover {
+  color: #0f172a !important;
+  background: rgba(15,23,42,.045) !important;
+}
+body.ymir-modern-body .ymir-theme-toggle:focus-visible {
+  outline: 2px solid var(--ymir-brand-ring) !important;
+  outline-offset: 2px !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-home-intro p,
+html[data-theme="dark"] body.ymir-modern-body .ymir-section-subtitle,
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-body span,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-subtitle,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-panel__meta,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-editor-statusbar,
+html[data-theme="dark"] body.ymir-modern-body .ymir-card p,
+html[data-theme="dark"] body.ymir-modern-body .ymir-footer {
+  color: #9aa8bc !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-area,
+html[data-theme="dark"] body.ymir-modern-body .ymir-quick-access-card,
+html[data-theme="dark"] body.ymir-modern-body .ymir-directory-panel,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-panel,
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-card,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-workbench,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-editor-panel,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-option-panel,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-result-card,
+html[data-theme="dark"] body.ymir-modern-body .ymir-help,
+html[data-theme="dark"] body.ymir-modern-body .ymir-privacy-note,
+html[data-theme="dark"] body.ymir-modern-body .ymir-faq,
+html[data-theme="dark"] body.ymir-modern-body .ymir-related,
+html[data-theme="dark"] body.ymir-modern-body .ymir-card,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-card {
+  border-color: rgba(148,163,184,.16) !important;
+  background: rgba(15,23,42,.68) !important;
+  box-shadow: 0 24px 72px rgba(0,0,0,.30) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-search,
+html[data-theme="dark"] body.ymir-modern-body .ymir-quick-tabs,
+html[data-theme="dark"] body.ymir-modern-body .ymir-value-chip,
+html[data-theme="dark"] body.ymir-modern-body .ymir-quick-try button,
+html[data-theme="dark"] body.ymir-modern-body .ymir-directory-link,
+html[data-theme="dark"] body.ymir-modern-body .ymir-related-grid a,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-status,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-inline-output {
+  border-color: rgba(148,163,184,.16) !important;
+  background: rgba(2,6,23,.38) !important;
+  color: #dbe7f5 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-search:focus-within {
+  border-color: rgba(96,165,250,.46) !important;
+  box-shadow: 0 0 0 4px rgba(96,165,250,.12), inset 0 1px 2px rgba(0,0,0,.2) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-search input,
+html[data-theme="dark"] body.ymir-modern-body input,
+html[data-theme="dark"] body.ymir-modern-body textarea {
+  color: #e5edf8 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-search input::placeholder,
+html[data-theme="dark"] body.ymir-modern-body textarea::placeholder {
+  color: #64748b !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-panel {
+  border-color: rgba(148,163,184,.18) !important;
+  background: rgba(15,23,42,.96) !important;
+  box-shadow: 0 28px 86px rgba(0,0,0,.48) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-result:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-result.is-active,
+html[data-theme="dark"] body.ymir-modern-body .ymir-mini-tool-row:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-directory-link:hover {
+  background: rgba(96,165,250,.12) !important;
+  border-color: rgba(96,165,250,.24) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-quick-tab.is-active {
+  background: rgba(30,41,59,.92) !important;
+  color: #f8fafc !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.28) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-icon,
+html[data-theme="dark"] body.ymir-modern-body .ymir-mini-icon {
+  background: rgba(96,165,250,.12) !important;
+  color: #bfdbfe !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-card:hover {
+  border-color: rgba(96,165,250,.22) !important;
+  box-shadow: 0 28px 88px rgba(0,0,0,.42), 0 0 0 1px rgba(96,165,250,.14) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-tool-open,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-actions button:first-child,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions .el-button--primary {
+  background: #e5edf8 !important;
+  border-color: #e5edf8 !important;
+  color: #07111f !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions .el-button:not(.el-button--primary),
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-actions button:not(:first-child),
+html[data-theme="dark"] body.ymir-modern-body .ymir-show-more {
+  background: rgba(15,23,42,.72) !important;
+  border-color: rgba(148,163,184,.20) !important;
+  color: #dbe7f5 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions .el-button:not(.el-button--primary):hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-actions button:not(:first-child):hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-show-more:hover {
+  background: rgba(96,165,250,.12) !important;
+  border-color: rgba(96,165,250,.24) !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-editor-frame {
+  background: linear-gradient(180deg, #0b1220, #090f1c) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-editor-frame.is-readonly {
+  background: linear-gradient(180deg, #0d1422, #0a1020) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-line-gutter {
+  border-right-color: rgba(148,163,184,.16) !important;
+  background: linear-gradient(180deg, #111827, #0f172a) !important;
+  color: #64748b !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-editor-frame .el-textarea__inner,
+html[data-theme="dark"] body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-editor-frame .el-textarea__inner,
+html[data-theme="dark"] body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-editor-frame .el-textarea__inner {
+  color: #dbe7f5 !important;
+  caret-color: #93c5fd !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-editor-statusbar {
+  border-top-color: rgba(148,163,184,.14) !important;
+  background: rgba(2,6,23,.42) !important;
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-result-card code,
+html[data-theme="dark"] body.ymir-modern-body code,
+html[data-theme="dark"] body.ymir-modern-body pre {
+  color: #e0f2fe !important;
+  background: transparent !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-input__inner,
+html[data-theme="dark"] body.ymir-modern-body .el-select .el-input__wrapper,
+html[data-theme="dark"] body.ymir-modern-body .el-input__wrapper,
+html[data-theme="dark"] body.ymir-modern-body .el-textarea__inner {
+  background: rgba(2,6,23,.38) !important;
+  border-color: rgba(148,163,184,.18) !important;
+  box-shadow: none !important;
+  color: #e5edf8 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-input__inner:focus,
+html[data-theme="dark"] body.ymir-modern-body .el-textarea__inner:focus {
+  border-color: rgba(96,165,250,.50) !important;
+  box-shadow: 0 0 0 3px rgba(96,165,250,.14) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-footer {
+  border-top-color: rgba(148,163,184,.14) !important;
+  background: rgba(7,11,18,.78) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-footer a {
+  color: #bfdbfe !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-live-grid textarea,
+html[data-theme="dark"] body.ymir-modern-body .ymir-pattern-diff-grid textarea {
+  background: #0b1220 !important;
+  border-color: rgba(148,163,184,.16) !important;
+  color: #dbe7f5 !important;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    color-scheme: dark;
+  }
+}
+
+
+/* Ymir Tool v55 theme hardening: contrast, poppers, tokens, reduced motion. */
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-theme-toggle[aria-pressed="true"] {
+  color: #f8fafc !important;
+  background: rgba(96,165,250,.14) !important;
+  box-shadow: inset 0 0 0 1px rgba(96,165,250,.20) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-lang-toggle button.is-active {
+  color: #f8fafc !important;
+  background: rgba(96,165,250,.16) !important;
+  box-shadow: inset 0 0 0 1px rgba(96,165,250,.18) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-feature-number,
+html[data-theme="dark"] body.ymir-modern-body .ymir-command-group-title,
+html[data-theme="dark"] body.ymir-modern-body .ymir-tool-star,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-badge,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-chip,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-field-note {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-tool-star:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-tool-star.is-active {
+  color: #fbbf24 !important;
+  background: rgba(251,191,36,.12) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-table,
+html[data-theme="dark"] body.ymir-modern-body table,
+html[data-theme="dark"] body.ymir-modern-body .el-table,
+html[data-theme="dark"] body.ymir-modern-body .el-table__inner-wrapper,
+html[data-theme="dark"] body.ymir-modern-body .el-table tr,
+html[data-theme="dark"] body.ymir-modern-body .el-table th.el-table__cell,
+html[data-theme="dark"] body.ymir-modern-body .el-table td.el-table__cell {
+  background: transparent !important;
+  color: #dbe7f5 !important;
+  border-color: rgba(148,163,184,.14) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-table th.el-table__cell {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-table--enable-row-hover .el-table__body tr:hover>td.el-table__cell {
+  background: rgba(96,165,250,.10) !important;
+}
+html[data-theme="dark"] .el-popper,
+html[data-theme="dark"] .el-select__popper,
+html[data-theme="dark"] .el-dropdown__popper,
+html[data-theme="dark"] .el-picker__popper,
+html[data-theme="dark"] .el-tooltip__popper,
+html[data-theme="dark"] .el-message-box,
+html[data-theme="dark"] .el-drawer,
+html[data-theme="dark"] .el-dialog {
+  background: #0f172a !important;
+  border-color: rgba(148,163,184,.18) !important;
+  color: #dbe7f5 !important;
+  box-shadow: 0 28px 88px rgba(0,0,0,.50) !important;
+}
+html[data-theme="dark"] .el-select-dropdown__item,
+html[data-theme="dark"] .el-dropdown-menu__item,
+html[data-theme="dark"] .el-date-table td,
+html[data-theme="dark"] .el-date-picker__header-label,
+html[data-theme="dark"] .el-picker-panel__icon-btn {
+  color: #dbe7f5 !important;
+}
+html[data-theme="dark"] .el-select-dropdown__item.hover,
+html[data-theme="dark"] .el-select-dropdown__item:hover,
+html[data-theme="dark"] .el-dropdown-menu__item:hover,
+html[data-theme="dark"] .el-date-table td.available:hover {
+  background: rgba(96,165,250,.12) !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-switch__core,
+html[data-theme="dark"] body.ymir-modern-body .el-checkbox__inner,
+html[data-theme="dark"] body.ymir-modern-body .el-radio__inner {
+  background: rgba(2,6,23,.56) !important;
+  border-color: rgba(148,163,184,.24) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-checkbox__input.is-checked .el-checkbox__inner,
+html[data-theme="dark"] body.ymir-modern-body .el-radio__input.is-checked .el-radio__inner,
+html[data-theme="dark"] body.ymir-modern-body .el-switch.is-checked .el-switch__core {
+  background: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-slider__runway,
+html[data-theme="dark"] body.ymir-modern-body .el-slider__bar {
+  background-color: rgba(148,163,184,.18) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-slider__bar,
+html[data-theme="dark"] body.ymir-modern-body .el-slider__button {
+  border-color: #60a5fa !important;
+  background-color: #60a5fa !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-result-row,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-kv-row,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-metric,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-stat,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-reference-card {
+  background: rgba(2,6,23,.34) !important;
+  border-color: rgba(148,163,184,.15) !important;
+  color: #dbe7f5 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-result-row code,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-kv-row code,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-metric strong,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-stat strong {
+  color: #e0f2fe !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-danger,
+html[data-theme="dark"] body.ymir-modern-body .is-danger,
+html[data-theme="dark"] body.ymir-modern-body .el-button--danger.is-text {
+  color: #fca5a5 !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .el-button--danger:hover,
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-danger:hover {
+  background: rgba(248,113,113,.12) !important;
+  border-color: rgba(248,113,113,.22) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ymir-modern-body *,
+  body.ymir-modern-body *::before,
+  body.ymir-modern-body *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

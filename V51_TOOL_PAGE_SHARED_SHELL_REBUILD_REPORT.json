@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v51",
+  "version": "20260531-v52",
   "scope": "Rebuilt shared tool page shell for all tool pages; removed tool hero from generated shells; added v51 task-first layout CSS; fixed action button labels.",
   "changed": [
     "static/style/ymir-tool-page-v51.css",

@@ -14,7 +14,7 @@ const indexPath = path.join(root, 'index.html');
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
-const version = toolManifest.version || staticRegistry.version || '20260531-v51';
+const version = toolManifest.version || staticRegistry.version || '20260531-v55';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
 
 function xmlEscape(value) {
@@ -93,14 +93,31 @@ function syncAssetVersion(html) {
   return html.replace(/\?v=20260531-v\d+/g, `?v=${version}`);
 }
 
+function ensureThemeScript(html) {
+  const src = `/static/script/ymir-theme.js?v=${version}`;
+  const tag = `<script src="${src}"></script>`;
+  html = html.replace(/\s*<script\b(?=[^>]*ymir-theme\.js)[^>]*><\/script>\s*/i, '\n');
+  if (/<link\b(?=[^>]*rel=["']stylesheet["'])/i.test(html)) {
+    return html.replace(/<link\b(?=[^>]*rel=["']stylesheet["'])[^>]*>/i, (match) => `${tag}\n${match}`);
+  }
+  return html.replace(/<\/head>/i, `${tag}\n</head>`);
+}
+
+
 function ensureToolPageV51Styles(html) {
   const href = `/static/style/ymir-tool-page-v51.css?v=${version}`;
+  const aestheticHref = `/static/style/ymir-developer-aesthetics-v55.css?v=${version}`;
   if (html.includes('ymir-tool-page-v51.css')) {
-    return html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
+    html = html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
+  } else {
+    const vueCss = new RegExp(`<link\b(?=[^>]*ymir-vue-element\.css)[^>]*>`, 'i');
+    if (vueCss.test(html)) html = html.replace(vueCss, (match) => `${match}<link href="${href}" rel="stylesheet"/>`);
+    else html = html.replace(/<\/head>/i, `<link href="${href}" rel="stylesheet"/>\n</head>`);
   }
-  const vueCss = new RegExp(`<link\\b(?=[^>]*ymir-vue-element\\.css)[^>]*>`, 'i');
-  if (vueCss.test(html)) return html.replace(vueCss, (match) => `${match}<link href="${href}" rel="stylesheet"/>`);
-  return html.replace(/<\/head>/i, `<link href="${href}" rel="stylesheet"/>\n</head>`);
+  if (/ymir-developer-aesthetics-v5\d+\.css/.test(html)) {
+    return html.replace(/<link\b(?=[^>]*ymir-developer-aesthetics-v5\d+\.css)[^>]*>/i, `<link href="${aestheticHref}" rel="stylesheet"/>`);
+  }
+  return html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, (match) => `${match}<link href="${aestheticHref}" rel="stylesheet"/>`);
 }
 
 function stripToolHero(html) {
@@ -227,6 +244,7 @@ function syncToolPage(tool) {
   html = ensureToolPageClass(html);
   html = stripToolHero(html);
   html = syncAssetVersion(html);
+  html = ensureThemeScript(html);
   html = ensureToolPageV51Styles(html);
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id, updated: true };
@@ -254,6 +272,7 @@ function syncStaticPage(page) {
   html = replaceMeta(html, 'twitter:description', page.description);
   html = syncStaticJsonLd(html, page);
   html = syncAssetVersion(html);
+  html = ensureThemeScript(html);
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id: page.id, updated: true };
 }
@@ -328,6 +347,7 @@ function syncIndexFallback() {
   if (!directoryRegex.test(index)) throw new Error('Unable to locate homepage directory fallback block');
   index = index.replace(directoryRegex, `$1${directoryHtml}$2`);
   index = syncAssetVersion(index);
+  index = ensureThemeScript(index);
 
   fs.writeFileSync(indexPath, index, 'utf8');
   return { updated: true, featured: featuredTools.length, categories: categories.length };

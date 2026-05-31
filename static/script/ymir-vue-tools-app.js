@@ -63,8 +63,8 @@
     return h('div', { class: 'ymir-vue-result-grid' }, vm.resultCards.map(function (card) {
       return h('div', { class: 'ymir-vue-result-card' }, [
         h('div', { class: 'ymir-vue-result-card__label' }, card.label),
-        h('code', null, card.value),
-        h(ElButton, { size: 'small', onClick: function () { vm.copyText(card.value); } }, function () { return t(vm, 'copy'); })
+        h('code', { title: card.value }, card.value),
+        h(ElButton, { class: 'ymir-vue-result-copy', size: 'small', text: true, 'aria-label': t(vm, 'copy'), onClick: function () { vm.copyText(card.value); } }, function () { return vm.lang === 'zh' ? '复制' : 'Copy'; })
       ]);
     }));
   }

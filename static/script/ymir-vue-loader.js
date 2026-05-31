@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var VERSION = '20260531-v51';
+  var VERSION = '20260531-v55';
   var MANIFEST_SCRIPT = '/static/script/ymir-tools-manifest.js';
 
   function findRoot() {

@@ -1,5 +1,5 @@
 {
-  "version": "20260531-v51",
+  "version": "20260531-v52",
   "scope": "Core page interaction audit and fixes",
   "changedFiles": [
     "static/script/ymir-home-dashboard.js",

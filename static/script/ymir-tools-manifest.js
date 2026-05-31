@@ -1,12 +1,12 @@
 (function () {
   'use strict';
   window.YmirToolsManifest = {
-  "version": "20260531-v51",
+  "version": "20260531-v55",
   "site": {
     "origin": "https://ymirtool.com",
     "name": "Ymir Tool",
     "lastmod": "2026-05-31",
-    "version": "20260531-v51"
+    "version": "20260531-v55"
   },
   "entrypoint": "/static/script/ymir-vue-loader.js",
   "runtime": {

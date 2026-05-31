@@ -1,10 +1,10 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v51';
+  var VERSION = '20260531-v55';
   if (window.YmirVueRenderHelpers && window.YmirVueRenderHelpers.version === VERSION) return;
   var Core = window.YmirVueCore;
   if (!Core) return;
-  var getEl = Core.getEl, getLang = Core.getLang, setLang = Core.setLang, normalizeLang = Core.normalizeLang;
+  var getEl = Core.getEl, getLang = Core.getLang, setLang = Core.setLang, normalizeLang = Core.normalizeLang, lineCount = Core.lineCount, toText = Core.toText;
   function renderLanguageToggle(h, El, lang, onChange) {
     var ElRadioGroup = getEl(El, 'ElRadioGroup');
     var ElRadioButton = getEl(El, 'ElRadioButton');
@@ -54,24 +54,47 @@
       meta ? h('span', { class: 'ymir-vue-panel__meta' }, meta) : null
     ]);
   }
+  function editorLineItems(h, value, rows) {
+    var total = Math.max(lineCount ? lineCount(value) : 0, rows || 1, 1);
+    var limit = Math.min(total, 240);
+    var nodes = [];
+    for (var i = 1; i <= limit; i += 1) nodes.push(h('li', { key: 'line-' + i }, String(i)));
+    if (total > limit) nodes.push(h('li', { key: 'line-more', class: 'ymir-vue-line-more' }, '…'));
+    return nodes;
+  }
+  function editorStatusTokens(h, options) {
+    options = options || {};
+    var tokens = [];
+    if (options.modeLabel) tokens.push(h('span', null, options.modeLabel));
+    tokens.push(h('span', null, options.readonly ? 'Readonly' : 'Editable'));
+    if (options.meta) tokens.push(h('span', null, options.meta));
+    return h('div', { class: 'ymir-vue-editor-statusbar' }, tokens);
+  }
   function renderEditorCard(h, El, options) {
     options = options || {};
     var ElCard = getEl(El, 'ElCard');
     var ElInput = getEl(El, 'ElInput');
-    return h(ElCard, { class: 'ymir-vue-panel' + (options.output ? ' ymir-vue-output' : '') + (options.className ? ' ' + options.className : ''), shadow: 'never' }, {
+    return h(ElCard, { class: 'ymir-vue-panel ymir-vue-editor-panel' + (options.output ? ' ymir-vue-output' : '') + (options.className ? ' ' + options.className : ''), shadow: 'never' }, {
       header: function () { return renderPanelHeader(h, options.title, options.meta); },
       default: function () {
+        var rows = options.rows || 14;
         var input = h(ElInput, {
           modelValue: options.value || '',
           'onUpdate:modelValue': options.onInput || function () {},
           type: 'textarea',
-          rows: options.rows || 14,
+          rows: rows,
           resize: 'vertical',
           readonly: !!options.readonly,
           spellcheck: 'false',
-          placeholder: options.placeholder || ''
+          placeholder: options.placeholder || '',
+          inputStyle: options.inputStyle || null
         });
-        return options.footer ? [input, options.footer] : input;
+        var editor = h('div', { class: 'ymir-vue-editor-frame' + (options.readonly ? ' is-readonly' : '') }, [
+          options.lineNumbers === false ? null : h('ol', { class: 'ymir-vue-line-gutter', 'aria-hidden': 'true' }, editorLineItems(h, options.value || '', rows)),
+          h('div', { class: 'ymir-vue-editor-input' }, [input]),
+          editorStatusTokens(h, options)
+        ]);
+        return options.footer ? [editor, options.footer] : editor;
       }
     });
   }
@@ -288,13 +311,14 @@
         var ElCard = getEl(window.ElementPlus, 'ElCard');
         var ElInput = getEl(window.ElementPlus, 'ElInput');
         var self = this;
-        return h(ElCard, { class: 'ymir-vue-panel' + (self.readonly ? ' ymir-vue-output' : ''), shadow: 'never' }, {
-          header: function () { return renderPanelHeader(h, self.title, self.meta); },
-          default: function () { return h(ElInput, {
-            type: 'textarea', modelValue: self.modelValue || '', rows: self.rows || 16, resize: 'vertical', spellcheck: 'false', readonly: !!self.readonly,
-            'onUpdate:modelValue': function (value) { self.$emit('update:modelValue', value); },
-            onInput: function (value) { self.$emit('update:modelValue', value); }
-          }); }
+        return renderEditorCard(h, window.ElementPlus, {
+          title: self.title,
+          meta: self.meta,
+          value: self.modelValue || '',
+          readonly: !!self.readonly,
+          rows: self.rows || 16,
+          output: !!self.readonly,
+          onInput: function (value) { self.$emit('update:modelValue', value); }
         });
       }
     },
