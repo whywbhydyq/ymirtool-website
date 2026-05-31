@@ -1,5 +1,5 @@
 {
-  "version": "20260530-v34",
+  "version": "20260531-v46",
   "scope": "shared-runtime-deduplication-pass",
   "implemented": [
     "Extended ymir-vue-shared.js into the common runtime for language, copy, notification, text metrics, search normalization, row serialization, and Vue mounting helpers.",

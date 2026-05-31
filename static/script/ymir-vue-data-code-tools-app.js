@@ -3,11 +3,13 @@
   var root = document.getElementById('ymir-vue-data-code-app');
   if (!root) return;
   if (!window.Vue || !window.ElementPlus) {
-    root.innerHTML = '<div class="ymir-vue-noscript">Vue or Element Plus assets failed to load. This tool cannot start.</div>';
+    root.innerHTML = '<div class="ymir-vue-noscript">Tool assets failed to load. This tool cannot start.</div>';
     return;
   }
   var Vue = window.Vue;
   var ElementPlus = window.ElementPlus;
+  var h = Vue.h;
+  var ElButton = ElementPlus.ElButton;
   var ElMessage = ElementPlus.ElMessage;
   var Shared = window.YmirVueShared || {};
   var bytes = Shared.bytes || function (text) { try { return new TextEncoder().encode(String(text || '')).length; } catch(e) { return unescape(encodeURIComponent(String(text || ''))).length; } };
@@ -149,11 +151,11 @@
   function htmlToMd(input) { return String(input || '').replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi,'# $1\n').replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi,'## $1\n').replace(/<li[^>]*>([\s\S]*?)<\/li>/gi,'- $1\n').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/\n{3,}/g,'\n\n').trim(); }
 
   var TOOLS = {
-    json2xml:{title:'JSON ⇄ XML Converter', category:'Data Converter', icon:'XML', desc:'Convert JSON objects to XML and parse simple XML back to JSON locally.', sample:'{"user":{"id":1,"name":"Ymir"},"active":true}', actions:['jsonToXml','xmlToJson']},
+    json2xml:{title:'JSON ⇄ XML Converter', category:'Data Converter', icon:'XML', desc:'Convert JSON objects to XML and parse simple XML back to JSON quickly.', sample:'{"user":{"id":1,"name":"Ymir"},"active":true}', actions:['jsonToXml','xmlToJson']},
     json2yaml:{title:'JSON to YAML Converter', category:'Data Converter', icon:'YAML', desc:'Convert JSON arrays or objects to readable YAML-style text.', sample:'{"name":"Ymir","tools":["json","base64"],"active":true}', actions:['jsonToYaml','jsonFormat']},
     json2get:{title:'JSON ⇄ GET Query Converter', category:'Data Converter', icon:'GET', desc:'Convert flat JSON objects to URL query strings and parse query strings back to JSON.', sample:'{"q":"ymir tool","page":1,"lang":"en"}', actions:['jsonToQuery','queryToJson']},
     jsonzip:{title:'JSON Minify / Escape Tool', category:'JSON Tool', icon:'ZIP', desc:'Minify JSON, pretty-print JSON, and escape or unescape JSON string values.', sample:'{\n  "name": "Ymir",\n  "enabled": true\n}', actions:['jsonMinify','jsonFormat','jsonEscape','jsonUnescape']},
-    jsonlrview:{title:'JSON Left / Right Viewer', category:'JSON Tool', icon:'JSON', desc:'Format and inspect JSON in a copy-ready Vue workbench.', sample:'{"items":[{"id":1,"name":"Alpha"},{"id":2,"name":"Beta"}]}', actions:['jsonFormat','jsonMinify']},
+    jsonlrview:{title:'JSON Left / Right Viewer', category:'JSON Tool', icon:'JSON', desc:'Format and inspect JSON in a copy-ready tool workbench.', sample:'{"items":[{"id":1,"name":"Alpha"},{"id":2,"name":"Beta"}]}', actions:['jsonFormat','jsonMinify']},
     jsonudview:{title:'JSON Up / Down Viewer', category:'JSON Tool', icon:'JSON', desc:'Pretty-print or minify JSON for quick inspection and debugging.', sample:'{"status":"ok","count":2,"items":[1,2]}', actions:['jsonFormat','jsonMinify']},
     json2cs:{title:'JSON to C# Class Generator', category:'Code Generator', icon:'C#', desc:'Generate a simple C# class skeleton from a JSON object or array sample.', sample:'{"id":1,"name":"Ymir","active":true,"score":9.8}', actions:['jsonToCs']},
     json2java:{title:'JSON to Java Class Generator', category:'Code Generator', icon:'JAVA', desc:'Generate a simple Java field model from a JSON object or array sample.', sample:'{"id":1,"name":"Ymir","active":true,"score":9.8}', actions:['jsonToJava']},
@@ -165,7 +167,7 @@
     htmloutjs:{title:'HTML / JS Output Converter', category:'HTML Converter', icon:'JS', desc:'Convert HTML to JavaScript output statements or recover simple document.writeln snippets.', sample:'<div class="card">Ymir Tool</div>', actions:['htmlToJs','jsToHtml']},
     html2php:{title:'HTML to PHP Echo Converter', category:'HTML Converter', icon:'PHP', desc:'Convert HTML lines into PHP echo statements.', sample:'<p>Hello Ymir Tool</p>', actions:['htmlToPhp']},
     html2cj:{title:'HTML to C# / JSP String Converter', category:'HTML Converter', icon:'C#', desc:'Convert HTML lines into append-line style code snippets.', sample:'<ul>\n  <li>Alpha</li>\n</ul>', actions:['htmlToCj']},
-    html2all:{title:'HTML to ASP / Perl Converter', category:'HTML Converter', icon:'ASP', desc:'Convert HTML lines into ASP Response.Write and Perl print snippets.', sample:'<h1>Ymir Tool</h1>\n<p>Free browser tools.</p>', actions:['htmlToAll']},
+    html2all:{title:'HTML to ASP / Perl Converter', category:'HTML Converter', icon:'ASP', desc:'Convert HTML lines into ASP Response.Write and Perl print snippets.', sample:'<h1>Ymir Tool</h1>\n<p>Free developer tools.</p>', actions:['htmlToAll']},
     html2ubb:{title:'HTML to UBB Converter', category:'HTML Converter', icon:'UBB', desc:'Convert common HTML tags to lightweight UBB-style forum markup.', sample:'<strong>Hello</strong> <em>Ymir</em> <a href="https://ymirtool.com/">Tool</a>', actions:['htmlToUbb']},
     htmlfromcsv:{title:'CSV to HTML Table', category:'HTML Converter', icon:'TABLE', desc:'Convert CSV copied from spreadsheets into an HTML table.', sample:'Name,Type,Status\nJSON,Tool,Ready\nBase64,Tool,Ready', actions:['csvToHtmlTable']},
     htmltable:{title:'HTML Table Generator', category:'HTML Converter', icon:'TABLE', desc:'Generate an HTML table from CSV-like rows.', sample:'Name,Value\nWidth,120\nHeight,80', actions:['csvToHtmlTable']},
@@ -174,36 +176,70 @@
   var ACTIONS = {jsonToXml:jsonToXml, xmlToJson:xmlToJson, jsonToYaml:jsonToYaml, jsonFormat:jsonFormat, jsonToQuery:jsonToQuery, queryToJson:queryToJson, jsonMinify:jsonMinify, jsonEscape:jsonEscape, jsonUnescape:jsonUnescape, jsonToCs:jsonToCs, jsonToJava:jsonToJava, jsonToGo:jsonToGo, sqlToJava:sqlToJava, csvToJson:csvToJson, jsonToCsv:jsonToCsv, htmlToJs:htmlToJs, jsToHtml:jsToHtml, htmlToPhp:htmlToPhp, htmlToCj:htmlToCj, htmlToAll:htmlToAll, htmlToUbb:htmlToUbb, csvToHtmlTable:csvToHtmlTable, mdToHtml:mdToHtml, htmlToMd:htmlToMd};
   var LABELS = {jsonToXml:'JSON → XML', xmlToJson:'XML → JSON', jsonToYaml:'JSON → YAML', jsonFormat:'Format JSON', jsonToQuery:'JSON → Query', queryToJson:'Query → JSON', jsonMinify:'Minify JSON', jsonEscape:'Escape string', jsonUnescape:'Unescape string', jsonToCs:'Generate C#', jsonToJava:'Generate Java', jsonToGo:'Generate Go', sqlToJava:'Generate Java', csvToJson:'CSV → JSON', jsonToCsv:'JSON → CSV', htmlToJs:'HTML → JS', jsToHtml:'JS → HTML', htmlToPhp:'HTML → PHP', htmlToCj:'HTML → C# / JSP', htmlToAll:'HTML → ASP / Perl', htmlToUbb:'HTML → UBB', csvToHtmlTable:'CSV → HTML table', mdToHtml:'Markdown → HTML', htmlToMd:'HTML → Markdown'};
 
-  var App = {
-    data: function () {
-      var slug = root.getAttribute('data-tool') || 'json2xml';
-      var cfg = TOOLS[slug] || TOOLS.json2xml;
-      return { slug: slug, cfg: cfg, input: cfg.sample || '', output: '', statusType: 'info', statusText: 'Ready. Paste input or load the sample, then run an action.', labels: LABELS };
-    },
+  Shared.mountConfiguredToolApp({
+    name: 'YmirVueDataCodeConfiguredApp',
+    root: root,
+    Vue: Vue,
+    ElementPlus: ElementPlus,
+    defaultSlug: 'json2xml',
+    rootAttribute: 'data-tool',
+    tools: TOOLS,
+    configKey: 'cfg',
+    includeLang: false,
+    statusTextKey: 'statusText',
+    status: { type: 'info', message: 'Ready. Paste input or load the sample, then run an action.' },
+    labels: LABELS,
+    initialState: function () { return { labels: LABELS }; },
     computed: {
       inputMeta: function () { return bytes(this.input) + ' bytes'; },
-      outputMeta: function () { return bytes(this.output) + ' bytes'; },
-      frameTool: function () { return { icon: this.cfg.icon, category: this.cfg.category, title: this.cfg.title, desc: this.cfg.desc, tags: ['Local browser processing', 'Vue 3', 'Copy-ready'] }; }
+      outputMeta: function () { return bytes(this.output) + ' bytes'; }
     },
-    methods: {
-      noop: function () {},
-      loadSample: function () { this.input = this.cfg.sample || ''; this.output = ''; this.statusType = 'info'; this.statusText = 'Sample loaded.'; },
-      clearAll: function () { this.input = ''; this.output = ''; this.statusType = 'info'; this.statusText = 'Cleared.'; },
-      copyOutput: function () { copyText(this.output); },
-      copyInput: function () { copyText(this.input); },
-      run: function (action) {
-        try {
-          this.output = String(ACTIONS[action](this.input));
-          this.statusType = 'success'; this.statusText = 'Output updated.';
-        } catch (e) {
-          this.statusType = 'error'; this.statusText = e && e.message ? e.message : 'Action failed.';
-        }
-      }
+    textMethods: {
+      handlers: ACTIONS,
+      titleKey: 'statusText',
+      successMessage: 'Output updated.',
+      sample: { fields: { input: 'sample' }, clearOutput: true, titleKey: 'statusText', message: 'Sample loaded.' },
+      clearFields: ['input', 'output'],
+      clear: { titleKey: 'statusText', message: 'Cleared.' },
+      copy: { copied:'Copied.', empty:'Nothing to copy.', failed:'Copy failed.' }
     },
-    template: '<ymir-tool-frame class="ymir-vue-app--data-code" :tool="frameTool" lang="en" :status-type="statusType" :status-title="statusText" @update-lang="noop"><template #body><div class="ymir-vue-body"><el-card class="ymir-vue-panel"><template #header><div class="ymir-vue-panel__top"><span class="ymir-vue-panel__title"><i class="ymir-vue-panel__dot"></i>Input</span><span class="ymir-vue-panel__meta">{{inputMeta}}</span></div></template><el-input v-model="input" type="textarea" :rows="16" resize="vertical" spellcheck="false"/><div class="ymir-vue-toolbar"><el-button @click="loadSample">Load sample</el-button><el-button @click="copyInput">Copy input</el-button><el-button @click="clearAll">Clear</el-button></div></el-card><el-card class="ymir-vue-panel ymir-vue-output"><template #header><div class="ymir-vue-panel__top"><span class="ymir-vue-panel__title"><i class="ymir-vue-panel__dot"></i>Output</span><span class="ymir-vue-panel__meta">{{outputMeta}}</span></div></template><el-input v-model="output" type="textarea" :rows="16" resize="vertical" readonly spellcheck="false"/><div class="ymir-vue-toolbar"><el-button type="success" @click="copyOutput">Copy output</el-button></div></el-card></div></template><template #actions><el-button type="primary" v-for="a in cfg.actions" :key="a" @click="run(a)">{{labels[a] || a}}</el-button></template><template #footer><el-tag>Review generated code before production use</el-tag><el-tag>Plain text only</el-tag><el-tag>No upload required</el-tag></template></ymir-tool-frame>'
-  };
-  var app = Vue.createApp(App);
-  if (Shared.components) Object.keys(Shared.components).forEach(function (name) { app.component(name, Shared.components[name]); });
-  app.use(ElementPlus);
-  app.mount(root);
+    renderBody: function (h, ElementPlus) {
+      var inputFooter = Shared.renderActionButtons(h, ElementPlus, this, [
+        { label:'Load sample', onClick:this.loadSample, plain:true },
+        { label:'Copy input', onClick:this.copyInput, plain:true },
+        { label:'Clear', onClick:this.clearAll, plain:true }
+      ], { className:'ymir-vue-toolbar', primaryFirst:false });
+      var outputFooter = Shared.renderActionButtons(h, ElementPlus, this, [
+        { label:'Copy output', type:'success', onClick:this.copyOutput }
+      ], { className:'ymir-vue-toolbar', primaryFirst:false });
+      return Shared.renderTextWorkbench(h, ElementPlus, this, {
+        gridClass:'ymir-vue-body', inputTitle:'Input', inputMeta:this.inputMeta, inputRows:16, inputFooter:inputFooter,
+        outputTitle:'Output', outputMeta:this.outputMeta, outputRows:16, outputFooter:outputFooter
+      });
+    },
+    renderActions: function (h, ElementPlus) {
+      var self = this;
+      return Shared.renderActionButtons(h, ElementPlus, this, this.cfg.actions || [], {
+        className:'ymir-vue-actions',
+        labelFor:function(a){ return self.labels[a] || a; },
+        onRun:function(a){ self.run(a); }
+      });
+    },
+    shell: function () {
+      return {
+        appClass:'ymir-vue-app--data-code ymir-vue-app--' + this.slug,
+        icon:this.cfg.icon,
+        eyebrow:'Tool workbench',
+        category:this.cfg.category,
+        title:this.cfg.title,
+        subtitle:this.cfg.desc,
+        tags:['Ready to use','Copy-ready'],
+        lang:'en',
+        onLangChange:this.noop,
+        statusType:this.statusType,
+        statusTitle:this.statusText,
+        footerTags:[{label:'Review generated code before production use',type:'warning'},{label:'Plain text only',type:'info'},{label:'Copy-ready output',type:'success'}]
+      };
+    }
+  });
 })();

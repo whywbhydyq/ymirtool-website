@@ -8,7 +8,7 @@
     "websocket"
   ],
   "total_vue_pages_after": 150,
-  "strategy": "Replace final high-risk runtime pages with Vue 3 + Element Plus workbenches. Use iframe sandbox for editor/runjs and native WebSocket state management for websocket.",
+  "strategy": "Replace final high-risk runtime pages with Tool workbench workbenches. Use iframe sandbox for editor/runjs and native WebSocket state management for websocket.",
   "shared_runtime_reuse": [
     "YmirToolFrame",
     "YmirEditorPanel",

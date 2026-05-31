@@ -2,7 +2,7 @@
 
 ## Current state after v31
 
-All 150 tool pages have Vue 3 + Element Plus workbenches, while the site remains a static deployment. The major remaining technical debt is not page coverage; it is structure: multiple batch app files own their own data, state, and in some early batches their own utility helpers.
+All 150 tool pages have Tool workbench workbenches, while the site remains a static deployment. The major remaining technical debt is not page coverage; it is structure: multiple batch app files own their own data, state, and in some early batches their own utility helpers.
 
 ## v32 decision
 

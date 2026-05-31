@@ -8,6 +8,31 @@
   var favoritesExpanded = false;
   var panelOpen = false;
 
+  function manifest() { return window.YmirToolsManifest || null; }
+  function slugFromHref(href) {
+    var match = String(href || '').match(/^\/([^/?#]+)\/?/);
+    return match ? match[1] : String(href || '').replace(/^\/+|\/+$/g, '');
+  }
+  function manifestTool(t) {
+    return {
+      id: t.id || t.slug,
+      href: t.href || ('/' + t.slug + '/'),
+      titleZh: t.titleZh || t.titleEn || t.slug,
+      titleEn: t.titleEn || t.titleZh || t.slug,
+      descZh: t.descriptionZh || t.descriptionEn || '',
+      descEn: t.descriptionEn || t.descriptionZh || '',
+      accent: t.accent || 'blue',
+      icon: t.icon || '›',
+      keywords: t.keywords || '',
+      category: t.category || ''
+    };
+  }
+  function manifestTools() {
+    var m = manifest();
+    if (!m || !Array.isArray(m.tools)) return null;
+    return m.tools.map(manifestTool);
+  }
+
   function lang() {
     return (window.YmirI18n && window.YmirI18n.getLanguage && window.YmirI18n.getLanguage()) || document.documentElement.getAttribute('data-ui-lang') || 'zh';
   }
@@ -23,9 +48,13 @@
     });
   }
   function toolData(el) {
+    var href = el.getAttribute('data-tool-href') || el.getAttribute('href') || '#';
+    var slug = slugFromHref(href);
+    var id = el.getAttribute('data-tool-id') || slug || href;
+    if (id.indexOf('dir-') === 0 || id === 'url') id = slug || id;
     return {
-      id: el.getAttribute('data-tool-id') || el.getAttribute('href') || '',
-      href: el.getAttribute('data-tool-href') || el.getAttribute('href') || '#',
+      id: id,
+      href: href,
       titleZh: el.getAttribute('data-title-zh') || el.textContent.trim(),
       titleEn: el.getAttribute('data-title-en') || el.getAttribute('data-title-zh') || el.textContent.trim(),
       descZh: el.getAttribute('data-desc-zh') || '',
@@ -38,14 +67,115 @@
   function titleOf(t) { return lang() === 'zh' ? (t.titleZh || t.titleEn) : (t.titleEn || t.titleZh); }
   function descOf(t) { return lang() === 'zh' ? (t.descZh || t.descEn) : (t.descEn || t.descZh); }
   function allToolElements() { return Array.prototype.slice.call(document.querySelectorAll('[data-home-tool],[data-directory-tool]')); }
-  function featuredTools() { return Array.prototype.slice.call(document.querySelectorAll('[data-home-tool]')).map(toolData); }
+  function featuredTools() {
+    var m = manifest();
+    var tools = manifestTools();
+    if (m && tools && Array.isArray(m.featured)) {
+      var byId = {};
+      tools.forEach(function (t) { byId[t.id] = t; });
+      return m.featured.map(function (id) { return byId[id]; }).filter(Boolean);
+    }
+    return Array.prototype.slice.call(document.querySelectorAll('[data-home-tool]')).map(toolData);
+  }
   function allTools() {
+    var tools = manifestTools();
+    if (tools) return tools;
     var seen = {};
     return allToolElements().map(toolData).filter(function (t) {
       if (seen[t.href]) return false;
       seen[t.href] = true;
       return true;
     });
+  }
+  function toolById() {
+    var byId = {};
+    allTools().forEach(function (t) { byId[t.id] = t; });
+    return byId;
+  }
+  function featuredToolList() {
+    var m = manifest();
+    var byId = toolById();
+    if (m && Array.isArray(m.featured)) {
+      return m.featured.map(function (id) { return byId[id]; }).filter(Boolean);
+    }
+    return featuredTools();
+  }
+  function homeToolCard(t, index) {
+    var zh = t.titleZh || t.titleEn || t.id;
+    var en = t.titleEn || t.titleZh || t.id;
+    var descZh = t.descZh || t.descriptionZh || t.descEn || t.descriptionEn || t.href;
+    var descEn = t.descEn || t.descriptionEn || t.descZh || t.descriptionZh || t.href;
+    var keywords = t.keywords || [zh, en, t.id].join(' ');
+    return '<article class="ymir-feature-card" data-home-tool="" role="link" tabindex="0"' +
+      ' data-accent="' + escapeHtml(t.accent || 'blue') + '"' +
+      ' data-icon="' + escapeHtml(t.icon || '{}') + '"' +
+      ' data-title-zh="' + escapeHtml(zh) + '"' +
+      ' data-title-en="' + escapeHtml(en) + '"' +
+      ' data-desc-zh="' + escapeHtml(descZh) + '"' +
+      ' data-desc-en="' + escapeHtml(descEn) + '"' +
+      ' data-tool-href="' + escapeHtml(t.href) + '"' +
+      ' data-tool-id="' + escapeHtml(t.id) + '"' +
+      ' data-tool-keywords="' + escapeHtml(keywords) + '">' +
+      '<span aria-hidden="true" class="ymir-feature-icon">' + escapeHtml(t.icon || '{}') + '</span>' +
+      '<span class="ymir-feature-body"><strong><span class="ymir-feature-number">' + (index + 1) + '.</span> <span data-card-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span></strong>' +
+      '<span data-card-desc="">' + escapeHtml(lang() === 'zh' ? descZh : descEn) + '</span></span>' +
+      '<button aria-label="' + escapeHtml((lang() === 'zh' ? '收藏 ' : 'Favorite ') + (lang() === 'zh' ? zh : en)) + '" class="ymir-tool-star" data-star-tool="' + escapeHtml(t.id) + '" type="button">☆</button>' +
+      '<a aria-hidden="true" class="ymir-tool-open" data-i18n-en="Open" data-i18n-zh="打开" href="' + escapeHtml(t.href) + '" tabindex="-1">' + (lang() === 'zh' ? '打开' : 'Open') + '</a>' +
+      '</article>';
+  }
+  function directoryTabButton(cat, index) {
+    var active = index === 0 ? ' is-active' : '';
+    return '<button class="ymir-directory-tab' + active + '" data-directory-tab="' + escapeHtml(cat.id) + '" data-label-en="' + escapeHtml(cat.labelEn || cat.id) + '" data-label-zh="' + escapeHtml(cat.labelZh || cat.labelEn || cat.id) + '" type="button">' + escapeHtml(lang() === 'zh' ? (cat.labelZh || cat.labelEn || cat.id) : (cat.labelEn || cat.labelZh || cat.id)) + '</button>';
+  }
+  function directoryLink(t, idx) {
+    var zh = t.titleZh || t.titleEn || t.id;
+    var en = t.titleEn || t.titleZh || t.id;
+    var extra = idx >= 8 ? ' is-extra' : '';
+    return '<a class="ymir-directory-link' + extra + '" data-directory-tool=""' +
+      ' data-title-en="' + escapeHtml(en) + '"' +
+      ' data-title-zh="' + escapeHtml(zh) + '"' +
+      ' data-tool-href="' + escapeHtml(t.href) + '"' +
+      ' data-tool-id="' + escapeHtml(t.id) + '"' +
+      ' data-tool-keywords="' + escapeHtml(t.keywords || [zh, en, t.id].join(' ')) + '"' +
+      ' href="' + escapeHtml(t.href) + '">' +
+      '<span aria-hidden="true" class="ymir-directory-icon">' + escapeHtml(t.icon || '›') + '</span>' +
+      '<span data-directory-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span>' +
+      '<span aria-hidden="true" class="ymir-directory-arrow">›</span></a>';
+  }
+  function directoryPanel(cat, index, byId) {
+    var tools = (cat.tools || []).map(function (id) { return byId[id]; }).filter(Boolean);
+    var active = index === 0 ? ' is-active' : '';
+    var links = tools.map(directoryLink).join('');
+    var showMore = tools.length > 8 ? '<button class="ymir-show-more" data-label-less-en="Show less" data-label-less-zh="收起" data-label-more-en="Show more" data-label-more-zh="显示更多" data-show-more="' + escapeHtml(cat.id) + '" type="button">' + (lang() === 'zh' ? '显示更多' : 'Show more') + '</button>' : '';
+    return '<div class="ymir-directory-list' + active + '" data-directory-panel="' + escapeHtml(cat.id) + '">' + links + showMore + '</div>';
+  }
+  function renderFeaturedFromManifest() {
+    var grid = document.querySelector('.ymir-feature-grid');
+    var m = manifest();
+    if (!grid || !m || !Array.isArray(m.featured)) return false;
+    var list = featuredToolList().slice(0, 12);
+    if (!list.length) return false;
+    grid.innerHTML = list.map(homeToolCard).join('');
+    grid.setAttribute('data-render-source', 'manifest');
+    return true;
+  }
+  function renderDirectoryFromManifest() {
+    var tabs = document.querySelector('.ymir-directory-tabs');
+    var panel = document.getElementById('toolDirectory');
+    var m = manifest();
+    if (!tabs || !panel || !m || !Array.isArray(m.categories)) return false;
+    var byId = toolById();
+    var categories = m.categories.filter(function (cat) { return Array.isArray(cat.tools) && cat.tools.some(function (id) { return byId[id]; }); });
+    if (!categories.length) return false;
+    tabs.innerHTML = categories.map(directoryTabButton).join('');
+    Array.prototype.slice.call(panel.querySelectorAll('[data-directory-panel]')).forEach(function (oldPanel) { oldPanel.parentNode.removeChild(oldPanel); });
+    tabs.insertAdjacentHTML('afterend', categories.map(function (cat, index) { return directoryPanel(cat, index, byId); }).join(''));
+    panel.setAttribute('data-render-source', 'manifest');
+    return true;
+  }
+  function hydrateHomeFromManifest() {
+    renderFeaturedFromManifest();
+    renderDirectoryFromManifest();
   }
   function norm(s) { return String(s || '').toLowerCase().replace(/\s+/g, ' ').trim(); }
   function scoreTool(t, query) {
@@ -60,16 +190,25 @@
     return 0;
   }
   function panel() { return document.getElementById('ymirCommandPanel'); }
+  function safeClosest(target, selector) {
+    return target && target.closest ? target.closest(selector) : null;
+  }
+  function activeQuickTab() {
+    var active = document.querySelector('[data-quick-tab].is-active');
+    return active ? active.getAttribute('data-quick-tab') : 'recent';
+  }
   function setPanelOpen(open) {
     var p = panel();
     panelOpen = !!open;
     if (p) p.hidden = !panelOpen;
+    var input = document.getElementById('toolSearch');
+    if (input) input.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
   }
   function renderIcon(t) {
     return '<span class="ymir-command-result-icon" data-accent="' + escapeHtml(t.accent) + '">' + escapeHtml(t.icon || '{}') + '</span>';
   }
   function resultLink(t, idx) {
-    return '<a class="ymir-command-result' + (idx === activeIndex ? ' is-active' : '') + '" role="option" data-result-index="' + idx + '" href="' + escapeHtml(t.href) + '">' + renderIcon(t) + '<span><strong>' + escapeHtml(titleOf(t)) + '</strong><span>' + escapeHtml(descOf(t) || t.href) + '</span></span></a>';
+    return '<a class="ymir-command-result' + (idx === activeIndex ? ' is-active' : '') + '" role="option" aria-selected="' + (idx === activeIndex ? 'true' : 'false') + '" data-result-index="' + idx + '" href="' + escapeHtml(t.href) + '">' + renderIcon(t) + '<span><strong>' + escapeHtml(titleOf(t)) + '</strong><span>' + escapeHtml(descOf(t) || t.href) + '</span></span></a>';
   }
   function renderCommand(query) {
     var p = panel();
@@ -95,15 +234,20 @@
     var hotSource = q ? scored : featured;
     var hot = hotSource.filter(function (t) {
       return !best.some(function (b) { return b.href === t.href; });
-    }).slice(0, 4);
-    lastResults = best.concat(hot).slice(0, 7);
+    }).slice(0, 3);
+    var more = scored.filter(function (t) {
+      return !best.some(function (b) { return b.href === t.href; }) && !hot.some(function (h) { return h.href === t.href; });
+    }).slice(0, 2);
+    lastResults = best.concat(hot).concat(more).slice(0, 7);
     if (activeIndex >= lastResults.length) activeIndex = 0;
 
     var bestHtml = best.map(function (t, i) { return resultLink(t, i); }).join('');
     var hotHtml = hot.map(function (t, i) { return resultLink(t, best.length + i); }).join('');
+    var moreHtml = more.map(function (t, i) { return resultLink(t, best.length + hot.length + i); }).join('');
     p.innerHTML = '<div class="ymir-command-grid">' +
       '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '最佳匹配' : 'Best match') + '</h3>' + bestHtml + '</div>' +
       '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '热门工具' : 'Featured tools') + '</h3>' + hotHtml + '</div>' +
+      '<div class="ymir-command-group"><h3>' + (lang() === 'zh' ? '全部工具' : 'All tools') + '</h3>' + moreHtml + '</div>' +
       '</div><div class="ymir-command-footer"><a href="#toolDirectory">' + (lang() === 'zh' ? '查看所有搜索结果' : 'View all search results') + ' →</a></div>';
   }
   function rememberTool(t) {
@@ -157,7 +301,10 @@
     if (recentBox) {
       var recent = readStore(RECENT_KEY).slice(0, 4);
       if (recent.length) {
-        recentBox.innerHTML = recent.map(function (t) { return row(t, relativeTime(t.time)); }).join('');
+        recentBox.innerHTML = recent.map(function (stored) {
+          var current = toolsById[stored.id] || stored;
+          return row(Object.assign({}, current, { time: stored.time }), relativeTime(stored.time));
+        }).join('');
       } else {
         recentBox.innerHTML = featuredTools().slice(0, 4).map(function (t) { return row(t, lang() === 'zh' ? '建议' : 'start'); }).join('');
       }
@@ -167,6 +314,21 @@
       var limit = favoritesExpanded ? ids.length : 4;
       var favs = ids.map(function (id) { return toolsById[id]; }).filter(Boolean).slice(0, limit);
       favBox.innerHTML = favs.length ? favs.map(function (t) { return row(t, '★'); }).join('') : '<p class="ymir-mini-empty">' + (lang() === 'zh' ? '点击工具卡片上的星标进行收藏。' : 'Click a star on a tool card to save it.') + '</p>';
+    }
+  }
+  function updateQuickActionLabels(activeTab) {
+    activeTab = activeTab || activeQuickTab();
+    var clear = document.querySelector('[data-clear-recent]');
+    var manage = document.querySelector('[data-toggle-favorites]');
+    if (clear) {
+      var clearLabel = activeTab === 'favorites' ? (lang() === 'zh' ? '清空收藏' : 'Clear favorites') : (lang() === 'zh' ? '清空最近' : 'Clear recent');
+      clear.textContent = clearLabel;
+      clear.setAttribute('aria-label', activeTab === 'favorites' ? (lang() === 'zh' ? '清空收藏工具' : 'Clear favorite tools') : (lang() === 'zh' ? '清空最近使用' : 'Clear recently used tools'));
+    }
+    if (manage) {
+      var label = favoritesExpanded ? (lang() === 'zh' ? '收起收藏' : 'Collapse favorites') : (lang() === 'zh' ? '管理收藏' : 'Manage favorites');
+      manage.textContent = label;
+      manage.setAttribute('aria-label', label);
     }
   }
   function updateCardText() {
@@ -233,7 +395,10 @@
     return btoa(binary);
   }
   function decodeUtf8(str) {
-    var binary = atob(str.replace(/\s+/g, ''));
+    var clean = String(str || '').replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
+    var pad = clean.length % 4;
+    if (pad) clean += new Array(5 - pad).join('=');
+    var binary = atob(clean);
     var bytes = new Uint8Array(binary.length);
     for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
     return new TextDecoder().decode(bytes);
@@ -310,8 +475,13 @@
   }
 
   function attach() {
+    hydrateHomeFromManifest();
     var input = document.getElementById('toolSearch');
     if (input) {
+      input.setAttribute('role', 'combobox');
+      input.setAttribute('aria-controls', 'ymirCommandPanel');
+      input.setAttribute('aria-autocomplete', 'list');
+      input.setAttribute('aria-expanded', 'false');
       renderCommand('');
       setPanelOpen(false);
       input.addEventListener('focus', function () { openCommand(input); });
@@ -345,7 +515,7 @@
     });
     document.addEventListener('click', function (e) {
 
-      var quickTab = e.target.closest('[data-quick-tab]');
+      var quickTab = safeClosest(e.target, '[data-quick-tab]');
       if (quickTab) {
         var qid = quickTab.getAttribute('data-quick-tab');
         document.querySelectorAll('[data-quick-tab]').forEach(function (b) { b.classList.toggle('is-active', b === quickTab); });
@@ -354,9 +524,10 @@
           p.hidden = !on;
           p.classList.toggle('is-active', on);
         });
+        updateQuickActionLabels(qid);
         return;
       }
-      var patternTab = e.target.closest('[data-pattern-tab]');
+      var patternTab = safeClosest(e.target, '[data-pattern-tab]');
       if (patternTab) {
         var pid2 = patternTab.getAttribute('data-pattern-tab');
         document.querySelectorAll('[data-pattern-tab]').forEach(function (b) { b.classList.toggle('is-active', b === patternTab); });
@@ -366,34 +537,34 @@
         });
         return;
       }
-      var patternBtn = e.target.closest('[data-pattern-action]');
+      var patternBtn = safeClosest(e.target, '[data-pattern-action]');
       if (patternBtn) { e.preventDefault(); runPatternAction(patternBtn.getAttribute('data-pattern-action')); return; }
-      var tryBtn = e.target.closest('[data-try-query]');
+      var tryBtn = safeClosest(e.target, '[data-try-query]');
       if (tryBtn && input) { input.value = tryBtn.getAttribute('data-try-query'); input.focus(); openCommand(input); return; }
-      var result = e.target.closest('.ymir-command-result');
+      var result = safeClosest(e.target, '.ymir-command-result');
       if (result) { var t = lastResults[Number(result.getAttribute('data-result-index'))]; if (t) rememberTool(t); return; }
-      if (e.target.closest('.ymir-command-footer a')) { closeCommand(); return; }
-      var star = e.target.closest('[data-star-tool]');
+      if (safeClosest(e.target, '.ymir-command-footer a')) { closeCommand(); return; }
+      var star = safeClosest(e.target, '[data-star-tool]');
       if (star) { e.preventDefault(); e.stopPropagation(); toggleFavorite(star.getAttribute('data-star-tool')); return; }
-      var card = e.target.closest('[data-home-tool]');
+      var card = safeClosest(e.target, '[data-home-tool]');
       if (card) {
         var ct = toolData(card);
         rememberTool(ct);
-        if (!e.target.closest('a')) window.location.href = ct.href;
+        if (!safeClosest(e.target, 'a')) window.location.href = ct.href;
         return;
       }
-      var dir = e.target.closest('[data-directory-tool]');
+      var dir = safeClosest(e.target, '[data-directory-tool]');
       if (dir) { rememberTool(toolData(dir)); return; }
-      var mini = e.target.closest('[data-mini-tool]');
+      var mini = safeClosest(e.target, '[data-mini-tool]');
       if (mini) { var t2 = allTools().filter(function (t) { return t.id === mini.getAttribute('data-mini-tool'); })[0]; if (t2) rememberTool(t2); return; }
-      var tab = e.target.closest('[data-directory-tab]');
+      var tab = safeClosest(e.target, '[data-directory-tab]');
       if (tab) {
         var id = tab.getAttribute('data-directory-tab');
         document.querySelectorAll('[data-directory-tab]').forEach(function (b) { b.classList.toggle('is-active', b === tab); });
         document.querySelectorAll('[data-directory-panel]').forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-directory-panel') === id); });
         return;
       }
-      var more = e.target.closest('[data-show-more]');
+      var more = safeClosest(e.target, '[data-show-more]');
       if (more) {
         var pid = more.getAttribute('data-show-more');
         var panelEl = document.querySelector('[data-directory-panel="' + pid + '"]');
@@ -401,15 +572,16 @@
         updateCardText();
         return;
       }
-      if (e.target.closest('[data-clear-recent]')) { writeStore(RECENT_KEY, []); renderSide(); return; }
-      if (e.target.closest('[data-toggle-favorites]')) {
+      if (safeClosest(e.target, '[data-clear-recent]')) { if (activeQuickTab() === 'favorites') { setFavoriteIds([]); favoritesExpanded = false; syncStars(); } else { writeStore(RECENT_KEY, []); } renderSide(); updateQuickActionLabels(); return; }
+      if (safeClosest(e.target, '[data-toggle-favorites]')) {
         favoritesExpanded = !favoritesExpanded;
         var favTab = document.querySelector('[data-quick-tab="favorites"]');
         if (favTab) favTab.click();
         renderSide();
+        updateQuickActionLabels('favorites');
         return;
       }
-      if (panelOpen && !e.target.closest('.ymir-command-area')) closeCommand();
+      if (panelOpen && !safeClosest(e.target, '.ymir-command-area')) closeCommand();
     });
     window.addEventListener('ymir-language-applied', function () {
       updateCardText();
@@ -420,6 +592,7 @@
     updateCardText();
     syncStars();
     renderSide();
+    updateQuickActionLabels();
     initPatternTools();
   }
   document.addEventListener('DOMContentLoaded', attach);

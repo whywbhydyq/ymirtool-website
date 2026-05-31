@@ -1,24 +1,20 @@
 # Ymir Tool
 
-Ymir Tool is a free online toolbox for developers, creators, and everyday users.
+Ymir Tool is a free online utility collection for developers, creators, and everyday users.
 
 Website: https://ymirtool.com/
 
 ## What the site offers
 
-Ymir Tool provides 150+ browser-based tools, including:
+Ymir Tool provides 150+ online tools, including:
 
 - JSON formatting, validation, compression, and conversion
-- MD5, SHA, AES, DES, Base64, URL, Unicode, ASCII, and other encoding or cryptography utilities
+- MD5, SHA, AES, DES, Base64, URL, Unicode, ASCII, and other encoding or cryptography helpers
 - HTML, CSS, JavaScript, SQL, XML, PHP, Python, Java, C, C++, Ruby, Perl, and VBScript formatting tools
 - Text replacement, comparison, deduplication, counting, typography, and case conversion tools
 - Unit converters for length, area, volume, temperature, time, speed, angle, pressure, power, force, heat, and data size
 - Network and webmaster utilities, including WebSocket testing, DNS references, browser information, htaccess-to-nginx conversion, meta tag generation, and color tools
 - Reference tables for HTTP status codes, content types, user agents, ASCII, ports, Linux commands, Android key codes, and related developer references
-
-## Privacy and processing
-
-Most tools run directly in the user's browser. Common text, encoding, formatting, and conversion inputs are processed locally where possible.
 
 Privacy policy: https://ymirtool.com/privacy.html
 Contact: https://ymirtool.com/contact.html

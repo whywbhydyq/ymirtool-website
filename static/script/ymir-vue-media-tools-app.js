@@ -3,7 +3,7 @@
   var root = document.getElementById('ymir-vue-media-app');
   if (!root) return;
   if (!window.YmirVueShared) {
-    root.innerHTML = '<div class="ymir-vue-noscript">Shared Vue components failed to load. This tool cannot start.</div>';
+    root.innerHTML = '<div class="ymir-vue-noscript">Shared tool UI failed to load. This tool cannot start.</div>';
     return;
   }
   var Shared = window.YmirVueShared;
@@ -12,8 +12,8 @@
   var TOOLS = {
     barcode: {
       kind: 'barcode', icon: 'BAR', title: 'Barcode Generator', category: 'Visual Utility',
-      desc: 'Generate a printable barcode locally and copy or download the SVG result.',
-      tags: ['Barcode', 'SVG', 'Local'], sample: 'YMIR-TOOL-2026'
+      desc: 'Generate a printable barcode and copy or download the SVG result.',
+      tags: ['Barcode', 'SVG', 'Copy-ready'], sample: 'YMIR-TOOL-2026'
     },
     img2base64: {
       kind: 'imageBase64', icon: 'IMG', title: 'Image to Base64 Converter', category: 'Visual Utility',
@@ -55,7 +55,8 @@
   var toolKey = root.getAttribute('data-tool') || 'barcode';
   var initialTool = TOOLS[toolKey] || TOOLS.barcode;
 
-  Shared.mount(root, {
+  Shared.mountConfiguredToolApp({
+    root: root,
     name: 'YmirVueMediaToolsApp',
     data: function () {
       return {
@@ -63,7 +64,7 @@
         c: initialTool,
         lang: Shared.getLang(),
         statusType: 'info',
-        statusTitle: 'Ready. Media tools run locally in your browser.',
+        statusTitle: 'Ready. Media tools run quickly.',
         barcodeInput: initialTool.sample || 'YMIR-TOOL-2026',
         barcodeFormat: 'CODE128',
         barcodeWidth: 2,
@@ -262,22 +263,71 @@
         download('ymir-drawing.png', canvas.toDataURL('image/png'));
       }
     },
-    template: '<ymir-tool-frame class="ymir-vue-app--media" :tool="c" :lang="lang" :status-type="statusType" :status-title="statusTitle" @update-lang="setLang">\
-      <template #body>\
-        <div v-if="c.kind === \'barcode\'" class="ymir-vue-grid">\
-          <el-card class="ymir-vue-media-panel" shadow="never"><h3>Barcode input</h3><el-input v-model="barcodeInput" placeholder="Enter text or numeric content" clearable @keyup.enter="generateBarcode"></el-input><div class="ymir-vue-control-grid"><el-form-item label="Format"><el-select v-model="barcodeFormat"><el-option label="CODE128" value="CODE128"></el-option><el-option label="EAN13" value="EAN13"></el-option><el-option label="EAN8" value="EAN8"></el-option><el-option label="UPC" value="UPC"></el-option><el-option label="CODE39" value="CODE39"></el-option></el-select></el-form-item><el-form-item label="Display value"><el-switch v-model="barcodeDisplayValue"></el-switch></el-form-item><el-form-item label="Bar width"><el-input-number v-model="barcodeWidth" :min="1" :max="5"></el-input-number></el-form-item><el-form-item label="Height"><el-input-number v-model="barcodeHeight" :min="40" :max="180"></el-input-number></el-form-item></div><p class="ymir-vue-media-note">{{ barcodeMeta }}</p></el-card>\
-          <el-card class="ymir-vue-media-panel" shadow="never"><template #header><b>SVG output</b></template><div class="ymir-vue-preview-card ymir-vue-barcode-preview"><svg ref="barcodeSvg" aria-label="Generated barcode"></svg></div></el-card>\
-        </div>\
-        <div v-else-if="c.kind === \'imageBase64\'" class="ymir-vue-grid">\
-          <el-card class="ymir-vue-media-panel" shadow="never"><h3>Image / Base64 input</h3><input class="ymir-vue-file-input" type="file" accept="image/*" @change="loadImageFile"><p class="ymir-vue-media-note">Choose a local image, or paste a data:image Base64 string below.</p><ymir-editor-panel title="Base64 data URL" :meta="inputMeta" v-model="imageText" :rows="13"></ymir-editor-panel></el-card>\
-          <el-card class="ymir-vue-media-panel" shadow="never"><template #header><b>{{ previewLabel }}</b></template><div class="ymir-vue-preview-card ymir-vue-image-preview"><img v-if="imagePreview" :src="imagePreview" alt="Image preview"><el-empty v-else description="No image preview"></el-empty></div></el-card>\
-        </div>\
-        <div v-else class="ymir-vue-drawing-layout">\
-          <el-card class="ymir-vue-media-panel" shadow="never"><template #header><b>Drawing canvas</b></template><div class="ymir-vue-canvas-shell"><canvas ref="drawCanvas" class="ymir-vue-drawing-canvas" @mousedown="beginDraw" @mousemove="moveDraw" @mouseup="endDraw" @mouseleave="endDraw" @touchstart="beginDraw" @touchmove="moveDraw" @touchend="endDraw"></canvas></div><div class="ymir-vue-toolbar"><span>Color</span><div class="ymir-vue-color-row"><button v-for="color in colors" :key="color" class="ymir-vue-color-chip" :class="{\'is-active\': drawColor === color}" :style="{background: color}" @click="drawColor = color" :aria-label="\'Color \'+color"></button></div><span>Brush</span><div class="ymir-vue-size-row"><el-radio-group v-model="brushSize" size="small"><el-radio-button v-for="s in brushSizes" :key="s" :label="s">{{ s }}px</el-radio-button></el-radio-group></div></div></el-card>\
-        </div>\
-      </template>\
-      <template #actions><ymir-action-buttons :actions="actionItems" @run="run"></ymir-action-buttons></template>\
-      <template #footer><el-tag>Shared components</el-tag><el-tag>Vue 3</el-tag><el-tag>Browser local processing</el-tag></template>\
-    </ymir-tool-frame>'
+    shell: function () {
+      return { icon: this.c.icon, category: this.c.category, title: this.c.title, subtitle: this.c.desc, tags: this.c.tags, appClass: 'ymir-vue-app--media', footerTags: [{ label: 'Shared tool shell' }, { label: 'Tool runtime' }, { label: 'Copy-ready output' }] };
+    },
+    renderBody: function (h, El) {
+      var ElCard = Shared.getEl(El, 'ElCard');
+      var ElInput = Shared.getEl(El, 'ElInput');
+      var ElFormItem = Shared.getEl(El, 'ElFormItem');
+      var ElSelect = Shared.getEl(El, 'ElSelect');
+      var ElOption = Shared.getEl(El, 'ElOption');
+      var ElSwitch = Shared.getEl(El, 'ElSwitch');
+      var ElInputNumber = Shared.getEl(El, 'ElInputNumber');
+      var ElEmpty = Shared.getEl(El, 'ElEmpty');
+      var ElRadioGroup = Shared.getEl(El, 'ElRadioGroup');
+      var ElRadioButton = Shared.getEl(El, 'ElRadioButton');
+      var self = this;
+      if (this.c.kind === 'barcode') {
+        return h('div', { class: 'ymir-vue-grid' }, [
+          h(ElCard, { class: 'ymir-vue-media-panel', shadow: 'never' }, function () { return [
+            h('h3', null, 'Barcode input'),
+            h(ElInput, { modelValue: self.barcodeInput, placeholder: 'Enter text or numeric content', clearable: true, 'onUpdate:modelValue': function (v) { self.barcodeInput = v; }, onKeyup: function (evt) { if (evt && evt.key === 'Enter') self.generateBarcode(); } }),
+            h('div', { class: 'ymir-vue-control-grid' }, [
+              h(ElFormItem, { label: 'Format' }, function () { return h(ElSelect, { modelValue: self.barcodeFormat, 'onUpdate:modelValue': function (v) { self.barcodeFormat = v; } }, function () { return ['CODE128','EAN13','EAN8','UPC','CODE39'].map(function (value) { return h(ElOption, { label: value, value: value }); }); }); }),
+              h(ElFormItem, { label: 'Display value' }, function () { return h(ElSwitch, { modelValue: self.barcodeDisplayValue, 'onUpdate:modelValue': function (v) { self.barcodeDisplayValue = v; } }); }),
+              h(ElFormItem, { label: 'Bar width' }, function () { return h(ElInputNumber, { modelValue: self.barcodeWidth, min: 1, max: 5, 'onUpdate:modelValue': function (v) { self.barcodeWidth = v; } }); }),
+              h(ElFormItem, { label: 'Height' }, function () { return h(ElInputNumber, { modelValue: self.barcodeHeight, min: 40, max: 180, 'onUpdate:modelValue': function (v) { self.barcodeHeight = v; } }); })
+            ]),
+            h('p', { class: 'ymir-vue-media-note' }, self.barcodeMeta)
+          ]; }),
+          h(ElCard, { class: 'ymir-vue-media-panel', shadow: 'never' }, {
+            header: function () { return h('b', null, 'SVG output'); },
+            default: function () { return h('div', { class: 'ymir-vue-preview-card ymir-vue-barcode-preview' }, [h('svg', { ref: 'barcodeSvg', 'aria-label': 'Generated barcode' })]); }
+          })
+        ]);
+      }
+      if (this.c.kind === 'imageBase64') {
+        return h('div', { class: 'ymir-vue-grid' }, [
+          h(ElCard, { class: 'ymir-vue-media-panel', shadow: 'never' }, function () { return [
+            h('h3', null, 'Image / Base64 input'),
+            h('input', { class: 'ymir-vue-file-input', type: 'file', accept: 'image/*', onChange: self.loadImageFile }),
+            h('p', { class: 'ymir-vue-media-note' }, 'Choose an image, or paste a data:image Base64 string below.'),
+            Shared.renderEditorCard(h, El, { title: 'Base64 data URL', meta: self.inputMeta, value: self.imageText, rows: 13, onInput: function (v) { self.imageText = v; } })
+          ]; }),
+          h(ElCard, { class: 'ymir-vue-media-panel', shadow: 'never' }, {
+            header: function () { return h('b', null, self.previewLabel); },
+            default: function () { return h('div', { class: 'ymir-vue-preview-card ymir-vue-image-preview' }, self.imagePreview ? [h('img', { src: self.imagePreview, alt: 'Image preview' })] : [h(ElEmpty, { description: 'No image preview' })]); }
+          })
+        ]);
+      }
+      return h('div', { class: 'ymir-vue-drawing-layout' }, [
+        h(ElCard, { class: 'ymir-vue-media-panel', shadow: 'never' }, {
+          header: function () { return h('b', null, 'Drawing canvas'); },
+          default: function () { return [
+            h('div', { class: 'ymir-vue-canvas-shell' }, [h('canvas', { ref: 'drawCanvas', class: 'ymir-vue-drawing-canvas', onMousedown: self.beginDraw, onMousemove: self.moveDraw, onMouseup: self.endDraw, onMouseleave: self.endDraw, onTouchstart: self.beginDraw, onTouchmove: self.moveDraw, onTouchend: self.endDraw })]),
+            h('div', { class: 'ymir-vue-toolbar' }, [
+              h('span', null, 'Color'),
+              h('div', { class: 'ymir-vue-color-row' }, self.colors.map(function (color) { return h('button', { key: color, class: 'ymir-vue-color-chip' + (self.drawColor === color ? ' is-active' : ''), style: { background: color }, 'aria-label': 'Color ' + color, onClick: function () { self.drawColor = color; } }); })),
+              h('span', null, 'Brush'),
+              h('div', { class: 'ymir-vue-size-row' }, [h(ElRadioGroup, { modelValue: self.brushSize, size: 'small', 'onUpdate:modelValue': function (v) { self.brushSize = v; } }, function () { return self.brushSizes.map(function (s) { return h(ElRadioButton, { key: s, label: s }, function () { return s + 'px'; }); }); })])
+            ])
+          ]; }
+        })
+      ]);
+    },
+    renderActions: function (h, El) {
+      return Shared.renderActionButtons(h, El, this, this.actionItems, { onRun: function (key) { this.run(key); } });
+    }
   });
 })();

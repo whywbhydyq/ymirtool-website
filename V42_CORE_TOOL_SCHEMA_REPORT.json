@@ -1,0 +1,23 @@
+{
+  "version": "20260531-v46",
+  "scope": "Core tools schema, engine split, and shared app factory migration",
+  "changes": [
+    "Added static/script/ymir-vue-core-tools-schema.js for core tool metadata, labels, samples, actions, startup hooks, and mode schema.",
+    "Added static/script/ymir-vue-core-tool-engines.js for pure core algorithms: Base64 UTF-8, MD5, expression evaluation, UUID, JS format, and JS minify.",
+    "Updated ymir-vue-loader.js to load core engines and schema only before ymir-vue-tools-app.js.",
+    "Refactored ymir-vue-tools-app.js to consume schema.tools instead of inline toolText/samples/commonText.",
+    "Replaced renderActions if/else chain with schema-driven action descriptors.",
+    "Moved renderBody selection to BODY_RENDERERS map keyed by schema mode.",
+    "Reduced ymir-vue-tools-app.js from 583 lines in v41 to 410 lines by moving schema and pure engines out.",
+    "Fixed ymir-vue-actions.js renderActionButtons to import Core.getEl, which was exposed by the v42 mock smoke as a runtime risk."
+  ],
+  "checks": {
+    "node_check": "passed for all static/script/ymir-vue-*.js, dashboard, i18n, ui, CSP report, and Vercel skip script",
+    "core_tools_mock_smoke": "passed for 12 ymir-vue-tools-app.js core tools",
+    "html_static_refs_missing": 0,
+    "loader_app_scripts_missing": 0,
+    "version_v41_residue": 0,
+    "risk_phrase_residue": 0
+  },
+  "not_run": ["npm install", "npm run build", "test", "lint", "typecheck"]
+}

@@ -10,7 +10,7 @@
     "Standardized Vue page boot order: ymir-ui, ymir-i18n, Vue vendor, Element Plus vendor, loader.",
     "Removed direct per-batch app script references from page HTML; loader now injects the correct app script.",
     "Kept existing batch app scripts intact to reduce functional regression risk.",
-    "Updated static resource version to 20260530-v34."
+    "Updated static resource version to 20260531-v46."
   ],
   "notChanged": [
     "No root package.json added.",

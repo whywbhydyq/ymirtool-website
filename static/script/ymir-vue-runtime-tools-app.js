@@ -5,7 +5,7 @@
   var ElementPlus = window.ElementPlus;
   if (!Shared || !Vue || !ElementPlus) {
     var failed = document.getElementById('ymir-vue-highrisk-app');
-    if (failed) failed.innerHTML = '<div class="ymir-vue-noscript">Vue assets failed to load.</div>';
+    if (failed) failed.innerHTML = '<div class="ymir-vue-noscript">Tool assets failed to load.</div>';
     return;
   }
 
@@ -92,7 +92,8 @@
   if (!root) return;
   var toolKey = root.getAttribute('data-tool') || 'editor';
 
-  Shared.mount(root, {
+  Shared.mountConfiguredToolApp({
+    root: root,
     data: function () {
       var lang = Shared.getLang();
       var seed = toolKey === 'websocket' ? '' : TEXT[toolKey].sample;
@@ -218,31 +219,47 @@
         this.setStatus('success', this.msg.sent);
       }
     },
-    template: '<ymir-tool-frame :tool="tool" :lang="lang" :status-type="statusType" :status-title="statusTitle" @update-lang="updateLang">\
-      <template #body>\
-        <div v-if="toolKey !== \'websocket\'" class="ymir-vue-highrisk-grid">\
-          <ymir-editor-panel :title="msg.input" :meta="inputMeta" v-model="input" :rows="toolKey === \'runjs\' ? 20 : 18"></ymir-editor-panel>\
-          <el-card class="ymir-vue-panel ymir-vue-preview-panel" shadow="never">\
-            <template #header><div class="ymir-vue-panel__top"><span class="ymir-vue-panel__title"><span class="ymir-vue-panel__dot"></span>{{ msg.preview }}</span><span class="ymir-vue-panel__meta">iframe sandbox</span></div></template>\
-            <iframe v-if="toolKey === \'runjs\'" class="ymir-vue-sandbox-frame" sandbox="allow-scripts allow-forms allow-modals" :srcdoc="preview" title="Sandbox preview"></iframe>\
-            <iframe v-else class="ymir-vue-sandbox-frame" sandbox="" :srcdoc="preview" title="Sandbox preview"></iframe>\
-          </el-card>\
-        </div>\
-        <div v-else class="ymir-vue-websocket-layout">\
-          <el-card class="ymir-vue-panel" shadow="never">\
-            <template #header><div class="ymir-vue-panel__top"><span class="ymir-vue-panel__title"><span class="ymir-vue-panel__dot"></span>{{ msg.url }}</span><span class="ymir-vue-panel__meta">ws:// or wss://</span></div></template>\
-            <el-input v-model="wsaddr" placeholder="wss://example.com/socket" clearable />\
-            <div class="ymir-vue-ws-message-row"><el-input v-model="message" :placeholder="msg.message" clearable @keyup.enter="sendSocket" /><el-tag :type="connected ? \'success\' : \'info\'">{{ connected ? msg.connected : msg.disconnected }}</el-tag></div>\
-            <p class="ymir-vue-highrisk-note">Connections are made by your browser. HTTPS pages may block plain ws:// endpoints as mixed content; use wss:// for public endpoints.</p>\
-          </el-card>\
-          <el-card class="ymir-vue-panel ymir-vue-output" shadow="never">\
-            <template #header><div class="ymir-vue-panel__top"><span class="ymir-vue-panel__title"><span class="ymir-vue-panel__dot"></span>{{ msg.log }}</span><span class="ymir-vue-panel__meta">{{ logs.length }} events</span></div></template>\
-            <pre class="ymir-vue-ws-log">{{ logText || msg.ready }}</pre>\
-          </el-card>\
-        </div>\
-      </template>\
-      <template #actions><ymir-action-buttons :actions="actions" @run="handleAction"></ymir-action-buttons></template>\
-      <template #footer><el-tag>{{ toolKey === \'websocket\' ? (logs.length + \' log events\') : inputMeta }}</el-tag><el-tag>Vue 3 + Element Plus</el-tag><el-tag>Shared runtime</el-tag></template>\
-    </ymir-tool-frame>'
+    shell: function () {
+      return { icon: this.tool.icon, category: this.tool.category, title: this.tool.title, subtitle: this.tool.desc, tags: this.tool.tags, appClass: 'ymir-vue-app--runtime', footerTags: [
+        { label: this.toolKey === 'websocket' ? (this.logs.length + ' log events') : this.inputMeta },
+        { label: 'Tool runtime' },
+        { label: 'Shared runtime' }
+      ] };
+    },
+    renderBody: function (h, El) {
+      var ElCard = Shared.getEl(El, 'ElCard');
+      var ElInput = Shared.getEl(El, 'ElInput');
+      var ElTag = Shared.getEl(El, 'ElTag');
+      var self = this;
+      if (this.toolKey !== 'websocket') {
+        return h('div', { class: 'ymir-vue-highrisk-grid' }, [
+          Shared.renderEditorCard(h, El, { title: this.msg.input, meta: this.inputMeta, value: this.input, rows: this.toolKey === 'runjs' ? 20 : 18, onInput: function (value) { self.input = value; } }),
+          h(ElCard, { class: 'ymir-vue-panel ymir-vue-preview-panel', shadow: 'never' }, {
+            header: function () { return Shared.renderPanelHeader(h, self.msg.preview, 'iframe sandbox'); },
+            default: function () { return h('iframe', { class: 'ymir-vue-sandbox-frame', sandbox: self.toolKey === 'runjs' ? 'allow-scripts allow-forms allow-modals' : '', srcdoc: self.preview, title: 'Sandbox preview' }); }
+          })
+        ]);
+      }
+      return h('div', { class: 'ymir-vue-websocket-layout' }, [
+        h(ElCard, { class: 'ymir-vue-panel', shadow: 'never' }, {
+          header: function () { return Shared.renderPanelHeader(h, self.msg.url, 'ws:// or wss://'); },
+          default: function () { return [
+            h(ElInput, { modelValue: self.wsaddr, placeholder: 'wss://example.com/socket', clearable: true, 'onUpdate:modelValue': function (value) { self.wsaddr = value; } }),
+            h('div', { class: 'ymir-vue-ws-message-row' }, [
+              h(ElInput, { modelValue: self.message, placeholder: self.msg.message, clearable: true, 'onUpdate:modelValue': function (value) { self.message = value; }, onKeyup: function (evt) { if (evt && evt.key === 'Enter') self.sendSocket(); } }),
+              h(ElTag, { type: self.connected ? 'success' : 'info' }, function () { return self.connected ? self.msg.connected : self.msg.disconnected; })
+            ]),
+            h('p', { class: 'ymir-vue-highrisk-note' }, 'Connections are made by your browser. HTTPS pages may block plain ws:// endpoints as mixed content; use wss:// for public endpoints.')
+          ]; }
+        }),
+        h(ElCard, { class: 'ymir-vue-panel ymir-vue-output', shadow: 'never' }, {
+          header: function () { return Shared.renderPanelHeader(h, self.msg.log, self.logs.length + ' events'); },
+          default: function () { return h('pre', { class: 'ymir-vue-ws-log' }, self.logText || self.msg.ready); }
+        })
+      ]);
+    },
+    renderActions: function (h, El) {
+      return Shared.renderActionButtons(h, El, this, this.actions, { onRun: function (key) { this.handleAction(key); } });
+    }
   });
 })();

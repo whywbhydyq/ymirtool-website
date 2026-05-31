@@ -15,7 +15,7 @@
   ],
   "converted_count": 9,
   "notes": [
-    "Converted reference/query legacy pages to Vue 3 + Element Plus searchable tables.",
+    "Converted reference/query legacy pages to Tool workbench searchable tables.",
     "Used curated high-value rows rather than attempting to mirror full official registries.",
     "Did not modify homepage, root package.json, Vercel build chain, or complex algorithm pages.",
     "Did not run npm build, tests, lint, or typecheck."

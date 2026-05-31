@@ -3,12 +3,11 @@
   var root = document.getElementById('ymir-vue-converter-app');
   if (!root) return;
   if (!window.Vue || !window.ElementPlus) {
-    root.innerHTML = '<div class="ymir-vue-noscript">Vue or Element Plus assets failed to load. This tool cannot start.</div>';
+    root.innerHTML = '<div class="ymir-vue-noscript">Tool assets failed to load. This tool cannot start.</div>';
     return;
   }
   var Vue = window.Vue;
   var h = Vue.h;
-  var createApp = Vue.createApp;
   var ElementPlus = window.ElementPlus;
   var ElButton = ElementPlus.ElButton;
   var ElCard = ElementPlus.ElCard;
@@ -41,13 +40,13 @@
   var configs = {
     calcangle: {
       icon:'∠', category:['Unit Converter','单位换算'], title:['Angle Converter','角度换算器'],
-      subtitle:['Convert degrees, radians, turns, gradians, arcminutes, and arcseconds locally in your browser.','在浏览器本地换算度、弧度、圈、百分度、角分和角秒。'],
+      subtitle:['Convert degrees, radians, turns, gradians, arcminutes, and arcseconds quickly.','快速换算度、弧度、圈、百分度、角分和角秒。'],
       sample:'90', base:'degree', baseLabel:'degree', note:['Radians use π-based conversion. Results are rounded for display only.','弧度按 π 换算，显示结果会做适度舍入。'],
       units:[unit('Degree','度','deg',1), unit('Radian','弧度','rad',180/Math.PI), unit('Gradian','百分度','grad',0.9), unit('Turn','圈','turn',360), unit('Arcminute','角分','arcmin',1/60), unit('Arcsecond','角秒','arcsec',1/3600)]
     },
     calcarea: {
       icon:'㎡', category:['Unit Converter','单位换算'], title:['Area Converter','面积换算器'],
-      subtitle:['Convert metric, imperial, hectare, and acre area units without uploading data.','本地换算公制、英制、公顷和英亩等面积单位。'],
+      subtitle:['Convert metric, imperial, hectare, and acre area units quickly.','快速换算公制、英制、公顷和英亩等面积单位。'],
       sample:'100', base:'square meter', baseLabel:'square meter', note:['All area units convert through square meters.','所有面积单位统一通过平方米换算。'],
       units:[unit('Square kilometer','平方千米','km²',1000000), unit('Square meter','平方米','m²',1), unit('Square decimeter','平方分米','dm²',0.01), unit('Square centimeter','平方厘米','cm²',0.0001), unit('Square millimeter','平方毫米','mm²',0.000001), unit('Hectare','公顷','ha',10000), unit('Acre','英亩','acre',4046.8564224), unit('Square mile','平方英里','mi²',2589988.110336), unit('Square yard','平方码','yd²',0.83612736), unit('Square foot','平方英尺','ft²',0.09290304), unit('Square inch','平方英寸','in²',0.00064516)]
     },
@@ -120,18 +119,24 @@
   };
 
   var labels = {
-    en:{ eyebrow:'Vue + Element Plus converter', input:'Input value', from:'From unit', results:'Converted results', copyAll:'Copy all results', copy:'Copy', sample:'Load sample', clear:'Clear', statusReady:'Enter a number and select a source unit.', statusOk:'Results updated.', statusErr:'Check the input value.', local:'Runs locally', noUpload:'No upload', formula:'Formula note' },
-    zh:{ eyebrow:'Vue + Element Plus 换算器', input:'输入数值', from:'来源单位', results:'换算结果', copyAll:'复制全部结果', copy:'复制', sample:'载入示例', clear:'清空', statusReady:'输入数值并选择来源单位。', statusOk:'结果已更新。', statusErr:'请检查输入数值。', local:'本地运行', noUpload:'不上传', formula:'公式说明' }
+    en:{ eyebrow:'Unit converter', input:'Input value', from:'From unit', results:'Converted results', copyAll:'Copy all results', copy:'Copy', sample:'Load sample', clear:'Clear', statusReady:'Enter a number and select a source unit.', statusOk:'Results updated.', statusErr:'Check the input value.', local:'Ready to use', noUpload:'Copy-ready', formula:'Formula note' },
+    zh:{ eyebrow:'单位换算器', input:'输入数值', from:'来源单位', results:'换算结果', copyAll:'复制全部结果', copy:'复制', sample:'载入示例', clear:'清空', statusReady:'输入数值并选择来源单位。', statusOk:'结果已更新。', statusErr:'请检查输入数值。', local:'打开即用', noUpload:'结果可复制', formula:'公式说明' }
   };
 
   function copyText(text, message) { return (Shared.copyText || function(){ ElMessage.error('Copy failed.'); })(text, { copied: message || 'Copied.', empty: 'Nothing to copy.', failed: 'Copy failed.' }); }
 
-  var App = {
-    data:function(){
-      var tool = root.getAttribute('data-tool') || 'calclength';
-      var c = configs[tool] || configs.calclength;
-      return { tool:tool, c:c, lang:initialLang(), input:c.sample || '1', from:c.units[0].symbol, touched:false, statusType:'info', statusText:'' };
-    },
+  Shared.mountConfiguredToolApp({
+    name:'YmirVueConverterConfiguredApp',
+    root:root,
+    Vue:Vue,
+    ElementPlus:ElementPlus,
+    defaultSlug:'calclength',
+    rootAttribute:'data-tool',
+    tools:configs,
+    configKey:'c',
+    initialLang:initialLang,
+    status:false,
+    initialState:function(c, tool){ return { tool:tool, input:c.sample || '1', from:c.units[0].symbol, touched:false, statusType:'info', statusText:'' }; },
     computed:{
       L:function(){ return labels[this.lang] || labels.en; },
       title:function(){ return this.c.title[this.lang==='zh'?1:0]; },
@@ -139,69 +144,59 @@
       category:function(){ return this.c.category[this.lang==='zh'?1:0]; },
       note:function(){ return this.c.note[this.lang==='zh'?1:0]; },
       sourceUnit:function(){ var from=this.from; return this.c.units.filter(function(u){return u.symbol===from;})[0] || this.c.units[0]; },
-      baseValue:function(){
-        var v = finiteNumber(this.input);
-        if (this.c.special === 'temperature') return this.sourceUnit.toBase(v);
-        return v * this.sourceUnit.factor;
-      },
-      results:function(){
-        var base = this.baseValue;
-        var special = this.c.special === 'temperature';
-        return this.c.units.map(function(u){
-          var val = special ? u.fromBase(base) : base / u.factor;
-          return { unit:u, value:val, display:fmt(val) + ' ' + u.symbol };
-        });
-      },
+      baseValue:function(){ var v = finiteNumber(this.input); if (this.c.special === 'temperature') return this.sourceUnit.toBase(v); return v * this.sourceUnit.factor; },
+      results:function(){ var base = this.baseValue; var special = this.c.special === 'temperature'; return this.c.units.map(function(u){ var val = special ? u.fromBase(base) : base / u.factor; return { unit:u, value:val, display:fmt(val) + ' ' + u.symbol }; }); },
       resultText:function(){ var self=this; return this.results.map(function(r){ return (self.lang==='zh'?r.unit.zh:r.unit.name) + ' (' + r.unit.symbol + '): ' + r.display; }).join('\n'); },
       statusTitle:function(){ if (this.statusType==='success') return this.L.statusOk; if (this.statusType==='error') return this.statusText || this.L.statusErr; return this.L.statusReady; }
     },
-    watch:{
-      input:function(){ this.recalculate(false); },
-      from:function(){ this.recalculate(false); }
-    },
+    watch:{ input:function(){ this.recalculate(false); }, from:function(){ this.recalculate(false); } },
     mounted:function(){ setGlobalLang(this.lang); this.recalculate(false); },
     methods:{
       setLang:function(lang){ this.lang=lang; setGlobalLang(lang); },
       unitName:function(u){ return (this.lang==='zh'?u.zh:u.name) + ' (' + u.symbol + ')'; },
       recalculate:function(show){ try { this.results; this.statusType = show ? 'success' : 'info'; this.statusText = ''; } catch(e) { this.statusType='error'; this.statusText=e.message; } },
-      loadSample:function(){ this.input = this.c.sample || '1'; this.from = this.c.units[0].symbol; this.recalculate(true); },
-      clearAll:function(){ this.input=''; this.statusType='info'; this.statusText=''; },
-      copyAll:function(){ try { copyText(this.resultText, this.lang==='zh'?'已复制':'Copied'); } catch(e) { this.statusType='error'; this.statusText=e.message; } },
+      loadSample:function(){ if (Shared.loadToolSample) Shared.loadToolSample(this, this.c, { fields:{input:'sample'}, clearOutput:false, titleKey:'statusText', message:'' }); else this.input = this.c.sample || '1'; this.from = this.c.units[0].symbol; this.recalculate(true); },
+      clearAll:function(){ if (Shared.clearToolState) Shared.clearToolState(this, ['input'], { titleKey:'statusText', message:'' }); else this.input=''; this.statusType='info'; this.statusText=''; },
+      copyAll:function(){ try { if (Shared.copyField) Shared.copyField(this, 'resultText', { copied:this.lang==='zh'?'已复制':'Copied', empty:'Nothing to copy.', failed:'Copy failed.' }); else copyText(this.resultText, this.lang==='zh'?'已复制':'Copied'); } catch(e) { this.statusType='error'; this.statusText=e.message; } },
       copyOne:function(r){ copyText(r.display, this.lang==='zh'?'已复制':'Copied'); },
-      renderSelect:function(){ var self=this; return h(ElSelect,{modelValue:this.from,'onUpdate:modelValue':function(v){self.from=v;},filterable:true,class:'ymir-vue-unit-select'},function(){ return self.c.units.map(function(u){ return h(ElOption,{label:self.unitName(u),value:u.symbol}); }); }); },
-      renderResults:function(){ var self=this; var cards; try { cards = this.results.map(function(r){ return h('div',{class:'ymir-vue-converter-result'},[h('span',{class:'ymir-vue-result-card__label'},self.unitName(r.unit)),h('code',null,r.display),h(ElButton,{size:'small',plain:true,onClick:function(){self.copyOne(r);}},function(){return self.L.copy;})]); }); } catch(e) { cards=[h('div',{class:'ymir-vue-empty-result'},e.message)]; } return h(ElCard,{class:'ymir-vue-panel ymir-vue-span-2',shadow:'never'},{header:function(){return h('div',{class:'ymir-vue-panel__top'},[h('span',{class:'ymir-vue-panel__title'},[h('span',{class:'ymir-vue-panel__dot'}),self.L.results]),h('span',{class:'ymir-vue-panel__meta'},self.c.baseLabel)]);},default:function(){return h('div',{class:'ymir-vue-converter-grid'},cards);}}); }
+      renderSelect:function(h){ var self=this; return h(ElSelect,{modelValue:this.from,'onUpdate:modelValue':function(v){self.from=v;},filterable:true,class:'ymir-vue-unit-select'},function(){ return self.c.units.map(function(u){ return h(ElOption,{label:self.unitName(u),value:u.symbol}); }); }); },
+      renderResults:function(h, ElementPlus){ var self=this; var cards; try { cards = this.results.map(function(r){ return h('div',{class:'ymir-vue-converter-result'},[h('span',{class:'ymir-vue-result-card__label'},self.unitName(r.unit)),h('code',null,r.display),h(ElButton,{size:'small',plain:true,onClick:function(){self.copyOne(r);}},function(){return self.L.copy;})]); }); } catch(e) { cards=[h('div',{class:'ymir-vue-empty-result'},e.message)]; } return Shared.renderResultCards(h, ElementPlus, { title:self.L.results, meta:self.c.baseLabel, items:cards, gridClass:'ymir-vue-converter-grid', className:'ymir-vue-span-2' }); }
     },
-    render:function(){
+    renderBody:function(h, ElementPlus){
       var self=this;
-      var inputCard=h(ElCard,{class:'ymir-vue-panel',shadow:'never'},{header:function(){return (Shared.renderPanelHeader||function(){return h('div',{},self.L.input);})(h,self.L.input,self.sourceUnit.symbol);},default:function(){return h('div',{class:'ymir-vue-options'},[
+      var inputCard=Shared.renderOptionPanel(h, ElementPlus, { title:self.L.input, meta:self.sourceUnit.symbol, default:function(){return h('div',{class:'ymir-vue-options'},[
         h('label',{class:'ymir-vue-field'},[h('span',null,self.L.input),h(ElInput,{modelValue:self.input,'onUpdate:modelValue':function(v){self.input=v;},placeholder:'100',inputmode:'decimal'})]),
-        h('label',{class:'ymir-vue-field'},[h('span',null,self.L.from),self.renderSelect()])
-      ]);}});
-      var formulaCard=h(ElCard,{class:'ymir-vue-panel',shadow:'never'},{header:function(){return (Shared.renderPanelHeader||function(){return h('div',{},self.L.formula);})(h,self.L.formula);},default:function(){return h('div',{class:'ymir-vue-note-card'},[
+        h('label',{class:'ymir-vue-field'},[h('span',null,self.L.from),self.renderSelect(h)])
+      ]);} });
+      var formulaCard=Shared.renderOptionPanel(h, ElementPlus, { title:self.L.formula, default:function(){return h('div',{class:'ymir-vue-note-card'},[
         h('p',null,self.note),
         h('p',null,self.lang==='zh'?'输入值会先换算为基准单位，再换算为所有目标单位。':'The input is converted to the base unit first, then converted to every target unit.'),
         h(ElAlert,{type:'info',showIcon:true,closable:false,title:self.statusTitle})
-      ]);}});
-      var body=h('div',{class:'ymir-vue-body ymir-vue-body--converter'},[inputCard, formulaCard, this.renderResults()]);
-      var actions=h('div',{class:'ymir-vue-actions'},[
-        h(ElButton,{type:'primary',onClick:function(){self.recalculate(true);}},function(){return self.lang==='zh'?'换算':'Convert';}),
-        h(ElButton,{plain:true,onClick:this.loadSample},function(){return self.L.sample;}),
-        h(ElButton,{plain:true,onClick:this.copyAll},function(){return self.L.copyAll;}),
-        h(ElButton,{type:'danger',plain:true,onClick:this.clearAll},function(){return self.L.clear;})
-      ]);
-      return (Shared.renderShell || function(){return h('div',{},'Shared renderer missing');})(h, ElementPlus, {
+      ]);} });
+      return h('div',{class:'ymir-vue-body ymir-vue-body--converter'},[inputCard, formulaCard, this.renderResults(h, ElementPlus)]);
+    },
+    renderActions:function(h, ElementPlus){
+      var self=this;
+      return Shared.renderActionButtons(h, ElementPlus, this, [
+        {label:self.lang==='zh'?'换算':'Convert', type:'primary', onClick:function(){self.recalculate(true);}},
+        {label:self.L.sample, plain:true, onClick:this.loadSample},
+        {label:self.L.copyAll, plain:true, onClick:this.copyAll},
+        {label:self.L.clear, type:'danger', plain:true, onClick:this.clearAll}
+      ], { className:'ymir-vue-actions', primaryFirst:false });
+    },
+    shell:function(){
+      return {
         appClass:'ymir-vue-app--converter ymir-vue-app--'+this.tool,
         icon:this.c.icon,
         eyebrow:this.L.eyebrow,
         category:this.category,
         title:this.title,
         subtitle:this.subtitle,
-        tags:[{label:this.L.local,type:'primary'},{label:this.L.noUpload,type:'info'},{label:this.L.formula,type:'warning'}],
+        tags:[{label:this.category,type:'primary'},{label:this.L.formula,type:'warning'}],
         lang:this.lang,
-        onLangChange:function(v){self.setLang(v);},
+        onLangChange:this.setLang,
         footerTags:[{label:this.category,type:'primary'},{label:this.sourceUnit.symbol+' → '+this.c.baseLabel,type:'info'}]
-      }, [body, actions]);
+      };
     }
-  };
-  createApp(App).use(ElementPlus).mount(root);
+  });
 })();

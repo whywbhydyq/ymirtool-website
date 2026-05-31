@@ -390,7 +390,7 @@
 .ymir-vue-app--dns .ymir-vue-ref-primary { word-break: break-word; }
 @media (max-width: 760px) { .ymir-vue-dns-tabs { padding: 4px 16px 10px; } }
 
-/* Ymir Vue utility migration v25 */
+/* Ymir utility migration v25 */
 .ymir-vue-app-shell {
   display: grid;
   gap: 18px;

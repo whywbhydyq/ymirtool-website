@@ -3,7 +3,7 @@
   var root = document.getElementById('ymir-vue-formatter-app');
   if (!root) return;
   if (!window.YmirVueShared) {
-    root.innerHTML = '<div class="ymir-vue-noscript">Shared Vue components failed to load. This tool cannot start.</div>';
+    root.innerHTML = '<div class="ymir-vue-noscript">Shared tool UI failed to load. This tool cannot start.</div>';
     return;
   }
   var Shared = window.YmirVueShared;
@@ -91,24 +91,25 @@
   }
 
   var TOOLS = {
-    formatc: { icon:'C', title:'C Code Formatter', category:'Code Formatter', desc:'Format C snippets with a local heuristic formatter and copy the result for review.', mode:'c', sample:'int main(){printf("Hello Ymir Tool");return 0;}', tags:['C','Formatter','Local'] },
-    formatcpp: { icon:'C++', title:'C++ Code Formatter', category:'Code Formatter', desc:'Format C++ snippets with brace-aware indentation in your browser.', mode:'cpp', sample:'#include <iostream>\nint main(){std::cout<<"Hello";return 0;}', tags:['C++','Formatter','Local'] },
-    formatcs: { icon:'C#', title:'C# Code Formatter', category:'Code Formatter', desc:'Format C# methods, classes, and blocks into readable indentation.', mode:'csharp', sample:'public class App{public void Run(){Console.WriteLine("Hello");}}', tags:['C#','Formatter','Local'] },
+    formatc: { icon:'C', title:'C Code Formatter', category:'Code Formatter', desc:'Format C snippets with a heuristic formatter and copy the result for review.', mode:'c', sample:'int main(){printf("Hello Ymir Tool");return 0;}', tags:['C','Formatter','Copy-ready'] },
+    formatcpp: { icon:'C++', title:'C++ Code Formatter', category:'Code Formatter', desc:'Format C++ snippets with brace-aware indentation.', mode:'cpp', sample:'#include <iostream>\nint main(){std::cout<<"Hello";return 0;}', tags:['C++','Formatter','Copy-ready'] },
+    formatcs: { icon:'C#', title:'C# Code Formatter', category:'Code Formatter', desc:'Format C# methods, classes, and blocks into readable indentation.', mode:'csharp', sample:'public class App{public void Run(){Console.WriteLine("Hello");}}', tags:['C#','Formatter','Copy-ready'] },
     formatcsql: { icon:'SQL', title:'SQL Code Formatter', category:'Code Formatter', desc:'Format common SQL clauses and comma-separated columns into readable lines.', mode:'sql', sample:'select id,name,email from users where active=1 order by created_at desc', tags:['SQL','Formatter','Copy'] },
-    formatjava: { icon:'JAVA', title:'Java Code Formatter', category:'Code Formatter', desc:'Format Java classes and methods with local indentation and copy-ready output.', mode:'java', sample:'public class App{public static void main(String[] args){System.out.println("Hello");}}', tags:['Java','Formatter','Local'] },
-    formatperl: { icon:'PERL', title:'Perl Code Formatter', category:'Code Formatter', desc:'Format Perl blocks and simple statements locally before pasting into scripts.', mode:'perl', sample:'sub hello{my $name=shift;print "Hello $name\\n";}hello("Ymir");', tags:['Perl','Formatter','Local'] },
-    formatphp: { icon:'PHP', title:'PHP Code Formatter', category:'Code Formatter', desc:'Format PHP blocks and statements with a browser-based heuristic formatter.', mode:'php', sample:'<?php function hello($name){echo "Hello ".$name;} hello("Ymir"); ?>', tags:['PHP','Formatter','Local'] },
-    formatpy: { icon:'PY', title:'Python Code Formatter', category:'Code Formatter', desc:'Format indentation for simple Python blocks using colon-based rules.', mode:'python', sample:'def hello(name):\nprint("Hello", name)\nif name:\nprint("ready")', tags:['Python','Formatter','Local'] },
-    formatruby: { icon:'RB', title:'Ruby Code Formatter', category:'Code Formatter', desc:'Format Ruby keyword blocks locally for quick cleanup and copying.', mode:'ruby', sample:'class App\ndef hello(name)\nputs "Hello #{name}"\nend\nend', tags:['Ruby','Formatter','Local'] },
-    formatvbs: { icon:'VBS', title:'VBScript Code Formatter', category:'Code Formatter', desc:'Format VBScript Sub, Function, If, For, and Select blocks locally.', mode:'vbs', sample:'Sub Hello(name)\nIf name <> "" Then\nMsgBox "Hello " & name\nEnd If\nEnd Sub', tags:['VBScript','Formatter','Local'] }
+    formatjava: { icon:'JAVA', title:'Java Code Formatter', category:'Code Formatter', desc:'Format Java classes and methods with readable indentation and copy-ready output.', mode:'java', sample:'public class App{public static void main(String[] args){System.out.println("Hello");}}', tags:['Java','Formatter','Copy-ready'] },
+    formatperl: { icon:'PERL', title:'Perl Code Formatter', category:'Code Formatter', desc:'Format Perl blocks and simple statements before pasting into scripts.', mode:'perl', sample:'sub hello{my $name=shift;print "Hello $name\\n";}hello("Ymir");', tags:['Perl','Formatter','Copy-ready'] },
+    formatphp: { icon:'PHP', title:'PHP Code Formatter', category:'Code Formatter', desc:'Format PHP blocks and statements with a quick heuristic formatter.', mode:'php', sample:'<?php function hello($name){echo "Hello ".$name;} hello("Ymir"); ?>', tags:['PHP','Formatter','Copy-ready'] },
+    formatpy: { icon:'PY', title:'Python Code Formatter', category:'Code Formatter', desc:'Format indentation for simple Python blocks using colon-based rules.', mode:'python', sample:'def hello(name):\nprint("Hello", name)\nif name:\nprint("ready")', tags:['Python','Formatter','Copy-ready'] },
+    formatruby: { icon:'RB', title:'Ruby Code Formatter', category:'Code Formatter', desc:'Format Ruby keyword blocks for quick cleanup and copying.', mode:'ruby', sample:'class App\ndef hello(name)\nputs "Hello #{name}"\nend\nend', tags:['Ruby','Formatter','Copy-ready'] },
+    formatvbs: { icon:'VBS', title:'VBScript Code Formatter', category:'Code Formatter', desc:'Format VBScript Sub, Function, If, For, and Select blocks quickly.', mode:'vbs', sample:'Sub Hello(name)\nIf name <> "" Then\nMsgBox "Hello " & name\nEnd If\nEnd Sub', tags:['VBScript','Formatter','Copy-ready'] }
   };
 
   var toolKey = root.getAttribute('data-tool') || 'formatc';
   var initialTool = TOOLS[toolKey] || TOOLS.formatc;
-  Shared.mount(root, {
+  Shared.mountConfiguredToolApp({
+    root: root,
     name: 'YmirVueFormatterToolsApp',
     data: function () {
-      return { toolKey: toolKey, c: initialTool, lang: Shared.getLang(), input: initialTool.sample, output: '', statusType: 'info', statusTitle: 'Ready. Formatters in this batch use shared Vue components and local heuristic rules.' };
+      return { toolKey: toolKey, c: initialTool, lang: Shared.getLang(), input: initialTool.sample, output: '', statusType: 'info', statusTitle: 'Ready. Formatters in this batch use shared tool UI and local heuristic rules.' };
     },
     computed: {
       inputMeta: function () { return Shared.bytes(this.input) + ' bytes · ' + countLines(this.input) + ' lines'; },
@@ -138,10 +139,18 @@
         }
       }
     },
-    template: '<ymir-tool-frame :tool="c" :lang="lang" :status-type="statusType" :status-title="statusTitle" @update-lang="setLang">\
-      <template #body><div class="ymir-vue-body"><ymir-editor-panel title="Input code" :meta="inputMeta" v-model="input"></ymir-editor-panel><ymir-editor-panel title="Formatted output" :meta="outputMeta" v-model="output" readonly></ymir-editor-panel></div></template>\
-      <template #actions><ymir-action-buttons :actions="actionItems" @run="run"></ymir-action-buttons></template>\
-      <template #footer><el-tag>Shared components</el-tag><el-tag>Local processing</el-tag><el-tag>Heuristic formatter</el-tag></template>\
-    </ymir-tool-frame>'
+    shell: function () {
+      return { icon: this.c.icon, category: this.c.category, title: this.c.title, subtitle: this.c.desc, tags: this.c.tags, appClass: 'ymir-vue-app--formatter', footerTags: [{ label: 'Shared tool shell' }, { label: 'Copy-ready output' }, { label: 'Heuristic formatter' }] };
+    },
+    renderBody: function (h, El) {
+      return Shared.renderTextWorkbench(h, El, this, {
+        gridClass: 'ymir-vue-body',
+        inputTitle: 'Input code', inputMeta: this.inputMeta, inputRows: 14,
+        outputTitle: 'Formatted output', outputMeta: this.outputMeta, outputRows: 14
+      });
+    },
+    renderActions: function (h, El) {
+      return Shared.renderActionButtons(h, El, this, this.actionItems, { onRun: function (key) { this.run(key); } });
+    }
   });
 })();

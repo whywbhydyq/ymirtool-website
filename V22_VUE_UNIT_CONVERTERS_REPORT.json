@@ -1,6 +1,6 @@
 {
   "version": "v22",
-  "scope": "Vue 3 + Element Plus replacement for legacy unit converter pages",
+  "scope": "Tool workbench replacement for legacy unit converter pages",
   "replaced_pages": [
     "calcangle",
     "calcarea",
