@@ -1,0 +1,42 @@
+{
+  "version": "20260531-v46",
+  "scope": "Manifest-derived homepage static fallback generation and audit",
+  "source": "ymirtool-website-v44-manifest-driven-home.zip",
+  "changes": [
+    "Extended scripts/sync-tools-manifest-derived-files.mjs to generate index.html featured fallback from the unified manifest.",
+    "Extended scripts/sync-tools-manifest-derived-files.mjs to generate index.html directory tabs and directory fallback links from the unified manifest.",
+    "Regenerated static/script/ymir-tools-manifest.js, sitemap.xml, and index.html from static/script/ymir-vue-tool-manifest.json.",
+    "Updated cache version references from 20260531-v44 to 20260531-v46.",
+    "Removed static fallback drift where directory links used temporary dir-* IDs; fallback now uses canonical tool slugs."
+  ],
+  "checks": {
+    "featured_cards": 12,
+    "featured_matches_manifest": true,
+    "directory_links": 150,
+    "directory_unique_ids": 150,
+    "directory_dir_prefixed_ids": 0,
+    "directory_missing_manifest_ids": 0,
+    "categories": 8,
+    "node_check_failures": 0,
+    "html_local_missing_refs": "17 Vercel Insights runtime URLs only",
+    "old_version_v44_count": 0,
+    "risk_phrase_counts": {
+      "eval(atob": 0,
+      "runs in your browser": 0,
+      "Local browser processing": 0,
+      "Browser local processing": 0,
+      "Local processing": 0,
+      "does not require server upload": 0,
+      "no server upload": 0,
+      "本地优先": 0,
+      "浏览器中处理": 0
+    }
+  },
+  "not_run": [
+    "npm install",
+    "npm run build",
+    "test",
+    "lint",
+    "typecheck"
+  ]
+}

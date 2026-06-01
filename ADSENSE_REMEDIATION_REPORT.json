@@ -1,0 +1,39 @@
+{
+  "version": "20260601-adsense-remediation",
+  "fixed": [
+    "Removed AdSense script loading from 404, policy pages, and non-approved thin tool pages while keeping the AdSense account meta tag for ownership verification.",
+    "Added noindex, follow robots metadata to 140 non-approved tool pages until each page receives unique static publisher content.",
+    "Limited sitemap.xml tool inventory to 10 launch-ready enriched tool pages.",
+    "Added durable static publisher content modules for the approved tool pages: json, base64, md5, formatjs, textdiff, txtcount, regex, calculator, unixtime, and urlencode.",
+    "Updated generated HTML through scripts/sync-tools-manifest-derived-files.mjs so the remediation is repeatable and not overwritten by future sync runs.",
+    "Updated AdSense preflight and page regression audits to validate policy-aware ad script placement.",
+    "Added content quality audit coverage for visible text depth, generic copy, non-approved tool noindex, and AdSense script placement."
+  ],
+  "approvedToolSlugs": [
+    "json",
+    "base64",
+    "md5",
+    "formatjs",
+    "textdiff",
+    "txtcount",
+    "regex",
+    "calculator",
+    "unixtime",
+    "urlencode"
+  ],
+  "verification": {
+    "adsensePreflight": "pass",
+    "contentQualityAudit": "pass",
+    "pageRegressionAudit": "pass",
+    "approvedToolMinVisibleWords": 292,
+    "nonApprovedToolsNoindex": 140,
+    "mainSitemapUrlCount": 14
+  },
+  "manualStepsBeforeAdSenseReview": [
+    "Deploy the generated site.",
+    "Open https://ymirtool.com/404.html and confirm no pagead2.googlesyndication.com ad script request is made.",
+    "Open several non-approved tool pages and confirm robots noindex, follow is present.",
+    "Open approved tool pages and confirm static content sections are visible without user input.",
+    "Confirm deployed sitemap.xml contains only the homepage, selected policy pages, and the 10 approved tool URLs before requesting another AdSense review."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "version": "20260531-v46",
+  "title": "V41 shared module split and render-shell migration",
+  "created_at": "2026-05-31T05:14:25Z",
+  "scope": [
+    "Split ymir-vue-shared.js into focused runtime modules while preserving the public window.YmirVueShared API.",
+    "Remove template bridge usage from template-heavy Vue batches and migrate them to renderBody / renderActions / shared shell.",
+    "Remove raw createApp fallback from core tools batch so app mounting is centralized through mountConfiguredToolApp."
+  ],
+  "new_files": [
+    "static/script/ymir-vue-core.js",
+    "static/script/ymir-vue-render-helpers.js",
+    "static/script/ymir-vue-actions.js",
+    "static/script/ymir-vue-app-factory.js"
+  ],
+  "changed_files": [
+    "static/script/ymir-vue-shared.js",
+    "static/script/ymir-vue-loader.js",
+    "static/script/ymir-vue-formatter-tools-app.js",
+    "static/script/ymir-vue-runtime-tools-app.js",
+    "static/script/ymir-vue-crypto-code-tools-app.js",
+    "static/script/ymir-vue-media-tools-app.js",
+    "static/script/ymir-vue-text-reference-tools-app.js",
+    "static/script/ymir-vue-tools-app.js"
+  ],
+  "checks": {
+    "node_check": "passed for all ymir-vue scripts, home dashboard, i18n, ui, CSP report, and Vercel skip script",
+    "module_smoke": "passed for split shared modules and public YmirVueShared API",
+    "app_smoke": "passed for 12 Vue batch scripts with mocked Vue/Element Plus mount path",
+    "html_resource_references_missing": 0,
+    "vue_loader_app_mappings": 150,
+    "vue_loader_missing_app_scripts": 0,
+    "template_bridge_residue": 0,
+    "shared_mount_residue": 0,
+    "raw_create_app_fallback_residue": 0,
+    "resource_version_residue_excluding_historical_reports": 0,
+    "risk_phrase_residue": {
+      "eval(atob": 0,
+      "runs in your browser": 0,
+      "Local browser processing": 0,
+      "Browser local processing": 0,
+      "Local processing": 0,
+      "does not require server upload": 0,
+      "no server upload": 0,
+      "本地优先": 0,
+      "浏览器中处理": 0
+    }
+  },
+  "not_run": [
+    "npm install",
+    "npm run build",
+    "test",
+    "lint",
+    "typecheck"
+  ],
+  "remaining_architecture_work": [
+    "Core ymir-vue-tools-app.js is still a large complex batch, although mounting is centralized.",
+    "A tools manifest generator can still be introduced to generate loader mappings, sitemap data, and homepage directory data from one source.",
+    "Historical report JSON files still document older phases and may contain old version names as audit history."
+  ]
+}

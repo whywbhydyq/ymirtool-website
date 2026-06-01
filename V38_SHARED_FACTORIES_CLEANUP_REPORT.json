@@ -1,0 +1,62 @@
+{
+  "version": "20260531-v46",
+  "scope": "shared factories for batch actions, copy/load/clear/status behavior inside existing Vue CDN architecture",
+  "changed_files": [
+    "static/script/ymir-vue-shared.js",
+    "static/script/ymir-vue-converter-tools-app.js",
+    "static/script/ymir-vue-utility-tools-app.js",
+    "static/script/ymir-vue-data-code-tools-app.js",
+    "static/script/ymir-vue-legacy-tools-app.js",
+    "static/script/ymir-vue-loader.js",
+    "static/script/ymir-vue-crypto-code-tools-app.js",
+    "static/script/ymir-vue-formatter-tools-app.js",
+    "static/script/ymir-vue-media-tools-app.js",
+    "static/script/ymir-vue-tools-app.js"
+  ],
+  "shared_helpers_added": [
+    "resolveToolMessage",
+    "setToolStatus",
+    "loadToolSample",
+    "clearToolState",
+    "copyField",
+    "runMappedAction",
+    "renderActionButtons",
+    "renderTextWorkbench",
+    "createTextToolMethods"
+  ],
+  "batch_migrations": {
+    "converter": [
+      "uses shared loadToolSample/clearToolState/copyField for sample/clear/copy",
+      "uses renderActionButtons for action toolbar",
+      "cleans local/browser/no-upload phrasing in converter subtitles"
+    ],
+    "utility": [
+      "uses createTextToolMethods for sample/clear/copy/run",
+      "uses renderActionButtons for input/output action toolbars"
+    ],
+    "data-code": [
+      "uses createTextToolMethods for sample/clear/copy/run",
+      "uses renderTextWorkbench for input/output panels",
+      "uses renderActionButtons for input, output, and conversion actions"
+    ],
+    "legacy": [
+      "adds ACTIONS map instead of long run if/else chain",
+      "uses createTextToolMethods/runMappedAction for run/copy/load/clear/status",
+      "uses renderActionButtons for toolbar"
+    ]
+  },
+  "line_counts": {
+    "static/script/ymir-vue-shared.js": 547,
+    "static/script/ymir-vue-converter-tools-app.js": 208,
+    "static/script/ymir-vue-utility-tools-app.js": 74,
+    "static/script/ymir-vue-data-code-tools-app.js": 247,
+    "static/script/ymir-vue-legacy-tools-app.js": 171
+  },
+  "checks": [
+    "node --check on modified JS files",
+    "Vue loader script mapping check",
+    "HTML local asset reference check",
+    "v37 cache query residual check",
+    "risk phrase grep"
+  ]
+}

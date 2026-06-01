@@ -1,0 +1,57 @@
+{
+  "version": "20260531-v58",
+  "checkedAt": "2026-05-31T07:13:40.476Z",
+  "html": {
+    "count": 182,
+    "themeScript": 182,
+    "css": 182,
+    "themeBeforeCss": 182
+  },
+  "scriptChecks": {
+    "versionConstant": true,
+    "dataThemeReady": true,
+    "metaThemeColor": true,
+    "colorSchemeSync": true,
+    "multipleToggles": true,
+    "localizedAria": true,
+    "setPreferenceApi": true,
+    "noDocumentWrite": true
+  },
+  "cssChecks": {
+    "hasLightColorScheme": false,
+    "hasDarkColorScheme": false,
+    "hasDarkPoppers": false,
+    "hasDarkTables": false,
+    "hasDarkFormControls": false,
+    "hasReducedMotion": true,
+    "noOldCssComment": true
+  },
+  "syncChecks": {
+    "syncUsesV55Css": true,
+    "syncUsesThemeScript": true,
+    "syncVersionFromManifest": true
+  },
+  "failures": [
+    {
+      "type": "theme-css-check",
+      "check": "hasLightColorScheme"
+    },
+    {
+      "type": "theme-css-check",
+      "check": "hasDarkColorScheme"
+    },
+    {
+      "type": "theme-css-check",
+      "check": "hasDarkPoppers"
+    },
+    {
+      "type": "theme-css-check",
+      "check": "hasDarkTables"
+    },
+    {
+      "type": "theme-css-check",
+      "check": "hasDarkFormControls"
+    }
+  ],
+  "pass": false
+}

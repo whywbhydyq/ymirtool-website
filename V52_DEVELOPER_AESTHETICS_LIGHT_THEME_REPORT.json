@@ -1,0 +1,71 @@
+{
+  "version": "20260531-v52",
+  "scope": "Developer-Aesthetics light theme overhaul without Tailwind/Shadcn, dark mode, or Vue/Vite migration.",
+  "changedFiles": [
+    "static/style/ymir-developer-aesthetics-v52.css",
+    "static/script/ymir-vue-tools-app.js",
+    "scripts/sync-tools-manifest-derived-files.mjs",
+    "all HTML pages: added v52 aesthetics stylesheet link and versioned assets"
+  ],
+  "counts": {
+    "htmlFiles": 182,
+    "toolPages": 150,
+    "htmlWithAestheticCss": 182,
+    "toolPagesWithAestheticCss": 150,
+    "featuredCards": 12,
+    "directoryLinks": 150
+  },
+  "visualChanges": [
+    "Added shared design tokens for developer-aesthetic light theme.",
+    "Softened header, search, quick access, featured tools, directory, and card shadows.",
+    "Removed visible featured-card color rails via v52 override; cards now use white bento surfaces, subtle border, and ambient shadow.",
+    "Restyled tool workbench to remove outer box-in-box effect and make input/output panels the primary surface.",
+    "Restyled textareas as lightweight code editors with monospace font and faux gutter.",
+    "Restyled action bars: dark primary, white secondary, danger hover only for clear-like last action.",
+    "Restyled generator/hash result rows as compact light monospace rows with hover copy buttons instead of dark blocks.",
+    "Kept all pages on static Vue CDN architecture; no heavyweight editor library loaded."
+  ],
+  "checks": {
+    "pageRegressionAudit": "pass",
+    "coreInteractionAudit": "pass",
+    "oldVersionResidual": 0,
+    "riskExpressions": {
+      "eval(atob": {
+        "count": 0,
+        "files": []
+      },
+      "runs in your browser": {
+        "count": 0,
+        "files": []
+      },
+      "Local browser processing": {
+        "count": 0,
+        "files": []
+      },
+      "Browser local processing": {
+        "count": 0,
+        "files": []
+      },
+      "Local processing": {
+        "count": 0,
+        "files": []
+      },
+      "does not require server upload": {
+        "count": 0,
+        "files": []
+      },
+      "no server upload": {
+        "count": 0,
+        "files": []
+      },
+      "本地优先": {
+        "count": 0,
+        "files": []
+      },
+      "浏览器中处理": {
+        "count": 0,
+        "files": []
+      }
+    }
+  }
+}

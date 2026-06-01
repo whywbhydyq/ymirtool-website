@@ -1,0 +1,7 @@
+body{background:#f5f6fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;padding:0}
+    .container-404{max-width:600px;margin:120px auto 0;text-align:center;padding:40px 20px}
+    .code{font-size:80px;font-weight:800;color:#3b82f6;line-height:1;margin-bottom:10px}
+    .title{font-size:22px;font-weight:700;color:#1e293b;margin-bottom:10px}
+    .desc{font-size:14px;color:#64748b;margin-bottom:30px;line-height:1.6}
+    .btn-home{display:inline-block;padding:10px 28px;background:#3b82f6;color:#fff;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s}
+    .btn-home:hover{background:#2563eb;color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,130,246,0.3)}

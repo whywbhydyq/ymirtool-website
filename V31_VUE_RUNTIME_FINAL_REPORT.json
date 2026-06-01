@@ -1,0 +1,59 @@
+{
+  "version": "v31",
+  "package": "ymirtool-website-ui-v31-vue-runtime-final.zip",
+  "base": "v30 crypto/code Vue migration",
+  "scope": [
+    "editor",
+    "runjs",
+    "websocket"
+  ],
+  "total_vue_pages_after": 150,
+  "strategy": "Replace final high-risk runtime pages with Tool workbench workbenches. Use iframe sandbox for editor/runjs and native WebSocket state management for websocket.",
+  "shared_runtime_reuse": [
+    "YmirToolFrame",
+    "YmirEditorPanel",
+    "YmirActionButtons",
+    "copyText",
+    "getLang",
+    "setLang",
+    "mount"
+  ],
+  "security_notes": [
+    "runjs preview uses iframe sandbox with allow-scripts but without allow-same-origin",
+    "runjs srcdoc injects restrictive CSP blocking connect-src and external network fetches",
+    "editor preview uses iframe sandbox without script permission",
+    "websocket page validates ws:// and wss:// before connecting and logs browser-side events"
+  ],
+  "checks": {
+    "node_check_ymir-vue-runtime-tools-app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "node_check_ymir-vue-shared.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "css_brace_balance": true,
+    "editor_vue_root": true,
+    "editor_no_legacy_runtime": true,
+    "editor_uses_v31": true,
+    "runjs_vue_root": true,
+    "runjs_no_legacy_runtime": true,
+    "runjs_uses_v31": true,
+    "websocket_vue_root": true,
+    "websocket_no_legacy_runtime": true,
+    "websocket_uses_v31": true,
+    "jsonld_errors": [],
+    "duplicate_ids": [],
+    "internal_resource_missing": [],
+    "vue_index_pages_count": 150,
+    "core_files": {
+      "index.html": true,
+      "vercel.json": true,
+      "json/index.html": true,
+      "static/style/tool.css": true,
+      "static/script/ymir-tools.js": true
+    },
+    "file_count": 596
+  }
+}

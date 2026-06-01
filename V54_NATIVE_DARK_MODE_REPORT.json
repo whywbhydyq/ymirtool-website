@@ -1,0 +1,36 @@
+{
+  "version": "20260531-v55",
+  "scope": "Native dark mode and theme tokenization on top of v53 core editor experience.",
+  "noBuildTestLintTypecheck": true,
+  "changes": [
+    "Added static/script/ymir-theme.js for early data-theme application, persistent theme preference, system preference support, and header theme toggle.",
+    "Renamed the aesthetics stylesheet to static/style/ymir-developer-aesthetics-v55.css.",
+    "Added dark design tokens and dark overrides for topbar, homepage bento cards, command palette, tool shell, editor frames, line gutters, result cards, action bar, support cards, and footer.",
+    "Updated sync-tools-manifest-derived-files.mjs so future manifest syncs preserve ymir-theme.js and v54 aesthetics CSS.",
+    "Updated all HTML asset references and runtime version constants to 20260531-v55."
+  ],
+  "counts": {
+    "htmlFiles": 182,
+    "htmlWithThemeScript": 182,
+    "htmlWithV54AestheticsCss": 182,
+    "toolPages": 150
+  },
+  "checks": {
+    "v53HtmlResidual": 0,
+    "v54CssExists": true,
+    "v53CssRemoved": true,
+    "themeScriptExists": true
+  },
+  "manualBrowserSamples": [
+    "/",
+    "/json/",
+    "/md5/",
+    "/base64/",
+    "/textdiff/",
+    "/regex/",
+    "/calculator/",
+    "/guides.html",
+    "/privacy.html"
+  ],
+  "createdAt": "2026-05-31T06:35:00Z"
+}

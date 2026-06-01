@@ -1,0 +1,74 @@
+{
+  "version": "20260531-v46",
+  "scope": "shared app factory and unified tool configuration schema",
+  "changed_files": [
+    "static/script/ymir-vue-shared.js",
+    "static/script/ymir-vue-converter-tools-app.js",
+    "static/script/ymir-vue-utility-tools-app.js",
+    "static/script/ymir-vue-data-code-tools-app.js",
+    "static/script/ymir-vue-legacy-tools-app.js",
+    "static/script/ymir-vue-reference-tools-app.js",
+    "static/script/ymir-vue-dns-tools-app.js",
+    "static/script/ymir-vue-tools-app.js"
+  ],
+  "factory_migrations": [
+    {
+      "file": "static/script/ymir-vue-converter-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-utility-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-data-code-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-legacy-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-reference-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-dns-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": false
+    },
+    {
+      "file": "static/script/ymir-vue-tools-app.js",
+      "uses_factory": true,
+      "has_legacy_var_app": true
+    }
+  ],
+  "shared_new_exports": [
+    "localizeConfigValue",
+    "resolveActiveToolConfig",
+    "createConfiguredToolState",
+    "createConfiguredComputed",
+    "createConfiguredMethods",
+    "createConfiguredToolApp",
+    "mountConfiguredToolApp",
+    "flattenNodes"
+  ],
+  "checks": {
+    "node_check": "passed for ymir-vue scripts, home dashboard, i18n, ui, csp report, skip-old-vercel-builds",
+    "html_static_resource_missing": 0,
+    "vue_loader_app_count": 150,
+    "vue_loader_missing_app_scripts": 0,
+    "version_previous_residual": 0,
+    "risk_phrase_residual": 0,
+    "build_test_lint_typecheck": "not run"
+  },
+  "notes": [
+    "No Vue 3 + Vite + Element Plus project migration was started. The site remains static/CDN Vue.",
+    "Component-heavy media/runtime/crypto/formatter/text-reference batches remain on Shared.mount, while six table/text batches plus the main tools app now use createConfiguredToolApp/mountConfiguredToolApp."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": "20260531-v52",
+  "checkedAt": "2026-05-31T06:13:57.184116Z",
+  "tools": 150,
+  "v51Class": 150,
+  "v51Css": 150,
+  "heroResidual": 0,
+  "dataToolMatches": 150,
+  "rootDataToolMatches": 150,
+  "missing": [],
+  "notRun": [
+    "npm install",
+    "npm run build",
+    "test",
+    "lint",
+    "typecheck"
+  ]
+}

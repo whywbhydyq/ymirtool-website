@@ -1,0 +1,36 @@
+{
+  "version": "20260531-v58",
+  "checkedAt": "2026-05-31T07:34:31.623Z",
+  "html": {
+    "count": 182,
+    "themeScript": 182,
+    "css": 182,
+    "themeBeforeCss": 182
+  },
+  "scriptChecks": {
+    "versionConstant": true,
+    "dataThemeReady": true,
+    "metaThemeColor": true,
+    "colorSchemeSync": true,
+    "multipleToggles": true,
+    "localizedAria": true,
+    "setPreferenceApi": true,
+    "noDocumentWrite": true
+  },
+  "cssChecks": {
+    "hasLightColorScheme": true,
+    "hasDarkColorScheme": true,
+    "hasDarkPoppers": true,
+    "hasDarkTables": true,
+    "hasDarkFormControls": true,
+    "hasReducedMotion": true,
+    "noOldCssComment": true
+  },
+  "syncChecks": {
+    "syncUsesV56Css": true,
+    "syncUsesThemeScript": true,
+    "syncVersionFromManifest": true
+  },
+  "failures": [],
+  "pass": true
+}

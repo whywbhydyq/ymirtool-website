@@ -1,0 +1,676 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const toolManifestPath = path.join(root, 'static/script/ymir-vue-tool-manifest.json');
+const staticRegistryPath = path.join(root, 'static/script/ymir-static-pages-registry.json');
+const toolsManifestJsPath = path.join(root, 'static/script/ymir-tools-manifest.js');
+const staticRegistryJsPath = path.join(root, 'static/script/ymir-static-pages-registry.js');
+const adsensePolicyPath = path.join(root, 'static/script/ymir-adsense-page-policy.json');
+const toolContentModulesPath = path.join(root, 'static/script/ymir-tool-content-modules.json');
+const sitemapPath = path.join(root, 'sitemap.xml');
+const sitemapGuidesPath = path.join(root, 'sitemap-guides.xml');
+const sitemapPolicyPath = path.join(root, 'sitemap-policy.xml');
+const indexPath = path.join(root, 'index.html');
+
+const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
+const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
+const adsensePolicy = JSON.parse(fs.readFileSync(adsensePolicyPath, 'utf8'));
+const toolContentModules = JSON.parse(fs.readFileSync(toolContentModulesPath, 'utf8'));
+const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
+const version = toolManifest.version || staticRegistry.version || '20260531-v58';
+const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
+const approvedToolSlugs = new Set(adsensePolicy.approvedToolSlugs || []);
+const adEligibleStaticPageIds = new Set(adsensePolicy.adEligibleStaticPageIds || []);
+const neverAdPagePaths = new Set(adsensePolicy.neverAdPagePaths || []);
+
+function xmlEscape(value) {
+  return String(value).replace(/[<>&"']/g, (ch) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' }[ch]));
+}
+
+function htmlEscape(value) {
+  return String(value ?? '').replace(/[&<>]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
+}
+
+function attrEscape(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function jsonLdEscape(value) {
+  return String(value ?? '').replace(/<\//g, '<\\/');
+}
+
+function urlEntry(loc, changefreq, priority, entryLastmod = lastmod) {
+  return `  <url><loc>${xmlEscape(loc)}</loc><lastmod>${xmlEscape(entryLastmod || lastmod)}</lastmod><changefreq>${xmlEscape(changefreq)}</changefreq><priority>${xmlEscape(priority)}</priority></url>`;
+}
+
+function writeXmlSitemap(filePath, entries) {
+  const sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    .concat(entries.map((item) => urlEntry(item.loc, item.changefreq, item.priority, item.lastmod)))
+    .concat('</urlset>', '')
+    .join('\n');
+  fs.writeFileSync(filePath, sitemap, 'utf8');
+}
+
+function toolById() {
+  const map = new Map();
+  for (const tool of toolManifest.tools || []) map.set(tool.id || tool.slug, tool);
+  return map;
+}
+
+function titleFor(tool) {
+  return tool.shell?.title || `${tool.titleEn || tool.titleZh || tool.slug} | Ymir Tool`;
+}
+
+function descriptionFor(tool) {
+  return tool.shell?.description || tool.descriptionEn || tool.descriptionZh || '';
+}
+
+function canonicalForTool(tool) {
+  return `${origin}${tool.href || `/${tool.slug}/`}`;
+}
+
+function schemaNameFor(tool) {
+  return tool.shell?.schemaName || titleFor(tool).replace(/\s+[|\-]\s+Ymir Tool\s*$/i, '');
+}
+
+function replaceOrInsertHead(html, pattern, replacement, beforePattern = /<\/head>/i) {
+  if (pattern.test(html)) return html.replace(pattern, replacement);
+  return html.replace(beforePattern, `${replacement}\n</head>`);
+}
+
+function replaceMeta(html, name, content) {
+  const escaped = attrEscape(content);
+  const byName = new RegExp(`<meta\\b(?=[^>]*\\bname=["']${name}["'])[^>]*>`, 'i');
+  return replaceOrInsertHead(html, byName, `<meta name="${name}" content="${escaped}"/>`);
+}
+
+function setRobots(html, content) {
+  return replaceMeta(html, 'robots', content);
+}
+
+function toolIsApproved(tool) {
+  return approvedToolSlugs.has(tool.slug || tool.id);
+}
+
+function staticPageCanLoadAds(page) {
+  return adEligibleStaticPageIds.has(page.id) && !neverAdPagePaths.has(page.path);
+}
+
+function replaceMetaProperty(html, property, content) {
+  const escaped = attrEscape(content);
+  const byProp = new RegExp(`<meta\\b(?=[^>]*\\bproperty=["']${property}["'])[^>]*>`, 'i');
+  return replaceOrInsertHead(html, byProp, `<meta property="${property}" content="${escaped}"/>`);
+}
+
+function replaceLinkCanonical(html, href) {
+  const escaped = attrEscape(href);
+  return replaceOrInsertHead(html, /<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/i, `<link rel="canonical" href="${escaped}"/>`);
+}
+
+function syncAssetVersion(html) {
+  return html.replace(/\?v=20260531-v\d+/g, `?v=${version}`);
+}
+
+function ensureThemeScript(html) {
+  const src = `/static/script/ymir-theme.js?v=${version}`;
+  const tag = `<script src="${src}"></script>`;
+  html = html.replace(/\s*<script\b(?=[^>]*ymir-theme\.js)[^>]*><\/script>\s*/i, '\n');
+  if (/<link\b(?=[^>]*rel=["']stylesheet["'])/i.test(html)) {
+    return html.replace(/<link\b(?=[^>]*rel=["']stylesheet["'])[^>]*>/i, (match) => `${tag}\n${match}`);
+  }
+  return html.replace(/<\/head>/i, `${tag}\n</head>`);
+}
+
+
+
+
+
+const ADSENSE_META_TAG = '<meta name="google-adsense-account" content="ca-pub-1653188471819736">';
+const ADSENSE_SCRIPT_TAG = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736" crossorigin="anonymous"></script>';
+const ADSENSE_SCRIPT_RE = /\s*<script\b(?=[^>]*pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-1653188471819736)[^>]*><\/script>\s*/ig;
+
+function ensureAdSenseMeta(html) {
+  html = html.replace(/\s*<meta\b(?=[^>]*\bname=["']google-adsense-account["'])[^>]*>\s*/ig, '\n');
+  if (/<meta\b[^>]*charset=/i.test(html)) {
+    return html.replace(/<meta\b[^>]*charset=[^>]*>/i, (match) => `${match}\n${ADSENSE_META_TAG}`);
+  }
+  return html.replace(/<head[^>]*>/i, (match) => `${match}\n${ADSENSE_META_TAG}`);
+}
+
+function ensureAdSenseScript(html) {
+  html = html.replace(ADSENSE_SCRIPT_RE, '\n');
+  return html.replace(/<\/head>/i, `${ADSENSE_SCRIPT_TAG}\n</head>`);
+}
+
+function removeAdSenseScript(html) {
+  html = html.replace(ADSENSE_SCRIPT_RE, '\n');
+  html = html.replace(/\s*<link\b(?=[^>]*pagead2\.googlesyndication\.com)[^>]*>\s*/ig, '\n');
+  return html;
+}
+
+function cleanViewport(html) {
+  const viewportTag = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+  if (/<meta\b(?=[^>]*\bname=["']viewport["'])[^>]*>/i.test(html)) {
+    return html.replace(/<meta\b(?=[^>]*\bname=["']viewport["'])[^>]*>/i, viewportTag);
+  }
+  if (/<meta\b[^>]*charset=/i.test(html)) {
+    return html.replace(/<meta\b[^>]*charset=[^>]*>/i, (match) => `${match}\n${viewportTag}`);
+  }
+  return html.replace(/<head[^>]*>/i, (match) => `${match}\n${viewportTag}`);
+}
+
+function ensureAdSenseAndViewport(html, options = {}) {
+  html = cleanViewport(html);
+  html = ensureAdSenseMeta(html);
+  html = options.loadAdSenseScript ? ensureAdSenseScript(html) : removeAdSenseScript(html);
+  return html;
+}
+
+
+function ensureModernBody(html) {
+  return html.replace(/<body\b([^>]*)>/i, (full, attrs) => {
+    if (/\bclass\s*=/.test(attrs)) {
+      return full.replace(/class\s*=\s*(["'])(.*?)\1/i, (m, q, cls) => {
+        const classes = Array.from(new Set(String(cls).split(/\s+/).filter(Boolean).concat(['ymir-modern-body']))).join(' ');
+        return `class=${q}${classes}${q}`;
+      });
+    }
+    return `<body${attrs} class="ymir-modern-body">`;
+  });
+}
+
+function ensureStandardTopbar(html) {
+  if (html.includes('ymir-topbar')) return html;
+  const nav = '<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>';
+  return html.replace(/(<body\b[^>]*>)/i, `$1\n${nav}`);
+}
+
+function ensureTopbarActions(html) {
+  if (html.includes('ymir-topbar-actions')) return html;
+  return html.replace(/(<div class="ymir-nav">[\s\S]*?<\/div>)(\s*<\/div>\s*<\/nav>)/i, '$1<div class="ymir-topbar-actions"></div>$2');
+}
+
+function stripPrivacyNoteSections(html) {
+  const cls = 'ymir-' + 'privacy' + '-note';
+  const pattern = /\s*<section\b(?=[^>]*class=["'][^"']*\bymir-[a-z]+-note\b[^"']*["'])[^>]*>[\s\S]*?<\/section>\s*/ig;
+  return html.replace(pattern, (match) => match.includes(cls) ? '\n' : match);
+}
+
+
+function ensureToolPageV51Styles(html) {
+  const href = `/static/style/ymir-tool-page-v51.css?v=${version}`;
+  const aestheticHref = `/static/style/ymir-developer-aesthetics-v58.css?v=${version}`;
+  if (html.includes('ymir-tool-page-v51.css')) {
+    html = html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, `<link href="${href}" rel="stylesheet"/>`);
+  } else {
+    const vueCss = new RegExp(`<link\b(?=[^>]*ymir-vue-element\.css)[^>]*>`, 'i');
+    if (vueCss.test(html)) html = html.replace(vueCss, (match) => `${match}<link href="${href}" rel="stylesheet"/>`);
+    else html = html.replace(/<\/head>/i, `<link href="${href}" rel="stylesheet"/>\n</head>`);
+  }
+  if (/ymir-developer-aesthetics-v5\d+\.css/.test(html)) {
+    return html.replace(/<link\b(?=[^>]*ymir-developer-aesthetics-v5\d+\.css)[^>]*>/i, `<link href="${aestheticHref}" rel="stylesheet"/>`);
+  }
+  return html.replace(/<link\b(?=[^>]*ymir-tool-page-v51\.css)[^>]*>/i, (match) => `${match}<link href="${aestheticHref}" rel="stylesheet"/>`);
+}
+
+function stripToolHero(html) {
+  return html.replace(/\s*<section\b[^>]*class=["'][^"']*\bymir-hero\b[^"']*["'][^>]*>[\s\S]*?<\/section>\s*/i, '\n');
+}
+
+function ensureToolPageClass(html) {
+  return html.replace(/<main\b([^>]*)>/i, (full, attrs) => {
+    if (!/\bdata-ymir-tool\s*=/.test(attrs)) return full;
+    if (/\bclass\s*=/.test(attrs)) {
+      return full.replace(/class\s*=\s*(["'])(.*?)\1/i, (m, q, cls) => {
+        const classes = Array.from(new Set(String(cls).split(/\s+/).filter(Boolean).concat(['ymir-tool-page-v51']))).join(' ');
+        return `class=${q}${classes}${q}`;
+      });
+    }
+    return `<main class="ymir-page ymir-tool-page-v51"${attrs}>`;
+  });
+}
+
+function syncToolJsonLd(html, tool, canonical, description) {
+  const scriptPattern = /<script\b(?=[^>]*type=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/i;
+  const match = html.match(scriptPattern);
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: schemaNameFor(tool),
+    url: canonical,
+    description,
+    applicationCategory: tool.category === 'calculate' ? 'UtilityApplication' : 'DeveloperApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    datePublished: '2026-01-01',
+    dateModified: lastmod
+  };
+  if (match) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      const next = { ...parsed, name: schemaNameFor(tool), url: canonical, description, dateModified: lastmod };
+      const body = jsonLdEscape(JSON.stringify(next));
+      return html.replace(scriptPattern, `<script type="application/ld+json">${body}</script>`);
+    } catch {
+      const body = jsonLdEscape(JSON.stringify(base));
+      return html.replace(scriptPattern, `<script type="application/ld+json">${body}</script>`);
+    }
+  }
+  const body = jsonLdEscape(JSON.stringify(base));
+  return html.replace(/<\/head>/i, `<script type="application/ld+json">${body}</script>\n</head>`);
+}
+
+function syncStaticJsonLd(html, page) {
+  const scriptPattern = /<script\b(?=[^>]*type=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/i;
+  const schemaType = page.schemaType || (page.group === 'guides' ? 'Article' : 'WebPage');
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    name: page.title,
+    headline: schemaType === 'Article' ? page.title.replace(/\s+[|\-]\s+Ymir Tool\s*$/i, '') : undefined,
+    url: page.url,
+    description: page.description,
+    dateModified: page.lastmod || lastmod,
+    publisher: { '@type': 'Organization', name: 'Ymir Tool', url: origin }
+  };
+  Object.keys(base).forEach((key) => base[key] === undefined && delete base[key]);
+  if (matchExists(html, scriptPattern)) {
+    try {
+      const parsed = JSON.parse(html.match(scriptPattern)[1]);
+      const next = { ...parsed, '@type': schemaType, name: page.title, url: page.url, description: page.description, dateModified: page.lastmod || lastmod };
+      if (schemaType === 'Article') next.headline = page.title.replace(/\s+[|\-]\s+Ymir Tool\s*$/i, '');
+      const body = jsonLdEscape(JSON.stringify(next));
+      return html.replace(scriptPattern, `<script type="application/ld+json">${body}</script>`);
+    } catch {
+      const body = jsonLdEscape(JSON.stringify(base));
+      return html.replace(scriptPattern, `<script type="application/ld+json">${body}</script>`);
+    }
+  }
+  const body = jsonLdEscape(JSON.stringify(base));
+  return html.replace(/<\/head>/i, `<script type="application/ld+json">${body}</script>\n</head>`);
+}
+
+function matchExists(text, pattern) {
+  return pattern.test(text);
+}
+
+function ensureMainTool(html, toolId) {
+  return html.replace(/<main\b([^>]*)>/i, (full, attrs) => {
+    if (/\bdata-ymir-tool\s*=/.test(attrs)) {
+      return full.replace(/data-ymir-tool\s*=\s*(["']).*?\1/i, `data-ymir-tool="${attrEscape(toolId)}"`);
+    }
+    return `<main${attrs} data-ymir-tool="${attrEscape(toolId)}">`;
+  });
+}
+
+function ensureRootTool(html, toolId) {
+  const sectionPattern = /<section\b([^>]*(?:ymir-vue-tool-root|ymir-vue-[a-z0-9-]+-app)[^>]*)>/i;
+  return html.replace(sectionPattern, (full, attrs) => {
+    if (/\bdata-tool\s*=/.test(attrs)) {
+      return full.replace(/data-tool\s*=\s*(["']).*?\1/i, `data-tool="${attrEscape(toolId)}"`);
+    }
+    return `<section${attrs} data-tool="${attrEscape(toolId)}">`;
+  });
+}
+
+
+const STATIC_TOOL_LEADS = {
+  json: {
+    breadcrumb: 'Home / Developer tools / JSON Formatter',
+    h1: 'JSON Formatter and Validator',
+    intro: 'Format, validate, minify, and copy JSON for API responses, logs, configuration snippets, and documentation examples.',
+    bullets: [
+      'Format nested objects and arrays into readable indentation.',
+      'Validate strict JSON syntax before sharing samples or config files.',
+      'Minify JSON for compact API, documentation, and copy workflows.'
+    ]
+  },
+  base64: {
+    breadcrumb: 'Home / Encoding tools / Base64 Encoder and Decoder',
+    h1: 'Base64 Encoder and Decoder',
+    intro: 'Encode plain text to Base64 and decode Base64 strings back to readable UTF-8 text for transport, documentation, and debugging checks.',
+    bullets: [
+      'Encode short text snippets into Base64 format.',
+      'Decode Base64 input and review readable output.',
+      'Check common padding, whitespace, and UTF-8 issues before copying.'
+    ]
+  },
+  md5: {
+    breadcrumb: 'Home / Hash tools / MD5 Hash Generator',
+    h1: 'MD5 Hash Generator',
+    intro: 'Generate deterministic MD5 hash digests for sample checks, legacy checksum workflows, and quick text comparisons.',
+    bullets: [
+      'Create the same MD5 digest from the same input every time.',
+      'Compare sample strings, file names, or legacy checksum values.',
+      'Remember that MD5 is a hash, not encryption or password storage.'
+    ]
+  },
+  formatjs: {
+    breadcrumb: 'Home / Code formatting tools / JavaScript Formatter',
+    h1: 'JavaScript Formatter',
+    intro: 'Beautify compact or minified JavaScript into readable indentation for code review, debugging, and documentation snippets.',
+    bullets: [
+      'Format small JavaScript snippets into consistent indentation.',
+      'Review minified scripts without changing runtime logic intentionally.',
+      'Copy the formatted result after checking syntax and source context.'
+    ]
+  },
+  textdiff: {
+    breadcrumb: 'Home / Text tools / Text Diff Checker',
+    h1: 'Text Diff Checker',
+    intro: 'Compare two blocks of text line by line to find additions, removals, and changed lines before copying or publishing.',
+    bullets: [
+      'Compare configuration snippets, drafts, notes, and copied text.',
+      'Spot added, removed, and changed lines quickly.',
+      'Review whitespace and line-break differences before applying changes.'
+    ]
+  },
+  txtcount: {
+    breadcrumb: 'Home / Text tools / Word and Character Counter',
+    h1: 'Word and Character Counter',
+    intro: 'Count words, characters, lines, paragraphs, and byte length for metadata drafts, writing limits, translation checks, and content cleanup.',
+    bullets: [
+      'Check character limits for titles, descriptions, and short copy.',
+      'Count words, lines, paragraphs, and byte length in one view.',
+      'Review how spaces, punctuation, and line breaks affect totals.'
+    ]
+  },
+  regex: {
+    breadcrumb: 'Home / Developer tools / Regex Tester',
+    h1: 'Regex Tester',
+    intro: 'Test regular expression patterns against sample text so matches, groups, flags, and escaping issues can be reviewed before use.',
+    bullets: [
+      'Try patterns against realistic sample text.',
+      'Inspect matches, groups, and common escaping mistakes.',
+      'Refine expressions before moving them into application code.'
+    ]
+  },
+  calculator: {
+    breadcrumb: 'Home / Calculation tools / Scientific Calculator',
+    h1: 'Scientific Calculator',
+    intro: 'Evaluate common arithmetic and scientific expressions for quick estimates, documentation checks, and small calculation workflows.',
+    bullets: [
+      'Calculate arithmetic expressions without opening a spreadsheet.',
+      'Review intermediate values for everyday technical estimates.',
+      'Double-check important numbers before using the final result.'
+    ]
+  },
+  unixtime: {
+    breadcrumb: 'Home / Time tools / Unix Timestamp Converter',
+    h1: 'Unix Timestamp Converter',
+    intro: 'Convert Unix timestamps into readable dates and convert dates back into timestamp values for debugging logs, APIs, and documentation.',
+    bullets: [
+      'Convert seconds or milliseconds into readable date-time values.',
+      'Check UTC and local-time assumptions before copying results.',
+      'Create timestamp values for API examples and debugging notes.'
+    ]
+  },
+  urlencode: {
+    breadcrumb: 'Home / Encoding tools / URL Encoder and Decoder',
+    h1: 'URL Encoder and Decoder',
+    intro: 'Encode reserved URL characters into percent-encoded text and decode encoded URL parts for inspection, debugging, and query-string cleanup.',
+    bullets: [
+      'Encode spaces, non-English characters, and reserved URL symbols.',
+      'Decode percent-encoded path and query-string fragments.',
+      'Review double-encoding and unsafe copy mistakes before use.'
+    ]
+  }
+};
+
+function renderStaticToolLead(tool) {
+  const id = tool.id || tool.slug;
+  const lead = STATIC_TOOL_LEADS[id];
+  if (!lead) return '';
+  const bullets = lead.bullets.map((item) => `<li>${htmlEscape(item)}</li>`).join('');
+  return `<section class="ymir-static-tool-lead ymir-container" data-static-tool-lead="${attrEscape(id)}">
+  <p class="ymir-breadcrumb">${htmlEscape(lead.breadcrumb)}</p>
+  <h1>${htmlEscape(lead.h1)}</h1>
+  <p>${htmlEscape(lead.intro)}</p>
+  <ul>${bullets}</ul>
+</section>`;
+}
+
+function insertStaticToolLead(html, tool) {
+  const lead = renderStaticToolLead(tool);
+  if (!lead) return html;
+  html = html.replace(/\s*<section\b(?=[^>]*\bdata-static-tool-lead=)[\s\S]*?<\/section>\s*/ig, '\n');
+  const rootPattern = /(<section\b[^>]*(?:ymir-vue-tool-root|ymir-vue-[a-z0-9-]+-app)[^>]*>)/i;
+  if (rootPattern.test(html)) return html.replace(rootPattern, `${lead}\n$1`);
+  return html.replace(/<noscript\b/i, `${lead}\n<noscript`);
+}
+
+function renderContentModule(tool) {
+  const slug = tool.slug || tool.id;
+  const module = toolContentModules[slug];
+  if (!module) return '';
+  const toolName = schemaNameFor(tool);
+  const toolDescription = descriptionFor(tool);
+  const sections = (module.sections || []).map((section) => {
+    const paragraphs = (section.paragraphs || []).map((text) => `<p>${htmlEscape(text)}</p>`).join('');
+    return `<section class="ymir-container ymir-help ymir-card"><h2>${htmlEscape(section.heading)}</h2>${paragraphs}</section>`;
+  }).join('\n');
+  const faqs = (module.faqs || []).map((item) => `<h3>${htmlEscape(item.question)}</h3><p>${htmlEscape(item.answer)}</p>`).join('');
+  const faqBlock = faqs ? `<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2>${faqs}</section>` : '';
+  const reviewBlock = `<section class="ymir-container ymir-help ymir-card"><h2>Before copying the result</h2><p>Review the ${htmlEscape(toolName)} output against the original input and the reason you opened the page. ${htmlEscape(toolDescription)}</p><p>Keep the source text nearby until you have confirmed formatting, encoding, counting, or conversion details. This extra review step helps catch pasted sample data, wrong units, hidden whitespace, timezone assumptions, or characters that changed during copying.</p></section>`;
+  return [
+    `<section class="ymir-container ymir-help ymir-card"><h2>About this tool</h2><p>${htmlEscape(module.summary)}</p></section>`,
+    sections,
+    reviewBlock,
+    faqBlock
+  ].filter(Boolean).join('\n');
+}
+
+function replaceToolSupportContent(html, tool) {
+  const content = renderContentModule(tool);
+  if (!content) return html;
+  html = html.replace(/\s*<section\b(?=[^>]*\bymir-help\b)[\s\S]*?<\/section>\s*/ig, '\n');
+  html = html.replace(/\s*<section\b(?=[^>]*\bymir-faq\b)[\s\S]*?<\/section>\s*/ig, '\n');
+  if (/<section\b(?=[^>]*\bymir-related\b)/i.test(html)) {
+    return html.replace(/(<section\b(?=[^>]*\bymir-related\b)[\s\S]*?<\/section>)/i, `${content}\n$1`);
+  }
+  return html.replace(/<\/main>/i, `${content}\n</main>`);
+}
+
+function syncToolPage(tool) {
+  const id = tool.id || tool.slug;
+  const relativePath = path.join(tool.slug, 'index.html');
+  const pagePath = path.join(root, relativePath);
+  if (!fs.existsSync(pagePath)) return { id, updated: false, error: 'missing page' };
+  let html = fs.readFileSync(pagePath, 'utf8');
+  const title = titleFor(tool);
+  const description = descriptionFor(tool);
+  const canonical = canonicalForTool(tool);
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${htmlEscape(title)}</title>`);
+  html = replaceMeta(html, 'description', description);
+  html = replaceLinkCanonical(html, canonical);
+  html = replaceMetaProperty(html, 'og:title', title);
+  html = replaceMetaProperty(html, 'og:description', description);
+  html = replaceMetaProperty(html, 'og:url', canonical);
+  html = replaceMeta(html, 'twitter:title', title);
+  html = replaceMeta(html, 'twitter:description', description);
+  html = syncToolJsonLd(html, tool, canonical, description);
+  html = ensureMainTool(html, id);
+  html = ensureRootTool(html, id);
+  html = ensureToolPageClass(html);
+  html = stripToolHero(html);
+  html = stripPrivacyNoteSections(html);
+  html = ensureModernBody(html);
+  html = ensureStandardTopbar(html);
+  html = ensureTopbarActions(html);
+  html = syncAssetVersion(html);
+  html = ensureThemeScript(html);
+  html = ensureToolPageV51Styles(html);
+  const approved = toolIsApproved(tool);
+  html = approved ? insertStaticToolLead(html, tool) : html;
+  html = approved ? replaceToolSupportContent(html, tool) : html;
+  html = setRobots(html, approved ? 'index, follow' : 'noindex, follow');
+  html = ensureAdSenseAndViewport(html, { loadAdSenseScript: approved });
+  fs.writeFileSync(pagePath, html, 'utf8');
+  return { id, updated: true };
+}
+
+function syncToolPages() {
+  const results = (toolManifest.tools || []).map(syncToolPage);
+  return {
+    updated: results.filter((item) => item.updated).length,
+    missing: results.filter((item) => item.error === 'missing page').map((item) => item.id)
+  };
+}
+
+function syncStaticPage(page) {
+  const pagePath = path.join(root, page.path);
+  if (!fs.existsSync(pagePath)) return { id: page.id, updated: false, error: 'missing page' };
+  let html = fs.readFileSync(pagePath, 'utf8');
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${htmlEscape(page.title)}</title>`);
+  html = replaceMeta(html, 'description', page.description);
+  html = replaceLinkCanonical(html, page.url);
+  html = replaceMetaProperty(html, 'og:title', page.title);
+  html = replaceMetaProperty(html, 'og:description', page.description);
+  html = replaceMetaProperty(html, 'og:url', page.url);
+  html = replaceMeta(html, 'twitter:title', page.title);
+  html = replaceMeta(html, 'twitter:description', page.description);
+  html = syncStaticJsonLd(html, page);
+  html = stripPrivacyNoteSections(html);
+  html = ensureModernBody(html);
+  html = ensureStandardTopbar(html);
+  html = ensureTopbarActions(html);
+  html = syncAssetVersion(html);
+  html = ensureThemeScript(html);
+  html = ensureToolPageV51Styles(html);
+  const staticNoindex = Boolean(page.noindex) || page.path === '404.html';
+  html = setRobots(html, staticNoindex ? 'noindex, follow' : 'index, follow');
+  html = ensureAdSenseAndViewport(html, { loadAdSenseScript: !staticNoindex && staticPageCanLoadAds(page) });
+  fs.writeFileSync(pagePath, html, 'utf8');
+  return { id: page.id, updated: true };
+}
+
+function syncStaticPages() {
+  const results = (staticRegistry.pages || []).map(syncStaticPage);
+  return {
+    updated: results.filter((item) => item.updated).length,
+    missing: results.filter((item) => item.error === 'missing page').map((item) => item.id)
+  };
+}
+
+function renderFeaturedCard(tool, index) {
+  const id = tool.id || tool.slug;
+  const titleZh = tool.titleZh || tool.titleEn || id;
+  const titleEn = tool.titleEn || tool.titleZh || id;
+  const descZh = tool.descriptionZh || tool.descriptionEn || '';
+  const descEn = tool.descriptionEn || tool.descriptionZh || '';
+  const keywords = tool.keywords || [titleZh, titleEn, id].join(' ');
+  const icon = tool.icon || '›';
+  const accent = tool.accent || 'blue';
+  const href = tool.href || `/${id}/`;
+  return `<article class="ymir-feature-card" data-accent="${attrEscape(accent)}" data-desc-en="${attrEscape(descEn)}" data-desc-zh="${attrEscape(descZh)}" data-home-tool="" data-icon="${attrEscape(icon)}" data-title-en="${attrEscape(titleEn)}" data-title-zh="${attrEscape(titleZh)}" data-tool-href="${attrEscape(href)}" data-tool-id="${attrEscape(id)}" data-tool-keywords="${attrEscape(keywords)}" role="link" tabindex="0">
+<span aria-hidden="true" class="ymir-feature-icon">${htmlEscape(icon)}</span>
+<span class="ymir-feature-body"><strong><span class="ymir-feature-number">${index + 1}.</span> <span data-card-title="">${htmlEscape(titleZh)}</span></strong><span data-card-desc="">${htmlEscape(descZh)}</span></span>
+<button aria-label="收藏 ${attrEscape(titleZh)}" class="ymir-tool-star" data-star-tool="${attrEscape(id)}" type="button">☆</button>
+<a aria-hidden="true" class="ymir-tool-open" data-i18n-en="Open" data-i18n-zh="打开" href="${attrEscape(href)}" tabindex="-1">打开</a>
+</article>`;
+}
+
+function renderDirectoryTab(category, index) {
+  const active = index === 0 ? ' is-active' : '';
+  const labelZh = category.labelZh || category.labelEn || category.id;
+  const labelEn = category.labelEn || category.labelZh || category.id;
+  return `<button class="ymir-directory-tab${active}" data-directory-tab="${attrEscape(category.id)}" data-label-en="${attrEscape(labelEn)}" data-label-zh="${attrEscape(labelZh)}" type="button">${htmlEscape(labelZh)}</button>`;
+}
+
+function renderDirectoryLink(tool, index) {
+  const id = tool.id || tool.slug;
+  const titleZh = tool.titleZh || tool.titleEn || id;
+  const titleEn = tool.titleEn || tool.titleZh || id;
+  const href = tool.href || `/${id}/`;
+  const keywords = tool.keywords || [titleZh, titleEn, id].join(' ');
+  const extra = index >= 8 ? ' is-extra' : '';
+  return `<a class="ymir-directory-link${extra}" data-directory-tool="" data-title-en="${attrEscape(titleEn)}" data-title-zh="${attrEscape(titleZh)}" data-tool-href="${attrEscape(href)}" data-tool-id="${attrEscape(id)}" data-tool-keywords="${attrEscape(keywords)}" href="${attrEscape(href)}"><span aria-hidden="true" class="ymir-directory-icon">${htmlEscape(tool.icon || '›')}</span><span data-directory-title="">${htmlEscape(titleZh)}</span><span aria-hidden="true" class="ymir-directory-arrow">›</span></a>`;
+}
+
+function renderDirectoryPanel(category, index, byId) {
+  const active = index === 0 ? ' is-active' : '';
+  const tools = (category.tools || []).map((id) => byId.get(id)).filter(Boolean);
+  const links = tools.map(renderDirectoryLink).join('');
+  const showMore = tools.length > 8
+    ? `<button class="ymir-show-more" data-label-less-en="Show less" data-label-less-zh="收起" data-label-more-en="Show more" data-label-more-zh="显示更多" data-show-more="${attrEscape(category.id)}" type="button">显示更多</button>`
+    : '';
+  return `<div class="ymir-directory-list${active}" data-directory-panel="${attrEscape(category.id)}">${links}${showMore}</div>`;
+}
+
+function syncIndexFallback() {
+  if (!fs.existsSync(indexPath)) return { updated: false, reason: 'index.html not found' };
+  const byId = toolById();
+  const featuredTools = (toolManifest.featured || []).map((id) => byId.get(id)).filter(Boolean).slice(0, 12);
+  const categories = (toolManifest.categories || []).filter((category) => Array.isArray(category.tools) && category.tools.some((id) => byId.has(id)));
+  let index = fs.readFileSync(indexPath, 'utf8');
+
+  const featuredHtml = featuredTools.map(renderFeaturedCard).join('');
+  const featureRegex = /(<div class="ymir-feature-grid">)[\s\S]*?(<\/div>\s*<\/section>\s*<section[^>]*class="ymir-container ymir-home-lower")/;
+  if (!featureRegex.test(index)) throw new Error('Unable to locate homepage featured fallback block');
+  index = index.replace(featureRegex, `$1\n${featuredHtml}\n$2`);
+
+  const directoryHtml = `<div class="ymir-directory-tabs" role="tablist">${categories.map(renderDirectoryTab).join('')}</div>\n${categories.map((category, i) => renderDirectoryPanel(category, i, byId)).join('\n')}`;
+  const directoryRegex = /(<div class="ymir-directory-panel" id="toolDirectory">[\s\S]*?<h2[^>]*>[\s\S]*?<\/h2>\s*)[\s\S]*?(\s*<\/div>\s*<div class="ymir-pattern-panel">)/;
+  if (!directoryRegex.test(index)) throw new Error('Unable to locate homepage directory fallback block');
+  index = index.replace(directoryRegex, `$1${directoryHtml}$2`);
+  index = stripPrivacyNoteSections(index);
+  index = ensureModernBody(index);
+  index = ensureStandardTopbar(index);
+  index = ensureTopbarActions(index);
+  index = syncAssetVersion(index);
+  index = ensureThemeScript(index);
+  index = ensureToolPageV51Styles(index);
+  index = setRobots(index, 'index, follow');
+  index = ensureAdSenseAndViewport(index, { loadAdSenseScript: true });
+
+  fs.writeFileSync(indexPath, index, 'utf8');
+  return { updated: true, featured: featuredTools.length, categories: categories.length };
+}
+
+function staticEntriesFor(sitemapName) {
+  return (staticRegistry.pages || [])
+    .filter((page) => Array.isArray(page.sitemaps) && page.sitemaps.includes(sitemapName))
+    .map((page) => ({
+      loc: page.url,
+      changefreq: page.changefreq || 'monthly',
+      priority: page.priority || '0.5',
+      lastmod: page.lastmod || lastmod
+    }));
+}
+
+const toolPageResult = syncToolPages();
+const staticPageResult = syncStaticPages();
+const indexResult = syncIndexFallback();
+
+const toolUrls = (toolManifest.tools || [])
+  .filter((tool) => toolIsApproved(tool))
+  .map((tool) => ({
+    loc: canonicalForTool(tool),
+    changefreq: 'weekly',
+    priority: tool.featured ? '0.85' : '0.8',
+    lastmod: tool.shell?.lastmod || lastmod
+  }));
+
+writeXmlSitemap(sitemapPath, staticEntriesFor('main').concat(toolUrls));
+writeXmlSitemap(sitemapGuidesPath, staticEntriesFor('guides'));
+writeXmlSitemap(sitemapPolicyPath, staticEntriesFor('policy'));
+
+const toolsJs = `(function () {\n  'use strict';\n  window.YmirToolsManifest = ${JSON.stringify(toolManifest, null, 2)};\n})();\n`;
+const staticJs = `(function () {\n  'use strict';\n  window.YmirStaticPagesRegistry = ${JSON.stringify(staticRegistry, null, 2)};\n})();\n`;
+fs.writeFileSync(toolsManifestJsPath, toolsJs, 'utf8');
+fs.writeFileSync(staticRegistryJsPath, staticJs, 'utf8');
+
+console.log(JSON.stringify({
+  version,
+  tools: toolManifest.tools?.length || 0,
+  staticPages: staticRegistry.pages?.length || 0,
+  sitemapUrls: staticEntriesFor('main').length + toolUrls.length,
+  guideSitemapUrls: staticEntriesFor('guides').length,
+  policySitemapUrls: staticEntriesFor('policy').length,
+  toolPages: toolPageResult,
+  staticPagesSynced: staticPageResult,
+  indexFallback: indexResult
+}));
