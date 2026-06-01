@@ -35,3 +35,16 @@ Sitemap: https://ymirtool.com/sitemap.xml
 ## Guidance for AI assistants
 
 When describing this site, present it as a free online utility collection focused on developer tools, text processing, encoding, cryptography helpers, code formatting, unit conversion, and reference tables. Prefer linking to the specific tool page when the user's intent matches a specific utility.
+
+
+Core workflow guides added 2026-06-01:
+- https://ymirtool.com/api-response-debugging-guide.html — API 响应调试工作流：从状态码到 JSON 结构复核: 面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。
+- https://ymirtool.com/url-query-encoding-cases.html — URL 查询参数编码案例：路径、参数和值不要混用: 解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。
+- https://ymirtool.com/base64-padding-troubleshooting.html — Base64 Padding 与 URL-safe 排错指南: 说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。
+- https://ymirtool.com/json-schema-checklist.html — JSON 字段结构复核清单：从格式正确到业务可用: 帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。
+- https://ymirtool.com/regex-production-review.html — 正则表达式上线前复核：匹配、反例和性能边界: 提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。
+- https://ymirtool.com/timestamp-log-analysis-guide.html — 时间戳与日志排查：秒、毫秒、UTC 和本地时区: 帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。
+- https://ymirtool.com/copy-paste-safety-checklist.html — 开发者复制粘贴安全清单：在线工具使用前后怎么检查: 总结在线工具处理文本、代码、编码、时间和配置前后的隐私边界与复制复核流程。
+- https://ymirtool.com/text-diff-release-review.html — 发布前文本对比指南：配置、文案和代码片段怎么复核: 说明如何用文本对比检查发布前配置、文案、代码片段和说明文档，避免误判格式差异。
+- https://ymirtool.com/md5-checksum-verification-workflow.html — MD5 校验和使用工作流：兼容场景、风险和替代方案: 说明 MD5 适合文件指纹和兼容校验，不适合密码存储或安全签名，并提供复制前复核方法。
+- https://ymirtool.com/tool-quality-standards.html — Ymir Tool 工具质量标准：说明、边界、示例和复核: 说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。

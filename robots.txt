@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /tests/
 Sitemap: https://ymirtool.com/sitemap.xml
 Sitemap: https://ymirtool.com/sitemap-guides.xml
 Sitemap: https://ymirtool.com/sitemap-policy.xml
