@@ -1,1 +1,0 @@
-var bs=[1,3.6,39.370079,0.001,3.3356e-9,0.0029386,2.236936];var num=0;$(".BtnHS").on("click",function(){num=$(this).prev().val();if(num!=""&&!isNaN(num)){var tag=num/bs[$(".SpeedCountCent li").index($(this).parent())];$(".SpeedCountCent li").each(function(ind){$(this).find(".SpeedTxt").val(bs[ind]*tag)})}});$("#reset").on("click",function(){$("input[type='text']").val("")});
