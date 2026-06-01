@@ -1,0 +1,1 @@
+var bs=[1,0.001,1,1000000,1000,1000];var num=0;$(".BtnHS").on("click",function(){num=$(this).prev().val();if(num!=""&&!isNaN(num)){var tag=num/bs[$(".DensityCountCent li").index($(this).parent())];$(".DensityCountCent li").each(function(ind){$(this).find(".DensityTxt").val(bs[ind]*tag)})}});$("#reset").on("click",function(){$("input[type='text']").val("")});

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JSON 格式化示例与错误排查 - Ymir Tool</title>
+<meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" name="description">
+<link href="https://ymirtool.com/json-formatter-examples.html" rel="canonical"/>
+<meta content="JSON 格式化示例与错误排查 - Ymir Tool" property="og:title"/>
+<meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/json-formatter-examples.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="JSON 格式化示例与错误排查 - Ymir Tool" name="twitter:title"/>
+<meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"JSON 格式化示例与错误排查 - Ymir Tool","headline":"JSON 格式化示例与错误排查","url":"https://ymirtool.com/json-formatter-examples.html","description":"JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。","dateModified":"2026-05-31","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+</meta></meta></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 示例</p>
+<h1>JSON 格式化示例与错误排查</h1>
+<p>JSON 格式化工具适合整理接口返回值、日志片段、配置文件和前后端调试数据。它的核心价值不是“把文本变好看”，而是帮助你确认层级、字段、数组结构和常见语法错误。</p>
+<section aria-label="工具入口" class="ymir-guide-cta">
+<div>
+<strong>JSON 示例与错误排查</strong>
+<p>把示例 JSON 粘贴到工具里，先校验，再格式化查看层级。</p>
+</div>
+<a class="ymir-guide-cta-button" href="/json/">用 JSON 工具检查示例</a>
+</section>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/json/">JSON 格式化工具</a></li>
+<li><a href="/jsonzip/">JSON 压缩转义</a></li>
+<li><a href="/json2yaml/">JSON 转 YAML</a></li>
+<li><a href="/json2get/">JSON 和 GET 参数互转</a></li>
+</ul>
+<h2>示例输入</h2>
+<pre>{"user":{"id":123,"name":"demo"},"roles":["admin","editor"],"active":true}</pre>
+<p>格式化后应能清楚看到 user 对象、roles 数组和 active 布尔值。排查接口时，建议先保存原始响应，再格式化副本，避免覆盖原始证据。</p>
+<h2>常见错误</h2>
+<ul>
+<li>对象键名没有使用双引号。</li>
+<li>字符串没有闭合。</li>
+<li>数组或对象末尾多了逗号。</li>
+<li>复制日志时漏掉开头或结尾括号。</li>
+<li>把 JavaScript 对象字面量当作标准 JSON。</li>
+</ul>
+<h2>隐私边界</h2>
+<p>粘贴普通 JSON 片段进行格式化、校验和复制。不要粘贴访问令牌、Cookie、用户隐私资料、内部接口地址或其他不适合在线处理的内容。如果使用远程获取功能，请确认你有权访问该 URL。</p>
+<h2>FAQ</h2>
+<h3>JSON 格式化会改变字段值吗？</h3>
+<p>正常情况下，格式化只改变缩进和换行，不应改变字段值。正式使用前仍应保留原始内容并复核。</p>
+<h3>为什么复制来的 JSON 校验失败？</h3>
+<p>常见原因是日志前后混入了额外文本、字符串转义不完整、末尾多逗号，或复制时少了括号。</p>
+<h3>JSON 压缩和转义有什么区别？</h3>
+<p>压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。</p>
+<p><a class="btn btn-primary" href="/json/">打开 JSON 格式化工具</a></p>
+<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>示例如何用于排错</h2><p>排查 JSON 错误时，建议把失败输入缩小到最小可复现片段。先保留出错字段和相邻括号，再逐步加入其它字段，这样更容易发现逗号、引号、转义和数组层级问题。</p><ul><li>错误位置靠后时，先检查前一个字段结尾。</li><li>接口返回以 &lt; 开头时，通常不是 JSON，而是 HTML 错误页。</li><li>日志复制出的内容如果带时间戳前缀，需要先剥离前缀再校验。</li></ul></section>
+<section aria-label="相关工具入口" class="ymir-guide-related">
+<h2>相关工具入口</h2>
+<div class="ymir-guide-related-grid">
+<a href="/jsonzip/">JSON 压缩转义</a>
+<a href="/json2excel/">JSON 转 Excel</a>
+<a href="/json2java/">JSON 转 Java</a>
+<a href="/jsonlrview/">JSON 左右视图</a>
+</div>
+</section>
+
+<section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
+<h2>示例驱动：用真实场景判断 JSON 输出是否可信</h2>
+<p>示例页的价值不在于展示更多按钮，而在于帮助用户形成可重复的判断方法。JSON 工具常见的输入包括接口响应、配置片段、日志字段和文档示例。它们看起来都是大括号和数组，但检查重点不同：接口响应关注字段契约，配置片段关注默认值和布尔开关，日志字段关注时间、请求 ID 与错误码，文档示例则关注可读性和可复制性。</p><p>处理示例时，不要只准备一个“完全正确”的样本。更有帮助的方式是同时准备正例、边界例和错误例。正例用于确认工具流程，边界例用于检查空数组、null、false、0、空字符串等容易混淆的值，错误例用于训练自己快速识别 trailing comma、单引号、注释和未转义换行。</p>
+<h2>操作前后的复核清单</h2>
+<ul><li>给每个示例写明来源：接口、日志、配置、文档还是测试夹具。</li><li>保留一份失败示例，记录为什么失败以及应如何修复。</li><li>对于嵌套很深的 JSON，先折叠业务无关字段，只分析关键路径。</li><li>不要把生产 token、用户邮箱、手机号、订单号直接放进公开示例。</li></ul>
+<h2>真实排查案例</h2>
+<p>案例：一个 webhook 示例中 payload 字段本身又是一段转义后的 JSON 字符串。第一层格式化只能说明外层事件结构正确，不能说明 payload 内层字段正确。正确做法是先格式化外层，复制 payload 的字符串值，再单独解码和格式化内层。</p>
+<h2>建议的工具链</h2>
+<p>单个工具只能完成一个局部动作。更稳妥的方式是把相关页面串成检查链，先整理输入，再做转换或对比，最后保存结论。</p>
+<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化</a><a href="/json2xml/">JSON 转 XML</a><a href="/json2excel/">JSON 转 Excel</a><a href="/textdiff/">文本对比</a></div>
+<h2>何时不要只依赖在线工具</h2>
+<p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
+</section>
+</div>
+</body>
+</html>

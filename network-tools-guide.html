@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="google-adsense-account" content="ca-pub-1653188471819736">
+<meta name="robots" content="index, follow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网络工具使用指南 - Ymir Tool</title>
+<meta name="description" content="WebSocket 测试、浏览器信息、公共 DNS、各地区 DNS 等网络工具的使用说明和排查建议。"/>
+<link rel="canonical" href="https://ymirtool.com/network-tools-guide.html"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css" /><meta property="og:title" content="网络工具使用指南 - Ymir Tool"/>
+<meta property="og:description" content="WebSocket 测试、浏览器信息、公共 DNS、各地区 DNS 等网络工具的使用说明和排查建议。"/>
+<meta property="og:url" content="https://ymirtool.com/network-tools-guide.html"/>
+<meta name="twitter:title" content="网络工具使用指南 - Ymir Tool"/>
+<meta name="twitter:description" content="WebSocket 测试、浏览器信息、公共 DNS、各地区 DNS 等网络工具的使用说明和排查建议。"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"网络工具使用指南 - Ymir Tool","headline":"网络工具使用指南","url":"https://ymirtool.com/network-tools-guide.html","description":"WebSocket 测试、浏览器信息、公共 DNS、各地区 DNS 等网络工具的使用说明和排查建议。","dateModified":"2026-05-31","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+</head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a></p>
+<h1>网络工具使用指南</h1>
+<p>网络工具适合调试浏览器环境、WebSocket 服务、DNS 配置和基础网络资料。使用这些工具时，建议先明确要排查的是浏览器端、域名解析、服务端响应还是网络链路问题。</p>
+<section class="ymir-guide-cta" aria-label="工具入口">
+  <div>
+    <strong>网络工具指南</strong>
+    <p>按 DNS、端口、HTTP Header、IP 转换等任务选择工具入口。</p>
+  </div>
+  <a class="ymir-guide-cta-button" href="/dns/">打开 DNS 工具</a>
+</section>
+
+<h2>常用入口</h2>
+<ul>
+<li><a href="/websocket/">WebSocket 测试</a>：适合检查连接地址、消息发送和服务端响应。</li>
+<li><a href="/browserinfo/">浏览器信息</a>：查看 User-Agent、窗口尺寸、语言和环境信息。</li>
+<li><a href="/dns/">公共 DNS</a>：查看常用公共 DNS 地址。</li>
+<li><a href="/alldns/">各地区公共 DNS</a>：按地区查找网络配置参考。</li>
+</ul>
+<h2>排查建议</h2>
+<p>如果 WebSocket 无法连接，先确认协议是 ws 还是 wss，再检查域名、端口、防火墙和服务端日志。DNS 问题通常存在缓存，修改解析后需要等待生效。</p>
+
+
+<section class="ymir-guide-review ymir-card" data-adsense-hardening="20260601">
+<h2>审核与使用建议</h2>
+<p>网络工具使用指南 不应只作为入口列表存在。更可靠的使用方式是先明确输入来源、处理目标、输出去向和复核标准，再打开对应工具完成具体操作。</p>
+<ul>
+<li>网络工具适合浏览器侧诊断和资料查询；真正的线上故障还要结合服务器日志、DNS 控制台和监控系统。</li>
+<li>DNS、WebSocket、HTTP 头和浏览器信息都受到地区、网络、代理和浏览器策略影响，结果需要带上下文记录。</li>
+<li>如果结果会进入生产配置、客户交付、财务估算、法律文件或安全流程，应保留原始输入和操作记录，便于回滚和人工复核。</li>
+</ul>
+<h2>适合直接访问本站的用户</h2>
+<p>这类指南面向开发者、站长、运营、学生和办公用户。用户可以不经过搜索引擎，直接从首页、指南中心或收藏夹进入，按任务选择 JSON、编码、文本、时间、网络、计算和参考类工具。</p>
+<p>本站的目标不是堆砌关键词，而是把常见在线工具的使用边界写清楚：哪些输入适合浏览器里快速处理，哪些结果需要权威来源确认，哪些敏感信息不应该粘贴进通用网页工具。</p>
+</section>
+
+<section class="ymir-guide-related" aria-label="相关工具入口">
+  <h2>相关工具入口</h2>
+  <div class="ymir-guide-related-grid">
+    <a href="/httpheader/">HTTP Header 对照</a>
+    <a href="/ports/">常见端口</a>
+    <a href="/ip2long/">IP 与整数转换</a>
+    <a href="/subnetmask/">子网掩码计算器</a>
+  </div>
+</section>
+</div>
+</body></html>

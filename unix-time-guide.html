@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unix 时间戳转换工具使用说明 - Ymir Tool</title>
+<meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" name="description">
+<link href="https://ymirtool.com/unix-time-guide.html" rel="canonical"/>
+<meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" property="og:title"/>
+<meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/unix-time-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" name="twitter:title"/>
+<meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Unix 时间戳转换工具使用说明 - Ymir Tool","headline":"Unix 时间戳转换工具使用说明","url":"https://ymirtool.com/unix-time-guide.html","description":"Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。","dateModified":"2026-05-31","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+</meta></meta></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 时间戳</p>
+<h1>Unix 时间戳转换工具使用说明</h1>
+<p>Unix 时间戳常用于接口、数据库、日志、缓存和任务调度。转换时最常见的问题是秒级和毫秒级混淆，以及 UTC 与本地时区理解不一致。</p>
+<section aria-label="工具入口" class="ymir-guide-cta">
+<div>
+<strong>Unix 时间戳说明</strong>
+<p>输入秒级或毫秒级时间戳，转换为可读日期，并核对时区。</p>
+</div>
+<a class="ymir-guide-cta-button" href="/unixtime/">打开 Unix 时间戳转换工具</a>
+</section>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/unixtime/">Unix 时间戳转换工具</a></li>
+<li><a href="/shizhong/">在线时钟</a></li>
+<li><a href="/time-tools-guide.html">时间工具指南</a></li>
+<li><a href="/json/">JSON 格式化工具</a></li>
+</ul>
+<h2>常见场景</h2>
+<ul>
+<li>把接口返回的时间戳转换为可读时间。</li>
+<li>确认日志时间是否与本地时间一致。</li>
+<li>检查缓存过期时间和定时任务时间。</li>
+<li>排查前后端时区显示差异。</li>
+</ul>
+<h2>使用建议</h2>
+<ol>
+<li>先判断时间戳是 10 位秒级还是 13 位毫秒级。</li>
+<li>确认目标时间使用 UTC 还是本地时区。</li>
+<li>跨地区业务应明确存储时间和展示时间的规则。</li>
+<li>调试时记录原始时间戳，避免只保存转换后的文本。</li>
+</ol>
+<h2>常见错误</h2>
+<ul>
+<li>把毫秒级时间戳当成秒级转换。</li>
+<li>把本地时间误认为 UTC 时间。</li>
+<li>接口文档没有说明单位和时区。</li>
+<li>夏令时地区的展示时间未复核。</li>
+</ul>
+<h2>FAQ</h2>
+<h3>10 位和 13 位时间戳有什么区别？</h3>
+<p>常见 10 位是秒级，13 位是毫秒级。不同系统也可能使用其他精度，需结合文档确认。</p>
+<h3>为什么转换结果差 8 小时？</h3>
+<p>通常是 UTC 与北京时间或本地时区的展示差异，不一定是时间戳本身错误。</p>
+<h3>数据库里应该存本地时间吗？</h3>
+<p>很多系统会统一存 UTC 或时间戳，再按用户所在时区展示。具体规则应由业务系统确定。</p>
+<p><a class="btn btn-primary" href="/unixtime/">打开时间戳转换工具</a></p>
+<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>时间戳常见误差</h2><p>Unix 时间戳转换最容易出错的地方是秒级与毫秒级混用，以及 UTC 与本地时区混用。排查日志、接口和数据库时间时，应同时记录原始值、单位和时区。</p><ul><li>10 位数字通常是秒级，13 位数字通常是毫秒级。</li><li>展示给用户的时间需要确认目标地区和夏令时规则。</li><li>跨系统对账时不要只复制格式化后的日期，要保留原始时间戳。</li></ul></section>
+<section aria-label="相关工具入口" class="ymir-guide-related">
+<h2>相关工具入口</h2>
+<div class="ymir-guide-related-grid">
+<a href="/worldtime/">世界时间</a>
+<a href="/calctime/">时间换算</a>
+<a href="/time-tools-guide.html">时间工具指南</a>
+<a href="/shizhong/">在线时钟</a>
+</div>
+</section>
+
+<section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
+<h2>深入工作流：时间戳排查先判断单位，再判断时区</h2>
+<p>Unix 时间戳在日志、API、数据库、消息队列和分析事件中很常见。排查错误时，最重要的两个问题是单位和时区。10 位通常是秒，13 位通常是毫秒，但这只是经验，不是协议。某些系统还会使用微秒、纳秒或字符串形式。若单位判断错，转换结果会偏离几十年甚至几万年。</p><p>时区问题更隐蔽。时间戳本身通常表示一个绝对时间点，但人类可读时间需要选择时区。服务器日志可能是 UTC，运营后台可能显示本地时间，用户截图可能来自另一个国家。做事故复盘时，应统一使用 UTC 记录核心时间线，再在必要时补充本地时间。</p>
+<h2>操作前后的复核清单</h2>
+<ul><li>先用位数和来源系统判断秒、毫秒、微秒或纳秒。</li><li>把转换结果与已知事件核对，例如部署时间、订单创建时间或告警触发时间。</li><li>记录输出时区，不要只写 10:30 这种缺少日期和时区的时间。</li><li>日期转时间戳时，要明确当天零点属于哪个时区。</li></ul>
+<h2>真实排查案例</h2>
+<p>案例：某事件上报时间比实际晚 8 小时。检查后发现后端保存的是 UTC 时间戳，前端展示时又按本地时间字符串重新解析，导致转换链路重复应用时区。问题不在时间戳数值，而在显示层解释方式。</p>
+<h2>建议的工具链</h2>
+<p>单个工具只能完成一个局部动作。更稳妥的方式是把相关页面串成检查链，先整理输入，再做转换或对比，最后保存结论。</p>
+<div class="ymir-guide-related-grid"><a href="/unixtime/">Unix 时间戳转换</a><a href="/worldtime/">世界时间</a><a href="/shizhong/">时钟</a><a href="/calctime/">时间计算</a></div>
+<h2>何时不要只依赖在线工具</h2>
+<p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
+</section>
+</div>
+</body>
+</html>

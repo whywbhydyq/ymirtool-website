@@ -1,0 +1,538 @@
+/* Ymir Tool v56 Visual Reset
+   A decisive visual reset: stronger contrast, no safety-note cards, stable topbar actions,
+   less box-in-box, sharper developer-tool workspaces. No Tailwind/Shadcn/Monaco/Vite. */
+:root {
+  --ymir-bg: #f5f7fb;
+  --ymir-bg-radial: linear-gradient(180deg, #ffffff 0%, #f5f7fb 54%, #f7f9fc 100%);
+  --ymir-surface: #ffffff;
+  --ymir-surface-solid: #ffffff;
+  --ymir-surface-soft: #f8fafc;
+  --ymir-surface-code: #fbfcff;
+  --ymir-border-subtle: #d9e0ea;
+  --ymir-border-strong: #c8d2df;
+  --ymir-text-main: #0b1020;
+  --ymir-text-muted: #5f6f84;
+  --ymir-text-soft: #8a98aa;
+  --ymir-primary: #111827;
+  --ymir-primary-hover: #020617;
+  --ymir-accent: #2563eb;
+  --ymir-accent-2: #10b981;
+  --ymir-danger: #dc2626;
+  --ymir-danger-soft: #fff1f2;
+  --ymir-success: #059669;
+  --ymir-success-soft: #ecfdf5;
+  --ymir-warning: #f59e0b;
+  --ymir-warning-soft: #fffbeb;
+  --ymir-radius-xl: 20px;
+  --ymir-radius-lg: 16px;
+  --ymir-radius-md: 12px;
+  --ymir-shadow-soft: 0 10px 30px rgba(15,23,42,.08);
+  --ymir-shadow-hover: 0 16px 42px rgba(15,23,42,.12);
+  --ymir-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --ymir-sans: Inter, Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+html[data-theme="dark"] {
+  --ymir-bg: #080b12;
+  --ymir-bg-radial: linear-gradient(180deg, #0b1020 0%, #070b12 100%);
+  --ymir-surface: #111827;
+  --ymir-surface-solid: #111827;
+  --ymir-surface-soft: #0f172a;
+  --ymir-surface-code: #0b1220;
+  --ymir-border-subtle: #253146;
+  --ymir-border-strong: #344258;
+  --ymir-text-main: #e5edf8;
+  --ymir-text-muted: #a9b7ca;
+  --ymir-text-soft: #748299;
+  --ymir-primary: #e5edf8;
+  --ymir-primary-hover: #ffffff;
+  --ymir-accent: #60a5fa;
+  --ymir-accent-2: #34d399;
+  --ymir-danger: #fb7185;
+  --ymir-danger-soft: rgba(251,113,133,.10);
+  --ymir-success: #34d399;
+  --ymir-success-soft: rgba(52,211,153,.10);
+  --ymir-warning: #fbbf24;
+  --ymir-warning-soft: rgba(251,191,36,.10);
+  --ymir-shadow-soft: 0 16px 42px rgba(0,0,0,.30);
+  --ymir-shadow-hover: 0 18px 48px rgba(0,0,0,.42);
+}
+html.ymir-modern-html, body.ymir-modern-body {
+  background: var(--ymir-bg-radial) !important;
+  color: var(--ymir-text-main) !important;
+  font-family: var(--ymir-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Stable topbar */
+body.ymir-modern-body .ymir-topbar { min-height: 58px !important; background: rgba(255,255,255,.92) !important; border-bottom:1px solid var(--ymir-border-subtle) !important; backdrop-filter: blur(14px) saturate(1.18) !important; box-shadow: none !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-topbar { background: rgba(8,11,18,.90) !important; }
+body.ymir-modern-body .ymir-topbar-inner { width:min(1200px, calc(100% - 48px)) !important; min-height:58px !important; margin:0 auto !important; display:grid !important; grid-template-columns: 1fr auto 1fr !important; align-items:center !important; gap:18px !important; }
+body.ymir-modern-body .ymir-brand { justify-self:start !important; display:inline-flex !important; align-items:center !important; gap:10px !important; color:var(--ymir-text-main) !important; font-weight:760 !important; letter-spacing:-.03em !important; text-decoration:none !important; }
+body.ymir-modern-body .ymir-brand-mark { width:32px !important; height:32px !important; border-radius:10px !important; display:grid !important; place-items:center !important; background:var(--ymir-primary) !important; color:var(--ymir-bg) !important; box-shadow: 0 10px 22px rgba(15,23,42,.16) !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-brand-mark { background:#e5edf8 !important; color:#0b1020 !important; }
+body.ymir-modern-body .ymir-nav { justify-self:center !important; display:flex !important; align-items:center !important; gap:26px !important; min-width:0 !important; }
+body.ymir-modern-body .ymir-nav a { color:var(--ymir-text-muted) !important; font-weight:560 !important; font-size:14px !important; letter-spacing:.004em !important; text-decoration:none !important; border-radius:10px !important; padding:7px 4px !important; }
+body.ymir-modern-body .ymir-nav a:hover { color:var(--ymir-text-main) !important; background:transparent !important; }
+body.ymir-modern-body .ymir-topbar-actions { justify-self:end !important; display:flex !important; align-items:center !important; gap:10px !important; min-height:38px !important; }
+body.ymir-modern-body .ymir-lang-toggle { display:flex !important; align-items:center !important; gap:2px !important; padding:3px !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:12px !important; background:var(--ymir-surface-soft) !important; box-shadow:none !important; }
+body.ymir-modern-body .ymir-lang-toggle button { height:28px !important; min-width:42px !important; padding:0 9px !important; border:0 !important; border-radius:9px !important; background:transparent !important; color:var(--ymir-text-muted) !important; font-size:12px !important; font-weight:700 !important; }
+body.ymir-modern-body .ymir-lang-toggle button.is-active { background:var(--ymir-primary) !important; color:var(--ymir-bg) !important; box-shadow:0 5px 12px rgba(15,23,42,.16) !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-lang-toggle button.is-active { background:#e5edf8 !important; color:#0b1020 !important; }
+body.ymir-modern-body .ymir-theme-toggle { width:36px !important; height:36px !important; padding:0 !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:12px !important; background:var(--ymir-surface) !important; color:var(--ymir-text-main) !important; display:grid !important; place-items:center !important; font-size:16px !important; font-weight:800 !important; line-height:1 !important; box-shadow:0 6px 16px rgba(15,23,42,.06) !important; }
+body.ymir-modern-body .ymir-theme-toggle:hover { border-color:var(--ymir-border-strong) !important; transform:translateY(-1px) !important; }
+/* Remove obsolete note cards even if stale HTML is served */
+body.ymir-modern-body .ymir-obsolete-note { display:none !important; }
+/* Homepage reset: less fog, stronger anchors */
+body.ymir-modern-body .ymir-home-dashboard { padding-top:42px !important; gap:24px !important; }
+body.ymir-modern-body .ymir-home-intro h1 { color:var(--ymir-text-main) !important; font-weight:780 !important; letter-spacing:-.055em !important; line-height:1 !important; }
+body.ymir-modern-body .ymir-home-intro p { color:var(--ymir-text-muted) !important; font-size:17px !important; line-height:1.7 !important; max-width:560px !important; }
+body.ymir-modern-body .ymir-command-area, body.ymir-modern-body .ymir-quick-access-card, body.ymir-modern-body .ymir-feature-card, body.ymir-modern-body .ymir-directory-panel, body.ymir-modern-body .ymir-pattern-panel { background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-subtle) !important; box-shadow:var(--ymir-shadow-soft) !important; border-radius:var(--ymir-radius-xl) !important; backdrop-filter:none !important; }
+body.ymir-modern-body .ymir-command-search { background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-strong) !important; box-shadow: inset 0 1px 2px rgba(15,23,42,.04) !important; }
+body.ymir-modern-body .ymir-command-search:focus-within { border-color:var(--ymir-accent) !important; box-shadow:0 0 0 4px rgba(37,99,235,.12), inset 0 1px 2px rgba(15,23,42,.04) !important; }
+body.ymir-modern-body .ymir-quick-try button, body.ymir-modern-body .ymir-value-chip { background:var(--ymir-surface-soft) !important; border:1px solid var(--ymir-border-subtle) !important; color:var(--ymir-text-muted) !important; border-radius:999px !important; box-shadow:none !important; }
+body.ymir-modern-body .ymir-quick-try button:hover { color:var(--ymir-accent) !important; border-color:rgba(37,99,235,.38) !important; transform:translateY(-1px) !important; }
+body.ymir-modern-body .ymir-feature-card { position:relative !important; border-left:0 !important; background:var(--ymir-surface) !important; transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease !important; }
+body.ymir-modern-body .ymir-feature-card::before { display:none !important; }
+body.ymir-modern-body .ymir-feature-card:hover { transform:translateY(-2px) !important; box-shadow:var(--ymir-shadow-hover) !important; border-color:var(--ymir-border-strong) !important; }
+body.ymir-modern-body .ymir-feature-icon, body.ymir-modern-body .ymir-mini-icon, body.ymir-modern-body .ymir-directory-icon { background:var(--ymir-surface-soft) !important; color:var(--ymir-primary) !important; border:1px solid var(--ymir-border-subtle) !important; box-shadow:none !important; }
+body.ymir-modern-body .ymir-tool-star { opacity:0 !important; transition:opacity .14s ease, transform .14s ease !important; }
+body.ymir-modern-body .ymir-feature-card:hover .ymir-tool-star { opacity:1 !important; }
+body.ymir-modern-body .ymir-quick-tab.is-active, body.ymir-modern-body .ymir-directory-tab.is-active, body.ymir-modern-body .ymir-pattern-tab.is-active { background:var(--ymir-primary) !important; color:var(--ymir-bg) !important; box-shadow:0 7px 18px rgba(15,23,42,.14) !important; }
+/* Tool pages: flatten the shell and make panels the main surface */
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51[data-ymir-tool], body.ymir-modern-body .ymir-page[data-ymir-tool] { width:min(1160px, calc(100% - 48px)) !important; max-width:1160px !important; padding:22px 0 46px !important; display:grid !important; grid-template-columns:repeat(12,minmax(0,1fr)) !important; gap:16px !important; background:transparent !important; }
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-tool-root { grid-column:1 / -1 !important; }
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench, body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench { background:transparent !important; border:0 !important; box-shadow:none !important; border-radius:0 !important; overflow:visible !important; }
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench::before, body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench::before { display:none !important; }
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench__header, body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header { padding:8px 0 18px !important; border:0 !important; background:transparent !important; display:flex !important; align-items:center !important; gap:16px !important; }
+body.ymir-modern-body .ymir-vue-title-block { gap:14px !important; align-items:center !important; }
+body.ymir-modern-body .ymir-vue-tool-icon { width:42px !important; height:42px !important; border-radius:13px !important; background:var(--ymir-primary) !important; color:var(--ymir-bg) !important; box-shadow:0 10px 24px rgba(15,23,42,.16) !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-tool-icon { background:#e5edf8 !important; color:#0b1020 !important; }
+body.ymir-modern-body .ymir-vue-workbench__eyebrow { color:var(--ymir-text-soft) !important; font-size:12px !important; font-weight:720 !important; margin:0 0 4px !important; }
+body.ymir-modern-body .ymir-vue-workbench__header h2 { color:var(--ymir-text-main) !important; font-size:clamp(1.72rem,2vw,2.3rem) !important; line-height:1.08 !important; letter-spacing:-.045em !important; font-weight:780 !important; }
+body.ymir-modern-body .ymir-vue-workbench__header p:not(.ymir-vue-workbench__eyebrow) { color:var(--ymir-text-muted) !important; font-size:14px !important; line-height:1.5 !important; margin-top:5px !important; max-width:720px !important; }
+body.ymir-modern-body .ymir-vue-tag-row { margin-top:10px !important; }
+body.ymir-modern-body .ymir-vue-tag-row .el-tag { height:24px !important; border:1px solid rgba(37,99,235,.20) !important; background:rgba(37,99,235,.07) !important; color:var(--ymir-accent) !important; border-radius:999px !important; font-weight:720 !important; }
+body.ymir-modern-body .ymir-vue-body, body.ymir-modern-body .ymir-vue-grid, body.ymir-modern-body .ymir-vue-crypto-grid, body.ymir-modern-body .ymir-vue-highrisk-grid, body.ymir-modern-body .ymir-vue-textref-grid, body.ymir-modern-body .ymir-vue-websocket-layout { display:grid !important; grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important; gap:16px !important; padding:0 !important; align-items:stretch !important; }
+body.ymir-modern-body .ymir-vue-panel, body.ymir-modern-body .ymir-vue-editor-card, body.ymir-modern-body .ymir-vue-app .el-card { background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:var(--ymir-radius-lg) !important; box-shadow:var(--ymir-shadow-soft) !important; overflow:hidden !important; }
+body.ymir-modern-body .ymir-vue-app .el-card__header, body.ymir-modern-body .ymir-vue-editor-card__head { background:var(--ymir-surface-soft) !important; border-bottom:1px solid var(--ymir-border-subtle) !important; padding:10px 14px !important; }
+body.ymir-modern-body .ymir-vue-panel__title { color:var(--ymir-text-main) !important; font-weight:760 !important; }
+body.ymir-modern-body .ymir-vue-panel__meta { color:var(--ymir-text-muted) !important; font-family:var(--ymir-mono) !important; font-weight:600 !important; }
+body.ymir-modern-body .ymir-vue-editor-frame { background:var(--ymir-surface-code) !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:14px !important; overflow:hidden !important; box-shadow:inset 0 1px 2px rgba(15,23,42,.035) !important; }
+body.ymir-modern-body .ymir-vue-app .el-textarea__inner, body.ymir-modern-body .ymir-vue-editor-card textarea { min-height:clamp(260px,34vh,380px) !important; background:var(--ymir-surface-code) !important; color:var(--ymir-text-main) !important; border:0 !important; box-shadow:none !important; border-radius:0 !important; font-family:var(--ymir-mono) !important; font-size:13px !important; line-height:1.65 !important; }
+body.ymir-modern-body .ymir-vue-output .el-textarea__inner { background:var(--ymir-surface-code) !important; color:var(--ymir-text-main) !important; }
+body.ymir-modern-body .ymir-vue-editor-status { background:var(--ymir-surface-soft) !important; border-top:1px solid var(--ymir-border-subtle) !important; color:var(--ymir-text-muted) !important; font-family:var(--ymir-mono) !important; }
+body.ymir-modern-body .ymir-vue-actions { margin:16px 0 0 !important; padding:12px 14px !important; background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:var(--ymir-radius-lg) !important; box-shadow:var(--ymir-shadow-soft) !important; display:flex !important; flex-wrap:wrap !important; align-items:center !important; gap:10px !important; }
+body.ymir-modern-body .ymir-vue-actions::before { content:'操作'; color:var(--ymir-text-soft); font-size:12px; font-weight:720; margin-right:auto; }
+html[lang^="en"] body.ymir-modern-body .ymir-vue-actions::before { content:'Actions'; }
+body.ymir-modern-body .ymir-vue-actions .el-button, body.ymir-modern-body .ymir-vue-actions button, body.ymir-modern-body .ymir-action-button { min-height:38px !important; border-radius:11px !important; padding:0 16px !important; border:1px solid var(--ymir-border-subtle) !important; background:var(--ymir-surface) !important; color:var(--ymir-text-main) !important; font-weight:720 !important; box-shadow:none !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button--primary, body.ymir-modern-body .ymir-action-button--primary { background:var(--ymir-primary) !important; border-color:var(--ymir-primary) !important; color:var(--ymir-bg) !important; box-shadow:0 10px 22px rgba(15,23,42,.16) !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions .el-button--primary, html[data-theme="dark"] body.ymir-modern-body .ymir-action-button--primary { background:#e5edf8 !important; border-color:#e5edf8 !important; color:#0b1020 !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button--danger, body.ymir-modern-body .ymir-action-button--danger { color:var(--ymir-text-main) !important; border-color:var(--ymir-border-subtle) !important; background:var(--ymir-surface) !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button--danger:hover, body.ymir-modern-body .ymir-action-button--danger:hover { color:var(--ymir-danger) !important; background:var(--ymir-danger-soft) !important; border-color:rgba(220,38,38,.25) !important; }
+body.ymir-modern-body .ymir-vue-status, body.ymir-modern-body .ymir-vue-message { margin:12px 0 0 !important; background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-subtle) !important; border-left:4px solid var(--ymir-accent-2) !important; color:var(--ymir-text-muted) !important; border-radius:14px !important; box-shadow:none !important; padding:10px 13px !important; }
+/* Result rows for hash/generator tools */
+body.ymir-modern-body .ymir-result-row, body.ymir-modern-body .ymir-vue-result-row, body.ymir-modern-body .ymir-vue-result-card { background:var(--ymir-surface-soft) !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:14px !important; box-shadow:none !important; color:var(--ymir-text-main) !important; }
+body.ymir-modern-body .ymir-result-value, body.ymir-modern-body .ymir-vue-result-value, body.ymir-modern-body code, body.ymir-modern-body pre { font-family:var(--ymir-mono) !important; color:var(--ymir-text-main) !important; }
+/* Second screen: compact, no warning-like card */
+body.ymir-modern-body .ymir-help, body.ymir-modern-body .ymir-faq, body.ymir-modern-body .ymir-related { grid-column:span 6 !important; background:var(--ymir-surface) !important; border:1px solid var(--ymir-border-subtle) !important; border-radius:var(--ymir-radius-lg) !important; box-shadow:var(--ymir-shadow-soft) !important; padding:20px !important; min-height:0 !important; }
+body.ymir-modern-body .ymir-help h2, body.ymir-modern-body .ymir-faq h2, body.ymir-modern-body .ymir-related h2 { color:var(--ymir-text-main) !important; font-size:18px !important; line-height:1.25 !important; margin:0 0 12px !important; letter-spacing:-.02em !important; }
+body.ymir-modern-body .ymir-help h2::before, body.ymir-modern-body .ymir-faq h2::before, body.ymir-modern-body .ymir-related h2::before { content:'' !important; display:block !important; width:34px !important; height:3px !important; border-radius:999px !important; background:var(--ymir-accent) !important; margin-bottom:10px !important; }
+body.ymir-modern-body .ymir-help p, body.ymir-modern-body .ymir-faq p { color:var(--ymir-text-muted) !important; font-size:14px !important; line-height:1.62 !important; }
+body.ymir-modern-body .ymir-related-grid a { border:1px solid var(--ymir-border-subtle) !important; background:var(--ymir-surface-soft) !important; border-radius:12px !important; color:var(--ymir-text-main) !important; font-weight:700 !important; }
+/* Element Plus dark and contrast patches */
+body.ymir-modern-body .el-input__wrapper, body.ymir-modern-body .el-select__wrapper, body.ymir-modern-body .el-textarea__inner { background:var(--ymir-surface-code) !important; color:var(--ymir-text-main) !important; border-color:var(--ymir-border-subtle) !important; box-shadow:none !important; }
+body.ymir-modern-body .el-popper, body.ymir-modern-body .el-select-dropdown, body.ymir-modern-body .el-dropdown-menu { background:var(--ymir-surface) !important; border-color:var(--ymir-border-subtle) !important; color:var(--ymir-text-main) !important; }
+@media (max-width: 900px) { body.ymir-modern-body .ymir-topbar-inner { grid-template-columns:1fr auto !important; width:min(100% - 28px, 1200px) !important; } body.ymir-modern-body .ymir-nav { display:none !important; } body.ymir-modern-body .ymir-vue-body, body.ymir-modern-body .ymir-vue-grid, body.ymir-modern-body .ymir-vue-crypto-grid, body.ymir-modern-body .ymir-vue-highrisk-grid, body.ymir-modern-body .ymir-vue-textref-grid { grid-template-columns:1fr !important; } body.ymir-modern-body .ymir-help, body.ymir-modern-body .ymir-faq, body.ymir-modern-body .ymir-related { grid-column:1 / -1 !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition:none !important; animation:none !important; } }
+
+/* v56 audit-required theme coverage */
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+body.ymir-modern-body .el-select__popper,
+body.ymir-modern-body .el-dropdown__popper,
+body.ymir-modern-body .el-popper,
+body.ymir-modern-body .el-select-dropdown,
+body.ymir-modern-body .el-dropdown-menu {
+  background: var(--ymir-surface) !important;
+  border-color: var(--ymir-border-subtle) !important;
+  color: var(--ymir-text-main) !important;
+}
+body.ymir-modern-body .el-table,
+body.ymir-modern-body .el-table__body,
+body.ymir-modern-body .el-table__header,
+body.ymir-modern-body .el-table tr,
+body.ymir-modern-body .el-table th.el-table__cell,
+body.ymir-modern-body .el-table td.el-table__cell {
+  background: var(--ymir-surface) !important;
+  color: var(--ymir-text-main) !important;
+  border-color: var(--ymir-border-subtle) !important;
+}
+body.ymir-modern-body .el-checkbox__inner,
+body.ymir-modern-body .el-radio__inner {
+  background: var(--ymir-surface) !important;
+  border-color: var(--ymir-border-strong) !important;
+}
+
+/* === v58 strict tool page visual interaction control ===
+   Purpose: hard-control the tool UI after v56. The core target is a compact,
+   predictable developer workbench: stable header, editor rows with real gutter
+   alignment, strong primary actions, no oversized boxes, no weak contrast. */
+:root {
+  --ymir-v58-bg: #f6f8fb;
+  --ymir-v58-surface: #ffffff;
+  --ymir-v58-panel: #fbfdff;
+  --ymir-v58-panel-2: #f3f6fa;
+  --ymir-v58-text: #0b1020;
+  --ymir-v58-muted: #5d6b7e;
+  --ymir-v58-soft: #8a97a8;
+  --ymir-v58-border: #ccd7e5;
+  --ymir-v58-border-soft: #e3e9f2;
+  --ymir-v58-primary: #0f172a;
+  --ymir-v58-accent: #2563eb;
+  --ymir-v58-green: #10b981;
+  --ymir-v58-danger: #dc2626;
+  --ymir-v58-shadow: 0 14px 34px rgba(15, 23, 42, .08);
+  --ymir-v58-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+html[data-theme="dark"] {
+  --ymir-v58-bg: #0b101a;
+  --ymir-v58-surface: #111827;
+  --ymir-v58-panel: #0f172a;
+  --ymir-v58-panel-2: #162033;
+  --ymir-v58-text: #e7edf7;
+  --ymir-v58-muted: #a8b3c5;
+  --ymir-v58-soft: #7d8aa1;
+  --ymir-v58-border: #2b374a;
+  --ymir-v58-border-soft: #1f2a3b;
+  --ymir-v58-primary: #e7edf7;
+  --ymir-v58-accent: #60a5fa;
+  --ymir-v58-green: #34d399;
+  --ymir-v58-danger: #fb7185;
+  --ymir-v58-shadow: 0 16px 38px rgba(0, 0, 0, .28);
+}
+
+/* Header must not wrap or drift. */
+body.ymir-modern-body .ymir-topbar {
+  height: 64px !important;
+  min-height: 64px !important;
+  background: color-mix(in srgb, var(--ymir-v58-surface) 88%, transparent) !important;
+  border-bottom: 1px solid var(--ymir-v58-border-soft) !important;
+  backdrop-filter: blur(16px) !important;
+}
+body.ymir-modern-body .ymir-topbar-inner {
+  height: 64px !important;
+  display: grid !important;
+  grid-template-columns: minmax(190px, 1fr) auto minmax(190px, 1fr) !important;
+  align-items: center !important;
+  gap: 20px !important;
+  width: min(100% - 64px, 1200px) !important;
+  margin-inline: auto !important;
+}
+body.ymir-modern-body .ymir-brand { justify-self: start !important; color: var(--ymir-v58-text) !important; font-weight: 760 !important; letter-spacing: -.02em !important; }
+body.ymir-modern-body .ymir-brand-mark { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%) !important; color: #fff !important; box-shadow: 0 8px 18px rgba(37,99,235,.22) !important; }
+body.ymir-modern-body .ymir-nav { justify-self: center !important; display: flex !important; align-items: center !important; gap: 30px !important; white-space: nowrap !important; }
+body.ymir-modern-body .ymir-nav a { font-weight: 650 !important; color: var(--ymir-v58-muted) !important; font-size: 14px !important; }
+body.ymir-modern-body .ymir-nav a:hover { color: var(--ymir-v58-text) !important; }
+body.ymir-modern-body .ymir-topbar-actions { justify-self: end !important; display: inline-flex !important; align-items: center !important; gap: 10px !important; flex-wrap: nowrap !important; }
+body.ymir-modern-body .ymir-lang-toggle { display: inline-flex !important; align-items: center !important; gap: 4px !important; border: 1px solid var(--ymir-v58-border) !important; border-radius: 14px !important; padding: 3px !important; background: var(--ymir-v58-surface) !important; box-shadow: 0 5px 14px rgba(15,23,42,.05) !important; }
+body.ymir-modern-body .ymir-lang-toggle button,
+body.ymir-modern-body .ymir-theme-toggle { height: 34px !important; min-width: 38px !important; border-radius: 10px !important; border: 1px solid transparent !important; background: transparent !important; color: var(--ymir-v58-muted) !important; font-weight: 720 !important; }
+body.ymir-modern-body .ymir-lang-toggle button.is-active,
+body.ymir-modern-body .ymir-theme-toggle:hover { background: var(--ymir-v58-primary) !important; color: var(--ymir-v58-bg) !important; border-color: var(--ymir-v58-primary) !important; }
+html[data-theme="dark"] body.ymir-modern-body .ymir-lang-toggle button.is-active,
+html[data-theme="dark"] body.ymir-modern-body .ymir-theme-toggle:hover { color: #0b1020 !important; }
+
+/* Tool page: strict vertical rhythm and no outer box. */
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51[data-ymir-tool],
+body.ymir-modern-body .ymir-page[data-ymir-tool] {
+  width: min(1180px, calc(100% - 64px)) !important;
+  max-width: 1180px !important;
+  padding: 28px 0 54px !important;
+  gap: 16px !important;
+  background: transparent !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+body.ymir-modern-body .ymir-tool-shell-v51 .ymir-vue-workbench::before,
+body.ymir-modern-body .ymir-page.ymir-tool-page-v51 .ymir-vue-workbench::before,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench::before { display: none !important; }
+body.ymir-modern-body .ymir-vue-workbench__header {
+  min-height: 86px !important;
+  padding: 0 0 18px !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+body.ymir-modern-body .ymir-vue-title-block { gap: 14px !important; align-items: center !important; }
+body.ymir-modern-body .ymir-vue-tool-icon {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  background: var(--ymir-v58-primary) !important;
+  color: var(--ymir-v58-bg) !important;
+  box-shadow: 0 12px 28px rgba(15,23,42,.18) !important;
+  flex: 0 0 auto !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-tool-icon { color: #0b1020 !important; }
+body.ymir-modern-body .ymir-vue-workbench__eyebrow { margin: 0 0 3px !important; color: var(--ymir-v58-muted) !important; font-size: 12px !important; font-weight: 720 !important; letter-spacing: .01em !important; }
+body.ymir-modern-body .ymir-vue-workbench__header h2 {
+  color: var(--ymir-v58-text) !important;
+  font-size: clamp(1.75rem, 2.2vw, 2.35rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.045em !important;
+  margin: 0 !important;
+}
+body.ymir-modern-body .ymir-vue-workbench__header p:not(.ymir-vue-workbench__eyebrow) { margin: 6px 0 0 !important; color: var(--ymir-v58-muted) !important; font-size: 14px !important; line-height: 1.45 !important; max-width: 720px !important; }
+body.ymir-modern-body .ymir-vue-tag-row { margin-top: 8px !important; }
+body.ymir-modern-body .ymir-vue-tag-row .el-tag { height: 22px !important; padding: 0 8px !important; border-radius: 999px !important; background: color-mix(in srgb, var(--ymir-v58-accent) 9%, transparent) !important; color: var(--ymir-v58-accent) !important; border: 1px solid color-mix(in srgb, var(--ymir-v58-accent) 18%, transparent) !important; font-size: 11px !important; font-weight: 760 !important; }
+
+/* Workbench grid: stable dimensions, no stacked line numbers. */
+body.ymir-modern-body .ymir-vue-body,
+body.ymir-modern-body .ymir-vue-grid,
+body.ymir-modern-body .ymir-vue-crypto-grid,
+body.ymir-modern-body .ymir-vue-highrisk-grid,
+body.ymir-modern-body .ymir-vue-textref-grid,
+body.ymir-modern-body .ymir-vue-websocket-layout {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  align-items: start !important;
+}
+body.ymir-modern-body .ymir-vue-panel,
+body.ymir-modern-body .ymir-vue-app .el-card {
+  background: var(--ymir-v58-surface) !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+body.ymir-modern-body .ymir-vue-app .el-card__header {
+  height: 42px !important;
+  padding: 0 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  background: var(--ymir-v58-panel-2) !important;
+  border-bottom: 1px solid var(--ymir-v58-border-soft) !important;
+}
+body.ymir-modern-body .ymir-vue-panel__top { width: 100% !important; display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important; }
+body.ymir-modern-body .ymir-vue-panel__title { color: var(--ymir-v58-text) !important; font-size: 13px !important; font-weight: 780 !important; display: inline-flex !important; align-items: center !important; gap: 7px !important; }
+body.ymir-modern-body .ymir-vue-panel__dot { width: 10px !important; height: 10px !important; border-radius: 999px !important; background: var(--ymir-v58-accent) !important; box-shadow: 0 0 0 4px color-mix(in srgb, var(--ymir-v58-accent) 13%, transparent) !important; }
+body.ymir-modern-body .ymir-vue-panel__meta { color: var(--ymir-v58-muted) !important; font-family: var(--ymir-v58-mono) !important; font-size: 12px !important; font-weight: 650 !important; white-space: nowrap !important; }
+body.ymir-modern-body .ymir-vue-app .el-card__body { padding: 12px !important; }
+
+body.ymir-modern-body .ymir-vue-editor-frame {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  grid-template-rows: minmax(320px, 38vh) 32px !important;
+  min-height: 352px !important;
+  max-height: 462px !important;
+  background: var(--ymir-v58-panel) !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  border-radius: 13px !important;
+  overflow: hidden !important;
+  box-shadow: inset 0 1px 2px rgba(15,23,42,.035) !important;
+}
+body.ymir-modern-body .ymir-vue-line-gutter {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+  padding: 13px 8px 13px 0 !important;
+  list-style: none !important;
+  overflow: hidden !important;
+  border-right: 1px solid var(--ymir-v58-border-soft) !important;
+  background: color-mix(in srgb, var(--ymir-v58-panel-2) 82%, transparent) !important;
+  color: var(--ymir-v58-soft) !important;
+  font-family: var(--ymir-v58-mono) !important;
+  font-size: 12px !important;
+  line-height: 1.65 !important;
+  text-align: right !important;
+  user-select: none !important;
+}
+body.ymir-modern-body .ymir-vue-line-gutter li { height: 21.45px !important; min-height: 21.45px !important; }
+body.ymir-modern-body .ymir-vue-editor-input {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  background: var(--ymir-v58-panel) !important;
+}
+body.ymir-modern-body .ymir-vue-editor-input .el-textarea,
+body.ymir-modern-body .ymir-vue-editor-input .el-textarea__inner,
+body.ymir-modern-body .ymir-vue-app .el-textarea__inner {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 320px !important;
+  resize: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--ymir-v58-panel) !important;
+  color: var(--ymir-v58-text) !important;
+  box-shadow: none !important;
+  padding: 13px 14px !important;
+  font-family: var(--ymir-v58-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  tab-size: 2 !important;
+}
+body.ymir-modern-body .ymir-vue-editor-input .el-textarea__inner::placeholder { color: color-mix(in srgb, var(--ymir-v58-muted) 52%, transparent) !important; }
+body.ymir-modern-body .ymir-vue-editor-frame:focus-within { border-color: color-mix(in srgb, var(--ymir-v58-accent) 64%, var(--ymir-v58-border)) !important; box-shadow: 0 0 0 4px color-mix(in srgb, var(--ymir-v58-accent) 12%, transparent) !important; }
+body.ymir-modern-body .ymir-vue-editor-statusbar {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  border-top: 1px solid var(--ymir-v58-border-soft) !important;
+  background: var(--ymir-v58-panel-2) !important;
+  color: var(--ymir-v58-muted) !important;
+  font-family: var(--ymir-v58-mono) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  white-space: nowrap !important;
+}
+body.ymir-modern-body .ymir-vue-editor-token + .ymir-vue-editor-token::before { content: '•'; color: var(--ymir-v58-soft); margin-right: 10px; }
+body.ymir-modern-body .ymir-vue-output .ymir-vue-editor-frame,
+body.ymir-modern-body .ymir-vue-output .ymir-vue-editor-input,
+body.ymir-modern-body .ymir-vue-output .el-textarea__inner { background: color-mix(in srgb, var(--ymir-v58-panel) 92%, var(--ymir-v58-panel-2)) !important; }
+
+/* Action dock: visible hierarchy, predictable height. */
+body.ymir-modern-body .ymir-vue-actions {
+  min-height: 58px !important;
+  margin: 14px 0 0 !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 9px !important;
+  flex-wrap: wrap !important;
+  background: var(--ymir-v58-surface) !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  border-radius: 15px !important;
+  box-shadow: var(--ymir-v58-shadow) !important;
+}
+body.ymir-modern-body .ymir-vue-actions::before { margin-right: auto !important; color: var(--ymir-v58-soft) !important; font-size: 12px !important; font-weight: 740 !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button,
+body.ymir-modern-body .ymir-vue-actions button,
+body.ymir-modern-body .ymir-action-button {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 17px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  background: var(--ymir-v58-surface) !important;
+  color: var(--ymir-v58-text) !important;
+  font-weight: 730 !important;
+  letter-spacing: -.01em !important;
+}
+body.ymir-modern-body .ymir-vue-actions .el-button--primary,
+body.ymir-modern-body .ymir-action-button--primary {
+  background: var(--ymir-v58-primary) !important;
+  border-color: var(--ymir-v58-primary) !important;
+  color: var(--ymir-v58-bg) !important;
+  box-shadow: 0 10px 22px rgba(15,23,42,.16) !important;
+}
+html[data-theme="dark"] body.ymir-modern-body .ymir-vue-actions .el-button--primary,
+html[data-theme="dark"] body.ymir-modern-body .ymir-action-button--primary { color: #0b1020 !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button:hover,
+body.ymir-modern-body .ymir-action-button:hover { transform: translateY(-1px) !important; border-color: color-mix(in srgb, var(--ymir-v58-accent) 42%, var(--ymir-v58-border)) !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button--danger,
+body.ymir-modern-body .ymir-action-button--danger { color: var(--ymir-v58-muted) !important; }
+body.ymir-modern-body .ymir-vue-actions .el-button--danger:hover,
+body.ymir-modern-body .ymir-action-button--danger:hover { color: var(--ymir-v58-danger) !important; background: color-mix(in srgb, var(--ymir-v58-danger) 8%, transparent) !important; border-color: color-mix(in srgb, var(--ymir-v58-danger) 28%, var(--ymir-v58-border)) !important; }
+body.ymir-modern-body .ymir-vue-status,
+body.ymir-modern-body .ymir-vue-message {
+  margin: 12px 0 0 !important;
+  padding: 10px 13px !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  border-left: 4px solid var(--ymir-v58-green) !important;
+  border-radius: 12px !important;
+  background: var(--ymir-v58-surface) !important;
+  color: var(--ymir-v58-muted) !important;
+  box-shadow: none !important;
+}
+
+/* Generator/hash results: compact rows, never black blocks. */
+body.ymir-modern-body .ymir-result-row,
+body.ymir-modern-body .ymir-vue-result-row,
+body.ymir-modern-body .ymir-vue-result-card,
+body.ymir-modern-body .ymir-vue-result-card .el-card {
+  background: var(--ymir-v58-panel-2) !important;
+  border: 1px solid var(--ymir-v58-border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-result-value,
+body.ymir-modern-body .ymir-vue-result-value,
+body.ymir-modern-body .ymir-vue-result-card code,
+body.ymir-modern-body .ymir-vue-result-card pre {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-family: var(--ymir-v58-mono) !important;
+  color: var(--ymir-v58-text) !important;
+  font-size: 13px !important;
+}
+
+/* Second screen: strictly quieter. */
+body.ymir-modern-body .ymir-help,
+body.ymir-modern-body .ymir-faq,
+body.ymir-modern-body .ymir-related {
+  grid-column: span 6 !important;
+  padding: 18px !important;
+  min-height: 0 !important;
+  background: var(--ymir-v58-surface) !important;
+  border: 1px solid var(--ymir-v58-border-soft) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+body.ymir-modern-body .ymir-help h2,
+body.ymir-modern-body .ymir-faq h2,
+body.ymir-modern-body .ymir-related h2 { font-size: 17px !important; color: var(--ymir-v58-text) !important; margin: 0 0 10px !important; }
+body.ymir-modern-body .ymir-help h2::before,
+body.ymir-modern-body .ymir-faq h2::before,
+body.ymir-modern-body .ymir-related h2::before { width: 28px !important; height: 3px !important; background: var(--ymir-v58-accent) !important; margin-bottom: 9px !important; }
+body.ymir-modern-body .ymir-help p,
+body.ymir-modern-body .ymir-faq p { font-size: 14px !important; line-height: 1.58 !important; color: var(--ymir-v58-muted) !important; }
+
+/* Homepage strict polish without changing structure. */
+body.ymir-modern-body .ymir-command-card,
+body.ymir-modern-body .ymir-command-area { border-color: var(--ymir-v58-border) !important; box-shadow: 0 18px 46px rgba(15,23,42,.07) !important; }
+body.ymir-modern-body .ymir-command-input { height: 54px !important; border-color: var(--ymir-v58-border) !important; color: var(--ymir-v58-text) !important; }
+body.ymir-modern-body .ymir-command-input:focus-within { border-color: var(--ymir-v58-accent) !important; box-shadow: 0 0 0 4px color-mix(in srgb, var(--ymir-v58-accent) 13%, transparent) !important; }
+body.ymir-modern-body .ymir-try-link,
+body.ymir-modern-body .ymir-command-chip { background: var(--ymir-v58-panel-2) !important; border: 1px solid var(--ymir-v58-border-soft) !important; color: var(--ymir-v58-muted) !important; border-radius: 999px !important; padding: 3px 10px !important; font-weight: 720 !important; text-decoration: none !important; }
+
+@media (max-width: 900px) {
+  body.ymir-modern-body .ymir-topbar-inner { grid-template-columns: 1fr auto !important; width: min(100% - 28px, 1200px) !important; }
+  body.ymir-modern-body .ymir-nav { display: none !important; }
+  body.ymir-modern-body .ymir-vue-body,
+  body.ymir-modern-body .ymir-vue-grid,
+  body.ymir-modern-body .ymir-vue-crypto-grid,
+  body.ymir-modern-body .ymir-vue-highrisk-grid,
+  body.ymir-modern-body .ymir-vue-textref-grid,
+  body.ymir-modern-body .ymir-vue-websocket-layout { grid-template-columns: 1fr !important; }
+  body.ymir-modern-body .ymir-help,
+  body.ymir-modern-body .ymir-faq,
+  body.ymir-modern-body .ymir-related { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 640px) {
+  body.ymir-modern-body .ymir-page.ymir-tool-page-v51[data-ymir-tool],
+  body.ymir-modern-body .ymir-page[data-ymir-tool] { width: min(100% - 24px, 1180px) !important; padding-top: 18px !important; }
+  body.ymir-modern-body .ymir-vue-workbench__header h2 { font-size: 1.55rem !important; }
+  body.ymir-modern-body .ymir-vue-editor-frame { grid-template-columns: 34px minmax(0, 1fr) !important; grid-template-rows: minmax(270px, 42vh) 32px !important; min-height: 302px !important; }
+  body.ymir-modern-body .ymir-vue-line-gutter { font-size: 11px !important; padding-right: 6px !important; }
+  body.ymir-modern-body .ymir-vue-actions::before { flex-basis: 100% !important; margin-bottom: 2px !important; }
+}

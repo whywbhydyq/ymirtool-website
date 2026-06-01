@@ -1,0 +1,772 @@
+/* Ymir Vue + Element Plus production bridge v20 */
+.ymir-vue-tool-root {
+  max-width: 1180px;
+  margin: 22px auto 0;
+  padding: 0 18px;
+}
+.ymir-vue-app {
+  --ymir-vue-bg: #eef4fb;
+  --ymir-vue-surface: #ffffff;
+  --ymir-vue-border: #c7d7ea;
+  --ymir-vue-strong: #0f172a;
+  --ymir-vue-muted: #526276;
+  --ymir-vue-primary: #2563eb;
+  --ymir-vue-code: #0f172a;
+  --ymir-vue-code-panel: #111827;
+  color: var(--ymir-vue-strong);
+}
+.ymir-vue-app .el-card {
+  border-color: var(--ymir-vue-border);
+  border-radius: 22px;
+}
+.ymir-vue-app .el-card__body { padding: 18px; }
+.ymir-vue-app .el-card__header {
+  padding: 14px 18px;
+  border-bottom-color: #d5e2f2;
+  background: linear-gradient(180deg, #f8fbff, #eef5ff);
+}
+.ymir-vue-workbench {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #b9cbe2;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, .16);
+}
+.ymir-vue-workbench::before {
+  content: "";
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #06b6d4);
+}
+.ymir-vue-workbench__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px 24px 12px;
+}
+.ymir-vue-title-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+.ymir-vue-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #bfd0e7;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 950;
+  box-shadow: 0 14px 28px rgba(37, 99, 235, .22);
+}
+.ymir-vue-workbench__eyebrow {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ymir-vue-workbench__header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -.04em;
+}
+.ymir-vue-workbench__header p {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: #475569;
+  line-height: 1.65;
+}
+.ymir-vue-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.ymir-vue-tag-row .el-tag,
+.ymir-vue-footer-meta .el-tag {
+  border-radius: 999px;
+  font-weight: 800;
+}
+.ymir-vue-lang {
+  flex: 0 0 auto;
+  padding: 4px;
+  border: 1px solid #c7d7ea;
+  border-radius: 14px;
+  background: #fff;
+}
+.ymir-vue-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px 24px 22px;
+}
+.ymir-vue-body--diff,
+.ymir-vue-body--regex,
+.ymir-vue-body--time {
+  align-items: start;
+}
+.ymir-vue-span-2 { grid-column: 1 / -1; }
+.ymir-vue-panel .ymir-vue-panel__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ymir-vue-panel__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 900;
+}
+.ymir-vue-panel__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+}
+.ymir-vue-panel__meta {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+.ymir-vue-app .el-textarea__inner,
+.ymir-vue-app .el-input__wrapper {
+  border-color: #b7c7dc;
+  border-radius: 16px;
+  background: #f8fafc;
+  color: #0f172a;
+  box-shadow: inset 0 0 0 1px #b7c7dc, inset 0 1px 2px rgba(15, 23, 42, .05);
+}
+.ymir-vue-app .el-textarea__inner {
+  min-height: 260px !important;
+  padding: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.ymir-vue-app .el-textarea__inner:focus,
+.ymir-vue-app .el-input__wrapper.is-focus {
+  box-shadow: inset 0 0 0 1px #2563eb, 0 0 0 4px rgba(37, 99, 235, .14);
+}
+.ymir-vue-output .el-textarea__inner,
+.ymir-vue-inline-output .el-textarea__inner {
+  background: #f1f5f9;
+  border-color: #aebfd4;
+}
+.ymir-vue-inline-output { margin-top: 12px; }
+.ymir-vue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 0 24px 18px;
+  padding: 14px;
+  border: 1px solid #c7d7ea;
+  border-radius: 18px;
+  background: #eef4fb;
+}
+.ymir-vue-actions .el-button {
+  min-height: 38px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+.ymir-vue-status { margin: 0 24px 24px; }
+.ymir-vue-status .el-alert {
+  border: 1px solid #c7d7ea;
+  border-radius: 16px;
+}
+.ymir-vue-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 24px 20px;
+}
+.ymir-vue-noscript {
+  max-width: 1180px;
+  margin: 18px auto;
+  padding: 18px;
+  border: 1px solid #c7d7ea;
+  border-radius: 18px;
+  background: #fff7ed;
+  color: #7c2d12;
+}
+.ymir-vue-options {
+  display: grid;
+  gap: 14px;
+}
+.ymir-vue-field {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-weight: 850;
+}
+.ymir-vue-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.ymir-vue-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border: 1px solid #c7d7ea;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 800;
+}
+.ymir-vue-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ymir-vue-result-card,
+.ymir-vue-empty-result,
+.ymir-vue-metric {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #cbd7e8;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f8fafc, #eef4fb);
+}
+.ymir-vue-result-card__label,
+.ymir-vue-metric span {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.ymir-vue-result-card code {
+  display: block;
+  overflow: auto;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.ymir-vue-empty-result {
+  color: #64748b;
+  font-weight: 800;
+}
+.ymir-vue-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ymir-vue-metric strong {
+  display: block;
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+  .ymir-vue-workbench__header,
+  .ymir-vue-body {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .ymir-vue-title-block { flex-direction: column; }
+  .ymir-vue-span-2 { grid-column: auto; }
+  .ymir-vue-actions,
+  .ymir-vue-status,
+  .ymir-vue-footer-meta {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .ymir-vue-lang { align-self: flex-start; }
+  .ymir-vue-result-grid,
+  .ymir-vue-metrics { grid-template-columns: 1fr; }
+}
+
+
+/* legacy simple tools batch v21 */
+.ymir-vue-app--legacy .ymir-vue-workbench::before { background: linear-gradient(90deg, #0f766e, #2563eb, #7c3aed); }
+.ymir-vue-app--legacy .ymir-vue-tool-icon { background: linear-gradient(135deg, #0f766e, #1d4ed8); }
+.ymir-vue-field { display: grid; gap: 8px; color: #334155; font-weight: 800; }
+.ymir-vue-options { display: grid; gap: 14px; }
+.ymir-vue-noscript { max-width: 960px; margin: 20px auto; padding: 18px; border: 1px solid #fecaca; border-radius: 16px; background: #fff1f2; color: #991b1b; }
+
+
+/* converter tools batch v22 */
+.ymir-vue-app--converter .ymir-vue-workbench::before { background: linear-gradient(90deg, #0284c7, #2563eb, #16a34a); }
+.ymir-vue-app--converter .ymir-vue-tool-icon { background: linear-gradient(135deg, #075985, #2563eb); }
+.ymir-vue-body--converter { grid-template-columns: minmax(280px, .9fr) minmax(280px, 1.1fr); align-items: start; }
+.ymir-vue-unit-select { width: 100%; }
+.ymir-vue-note-card { display: grid; gap: 12px; color: #475569; line-height: 1.65; font-weight: 700; }
+.ymir-vue-note-card p { margin: 0; }
+.ymir-vue-converter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ymir-vue-converter-result { min-width: 0; padding: 14px; border: 1px solid #cbd7e8; border-radius: 16px; background: linear-gradient(180deg, #f8fafc, #eef4fb); }
+.ymir-vue-converter-result code { display: block; overflow: auto; margin: 8px 0 12px; padding: 10px; border-radius: 12px; background: #0f172a; color: #e2e8f0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 12px; line-height: 1.5; white-space: nowrap; }
+@media (max-width: 980px) { .ymir-vue-converter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .ymir-vue-converter-grid { grid-template-columns: 1fr; } }
+
+
+/* Ymir Vue reference/query tables v23 */
+.ymir-vue-app--reference .ymir-vue-workbench { margin-bottom: 26px; }
+.ymir-vue-ref-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: 14px;
+  padding: 12px 24px 0;
+}
+.ymir-vue-field { display: grid; gap: 8px; }
+.ymir-vue-field > span { color: #334155; font-size: 13px; font-weight: 900; }
+.ymir-vue-ref-actions { margin-top: 14px; }
+.ymir-vue-ref-table-panel { margin: 0 24px 20px; }
+.ymir-vue-ref-table-wrap { width: 100%; overflow-x: auto; }
+.ymir-vue-ref-table .el-table__cell { vertical-align: top; }
+.ymir-vue-ref-table .cell { line-height: 1.55; }
+.ymir-vue-ref-primary {
+  display: inline-block;
+  padding: 3px 7px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+  white-space: normal;
+}
+.ymir-vue-ref-cards { display: none; }
+.ymir-vue-ref-card {
+  border: 1px solid #c7d7ea;
+  border-radius: 16px;
+  background: #f8fbff;
+  padding: 14px;
+}
+.ymir-vue-ref-card + .ymir-vue-ref-card { margin-top: 10px; }
+.ymir-vue-ref-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ymir-vue-ref-card dl { display: grid; gap: 8px; margin: 0; }
+.ymir-vue-ref-card dt { color: #64748b; font-size: 12px; font-weight: 900; }
+.ymir-vue-ref-card dd { margin: 0; color: #0f172a; word-break: break-word; }
+@media (max-width: 760px) {
+  .ymir-vue-ref-toolbar { grid-template-columns: 1fr; padding: 12px 16px 0; }
+  .ymir-vue-ref-table-panel { margin: 0 16px 18px; }
+  .ymir-vue-ref-table-wrap { display: none; }
+  .ymir-vue-ref-cards { display: block; }
+}
+
+
+/* DNS/network reference tables v24 */
+.ymir-vue-app--dns .ymir-vue-workbench::before { background: linear-gradient(90deg, #0f766e, #2563eb, #0891b2); }
+.ymir-vue-app--dns .ymir-vue-tool-icon { background: linear-gradient(135deg, #0f172a, #0f766e); }
+.ymir-vue-dns-tabs { display:flex; flex-wrap:wrap; gap:8px; padding: 4px 24px 10px; }
+.ymir-vue-dns-tabs a { display:inline-flex; align-items:center; min-height:34px; padding:7px 12px; border:1px solid #cbd7e8; border-radius:999px; background:#fff; color:#334155; font-size:13px; font-weight:900; text-decoration:none; }
+.ymir-vue-dns-tabs a:hover, .ymir-vue-dns-tabs a.is-active { border-color:#2563eb; background:#eff6ff; color:#1d4ed8; }
+.ymir-vue-dns-table-panel .el-table__body-wrapper { max-height: 640px; overflow-y: auto; }
+.ymir-vue-app--dns .ymir-vue-ref-primary { word-break: break-word; }
+@media (max-width: 760px) { .ymir-vue-dns-tabs { padding: 4px 16px 10px; } }
+
+/* Ymir utility migration v25 */
+.ymir-vue-app-shell {
+  display: grid;
+  gap: 18px;
+  color: #0f172a;
+}
+.ymir-vue-app-shell .el-card {
+  border-color: #c7d7ea;
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .08);
+}
+.ymir-vue-app-shell .el-card__body { padding: 18px; }
+.ymir-vue-hero-card {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a 55%, #155e75);
+  color: #fff;
+  overflow: hidden;
+}
+.ymir-vue-hero-card .el-card__body { color: #fff; }
+.ymir-vue-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+.ymir-vue-kicker {
+  margin: 0 0 8px;
+  color: rgba(219,234,254,.92);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ymir-vue-card-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  letter-spacing: -.035em;
+}
+.ymir-vue-card-head p {
+  max-width: 760px;
+  margin: 10px 0 0;
+  color: rgba(241,245,249,.92);
+  line-height: 1.65;
+}
+.ymir-vue-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 10px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 16px;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 950;
+}
+.ymir-vue-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+.ymir-vue-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+.ymir-vue-app-shell h3 {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 950;
+}
+.ymir-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.ymir-result-grid > div {
+  padding: 14px;
+  border: 1px solid #c7d7ea;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+.ymir-result-grid b {
+  display: block;
+  margin-bottom: 6px;
+  color: #334155;
+}
+.ymir-result-grid code {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #0f172a;
+}
+.ymir-vue-app-shell .el-textarea__inner {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  line-height: 1.62;
+}
+.ymir-vue-fallback textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 14px;
+  border: 1px solid #c7d7ea;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+@media (max-width: 860px) {
+  .ymir-vue-grid,
+  .ymir-result-grid { grid-template-columns: 1fr; }
+  .ymir-vue-card-head { flex-direction: column; }
+}
+
+/* Data/code conversion migration v26 */
+.ymir-vue-app--data-code .ymir-vue-workbench::before { background: linear-gradient(90deg, #7c3aed, #2563eb, #0891b2); }
+.ymir-vue-app--data-code .ymir-vue-tool-icon { background: linear-gradient(135deg, #312e81, #2563eb); }
+.ymir-vue-app--data-code .ymir-vue-actions { background: linear-gradient(180deg, #eef4ff, #eaf6ff); }
+.ymir-vue-app--data-code .el-textarea__inner { min-height: 330px !important; }
+
+
+/* Visual media and drawing migration v28 */
+.ymir-vue-app--media .ymir-vue-workbench::before { background: linear-gradient(90deg, #0891b2, #2563eb, #7c3aed); }
+.ymir-vue-app--media .ymir-vue-tool-icon { background: linear-gradient(135deg, #0e7490, #1d4ed8); }
+.ymir-vue-media-panel { min-height: 100%; }
+.ymir-vue-media-panel .el-card__body { min-height: 220px; }
+.ymir-vue-control-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 12px 0 0; }
+.ymir-vue-control-grid .el-form-item { margin-bottom: 0; }
+.ymir-vue-preview-card { border: 1px dashed #adc3dc; border-radius: 18px; background: #f8fafc; min-height: 260px; display: flex; align-items: center; justify-content: center; overflow: auto; padding: 18px; }
+.ymir-vue-barcode-preview svg { max-width: 100%; height: auto; background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 10px 30px rgba(15, 23, 42, .07); }
+.ymir-vue-image-preview img { max-width: 100%; max-height: 420px; border-radius: 14px; box-shadow: 0 14px 35px rgba(15, 23, 42, .12); background: #fff; }
+.ymir-vue-file-input { display: block; width: 100%; padding: 12px; border: 1px solid #c7d7ea; border-radius: 14px; background: #fff; color: #334155; }
+.ymir-vue-canvas-shell { border: 1px solid #c7d7ea; border-radius: 20px; background: #e2e8f0; padding: 12px; overflow: hidden; }
+.ymir-vue-drawing-canvas { display: block; width: 100%; height: 480px; border-radius: 14px; background: #fff; cursor: crosshair; touch-action: none; box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .08); }
+.ymir-vue-color-row, .ymir-vue-size-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ymir-vue-color-chip { width: 34px; height: 34px; border-radius: 12px; border: 2px solid rgba(15,23,42,.16); cursor: pointer; box-shadow: 0 6px 14px rgba(15,23,42,.08); }
+.ymir-vue-color-chip.is-active { border-color: #0f172a; outline: 3px solid rgba(37,99,235,.18); }
+.ymir-vue-media-note { margin-top: 10px; color: #475569; font-size: 13px; line-height: 1.6; }
+@media (max-width: 860px) {
+  .ymir-vue-control-grid { grid-template-columns: 1fr; }
+  .ymir-vue-drawing-canvas { height: 360px; }
+}
+
+
+/* Text, reference, calendar, time and network calculators migration v29 */
+.ymir-vue-app--textref .ymir-vue-workbench::before { background: linear-gradient(90deg, #0d9488, #2563eb, #7c3aed); }
+.ymir-vue-app--textref .ymir-vue-tool-icon { background: linear-gradient(135deg, #0f766e, #2563eb); }
+.ymir-vue-textref-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.ymir-vue-reference-layout { display: grid; gap: 14px; }
+.ymir-vue-reference-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+.ymir-vue-reference-table .el-table { border-radius: 16px; overflow: hidden; border: 1px solid #d7e3f1; }
+.ymir-vue-reference-table .el-table th.el-table__cell { background: #eef6ff; color: #0f172a; font-weight: 800; }
+.ymir-vue-reference-table .el-table .cell { line-height: 1.45; }
+.ymir-vue-ref-pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.ymir-vue-symbol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 8px; }
+.ymir-vue-symbol-btn { min-height: 42px; border-radius: 12px; border: 1px solid #cbd5e1; background: #fff; font-size: 20px; cursor: pointer; }
+.ymir-vue-symbol-btn:hover { border-color: #2563eb; background: #eff6ff; }
+.ymir-vue-clock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.ymir-vue-clock-card { border: 1px solid #d7e3f1; border-radius: 18px; padding: 16px; background: #f8fafc; }
+.ymir-vue-clock-card strong { display: block; font-size: 15px; color: #0f172a; }
+.ymir-vue-clock-time { font-size: 26px; font-weight: 900; color: #1d4ed8; margin-top: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.ymir-vue-calculator-grid { display: grid; grid-template-columns: minmax(280px, 380px) minmax(0, 1fr); gap: 18px; }
+.ymir-vue-result-stack { display: grid; gap: 10px; }
+.ymir-vue-result-line { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 12px 14px; border-radius: 14px; background: #f8fafc; border: 1px solid #dbe7f5; }
+.ymir-vue-result-line b { font-size: 20px; color: #0f172a; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.ymir-vue-color-preview { min-height: 220px; border-radius: 22px; border: 1px solid #cbd5e1; box-shadow: inset 0 0 0 1px rgba(255,255,255,.5); }
+.ymir-vue-palette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+.ymir-vue-palette-chip { border-radius: 16px; overflow: hidden; border: 1px solid #cbd5e1; background: #fff; cursor: pointer; }
+.ymir-vue-palette-swatch { height: 64px; }
+.ymir-vue-palette-label { padding: 8px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #334155; }
+@media (max-width: 920px) {
+  .ymir-vue-textref-grid, .ymir-vue-calculator-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Crypto, htpasswd and JavaScript encode migration v30 */
+.ymir-vue-app--crypto .ymir-vue-workbench::before { background: linear-gradient(90deg, #be123c, #7c2d12, #2563eb); }
+.ymir-vue-app--crypto .ymir-vue-tool-icon { background: linear-gradient(135deg, #7f1d1d, #1e3a8a); }
+.ymir-vue-crypto-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; padding: 0 24px 18px; }
+.ymir-vue-crypto-controls { display: grid; gap: 12px; margin: 0 24px 14px; padding: 14px; border: 1px solid #c7d7ea; border-radius: 18px; background: #f8fafc; }
+.ymir-vue-crypto-control-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.ymir-vue-crypto-control-row .el-form-item { margin-bottom: 0; }
+.ymir-vue-crypto-note { margin: 0 24px 14px; padding: 12px 14px; border: 1px solid #fde68a; border-radius: 16px; background: #fffbeb; color: #78350f; line-height: 1.55; font-size: 13px; }
+.ymir-vue-hash-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 24px 18px; }
+.ymir-vue-hash-card { border: 1px solid #c7d7ea; border-radius: 16px; background: #f8fafc; padding: 14px; }
+.ymir-vue-hash-card strong { display: block; color: #0f172a; margin-bottom: 8px; }
+.ymir-vue-hash-card code { display: block; overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1e293b; }
+@media (max-width: 920px) {
+  .ymir-vue-crypto-grid, .ymir-vue-hash-grid, .ymir-vue-crypto-control-row { grid-template-columns: 1fr; }
+}
+
+
+/* Runtime, editor and WebSocket migration v31 */
+.ymir-vue-app--runtime .ymir-vue-workbench::before { background: linear-gradient(90deg, #0f172a, #2563eb, #0891b2); }
+.ymir-vue-app--runtime .ymir-vue-tool-icon { background: linear-gradient(135deg, #020617, #1d4ed8); }
+.ymir-vue-highrisk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 0 24px 18px;
+}
+.ymir-vue-highrisk-grid .ymir-vue-panel,
+.ymir-vue-websocket-layout .ymir-vue-panel { min-width: 0; }
+.ymir-vue-sandbox-frame {
+  display: block;
+  width: 100%;
+  min-height: 430px;
+  border: 1px solid #c7d7ea;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .04);
+}
+.ymir-vue-preview-panel .el-card__body { padding: 14px; }
+.ymir-vue-highrisk-note {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 700;
+}
+.ymir-vue-websocket-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 0 24px 18px;
+}
+.ymir-vue-ws-message-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+.ymir-vue-ws-log {
+  min-height: 330px;
+  max-height: 520px;
+  overflow: auto;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #c7d7ea;
+  border-radius: 16px;
+  background: #0f172a;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 920px) {
+  .ymir-vue-highrisk-grid,
+  .ymir-vue-websocket-layout { grid-template-columns: 1fr; padding-left: 16px; padding-right: 16px; }
+  .ymir-vue-sandbox-frame { min-height: 360px; }
+  .ymir-vue-ws-message-row { grid-template-columns: 1fr; }
+}
+
+
+/* Ymir Vue tool page desktop layout repair v50 */
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-tool-root {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-noscript {
+  grid-column: 1 / -1 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench {
+  margin: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 18px !important;
+  padding: 22px 24px 12px !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  flex-direction: row !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-copy {
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header h2,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header p {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-lang {
+  display: none !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-crypto-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-highrisk-grid,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-textref-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body > *,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid > *,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-panel,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .el-card {
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--diff,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--regex,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body--time {
+  align-items: stretch !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-app .el-textarea__inner {
+  min-height: 240px !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-vue-body--generator,
+body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-vue-body,
+body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-vue-body {
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-app .el-textarea__inner {
+  min-height: 180px !important;
+}
+@media (max-width: 900px) {
+  body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-vue-tool-root {
+    grid-column: 1 / -1 !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-body,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-crypto-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-highrisk-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-textref-grid,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="md5"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="guid"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="password"] .ymir-vue-body--generator,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="calculator"] .ymir-vue-body,
+  body.ymir-modern-body .ymir-page[data-ymir-tool="unixtime"] .ymir-vue-body {
+    grid-template-columns: 1fr !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-workbench__header {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+    flex-direction: row !important;
+  }
+}
+@media (max-width: 560px) {
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-vue-title-block {
+    flex-direction: column !important;
+  }
+}

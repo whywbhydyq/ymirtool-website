@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JSON 格式化与校验指南 - Ymir Tool</title>
+<meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。" name="description">
+<link href="https://ymirtool.com/json-format-guide.html" rel="canonical"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="JSON 格式化与校验指南 - Ymir Tool" property="og:title"/>
+<meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。" property="og:description"/>
+<meta content="https://ymirtool.com/json-format-guide.html" property="og:url"/>
+<meta content="JSON 格式化与校验指南 - Ymir Tool" name="twitter:title"/>
+<meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"JSON 格式化与校验指南 - Ymir Tool","headline":"JSON 格式化与校验指南","url":"https://ymirtool.com/json-format-guide.html","description":"JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。","dateModified":"2026-05-31","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+</meta></meta></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/online-toolbox-guide.html">使用指南</a></p>
+<h1>JSON 格式化与校验指南</h1>
+<p>JSON 是接口调试、配置文件和前后端数据交换里最常见的结构化格式。排查问题时，不要只看一整行压缩 JSON，先格式化，再检查层级、数组、字段类型和特殊字符。</p>
+<section aria-label="工具入口" class="ymir-guide-cta">
+<div>
+<strong>JSON 格式化与校验指南</strong>
+<p>粘贴 JSON 后可格式化、压缩、校验并复制结果。</p>
+</div>
+<a class="ymir-guide-cta-button" href="/json/">打开 JSON 格式化工具</a>
+</section>
+<h2>常见使用场景</h2>
+<ul><li>接口返回值太长，需要缩进查看字段层级。</li><li>日志里复制出的 JSON 含有转义字符，需要解码后阅读。</li><li>配置文件缺少逗号、引号或括号，需要定位语法错误。</li><li>要把 JSON 转成 YAML、XML、CSV 或代码实体类。</li></ul>
+<h2>推荐工具</h2>
+<p>先用 <a href="/json/">JSON 格式化</a> 查看结构，再用 <a href="/jsonzip/">JSON 压缩转义</a> 做发布前压缩。如果要生成代码，可使用 <a href="/json2java/">JSON 转 Java 实体类</a>、<a href="/json2go/">JSON 转 Go 结构体</a> 或 <a href="/json2cs/">JSON 转 C# 实体类</a>。</p>
+<h2>排查技巧</h2>
+<p>当 JSON 校验失败时，优先检查最后一个字段后是否多了逗号、字符串是否使用英文双引号、路径参数里是否包含未转义的反斜杠。对于线上数据，建议先脱敏账号、手机号、邮箱和密钥再粘贴到任何工具页面。</p>
+<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>复核清单</h2><p>JSON 格式化不是把文本变漂亮这么简单。实际排查时，应先确认输入是不是严格 JSON，而不是 JavaScript 对象、JSONP、日志前缀或 HTML 错误页。</p><ul><li>检查对象键和值是否使用英文双引号。</li><li>确认最后一个字段后没有多余逗号。</li><li>复制结果前比较数组长度、字段层级和特殊字符是否保持一致。</li></ul><p>如果 JSON 来自生产接口，建议先脱敏 token、邮箱、手机号、客户字段和内部 ID，再粘贴到任何浏览器工具中。</p></section>
+<section aria-label="相关工具入口" class="ymir-guide-related">
+<h2>相关工具入口</h2>
+<div class="ymir-guide-related-grid">
+<a href="/jsonzip/">JSON 压缩转义</a>
+<a href="/json2yaml/">JSON 转 YAML</a>
+<a href="/json2xml/">JSON 转 XML</a>
+<a href="/json2go/">JSON 转 Go 结构体</a>
+</div>
+</section>
+<p data-adsense-detail-extra="20260601">对于团队协作，建议把格式化后的 JSON 与原始响应一起保存在 issue、文档或调试记录中，并注明工具只改变空白和排版，不应改变字段值。若字段顺序、数组长度或转义字符发生变化，应停止复制并回到原始数据重新检查。</p>
+
+<section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
+<h2>深入工作流：把 JSON 从“能看见”变成“能判断”</h2>
+<p>JSON 格式化页面最容易被误用成“粘贴一下、复制一下”的中转站，但在接口排查里真正有价值的是判断结构是否符合预期。一个合格的检查过程应当先确认顶层类型，再看关键字段是否存在，最后比较数组长度、空值、数字类型和转义字符。只要这些判断没有完成，单纯得到一份缩进漂亮的文本并不能说明数据正确。</p><p>排查接口时建议保留三份材料：原始响应、格式化结果、你对关键字段的判断。原始响应用于追溯，格式化结果用于阅读，判断记录用于沟通。比如订单接口返回 items 数组时，不只要看数组是否存在，还要看每个 item 是否包含 id、sku、quantity、price 等业务字段，字段类型是否与接口文档一致，空数组和 null 是否代表不同含义。</p>
+<h2>操作前后的复核清单</h2>
+<ul><li>先判断输入是不是严格 JSON，而不是 JavaScript 对象字面量、JSONP、日志前缀或 HTML 错误页。</li><li>对数字 ID、金额、时间戳等字段保持警惕，避免被其他工具或表格软件提前转换。</li><li>如果字段里包含反斜杠、换行符、Unicode 转义或嵌套 JSON 字符串，应先确认这些转义是否来自真实业务数据。</li><li>复制给同事前，用一句话说明格式化只改变空白，不应该改变字段值。</li></ul>
+<h2>真实排查案例</h2>
+<p>案例：某接口在前端显示“无数据”，但格式化后发现 data 字段存在，data.items 是空数组，而 data.total 为 17。这个差异说明问题不在接口完全失败，而可能在分页参数、筛选条件或前端读取字段路径上。若只看压缩 JSON，很容易把“字段存在但路径不一致”误判为接口没有返回数据。</p>
+<h2>建议的工具链</h2>
+<p>单个工具只能完成一个局部动作。更稳妥的方式是把相关页面串成检查链，先整理输入，再做转换或对比，最后保存结论。</p>
+<div class="ymir-guide-related-grid"><a href="/json/">打开 JSON 格式化工具</a><a href="/json2yaml/">JSON 转 YAML</a><a href="/json2go/">JSON 转 Go 结构体</a><a href="/jsonzip/">JSON 压缩转义</a></div>
+<h2>何时不要只依赖在线工具</h2>
+<p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
+</section>
+</div>
+</body></html>

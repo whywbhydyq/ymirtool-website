@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>文本对比工具使用说明 - Ymir Tool</title>
+<meta content="文本对比工具使用说明，介绍两段文本差异比对、配置排查、复制误差、换行空格和版本内容核对。" name="description">
+<link href="https://ymirtool.com/text-diff-guide.html" rel="canonical"/>
+<meta content="文本对比工具使用说明 - Ymir Tool" property="og:title"/>
+<meta content="文本对比工具使用说明，介绍两段文本差异比对、配置排查、复制误差、换行空格和版本内容核对。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/text-diff-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<script defer="" src="/_vercel/insights/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="文本对比工具使用说明 - Ymir Tool" name="twitter:title"/>
+<meta content="文本对比工具使用说明，介绍两段文本差异比对、配置排查、复制误差、换行空格和版本内容核对。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"文本对比工具使用说明 - Ymir Tool","headline":"文本对比工具使用说明","url":"https://ymirtool.com/text-diff-guide.html","description":"文本对比工具使用说明，介绍两段文本差异比对、配置排查、复制误差、换行空格和版本内容核对。","dateModified":"2026-05-31","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+</meta></meta></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<div class="container ymir-is-2a92ab516c">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 文本对比</p>
+<h1>文本对比工具使用说明</h1>
+<p>文本对比工具适合核对两段内容的差异，例如接口响应、配置文件、文案版本、SQL 片段、日志片段和复制后的文本。它能帮助你发现肉眼不容易看到的新增、删除和修改。</p>
+<section aria-label="工具入口" class="ymir-guide-cta">
+<div>
+<strong>文本对比说明</strong>
+<p>把原文和修改版分别粘贴到两侧，快速查看差异。</p>
+</div>
+<a class="ymir-guide-cta-button" href="/textdiff/">打开文本对比工具</a>
+</section>
+<h2>推荐入口</h2>
+<ul>
+<li><a href="/textdiff/">文本对比工具</a></li>
+<li><a href="/txtreplace/">文本替换工具</a></li>
+<li><a href="/txtcount/">字数统计工具</a></li>
+<li><a href="/text-tools-guide.html">文本工具指南</a></li>
+</ul>
+<h2>常见场景</h2>
+<ul>
+<li>比较两个配置文件是否只改了目标字段。</li>
+<li>检查复制粘贴后是否漏字、重复或换行丢失。</li>
+<li>核对接口返回的新旧版本。</li>
+<li>比较两段提示词、说明文案或代码片段。</li>
+</ul>
+<h2>使用建议</h2>
+<ol>
+<li>左侧粘贴原始版本，右侧粘贴新版本。</li>
+<li>先确认换行和缩进是否保留。</li>
+<li>对空格敏感的内容，先不要自动格式化。</li>
+<li>重要内容应保留原始副本，避免覆盖。</li>
+</ol>
+<h2>常见误区</h2>
+<ul>
+<li>忽略空格、制表符和换行差异。</li>
+<li>把格式化后的内容与未格式化内容直接比较。</li>
+<li>比较前没有确认字符编码。</li>
+<li>只看结果颜色，不回到原文确认上下文。</li>
+</ul>
+<h2>隐私边界</h2>
+<p>文本对比适合普通文本和代码片段。不要粘贴访问凭据、完整个人资料、内部配置密钥或其他不适合在线处理的内容。</p>
+<h2>FAQ</h2>
+<h3>为什么看起来一样却显示不同？</h3>
+<p>通常是空格、制表符、换行、不可见字符或字符编码不同。</p>
+<h3>代码对比前要先格式化吗？</h3>
+<p>如果目标是看逻辑差异，可以先统一格式；如果目标是确认原始文本是否完全一致，不应先格式化。</p>
+<h3>适合比较很大的文件吗？</h3>
+<p>浏览器工具适合中小文本。很大的文件建议使用本地专业 diff 工具。</p>
+<p><a class="btn btn-primary" href="/textdiff/">打开文本对比工具</a></p>
+<section aria-label="相关工具入口" class="ymir-guide-related">
+<h2>相关工具入口</h2>
+<div class="ymir-guide-related-grid">
+<a href="/txtcount/">字数统计</a>
+<a href="/txtreplace/">文本替换</a>
+<a href="/quchong/">文本去重</a>
+<a href="/text-tools-guide.html">文本工具指南</a>
+</div>
+</section>
+
+<section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
+<h2>深入工作流：文本对比要看变化含义，不只看红绿块</h2>
+<p>文本对比适合审查配置、文案、翻译、日志、条款和生成结果。红色和绿色只能告诉你哪里不同，不能告诉你差异是否重要。一个逗号、一个零、一个否定词、一个路径前缀，都可能比整段换行变化更关键。因此，对比时要先明确“我在验证什么”：是否变更了业务值、是否丢失字段、是否改动语气、是否改变法律含义。</p><p>建议把左侧固定为旧版本或预期结果，右侧固定为新版本或实际结果。保持方向一致后，团队沟通会更清楚。例如“右侧新增了 timeout=300”比“两个版本不一样”更容易定位问题。对于配置文件，应额外检查单位、默认值、注释和空行，因为它们可能影响运行或审阅。</p>
+<h2>操作前后的复核清单</h2>
+<ul><li>先处理明显的复制噪声，例如邮件引用符、额外空行和自动换行。</li><li>保留空白差异时，要明确空格、Tab 和换行是否对目标系统有意义。</li><li>中文文案要检查全角半角、标点、否定词和数字单位。</li><li>把结论写成可复核语句：哪一行、哪一个值、从什么变成什么。</li></ul>
+<h2>真实排查案例</h2>
+<p>案例：两份价格配置只有一处差异：0.08 变成 0.8。视觉上只是少了一个字符，但业务含义是 8% 变成 80%。文本对比工具能暴露变化，最终判断必须由人结合业务单位完成。</p>
+<h2>建议的工具链</h2>
+<p>单个工具只能完成一个局部动作。更稳妥的方式是把相关页面串成检查链，先整理输入，再做转换或对比，最后保存结论。</p>
+<div class="ymir-guide-related-grid"><a href="/textdiff/">文本对比</a><a href="/txtreplace/">文本替换</a><a href="/txtcount/">字数统计</a><a href="/json/">JSON 格式化</a></div>
+<h2>何时不要只依赖在线工具</h2>
+<p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
+</section>
+</div>
+</body>
+</html>
