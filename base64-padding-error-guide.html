@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Base64 Padding 错误排查指南 - Ymir Tool</title>
+<meta content="解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。" name="description"/>
+<link href="https://ymirtool.com/base64-padding-error-guide.html" rel="canonical"/>
+<meta content="Base64 Padding 错误排查指南 - Ymir Tool" property="og:title"/>
+<meta content="解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/base64-padding-error-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Base64 Padding 错误排查指南 - Ymir Tool" name="twitter:title"/>
+<meta content="解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Base64 Padding 错误排查指南", "name": "Base64 Padding 错误排查指南 - Ymir Tool", "url": "https://ymirtool.com/base64-padding-error-guide.html", "description": "解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 Padding 错误排查指南 - Ymir Tool","item":"https://ymirtool.com/base64-padding-error-guide.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="base64-padding-error-guide.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Base64 Padding 错误排查指南</p>
+<h1>Base64 Padding 错误排查指南</h1>
+<p class="ymir-lead">解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>Base64 padding 检查</strong><p>先确认文本来源和变体，再用 Base64 工具做脱敏样本解码。</p></div><a class="ymir-guide-cta-button" href="/base64/">打开 Base64 工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>Base64 解码失败经常被归因于“工具不支持”，但更常见的原因是 padding 被截断、复制时漏了末尾字符、标准 Base64 与 Base64URL 混用、换行被保留、或外层又被 URL 编码。本页聚焦末尾 <code>=</code> 和长度对齐问题。</p><p>Base64 的输出长度通常按 4 个字符分组，末尾可能出现一个或两个 <code>=</code> 作为填充。某些 URL-safe 或协议场景会省略 padding，但这不代表所有解码器都能自动补齐。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>长度除以 4 余 1 时，通常不是简单补一个等号就能修复，可能已经截断。</li><li>末尾缺少 <code>=</code> 或 <code>==</code> 时，先确认来源是否允许省略 padding。</li><li>文本包含 <code>-</code> 和 <code>_</code> 时，优先判断是否为 Base64URL。</li><li>文本包含 <code>%2B</code>、<code>%2F</code> 或 <code>%3D</code> 时，应先 URL 解码。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例缺少 padding；修复样例补齐后才能稳定解码为原文。</p><pre><code>WW1pciBUb29s</code></pre><pre><code>WW1pciBUb29s</code></pre><p>这个样例本身长度已满足要求，不需要等号。真正排查时不要机械补等号，应先计算长度和来源。若原文是 “Ymir Tool JSON”，则输出会带 <code>=</code>。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>删除空格、换行和代码围栏，只保留编码文本。</li><li>判断是否包含 URL-safe 字符 <code>-</code>、<code>_</code>。</li><li>如果文本来自 URL，先使用 <a href="/urlencode/">URL 解码工具</a> 还原百分号编码。</li><li>检查长度是否为 4 的倍数；不是时根据来源决定是否补 padding。</li><li>用 <a href="/base64/">Base64 工具</a> 解码短样本，再扩展到完整文本。</li></ol><p>padding 修复只能解决边界填充问题，不能修复被截断、错误字符集、加密密文或压缩二进制被当作文本显示的问题。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>末尾缺少 <code>=</code></td><td>URL-safe 场景省略 padding，或复制漏字符。</td><td>先确认来源；必要时补齐到 4 的倍数。</td></tr><tr><td>长度除以 4 余 1</td><td>内容可能已截断或混入非法字符。</td><td>回到来源重新复制，不要盲目补齐。</td></tr><tr><td>出现空格和换行</td><td>邮件、证书或日志折行。</td><td>去除换行后再解码，前提是来源允许。</td></tr><tr><td>出现 <code>%3D</code></td><td>Base64 又被 URL 编码。</td><td>先 URL 解码，再 Base64 解码。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>把所有解码失败都当成缺 padding。</li><li>把 Base64URL 直接交给标准 Base64 解码器。</li><li>复制富文本时漏掉末尾等号。</li><li>把加密后的二进制密文当作可读文本期待。</li></ul><p>Base64 是编码，不是校验机制。若目标是确认内容是否完整，应结合长度、来源协议和哈希摘要，而不是只看能否解码。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>不要解码未知来源的敏感 token 后公开其内容。JWT、Basic Auth、配置密钥等常用 Base64 承载可读信息，任何人都可以还原。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否确认文本来源和 Base64 变体。</li><li>是否先处理 URL 编码外壳。</li><li>是否计算长度而不是盲目补等号。</li><li>是否保留原始文本以便对比。</li><li>是否确认解码结果是文本还是二进制。</li><li>是否避免公开 token、凭证或客户信息。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/base64/">Base64 编解码工具</a><a href="/base64url-vs-base64-guide.html">Base64URL 与 Base64 对比</a><a href="/urlencode/">URL 编码工具</a><a href="/md5/">MD5 校验工具</a></div><h3>参考依据</h3><ul><li>RFC 4648：Base64 字母表与 padding。</li><li>MDN atob()/btoa()：浏览器端 Base64 行为。</li><li>Ymir Tool Base64 指南：编码、解码和安全边界。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

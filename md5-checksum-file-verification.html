@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MD5 文件校验流程 - Ymir Tool</title>
+<meta content="说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。" name="description"/>
+<link href="https://ymirtool.com/md5-checksum-file-verification.html" rel="canonical"/>
+<meta content="MD5 文件校验流程 - Ymir Tool" property="og:title"/>
+<meta content="说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/md5-checksum-file-verification.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="MD5 文件校验流程 - Ymir Tool" name="twitter:title"/>
+<meta content="说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MD5 文件校验流程", "name": "MD5 文件校验流程 - Ymir Tool", "url": "https://ymirtool.com/md5-checksum-file-verification.html", "description": "说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"MD5 文件校验流程 - Ymir Tool","item":"https://ymirtool.com/md5-checksum-file-verification.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="md5-checksum-file-verification.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / MD5 文件校验流程</p>
+<h1>MD5 文件校验流程</h1>
+<p class="ymir-lead">说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>MD5 校验流程</strong><p>用 MD5 快速比较低风险文件或文本是否一致，但不要当作安全签名。</p></div><a class="ymir-guide-cta-button" href="/md5/">打开 MD5 工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>MD5 仍常用于老系统和下载页的兼容校验，但它不适合现代安全签名。正确用法是确认文件传输或复制过程中是否发生意外变化；错误用法是把 MD5 当作不可伪造证明。</p><p>本页适合排查下载包损坏、配置片段不一致、缓存 key 比较、发布附件校验和文档样本核对。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>官方同时提供 SHA-256 或签名时，优先使用更强校验。</li><li>MD5 不一致时，先检查文件是否完整、换行是否变化、是否被重新压缩。</li><li>比较文本 MD5 前先确认编码、末尾换行和空格。</li><li>不要用 MD5 存密码或保护支付签名。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例只比较前几位摘要；修复样例逐字符比较完整摘要并记录算法名。</p><pre><code>expected md5 starts with 5d41, looks close enough</code></pre><pre><code>algorithm=MD5 expected=5d41402abc4b2a76b9719d911017c592 actual=5d41402abc4b2a76b9719d911017c592</code></pre><p>摘要必须完整匹配。只比较开头几位无法证明文件一致。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>获取来源方给出的完整摘要和算法名称。</li><li>在本地或可信环境计算文件摘要。</li><li>逐字符比较 expected 与 actual。</li><li>不一致时检查下载是否完整、文件名是否相同、换行和编码是否改变。</li><li>安全敏感场景改用 SHA-256、GPG 签名或供应商官方校验。</li></ol><p>MD5 校验记录应包含文件名、版本、来源 URL、算法、期望值、实际值和计算时间，便于复现。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>摘要不一致</td><td>文件损坏、版本不同或换行变化。</td><td>重新下载并确认版本。</td></tr><tr><td>文本摘要不一致</td><td>编码或末尾换行不同。</td><td>用文本对比检查不可见字符。</td></tr><tr><td>只有 MD5 无来源</td><td>无法证明摘要可信。</td><td>回到官方发布页或签名机制。</td></tr><tr><td>用于密码保存</td><td>算法不适合密码安全。</td><td>使用 bcrypt、scrypt 或 Argon2。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>把 MD5 当加密。</li><li>只比较摘要前缀。</li><li>没有记录算法名，混用 SHA 和 MD5。</li><li>在不可信页面复制校验值。</li></ul><p>校验值本身也需要可信来源。攻击者能替换文件时，也可能替换同一页面上的 MD5。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页不用于安全签名设计、密码存储、支付验签或恶意文件判断。正式安全判断应使用强哈希、签名和供应链验证。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否获取官方摘要。</li><li>算法名是否明确。</li><li>摘要是否完整逐字符匹配。</li><li>文件版本和大小是否一致。</li><li>是否考虑换行和编码。</li><li>安全场景是否升级到 SHA-256 或签名。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/md5/">MD5 工具</a><a href="/md5-hash-guide.html">MD5 使用说明</a><a href="/textdiff/">文本对比工具</a><a href="/release-copy-paste-review-checklist.html">发布复核清单</a></div><h3>参考依据</h3><ul><li>RFC 1321：MD5 算法定义。</li><li>现代安全实践不推荐 MD5 作抗碰撞签名。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

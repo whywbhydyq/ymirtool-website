@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -9,24 +9,22 @@
 <title>MD5 哈希工具使用说明 - Ymir Tool</title>
 <meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。" name="description"/>
 <link href="https://ymirtool.com/md5-hash-guide.html" rel="canonical"/>
-<meta content="MD5 哈希工具使用说明 - Ymir Tool" property="og:title">
+<meta content="MD5 哈希工具使用说明 - Ymir Tool" property="og:title"/>
 <meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。" property="og:description"/>
-<meta content="article" property="og:type">
-<meta content="https://ymirtool.com/md5-hash-guide.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/md5-hash-guide.html" property="og:url">
 <meta content="Ymir Tool" property="og:site_name"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <script defer="" src="/_vercel/insights/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="MD5 哈希工具使用说明 - Ymir Tool" name="twitter:title"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="MD5 哈希工具使用说明 - Ymir Tool" name="twitter:title">
 <meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。" name="twitter:description"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"MD5 哈希工具使用说明 - Ymir Tool","headline":"MD5 哈希工具使用说明","url":"https://ymirtool.com/md5-hash-guide.html","description":"MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"MD5 哈希工具使用说明 - Ymir Tool","item":"https://ymirtool.com/md5-hash-guide.html"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"MD5 可以还原原文吗？","acceptedAnswer":{"@type":"Answer","text":"标准 MD5 是单向摘要，不能可靠还原原文。网上所谓 MD5 解密通常是查表或猜测，并不是真正解密。"}},{"@type":"Question","name":"为什么两个看起来一样的文本 MD5 不同？","acceptedAnswer":{"@type":"Answer","text":"通常是空格、换行、编码、大小写或不可见字符不同。建议先复制到纯文本环境中检查。"}},{"@type":"Question","name":"什么时候该用 SHA256？","acceptedAnswer":{"@type":"Answer","text":"如果你需要更强的摘要算法或安全性要求更高的场景，优先考虑 SHA256，并结合具体业务安全要求评估。 打开 MD5 工具"}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
@@ -70,8 +68,27 @@
 <h3>什么时候该用 SHA256？</h3>
 <p>如果你需要更强的摘要算法或安全性要求更高的场景，优先考虑 SHA256，并结合具体业务安全要求评估。</p>
 <p><a class="btn btn-primary" href="/md5/">打开 MD5 工具</a></p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>MD5 适合与不适合的场景</h2><p>MD5 可以用于非安全场景下的快速一致性检查，例如比较示例文本、确认下载片段或教学演示摘要变化。它不适合密码存储、签名校验或任何需要抗碰撞安全性的场景。</p><ul><li>计算前确认输入是否包含隐藏空格或换行。</li><li>比较摘要时确认大小写和编码一致。</li><li>安全需求应使用当前推荐的密码哈希或签名方案。</li></ul></section>
-<section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-guide-review ymir-card"><h2>MD5 适合与不适合的场景</h2><p>MD5 可以用于非安全场景下的快速一致性检查，例如比较示例文本、确认下载片段或教学演示摘要变化。它不适合密码存储、签名校验或任何需要抗碰撞安全性的场景。</p><ul><li>计算前确认输入是否包含隐藏空格或换行。</li><li>比较摘要时确认大小写和编码一致。</li><li>安全需求应使用当前推荐的密码哈希或签名方案。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-md5">
+<h2>MD5 适合做摘要核对，不适合做安全保护</h2>
+<p>MD5 的高价值使用场景是快速比较两段内容是否完全一致，例如下载文件校验、配置片段核对、缓存键排查或发布前确认文本没有被改动。它不适合密码存储、权限签名、支付签名、抗攻击完整性保护或任何需要抗碰撞能力的安全设计。页面必须把“可用于校验”与“可用于加密”明确区分，避免用户把摘要值当作密文。</p>
+<h3>校验样例</h3>
+<pre><code>文本 A：release-note-v1
+文本 B：release-note-v1
+预期：两次 MD5 完全一致；只要多一个空格、换行或大小写变化，摘要就会不同。</code></pre>
+<table class="table table-bordered"><thead><tr><th>使用场景</th><th>MD5 是否合适</th><th>说明</th></tr></thead><tbody>
+<tr><td>确认两个下载包是否相同</td><td>有限合适</td><td>适合快速排查传输错误；高安全场景应使用 SHA-256 或官方签名。</td></tr>
+<tr><td>保存用户密码</td><td>不合适</td><td>应使用专门的密码哈希算法和盐，例如 bcrypt、scrypt、Argon2。</td></tr>
+<tr><td>比较两段配置文本</td><td>合适</td><td>先统一换行、编码和空格，再生成摘要。</td></tr>
+</tbody></table>
+<h3>文件或文本校验流程</h3>
+<ol><li>获取官方发布页给出的摘要值，确认大小写、空格和算法名称。</li><li>在本地对下载文件或复制文本生成摘要。</li><li>逐字符比较摘要，不能只比较开头几位。</li><li>若不一致，先检查换行符、编码、文件是否被重新压缩或传输中断。</li><li>如果用于安全发布，优先寻找 SHA-256、GPG 签名或供应商校验机制。</li></ol>
+<h3>常见误区</h3>
+<p>MD5 不是可逆加密，无法从摘要恢复原文；但由于算法已不适合抗碰撞安全用途，也不能把它当成“安全不可伪造”的证明。另一个常见误区是忽视不可见字符：同样的文字如果末尾有换行、Tab、全角空格或不同编码，摘要都会变化。遇到摘要不一致时，可先用 <a href="/textdiff/">文本对比工具</a> 检查原文差异，再用 <a href="/md5/">MD5 工具</a> 重新计算。</p>
+<h3>参考依据</h3>
+<p>MD5 算法定义来自 RFC 1321。由于现代安全实践已经不推荐 MD5 作为抗攻击签名或密码保护方案，本指南只把它定位为低风险摘要核对工具。</p>
+</section>
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/md5-checksum-file-verification.html">MD5 文件校验流程</a> — 说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
 <a href="/shaencrypt/">SHA/SHA256 工具</a>
@@ -80,21 +97,6 @@
 <a href="/password/">密码生成器</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for md5 hash guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section><section class="ymir-container ymir-help ymir-card ymir-page-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h2>页面使用复核标准</h2>
-<p><strong>MD5 哈希工具使用说明 - Ymir Tool</strong> should help visitors understand the purpose of the site or the linked tools before they start processing content. A useful page explains what the visitor can do, what the page does not promise, and which linked tools or guides should be used for the next step.</p>
-<p>无论访问者从搜索结果、书签、指南入口还是工具目录进入页面，都应该能直接理解本页的用途、输入要求、输出边界和下一步操作。页面不应只依赖按钮、表格或一句标题，而应提供足够的背景说明、常见错误和复核方法，让用户知道何时可以使用本页、何时应该改用官方系统或项目内部流程。</p>
-<h3>Practical use note</h3>
-<p>Use the navigation links to move from general explanation to a focused tool page. If the task involves private information, start with a redacted or synthetic example. If the output will be copied into a public document, code repository, customer message, or system configuration, preserve the original source and verify the result before publishing it.</p>
-<h3>Quality boundary</h3>
-<p>This page is part of a utility network, not a claim of professional advice. It is designed to reduce repetitive work and clarify common mistakes, while leaving final judgment, compliance checks, and production validation to the user and their own approved systems.</p>
-</section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>MD5 哈希工具使用说明 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>URL 查询参数编码指南 - Ymir Tool</title>
+<meta content="说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。" name="description"/>
+<link href="https://ymirtool.com/url-query-parameter-encoding-guide.html" rel="canonical"/>
+<meta content="URL 查询参数编码指南 - Ymir Tool" property="og:title"/>
+<meta content="说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/url-query-parameter-encoding-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="URL 查询参数编码指南 - Ymir Tool" name="twitter:title"/>
+<meta content="说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "URL 查询参数编码指南", "name": "URL 查询参数编码指南 - Ymir Tool", "url": "https://ymirtool.com/url-query-parameter-encoding-guide.html", "description": "说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"URL 查询参数编码指南 - Ymir Tool","item":"https://ymirtool.com/url-query-parameter-encoding-guide.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="url-query-parameter-encoding-guide.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / URL 查询参数编码指南</p>
+<h1>URL 查询参数编码指南</h1>
+<p class="ymir-lead">说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>查询参数编码</strong><p>先拆分 URL 结构，再只编码参数值。</p></div><a class="ymir-guide-cta-button" href="/urlencode/">打开 URL 编码工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>URL 编码错误通常不是“中文没有编码”这么简单，而是把完整 URL、路径、参数名、参数值和 fragment 混在一起处理。查询参数值里出现 <code>&amp;</code>、<code>=</code>、<code>?</code>、<code>#</code>、空格、中文或斜杠时，如果没有按组件编码，服务器会把一个值拆成多个参数或丢失片段。</p><p>这个页面适合排查搜索条件、回调地址、广告追踪参数、Webhook URL、OAuth redirect_uri 和内部跳转链接。重点是先拆结构，再编码值。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>参数值里含有 <code>&amp;</code> 或 <code>=</code>，必须编码，否则会被当成分隔符。</li><li>完整 URL 不应整体用 encodeURIComponent 后直接访问。</li><li>回调地址作为参数值时，需要对嵌套 URL 做组件级编码。</li><li>看到 <code>%25</code> 大量出现，可能是重复编码。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例把回调 URL 直接拼到 query 中；修复样例对 redirect_uri 参数值编码。</p><pre><code>https://example.com/login?redirect=https://app.example.com/a?x=1&amp;y=2</code></pre><pre><code>https://example.com/login?redirect=https%3A%2F%2Fapp.example.com%2Fa%3Fx%3D1%26y%3D2</code></pre><p>坏样例中的 <code>&amp;y=2</code> 会被外层 URL 当成另一个参数。修复后整个回调地址作为 redirect 的值传输。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>拆出 scheme、host、path、query 和 fragment。</li><li>列出每个 query key 与 value。</li><li>只对 value 做组件级编码，尤其是嵌套 URL、中文和保留字符。</li><li>用 <a href="/urlencode/">URL 工具</a> 解码一次，确认得到预期原文。</li><li>用 <a href="/textdiff/">文本对比</a> 比较修复前后结构字符是否只出现在正确层级。</li></ol><p>查询参数编码的核心是保护“值的边界”。当值里本身含有 URL 结构字符时，不编码就会破坏外层 URL 的结构。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>参数被拆成多个</td><td>值中未编码 <code>&amp;</code> 或 <code>=</code>。</td><td>对参数值使用组件编码。</td></tr><tr><td>跳转后 fragment 丢失</td><td><code>#</code> 未编码，浏览器当成本页片段。</td><td>把嵌套 URL 作为值时编码 <code>#</code>。</td></tr><tr><td>中文乱码</td><td>客户端和服务端字符集不一致。</td><td>统一 UTF-8，并检查解码次数。</td></tr><tr><td>回调地址不匹配</td><td>编码前后字符串与白名单不同。</td><td>按平台要求保存精确 redirect_uri。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>把整条 URL 粘贴进组件编码器后直接使用。</li><li>只编码中文，忽略斜杠、问号和井号。</li><li>在字符串拼接中手写 <code>&amp;</code>，没有使用 URLSearchParams。</li><li>重复解码导致百分号序列被破坏。</li></ul><p>OAuth、支付回调和广告追踪链接通常对 redirect_uri、click id 和签名参数非常敏感。排查时要保存原始链接，不要只保存浏览器地址栏最终结果。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>不要公开带真实 token、广告点击 ID、订单号或内部回调地址的完整 URL。可以用 example.com 和占位参数复现编码问题。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否拆分出每个 query key/value。</li><li>是否只编码需要作为值的部分。</li><li>嵌套 URL 是否整体作为参数值编码。</li><li>是否检查重复编码和重复解码。</li><li>是否保留原始 URL 与修复 URL。</li><li>是否在目标平台重新验证回调或跳转。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/urlencode/">URL 编码工具</a><a href="/encodeuri-vs-encodeuricomponent.html">encodeURI 对比 encodeURIComponent</a><a href="/url-double-encoding-debugging.html">重复编码排查</a><a href="/url-plus-vs-percent20-guide.html">+ 与 %20 指南</a></div><h3>参考依据</h3><ul><li>WHATWG URL Standard：URL 结构和解析规则。</li><li>MDN URLSearchParams：安全构造查询参数。</li><li>MDN encodeURIComponent()：组件级编码。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

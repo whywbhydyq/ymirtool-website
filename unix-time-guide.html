@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -9,24 +9,22 @@
 <title>Unix 时间戳转换工具使用说明 - Ymir Tool</title>
 <meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" name="description"/>
 <link href="https://ymirtool.com/unix-time-guide.html" rel="canonical"/>
-<meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" property="og:title">
+<meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" property="og:title"/>
 <meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" property="og:description"/>
-<meta content="article" property="og:type">
-<meta content="https://ymirtool.com/unix-time-guide.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/unix-time-guide.html" property="og:url">
 <meta content="Ymir Tool" property="og:site_name"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <script defer="" src="/_vercel/insights/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" name="twitter:title"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Unix 时间戳转换工具使用说明 - Ymir Tool" name="twitter:title">
 <meta content="Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。" name="twitter:description"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Unix 时间戳转换工具使用说明 - Ymir Tool","headline":"Unix 时间戳转换工具使用说明","url":"https://ymirtool.com/unix-time-guide.html","description":"Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Unix 时间戳转换工具使用说明 - Ymir Tool","item":"https://ymirtool.com/unix-time-guide.html"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"10 位和 13 位时间戳有什么区别？","acceptedAnswer":{"@type":"Answer","text":"常见 10 位是秒级，13 位是毫秒级。不同系统也可能使用其他精度，需结合文档确认。"}},{"@type":"Question","name":"为什么转换结果差 8 小时？","acceptedAnswer":{"@type":"Answer","text":"通常是 UTC 与北京时间或本地时区的展示差异，不一定是时间戳本身错误。"}},{"@type":"Question","name":"数据库里应该存本地时间吗？","acceptedAnswer":{"@type":"Answer","text":"很多系统会统一存 UTC 或时间戳，再按用户所在时区展示。具体规则应由业务系统确定。 打开时间戳转换工具"}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
@@ -76,8 +74,28 @@
 <h3>数据库里应该存本地时间吗？</h3>
 <p>很多系统会统一存 UTC 或时间戳，再按用户所在时区展示。具体规则应由业务系统确定。</p>
 <p><a class="btn btn-primary" href="/unixtime/">打开时间戳转换工具</a></p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>时间戳常见误差</h2><p>Unix 时间戳转换最容易出错的地方是秒级与毫秒级混用，以及 UTC 与本地时区混用。排查日志、接口和数据库时间时，应同时记录原始值、单位和时区。</p><ul><li>10 位数字通常是秒级，13 位数字通常是毫秒级。</li><li>展示给用户的时间需要确认目标地区和夏令时规则。</li><li>跨系统对账时不要只复制格式化后的日期，要保留原始时间戳。</li></ul></section>
-<section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-guide-review ymir-card"><h2>时间戳常见误差</h2><p>Unix 时间戳转换最容易出错的地方是秒级与毫秒级混用，以及 UTC 与本地时区混用。排查日志、接口和数据库时间时，应同时记录原始值、单位和时区。</p><ul><li>10 位数字通常是秒级，13 位数字通常是毫秒级。</li><li>展示给用户的时间需要确认目标地区和夏令时规则。</li><li>跨系统对账时不要只复制格式化后的日期，要保留原始时间戳。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-unix-time">
+<h2>Unix 时间戳排查先判断单位，再判断时区</h2>
+<p>时间戳问题通常不是转换公式错误，而是单位和时区被混用。10 位数字多为秒级时间戳，13 位数字多为毫秒级时间戳，16 位可能是微秒级，19 位可能是纳秒级。JavaScript 的 <code>Date</code> 通常使用毫秒；很多后端日志、数据库和 API 则使用秒。单位错一档，时间会偏到 1970 年或远未来。</p>
+<h3>可复制样例</h3>
+<pre><code>秒级：1717203600
+毫秒级：1717203600000
+同一时间只是在单位上相差 1000 倍。</code></pre>
+<p>把秒级值直接传给 JavaScript <code>new Date()</code> 会被当作毫秒处理，得到接近 1970 年的时间。反过来，把毫秒级值当作秒传给后端，也会得到异常未来日期。</p>
+<table class="table table-bordered"><thead><tr><th>长度</th><th>常见单位</th><th>检查动作</th></tr></thead><tbody>
+<tr><td>10 位</td><td>秒</td><td>转换前乘以 1000 再给 JavaScript Date。</td></tr>
+<tr><td>13 位</td><td>毫秒</td><td>直接用于浏览器 Date；给秒级 API 前除以 1000。</td></tr>
+<tr><td>16/19 位</td><td>微秒/纳秒</td><td>先确认来源系统，不要直接粘贴到普通转换器。</td></tr>
+</tbody></table>
+<h3>时区排查流程</h3>
+<ol><li>用 <a href="/unixtime/">Unix 时间戳工具</a> 先确认单位。</li><li>记录转换出的 UTC 时间和本地时间，不要只截取一个显示值。</li><li>检查日志来源时区、服务器时区、数据库时区和浏览器时区。</li><li>跨系统比较时统一转成 ISO 8601 或 UTC，再回到本地展示。</li></ol>
+<h3>常见误判</h3>
+<p>“差 8 小时”或“差 9 小时”通常是 UTC 与本地时区展示差异，不一定是数据错误。真正需要关注的是同一时间在多个系统里是否表示同一个瞬间。用户所在时区、服务器部署区域和业务结算时区可能不同，不能只看页面显示。</p>
+<h3>参考依据</h3>
+<p>浏览器时间处理可参考 MDN <code>Date.prototype.getTime()</code>。涉及账单、交易、合同生效和日志取证时，应以系统记录的原始时间戳、时区字段和后端审计日志为准。</p>
+</section>
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/unix-timestamp-seconds-vs-milliseconds.html">Unix 时间戳秒与毫秒区别</a> — 用位数、示例和排查步骤区分 10 位秒级、13 位毫秒级、16 位微秒级和 JavaScript Date 毫秒输入。</li><li><a href="/timezone-log-debugging-guide.html">日志时区错位排查指南</a> — 排查 UTC、本地时区、服务器时区、数据库时区和浏览器显示时区导致的日志时间错位。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
 <a href="/worldtime/">世界时间</a>
@@ -86,21 +104,6 @@
 <a href="/shizhong/">在线时钟</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for unix time guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section><section class="ymir-container ymir-help ymir-card ymir-page-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h2>页面使用复核标准</h2>
-<p><strong>Unix 时间戳转换工具使用说明 - Ymir Tool</strong> should help visitors understand the purpose of the site or the linked tools before they start processing content. A useful page explains what the visitor can do, what the page does not promise, and which linked tools or guides should be used for the next step.</p>
-<p>无论访问者从搜索结果、书签、指南入口还是工具目录进入页面，都应该能直接理解本页的用途、输入要求、输出边界和下一步操作。页面不应只依赖按钮、表格或一句标题，而应提供足够的背景说明、常见错误和复核方法，让用户知道何时可以使用本页、何时应该改用官方系统或项目内部流程。</p>
-<h3>Practical use note</h3>
-<p>Use the navigation links to move from general explanation to a focused tool page. If the task involves private information, start with a redacted or synthetic example. If the output will be copied into a public document, code repository, customer message, or system configuration, preserve the original source and verify the result before publishing it.</p>
-<h3>Quality boundary</h3>
-<p>This page is part of a utility network, not a claim of professional advice. It is designed to reduce repetitive work and clarify common mistakes, while leaving final judgment, compliance checks, and production validation to the user and their own approved systems.</p>
-</section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>Unix 时间戳转换工具使用说明 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。Unix 时间戳转换工具使用说明，介绍秒级和毫秒级时间戳、时区、UTC、本地时间和常见转换错误。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

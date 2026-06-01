@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Base64 不是加密：安全边界说明 - Ymir Tool</title>
+<meta content="解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。" name="description"/>
+<link href="https://ymirtool.com/base64-is-not-encryption.html" rel="canonical"/>
+<meta content="Base64 不是加密：安全边界说明 - Ymir Tool" property="og:title"/>
+<meta content="解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/base64-is-not-encryption.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Base64 不是加密：安全边界说明 - Ymir Tool" name="twitter:title"/>
+<meta content="解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Base64 不是加密：安全边界说明", "name": "Base64 不是加密：安全边界说明 - Ymir Tool", "url": "https://ymirtool.com/base64-is-not-encryption.html", "description": "解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 不是加密：安全边界说明 - Ymir Tool","item":"https://ymirtool.com/base64-is-not-encryption.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="base64-is-not-encryption.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Base64 不是加密：安全边界说明</p>
+<h1>Base64 不是加密：安全边界说明</h1>
+<p class="ymir-lead">解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>编码与加密区分</strong><p>先判断目标是传输可见文本，还是需要真正保密。</p></div><a class="ymir-guide-cta-button" href="/base64/">打开 Base64 工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>很多页面、日志和配置把 Base64 文本显示为一串不可读字符，用户容易误以为它是加密结果。实际 Base64 没有密钥，任何人都能解码。它适合把二进制或复杂文本放进只接受文本的通道，不适合保存密码、隐藏用户资料、保护 token 或替代 HTTPS。</p><p>这个说明页用于降低误用风险。工具站如果只提供“编码/解码”按钮而不解释边界，用户可能把编码结果用于错误的安全场景。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>没有密钥参与的转换，通常不是加密。</li><li>任何在线 Base64 解码器都能还原文本，说明它不具备保密性。</li><li>JWT payload、Basic Auth、data URI 都可能包含可读信息。</li><li>需要保密时应使用成熟加密方案、密钥管理和访问控制，而不是 Base64。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>下面的坏样例把密码做 Base64 后保存；修复示例改为说明“不要这样保存”，并使用占位策略描述正确方向。</p><pre><code>password = "hunter2" -&gt; aHVudGVyMg== -&gt; store in config</code></pre><pre><code>password: use approved secret manager or password hashing; never treat Base64 as protection</code></pre><p>Base64 结果只是另一种文本表示。攻击者不需要破解，只要解码即可看到原文。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>明确目标：可传输、可复制、可嵌入，还是保密、认证、完整性。</li><li>如果目标是表示字节，可使用 Base64。</li><li>如果目标是验证内容未变，可使用哈希或签名。</li><li>如果目标是保护密码，应使用专门密码哈希和盐。</li><li>如果目标是保护消息内容，应使用经过审查的加密方案和密钥管理。</li></ol><p>编码、哈希、签名和加密解决的是不同问题。Base64 只解决“怎样用文本承载字节”，不解决“谁能看”“是否被改”“是否可信”。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>把 Base64 当密码保护</td><td>误以为不可读就是安全。</td><td>使用密码哈希算法和密钥/盐策略。</td></tr><tr><td>把 JWT payload 当私密内容</td><td>忘记 JWT 前两段可直接解码。</td><td>不要在未加密 payload 放敏感资料。</td></tr><tr><td>把编码结果发给客户当安全链接</td><td>链接参数仍可被还原。</td><td>使用短期 token、权限校验和服务端验证。</td></tr><tr><td>用 Base64 代替文件校验</td><td>编码结果不证明来源可信。</td><td>使用哈希、签名或官方校验值。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>认为“看不懂”就等于加密。</li><li>把编码结果提交到公开 issue 或文档。</li><li>在日志中输出 Base64 token，以为不会泄露。</li><li>把 Base64 与 MD5、AES、签名概念混用。</li></ul><p>安全场景的判断标准不是页面能否生成一串文本，而是是否有密钥、权限、验证和审计。Base64 没有这些机制。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页不提供加密实现方案，只用于说明 Base64 的能力边界。涉及凭证、支付、身份认证、隐私数据和安全协议时，应遵循团队安全规范和官方库。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>目标是否只是文本传输。</li><li>是否有任何人可以解码得到原文。</li><li>是否误把 Base64 当成密码保护。</li><li>是否在样本中移除真实 token 和凭证。</li><li>是否需要哈希、签名或加密而不是编码。</li><li>是否在文档中明确“Base64 不是加密”。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/base64/">Base64 工具</a><a href="/md5/">MD5 工具</a><a href="/base64url-vs-base64-guide.html">Base64URL 指南</a><a href="/copy-paste-safety-checklist.html">复制安全清单</a></div><h3>参考依据</h3><ul><li>RFC 4648：Base64 是编码方案。</li><li>OWASP 安全实践：密码和密钥不应以可逆编码保护。</li><li>Ymir Tool MD5 指南：摘要与安全边界区分。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

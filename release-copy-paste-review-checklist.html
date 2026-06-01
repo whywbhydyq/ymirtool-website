@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>发布前复制粘贴复核清单 - Ymir Tool</title>
+<meta content="面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。" name="description"/>
+<link href="https://ymirtool.com/release-copy-paste-review-checklist.html" rel="canonical"/>
+<meta content="发布前复制粘贴复核清单 - Ymir Tool" property="og:title"/>
+<meta content="面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/release-copy-paste-review-checklist.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="发布前复制粘贴复核清单 - Ymir Tool" name="twitter:title"/>
+<meta content="面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "发布前复制粘贴复核清单", "name": "发布前复制粘贴复核清单 - Ymir Tool", "url": "https://ymirtool.com/release-copy-paste-review-checklist.html", "description": "面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"发布前复制粘贴复核清单 - Ymir Tool","item":"https://ymirtool.com/release-copy-paste-review-checklist.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="release-copy-paste-review-checklist.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 发布前复制粘贴复核清单</p>
+<h1>发布前复制粘贴复核清单</h1>
+<p class="ymir-lead">面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>发布复制复核</strong><p>结果进入发布流程前，先确认来源、处理动作、目标系统和回滚依据。</p></div><a class="ymir-guide-cta-button" href="/textdiff/">打开文本对比工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>很多线上问题不是工具算错，而是复制粘贴过程中丢了字符、多了空格、用了错误环境、泄露了密钥、或者把临时样例当成生产值。本清单把“打开工具处理文本”之后的复核步骤固定下来。</p><p>适用于发布配置、接口样例、URL 参数、正则表达式、release notes、广告文案、时间戳和校验摘要。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>结果要进入生产、客户回复、公开文档或平台控制台时，必须保留原始输入。</li><li>任何 token、Cookie、客户数据、内部域名应先脱敏。</li><li>处理后的结果要与原始输入做一次文本对比。</li><li>目标系统必须再执行自己的预览、校验或保存前检查。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏流程只复制最终结果；修复流程记录来源、动作和复核。</p><pre><code>paste -&gt; format -&gt; copy -&gt; production</code></pre><pre><code>source saved -&gt; tool/action recorded -&gt; diff checked -&gt; target preview -&gt; responsible reviewer confirms</code></pre><p>可追踪流程能把临时操作变成可审计步骤，尤其适合多人协作和复盘。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>写下输入来源：日志、接口响应、配置文件、平台导出还是聊天记录。</li><li>确认是否已脱敏，删除密钥、令牌、客户字段和内部地址。</li><li>记录使用的工具和动作，例如 JSON 格式化、URL 编码、时间戳转换。</li><li>用 <a href="/textdiff/">文本对比</a> 或目标工具确认处理前后只变化了预期部分。</li><li>复制到目标系统后使用目标系统预览、校验或 dry run。</li><li>保存最终值和回滚值。</li></ol><p>发布复核的核心是上下文。一个看似正确的字符串，如果来自错误环境或目标位置不同，仍然会造成事故。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>复制错环境</td><td>staging 与 production 值混淆。</td><td>在记录中写明来源环境和目标环境。</td></tr><tr><td>多了隐藏空格</td><td>富文本、聊天或表格复制。</td><td>用文本对比和空白显示检查。</td></tr><tr><td>敏感值泄露</td><td>未脱敏直接贴入公开工具或 issue。</td><td>先替换为占位符，仅保留结构。</td></tr><tr><td>目标平台拒绝</td><td>平台还有自己的格式要求。</td><td>在目标系统执行预览和校验。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>相信工具输出而不保存原始输入。</li><li>把示例值复制到生产。</li><li>只检查视觉效果，不检查不可见字符。</li><li>把在线工具当成最终审批系统。</li></ul><p>复核清单不是为了降低速度，而是为了减少返工。越是小改动，越容易因为省略记录而难以追踪。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>涉及财务、法律、工程安全、生产发布和客户承诺时，工具输出只能作为辅助材料，最终必须走团队审批和目标系统验证。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>输入来源、环境和时间是否记录。</li><li>敏感字段是否替换。</li><li>工具动作是否记录。</li><li>处理前后是否对比。</li><li>目标系统是否预览或校验。</li><li>是否有回滚值和责任人确认。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/textdiff/">文本对比工具</a><a href="/json/">JSON 工具</a><a href="/urlencode/">URL 编码工具</a><a href="/md5/">MD5 工具</a></div><h3>参考依据</h3><ul><li>Ymir Tool 文本对比指南：发布前差异复核。</li><li>Ymir Tool 工具质量标准：说明、边界、示例和复核。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

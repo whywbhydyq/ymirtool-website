@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>JSON 格式化示例与错误排查 - Ymir Tool</title>
-<meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" name="description">
+<meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" name="description"/>
 <link href="https://ymirtool.com/json-formatter-examples.html" rel="canonical"/>
 <meta content="JSON 格式化示例与错误排查 - Ymir Tool" property="og:title"/>
 <meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。" property="og:description">
 <meta content="article" property="og:type"/>
-<meta content="https://ymirtool.com/json-formatter-examples.html" property="og:url"/>
+<meta content="https://ymirtool.com/json-formatter-examples.html" property="og:url">
 <meta content="Ymir Tool" property="og:site_name"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
@@ -25,8 +24,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"JSON 格式化示例与错误排查 - Ymir Tool","headline":"JSON 格式化示例与错误排查","url":"https://ymirtool.com/json-formatter-examples.html","description":"JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化示例与错误排查 - Ymir Tool","item":"https://ymirtool.com/json-formatter-examples.html"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JSON 格式化会改变字段值吗？","acceptedAnswer":{"@type":"Answer","text":"正常情况下，格式化只改变缩进和换行，不应改变字段值。正式使用前仍应保留原始内容并复核。"}},{"@type":"Question","name":"为什么复制来的 JSON 校验失败？","acceptedAnswer":{"@type":"Answer","text":"常见原因是日志前后混入了额外文本、字符串转义不完整、末尾多逗号，或复制时少了括号。"}},{"@type":"Question","name":"JSON 压缩和转义有什么区别？","acceptedAnswer":{"@type":"Answer","text":"压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。 打开 JSON 格式化工具"}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
@@ -68,7 +66,25 @@
 <h3>JSON 压缩和转义有什么区别？</h3>
 <p>压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。</p>
 <p><a class="btn btn-primary" href="/json/">打开 JSON 格式化工具</a></p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>示例如何用于排错</h2><p>排查 JSON 错误时，建议把失败输入缩小到最小可复现片段。先保留出错字段和相邻括号，再逐步加入其它字段，这样更容易发现逗号、引号、转义和数组层级问题。</p><ul><li>错误位置靠后时，先检查前一个字段结尾。</li><li>接口返回以 &lt; 开头时，通常不是 JSON，而是 HTML 错误页。</li><li>日志复制出的内容如果带时间戳前缀，需要先剥离前缀再校验。</li></ul></section>
+<section class="ymir-guide-review ymir-card"><h2>示例如何用于排错</h2><p>排查 JSON 错误时，建议把失败输入缩小到最小可复现片段。先保留出错字段和相邻括号，再逐步加入其它字段，这样更容易发现逗号、引号、转义和数组层级问题。</p><ul><li>错误位置靠后时，先检查前一个字段结尾。</li><li>接口返回以 &lt; 开头时，通常不是 JSON，而是 HTML 错误页。</li><li>日志复制出的内容如果带时间戳前缀，需要先剥离前缀再校验。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-json-examples">
+<h2>用示例判断 JSON 格式化是否真的解决了问题</h2>
+<p>JSON 示例页的价值不在于展示一段漂亮的缩进，而在于帮助用户把错误从“看起来像 JSON”收敛到一个可复现的最小输入。排查接口返回、Webhook payload、埋点日志或配置片段时，建议先复制 10 到 30 行非敏感样本，不要直接粘贴完整生产响应。样本越小，越容易确认错误是来自语法、转义、日志包装，还是来自上游服务返回了 HTML、JSONP 或纯文本错误页。</p>
+<h3>可复制排查样例</h3>
+<pre><code>{"status":"ok","items":[{"sku":"A-100","qty":2},{"sku":"B-200","qty":0}],"meta":{"source":"staging","requestId":"demo-20260601"}}</code></pre>
+<p>这个样例适合确认格式化工具是否只改变空白和缩进。格式化后应能清楚看到 <code>items</code> 是数组，<code>meta</code> 是对象，<code>qty</code> 是数字而不是字符串。复制结果前，至少比较数组项目数量、字段名大小写、布尔值和 null 是否保持原样。</p>
+<table class="table table-bordered"><thead><tr><th>输入现象</th><th>通常原因</th><th>处理方法</th></tr></thead><tbody>
+<tr><td><code>{name:"Ymir"}</code></td><td>这是 JavaScript 对象字面量，不是严格 JSON。</td><td>把键名和字符串值改为英文双引号：<code>{"name":"Ymir"}</code>。</td></tr>
+<tr><td><code>{"a":1,}</code></td><td>最后一个字段后有尾随逗号。</td><td>删除末尾逗号，再重新校验。</td></tr>
+<tr><td>复制自日志后前面带 <code>INFO payload=</code></td><td>日志前缀不是 JSON 内容。</td><td>只保留第一个 <code>{</code> 到最后一个 <code>}</code> 或数组边界。</td></tr>
+</tbody></table>
+<h3>示例复核流程</h3>
+<ol><li>先在 <a href="/json/">JSON 格式化工具</a> 中运行短样本，确认工具能解析。</li><li>再加入一处疑似问题字段，例如包含换行、反斜杠或中文字符的字符串。</li><li>如果格式化失败，回到原文定位第一个未闭合的引号、括号或数组项。</li><li>需要转换格式时，再进入 <a href="/json2yaml/">JSON 转 YAML</a> 或 <a href="/json2xml/">JSON 转 XML</a>，不要在语法未通过时继续转换。</li></ol>
+<h3>隐私边界</h3>
+<p>示例页适合处理教学样本、公开 API 示例、脱敏配置和本地调试数据。不应粘贴访问令牌、Cookie、客户订单、身份证件、完整数据库导出或生产事故中的原始日志。确实要排查字段结构时，可以把值替换为 <code>demo</code>、<code>example@example.com</code>、<code>0000</code> 等占位符，只保留对象层级和数据类型。</p>
+<h3>参考依据</h3>
+<p>严格 JSON 语法可对照 MDN 的 <code>JSON.parse()</code> 与 <code>JSON.stringify()</code> 行为说明。Ymir Tool 的示例页侧重人工排查流程；如果输出会进入生产系统，应再使用项目内 schema、接口契约或 CI 校验进行二次确认。</p>
+</section>
 <section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
@@ -91,13 +107,6 @@
 <h2>何时不要只依赖在线工具</h2>
 <p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>JSON 格式化示例与错误排查 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section>
 <section class="ymir-container ymir-help ymir-card ymir-json-examples-depth" data-json-examples-depth="20260601">
 <h2>三个常见 JSON 排错案例</h2>
 <h3>案例一：接口返回的是 HTML 错误页</h3>
@@ -108,6 +117,6 @@
 <p>JavaScript 里常见的对象写法允许单引号、未加引号的键、注释、尾随逗号、<code>undefined</code> 或函数值，但 JSON 规范不接受这些写法。排查时应把它们视为“需要转换的源码片段”，而不是格式化器错误。把键名改为双引号字符串、移除注释、删除尾随逗号、把非 JSON 值替换成字符串、数字、布尔值、null、数组或对象之后，才能进入严格 JSON 工作流。</p>
 <h2>复制前的逐项检查</h2>
 <ol><li>输入是否只包含有效 JSON，而不是 HTML、JSONP、日志前缀或 Markdown 代码围栏。</li><li>字符串里的换行、反斜杠、中文、emoji、百分号和引号是否仍保持原意。</li><li>数组顺序、对象层级、空值、布尔值和数字精度是否没有被误读。</li><li>复制结果会进入文档、issue、配置还是接口请求；不同目标对压缩、缩进和转义要求不同。</li><li>如果数据来自真实环境，是否已经移除 token、客户字段、邮箱、手机号、内部域名和业务机密。</li></ol>
-</section></div>
+</section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

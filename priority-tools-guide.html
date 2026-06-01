@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>重点工具页使用指南 - Ymir Tool</title>
 <meta content="Ymir Tool 重点工具页使用指南，整理 JSON 格式化、MD5、Base64、JavaScript 格式化、URL 编码、文本对比、字数统计、正则测试、科学计算器和 Unix 时间戳转换的使用步骤、适用场景、常见问题和相关入口。" name="description"/>
 <link href="https://ymirtool.com/priority-tools-guide.html" rel="canonical"/>
@@ -14,14 +14,13 @@
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="重点工具页使用指南 - Ymir Tool" property="og:title">
 <meta content="Ymir Tool 重点工具页使用指南，整理 JSON 格式化、MD5、Base64、JavaScript 格式化、URL 编码、文本对比、字数统计、正则测试、科学计算器和 Unix 时间戳转换的使用步骤、适用场景、常见问题和相关入口。" property="og:description"/>
-<meta content="https://ymirtool.com/priority-tools-guide.html" property="og:url"/>
+<meta content="https://ymirtool.com/priority-tools-guide.html" property="og:url">
 <meta content="重点工具页使用指南 - Ymir Tool" name="twitter:title"/>
 <meta content="Ymir Tool 重点工具页使用指南，整理 JSON 格式化、MD5、Base64、JavaScript 格式化、URL 编码、文本对比、字数统计、正则测试、科学计算器和 Unix 时间戳转换的使用步骤、适用场景、常见问题和相关入口。" name="twitter:description"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"重点工具页使用指南 - Ymir Tool","headline":"重点工具页使用指南","url":"https://ymirtool.com/priority-tools-guide.html","description":"Ymir Tool 重点工具页使用指南，整理 JSON 格式化、MD5、Base64、JavaScript 格式化、URL 编码、文本对比、字数统计、正则测试、科学计算器和 Unix 时间戳转换的使用步骤、适用场景、常见问题和相关入口。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"重点工具页使用指南 - Ymir Tool","item":"https://ymirtool.com/priority-tools-guide.html"}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-765373a9f2">
@@ -94,6 +93,22 @@
 <h2>下一步如何选择工具？</h2>
 <p>如果你正在排查接口问题，通常先使用 JSON 格式化、URL 编码和时间戳转换；如果正在整理文本，优先使用文本对比、字数统计和文本替换；如果正在处理代码片段，可以从 JavaScript、HTML、CSS 和 SQL 格式化工具开始。</p>
 <p><a href="/guides.html">返回指南中心</a>，或回到 <a href="/">Ymir Tool 首页</a> 搜索更多工具。</p>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-priority-tools">
+<h2>如何选择优先工具：按任务而不是按工具名</h2>
+<p>重点工具页的作用是让用户从具体任务出发快速进入正确工具，而不是在几十个工具名之间猜测。AdSense 审核也更容易理解这种结构：每个可索引页面都有明确任务、可操作说明和相关入口。选择工具时可以先问三个问题：输入是什么格式，目标是阅读、转换、校验还是比较，输出是否会进入生产系统。</p>
+<table class="table table-bordered"><thead><tr><th>任务</th><th>首选入口</th><th>配套复核</th></tr></thead><tbody>
+<tr><td>接口返回读不懂</td><td><a href="/json/">JSON 格式化</a></td><td>用 <a href="/json-format-guide.html">JSON 指南</a> 检查语法和字段类型。</td></tr>
+<tr><td>参数乱码或链接异常</td><td><a href="/urlencode/">URL 编码/解码</a></td><td>确认完整 URL、路径和 query value 的边界。</td></tr>
+<tr><td>发布前比较文案</td><td><a href="/textdiff/">文本对比</a></td><td>配合 <a href="/txtcount/">字数统计</a> 检查长度。</td></tr>
+<tr><td>核对文件或配置是否一致</td><td><a href="/md5/">MD5 摘要</a></td><td>安全发布优先使用 SHA-256 或官方签名。</td></tr>
+</tbody></table>
+<h3>三类用户路径</h3>
+<ol><li><strong>开发调试：</strong>先用 JSON、URL、Base64、Unix 时间戳工具定位数据形态，再回到代码或接口文档确认契约。</li><li><strong>内容发布：</strong>先用文本对比和字数统计检查差异、长度、空格和变量，再进入目标平台预览。</li><li><strong>运维复核：</strong>先用 MD5、时间戳、文本对比检查文件、日志和配置，再在受控系统执行正式变更。</li></ol>
+<h3>不要把工具选择变成批量复制</h3>
+<p>同一段输入连续经过多个工具时，要在每一步保存原文、记录转换原因，并确认输出仍然符合预期。尤其是 Base64、URL 编码和 JSON 转义组合使用时，重复编码会让问题更难定位。若无法解释每一步为什么必要，应停止处理，回到原始数据源。</p>
+<h3>站点审核角度的维护规则</h3>
+<p>只把有明确说明、真实示例、错误排查和内链关系的页面保持为可索引广告页。纯导航、重复模板、短说明和未维护长尾页应继续保持 <code>noindex</code>，避免重新扩大低价值内容面。</p>
+</section>
 <section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
@@ -103,13 +118,6 @@
 <a href="/md5/">MD5 哈希</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for priority tools guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>重点工具页使用指南 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。Ymir Tool 重点工具页使用指南，整理 JSON 格式化、MD5、Base64、JavaScript 格式化、URL 编码、文本对比、字数统计、正则测试、科学计算器和 Unix 时间戳转换的使用步骤、适用场景、常见问题和相关入口。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

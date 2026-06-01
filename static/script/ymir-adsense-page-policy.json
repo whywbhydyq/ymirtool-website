@@ -1,5 +1,5 @@
 {
-  "version": "20260601-adsense-remediation",
+  "version": "20260601-adsense-remediation-v2",
   "approvedToolSlugs": [
     "json",
     "base64",
@@ -37,5 +37,21 @@
     "contact.html"
   ],
   "temporaryNoindexToolReason": "Tool page needs unique static publisher content before AdSense review.",
-  "temporaryNoindexGuideReason": "Guide page needs more examples and publisher content before AdSense review."
+  "temporaryNoindexGuideReason": "Guide page needs more examples and publisher content before AdSense review.",
+  "reviewStrategy": {
+    "indexedTools": [
+      "base64",
+      "calculator",
+      "formatjs",
+      "json",
+      "md5",
+      "regex",
+      "textdiff",
+      "txtcount",
+      "unixtime",
+      "urlencode"
+    ],
+    "adScriptScope": "Only home, approved core tools, and selected guide pages carry the AdSense loader during review.",
+    "noindexScope": "Long-tail tool and thin guide pages remain crawlable but noindex and without AdSense loader until they receive unique editorial content."
+  }
 }

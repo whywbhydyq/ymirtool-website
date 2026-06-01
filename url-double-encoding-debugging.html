@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>URL 重复编码排查 - Ymir Tool</title>
+<meta content="定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。" name="description"/>
+<link href="https://ymirtool.com/url-double-encoding-debugging.html" rel="canonical"/>
+<meta content="URL 重复编码排查 - Ymir Tool" property="og:title"/>
+<meta content="定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/url-double-encoding-debugging.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="URL 重复编码排查 - Ymir Tool" name="twitter:title"/>
+<meta content="定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "URL 重复编码排查", "name": "URL 重复编码排查 - Ymir Tool", "url": "https://ymirtool.com/url-double-encoding-debugging.html", "description": "定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"URL 重复编码排查 - Ymir Tool","item":"https://ymirtool.com/url-double-encoding-debugging.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="url-double-encoding-debugging.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / URL 重复编码排查</p>
+<h1>URL 重复编码排查</h1>
+<p class="ymir-lead">定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>重复编码诊断</strong><p>看到 %25 先怀疑百分号本身被再次编码。</p></div><a class="ymir-guide-cta-button" href="/urlencode/">打开 URL 工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>URL 重复编码是指已经编码过的百分号序列再次被编码，例如 <code>%2F</code> 变成 <code>%252F</code>。这种问题常见于前端先 encodeURIComponent，后端或 SDK 又自动编码一次，或平台要求原文但用户提交了已编码值。结果是服务端解码一次后仍看到百分号序列，路径、回调和签名都可能失败。</p><p>重复编码问题需要找到“第几层”开始错误，而不是反复解码到看起来正常。签名、白名单、回调地址和广告参数尤其依赖精确原文。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>出现 <code>%25</code>，通常表示百分号 <code>%</code> 被编码。</li><li>解码一次后仍包含大量 <code>%2F</code>、<code>%3D</code>，说明可能有两层编码。</li><li>同一参数在日志、浏览器、服务端框架中显示不同，要记录每一层。</li><li>如果签名失败，不要随意多解码，先查平台要求的签名原文。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例把已编码 URL 再编码一次；修复样例只在参数值进入外层 query 时编码一次。</p><pre><code>https%253A%252F%252Fexample.com%252Fa%253Fx%253D1</code></pre><pre><code>https%3A%2F%2Fexample.com%2Fa%3Fx%3D1</code></pre><p>坏样例解码一次后才变成修复样例。若系统只解码一次，它收到的仍是编码文本，而不是目标 URL。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>保留原始输入，不要先手动解码覆盖。</li><li>用 <a href="/urlencode/">URL 工具</a> 解码一次，观察是否出现合理 URL。</li><li>再解码第二次，只作为诊断，不直接作为修复结果。</li><li>记录每一层是谁处理：前端、SDK、网关、后端框架、第三方平台。</li><li>删除重复编码点，而不是在后面增加更多解码补丁。</li></ol><p>重复编码的根因通常是职责不清：调用方和被调用方都以为自己应该编码。修复应明确边界：谁接收原文，谁负责最后一次编码。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>看到 <code>%252F</code></td><td><code>%2F</code> 中的百分号被再次编码。</td><td>找到二次编码位置，避免重复处理。</td></tr><tr><td>服务端收到 <code>%E4...</code> 原样</td><td>服务端只解码一次或未解码。</td><td>确认框架是否自动解码 query。</td></tr><tr><td>签名串不匹配</td><td>签名前后编码层级不一致。</td><td>按平台文档固定编码和排序顺序。</td></tr><tr><td>前端测试正常，线上失败</td><td>代理或网关额外编码/解码。</td><td>对比各层访问日志中的原始 URI。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>用“多 decode 几次”掩盖上游重复编码。</li><li>在已经编码的参数上再次调用 encodeURIComponent。</li><li>忽视浏览器地址栏会美化显示部分字符。</li><li>没有记录签名前的原始字符串。</li></ul><p>重复编码排查必须保留分层证据。只给同事一个最终可读 URL，无法说明错误发生在哪一层。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>涉及签名、支付、OAuth 和广告转化参数时，不要手动猜测编码规则。最终应按对应平台文档和官方 SDK 行为确认。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否出现 <code>%25</code>。</li><li>是否保存了每一层的原始字符串。</li><li>是否确认哪个系统自动编码或解码。</li><li>是否避免通过多次 decode 作为永久修复。</li><li>签名或白名单是否按原始要求生成。</li><li>是否用脱敏 URL 复现问题。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/urlencode/">URL 工具</a><a href="/encodeuri-vs-encodeuricomponent.html">encodeURI 对比组件编码</a><a href="/url-query-parameter-encoding-guide.html">查询参数编码指南</a><a href="/textdiff/">文本对比工具</a></div><h3>参考依据</h3><ul><li>WHATWG URL Standard：URL 解析与百分号编码。</li><li>MDN decodeURIComponent()：组件解码行为。</li><li>平台签名文档应作为最终规则来源。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

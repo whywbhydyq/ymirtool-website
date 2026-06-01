@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>文本对比中的空格与换行差异指南 - Ymir Tool</title>
+<meta content="排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。" name="description"/>
+<link href="https://ymirtool.com/text-diff-whitespace-line-ending-guide.html" rel="canonical"/>
+<meta content="文本对比中的空格与换行差异指南 - Ymir Tool" property="og:title"/>
+<meta content="排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/text-diff-whitespace-line-ending-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="文本对比中的空格与换行差异指南 - Ymir Tool" name="twitter:title"/>
+<meta content="排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "文本对比中的空格与换行差异指南", "name": "文本对比中的空格与换行差异指南 - Ymir Tool", "url": "https://ymirtool.com/text-diff-whitespace-line-ending-guide.html", "description": "排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"文本对比中的空格与换行差异指南 - Ymir Tool","item":"https://ymirtool.com/text-diff-whitespace-line-ending-guide.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="text-diff-whitespace-line-ending-guide.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 文本对比中的空格与换行差异指南</p>
+<h1>文本对比中的空格与换行差异指南</h1>
+<p class="ymir-lead">排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>空白差异复核</strong><p>发布前用文本对比确认变化是内容变化还是空白变化。</p></div><a class="ymir-guide-cta-button" href="/textdiff/">打开文本对比工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>文本对比中最容易被忽视的是不可见差异：CRLF 与 LF、尾随空格、Tab 与空格、全角空格、文件末尾换行和复制时引入的隐藏字符。对普通文案可能只是展示差异，对 shell、YAML、配置、签名串或合同文本则可能造成实际错误。</p><p>本页适合发布前配置复核、release note 比较、翻译文案审查、代码片段复制和跨系统文本迁移。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>每一行都显示差异但内容看似相同，优先检查换行符或缩进。</li><li>行尾有红色差异，可能是尾随空格。</li><li>YAML 或 Python 缩进异常时，检查 Tab 与空格混用。</li><li>签名串不匹配时，检查末尾换行和空格。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例和修复样例肉眼接近，但行尾空格和换行格式可能不同。</p><pre><code>key: value␠
+next: 1
+</code></pre><pre><code>key: value
+next: 1
+</code></pre><p>示例中的 ␠ 表示行尾空格。真实工具里这些字符不可见，因此需要对比工具或编辑器显示空白。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>明确是否允许忽略空白差异。</li><li>用 <a href="/textdiff/">文本对比工具</a> 比较原始版本和修改版本。</li><li>如果整文件大面积变化，先统一换行符再比较一次。</li><li>对配置文件检查缩进层级、Tab、尾随空格和文件末尾换行。</li><li>复制到目标系统后再导出或读取，确认没有被平台自动改写。</li></ol><p>空白是否重要取决于目标格式。Markdown 文案可以容忍部分空格，YAML、Makefile、签名串和命令行参数则不能随意改变。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>整文件每行都变</td><td>CRLF 与 LF 混用。</td><td>统一换行符后重新对比。</td></tr><tr><td>只有行尾不同</td><td>尾随空格或末尾换行。</td><td>显示不可见字符并清理。</td></tr><tr><td>缩进看似相同但解析失败</td><td>Tab 与空格混用。</td><td>按格式规范统一缩进。</td></tr><tr><td>签名或 hash 不同</td><td>不可见空白改变原文。</td><td>用逐字符对比确认空白。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>看到大面积红绿差异就以为内容全改了。</li><li>格式化配置前没有保存原始版本。</li><li>在富文本聊天中复制代码，混入特殊空格。</li><li>忽视文件末尾换行对工具链的影响。</li></ul><p>发布评审时应明确“忽略空白”和“不忽略空白”的结论。两种视图都保留，能帮助区分格式化变更和实质变更。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>涉及合同、法律、财务数字或生产配置的文本，差异工具只能辅助定位，最终仍要由责任人复核语义和执行结果。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否知道目标格式是否关心空白。</li><li>是否检查 CRLF/LF。</li><li>是否检查 Tab、全角空格和尾随空格。</li><li>是否保留原始版本。</li><li>是否确认格式化变更与内容变更分开。</li><li>是否在目标系统重新预览或解析。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/textdiff/">文本对比工具</a><a href="/txtcount/">字数统计工具</a><a href="/formatjs/">JavaScript 格式化工具</a><a href="/release-copy-paste-review-checklist.html">发布复制复核清单</a></div><h3>参考依据</h3><ul><li>Git diff 与编辑器空白显示是排查辅助。</li><li>Ymir Tool 文本对比指南：发布前差异复核。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

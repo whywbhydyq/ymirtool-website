@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JSON 尾随逗号与单引号错误排查 - Ymir Tool</title>
+<meta content="用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。" name="description"/>
+<link href="https://ymirtool.com/json-trailing-comma-single-quote-errors.html" rel="canonical"/>
+<meta content="JSON 尾随逗号与单引号错误排查 - Ymir Tool" property="og:title"/>
+<meta content="用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/json-trailing-comma-single-quote-errors.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="JSON 尾随逗号与单引号错误排查 - Ymir Tool" name="twitter:title"/>
+<meta content="用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "JSON 尾随逗号与单引号错误排查", "name": "JSON 尾随逗号与单引号错误排查 - Ymir Tool", "url": "https://ymirtool.com/json-trailing-comma-single-quote-errors.html", "description": "用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 尾随逗号与单引号错误排查 - Ymir Tool","item":"https://ymirtool.com/json-trailing-comma-single-quote-errors.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="json-trailing-comma-single-quote-errors.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 尾随逗号与单引号错误排查</p>
+<h1>JSON 尾随逗号与单引号错误排查</h1>
+<p class="ymir-lead">用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>JSON 语法错误定位</strong><p>先用 JSON 工具确认输入是否为严格 JSON，再按本页缩小错误范围。</p></div><a class="ymir-guide-cta-button" href="/json/">打开 JSON 格式化工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>JSON 解析失败时，用户经常只看到一个笼统的 “Unexpected token” 错误，却不知道该看逗号、引号、key、注释还是复制来源。本页把最常见的两类错误——尾随逗号和单引号——拆成可复现样例，并说明为什么 JavaScript 对象写法不等于 JSON。</p><p>严格 JSON 不允许注释、尾随逗号、单引号字符串、未加引号的对象键，也不支持 undefined 或 NaN。接口文档、浏览器控制台和后端日志常常混入非 JSON 语法，所以排查时应先截取最小对象，而不是直接处理完整响应。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>错误位置出现在 <code>}</code> 或 <code>]</code> 前，优先查最后一个字段或数组项后是否多了逗号。</li><li>字符串外层是单引号，或对象 key 没有英文双引号，说明输入更像 JavaScript 字面量。</li><li>文本前面带 <code>INFO payload=</code>、Markdown 代码围栏或 <code>callback(...)</code>，应先删除外壳。</li><li>如果第一个字符是 <code>&lt;</code>，通常不是 JSON，而是 HTML 错误页或登录页。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>下面的错误输入常见于从 JavaScript 示例或日志中复制数据。修复时要同时处理引号、尾逗号和注释。</p><pre><code>{status: 'ok', items: [1,2,], // copied from console
+}</code></pre><pre><code>{"status":"ok","items":[1,2]}</code></pre><p>修复后的版本使用英文双引号包裹 key 和字符串，删除了最后一个数组项后的逗号，也删除了 JSON 不支持的注释。此时再格式化，工具只应改变缩进而不改变值。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>复制第一个 <code>{</code> 到最后一个 <code>}</code> 之间的最小片段。</li><li>先删除日志前缀、代码围栏、注释和回调函数外壳。</li><li>检查所有对象键和字符串是否使用英文双引号。</li><li>检查对象和数组最后一项后面是否还有逗号。</li><li>再次放入 <a href="/json/">JSON 格式化工具</a>，通过后再扩展到完整样本。</li></ol><p>排查顺序要从语法外壳到字段结构逐步扩大。不要在语法尚未通过时直接转换为 YAML、XML 或代码实体类，因为转换工具会把原始错误带到下一步。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td><code>Unexpected token }</code></td><td>最后一个对象字段后有尾随逗号。</td><td>删除末尾逗号，重新校验对象边界。</td></tr><tr><td><code>Unexpected token '</code></td><td>字符串使用单引号，属于 JavaScript 写法。</td><td>改为英文双引号，并确认内部引号已转义。</td></tr><tr><td><code>Unexpected token /</code></td><td>复制了 <code>//</code> 或 <code>/* */</code> 注释。</td><td>删除注释，若需要说明放到 JSON 外部文档。</td></tr><tr><td><code>Unexpected token I</code></td><td>日志前缀 <code>INFO</code> 或说明文字混入。</td><td>只保留 JSON 主体，再格式化。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>把“浏览器控制台显示像对象”误认为它就是严格 JSON。</li><li>把尾随逗号当成可读性写法；JSON 与部分 JavaScript 运行环境不同。</li><li>把格式化成功当成业务字段正确；语法通过后仍需检查字段类型。</li><li>复制修复结果时忘记对比原始值，导致数组长度或字符串转义改变。</li></ul><p>此类错误通常能通过很小的样本复现。保留一份坏样例和一份修复样例，比只截取报错截图更有利于团队协作。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页只处理 JSON 语法层错误。字段是否符合接口契约、重复 key 如何处理、大整数是否安全、业务 code 是否成功，都需要结合接口文档或后端验证。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>输入是否删除了日志前缀和说明文字。</li><li>所有 key 和字符串是否使用英文双引号。</li><li>对象和数组末尾是否没有多余逗号。</li><li>是否保留了原始输入，方便用 <a href="/textdiff/">文本对比</a> 检查修复差异。</li><li>是否脱敏 token、邮箱、手机号和客户字段。</li><li>修复后是否再用 JSON 工具完整校验一次。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-format-guide.html">JSON 格式化指南</a><a href="/json-formatter-examples.html">JSON 示例排查</a><a href="/json-api-response-debugging-checklist.html">API 响应 JSON 排查清单</a></div><h3>参考依据</h3><ul><li>MDN JSON.parse()：严格 JSON 解析行为。</li><li>MDN JSON.stringify()：序列化和空白处理。</li><li>Ymir Tool JSON 工具页：本地快速格式化与校验入口。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

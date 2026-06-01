@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -9,13 +9,12 @@
 <title>JavaScript 格式化工具使用说明 - Ymir Tool</title>
 <meta content="JavaScript 格式化工具使用说明，介绍压缩脚本阅读、格式化步骤、常见错误、代码安全边界和相关工具入口。" name="description"/>
 <link href="https://ymirtool.com/javascript-formatter-guide.html" rel="canonical"/>
-<meta content="JavaScript 格式化工具使用说明 - Ymir Tool" property="og:title">
+<meta content="JavaScript 格式化工具使用说明 - Ymir Tool" property="og:title"/>
 <meta content="JavaScript 格式化工具使用说明，介绍压缩脚本阅读、格式化步骤、常见错误、代码安全边界和相关工具入口。" property="og:description"/>
 <meta content="article" property="og:type">
 <meta content="https://ymirtool.com/javascript-formatter-guide.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="Ymir Tool" property="og:site_name">
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
@@ -25,8 +24,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"JavaScript 格式化工具使用说明 - Ymir Tool","headline":"JavaScript 格式化工具使用说明","url":"https://ymirtool.com/javascript-formatter-guide.html","description":"JavaScript 格式化工具使用说明，介绍压缩脚本阅读、格式化步骤、常见错误、代码安全边界和相关工具入口。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JavaScript 格式化工具使用说明 - Ymir Tool","item":"https://ymirtool.com/javascript-formatter-guide.html"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"格式化会改变代码逻辑吗？","acceptedAnswer":{"@type":"Answer","text":"正常格式化只改变空格、缩进和换行。遇到语法错误、极端压缩或特殊字符串时仍应人工复核。"}},{"@type":"Question","name":"混淆代码格式化后能完全还原吗？","acceptedAnswer":{"@type":"Answer","text":"不能。格式化可以让结构更清楚，但变量名和控制流混淆通常无法自动还原成原始源码。"}},{"@type":"Question","name":"压缩和格式化有什么区别？","acceptedAnswer":{"@type":"Answer","text":"格式化提高可读性，压缩减少体积。两者目的相反，正式发布前应结合构建工具处理。 打开 JavaScript 格式化工具"}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
@@ -71,7 +69,25 @@
 <h3>压缩和格式化有什么区别？</h3>
 <p>格式化提高可读性，压缩减少体积。两者目的相反，正式发布前应结合构建工具处理。</p>
 <p><a class="btn btn-primary" href="/formatjs/">打开 JavaScript 格式化工具</a></p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>格式化后的检查步骤</h2><p>JavaScript 格式化适合快速阅读压缩脚本、片段示例和文档代码，但它不等同于语法检查、类型检查或安全审计。</p><ul><li>先用短片段确认缩进和括号层级是否符合预期。</li><li>重点检查字符串、模板字面量、正则表达式和注释。</li><li>生产代码仍应交给项目内 formatter、linter、bundler 和测试流程处理。</li></ul><p>从第三方网页复制的脚本需要额外谨慎，不要因为格式化后可读就默认其逻辑安全。</p></section>
+<section class="ymir-guide-review ymir-card"><h2>格式化后的检查步骤</h2><p>JavaScript 格式化适合快速阅读压缩脚本、片段示例和文档代码，但它不等同于语法检查、类型检查或安全审计。</p><ul><li>先用短片段确认缩进和括号层级是否符合预期。</li><li>重点检查字符串、模板字面量、正则表达式和注释。</li><li>生产代码仍应交给项目内 formatter、linter、bundler 和测试流程处理。</li></ul><p>从第三方网页复制的脚本需要额外谨慎，不要因为格式化后可读就默认其逻辑安全。</p></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-js-format">
+<h2>JavaScript 格式化只能改善可读性，不能替代语法修复</h2>
+<p>JavaScript 格式化适合阅读压缩脚本、定位函数层级、检查对象结构和复核发布前代码片段。它不会自动证明代码安全，也不等同于 lint、类型检查或单元测试。格式化失败时，通常说明原始代码存在未闭合字符串、括号不平衡、混入 JSX/TypeScript 语法、模板字符串损坏或复制时丢失字符。</p>
+<h3>可复制样例</h3>
+<pre><code>function total(items){return items.reduce((sum,item)=&gt;sum+Number(item.price||0),0)}</code></pre>
+<p>格式化后应更容易看到回调函数、默认值和数字转换。复制回项目之前，仍要确认运行环境、模块格式、浏览器兼容性和业务逻辑。格式化只是排版步骤，不会检查 <code>Number(item.price||0)</code> 是否符合财务精度要求。</p>
+<table class="table table-bordered"><thead><tr><th>失败现象</th><th>可能原因</th><th>处理方法</th></tr></thead><tbody>
+<tr><td>格式化器直接报错</td><td>语法不完整，可能少了括号或引号。</td><td>缩小到最小片段，先补齐语法再格式化。</td></tr>
+<tr><td>JSX 或 TS 片段异常</td><td>当前工具按普通 JavaScript 解析。</td><td>确认输入语言，必要时使用支持 JSX/TypeScript 的格式化器。</td></tr>
+<tr><td>格式化后逻辑难懂</td><td>压缩代码缺少 source map 和语义变量名。</td><td>只能改善结构阅读，不能恢复原始源码意图。</td></tr>
+</tbody></table>
+<h3>安全复核流程</h3>
+<ol><li>先保存原始代码副本，不要直接覆盖。</li><li>在 <a href="/formatjs/">JavaScript 格式化工具</a> 中处理短片段。</li><li>检查字符串、正则、模板字面量、注释和 Unicode 字符是否保持一致。</li><li>对比格式化前后文本，确认只改变缩进和换行。</li><li>重要代码回到项目环境使用 lint、类型检查和代码评审。</li></ol>
+<h3>隐私与版权边界</h3>
+<p>不要粘贴包含商业秘密、未公开业务规则、许可证密钥或第三方受限源码的完整文件。若只是排查缩进或括号层级，可以把变量名、URL、密钥和业务值替换为示例占位符，保留语法结构即可。</p>
+<h3>参考依据</h3>
+<p>现代格式化工具通常围绕解析器和排版规则工作，可参考 Prettier options 对 print width、tab width、semi、single quote 等配置的说明。Ymir Tool 页面侧重快速阅读，不承诺修复语法或执行代码质量判断。</p>
+</section>
 <section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
@@ -81,21 +97,6 @@
 <a href="/code-formatting-guide.html">代码格式化指南</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for javascript formatter guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section><section class="ymir-container ymir-help ymir-card ymir-page-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h2>页面使用复核标准</h2>
-<p><strong>JavaScript 格式化工具使用说明 - Ymir Tool</strong> should help visitors understand the purpose of the site or the linked tools before they start processing content. A useful page explains what the visitor can do, what the page does not promise, and which linked tools or guides should be used for the next step.</p>
-<p>无论访问者从搜索结果、书签、指南入口还是工具目录进入页面，都应该能直接理解本页的用途、输入要求、输出边界和下一步操作。页面不应只依赖按钮、表格或一句标题，而应提供足够的背景说明、常见错误和复核方法，让用户知道何时可以使用本页、何时应该改用官方系统或项目内部流程。</p>
-<h3>Practical use note</h3>
-<p>Use the navigation links to move from general explanation to a focused tool page. If the task involves private information, start with a redacted or synthetic example. If the output will be copied into a public document, code repository, customer message, or system configuration, preserve the original source and verify the result before publishing it.</p>
-<h3>Quality boundary</h3>
-<p>This page is part of a utility network, not a claim of professional advice. It is designed to reduce repetitive work and clarify common mistakes, while leaving final judgment, compliance checks, and production validation to the user and their own approved systems.</p>
-</section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>JavaScript 格式化工具使用说明 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。JavaScript 格式化工具使用说明，介绍压缩脚本阅读、格式化步骤、常见错误、代码安全边界和相关工具入口。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

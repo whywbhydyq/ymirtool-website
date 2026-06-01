@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="ymir-modern-html" lang="en">
+<html class="ymir-modern-html" data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint1-core" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -12,24 +12,22 @@
 <meta content="URL Encoder and Decoder for Query Strings - Ymir Tool" property="og:title"/>
 <meta content="Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result." property="og:description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://ymirtool.com/urlencode/" property="og:url">
+<meta content="https://ymirtool.com/urlencode/" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="https://ymirtool.com/static/images/og.svg" property="og:image">
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.svg" property="og:image"/>
+<meta content="summary" name="twitter:card">
 <meta content="URL Encoder and Decoder for Query Strings - Ymir Tool" name="twitter:title"/>
-<meta content="Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result." name="twitter:description"/>
+<meta content="Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result." name="twitter:description">
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/font-fix.css?v=20260531-v58" rel="stylesheet"/><link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-modern-tools.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-components.css?v=20260531-v58" rel="stylesheet"/><link href="/static/vendor/element-plus/index.css?v=20260531-v58" rel="stylesheet"/><link href="/static/style/ymir-vue-element.css?v=20260531-v58" rel="stylesheet"/><link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder and Decoder","url":"https://ymirtool.com/urlencode/","description":"Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-06-01"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder and Decoder","url":"https://ymirtool.com/urlencode/","description":"Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"datePublished":"2026-01-01","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"inLanguage":"en"}</script>
 <script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"URL Encoder and Decoder for Query Strings - Ymir Tool","item":"https://ymirtool.com/urlencode/"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I encode the whole URL?","acceptedAnswer":{"@type":"Answer","text":"Usually no. Encode parameter values or path segments separately unless the target system asks for an encoded full URL."}},{"@type":"Question","name":"Why did % become %25?","acceptedAnswer":{"@type":"Answer","text":"That usually means already encoded text was encoded a second time."}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="ymir-page ymir-tool-page-v51" data-ymir-tool="urlencode">
@@ -67,51 +65,30 @@
 <ul><li><strong>Search query:</strong> Encode only the query value, then confirm separators such as ampersands and equals signs still divide parameters correctly.</li><li><strong>Redirect parameter:</strong> Decode in layers and verify the final host before trusting the link.</li><li><strong>Webhook callback:</strong> Preserve the receiving service’s exact expected format, including whether spaces should be plus signs or percent-encoded bytes.</li></ul>
 <p>When a value will be used in production documentation, an incident report, a customer reply, or a configuration change, keep the source value and the transformed value together. That record makes the tool result auditable instead of leaving only a copied output with no explanation.</p>
 </div><p data-core-final-note="20260601-depth-v2-final-note">A complete review also includes deciding what the tool should not do. This page is designed for focused browser-side inspection and transformation, not for replacing source control, production validation, domain-specific compliance checks, or a secure secret-handling process. Treat the output as a reviewed intermediate result and keep enough context to reproduce it later.</p></section>
-<section class="ymir-container ymir-help ymir-card ymir-complete-tool-notes" data-review-hardening="20260601-continuation">
-<h2>URL Encoder and Decoder complete usage notes</h2>
-<p>URL 编码 / 解码 属于 Ymir Tool 的编码工具，用于URL、Base64、Unicode、ASCII、转义文本和兼容性编码检查。Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result. 这类页面的价值不只是“点一下得到结果”，而是把输入、转换、复核和复制过程放在同一个可审查的工作流里，减少因为隐藏空格、编码差异、单位误读或上下文丢失造成的错误。</p>
-<h3>Recommended workflow</h3>
-<ol>
-<li>先使用一个短小、非敏感、你已经理解的样例输入，确认页面行为和预期一致。</li>
-<li>再处理完整文本，并把原始输入保留在旁边，方便逐项比较变化。</li>
-<li>复制结果前写清楚用途：调试、文档、配置、示例、换算、参考查询或临时检查。</li>
-<li>如果结果要进入生产系统、客户回复或公开文档，使用项目自己的校验链路再次确认。</li>
-</ol>
-<h3>What to verify before copying</h3>
-<ul>
-<li>输入文本使用的字符集和目标系统要求是否一致</li><li>是否发生二次编码、重复解码或填充字符丢失</li><li>中文、空格、斜杠、百分号和换行是否按预期处理</li><li>结果是否只用于编码兼容而不是安全保护</li>
-</ul>
-<h3>Example use case</h3>
-<p>假设你正在整理一段与 <strong>URL 编码 / 解码</strong> 相关的样例：先粘贴最小输入，观察输出格式，再对照源文本确认没有多余字符、遗漏字段或错误单位。对于 url、encode、decode、urlencode、url编码 这类任务，最容易出错的部分往往不是按钮本身，而是复制来源、目标上下文和复核标准没有写清楚。</p>
-<h3>Common mistakes</h3>
-<ul>
-<li>把编码误认为加密</li><li>在查询参数、路径、HTML 和 JavaScript 字符串之间混用同一种转义方式</li><li>未检查 padding、大小写和换行导致对端解析失败</li><li>把密钥、Cookie、token 或客户数据粘贴到在线页面</li>
-</ul>
-<h3>Privacy and safety boundary</h3>
-<p>编码类工具用于非敏感文本的格式兼容检查。安全场景应使用经过评审的加密、密钥管理和传输方案。 不要粘贴密码、私钥、访问令牌、Cookie、客户资料、内部接口地址或任何不适合在线处理的生产数据。</p>
-<h3>When this page is the right fit</h3>
-<p>当你需要一个轻量、打开即用、可快速复制的浏览器工具时，这个页面很合适；当任务需要权限、审计日志、团队审批、专用 SDK、官方控制台或合规环境时，应把本页作为辅助检查，而不是最终来源。</p>
-<div class="ymir-tool-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h3>Copy review record</h3>
-<p>For <strong>URL Encoder and Decoder</strong>, keep a simple review record when the output matters: what input category was used, what transformation was expected, what part of the result was checked, and where the copied value will be used next. This turns a quick utility action into a traceable step rather than an unverified paste.</p>
-<p>For the Chinese workflow <strong>URL 编码 / 解码</strong>, the same rule applies. The page can reduce manual work, but the user still decides whether the result is suitable for documentation, source code, configuration, spreadsheets, tickets, messages, or temporary debugging notes.</p>
-<ul><li>Use synthetic examples when learning the tool.</li><li>Keep original and transformed text side by side until review is complete.</li><li>Check the target context instead of only checking that the page produced visible output.</li><li>For important work, confirm the result with a second method or the authoritative system.</li></ul>
-<h3>Why this page is kept separate</h3>
-<p>This page is intentionally focused on 编码 tasks instead of mixing many unrelated actions into one interface. A narrow page helps users understand the input shape, expected result, common failure mode, and privacy boundary for Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result. That focused scope is also why related tools are linked separately instead of hiding every workflow behind one generic converter.</p>
-</div></section>
-<section class="ymir-container ymir-related ymir-card"><h2>Related tools / 相关工具</h2><div class="ymir-related-grid"><a href="/base64/">Base64 Encoder / Decoder</a><a href="/unicode/">Unicode Converter</a><a href="/json/">JSON Formatter</a><a href="/url-encoding-guide.html">URL Encoding Guide</a></div></section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>URL Encoder and Decoder 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。Encode or decode full URLs, query parameter values, spaces, Chinese characters, and reserved characters, then copy the result. 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
+<section class="ymir-container ymir-help ymir-card ymir-sprint1-depth" data-depth-upgrade="20260601-sprint1-p0">
+<h2>URL encoding workflow for query strings, path segments, and copied links</h2>
+<p>URL encoding mistakes usually happen because a value is encoded in the wrong context. A query parameter value, a path segment, a complete URL, and an application/x-www-form-urlencoded body do not have the same review rules. This page should help you encode deliberately instead of repeatedly applying percent encoding until a link appears to work.</p>
+<p>Use the tool to inspect characters such as spaces, plus signs, ampersands, equal signs, slashes, non-ASCII text, and already-encoded sequences. The important review question is not only “did it encode?” but “was this exact component supposed to be encoded at this layer?”</p>
+<h3>Use the tool as a review workflow</h3>
+<ol><li>Decide the component first: full URL, query parameter name, query parameter value, path segment, fragment, or form body field.</li><li>Encode raw values once. Do not feed an already encoded value back into the encoder unless you intentionally need nested encoding for another transport layer.</li><li>For query strings, check separators. A raw &amp; or = inside a parameter value can accidentally create a new parameter.</li><li>For path segments, check slashes. A slash may be a path separator or part of a value that must become %2F.</li><li>After decoding, compare the result with the expected raw value and confirm that plus signs and spaces were interpreted in the intended convention.</li></ol>
+<h3>Three practical examples</h3>
+<div class="ymir-table-wrap"><table><thead><tr><th>Scenario</th><th>Sample input</th><th>What to check before copying</th></tr></thead><tbody><tr><td><strong>Query parameter value</strong></td><td><code>q=red shoes &amp; socks</code></td><td>The value needs spaces and ampersand encoded so the query parser does not split it into another parameter.</td></tr><tr><td><strong>Path segment</strong></td><td><code>/files/2026/June report.pdf</code></td><td>Only the file-name segment should encode the space; existing path separators should remain separators.</td></tr><tr><td><strong>Already encoded value</strong></td><td><code>name=Alice%20Lee</code></td><td>Encoding again produces %2520, which usually indicates double encoding rather than a correct space.</td></tr></tbody></table></div>
+<h3>Common error table</h3>
+<div class="ymir-table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>How to confirm</th><th>Practical fix</th></tr></thead><tbody><tr><td><strong>Server receives truncated query value</strong></td><td>A raw &amp; or = inside the value was not encoded.</td><td>Inspect server logs or parsed parameters and compare with the original intended value.</td><td>Encode the parameter value before concatenating it into the query string.</td></tr><tr><td><strong>Spaces alternate between + and %20</strong></td><td>Different APIs use percent encoding or application/x-www-form-urlencoded rules.</td><td>Check whether URLSearchParams, form submission, or encodeURIComponent produced the string.</td><td>Use one convention consistently for the receiving endpoint and document it.</td></tr><tr><td><strong>%252F or %2520 appears</strong></td><td>The percent sign from an existing encoded sequence was encoded again.</td><td>Decode once and see whether %2F or %20 remains.</td><td>Decode to the raw value before one final encode, or preserve the encoded value without another pass.</td></tr><tr><td><strong>Slash changes routing</strong></td><td>A path value containing / was placed into a path segment without encoding.</td><td>The router treats one intended segment as multiple segments.</td><td>Encode the segment value so / becomes %2F when it is data, not a separator.</td></tr><tr><td><strong>Non-ASCII text fails in a legacy service</strong></td><td>The receiver expects a specific character encoding or incorrectly decodes UTF-8 percent sequences.</td><td>Test a short known string such as café or 中文 and compare bytes.</td><td>Prefer UTF-8 and check the service documentation before adding workarounds.</td></tr></tbody></table></div>
+<h3>Security and privacy boundary</h3>
+<p>URLs often contain search terms, email addresses, internal resource IDs, signed links, campaign parameters, and access tokens. Encoding does not remove that sensitivity.</p>
+<ul><li>Do not paste signed URLs, reset links, bearer tokens, internal admin paths, or customer query strings into shared examples.</li><li>Remove secrets before copying encoded links into bug reports or documentation.</li><li>Keep a note of whether a value was raw or already encoded when you received it.</li><li>When debugging analytics or ad links, sanitize campaign IDs and private landing-page parameters before sharing.</li></ul>
+<h3>Technical reference notes</h3>
+<p>Modern URL behavior combines the URL standard, JavaScript encoding functions, and form-urlencoded conventions. The safest workflow is to choose the correct component API rather than manually replacing characters.</p>
+<ul><li><a href="https://url.spec.whatwg.org/" rel="noopener" target="_blank">WHATWG URL Standard</a> — URL parsing, URL APIs, and form-urlencoded behavior</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" rel="noopener" target="_blank">MDN encodeURIComponent()</a> — component-level escaping behavior</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" rel="noopener" target="_blank">MDN URLSearchParams</a> — query string utilities and iteration behavior</li></ul>
+<h3>Copy result checklist</h3>
+<ol><li>Name the exact component you are encoding before pressing copy.</li><li>Check for raw &amp;, =, ?, #, /, +, and % characters in the source value.</li><li>Decode once to confirm the final value matches the intended raw text.</li><li>Look for %25 as a sign that an already encoded percent sequence may have been encoded again.</li><li>Preserve query parameter order only if the receiving system or signature scheme requires it.</li><li>Do not share signed or private URLs after encoding; encoding is not redaction.</li></ol>
+<h3>Related guides for deeper review</h3>
+<div class="ymir-related-grid"><a href="/url-encoding-guide.html">URL encoding guide</a><a href="/url-query-encoding-cases.html">Query encoding cases</a><a href="/encoding-tools-guide.html">Encoding tools guide</a><a href="/api-response-debugging-guide.html">API debugging guide</a></div>
+<p class="ymir-editorial-note">Editorial update: 2026-06-01. This upgrade is written for AdSense review and for real users: each page now explains a task, gives concrete examples, lists failure modes, states safety boundaries, and links to related guides instead of depending on a short tool UI alone.</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-core-research-depth" data-core-research-depth="20260601">
-<h2>URL 编码工作流复核案例</h2>
-<p>URL 编码排查要先分清 path、query value、完整 URL 和表单字段。不要对完整 URL 盲目二次编码。复制结果前检查空格、斜杠、问号、井号、百分号和中文是否符合目标系统的解析规则。</p>
-<p>这个页面的设计目标是把一次快速操作变成可复核步骤：先明确输入来源，再理解工具处理方式，然后检查输出是否适合目标上下文。对于重要任务，在线工具只负责辅助检查，最终结果应由项目自己的测试、官方文档、系统校验器或团队流程确认。</p>
-</section></main>
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-related" data-sprint3-related="case-pages"><h2>Deeper case guides and troubleshooting pages</h2><p>Use these focused guides when the quick tool output is not enough. They explain specific failure modes, bad inputs, corrected examples, and copy-review boundaries.</p><div class="ymir-related-grid"><a href="/url-query-parameter-encoding-guide.html">URL 查询参数编码指南</a><a href="/encodeuri-vs-encodeuricomponent.html">encodeURI 与 encodeURIComponent 区别</a><a href="/url-double-encoding-debugging.html">URL 重复编码排查</a><a href="/url-plus-vs-percent20-guide.html">URL 中 + 与 %20 空格差异指南</a></div></section><section class="ymir-container ymir-related ymir-card"><h2>Related tools and guides</h2><div class="ymir-related-grid"><a href="/base64/">Base64 Encoder / Decoder</a><a href="/unicode/">Unicode Converter</a><a href="/json/">JSON Formatter</a><a href="/url-encoding-guide.html">URL Encoding Guide</a></div></section>
+</main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Open a tool, process the input, and copy the result.</span></footer>
 <script src="/static/script/ymir-ui.js?v=20260531-v58"></script>
 <script src="/static/script/ymir-i18n.js?v=20260531-v58"></script><script src="/static/vendor/vue/vue.global.prod.js?v=20260531-v58"></script><script src="/static/vendor/element-plus/index.full.min.js?v=20260531-v58"></script>

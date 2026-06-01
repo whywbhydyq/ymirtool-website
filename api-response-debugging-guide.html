@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
-<meta content="index, follow" name="robots"/>
+<meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool</title>
 <meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。" name="description"/>
@@ -18,7 +18,6 @@
 <meta content="API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool" name="twitter:title"/>
 <meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。" name="twitter:description"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
@@ -26,7 +25,6 @@
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "API 响应调试工作流：从状态码到 JSON 结构复核", "name": "API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool", "url": "https://ymirtool.com/api-response-debugging-guide.html", "description": "面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
@@ -56,7 +54,6 @@
 <p><strong>场景二：故障排查记录。</strong>当你排查错误时，保留原始输入和处理结果。不要只保留最终结果，因为之后很难判断错误来自源数据、复制过程、工具选择还是目标系统解析。</p>
 <p><strong>场景三：发布前复核。</strong>当结果会进入发布流程，应让项目自己的校验链路再跑一遍。在线工具能提前发现明显问题，但发布标准应由仓库、CI、监控、官方控制台或团队流程决定。</p>
 </section>
-
 <section class="ymir-container ymir-help ymir-card ymir-final-depth" data-final-depth="20260601">
 <h2>API 响应调试工作流：从状态码到 JSON 结构复核 的误用边界</h2>
 <p>本专题强调的是可复核的操作方法，而不是承诺在线页面能替代专业系统。浏览器工具最大的优势是打开快、反馈快、适合处理小样例；最大的限制是缺少项目上下文、权限上下文、历史记录和团队审批。因此，在处理公开样例、教学材料、临时文档和脱敏片段时，本页能提升效率；在处理生产配置、客户资料、安全凭证、支付记录、合同数据或正式发布流程时，应回到组织内部受控环境。</p>

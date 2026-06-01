@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -9,24 +9,22 @@
 <title>URL 编码解码使用说明 - Ymir Tool</title>
 <meta content="URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。" name="description"/>
 <link href="https://ymirtool.com/url-encoding-guide.html" rel="canonical"/>
-<meta content="URL 编码解码使用说明 - Ymir Tool" property="og:title">
+<meta content="URL 编码解码使用说明 - Ymir Tool" property="og:title"/>
 <meta content="URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。" property="og:description"/>
-<meta content="article" property="og:type">
-<meta content="https://ymirtool.com/url-encoding-guide.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/url-encoding-guide.html" property="og:url">
 <meta content="Ymir Tool" property="og:site_name"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <script defer="" src="/_vercel/insights/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="URL 编码解码使用说明 - Ymir Tool" name="twitter:title"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="URL 编码解码使用说明 - Ymir Tool" name="twitter:title">
 <meta content="URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。" name="twitter:description"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"URL 编码解码使用说明 - Ymir Tool","headline":"URL 编码解码使用说明","url":"https://ymirtool.com/url-encoding-guide.html","description":"URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"URL 编码解码使用说明 - Ymir Tool","item":"https://ymirtool.com/url-encoding-guide.html"}]}</script><script data-ymir-ld="faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"什么时候只编码参数值？","acceptedAnswer":{"@type":"Answer","text":"当你要把一段文本放进 query 参数里，通常只编码参数值，不要把整个 URL 全部编码。"}},{"@type":"Question","name":"为什么出现 %25？","acceptedAnswer":{"@type":"Answer","text":"%25 通常代表百分号本身被编码，常见于重复编码或手动拼接错误。"}},{"@type":"Question","name":"加号和空格有什么关系？","acceptedAnswer":{"@type":"Answer","text":"在部分表单编码场景中，加号可以表示空格；但不同上下文的规则并不完全相同，调试时要结合具体接口确认。 打开 URL 编码工具"}}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
@@ -71,8 +69,27 @@
 <h3>加号和空格有什么关系？</h3>
 <p>在部分表单编码场景中，加号可以表示空格；但不同上下文的规则并不完全相同，调试时要结合具体接口确认。</p>
 <p><a class="btn btn-primary" href="/urlencode/">打开 URL 编码工具</a></p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>URL 编码排查重点</h2><p>URL 编码用于让中文、空格、符号和查询参数在地址中安全传输。排查时要确认需要编码的是整个 URL、单个参数值，还是路径片段。</p><ul><li>空格可能表现为 %20 或加号，取决于上下文。</li><li>百分号本身如果被重复处理，容易出现二次编码。</li><li>复制分享链接前，应打开一次目标地址确认参数没有被截断。</li></ul></section>
-<section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-guide-review ymir-card"><h2>URL 编码排查重点</h2><p>URL 编码用于让中文、空格、符号和查询参数在地址中安全传输。排查时要确认需要编码的是整个 URL、单个参数值，还是路径片段。</p><ul><li>空格可能表现为 %20 或加号，取决于上下文。</li><li>百分号本身如果被重复处理，容易出现二次编码。</li><li>复制分享链接前，应打开一次目标地址确认参数没有被截断。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-url">
+<h2>URL 编码要先判断位置：完整 URL、路径还是查询参数</h2>
+<p>URL 编码最常见的错误是把所有内容都用同一种方式处理。完整 URL、path segment、query key、query value 和 fragment 的规则不同。中文、空格、斜杠、问号、等号、百分号在不同位置含义不同；如果在错误位置重复编码，接口可能收到完全不同的参数。</p>
+<h3>可复制样例</h3>
+<pre><code>原始查询值：红色 鞋子/男款
+作为 query value：%E7%BA%A2%E8%89%B2%20%E9%9E%8B%E5%AD%90%2F%E7%94%B7%E6%AC%BE</code></pre>
+<p>在 query value 中，斜杠只是值的一部分，因此应被编码为 <code>%2F</code>。但在路径中，斜杠通常表示层级分隔，不能随意编码或解码。排查 URL 错误时，应先标记每个字符所在位置，再决定使用 <code>encodeURI</code>、<code>encodeURIComponent</code> 还是 <code>URLSearchParams</code>。</p>
+<table class="table table-bordered"><thead><tr><th>位置</th><th>典型字符</th><th>建议处理</th></tr></thead><tbody>
+<tr><td>完整 URL</td><td><code>https://</code>、<code>?</code>、<code>&amp;</code></td><td>不要整体用组件编码，否则结构字符会被破坏。</td></tr>
+<tr><td>查询参数值</td><td>中文、空格、斜杠、等号</td><td>使用组件级编码，避免值被误拆分。</td></tr>
+<tr><td>已编码文本</td><td><code>%E4%B8%AD</code></td><td>先判断是否已经编码，避免变成 <code>%25E4...</code>。</td></tr>
+</tbody></table>
+<h3>排查流程</h3>
+<ol><li>把 URL 拆成 scheme、host、path、query、fragment。</li><li>只对需要作为“值”的部分编码，不要整体复制整条 URL 重复编码。</li><li>遇到 <code>+</code> 时确认它来自表单编码还是原始加号。</li><li>使用 <a href="/urlencode/">URL 编码工具</a> 查看单个参数，再用 <a href="/textdiff/">文本对比</a> 比较修复前后 URL。</li></ol>
+<h3>隐私边界</h3>
+<p>URL 中经常包含 session、token、邮箱、订单号、广告点击 ID 或内部路径。用于排查时应删除或替换这些值，只保留字符类型和参数结构。不要把带认证信息的完整生产 URL 直接粘贴到公开页面、issue 或第三方聊天系统。</p>
+<h3>参考依据</h3>
+<p>URL 结构可参考 WHATWG URL Standard；浏览器 JavaScript 的组件编码行为可参考 MDN 的 <code>encodeURIComponent()</code> 与 <code>URLSearchParams</code> 文档。</p>
+</section>
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/url-query-parameter-encoding-guide.html">URL 查询参数编码指南</a> — 说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。</li><li><a href="/encodeuri-vs-encodeuricomponent.html">encodeURI 与 encodeURIComponent 区别</a> — 用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。</li><li><a href="/url-double-encoding-debugging.html">URL 重复编码排查</a> — 定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。</li><li><a href="/url-plus-vs-percent20-guide.html">URL 中 + 与 %20 空格差异指南</a> — 解释 query、表单编码、路径和普通百分号编码中 + 与 %20 的差异，避免搜索词、邮箱和签名参数被误读。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
 <a href="/base64/">Base64 编解码</a>
@@ -81,21 +98,6 @@
 <a href="/encoding-tools-guide.html">编码工具指南</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for url encoding guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section><section class="ymir-container ymir-help ymir-card ymir-page-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h2>页面使用复核标准</h2>
-<p><strong>URL 编码解码使用说明 - Ymir Tool</strong> should help visitors understand the purpose of the site or the linked tools before they start processing content. A useful page explains what the visitor can do, what the page does not promise, and which linked tools or guides should be used for the next step.</p>
-<p>无论访问者从搜索结果、书签、指南入口还是工具目录进入页面，都应该能直接理解本页的用途、输入要求、输出边界和下一步操作。页面不应只依赖按钮、表格或一句标题，而应提供足够的背景说明、常见错误和复核方法，让用户知道何时可以使用本页、何时应该改用官方系统或项目内部流程。</p>
-<h3>Practical use note</h3>
-<p>Use the navigation links to move from general explanation to a focused tool page. If the task involves private information, start with a redacted or synthetic example. If the output will be copied into a public document, code repository, customer message, or system configuration, preserve the original source and verify the result before publishing it.</p>
-<h3>Quality boundary</h3>
-<p>This page is part of a utility network, not a claim of professional advice. It is designed to reduce repetitive work and clarify common mistakes, while leaving final judgment, compliance checks, and production validation to the user and their own approved systems.</p>
-</section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>URL 编码解码使用说明 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。URL 编码解码使用说明，解释中文、空格、百分号、查询参数和重复编码等常见问题。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
-<meta content="index, follow" name="robots"/>
+<meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool</title>
 <meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。" name="description"/>
@@ -18,7 +18,6 @@
 <meta content="URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool" name="twitter:title"/>
 <meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。" name="twitter:description"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<link crossorigin="" href="https://pagead2.googlesyndication.com" rel="preconnect"/>
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
@@ -26,7 +25,6 @@
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "URL 查询参数编码案例：路径、参数和值不要混用", "name": "URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool", "url": "https://ymirtool.com/url-query-encoding-cases.html", "description": "解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
@@ -67,7 +65,6 @@
 <h3>最终确认问题</h3>
 <ul><li>我是否知道输入来自哪里，以及它是否已经脱敏。</li><li>我是否知道输出会被复制到哪里，以及目标系统如何解释它。</li><li>我是否保留了原始输入，方便事后追溯。</li><li>我是否需要使用项目内部工具、官方文档或团队流程做最终确认。</li></ul>
 </section>
-
 <section class="ymir-container ymir-help ymir-card ymir-depth-floor" data-depth-floor="20260601">
 <h2>URL 查询参数编码案例：路径、参数和值不要混用 的复盘方法</h2>
 <p>一次工具处理完成后，建议用复盘方式检查结果，而不是只看页面是否给出了输出。复盘可以很短，但要覆盖四个点：输入是否准确、处理动作是否正确、输出是否符合目标上下文、后续是否需要权威系统确认。对于开发者而言，这个习惯比记住某个按钮的位置更重要，因为绝大多数真实错误都发生在工具之外：复制了错误来源、漏掉了特殊字符、忽略了环境差异，或把临时结果直接当成正式结果。</p>

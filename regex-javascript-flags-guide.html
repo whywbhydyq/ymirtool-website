@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html data-adsense-remediation="20260601-adsense-remediation-v2" data-content-sprint="20260601-sprint3-cases" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JavaScript 正则 flags 使用指南 - Ymir Tool</title>
+<meta content="解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。" name="description"/>
+<link href="https://ymirtool.com/regex-javascript-flags-guide.html" rel="canonical"/>
+<meta content="JavaScript 正则 flags 使用指南 - Ymir Tool" property="og:title"/>
+<meta content="解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://ymirtool.com/regex-javascript-flags-guide.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="JavaScript 正则 flags 使用指南 - Ymir Tool" name="twitter:title"/>
+<meta content="解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。" name="twitter:description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "JavaScript 正则 flags 使用指南", "name": "JavaScript 正则 flags 使用指南 - Ymir Tool", "url": "https://ymirtool.com/regex-javascript-flags-guide.html", "description": "解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JavaScript 正则 flags 使用指南 - Ymir Tool","item":"https://ymirtool.com/regex-javascript-flags-guide.html"}]}</script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page" data-sprint3-page="regex-javascript-flags-guide.html">
+<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JavaScript 正则 flags 使用指南</p>
+<h1>JavaScript 正则 flags 使用指南</h1>
+<p class="ymir-lead">解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。</p>
+<section aria-label="工具入口" class="ymir-guide-cta"><div><strong>Regex flags 检查</strong><p>修改 flags 前先写出期望匹配范围和输入行数。</p></div><a class="ymir-guide-cta-button" href="/regex/">打开正则工具</a></section>
+<section class="ymir-container ymir-help ymir-card"><h2>这个页面解决什么问题</h2><p>JavaScript 正则 flags 会改变匹配范围和状态。<code>g</code> 影响多次匹配和 lastIndex，<code>i</code> 忽略大小写，<code>m</code> 改变行首行尾，<code>s</code> 让点号匹配换行，<code>u</code> 影响 Unicode 解析。flags 错误常导致本地测试通过、批量处理失败。</p><p>这个页面用于排查日志多行匹配、emoji 字符、循环执行 exec/test、大小写过滤和跨行文本抽取。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>快速判断</h2><ul><li>同一个 regex 多次 test 结果交替变化，检查是否使用了 <code>g</code> 并受到 lastIndex 影响。</li><li><code>^</code> 和 <code>$</code> 在多行文本中行为异常，检查 <code>m</code>。</li><li>点号不能跨行，检查是否需要 <code>s</code> 或明确字符类。</li><li>处理 emoji 或 Unicode 属性时，检查 <code>u</code>。</li></ul></section>
+<section class="ymir-container ymir-help ymir-card"><h2>可复制示例：错误输入与修复后输入</h2><p>坏样例复用带 g 的正则多次 test，可能因为 lastIndex 改变得到不稳定结果。</p><pre><code>const r = /error/g; r.test("error"); r.test("error");</code></pre><pre><code>const r = /error/; r.test("error"); r.test("error");</code></pre><p>如果只是判断是否包含，不需要 g。需要全局匹配时，应该理解 lastIndex 或每次创建新表达式。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>诊断步骤</h2><ol><li>写明目标：单次判断、提取全部、逐行匹配还是跨行匹配。</li><li>只添加必需 flags，不要复制别人的完整组合。</li><li>用一行和多行样本分别测试 anchors。</li><li>用包含 emoji、中文和重音字符的样本测试 Unicode。</li><li>在项目代码中检查 regex 是否被复用。</li></ol><p>flags 是正则行为的一部分，应与表达式一起进入代码评审。只复制 pattern 而漏掉 flags，或复制 flags 而不理解用途，都可能改变结果。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见错误表</h2><div class="ymir-table-wrap"><table><thead><tr><th>现象或场景</th><th>常见原因</th><th>处理动作</th></tr></thead><tbody><tr><td>test 结果不稳定</td><td>全局 regex 的 lastIndex 状态。</td><td>去掉 g 或重置 lastIndex。</td></tr><tr><td>只匹配第一行</td><td>没有启用多行或跨行策略。</td><td>根据目标使用 m、s 或字符类。</td></tr><tr><td>大小写未忽略</td><td>缺少 i。</td><td>明确是否允许大小写折叠。</td></tr><tr><td>emoji 被拆分</td><td>缺少 Unicode 处理。</td><td>使用 u 并测试目标字符。</td></tr></tbody></table></div></section>
+<section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>认为 g 只是“更完整匹配”。</li><li>把 m 当成 dotAll。</li><li>没有测试 Unicode 输入。</li><li>在 JavaScript 和其他语言之间复制 flags。</li></ul><p>不同语言 flags 名称和语义并不完全相同。JavaScript 在线测试结果不能直接代表 PCRE、Python、Go 或 RE2。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页只讨论 JavaScript 正则。生产过滤、安全规则和大规模日志处理应在实际运行环境和数据量下测试。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>是否知道每个 flag 的必要性。</li><li>是否避免不必要的 g。</li><li>是否测试多行和跨行输入。</li><li>是否测试 Unicode 和 emoji。</li><li>是否在目标运行环境复测。</li><li>是否记录 pattern 与 flags 一起发布。</li></ol></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/regex/">正则工具</a><a href="/regex-tester-guide.html">正则测试指南</a><a href="/regex-capture-group-debugging.html">捕获组指南</a><a href="/regex-greedy-lazy-quantifier-guide.html">量词指南</a></div><h3>参考依据</h3><ul><li>MDN Regular expressions：flags 说明。</li><li>MDN RegExp.lastIndex：全局匹配状态。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
+</body>
+</html>

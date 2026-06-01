@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
@@ -12,16 +12,15 @@
 <script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="JSON 格式化与校验指南 - Ymir Tool" property="og:title">
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="JSON 格式化与校验指南 - Ymir Tool" property="og:title"/>
 <meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。" property="og:description"/>
-<meta content="https://ymirtool.com/json-format-guide.html" property="og:url">
-<meta content="JSON 格式化与校验指南 - Ymir Tool" name="twitter:title"/>
+<meta content="https://ymirtool.com/json-format-guide.html" property="og:url"/>
+<meta content="JSON 格式化与校验指南 - Ymir Tool" name="twitter:title">
 <meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。" name="twitter:description"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"JSON 格式化与校验指南 - Ymir Tool","headline":"JSON 格式化与校验指南","url":"https://ymirtool.com/json-format-guide.html","description":"JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-</meta></meta></head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化与校验指南 - Ymir Tool","item":"https://ymirtool.com/json-format-guide.html"}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/online-toolbox-guide.html">使用指南</a></p>
@@ -40,8 +39,26 @@
 <p>先用 <a href="/json/">JSON 格式化</a> 查看结构，再用 <a href="/jsonzip/">JSON 压缩转义</a> 做发布前压缩。如果要生成代码，可使用 <a href="/json2java/">JSON 转 Java 实体类</a>、<a href="/json2go/">JSON 转 Go 结构体</a> 或 <a href="/json2cs/">JSON 转 C# 实体类</a>。</p>
 <h2>排查技巧</h2>
 <p>当 JSON 校验失败时，优先检查最后一个字段后是否多了逗号、字符串是否使用英文双引号、路径参数里是否包含未转义的反斜杠。对于线上数据，建议先脱敏账号、手机号、邮箱和密钥再粘贴到任何工具页面。</p>
-<section class="ymir-guide-review ymir-card" data-adsense-detail="20260601"><h2>复核清单</h2><p>JSON 格式化不是把文本变漂亮这么简单。实际排查时，应先确认输入是不是严格 JSON，而不是 JavaScript 对象、JSONP、日志前缀或 HTML 错误页。</p><ul><li>检查对象键和值是否使用英文双引号。</li><li>确认最后一个字段后没有多余逗号。</li><li>复制结果前比较数组长度、字段层级和特殊字符是否保持一致。</li></ul><p>如果 JSON 来自生产接口，建议先脱敏 token、邮箱、手机号、客户字段和内部 ID，再粘贴到任何浏览器工具中。</p></section>
-<section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-guide-review ymir-card"><h2>复核清单</h2><p>JSON 格式化不是把文本变漂亮这么简单。实际排查时，应先确认输入是不是严格 JSON，而不是 JavaScript 对象、JSONP、日志前缀或 HTML 错误页。</p><ul><li>检查对象键和值是否使用英文双引号。</li><li>确认最后一个字段后没有多余逗号。</li><li>复制结果前比较数组长度、字段层级和特殊字符是否保持一致。</li></ul><p>如果 JSON 来自生产接口，建议先脱敏 token、邮箱、手机号、客户字段和内部 ID，再粘贴到任何浏览器工具中。</p></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-json-format">
+<h2>JSON 格式化、校验和压缩的实际分工</h2>
+<p>同一个 JSON 文本在不同阶段需要不同处理：阅读时要格式化，发布时可能要压缩，接口联调时要校验，跨系统传输时还要注意转义。把这些动作混在一起会产生误判，例如把“格式化成功”当成“数据类型正确”，或者把“压缩后可复制”当成“符合接口 schema”。本指南建议先建立三步流程：确认文本是严格 JSON，确认字段结构符合预期，再决定是否压缩或转换。</p>
+<h3>最小工作流示例</h3>
+<pre><code>{"user":{"id":1001,"active":true},"roles":["editor","reviewer"],"updatedAt":"2026-06-01T09:00:00Z"}</code></pre>
+<p>格式化后应检查 <code>id</code> 是数字、<code>active</code> 是布尔值、<code>roles</code> 是数组、<code>updatedAt</code> 是字符串。很多线上问题不是 JSON 语法错误，而是类型不符合接口约定，例如 <code>"1001"</code> 被当成字符串发送，或者 <code>"false"</code> 被当成真值处理。</p>
+<table class="table table-bordered"><thead><tr><th>任务</th><th>应该使用</th><th>不要误解为</th></tr></thead><tbody>
+<tr><td>阅读压缩响应</td><td><a href="/json/">格式化</a></td><td>不会自动证明业务字段正确。</td></tr>
+<tr><td>发布配置片段</td><td><a href="/jsonzip/">压缩转义</a></td><td>不会修复未闭合引号或非法注释。</td></tr>
+<tr><td>生成其他格式</td><td><a href="/json2yaml/">JSON 转 YAML</a>、<a href="/json2xml/">JSON 转 XML</a></td><td>不应在原始 JSON 未校验时转换。</td></tr>
+</tbody></table>
+<h3>诊断步骤</h3>
+<ol><li>删除日志前缀、HTTP 头、说明文字，只保留 JSON 主体。</li><li>检查是否使用英文双引号，确认没有尾随逗号、注释和未转义换行。</li><li>格式化后逐层折叠对象和数组，确认字段没有出现在错误层级。</li><li>复制前把格式化结果与原始样本做一次 <a href="/textdiff/">文本对比</a>，确认只改变空白字符。</li></ol>
+<h3>常见误判</h3>
+<ul><li>把 JavaScript 对象写法当成 JSON，例如未加引号的 key。</li><li>把 API 返回的 HTML 错误页粘贴进 JSON 工具，实际错误在认证或网关层。</li><li>把重复 key 视为安全写法；不同解析器对重复 key 的处理可能导致后值覆盖前值。</li><li>忽视大整数精度，订单号、雪花 ID、银行卡前缀等字段不应随意作为数字处理。</li></ul>
+<h3>复制前检查清单</h3>
+<p>确认字段层级、数组长度、引号类型、数字精度、null 与空字符串差异、转义字符、时间字段和敏感字段脱敏状态。只要其中一个点无法确认，就不要把工具输出直接贴回生产配置。</p>
+</section>
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/json-trailing-comma-single-quote-errors.html">JSON 尾随逗号与单引号错误排查</a> — 用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。</li><li><a href="/json-api-response-debugging-checklist.html">API 响应 JSON 调试清单</a> — 从状态码、Content-Type、响应体外壳、JSON 结构和字段类型五个层次排查 API 响应异常。</li><li><a href="/json-stringify-parse-data-loss.html">JSON.stringify 与 JSON.parse 数据丢失排查</a> — 说明 stringify/parse 往返中 undefined、函数、Date、大整数、NaN、Infinity 和循环引用的常见数据丢失。</li><li><a href="/json-large-number-precision-guide.html">JSON 大整数精度丢失指南</a> — 排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid">
 <a href="/jsonzip/">JSON 压缩转义</a>
@@ -51,20 +68,5 @@
 </div>
 </section>
 <p data-adsense-detail-extra="20260601">对于团队协作，建议把格式化后的 JSON 与原始响应一起保存在 issue、文档或调试记录中，并注明工具只改变空白和排版，不应改变字段值。若字段顺序、数组长度或转义字符发生变化，应停止复制并回到原始数据重新检查。</p>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-review-hardening="20260601-continuation"><h2>Additional review notes for json format guide</h2><p>This guide is intended to help users choose a safe workflow before opening a tool page. Read it as a decision checklist: identify the input type, decide whether the content is safe to process online, choose the smallest useful sample, and define what a correct result should look like before copying anything.</p><h3>Before using the linked tools</h3><p>Prepare a short non-sensitive example and keep the source value visible. For structured data, check field shape and escaping. For encoding, check the target context. For text operations, check whitespace and line breaks. For calculations, check units, precision, and rounding. For references, confirm the result against official documentation when the outcome matters.</p><h3>Common review pattern</h3><p>Open the most relevant tool from this guide, run the short sample first, compare output with the expected result, then process the longer value only if the sample behaves correctly. This prevents a single mistaken paste or hidden character from propagating into documentation, code, or configuration.</p><h3>When to stop and use another system</h3><p>If the task involves secrets, regulated records, legal obligations, production incidents, financial decisions, engineering safety, or infrastructure access, treat this guide as background reading and use the approved system for the actual work. Browser utilities are best for focused inspection, not for controlled production workflows.</p></section><section class="ymir-container ymir-help ymir-card ymir-page-depth-extra-continue" data-review-hardening-extra="20260601-continuation">
-<h2>页面使用复核标准</h2>
-<p><strong>JSON 格式化与校验指南 - Ymir Tool</strong> should help visitors understand the purpose of the site or the linked tools before they start processing content. A useful page explains what the visitor can do, what the page does not promise, and which linked tools or guides should be used for the next step.</p>
-<p>无论访问者从搜索结果、书签、指南入口还是工具目录进入页面，都应该能直接理解本页的用途、输入要求、输出边界和下一步操作。页面不应只依赖按钮、表格或一句标题，而应提供足够的背景说明、常见错误和复核方法，让用户知道何时可以使用本页、何时应该改用官方系统或项目内部流程。</p>
-<h3>Practical use note</h3>
-<p>Use the navigation links to move from general explanation to a focused tool page. If the task involves private information, start with a redacted or synthetic example. If the output will be copied into a public document, code repository, customer message, or system configuration, preserve the original source and verify the result before publishing it.</p>
-<h3>Quality boundary</h3>
-<p>This page is part of a utility network, not a claim of professional advice. It is designed to reduce repetitive work and clarify common mistakes, while leaving final judgment, compliance checks, and production validation to the user and their own approved systems.</p>
-</section>
-<section class="ymir-container ymir-help ymir-card ymir-research-hardening" data-research-hardening="20260601">
-<h2>JSON 格式化与校验指南 的实用判断框架</h2>
-<p>阅读本页时，不要只关注单个按钮或单条示例，而要把它放进完整工作流里理解：输入从哪里来，输出要发往哪里，中间是否存在编码、格式、空白、大小写、单位、时区或安全边界问题。JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。 这类任务最容易出现“看起来已经处理成功，但复制到目标系统后失败”的情况，因此页面说明会反复强调源文本、目标上下文和复核步骤。</p>
-<p>建议先用公开样例确认概念，再处理自己的非敏感材料。复制结果前，至少检查一次原始输入、工具输出和目标系统要求是否一致。如果目标环境有官方校验器、编译器、格式检查器、接口文档、监控系统或团队审批流程，应以那些系统的结果作为最终依据。</p>
-<h3>适合阅读本页的情况</h3>
-<ul><li>你需要理解一个常见开发者工具的输入和输出边界。</li><li>你想把临时文本、配置、日志或文档片段整理成更容易复核的形式。</li><li>你希望避免把编码、格式化、哈希、计算或参考查询结果误当成最终证明。</li></ul>
-</section></div>
+<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body></html>
