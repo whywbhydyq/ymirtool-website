@@ -1,1 +1,0 @@
-var bs=[1,360,1296000,6.2831855,4,21600,6283.18548,399.99996];var num=0;$(".BtnHS").on("click",function(){num=$(this).prev().val();if(num!=""&&!isNaN(num)){var tag=num/bs[$(".AngleCountCent li").index($(this).parent())];$(".AngleCountCent li").each(function(ind){$(this).find(".AngleTxt").val(bs[ind]*tag)})}});$("#reset").on("click",function(){$("input[type='text']").val("")});
