@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="google-adsense-account" content="ca-pub-1653188471819736">
-<meta content="index, follow" name="robots"/>
+<meta name="robots" content="index, follow"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSON Formatter &amp; Validator | Ymir Tool</title>
 <meta name="description" content="Format, validate, minify, and copy JSON. Paste JSON to get readable output, syntax errors, or compact JSON for APIs and config files."/>
@@ -34,9 +34,13 @@
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="ymir-page ymir-tool-page-v51" data-vue-replaced="json-v19" data-ymir-tool="json">
 <section aria-label="json tool workbench" class="ymir-vue-tool-root" data-tool="json" id="ymir-vue-tool-app"></section><noscript><div class="ymir-vue-noscript">This tool needs JavaScript to run. Please enable JavaScript and reload the page.</div></noscript>
-
-<section class="ymir-container ymir-help ymir-card"><h2>Use cases and limits</h2><p>Use this tool when API responses, logs, configuration snippets, or JSON samples need readable indentation, compact output, or a quick syntax check.</p><p>The validator checks strict JSON syntax. Common failures include trailing commas, single quotes, comments, missing quotes around keys, and HTML error pages returned instead of JSON.</p></section>
-<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2><h3>What can this JSON formatter do?</h3><p>It can format valid JSON with indentation, minify valid JSON into a compact string, validate syntax, and copy the result.</p><h3>Can it fix invalid JSON automatically?</h3><p>No. It reports parsing errors so you can correct the source instead of silently changing data.</p><h3>Why does pasted API output fail?</h3><p>The response may be JSONP, HTML, a log wrapper, or another configuration format rather than strict JSON.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>About this tool</h2><p>The JSON Formatter helps developers inspect API responses, logs, configuration snippets, and pasted JSON samples without changing the source data.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>When this tool is useful</h2><p>Use it when an API response is hard to read, when a configuration file needs consistent indentation, or when a JSON sample must be checked before it is shared in documentation.</p><p>The formatter keeps valid values intact. It changes whitespace for readability or removes whitespace for compact output.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Input and output example</h2><p>Input: {"status":"ok","items":[{"id":1,"name":"sample"}]}</p><p>Formatted output uses nested indentation so object keys, arrays, and values can be reviewed line by line.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Common validation errors</h2><p>Strict JSON does not allow trailing commas, comments, single-quoted strings, or unquoted object keys.</p><p>If pasted API output fails validation, confirm that the response is not an HTML error page, JSONP wrapper, or log prefix.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Privacy boundary</h2><p>Do not paste passwords, production tokens, private keys, customer records, or confidential payloads into browser tools unless your own security process allows it.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Before copying the result</h2><p>Review the JSON Formatter and Validator output against the original input and the reason you opened the page. Format, validate, minify, and copy JSON. Paste JSON to get readable output, syntax errors, or compact JSON for APIs and config files.</p><p>Keep the source text nearby until you have confirmed formatting, encoding, counting, or conversion details. This extra review step helps catch pasted sample data, wrong units, hidden whitespace, timezone assumptions, or characters that changed during copying.</p></section>
+<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2><h3>Does formatting change the JSON values?</h3><p>No. Formatting changes whitespace only after the input has parsed as valid JSON.</p><h3>Why does valid JavaScript object syntax fail?</h3><p>JSON is stricter than JavaScript object literals. Keys and string values need double quotes, and comments are not valid JSON.</p></section>
 <section class="ymir-container ymir-related ymir-card">
 <h2>Related tools</h2>
 <div class="ymir-related-grid"><a href="/base64/">Base64</a><a href="/urlencode/">URL Encode</a><a href="/formatjs/">JavaScript Formatter</a><a href="/json-format-guide.html">JSON guide</a></div>

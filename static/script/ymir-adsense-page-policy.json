@@ -1,0 +1,48 @@
+{
+  "version": "20260601-adsense-remediation",
+  "approvedToolSlugs": [
+    "json",
+    "base64",
+    "md5",
+    "formatjs",
+    "textdiff",
+    "txtcount",
+    "regex",
+    "calculator",
+    "unixtime",
+    "urlencode"
+  ],
+  "adEligibleStaticPageIds": [
+    "home",
+    "guides",
+    "online_toolbox_guide",
+    "priority_tools_guide",
+    "json_formatter_examples",
+    "json_format_guide",
+    "md5_hash_guide",
+    "base64_encoding_guide",
+    "url_encoding_guide",
+    "javascript_formatter_guide",
+    "text_diff_guide",
+    "text_count_guide",
+    "regex_tester_guide",
+    "unix_time_guide",
+    "calculator_guide",
+    "code_formatting_guide",
+    "encoding_tools_guide",
+    "hash_tools_guide",
+    "text_tools_guide",
+    "calculator_tools_guide",
+    "time_tools_guide",
+    "common_errors_guide"
+  ],
+  "neverAdPagePaths": [
+    "404.html",
+    "about.html",
+    "privacy.html",
+    "terms.html",
+    "disclaimer.html",
+    "contact.html"
+  ],
+  "temporaryNoindexToolReason": "Tool page needs unique static publisher content before AdSense review."
+}

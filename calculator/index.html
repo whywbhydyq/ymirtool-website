@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="google-adsense-account" content="ca-pub-1653188471819736">
-<meta content="index, follow" name="robots"/>
+<meta name="robots" content="index, follow"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Online Calculator - Ymir Tool</title>
 <meta name="description" content="Run quick calculations with numbers, parentheses, percentages, and basic operators."/>
@@ -33,14 +33,12 @@
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="ymir-page ymir-tool-page-v51" data-ymir-tool="calculator">
 <section aria-label="calculator tool workbench" class="ymir-vue-tool-root" data-tool="calculator" id="ymir-vue-tool-app"></section><noscript><div class="ymir-vue-noscript">This tool needs JavaScript to run. Please enable JavaScript and reload the page.</div></noscript>
-<section class="ymir-container ymir-help ymir-card">
-<h2>How to use this tool / 使用说明</h2>
-<p>This calculator is designed for quick arithmetic and everyday numeric checks. It is not a full spreadsheet or symbolic math engine.</p><p>For complex finance, engineering, or legal calculations, verify the result with a specialized calculator.</p>
-</section>
-<section class="ymir-container ymir-faq ymir-card">
-<h2>FAQ / 常见问题</h2>
-<h3>What operators are supported?</h3><p>Numbers, parentheses, +, -, *, /, decimals, and %. Advanced functions are intentionally not included in this lightweight version.</p><h3>Does it send calculations to a server?</h3><p>The calculator runs in the page and shows the result immediately. Avoid using it as the only check for high-risk financial, legal, or engineering decisions.</p><h3>What happens on invalid input?</h3><p>The page shows an error message instead of crashing.</p>
-</section>
+<section class="ymir-container ymir-help ymir-card"><h2>About this tool</h2><p>The Scientific Calculator evaluates common arithmetic expressions for quick checks, estimates, and small calculation workflows.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>When this tool is useful</h2><p>Use it for quick arithmetic, unit-adjacent estimates, percentage checks, exponent calculations, and verifying numbers before copying them into a document.</p><p>For financial, engineering, medical, or legal decisions, verify the result with the authoritative calculator or source required by that workflow.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Input and output example</h2><p>Input: (12.5 * 8) / 4</p><p>The output should evaluate the expression and let you copy the numeric result after checking operator precedence.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Calculation notes</h2><p>Decimal arithmetic in browsers can show floating-point rounding behavior. Round final results according to your actual use case.</p><p>Write expressions clearly with parentheses when a result depends on order of operations.</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>Before copying the result</h2><p>Review the 在线计算器 output against the original input and the reason you opened the page. Run quick calculations with numbers, parentheses, percentages, and basic operators.</p><p>Keep the source text nearby until you have confirmed formatting, encoding, counting, or conversion details. This extra review step helps catch pasted sample data, wrong units, hidden whitespace, timezone assumptions, or characters that changed during copying.</p></section>
+<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2><h3>Why do some decimal results have many digits?</h3><p>JavaScript and most browser calculators use binary floating-point numbers, which can expose tiny rounding differences.</p><h3>Can this replace a spreadsheet?</h3><p>No. Use it for quick checks, not for audited models or repeatable business calculations.</p></section>
 <section class="ymir-container ymir-related ymir-card">
 <h2>Related tools / 相关工具</h2>
 <div class="ymir-related-grid"><a href="/calclength/">Length Converter</a><a href="/calcarea/">Area Converter</a><a href="/calctemperature/">Temperature Converter</a><a href="/calculator-guide.html">Calculator guide</a></div>

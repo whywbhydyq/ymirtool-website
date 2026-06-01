@@ -1,14 +1,27 @@
 {
-  "version": "20260531-v58",
-  "checkedAt": "2026-05-31T07:34:01.544Z",
+  "version": "20260601-adsense-remediation",
+  "checkedAt": "2026-06-01T03:45:42.320Z",
   "adsenseMeta": "<meta name=\"google-adsense-account\" content=\"ca-pub-1653188471819736\">",
   "adsenseScriptUrl": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736",
+  "approvedToolSlugs": [
+    "json",
+    "base64",
+    "md5",
+    "formatjs",
+    "textdiff",
+    "txtcount",
+    "regex",
+    "calculator",
+    "unixtime",
+    "urlencode"
+  ],
   "stats": {
     "htmlFiles": 182,
     "adsenseMetaOk": 182,
-    "adsenseScriptOk": 182,
+    "adsenseScriptPolicyOk": 182,
     "viewportOk": 182,
-    "canonicalOfficial": 182
+    "canonicalOfficial": 182,
+    "nonApprovedToolsNoindex": 140
   },
   "adsTxtOk": true,
   "robotsOk": true,

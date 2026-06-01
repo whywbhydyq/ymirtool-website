@@ -1,11 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(new URL('..', import.meta.url).pathname);
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const toolManifestPath = path.join(root, 'static/script/ymir-vue-tool-manifest.json');
 const staticRegistryPath = path.join(root, 'static/script/ymir-static-pages-registry.json');
 const toolsManifestJsPath = path.join(root, 'static/script/ymir-tools-manifest.js');
 const staticRegistryJsPath = path.join(root, 'static/script/ymir-static-pages-registry.js');
+const adsensePolicyPath = path.join(root, 'static/script/ymir-adsense-page-policy.json');
+const toolContentModulesPath = path.join(root, 'static/script/ymir-tool-content-modules.json');
 const sitemapPath = path.join(root, 'sitemap.xml');
 const sitemapGuidesPath = path.join(root, 'sitemap-guides.xml');
 const sitemapPolicyPath = path.join(root, 'sitemap-policy.xml');
@@ -13,9 +16,14 @@ const indexPath = path.join(root, 'index.html');
 
 const toolManifest = JSON.parse(fs.readFileSync(toolManifestPath, 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(staticRegistryPath, 'utf8'));
+const adsensePolicy = JSON.parse(fs.readFileSync(adsensePolicyPath, 'utf8'));
+const toolContentModules = JSON.parse(fs.readFileSync(toolContentModulesPath, 'utf8'));
 const origin = toolManifest.site?.origin || staticRegistry.site?.origin || 'https://ymirtool.com';
 const version = toolManifest.version || staticRegistry.version || '20260531-v58';
 const lastmod = toolManifest.site?.lastmod || staticRegistry.site?.lastmod || '2026-05-31';
+const approvedToolSlugs = new Set(adsensePolicy.approvedToolSlugs || []);
+const adEligibleStaticPageIds = new Set(adsensePolicy.adEligibleStaticPageIds || []);
+const neverAdPagePaths = new Set(adsensePolicy.neverAdPagePaths || []);
 
 function xmlEscape(value) {
   return String(value).replace(/[<>&"']/g, (ch) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' }[ch]));
@@ -78,6 +86,18 @@ function replaceMeta(html, name, content) {
   return replaceOrInsertHead(html, byName, `<meta name="${name}" content="${escaped}"/>`);
 }
 
+function setRobots(html, content) {
+  return replaceMeta(html, 'robots', content);
+}
+
+function toolIsApproved(tool) {
+  return approvedToolSlugs.has(tool.slug || tool.id);
+}
+
+function staticPageCanLoadAds(page) {
+  return adEligibleStaticPageIds.has(page.id) && !neverAdPagePaths.has(page.path);
+}
+
 function replaceMetaProperty(html, property, content) {
   const escaped = attrEscape(content);
   const byProp = new RegExp(`<meta\\b(?=[^>]*\\bproperty=["']${property}["'])[^>]*>`, 'i');
@@ -124,6 +144,10 @@ function ensureAdSenseScript(html) {
   return html.replace(/<\/head>/i, `${ADSENSE_SCRIPT_TAG}\n</head>`);
 }
 
+function removeAdSenseScript(html) {
+  return html.replace(ADSENSE_SCRIPT_RE, '\n');
+}
+
 function cleanViewport(html) {
   const viewportTag = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
   if (/<meta\b(?=[^>]*\bname=["']viewport["'])[^>]*>/i.test(html)) {
@@ -135,10 +159,10 @@ function cleanViewport(html) {
   return html.replace(/<head[^>]*>/i, (match) => `${match}\n${viewportTag}`);
 }
 
-function ensureAdSenseAndViewport(html) {
+function ensureAdSenseAndViewport(html, options = {}) {
   html = cleanViewport(html);
   html = ensureAdSenseMeta(html);
-  html = ensureAdSenseScript(html);
+  html = options.loadAdSenseScript ? ensureAdSenseScript(html) : removeAdSenseScript(html);
   return html;
 }
 
@@ -289,6 +313,38 @@ function ensureRootTool(html, toolId) {
   });
 }
 
+function renderContentModule(tool) {
+  const slug = tool.slug || tool.id;
+  const module = toolContentModules[slug];
+  if (!module) return '';
+  const toolName = schemaNameFor(tool);
+  const toolDescription = descriptionFor(tool);
+  const sections = (module.sections || []).map((section) => {
+    const paragraphs = (section.paragraphs || []).map((text) => `<p>${htmlEscape(text)}</p>`).join('');
+    return `<section class="ymir-container ymir-help ymir-card"><h2>${htmlEscape(section.heading)}</h2>${paragraphs}</section>`;
+  }).join('\n');
+  const faqs = (module.faqs || []).map((item) => `<h3>${htmlEscape(item.question)}</h3><p>${htmlEscape(item.answer)}</p>`).join('');
+  const faqBlock = faqs ? `<section class="ymir-container ymir-faq ymir-card"><h2>FAQ</h2>${faqs}</section>` : '';
+  const reviewBlock = `<section class="ymir-container ymir-help ymir-card"><h2>Before copying the result</h2><p>Review the ${htmlEscape(toolName)} output against the original input and the reason you opened the page. ${htmlEscape(toolDescription)}</p><p>Keep the source text nearby until you have confirmed formatting, encoding, counting, or conversion details. This extra review step helps catch pasted sample data, wrong units, hidden whitespace, timezone assumptions, or characters that changed during copying.</p></section>`;
+  return [
+    `<section class="ymir-container ymir-help ymir-card"><h2>About this tool</h2><p>${htmlEscape(module.summary)}</p></section>`,
+    sections,
+    reviewBlock,
+    faqBlock
+  ].filter(Boolean).join('\n');
+}
+
+function replaceToolSupportContent(html, tool) {
+  const content = renderContentModule(tool);
+  if (!content) return html;
+  html = html.replace(/\s*<section\b(?=[^>]*\bymir-help\b)[\s\S]*?<\/section>\s*/ig, '\n');
+  html = html.replace(/\s*<section\b(?=[^>]*\bymir-faq\b)[\s\S]*?<\/section>\s*/ig, '\n');
+  if (/<section\b(?=[^>]*\bymir-related\b)/i.test(html)) {
+    return html.replace(/(<section\b(?=[^>]*\bymir-related\b)[\s\S]*?<\/section>)/i, `${content}\n$1`);
+  }
+  return html.replace(/<\/main>/i, `${content}\n</main>`);
+}
+
 function syncToolPage(tool) {
   const id = tool.id || tool.slug;
   const relativePath = path.join(tool.slug, 'index.html');
@@ -319,7 +375,10 @@ function syncToolPage(tool) {
   html = syncAssetVersion(html);
   html = ensureThemeScript(html);
   html = ensureToolPageV51Styles(html);
-  html = ensureAdSenseAndViewport(html);
+  const approved = toolIsApproved(tool);
+  html = approved ? replaceToolSupportContent(html, tool) : html;
+  html = setRobots(html, approved ? 'index, follow' : 'noindex, follow');
+  html = ensureAdSenseAndViewport(html, { loadAdSenseScript: approved });
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id, updated: true };
 }
@@ -352,7 +411,10 @@ function syncStaticPage(page) {
   html = syncAssetVersion(html);
   html = ensureThemeScript(html);
   html = ensureToolPageV51Styles(html);
-  html = ensureAdSenseAndViewport(html);
+  if (page.path === '404.html') {
+    html = setRobots(html, 'noindex, follow');
+  }
+  html = ensureAdSenseAndViewport(html, { loadAdSenseScript: staticPageCanLoadAds(page) });
   fs.writeFileSync(pagePath, html, 'utf8');
   return { id: page.id, updated: true };
 }
@@ -433,7 +495,8 @@ function syncIndexFallback() {
   index = syncAssetVersion(index);
   index = ensureThemeScript(index);
   index = ensureToolPageV51Styles(index);
-  index = ensureAdSenseAndViewport(index);
+  index = setRobots(index, 'index, follow');
+  index = ensureAdSenseAndViewport(index, { loadAdSenseScript: true });
 
   fs.writeFileSync(indexPath, index, 'utf8');
   return { updated: true, featured: featuredTools.length, categories: categories.length };
@@ -454,12 +517,14 @@ const toolPageResult = syncToolPages();
 const staticPageResult = syncStaticPages();
 const indexResult = syncIndexFallback();
 
-const toolUrls = (toolManifest.tools || []).map((tool) => ({
-  loc: canonicalForTool(tool),
-  changefreq: 'weekly',
-  priority: tool.featured ? '0.85' : '0.8',
-  lastmod: tool.shell?.lastmod || lastmod
-}));
+const toolUrls = (toolManifest.tools || [])
+  .filter((tool) => toolIsApproved(tool))
+  .map((tool) => ({
+    loc: canonicalForTool(tool),
+    changefreq: 'weekly',
+    priority: tool.featured ? '0.85' : '0.8',
+    lastmod: tool.shell?.lastmod || lastmod
+  }));
 
 writeXmlSitemap(sitemapPath, staticEntriesFor('main').concat(toolUrls));
 writeXmlSitemap(sitemapGuidesPath, staticEntriesFor('guides'));

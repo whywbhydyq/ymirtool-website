@@ -1,13 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(new URL('..', import.meta.url).pathname);
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const toolManifest = JSON.parse(fs.readFileSync(path.join(root, 'static/script/ymir-vue-tool-manifest.json'), 'utf8'));
 const staticRegistry = JSON.parse(fs.readFileSync(path.join(root, 'static/script/ymir-static-pages-registry.json'), 'utf8'));
+const adsensePolicy = JSON.parse(fs.readFileSync(path.join(root, 'static/script/ymir-adsense-page-policy.json'), 'utf8'));
 const version = toolManifest.version;
 const origin = toolManifest.site?.origin || 'https://ymirtool.com';
 const ADSENSE_PUB_ID = 'ca-pub-1653188471819736';
 const ADSENSE_SCRIPT_URL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736';
+const approvedToolSlugs = new Set(adsensePolicy.approvedToolSlugs || []);
+const adEligibleStaticPageIds = new Set(adsensePolicy.adEligibleStaticPageIds || []);
+const neverAdPagePaths = new Set(adsensePolicy.neverAdPagePaths || []);
 
 const riskPatterns = [
   'eval' + '(atob',
@@ -210,7 +215,7 @@ function sitemapUrls(rel) {
 const mainUrls = sitemapUrls('sitemap.xml');
 const guideUrls = sitemapUrls('sitemap-guides.xml');
 const policyUrls = sitemapUrls('sitemap-policy.xml');
-const toolUrls = toolManifest.tools.map((tool) => canonicalForTool(tool));
+const toolUrls = toolManifest.tools.filter((tool) => approvedToolSlugs.has(tool.slug || tool.id)).map((tool) => canonicalForTool(tool));
 const mainRegistryUrls = (staticRegistry.pages || []).filter((p) => (p.sitemaps || []).includes('main')).map((p) => p.url);
 const guideRegistryUrls = (staticRegistry.pages || []).filter((p) => (p.sitemaps || []).includes('guides')).map((p) => p.url);
 const policyRegistryUrls = (staticRegistry.pages || []).filter((p) => (p.sitemaps || []).includes('policy')).map((p) => p.url);
@@ -230,13 +235,23 @@ results.assets = { missing: missingAssets.length, sample: missingAssets.slice(0,
 
 const htmlFiles = collectHtmlFiles();
 const adsenseIssues = [];
+function expectedAdScript(rel) {
+  if (neverAdPagePaths.has(rel)) return false;
+  const toolMatch = rel.match(/^([^/]+)\/index\.html$/);
+  if (toolMatch) return approvedToolSlugs.has(toolMatch[1]);
+  if (rel === 'index.html') return true;
+  const page = (staticRegistry.pages || []).find((item) => item.path === rel);
+  return !!page && adEligibleStaticPageIds.has(page.id) && !neverAdPagePaths.has(page.path);
+}
 for (const rel of htmlFiles) {
   const html = read(rel);
   const metaCount = (html.match(new RegExp(`<meta\\b(?=[^>]*\\bname=["']google-adsense-account["'])(?=[^>]*${ADSENSE_PUB_ID})[^>]*>`, 'gi')) || []).length;
   const scriptCount = (html.match(/<script\b(?=[^>]*pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-1653188471819736)[^>]*><\/script>/gi) || []).length;
+  const shouldHaveScript = expectedAdScript(rel);
   const badViewport = /user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?:\.0)?/i.test(html);
   if (metaCount !== 1) adsenseIssues.push({ page: rel, issue: 'adsense-meta-count', count: metaCount });
-  if (scriptCount !== 1) adsenseIssues.push({ page: rel, issue: 'adsense-script-count', count: scriptCount });
+  if (shouldHaveScript && scriptCount !== 1) adsenseIssues.push({ page: rel, issue: 'adsense-script-count', expected: true, count: scriptCount });
+  if (!shouldHaveScript && scriptCount !== 0) adsenseIssues.push({ page: rel, issue: 'adsense-script-count', expected: false, count: scriptCount });
   if (badViewport) adsenseIssues.push({ page: rel, issue: 'viewport-disables-zoom' });
 }
 results.adsense = {
