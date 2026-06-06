@@ -55,9 +55,7 @@
   ],
   "functions": {
     "api/csp-html.js": {
-      "includeFiles": [
-        "**/*.html"
-      ],
+      "includeFiles": "**/*.html",
       "maxDuration": 10
     }
   },
