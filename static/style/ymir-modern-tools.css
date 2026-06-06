@@ -671,3 +671,56 @@ body.ymir-modern-body .ymir-page[data-ymir-tool="txtcount"] .ymir-metric{
   }
 }
 /* === Contrast pass v16 END === */
+
+/* === Layout hotfix 20260606: keep static SEO/SXO blocks out of the 12-column auto-placement trap === */
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 18px 0 8px !important;
+  box-sizing: border-box !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead .ymir-breadcrumb {
+  margin: 0 0 8px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  color: var(--ymir-text-soft, #6b7280) !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead h1 {
+  max-width: 840px !important;
+  margin: 0 0 8px !important;
+  font-size: clamp(30px, 3.6vw, 52px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.055em !important;
+  color: var(--ymir-text-main, #0f172a) !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead p {
+  max-width: 760px !important;
+  margin: 0 0 12px !important;
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+  color: var(--ymir-text-muted, #526276) !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-lead li {
+  border: 1px solid rgba(37, 99, 235, .18) !important;
+  background: rgba(37, 99, 235, .06) !important;
+  color: var(--ymir-accent, #2563eb) !important;
+  border-radius: 999px !important;
+  padding: 4px 9px !important;
+  font-size: 12px !important;
+  font-weight: 720 !important;
+  line-height: 1.25 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-static-tool-fallback {
+  display: none !important;
+  grid-column: 1 / -1 !important;
+}
