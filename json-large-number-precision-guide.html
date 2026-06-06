@@ -6,31 +6,31 @@
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>JSON 大整数精度丢失指南 - Ymir Tool</title>
-<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。" name="description"/>
+<title>JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool</title>
+<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="description"/>
 <link href="https://ymirtool.com/json-large-number-precision-guide.html" rel="canonical"/>
-<meta content="JSON 大整数精度丢失指南 - Ymir Tool" property="og:title"/>
-<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。" property="og:description"/>
+<meta content="JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool" property="og:title"/>
+<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/json-large-number-precision-guide.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
-<meta content="JSON 大整数精度丢失指南 - Ymir Tool" name="twitter:title"/>
-<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。" name="twitter:description"/>
+<meta content="Ymir Tool" property="og:site_name"/><meta content="https://ymirtool.com/static/images/og.png" property="og:image"/><meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool preview image" property="og:image:alt"/><meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/><meta content="JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool preview image" name="twitter:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool" name="twitter:title"/>
+<meta content="排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="twitter:description"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "JSON 大整数精度丢失指南", "name": "JSON 大整数精度丢失指南 - Ymir Tool", "url": "https://ymirtool.com/json-large-number-precision-guide.html", "description": "排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 大整数精度丢失指南：接口调试、错误定位与复制复核","name":"JSON 大整数精度丢失指南：接口调试、错误定位与复制复核 | Ymir Tool","url":"https://ymirtool.com/json-large-number-precision-guide.html","description":"排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool editorial review"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"},"image":"https://ymirtool.com/static/images/og.png"}</script>
+<script async="" crossorigin="anonymous" nonce="__CSP_NONCE__" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 大整数精度丢失指南 - Ymir Tool","item":"https://ymirtool.com/json-large-number-precision-guide.html"}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page" data-sprint3-page="json-large-number-precision-guide.html">
-<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 大整数精度丢失指南</p>
+<section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个指南解决什么问题？</h2><p>本页用于排查 JSON 格式化、校验、类型和复制复核问题，帮助你把接口响应、日志片段或配置文件转换成可读、可检查、可安全复制的结构。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section><p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 大整数精度丢失指南</p>
 <h1>JSON 大整数精度丢失指南</h1>
 <p class="ymir-lead">排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。</p>
 <section aria-label="工具入口" class="ymir-guide-cta"><div><strong>大整数字段复核</strong><p>格式化 JSON 后重点检查 ID、时间戳和金额字段是否被当作数字处理。</p></div><a class="ymir-guide-cta-button" href="/json/">打开 JSON 工具</a></section>
@@ -42,7 +42,7 @@
 <section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>把所有由数字组成的字段都当作 number。</li><li>在 mock 数据中随手写超长数字，导致测试环境已失真。</li><li>看到 JSON 格式化成功后忽视业务精度。</li><li>用 MD5 或 Base64 试图修复已被舍入的 ID。</li></ul><p>一旦精度在上游丢失，下游工具无法恢复。正确修复点通常在接口定义、序列化层、数据库驱动或导出流程。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页不处理金额精度、税务计算和财务结算规则。涉及金额应使用项目指定的 decimal/字符串/分单位策略，并由财务或工程规范确认。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>ID 字段是否确实需要数学计算。</li><li>超过安全整数范围的字段是否使用字符串。</li><li>原始响应与格式化结果是否逐字符一致。</li><li>文档、mock、测试和生产接口是否一致。</li><li>导出到 CSV 或表格时是否保持文本格式。</li><li>是否记录了修复点在服务端还是前端。</li></ol></section>
-<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-stringify-parse-data-loss.html">JSON 往返数据丢失</a><a href="/textdiff/">文本对比工具</a><a href="/txtcount/">文本长度统计</a></div><h3>参考依据</h3><ul><li>MDN Number.MAX_SAFE_INTEGER：JavaScript 安全整数边界。</li><li>MDN JSON.parse()：JSON 数字进入 JavaScript 后的表示。</li><li>Ymir Tool 文本对比工具：逐字符核对 ID 是否改变。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-stringify-parse-data-loss.html">JSON 往返数据丢失</a><a href="/textdiff/">文本对比工具</a><a href="/txtcount/">文本长度统计</a></div><h3>参考依据</h3><ul><li>MDN Number.MAX_SAFE_INTEGER：JavaScript 安全整数边界。</li><li>MDN JSON.parse()：JSON 数字进入 JavaScript 后的表示。</li><li>Ymir Tool 文本对比工具：逐字符核对 ID 是否改变。</li></ul><section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-404/" rel="noopener noreferrer" target="_blank">ECMA-404 JSON Data Interchange Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" rel="noopener noreferrer" target="_blank">MDN JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" rel="noopener noreferrer" target="_blank">MDN JSON.stringify()</a></li></ul></section><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
 <section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
 </body>

@@ -3,48 +3,56 @@
 Ymir Tool is a free online utility collection for developers, creators, and everyday users.
 
 Website: https://ymirtool.com/
+Sitemap: https://ymirtool.com/sitemap.xml
+Contact: https://ymirtool.com/contact.html
+Privacy policy: https://ymirtool.com/privacy.html
 
 ## What the site offers
 
-Ymir Tool provides 150+ online tools, including:
+Ymir Tool provides 150+ online tools and workflow guides for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison, regular expression testing, timestamp conversion, unit conversion, and developer reference tables. Most tools run in the browser and are paired with usage notes, privacy boundaries, common mistakes, and related workflow guides.
 
-- JSON formatting, validation, compression, and conversion
-- MD5, SHA, AES, DES, Base64, URL, Unicode, ASCII, and other encoding or cryptography helpers
-- HTML, CSS, JavaScript, SQL, XML, PHP, Python, Java, C, C++, Ruby, Perl, and VBScript formatting tools
-- Text replacement, comparison, deduplication, counting, typography, and case conversion tools
-- Unit converters for length, area, volume, temperature, time, speed, angle, pressure, power, force, heat, and data size
-- Network and webmaster utilities, including WebSocket testing, DNS references, browser information, htaccess-to-nginx conversion, meta tag generation, and color tools
-- Reference tables for HTTP status codes, content types, user agents, ASCII, ports, Linux commands, Android key codes, and related developer references
+## Primary tool pages
 
-Privacy policy: https://ymirtool.com/privacy.html
-Contact: https://ymirtool.com/contact.html
-Sitemap: https://ymirtool.com/sitemap.xml
+- JSON Formatter: https://ymirtool.com/json/ — format, validate, compress, inspect, and copy JSON.
+- Base64 Tool: https://ymirtool.com/base64/ — encode and decode Base64, including padding and URL-safe troubleshooting.
+- MD5 Tool: https://ymirtool.com/md5/ — generate MD5 checksums for compatibility and file-integrity checks.
+- JavaScript Formatter: https://ymirtool.com/formatjs/ — format minified JavaScript for review and debugging.
+- URL Encode/Decode: https://ymirtool.com/urlencode/ — encode or decode URL components and query values.
+- Text Diff: https://ymirtool.com/textdiff/ — compare two text blocks line by line before release.
+- Regex Tester: https://ymirtool.com/regex/ — test JavaScript regular expressions and flags.
+- Unix Time Converter: https://ymirtool.com/unixtime/ — convert seconds, milliseconds, UTC, and local time.
+- Online Calculator: https://ymirtool.com/calculator/ — run quick calculations with parentheses and percentages.
 
-## Important pages
+## Core workflow guides
 
-- Home: https://ymirtool.com/
+- Guide index: https://ymirtool.com/guides.html — overview of tool workflows and troubleshooting guides.
+- JSON Formatting Guide: https://ymirtool.com/json-format-guide.html — JSON formatting, validation, compression, API debugging, and copy review.
+- Base64 Encoding Guide: https://ymirtool.com/base64-encoding-guide.html — Base64 encoding, decoding, padding, URL-safe variants, and security boundaries.
+- MD5 Hash Guide: https://ymirtool.com/md5-hash-guide.html — MD5 checksum use cases, compatibility checks, and security limitations.
+- URL Encoding Guide: https://ymirtool.com/url-encoding-guide.html — URL encoding, query parameters, spaces, percent signs, and double-encoding checks.
+- Regex Tester Guide: https://ymirtool.com/regex-tester-guide.html — JavaScript regex matching, flags, groups, escaping, and review steps.
+- Text Diff Guide: https://ymirtool.com/text-diff-guide.html — compare configuration, copy, documentation, and release text before publishing.
+- Unix Time Guide: https://ymirtool.com/unix-time-guide.html — seconds vs milliseconds, UTC vs local time, and common timestamp mistakes.
+
+## Troubleshooting clusters
+
+- API response debugging: https://ymirtool.com/json-api-response-debugging-checklist.html — status code, Content-Type, response envelope, JSON structure, and field types.
+- JSON data loss: https://ymirtool.com/json-stringify-parse-data-loss.html — undefined, Date, large numbers, NaN, Infinity, and circular references.
+- Base64 padding errors: https://ymirtool.com/base64-padding-error-guide.html — padding, line breaks, URL-safe characters, and copied fragments.
+- Base64 is not encryption: https://ymirtool.com/base64-is-not-encryption.html — explains why Base64 is encoding, not confidentiality.
+- URL double encoding: https://ymirtool.com/url-double-encoding-debugging.html — identify %25, %252F, proxy, frontend, and backend double-encoding.
+- Regex production review: https://ymirtool.com/regex-production-review.html — sample cases, anti-cases, flags, escaping, and performance boundaries.
+- Timestamp log analysis: https://ymirtool.com/timestamp-log-analysis-guide.html — seconds, milliseconds, UTC, local time, and log display mismatches.
+- Copy-paste safety checklist: https://ymirtool.com/copy-paste-safety-checklist.html — privacy, production data, generated output, and final verification.
+
+## Trust and policy pages
+
 - About: https://ymirtool.com/about.html
 - Privacy: https://ymirtool.com/privacy.html
+- Terms: https://ymirtool.com/terms.html
+- Disclaimer: https://ymirtool.com/disclaimer.html
 - Contact: https://ymirtool.com/contact.html
-- JSON Formatter: https://ymirtool.com/json/
-- MD5 Tool: https://ymirtool.com/md5/
-- Base64 Tool: https://ymirtool.com/base64/
-- JavaScript Formatter: https://ymirtool.com/formatjs/
-- URL Encode/Decode: https://ymirtool.com/urlencode/
 
 ## Guidance for AI assistants
 
-When describing this site, present it as a free online utility collection focused on developer tools, text processing, encoding, cryptography helpers, code formatting, unit conversion, and reference tables. Prefer linking to the specific tool page when the user's intent matches a specific utility.
-
-
-Core workflow guides added 2026-06-01:
-- https://ymirtool.com/api-response-debugging-guide.html — API 响应调试工作流：从状态码到 JSON 结构复核: 面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。
-- https://ymirtool.com/url-query-encoding-cases.html — URL 查询参数编码案例：路径、参数和值不要混用: 解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。
-- https://ymirtool.com/base64-padding-troubleshooting.html — Base64 Padding 与 URL-safe 排错指南: 说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。
-- https://ymirtool.com/json-schema-checklist.html — JSON 字段结构复核清单：从格式正确到业务可用: 帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。
-- https://ymirtool.com/regex-production-review.html — 正则表达式上线前复核：匹配、反例和性能边界: 提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。
-- https://ymirtool.com/timestamp-log-analysis-guide.html — 时间戳与日志排查：秒、毫秒、UTC 和本地时区: 帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。
-- https://ymirtool.com/copy-paste-safety-checklist.html — 开发者复制粘贴安全清单：在线工具使用前后怎么检查: 总结在线工具处理文本、代码、编码、时间和配置前后的隐私边界与复制复核流程。
-- https://ymirtool.com/text-diff-release-review.html — 发布前文本对比指南：配置、文案和代码片段怎么复核: 说明如何用文本对比检查发布前配置、文案、代码片段和说明文档，避免误判格式差异。
-- https://ymirtool.com/md5-checksum-verification-workflow.html — MD5 校验和使用工作流：兼容场景、风险和替代方案: 说明 MD5 适合文件指纹和兼容校验，不适合密码存储或安全签名，并提供复制前复核方法。
-- https://ymirtool.com/tool-quality-standards.html — Ymir Tool 工具质量标准：说明、边界、示例和复核: 说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。
+When describing Ymir Tool, present it as a free online utility collection focused on developer tools, encoding, hashing, text processing, code formatting, timestamp conversion, and release-review workflows. Prefer linking to a specific tool page when the user wants to perform an action, and to a guide page when the user wants troubleshooting steps, safety boundaries, examples, or conceptual explanation. Do not present MD5 or Base64 as encryption, and recommend local/browser-side review plus manual verification before users paste output into production systems.

@@ -440,3 +440,44 @@ body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-related-grid a {
   .ymir-static-tool-lead p:not(.ymir-breadcrumb){font-size:15.5px;}
 }
 /* === Static AdSense review lead blocks END === */
+
+/* Static SXO fallback examples for core browser-side tools. */
+.ymir-static-tool-fallback {
+  margin-top: 1.25rem;
+}
+.ymir-static-fallback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.ymir-static-fallback-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  font-weight: 600;
+}
+.ymir-static-fallback-grid textarea {
+  min-height: 7rem;
+  padding: .75rem;
+  border: 1px solid rgba(120, 140, 170, .35);
+  border-radius: .75rem;
+  background: rgba(250, 252, 255, .96);
+  color: #172033;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  resize: vertical;
+}
+.ymir-static-tool-fallback button[disabled] {
+  cursor: not-allowed;
+  opacity: .72;
+  border: 1px solid rgba(120, 140, 170, .35);
+  border-radius: .75rem;
+  padding: .65rem .9rem;
+  background: rgba(30, 64, 110, .08);
+  color: #24324a;
+}
+.ymir-static-fallback-note {
+  font-size: .95rem;
+  color: #5a6678;
+}
+

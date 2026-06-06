@@ -7,30 +7,30 @@
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>encodeURI 与 encodeURIComponent 区别 - Ymir Tool</title>
-<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。" name="description"/>
+<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
 <link href="https://ymirtool.com/encodeuri-vs-encodeuricomponent.html" rel="canonical"/>
 <meta content="encodeURI 与 encodeURIComponent 区别 - Ymir Tool" property="og:title"/>
-<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。" property="og:description"/>
+<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/encodeuri-vs-encodeuricomponent.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="Ymir Tool" property="og:site_name"/><meta content="https://ymirtool.com/static/images/og.png" property="og:image"/><meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="encodeURI 与 encodeURIComponent 区别 - Ymir Tool preview image" property="og:image:alt"/><meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/><meta content="encodeURI 与 encodeURIComponent 区别 - Ymir Tool preview image" name="twitter:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="encodeURI 与 encodeURIComponent 区别 - Ymir Tool" name="twitter:title"/>
-<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。" name="twitter:description"/>
+<meta content="用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
-<script src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "encodeURI 与 encodeURIComponent 区别", "name": "encodeURI 与 encodeURIComponent 区别 - Ymir Tool", "url": "https://ymirtool.com/encodeuri-vs-encodeuricomponent.html", "description": "用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 & 被错误保留或转义。", "datePublished": "2026-06-01", "dateModified": "2026-06-01", "author": {"@type": "Organization", "name": "Ymir Tool editorial review"}, "publisher": {"@type": "Organization", "name": "Ymir Tool", "url": "https://ymirtool.com"}}</script>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"encodeURI 与 encodeURIComponent 区别","name":"encodeURI 与 encodeURIComponent 区别 - Ymir Tool","url":"https://ymirtool.com/encodeuri-vs-encodeuricomponent.html","description":"用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 & 被错误保留或转义。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool editorial review"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"},"image":"https://ymirtool.com/static/images/og.png"}</script>
+<script async="" crossorigin="anonymous" nonce="__CSP_NONCE__" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
 <script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"encodeURI 与 encodeURIComponent 区别 - Ymir Tool","item":"https://ymirtool.com/encodeuri-vs-encodeuricomponent.html"}]}</script></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page" data-sprint3-page="encodeuri-vs-encodeuricomponent.html">
-<p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / encodeURI 与 encodeURIComponent 区别</p>
+<section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个 URL 编码问题应该如何定位？</h2><p>本页用于排查 URL 编码、查询参数、空格、百分号和重复编码问题，帮助你判断应该编码完整 URL、路径片段还是单个参数值。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section><p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / encodeURI 与 encodeURIComponent 区别</p>
 <h1>encodeURI 与 encodeURIComponent 区别</h1>
 <p class="ymir-lead">用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。</p>
 <section aria-label="工具入口" class="ymir-guide-cta"><div><strong>编码函数选择</strong><p>先判断输入是完整 URL 还是参数值，再选择编码方式。</p></div><a class="ymir-guide-cta-button" href="/urlencode/">打开 URL 工具</a></section>
@@ -42,7 +42,7 @@
 <section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><ul><li>用一个函数处理所有 URL 相关文本。</li><li>只在前端看地址栏，不看服务端实际收到的参数。</li><li>把 encodeURI 当成“更少编码所以更安全”。</li><li>在已经编码的字符串上再次编码。</li></ul><p>排查时可以把同一输入分别用两种函数处理，再用文本对比观察保留字符。差异最多的位置，就是需要明确边界的位置。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>隐私、安全和适用边界</h2><p>用于排查时请使用脱敏样本。不要粘贴访问令牌、Cookie、客户资料、内部域名、未公开商业规则、支付记录或完整生产日志。页面适合处理公开示例、教学片段、复现样本和已经替换真实值的配置。</p><p>本页不讨论 URL 签名算法。若参数参与签名，编码顺序、排序和大小写必须按平台规范执行，不能手动猜测。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>复制或发布前复核清单</h2><ol><li>输入位置是否明确。</li><li>是否知道哪些字符应该保留为结构。</li><li>query value 是否使用组件编码。</li><li>是否避免对完整 URL 整体组件编码。</li><li>是否在服务端确认实际参数值。</li><li>是否检查签名或白名单要求。</li></ol></section>
-<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/urlencode/">URL 编码工具</a><a href="/url-query-parameter-encoding-guide.html">查询参数编码指南</a><a href="/url-double-encoding-debugging.html">重复编码排查</a><a href="/textdiff/">文本对比工具</a></div><h3>参考依据</h3><ul><li>MDN encodeURI()：完整 URI 编码行为。</li><li>MDN encodeURIComponent()：组件编码行为。</li><li>WHATWG URL Standard：URL 组件解析。</li></ul><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
+<section class="ymir-container ymir-help ymir-card"><h2>相关工具和延伸阅读</h2><div class="ymir-related-grid"><a href="/urlencode/">URL 编码工具</a><a href="/url-query-parameter-encoding-guide.html">查询参数编码指南</a><a href="/url-double-encoding-debugging.html">重复编码排查</a><a href="/textdiff/">文本对比工具</a></div><h3>参考依据</h3><ul><li>MDN encodeURI()：完整 URI 编码行为。</li><li>MDN encodeURIComponent()：组件编码行为。</li><li>WHATWG URL Standard：URL 组件解析。</li></ul><section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://url.spec.whatwg.org/" rel="noopener noreferrer" target="_blank">WHATWG URL Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" rel="noopener noreferrer" target="_blank">MDN encodeURI()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" rel="noopener noreferrer" target="_blank">MDN encodeURIComponent()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" rel="noopener noreferrer" target="_blank">MDN URLSearchParams</a></li></ul></section><p class="ymir-editorial-note">编辑记录：Ymir Tool editorial review，2026-06-01。本页作为 Sprint 3 新增案例/排错内容发布，目标是把单一工具入口扩展为可复核的任务说明、错误示例和操作边界。</p></section>
 <section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>打开工具，快速处理并复制结果。</span></footer>
 </body>
