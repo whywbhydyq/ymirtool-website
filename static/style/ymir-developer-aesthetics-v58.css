@@ -536,3 +536,49 @@ body.ymir-modern-body .ymir-command-chip { background: var(--ymir-v58-panel-2) !
   body.ymir-modern-body .ymir-vue-line-gutter { font-size: 11px !important; padding-right: 6px !important; }
   body.ymir-modern-body .ymir-vue-actions::before { flex-basis: 100% !important; margin-bottom: 2px !important; }
 }
+
+/* === Tool content layout hotfix 20260606 ===
+   Long SEO/help sections and tables must not be auto-placed into half-width
+   cards on tool pages. Keep compact cards in two columns, but make long
+   editorial depth blocks full-width and contain their tables horizontally. */
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help.ymir-core-depth,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-help.ymir-sprint1-depth,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-card.ymir-core-depth,
+body.ymir-modern-body .ymir-page[data-ymir-tool] > .ymir-card.ymir-sprint1-depth {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-core-depth-extra,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap table {
+  width: 100% !important;
+  min-width: 760px !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap th,
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap td {
+  vertical-align: top !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap code {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+@media (max-width: 900px) {
+  body.ymir-modern-body .ymir-page[data-ymir-tool] .ymir-table-wrap table {
+    min-width: 680px !important;
+  }
+}
+/* === Tool content layout hotfix 20260606 END === */
+
