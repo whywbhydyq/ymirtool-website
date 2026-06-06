@@ -19,16 +19,34 @@
     return !!document.querySelector('script[src^="' + src + '"]');
   }
 
+  function currentNonce() {
+    var script = document.currentScript || document.querySelector('script[src*="ymir-vue-loader.js"]');
+    return script ? (script.getAttribute('nonce') || '') : '';
+  }
+
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
       if (scriptExists(src)) { resolve(); return; }
       var s = document.createElement('script');
+      var nonce = currentNonce();
       s.src = src + (src.indexOf('?') === -1 ? '?v=' : '&v=') + encodeURIComponent(currentVersion());
+      if (nonce) s.setAttribute('nonce', nonce);
       s.async = false;
       s.onload = function () { resolve(); };
       s.onerror = function () { reject(new Error('Failed to load ' + src)); };
       document.body.appendChild(s);
     });
+  }
+
+  function loadVendorRuntime(m) {
+    var vendor = (m.runtime && m.runtime.vendor) || [
+      '/static/vendor/vue/vue.global.prod.js',
+      '/static/vendor/element-plus/index.full.min.js'
+    ];
+    var scripts = vendor.filter(function (src) { return /\.js(?:$|[?#])/.test(src); });
+    return scripts.reduce(function (chain, src) {
+      return chain.then(function () { return loadScript(src); });
+    }, Promise.resolve());
   }
 
   function fail(root, message) {
@@ -78,13 +96,17 @@
     var root = findRoot();
     if (!root) return;
     var tool = root.getAttribute('data-tool') || (document.querySelector('[data-ymir-tool]') || {}).dataset.ymirTool;
-    if (!window.Vue || !window.ElementPlus) { fail(root, 'Tool assets failed to load.'); return; }
-
     loadScript(MANIFEST_SCRIPT)
       .then(function () {
         var m = manifest();
         var app = m && m.appByTool && m.appByTool[tool];
         if (!app) { throw new Error('Tool mapping is missing for: ' + tool); }
+        return loadVendorRuntime(m).then(function () { return { m: m, app: app }; });
+      })
+      .then(function (state) {
+        var m = state.m;
+        var app = state.app;
+        if (!window.Vue || !window.ElementPlus) { throw new Error('Tool assets failed to load.'); }
         root.setAttribute('data-tool-app', app);
         var item = manifestTool(tool);
         if (item && item.category) root.setAttribute('data-tool-category', item.category);
