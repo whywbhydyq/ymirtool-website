@@ -93,6 +93,7 @@ let localReferenceCount = 0;
 for (const filePath of htmlFiles) {
   const rel = toPosixRelative(filePath);
   const html = read(filePath);
+  const lang = html.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1]?.toLowerCase() || '';
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || '';
   const description = firstMetaContent(html, 'description');
   const ogImage = firstMetaContent(html, 'og:image');
@@ -117,6 +118,9 @@ for (const filePath of htmlFiles) {
   }
   if (description.length > 180) {
     errors.push(`${rel}: meta description is too long (${description.length} chars)`);
+  }
+  if (lang.startsWith('en') && /[\u4e00-\u9fff]/.test(description)) {
+    errors.push(`${rel}: English page meta description contains CJK text`);
   }
   if (!ogImage) errors.push(`${rel}: missing og:image`);
   if (!canonical) errors.push(`${rel}: missing canonical`);
