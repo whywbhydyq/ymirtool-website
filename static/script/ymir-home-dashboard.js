@@ -105,7 +105,6 @@
     var en = t.titleEn || t.titleZh || t.id;
     var descZh = t.descZh || t.descriptionZh || t.descEn || t.descriptionEn || t.href;
     var descEn = t.descEn || t.descriptionEn || t.descZh || t.descriptionZh || t.href;
-    var keywords = t.keywords || [zh, en, t.id].join(' ');
     return '<article class="ymir-feature-card" data-home-tool="" role="link" tabindex="0"' +
       ' data-accent="' + escapeHtml(t.accent || 'blue') + '"' +
       ' data-icon="' + escapeHtml(t.icon || '{}') + '"' +
@@ -114,8 +113,7 @@
       ' data-desc-zh="' + escapeHtml(descZh) + '"' +
       ' data-desc-en="' + escapeHtml(descEn) + '"' +
       ' data-tool-href="' + escapeHtml(t.href) + '"' +
-      ' data-tool-id="' + escapeHtml(t.id) + '"' +
-      ' data-tool-keywords="' + escapeHtml(keywords) + '">' +
+      ' data-tool-id="' + escapeHtml(t.id) + '">' +
       '<span aria-hidden="true" class="ymir-feature-icon">' + escapeHtml(t.icon || '{}') + '</span>' +
       '<span class="ymir-feature-body"><strong><span class="ymir-feature-number">' + (index + 1) + '.</span> <span data-card-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span></strong>' +
       '<span data-card-desc="">' + escapeHtml(lang() === 'zh' ? descZh : descEn) + '</span></span>' +
@@ -136,7 +134,6 @@
       ' data-title-zh="' + escapeHtml(zh) + '"' +
       ' data-tool-href="' + escapeHtml(t.href) + '"' +
       ' data-tool-id="' + escapeHtml(t.id) + '"' +
-      ' data-tool-keywords="' + escapeHtml(t.keywords || [zh, en, t.id].join(' ')) + '"' +
       ' href="' + escapeHtml(t.href) + '">' +
       '<span aria-hidden="true" class="ymir-directory-icon">' + escapeHtml(t.icon || '›') + '</span>' +
       '<span data-directory-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span>' +
