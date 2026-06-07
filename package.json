@@ -1,0 +1,11 @@
+{
+  "name": "ymirtool-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "seo:check": "node scripts/seo-check.mjs",
+    "seo:cache": "node scripts/seo-check.mjs --write-cache",
+    "test": "npm run seo:check"
+  }
+}

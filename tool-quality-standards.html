@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool</title>
-<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。" name="description"/>
+<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/tool-quality-standards.html" rel="canonical"/>
 <meta content="Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool" property="og:title"/>
-<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。" property="og:description"/>
+<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/tool-quality-standards.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool" name="twitter:title"/>
-<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。" name="twitter:description"/>
+<meta content="说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ymir Tool 工具质量标准：说明、边界、示例和复核","name":"Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool","url":"https://ymirtool.com/tool-quality-standards.html","description":"说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ymir Tool 工具质量标准：说明、边界、示例和复核","name":"Ymir Tool 工具质量标准：说明、边界、示例和复核 - Ymir Tool","url":"https://ymirtool.com/tool-quality-standards.html","description":"说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Ymir Tool 工具质量标准：说明、边界、示例和复核</p>
 <h1>Ymir Tool 工具质量标准：说明、边界、示例和复核</h1>
-<p class="ymir-lead">说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。</p>
+<p class="ymir-lead">说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>工具页不只应该有输入框</h2><p>一个在线工具如果只有标题、输入框和按钮，用户很难判断它适合什么任务，也很难知道复制结果前应该检查什么。Ymir Tool 的核心页面因此围绕四件事组织：用途说明、输入边界、常见错误和复核方法。这样用户即使第一次打开页面，也能理解工具的合理用法，而不是把输出当作无需验证的最终结果。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>核心页面与长尾页面的区别</h2><p>JSON、Base64、URL 编码、JavaScript 格式化、文本对比、正则、时间戳、字数统计、MD5 和计算器是高频入口，需要更完整的说明和指南链接。其他长尾工具保持独立，是为了让明确知道任务名称的用户快速打开，但它们不会替代核心指南，也不会承诺完成超出范围的专业任务。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>页面应回答的问题</h2><ul><li>本页处理什么输入，输出代表什么。</li><li>哪些任务适合使用本页，哪些任务不适合。</li><li>常见失败来自语法、编码、单位、时区、空白还是上下文。</li><li>复制结果前应该如何验证。</li><li>涉及敏感数据时应该如何脱敏或改用内部系统。</li></ul></section>

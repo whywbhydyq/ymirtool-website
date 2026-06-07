@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool</title>
-<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。" name="description"/>
+<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/json-schema-checklist.html" rel="canonical"/>
 <meta content="JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool" property="og:title"/>
-<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。" property="og:description"/>
+<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/json-schema-checklist.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool" name="twitter:title"/>
-<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。" name="twitter:description"/>
+<meta content="帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 字段结构复核清单：从格式正确到业务可用","name":"JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool","url":"https://ymirtool.com/json-schema-checklist.html","description":"帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 字段结构复核清单：从格式正确到业务可用","name":"JSON 字段结构复核清单：从格式正确到业务可用 - Ymir Tool","url":"https://ymirtool.com/json-schema-checklist.html","description":"帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 字段结构复核清单：从格式正确到业务可用</p>
 <h1>JSON 字段结构复核清单：从格式正确到业务可用</h1>
-<p class="ymir-lead">帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。</p>
+<p class="ymir-lead">帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>格式正确只是第一步</h2><p>JSON 能被解析，并不代表它符合接口契约。一个字段可以是字符串、数字、布尔值、null、对象或数组；这些类型在业务代码里通常不可随意互换。格式化器让结构变清楚，但字段是否必填、枚举值是否合法、数组是否允许为空、数字是否会丢失精度、日期是否包含时区，都需要继续复核。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>字段复核清单</h2><ul><li>必填字段是否存在，拼写和大小写是否与文档一致。</li><li>数字 ID 是否被错误当作可计算数字，导致前导零或大整数精度丢失。</li><li>null、空字符串、空数组和字段缺失是否代表不同业务含义。</li><li>枚举值是否属于目标版本允许范围。</li><li>日期字符串是否明确时区，还是依赖调用方默认时区。</li><li>嵌套对象是否在所有数组元素中保持同一结构。</li></ul></section>
 <section class="ymir-container ymir-help ymir-card"><h2>版本兼容问题</h2><p>接口版本升级时，最常见问题不是 JSON 语法错误，而是字段结构变化。新增字段通常可向后兼容，删除字段、修改类型、改变枚举含义或把对象改成数组则更危险。把旧响应和新响应放进文本对比工具，再回到 JSON 格式化器检查层级，可以更快定位变化。</p></section>

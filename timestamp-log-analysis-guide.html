@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool</title>
-<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。" name="description"/>
+<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/timestamp-log-analysis-guide.html" rel="canonical"/>
 <meta content="时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool" property="og:title"/>
-<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。" property="og:description"/>
+<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/timestamp-log-analysis-guide.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool" name="twitter:title"/>
-<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。" name="twitter:description"/>
+<meta content="帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"时间戳与日志排查：秒、毫秒、UTC 和本地时区","name":"时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool","url":"https://ymirtool.com/timestamp-log-analysis-guide.html","description":"帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"时间戳与日志排查：秒、毫秒、UTC 和本地时区","name":"时间戳与日志排查：秒、毫秒、UTC 和本地时区 - Ymir Tool","url":"https://ymirtool.com/timestamp-log-analysis-guide.html","description":"帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 时间戳与日志排查：秒、毫秒、UTC 和本地时区</p>
 <h1>时间戳与日志排查：秒、毫秒、UTC 和本地时区</h1>
-<p class="ymir-lead">帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。</p>
+<p class="ymir-lead">帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>先判断单位</h2><p>Unix 时间戳最常见的错误是秒和毫秒混用。10 位数字通常是秒级，13 位数字通常是毫秒级，但不能只靠位数做最终判断，因为某些系统会存微秒、纳秒或字符串化时间。若转换结果落在 1970 年附近或远未来，第一时间检查单位。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>UTC 与本地时区</h2><p>日志系统、数据库、浏览器和后端语言可能使用不同默认时区。UTC 时间适合跨系统记录，本地时间适合人工阅读，但如果没有明确标记，就容易把同一个事件误判为提前或延后。排查事故时间线时，应同时记录原始时间戳、单位、展示时区、服务器时区和用户所在时区。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>日志对齐方法</h2><ol><li>从每个系统各取一条包含同一 traceId 或请求 ID 的日志。</li><li>把所有时间转换到同一时区，最好使用 UTC 作为中间基准。</li><li>保留原始值，不要只保留转换后的可读时间。</li><li>检查采集延迟、队列延迟和日志写入延迟是否影响排序。</li><li>在事故复盘里明确说明使用的时区和单位。</li></ol></section>

@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool</title>
-<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。" name="description"/>
+<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/url-query-encoding-cases.html" rel="canonical"/>
 <meta content="URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool" property="og:title"/>
-<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。" property="og:description"/>
+<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/url-query-encoding-cases.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool" name="twitter:title"/>
-<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。" name="twitter:description"/>
+<meta content="解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"URL 查询参数编码案例：路径、参数和值不要混用","name":"URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool","url":"https://ymirtool.com/url-query-encoding-cases.html","description":"解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"URL 查询参数编码案例：路径、参数和值不要混用","name":"URL 查询参数编码案例：路径、参数和值不要混用 - Ymir Tool","url":"https://ymirtool.com/url-query-encoding-cases.html","description":"解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / URL 查询参数编码案例：路径、参数和值不要混用</p>
 <h1>URL 查询参数编码案例：路径、参数和值不要混用</h1>
-<p class="ymir-lead">解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。</p>
+<p class="ymir-lead">解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>URL 编码不是一个统一按钮能解决所有场景</h2><p>URL 由协议、主机、路径、查询参数和片段组成。路径里的斜杠代表层级，查询参数里的斜杠通常只是值的一部分；井号之后的 fragment 不会发送给服务器；加号在表单编码里可能代表空格，但在普通 URL 组件里需要按上下文理解。因此排查 URL 问题时，必须先明确你要编码的是完整 URL、路径片段、参数名、参数值，还是 application/x-www-form-urlencoded 的表单体。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>二次编码的识别</h2><p>如果你看到 <code>%252F</code>，通常意味着原本的 <code>%2F</code> 又被编码了一次，因为百分号本身被变成了 <code>%25</code>。类似地，中文被编码后再编码会变成长串百分号。判断方法是先解码一次，看结果是否仍包含大量百分号；如果一次解码后才出现预期中文或斜杠，就说明上游可能做了重复处理。修复时不要简单多解码几次，而要找出哪一层代码错误地处理了已经编码的字符串。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>实际排查表</h2><ul><li>路径变量：检查斜杠是否应该保留为层级，还是应该作为值编码。</li><li>查询参数值：只编码 value，不要把整个 URL 一起编码后再拼接。</li><li>回调地址：作为参数传递时，回调 URL 本身通常需要整体作为参数值编码。</li><li>中文关键词：确认前后端都使用 UTF-8，不要混入旧编码。</li><li>跳转链接：确认 fragment 是否只在前端使用，服务端无法读取井号后的内容。</li></ul></section>

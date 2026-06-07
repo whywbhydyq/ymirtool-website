@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool</title>
-<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。" name="description"/>
+<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/api-response-debugging-guide.html" rel="canonical"/>
 <meta content="API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool" property="og:title"/>
-<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。" property="og:description"/>
+<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/api-response-debugging-guide.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool" name="twitter:title"/>
-<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。" name="twitter:description"/>
+<meta content="面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"API 响应调试工作流：从状态码到 JSON 结构复核","name":"API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool","url":"https://ymirtool.com/api-response-debugging-guide.html","description":"面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"API 响应调试工作流：从状态码到 JSON 结构复核","name":"API 响应调试工作流：从状态码到 JSON 结构复核 - Ymir Tool","url":"https://ymirtool.com/api-response-debugging-guide.html","description":"面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / API 响应调试工作流：从状态码到 JSON 结构复核</p>
 <h1>API 响应调试工作流：从状态码到 JSON 结构复核</h1>
-<p class="ymir-lead">面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。</p>
+<p class="ymir-lead">面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>先判断你拿到的到底是什么</h2><p>API 调试失败时，第一步不是把整段内容塞进格式化器，而是确认响应类型。浏览器 Network 面板、命令行 curl、后端日志和 API 网关控制台展示的内容并不完全相同。Network 面板里的 Response 通常接近真实响应体；Console 里的对象可能已经被浏览器渲染；日志里常常带有时间、级别、traceId 和服务名前缀；网关错误可能返回 HTML 页面或纯文本提示。只有确认输入是严格 JSON 后，JSON 格式化器才是正确入口。</p><p>状态码、响应头和正文要一起看。200 不代表业务成功，401/403 通常意味着鉴权或权限问题，404 可能是路径、环境或代理规则错误，502/504 更可能来自网关或上游服务。Content-Type 如果不是 application/json，也要先判断服务端是否返回了错误页、下载文件、压缩内容或重定向页面。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>推荐排查顺序</h2><ol><li>记录请求 URL、方法、环境、状态码和 Content-Type。</li><li>确认请求参数是否经过正确 URL 编码，尤其是空格、斜杠、问号、井号和中文。</li><li>复制最小响应体，不复制日志前缀、Markdown 代码围栏或浏览器对象预览。</li><li>用 JSON 工具验证结构，重点检查数组、对象、null、布尔值、数字和字符串。</li><li>把格式化后的结构与接口文档或契约字段对照，确认字段缺失、类型变化或嵌套层级错误。</li></ol></section>
 <section class="ymir-container ymir-help ymir-card"><h2>常见误判</h2><p>第一种误判是把登录页当作 JSON。接口失效后，代理可能返回完整 HTML，格式化器报错的位置通常在第一个尖括号。第二种误判是把 JavaScript 对象当作 JSON，未加引号的键、单引号、尾随逗号和注释都不是严格 JSON。第三种误判是复制了日志外壳，真正的 JSON 只在 payload 字段里。第四种误判是把字符串化 JSON 当作对象，需要先解析外层，再处理内层字符串。</p></section>

@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Base64 Padding 与 URL-safe 排错指南 - Ymir Tool</title>
-<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。" name="description"/>
+<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/base64-padding-troubleshooting.html" rel="canonical"/>
 <meta content="Base64 Padding 与 URL-safe 排错指南 - Ymir Tool" property="og:title"/>
-<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。" property="og:description"/>
+<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/base64-padding-troubleshooting.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Base64 Padding 与 URL-safe 排错指南 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="Base64 Padding 与 URL-safe 排错指南 - Ymir Tool" name="twitter:title"/>
-<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。" name="twitter:description"/>
+<meta content="说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="Base64 Padding 与 URL-safe 排错指南 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 Padding 与 URL-safe 排错指南","name":"Base64 Padding 与 URL-safe 排错指南 - Ymir Tool","url":"https://ymirtool.com/base64-padding-troubleshooting.html","description":"说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 Padding 与 URL-safe 排错指南","name":"Base64 Padding 与 URL-safe 排错指南 - Ymir Tool","url":"https://ymirtool.com/base64-padding-troubleshooting.html","description":"说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Base64 Padding 与 URL-safe 排错指南</p>
 <h1>Base64 Padding 与 URL-safe 排错指南</h1>
-<p class="ymir-lead">说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。</p>
+<p class="ymir-lead">说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>Base64 常见失败点</h2><p>Base64 的输出通常由字母、数字、加号、斜杠和等号组成。等号是 padding，用来补齐长度；URL-safe 变体会把加号和斜杠替换成连字符和下划线，有些系统还会省略 padding。复制时如果丢失末尾等号、插入了换行、把普通 Base64 当成 URL-safe 处理，或者把 URL-safe 字符直接交给普通解码器，都可能导致失败。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>排查顺序</h2><ol><li>先判断字符串来自普通 Base64、URL-safe Base64，还是 data URI。</li><li>检查长度和末尾 padding，必要时补齐但不要盲目修改业务数据。</li><li>确认中间没有空格、换行、引号、逗号或日志前缀。</li><li>解码后如果出现乱码，确认原始文本编码是否为 UTF-8。</li><li>若解码结果看起来还是 Base64 或 JSON 字符串，说明可能存在多层包装。</li></ol></section>
 <section class="ymir-container ymir-help ymir-card"><h2>Base64 不是加密</h2><p>Base64 只改变表示方式，不提供保密性。任何拿到字符串的人都可以解码。它适合在 JSON、HTML、URL 或文本协议里表示二进制或特殊字符，不适合隐藏密码、token 或客户资料。如果你需要安全保护，应使用正式加密方案、密钥管理、访问控制和传输层保护。</p></section>

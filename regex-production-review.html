@@ -7,16 +7,24 @@
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool</title>
-<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。" name="description"/>
+<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/regex-production-review.html" rel="canonical"/>
 <meta content="正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool" property="og:title"/>
-<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。" property="og:description"/>
+<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/regex-production-review.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <meta content="正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool" name="twitter:title"/>
-<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。" name="twitter:description"/>
+<meta content="提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<meta content="正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool preview image" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
@@ -24,14 +32,14 @@
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"正则表达式上线前复核：匹配、反例和性能边界","name":"正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool","url":"https://ymirtool.com/regex-production-review.html","description":"提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"正则表达式上线前复核：匹配、反例和性能边界","name":"正则表达式上线前复核：匹配、反例和性能边界 - Ymir Tool","url":"https://ymirtool.com/regex-production-review.html","description":"提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"}}</script>
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 正则表达式上线前复核：匹配、反例和性能边界</p>
 <h1>正则表达式上线前复核：匹配、反例和性能边界</h1>
-<p class="ymir-lead">提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。</p>
+<p class="ymir-lead">提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。</p>
 <section class="ymir-container ymir-help ymir-card"><h2>不要只准备能匹配的样例</h2><p>正则表达式最常见的上线风险，是只验证了应该匹配的字符串，没有验证不应该匹配的字符串。邮箱、URL、价格、版本号、日志行、配置键和用户输入都可能有边界情况。每条规则至少需要准备正例、反例、空输入、异常长度、包含换行的输入和包含特殊字符的输入。</p></section>
 <section class="ymir-container ymir-help ymir-card"><h2>上线前检查项</h2><ul><li>是否正确使用开始和结束边界，避免只匹配局部片段。</li><li>是否明确大小写、全局匹配、多行和 dotAll 等 flags。</li><li>反斜杠在 JavaScript 字符串、JSON 字符串和正则字面量中的转义是否不同。</li><li>是否存在嵌套量词或过宽的贪婪匹配，可能造成灾难性回溯。</li><li>是否限制最大输入长度，避免用户输入拖垮处理过程。</li></ul></section>
 <section class="ymir-container ymir-help ymir-card"><h2>目标运行时差异</h2><p>不同语言的正则语法并不完全一致。JavaScript、Python、Java、PHP、Go 和数据库正则在命名捕获、lookbehind、Unicode 类、换行处理和 flags 上可能不同。在线测试器能帮助设计思路，但上线前必须在目标语言和目标版本里运行同一批样例。</p></section>
