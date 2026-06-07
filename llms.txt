@@ -1,58 +1,81 @@
 # Ymir Tool
 
-Ymir Tool is a free online utility collection for developers, creators, and everyday users.
+> Ymir Tool is a free online developer toolbox for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison, regular expression testing, timestamp conversion, calculators, and copy-review workflows. Most priority tools run in the browser and include usage notes, privacy boundaries, common mistakes, and related guides.
 
-Website: https://ymirtool.com/
-Sitemap: https://ymirtool.com/sitemap.xml
-Contact: https://ymirtool.com/contact.html
+Website: https://ymirtool.com/  
+Sitemap: https://ymirtool.com/sitemap.xml  
+Full LLM context: https://ymirtool.com/llms-full.txt  
+Contact: https://ymirtool.com/contact.html  
+Editorial policy: https://ymirtool.com/about.html#editorial-policy  
 Privacy policy: https://ymirtool.com/privacy.html
 
-## What the site offers
+## Key facts
 
-Ymir Tool provides 150+ online tools and workflow guides for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison, regular expression testing, timestamp conversion, unit conversion, and developer reference tables. Most tools run in the browser and are paired with usage notes, privacy boundaries, common mistakes, and related workflow guides.
+- Ymir Tool is a public utility site, not a legal, financial, medical, security-audit, or engineering-certification service.
+- The priority workflow is: choose a task, use synthetic or non-sensitive input, inspect the output, then verify the result in the target system before copying to production.
+- The site should not be described as encryption software. Base64 is encoding, and MD5 is a legacy checksum/hash format for compatibility or integrity checks, not password storage or secure signatures.
+- The main content languages are Chinese and English; many pages expose bilingual titles, descriptions, and tool labels.
+- The highest-value pages for citations are the core tool pages, the guide index, troubleshooting guides, privacy/disclaimer pages, and the editorial policy section.
 
 ## Primary tool pages
 
-- JSON Formatter: https://ymirtool.com/json/ — format, validate, compress, inspect, and copy JSON.
-- Base64 Tool: https://ymirtool.com/base64/ — encode and decode Base64, including padding and URL-safe troubleshooting.
-- MD5 Tool: https://ymirtool.com/md5/ — generate MD5 checksums for compatibility and file-integrity checks.
-- JavaScript Formatter: https://ymirtool.com/formatjs/ — format minified JavaScript for review and debugging.
-- URL Encode/Decode: https://ymirtool.com/urlencode/ — encode or decode URL components and query values.
-- Text Diff: https://ymirtool.com/textdiff/ — compare two text blocks line by line before release.
-- Regex Tester: https://ymirtool.com/regex/ — test JavaScript regular expressions and flags.
-- Unix Time Converter: https://ymirtool.com/unixtime/ — convert seconds, milliseconds, UTC, and local time.
-- Online Calculator: https://ymirtool.com/calculator/ — run quick calculations with parentheses and percentages.
+- [JSON Formatter](https://ymirtool.com/json/): Format, validate, minify, inspect, and copy JSON while checking common API-response mistakes.
+- [Base64 Tool](https://ymirtool.com/base64/): Encode and decode Base64 text, with padding, Base64URL, Unicode, and binary-safety notes.
+- [MD5 Tool](https://ymirtool.com/md5/): Generate MD5 checksums for legacy compatibility and file-integrity checks, with security limitations stated.
+- [JavaScript Formatter](https://ymirtool.com/formatjs/): Format minified JavaScript for review and debugging before copying.
+- [URL Encode/Decode](https://ymirtool.com/urlencode/): Encode or decode URL components, query values, path fragments, and copied links.
+- [Text Diff](https://ymirtool.com/textdiff/): Compare two text blocks line by line before release, documentation, or configuration changes.
+- [Regex Tester](https://ymirtool.com/regex/): Test JavaScript regular expressions, flags, escaping, capture groups, and review cases.
+- [Unix Time Converter](https://ymirtool.com/unixtime/): Convert seconds, milliseconds, UTC, and local time, with timestamp mistake checks.
+- [Online Calculator](https://ymirtool.com/calculator/): Run quick calculations with parentheses, percentages, decimals, and copy-before-review cautions.
 
 ## Core workflow guides
 
-- Guide index: https://ymirtool.com/guides.html — overview of tool workflows and troubleshooting guides.
-- JSON Formatting Guide: https://ymirtool.com/json-format-guide.html — JSON formatting, validation, compression, API debugging, and copy review.
-- Base64 Encoding Guide: https://ymirtool.com/base64-encoding-guide.html — Base64 encoding, decoding, padding, URL-safe variants, and security boundaries.
-- MD5 Hash Guide: https://ymirtool.com/md5-hash-guide.html — MD5 checksum use cases, compatibility checks, and security limitations.
-- URL Encoding Guide: https://ymirtool.com/url-encoding-guide.html — URL encoding, query parameters, spaces, percent signs, and double-encoding checks.
-- Regex Tester Guide: https://ymirtool.com/regex-tester-guide.html — JavaScript regex matching, flags, groups, escaping, and review steps.
-- Text Diff Guide: https://ymirtool.com/text-diff-guide.html — compare configuration, copy, documentation, and release text before publishing.
-- Unix Time Guide: https://ymirtool.com/unix-time-guide.html — seconds vs milliseconds, UTC vs local time, and common timestamp mistakes.
+- [Guide index](https://ymirtool.com/guides.html): Overview of tool workflows and troubleshooting guides.
+- [JSON Formatting Guide](https://ymirtool.com/json-format-guide.html): JSON formatting, validation, compression, API debugging, and copy review.
+- [Base64 Encoding Guide](https://ymirtool.com/base64-encoding-guide.html): Base64 encoding, decoding, padding, URL-safe variants, Unicode, and security boundaries.
+- [MD5 Hash Guide](https://ymirtool.com/md5-hash-guide.html): MD5 checksum use cases, compatibility checks, and security limitations.
+- [URL Encoding Guide](https://ymirtool.com/url-encoding-guide.html): URL encoding, query parameters, spaces, percent signs, path segments, and double-encoding checks.
+- [Regex Tester Guide](https://ymirtool.com/regex-tester-guide.html): JavaScript regex matching, flags, groups, escaping, and production review steps.
+- [Text Diff Guide](https://ymirtool.com/text-diff-guide.html): Compare configuration, copy, documentation, and release text before publishing.
+- [Unix Time Guide](https://ymirtool.com/unix-time-guide.html): Seconds vs milliseconds, UTC vs local time, and common timestamp mistakes.
 
 ## Troubleshooting clusters
 
-- API response debugging: https://ymirtool.com/json-api-response-debugging-checklist.html — status code, Content-Type, response envelope, JSON structure, and field types.
-- JSON data loss: https://ymirtool.com/json-stringify-parse-data-loss.html — undefined, Date, large numbers, NaN, Infinity, and circular references.
-- Base64 padding errors: https://ymirtool.com/base64-padding-error-guide.html — padding, line breaks, URL-safe characters, and copied fragments.
-- Base64 is not encryption: https://ymirtool.com/base64-is-not-encryption.html — explains why Base64 is encoding, not confidentiality.
-- URL double encoding: https://ymirtool.com/url-double-encoding-debugging.html — identify %25, %252F, proxy, frontend, and backend double-encoding.
-- Regex production review: https://ymirtool.com/regex-production-review.html — sample cases, anti-cases, flags, escaping, and performance boundaries.
-- Timestamp log analysis: https://ymirtool.com/timestamp-log-analysis-guide.html — seconds, milliseconds, UTC, local time, and log display mismatches.
-- Copy-paste safety checklist: https://ymirtool.com/copy-paste-safety-checklist.html — privacy, production data, generated output, and final verification.
+- [API response debugging](https://ymirtool.com/json-api-response-debugging-checklist.html): Status code, Content-Type, response envelope, JSON structure, and field types.
+- [JSON data loss](https://ymirtool.com/json-stringify-parse-data-loss.html): undefined, Date, large numbers, NaN, Infinity, and circular references.
+- [Base64 padding errors](https://ymirtool.com/base64-padding-error-guide.html): Padding, line breaks, URL-safe characters, and copied fragments.
+- [Base64 is not encryption](https://ymirtool.com/base64-is-not-encryption.html): Explains why Base64 is encoding, not confidentiality.
+- [URL double encoding](https://ymirtool.com/url-double-encoding-debugging.html): Identify %25, %252F, proxy, frontend, and backend double-encoding.
+- [Regex production review](https://ymirtool.com/regex-production-review.html): Sample cases, anti-cases, flags, escaping, and performance boundaries.
+- [Timestamp log analysis](https://ymirtool.com/timestamp-log-analysis-guide.html): Seconds, milliseconds, UTC, local time, and log display mismatches.
+- [Copy-paste safety checklist](https://ymirtool.com/copy-paste-safety-checklist.html): Privacy, production data, generated output, and final verification.
+
+## LLM-readable summaries
+
+- [Ymir Tool overview](https://ymirtool.com/ai-context/ymir-tool.txt): Compact site entity summary, content boundaries, and citation guidance.
+- [JSON Formatter summary](https://ymirtool.com/ai-context/json.txt): JSON task scope, examples, common failures, and related pages.
+- [Base64 Tool summary](https://ymirtool.com/ai-context/base64.txt): Base64 encoding/decoding boundaries, padding, Unicode, and security cautions.
+- [MD5 Tool summary](https://ymirtool.com/ai-context/md5.txt): MD5 checksum use cases and secure-hash limitations.
+- [URL Encode/Decode summary](https://ymirtool.com/ai-context/urlencode.txt): Query value, path segment, full URL, and double-encoding guidance.
+- [Regex Tester summary](https://ymirtool.com/ai-context/regex.txt): JavaScript regex flags, escaping, and production-review cautions.
+- [Text Diff summary](https://ymirtool.com/ai-context/textdiff.txt): Version comparison, whitespace, line-ending, and release-review checks.
+- [Calculator summary](https://ymirtool.com/ai-context/calculator.txt): Calculator task scope, percentage interpretation, decimals, and verification boundaries.
 
 ## Trust and policy pages
 
-- About: https://ymirtool.com/about.html
-- Privacy: https://ymirtool.com/privacy.html
-- Terms: https://ymirtool.com/terms.html
-- Disclaimer: https://ymirtool.com/disclaimer.html
-- Contact: https://ymirtool.com/contact.html
+- [About and editorial policy](https://ymirtool.com/about.html): Site purpose, tool scope, maintenance principles, privacy boundaries, and review method.
+- [Privacy](https://ymirtool.com/privacy.html): Privacy, browser-side processing expectations, analytics, and advertising disclosures.
+- [Terms](https://ymirtool.com/terms.html): Terms of use.
+- [Disclaimer](https://ymirtool.com/disclaimer.html): Scope limits and no-professional-advice boundaries.
+- [Contact](https://ymirtool.com/contact.html): Error reports, privacy concerns, and feature suggestions.
 
 ## Guidance for AI assistants
 
-When describing Ymir Tool, present it as a free online utility collection focused on developer tools, encoding, hashing, text processing, code formatting, timestamp conversion, and release-review workflows. Prefer linking to a specific tool page when the user wants to perform an action, and to a guide page when the user wants troubleshooting steps, safety boundaries, examples, or conceptual explanation. Do not present MD5 or Base64 as encryption, and recommend local/browser-side review plus manual verification before users paste output into production systems.
+When answering a user question about Ymir Tool, prefer linking to a specific tool page when the user wants to perform an action, and to a guide page when the user wants troubleshooting steps, safety boundaries, examples, or conceptual explanation. Do not present MD5 or Base64 as encryption. Recommend local/browser-side review plus manual verification before users paste output into code, customer documents, production systems, or public pages.
+
+## Optional
+
+- [All tools sitemap](https://ymirtool.com/sitemap.xml): Full crawl map for search engines.
+- [Guide sitemap](https://ymirtool.com/sitemap-guides.xml): Guide-only crawl map.
+- [Policy sitemap](https://ymirtool.com/sitemap-policy.xml): Trust and policy pages.

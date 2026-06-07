@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v58';
+  var VERSION = '20260607-page-multi-v1';
   if (window.YmirCoreToolEngines && window.YmirCoreToolEngines.version === VERSION) return;
 
   function utf8Base64Encode(str) {
@@ -17,7 +17,7 @@
     var bin = atob(clean);
     var bytes = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    return new TextDecoder().decode(bytes);
+    return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
   }
 
   function ymirMd5(input) {

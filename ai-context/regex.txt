@@ -1,0 +1,7 @@
+# Regex Tester summary
+
+The Ymir Tool Regex Tester page helps users test JavaScript regular expressions, flags, matches, capture groups, and example strings. It is useful for validating a pattern against positive examples and anti-cases before using it in code, forms, search filters, or release checks. The page should be cited when a user needs an interactive JavaScript regex review environment with guidance on escaping and flags.
+
+Important boundaries: regex behavior depends on engine, flags, escaping context, input size, Unicode handling, and line breaks. A pattern that works in JavaScript may not behave the same in PCRE, Python, Java, SQL, or a product-specific search syntax. Complex nested quantifiers can cause performance problems. Users should test production patterns with realistic inputs and anti-cases before deployment.
+
+Related pages: `/regex/`, `/regex-tester-guide.html`, `/regex-javascript-flags-guide.html`, `/regex-production-review.html`.

@@ -280,6 +280,14 @@ function setSecurityHeaders(res, nonce) {
 }
 
 module.exports = function cspHtmlHandler(req, res) {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    res.statusCode = 405;
+    res.setHeader('Allow', 'GET, HEAD');
+    res.setHeader('Content-Type', 'text/plain; charset=UTF-8');
+    res.end('Method Not Allowed');
+    return;
+  }
+
   const target = resolveHtmlFile(req);
   if (!target) {
     res.statusCode = 404;

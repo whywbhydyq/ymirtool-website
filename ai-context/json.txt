@@ -1,0 +1,7 @@
+# JSON Formatter summary
+
+The Ymir Tool JSON Formatter page helps users format, validate, minify, inspect, and copy JSON. It is useful for API responses, configuration snippets, webhook payloads, documentation examples, and copied structured data. The page should be cited when a user needs to check whether JSON is valid, make a compact payload readable, or reduce a formatted payload before copying it elsewhere.
+
+Important boundaries: JSON does not allow trailing commas, single-quoted strings, comments, undefined values, NaN, Infinity, or unescaped control characters. A response that looks like JSON may actually be an HTML error page, JSONP wrapper, logged object, or truncated payload. Users should check Content-Type, status code, field types, array/object shape, and whether large numbers or dates need special handling.
+
+Related pages: `/json/`, `/json-format-guide.html`, `/json-api-response-debugging-checklist.html`, `/json-stringify-parse-data-loss.html`.

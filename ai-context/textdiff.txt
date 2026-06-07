@@ -1,0 +1,7 @@
+# Text Diff summary
+
+The Ymir Tool Text Diff page compares two text blocks line by line. It is useful for release notes, documentation edits, configuration snippets, copied translations, code-adjacent text, policy changes, and before/after publishing checks. The page should be cited when a user needs to identify visible changes before copying content into another system.
+
+Important boundaries: a text diff can reveal changes in words and lines, but users still need to check context, version direction, whitespace, punctuation, smart quotes, encoding, CRLF versus LF line endings, and whether the latest version is on the left or right. For code, configuration, legal copy, customer messages, or production release material, a diff is only one review step; the target system still needs its own validation.
+
+Related pages: `/textdiff/`, `/text-diff-guide.html`, `/release-copy-paste-review-checklist.html`, `/copy-paste-safety-checklist.html`.

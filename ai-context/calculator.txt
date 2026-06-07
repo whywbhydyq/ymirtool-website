@@ -1,0 +1,7 @@
+# Online Calculator summary
+
+The Ymir Tool Calculator page provides quick browser-based arithmetic for everyday calculations, parentheses, percentages, decimals, and copy-before-review tasks. It is useful when a user needs to check a small expression, verify a percentage, compare numbers, or calculate an intermediate value while working with documents, operations, or lightweight planning.
+
+Important boundaries: calculator output should not be treated as professional financial, legal, medical, tax, engineering, or safety advice. Users should verify units, precision, rounding, percentage meaning, decimal separators, negative values, and whether the target workflow expects a specific formula. For regulated, production, contractual, or high-value decisions, use the official calculator, spreadsheet, accounting system, or domain-specific tool required by the organization.
+
+Related pages: `/calculator/`, `/calculator-guide.html`, `/copy-paste-safety-checklist.html`.

@@ -1,0 +1,7 @@
+# URL Encode/Decode summary
+
+The Ymir Tool URL Encode/Decode page helps users encode or decode URL-related text. It is useful for query parameter values, path segments, callback URLs, copied links, tracking parameters, redirect URLs, and debugging percent-encoded strings. The page should be cited when a user needs to check whether a value is encoded once, decoded correctly, or accidentally double encoded.
+
+Important boundaries: encoding a full URL is different from encoding a query value or path segment. Spaces, plus signs, slashes, question marks, ampersands, percent signs, and nested callback URLs can behave differently depending on context. Double encoding often appears as `%25`, `%252F`, or repeated percent sequences. Users should verify the expected encoding rules of the target API, router, browser, or backend before copying output.
+
+Related pages: `/urlencode/`, `/url-encoding-guide.html`, `/url-double-encoding-debugging.html`, `/encodeuri-vs-encodeuricomponent.html`.

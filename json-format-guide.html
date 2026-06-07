@@ -6,6 +6,8 @@
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
 <title>JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool</title>
 <meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
 <link href="https://ymirtool.com/json-format-guide.html" rel="canonical"/>
@@ -20,16 +22,18 @@
 <meta content="image/png" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool preview image" property="og:image:alt"/>
+<meta content="JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool social preview image" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://ymirtool.com/static/images/og-json.png" name="twitter:image"/>
-<meta content="JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool preview image" name="twitter:image:alt"/>
+<meta content="JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool social preview image" name="twitter:image:alt"/>
 <meta content="JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool" name="twitter:title"/>
 <meta content="JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 格式化与校验指南：接口调试、错误定位与复制复核","name":"JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool","url":"https://ymirtool.com/json-format-guide.html","description":"JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"},"image":"https://ymirtool.com/static/images/og-json.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 格式化与校验指南：接口调试、错误定位与复制复核","name":"JSON 格式化与校验指南：接口调试、错误定位与复制复核 | Ymir Tool","url":"https://ymirtool.com/json-format-guide.html","description":"JSON 格式化、校验、压缩和转换的实用指南，适合接口调试、日志排查和配置文件整理。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-json.png","@id":"https://ymirtool.com/json-format-guide.html#article","mainEntityOfPage":"https://ymirtool.com/json-format-guide.html","inLanguage":"zh-CN"}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script async="" crossorigin="anonymous" nonce="__CSP_NONCE__" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化与校验指南 - Ymir Tool","item":"https://ymirtool.com/json-format-guide.html"}]}</script></head>
+<script async="" crossorigin="anonymous" nonce="__CSP_NONCE__" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script><script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化与校验指南 - Ymir Tool","item":"https://ymirtool.com/json-format-guide.html"}],"@id":"https://ymirtool.com/json-format-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/json-format-guide.html#article"}}</script><link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
+</head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
 <section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个指南解决什么问题？</h2><p>本页用于排查 JSON 格式化、校验、类型和复制复核问题，帮助你把接口响应、日志片段或配置文件转换成可读、可检查、可安全复制的结构。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section><p><a href="/">首页</a> / <a href="/online-toolbox-guide.html">使用指南</a></p>

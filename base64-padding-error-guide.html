@@ -6,6 +6,8 @@
 <meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
 <title>Base64 Padding 错误排查指南 - Ymir Tool</title>
 <meta content="解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="description"/>
 <link href="https://ymirtool.com/base64-padding-error-guide.html" rel="canonical"/>
@@ -19,22 +21,24 @@
 <meta content="image/png" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Base64 Padding 错误排查指南 - Ymir Tool preview image" property="og:image:alt"/>
+<meta content="Base64 Padding 错误排查指南 - Ymir Tool social preview image" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://ymirtool.com/static/images/og-base64.png" name="twitter:image"/>
-<meta content="Base64 Padding 错误排查指南 - Ymir Tool preview image" name="twitter:image:alt"/>
+<meta content="Base64 Padding 错误排查指南 - Ymir Tool social preview image" name="twitter:image:alt"/>
 <meta content="Base64 Padding 错误排查指南 - Ymir Tool" name="twitter:title"/>
 <meta content="解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="twitter:description"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<link href="/static/style/ymir-tool-page-v51.css?v=20260531-v58" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 Padding 错误排查指南","name":"Base64 Padding 错误排查指南 - Ymir Tool","url":"https://ymirtool.com/base64-padding-error-guide.html","description":"解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","name":"Ymir Tool editorial review"},"publisher":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com"},"image":"https://ymirtool.com/static/images/og-base64.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 Padding 错误排查指南","name":"Base64 Padding 错误排查指南 - Ymir Tool","url":"https://ymirtool.com/base64-padding-error-guide.html","description":"解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-base64.png","@id":"https://ymirtool.com/base64-padding-error-guide.html#article","mainEntityOfPage":"https://ymirtool.com/base64-padding-error-guide.html","inLanguage":"zh-CN"}</script>
 <script async="" crossorigin="anonymous" nonce="__CSP_NONCE__" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653188471819736"></script>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 Padding 错误排查指南 - Ymir Tool","item":"https://ymirtool.com/base64-padding-error-guide.html"}]}</script></head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 Padding 错误排查指南 - Ymir Tool","item":"https://ymirtool.com/base64-padding-error-guide.html"}],"@id":"https://ymirtool.com/base64-padding-error-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/base64-padding-error-guide.html#article"}}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
+</head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <main class="container ymir-guide-page" data-sprint3-page="base64-padding-error-guide.html">

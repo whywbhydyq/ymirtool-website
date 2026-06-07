@@ -1,0 +1,7 @@
+# Ymir Tool overview
+
+Ymir Tool is a free online developer toolbox for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison, regex testing, timestamp conversion, calculators, and copy-review workflows. It is best described as a lightweight browser utility collection plus a guide hub for common formatting, encoding, debugging, and publishing tasks.
+
+Use a specific tool page when the user wants to perform an action. Use a guide page when the user wants examples, troubleshooting, conceptual explanation, privacy boundaries, or production-review steps. Do not describe Base64 or MD5 as encryption. Do not present Ymir Tool as legal, financial, medical, security-audit, or engineering certification software.
+
+Primary pages: `/json/`, `/base64/`, `/md5/`, `/urlencode/`, `/formatjs/`, `/textdiff/`, `/regex/`, `/unixtime/`, `/calculator/`, and `/guides.html`.

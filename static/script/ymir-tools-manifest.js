@@ -5,7 +5,7 @@
   "site": {
     "origin": "https://ymirtool.com",
     "name": "Ymir Tool",
-    "lastmod": "2026-05-31",
+    "lastmod": "2026-06-07",
     "version": "20260531-v58"
   },
   "entrypoint": "/static/script/ymir-vue-loader.js",
@@ -871,21 +871,21 @@
       "categoryLabelEn": "Encoding",
       "titleZh": "Base64 编码 / 解码",
       "titleEn": "Base64 Encoder / Decoder",
-      "descriptionZh": "快速编码和解码文本。",
-      "descriptionEn": "Encode and decode text quickly.",
-      "keywords": "base64 encoder decoder base64编码 base64解码 base64编解码 Base64 Encoder / Decoder base64 Base64 Encoder / Decoder Base64 编码 / 解码",
+      "descriptionZh": "编码或解码 UTF-8 文本样例，检查 padding、Base64URL 和乱码风险。",
+      "descriptionEn": "Encode or decode UTF-8 text samples and check padding, Base64URL, and mojibake risks.",
+      "keywords": "base64 encoder decoder base64编码 base64解码 base64编解码 Base64 Encoder / Decoder base64 Base64 Encoder / Decoder Base64 编码 / 解码 base64url padding utf8 unicode btoa atob base64乱码 token样例 data uri 编码解码",
       "icon": "64",
       "accent": "cyan",
       "featured": true,
       "featuredRank": 2,
       "directoryRank": 1,
       "shell": {
-        "title": "Base64 Encoder & Decoder | Ymir Tool",
-        "description": "Encode UTF-8 text to Base64 or decode Base64 to text. Copy results and see clear errors for invalid input. Base64 is encoding, not encryption.",
+        "title": "Base64 Encoder & Decoder: UTF-8 & Base64URL | Ymir Tool",
+        "description": "Encode or decode Base64 text, inspect UTF-8 output, fix padding, compare Base64URL variants, and avoid treating Base64 strings as encryption or secrets.",
         "canonical": "https://ymirtool.com/base64/",
         "heroTitle": "Base64 Encoder & Decoder",
         "schemaName": "Base64 Encoder and Decoder",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-06-07"
       }
     },
     {
@@ -1289,24 +1289,25 @@
       "category": "calc",
       "categoryLabelZh": "计算",
       "categoryLabelEn": "Calculator",
-      "titleZh": "科学计算器",
-      "titleEn": "Scientific Calculator",
-      "descriptionZh": "计算常用表达式。",
-      "descriptionEn": "Calculate common expressions.",
-      "keywords": "calculator scientific calculator 科学计算器 在线计算器 在线科学计算器 Scientific Calculator calculator Scientific Calculator 科学计算器",
+      "titleZh": "在线计算器",
+      "titleEn": "Online Calculator",
+      "descriptionZh": "在线计算器支持括号、百分比和基础四则运算，适合临时计算、文档数字复核和复制前检查；正式金额、工程或安全结果应回到专业系统复验。",
+      "descriptionEn": "Calculate percentages, brackets, and quick expressions, then review units, rounding, and context before copying.",
+      "keywords": "calculator scientific 科学计算器 在线计算器 在线科学计算器 Scientific Calculator online percentage brackets expression rounding units 百分比 括号 小数 单位 取整 在线计算器, 百分比计算器, 括号计算, 基础运算, 结果复核, 小数取整",
       "icon": "▣",
       "accent": "amber",
       "featured": true,
       "featuredRank": 10,
       "directoryRank": 3,
       "shell": {
-        "title": "Online Calculator - Ymir Tool",
-        "description": "Run quick calculations with numbers, parentheses, percentages, and basic operators.",
+        "title": "在线计算器：百分比、括号、基础运算和结果复核 | Ymir Tool",
+        "description": "在线计算器支持数字、括号、百分比和基础运算，适合做临时计算、结果复核和复制前检查。",
         "canonical": "https://ymirtool.com/calculator/",
-        "heroTitle": "Online Scientific Calculator",
+        "heroTitle": "在线计算器",
         "schemaName": "在线计算器",
         "lastmod": "2026-05-31"
-      }
+      },
+      "lastmod": "2026-06-07"
     },
     {
       "slug": "calcvolume",
@@ -2159,9 +2160,9 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "JavaScript 格式化器",
       "titleEn": "JavaScript Formatter",
-      "descriptionZh": "美化并格式化 JavaScript。",
-      "descriptionEn": "Beautify and format JavaScript.",
-      "keywords": "javascript formatter js格式化 js压缩 javascript格式化/压缩 JavaScript Formatter / Minifier formatjs JavaScript Formatter JavaScript 格式化器",
+      "descriptionZh": "整理 JavaScript 代码片段，复核缩进、括号和复制前格式。",
+      "descriptionEn": "Format JavaScript snippets and review indentation, braces, and copy-ready output.",
+      "keywords": "javascript formatter js格式化 js压缩 javascript格式化/压缩 JavaScript Formatter / Minifier formatjs JavaScript Formatter JavaScript 格式化器 beautifier source formatting 代码格式化 js美化",
       "icon": "JS",
       "accent": "violet",
       "featured": true,
@@ -2999,21 +3000,21 @@
       "categoryLabelEn": "JSON",
       "titleZh": "JSON 格式化器",
       "titleEn": "JSON Formatter",
-      "descriptionZh": "格式化、校验和压缩 JSON。",
-      "descriptionEn": "Format, validate, and minify JSON.",
-      "keywords": "json formatter json格式化 json校验 json压缩 json美化 json格式化 JSON Formatter json JSON Formatter JSON 格式化器",
+      "descriptionZh": "粘贴 API 响应、配置片段或日志 JSON，格式化、压缩并检查语法错误。",
+      "descriptionEn": "Paste API responses, config snippets, or log JSON to format, minify, and catch syntax errors.",
+      "keywords": "json formatter json格式化 json校验 json压缩 json美化 json格式化 JSON Formatter json JSON Formatter JSON 格式化器 api response api响应 validate validator beautifier parse error json语法错误 配置文件 日志json",
       "icon": "{}",
       "accent": "violet",
       "featured": true,
       "featuredRank": 1,
       "directoryRank": 1,
       "shell": {
-        "title": "JSON Formatter & Validator | Ymir Tool",
-        "description": "Format, validate, minify, and copy JSON. Paste JSON to get readable output, syntax errors, or compact JSON for APIs and config files.",
+        "title": "JSON Formatter & Validator: Format & Minify | Ymir Tool",
+        "description": "Paste JSON to format, validate, minify, and inspect API responses, config snippets, and logs. See syntax errors and copy reviewed JSON safely.",
         "canonical": "https://ymirtool.com/json/",
-        "heroTitle": "JSON Formatter & Validator",
+        "heroTitle": "JSON Formatter and Validator",
         "schemaName": "JSON Formatter and Validator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-06-07"
       }
     },
     {
@@ -3389,11 +3390,11 @@
       "category": "hash",
       "categoryLabelZh": "哈希",
       "categoryLabelEn": "Hash",
-      "titleZh": "MD5 哈希生成器",
-      "titleEn": "MD5 Hash Generator",
-      "descriptionZh": "立即生成文本哈希值。",
-      "descriptionEn": "Generate hashes instantly.",
-      "keywords": "md5 hash generator md5哈希 md5生成 md5哈希 MD5 Hash md5 MD5 Hash Generator MD5 哈希生成器",
+      "titleZh": "MD5 校验和生成器",
+      "titleEn": "MD5 Checksum Generator",
+      "descriptionZh": "生成旧式 MD5 校验和，用于非安全摘要比对和文件校验流程。",
+      "descriptionEn": "Generate MD5 hashes for text checksums, duplicate checks, and legacy systems. Review whitespace, encoding, and security limits before copying.",
+      "keywords": "md5 hash generator md5哈希 md5生成 MD5 Hash Generator 哈希生成器 checksum digest file verification legacy md5校验和 文件校验 摘要比对 非安全哈希 generator, checksum, text digest, non-security comparison",
       "icon": "盾",
       "accent": "amber",
       "featured": true,
@@ -3406,7 +3407,8 @@
         "heroTitle": "MD5 Hash Generator",
         "schemaName": "MD5 Hash Generator",
         "lastmod": "2026-05-31"
-      }
+      },
+      "lastmod": "2026-06-07"
     },
     {
       "slug": "morse",
@@ -3531,9 +3533,9 @@
       "categoryLabelEn": "Hash",
       "titleZh": "密码生成器",
       "titleEn": "Password Generator",
-      "descriptionZh": "快速创建随机密码。",
-      "descriptionEn": "Create random passwords quickly.",
-      "keywords": "password generator 密码生成 随机密码 密码生成器 Password Generator password Password Generator 密码生成器",
+      "descriptionZh": "按长度和字符集生成随机密码，复制前确认使用场景。",
+      "descriptionEn": "Generate random passwords by length and character set, then review the usage context.",
+      "keywords": "password generator 密码生成 随机密码 密码生成器 Password Generator password Password Generator 密码生成器 random secure symbols length 强密码 符号 长度",
       "icon": "🔒",
       "accent": "rose",
       "featured": true,
@@ -3811,9 +3813,9 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "正则测试器",
       "titleEn": "Regex Tester",
-      "descriptionZh": "测试正则表达式和匹配结果。",
-      "descriptionEn": "Test patterns and matches.",
-      "keywords": "regex tester 正则测试 正则表达式 正则表达式测试 Regex Tester regex Regex Tester 正则测试器",
+      "descriptionZh": "检查 flags、转义、捕获组和异常匹配，避免上线后误伤文本。",
+      "descriptionEn": "Test JavaScript regular expressions with flags, capture groups, escaping, and sample text. Review matches and performance risks before copying.",
+      "keywords": "regex tester 正则测试 正则表达式 正则表达式测试 Regex Tester 正则测试器 regular expression regexp match groups flags escaping capture 正则匹配 捕获组 贪婪 懒惰 回溯 tester, JavaScript regex, flags, groups, escaping, performance",
       "icon": ".*",
       "accent": "violet",
       "featured": true,
@@ -3826,7 +3828,8 @@
         "heroTitle": "Regex Tester",
         "schemaName": "Regex Tester",
         "lastmod": "2026-05-31"
-      }
+      },
+      "lastmod": "2026-06-07"
     },
     {
       "slug": "regexcode",
@@ -4231,9 +4234,9 @@
       "categoryLabelEn": "Text",
       "titleZh": "文本对比",
       "titleEn": "Text Diff",
-      "descriptionZh": "逐行比较两段文本。",
-      "descriptionEn": "Compare two text blocks line by line.",
-      "keywords": "text diff 文本对比 文本比较 文本内容对比 Text Diff textdiff Text Diff 文本对比",
+      "descriptionZh": "比较发布说明、配置、翻译、提示词和复制文本的逐行差异。",
+      "descriptionEn": "Compare two text blocks line by line, spot added, removed, changed, whitespace, and line-ending differences, then review before publishing.",
+      "keywords": "text diff 文本对比 文本比较 文本内容对比 Text Diff textdiff checker compare files release notes 文案对比 配置对比 翻译对比 版本差异 checker, online, line diff, whitespace copy review",
       "icon": "⇄",
       "accent": "emerald",
       "featured": true,
@@ -4246,7 +4249,8 @@
         "heroTitle": "Text Diff Checker",
         "schemaName": "Text Diff Checker",
         "lastmod": "2026-05-31"
-      }
+      },
+      "lastmod": "2026-06-07"
     },
     {
       "slug": "textflip",
@@ -4371,9 +4375,9 @@
       "categoryLabelEn": "Text",
       "titleZh": "字数统计",
       "titleEn": "Word Counter",
-      "descriptionZh": "统计单词、字符、行数。",
-      "descriptionEn": "Count words and characters.",
-      "keywords": "word counter 字数统计 字符统计 在线统计字数 Word Counter txtcount Word Counter 字数统计",
+      "descriptionZh": "统计字数、字符数、行数和复制文本长度。",
+      "descriptionEn": "Count words, characters, lines, and copied text length.",
+      "keywords": "word counter 字数统计 字符统计 在线统计字数 Word Counter txtcount Word Counter 字数统计 character line 字符数 行数 文本统计",
       "icon": "Aa",
       "accent": "emerald",
       "featured": true,
@@ -4455,9 +4459,9 @@
       "categoryLabelEn": "Text",
       "titleZh": "Unix 时间戳转换器",
       "titleEn": "Unix Timestamp Converter",
-      "descriptionZh": "快速转换时间戳和日期。",
-      "descriptionEn": "Convert timestamps fast.",
-      "keywords": "unix timestamp 时间戳 日期转换 时间转换 unix时间戳转换 Unix Timestamp Converter unixtime Unix Timestamp Converter Unix 时间戳转换器",
+      "descriptionZh": "转换 Unix 秒/毫秒时间戳，复核日志时间、时区显示和复制结果。",
+      "descriptionEn": "Convert Unix seconds or milliseconds and review log times, timezones, and copied results.",
+      "keywords": "unix timestamp 时间戳 日期转换 时间转换 unix时间戳转换 Unix Timestamp Converter unixtime Unix Timestamp Converter Unix 时间戳转换器 epoch seconds milliseconds timezone log unix秒 毫秒 时区 日志时间",
       "icon": "◷",
       "accent": "blue",
       "featured": true,
@@ -4511,9 +4515,9 @@
       "categoryLabelEn": "Encoding",
       "titleZh": "URL 编码 / 解码",
       "titleEn": "URL Encoder / Decoder",
-      "descriptionZh": "编码和解码 URL。",
-      "descriptionEn": "Encode and decode URLs.",
-      "keywords": "url encode decode urlencode url编码 url解码 url编码/解码 URL Encoder / Decoder urlencode URL Encoder / Decoder URL 编码 / 解码",
+      "descriptionZh": "处理 query 参数、回调地址、中文、空格和二次编码风险。",
+      "descriptionEn": "Encode or decode URL query parameters, path segments, spaces, Chinese text, and reserved characters. Check double encoding before copying.",
+      "keywords": "url encode decode urlencode url编码 url解码 url编码/解码 URL Encoder / Decoder 编码 解码 query parameter encodeURIComponent percent encoding 空格 percent20 加号 回调地址 二次编码 encoder, decoder, string encoding, encodeURIComponent, double",
       "icon": "🔗",
       "accent": "cyan",
       "featured": true,
@@ -4526,7 +4530,8 @@
         "heroTitle": "URL Encoder and Decoder",
         "schemaName": "URL Encoder and Decoder",
         "lastmod": "2026-05-31"
-      }
+      },
+      "lastmod": "2026-06-07"
     },
     {
       "slug": "urlthunder",

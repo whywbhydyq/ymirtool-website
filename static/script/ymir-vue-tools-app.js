@@ -214,17 +214,25 @@
       this.setStatus(out.length ? 'success' : 'info', (this.lang === 'zh' ? '新增行：' : 'Added lines: ') + added + ' · ' + (this.lang === 'zh' ? '删除行：' : 'Removed lines: ') + removed + ' · ' + (this.lang === 'zh' ? '变更行对：' : 'Changed line pairs: ') + changed);
     },
     testRegex: function () {
-      if (!String(this.pattern || '').trim()) { this.setStatus('warning', this.lang === 'zh' ? '请先输入正则表达式。' : 'Enter a regular expression first.'); return; }
+      var patternText = String(this.pattern || '');
+      var source = String(this.regexText || '');
+      if (!patternText.trim()) { this.setStatus('warning', this.lang === 'zh' ? '请先输入正则表达式。' : 'Enter a regular expression first.'); return; }
+      if (patternText.length > 500) { this.setStatus('error', this.lang === 'zh' ? '正则表达式过长，请缩短到 500 个字符以内再测试。' : 'Pattern is too long. Keep quick-test patterns under 500 characters.'); return; }
+      if (source.length > 50000) { this.setStatus('error', this.lang === 'zh' ? '测试文本过长，请缩短到 50,000 个字符以内再测试。' : 'Sample text is too long. Keep quick tests under 50,000 characters.'); return; }
       try {
         var flagText = ['g', 'i', 'm'].filter(function (f) { return this.flags[f]; }, this).join('');
-        var re = new RegExp(this.pattern, flagText);
-        var source = String(this.regexText || '');
-        var result = [], match;
+        var re = new RegExp(patternText, flagText);
+        var result = [], match, maxMatches = 200, truncated = false;
         if (flagText.indexOf('g') > -1) {
-          while ((match = re.exec(source)) !== null) { result.push('Match ' + (result.length + 1) + ' at ' + match.index + ': ' + match[0]); if (match.index === re.lastIndex) re.lastIndex++; }
+          while ((match = re.exec(source)) !== null) {
+            if (result.length >= maxMatches) { truncated = true; break; }
+            result.push('Match ' + (result.length + 1) + ' at ' + match.index + ': ' + match[0]);
+            if (match.index === re.lastIndex) re.lastIndex++;
+          }
         } else { match = re.exec(source); if (match) result.push('Match at ' + match.index + ': ' + match[0]); }
+        if (truncated) result.push('Output stopped after ' + maxMatches + ' matches. Narrow the pattern or sample text before copying.');
         this.output = result.join('\n') || (this.lang === 'zh' ? '没有匹配。' : 'No matches found.');
-        this.setStatus(result.length ? 'success' : 'info', (this.lang === 'zh' ? '匹配数量：' : 'Matches found: ') + result.length);
+        this.setStatus(result.length ? 'success' : 'info', (this.lang === 'zh' ? '匹配数量：' : 'Matches found: ') + (truncated ? maxMatches + '+' : result.length));
       } catch (e) { this.setStatus('error', (this.lang === 'zh' ? '正则错误：' : 'Regex error: ') + e.message); }
     },
     countText: function () {
