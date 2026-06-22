@@ -7,6 +7,18 @@
   var lastResults = [];
   var favoritesExpanded = false;
   var panelOpen = false;
+  var ADSENSE_REVIEW_TOOL_IDS = {
+    json: true,
+    base64: true,
+    md5: true,
+    urlencode: true,
+    formatjs: true,
+    unixtime: true,
+    textdiff: true,
+    txtcount: true,
+    regex: true,
+    calculator: true
+  };
 
   function manifest() { return window.YmirToolsManifest || null; }
   function slugFromHref(href) {
@@ -27,10 +39,13 @@
       category: t.category || ''
     };
   }
+  function isReviewTool(t) {
+    return !!(t && ADSENSE_REVIEW_TOOL_IDS[t.id || t.slug]);
+  }
   function manifestTools() {
     var m = manifest();
     if (!m || !Array.isArray(m.tools)) return null;
-    return m.tools.map(manifestTool);
+    return m.tools.map(manifestTool).filter(isReviewTool);
   }
 
   function lang() {
@@ -81,7 +96,7 @@
     var tools = manifestTools();
     if (tools) return tools;
     var seen = {};
-    return allToolElements().map(toolData).filter(function (t) {
+    return allToolElements().map(toolData).filter(isReviewTool).filter(function (t) {
       if (seen[t.href]) return false;
       seen[t.href] = true;
       return true;

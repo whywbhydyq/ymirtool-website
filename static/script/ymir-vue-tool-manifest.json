@@ -365,9 +365,7 @@
     "textdiff",
     "txtcount",
     "regex",
-    "calculator",
-    "guid",
-    "password"
+    "calculator"
   ],
   "categories": [
     {
@@ -375,205 +373,51 @@
       "labelZh": "JSON",
       "labelEn": "JSON",
       "tools": [
-        "json",
-        "jsonudview",
-        "jsonlrview",
-        "jsonzip",
-        "json2cs",
-        "json2java",
-        "json2go",
-        "sql2java",
-        "json2xml",
-        "excel2json",
-        "json2excel",
-        "json2get",
-        "json2yaml"
-      ]
-    },
-    {
-      "id": "format",
-      "labelZh": "格式化",
-      "labelEn": "Formatter",
-      "tools": [
-        "formathtml",
-        "formatcss",
-        "formatjs",
-        "endecodejs",
-        "confundirjs",
-        "formatsql",
-        "formatphp",
-        "formatxml",
-        "formatcs",
-        "formatjava",
-        "formatcsql",
-        "formatpy",
-        "formatruby",
-        "formatc",
-        "formatcpp",
-        "formatperl",
-        "formatvbs",
-        "htmloutjs",
-        "htmlescape",
-        "html2cj",
-        "html2php",
-        "html2all",
-        "htmlfromcsv",
-        "htmltable",
-        "html2ubb",
-        "htmlmarkdown",
-        "regex",
-        "regexcode",
-        "formatfilter",
-        "regexdso",
-        "regexsucha",
-        "runjs",
-        "xpath",
-        "html2js"
+        "json"
       ]
     },
     {
       "id": "encode",
-      "labelZh": "编码",
+      "labelZh": "\u7f16\u7801",
       "labelEn": "Encoding",
       "tools": [
         "base64",
-        "escape",
-        "deencrypt",
-        "aesencrypt",
-        "desencrypt",
-        "rc4encrypt",
-        "rabbitencrypt",
-        "tripledes",
-        "morse",
-        "htpasswd",
-        "barcode",
-        "ip2long",
-        "img2base64",
-        "utf8",
-        "unicode",
-        "ascii",
-        "urlencode",
-        "navtiveunicode",
-        "keyboardcode",
-        "androidkeycode",
-        "keyboardtest"
+        "urlencode"
       ]
     },
     {
       "id": "hash",
-      "labelZh": "哈希",
+      "labelZh": "\u54c8\u5e0c",
       "labelEn": "Hash",
       "tools": [
-        "md5",
-        "shaencrypt",
-        "allencrypt",
-        "password",
-        "uuid",
-        "guid"
+        "md5"
+      ]
+    },
+    {
+      "id": "format",
+      "labelZh": "\u683c\u5f0f\u5316",
+      "labelEn": "Formatter",
+      "tools": [
+        "formatjs",
+        "regex"
       ]
     },
     {
       "id": "text",
-      "labelZh": "文本",
+      "labelZh": "\u6587\u672c",
       "labelEn": "Text",
       "tools": [
-        "editor",
-        "autoformat",
-        "jianfan",
-        "pinyin",
-        "huoxingwen",
-        "txtreplace",
-        "textdiff",
-        "txtcount",
-        "shupai",
-        "textflip",
-        "quchong",
-        "wenzitexiao",
-        "zipstringtext",
-        "camelcase",
-        "quanbaojiao",
-        "enlower",
-        "rmbdaxie",
-        "random",
         "unixtime",
-        "hexconvert",
-        "hexrgb",
-        "urlcode"
-      ]
-    },
-    {
-      "id": "network",
-      "labelZh": "网络",
-      "labelEn": "Network",
-      "tools": [
-        "websocket",
-        "browserinfo",
-        "dns",
-        "alldns",
-        "dnsdx",
-        "dnslt",
-        "dnsyd",
-        "dnstt",
-        "dnsedu",
-        "dnsusa",
-        "htaccess2nginx",
-        "shortcut",
-        "px2rem",
-        "createmeta",
-        "refresh",
-        "tiaoseban",
-        "urlthunder"
+        "textdiff",
+        "txtcount"
       ]
     },
     {
       "id": "calc",
-      "labelZh": "计算",
+      "labelZh": "\u8ba1\u7b97",
       "labelEn": "Calculator",
       "tools": [
-        "nianlvli",
-        "subnetmask",
-        "calculator",
-        "calcarea",
-        "calcheat",
-        "calcvolume",
-        "calcpressure",
-        "calcpower",
-        "calclength",
-        "calctemperature",
-        "calctime",
-        "calcspeed",
-        "calcangle",
-        "calcdata",
-        "calcthickness",
-        "calcforce",
-        "tuya",
-        "shizhong",
-        "worldtime",
-        "capital",
-        "currency",
-        "areacode",
-        "jieri",
-        "shaoshuminzu",
-        "chaodai",
-        "tesufuhao"
-      ]
-    },
-    {
-      "id": "reference",
-      "labelZh": "对照表",
-      "labelEn": "Reference",
-      "tools": [
-        "useragent",
-        "contenttype",
-        "requestmethod",
-        "httpheader",
-        "pagecode",
-        "asciicode",
-        "htmlescapechar",
-        "ports",
-        "bootstrapicon",
-        "androidmanifest",
-        "linuxcmd"
+        "calculator"
       ]
     }
   ],

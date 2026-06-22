@@ -13,20 +13,7 @@
     "urlencode"
   ],
   "adEligibleStaticPageIds": [
-    "home",
-    "guides",
-    "priority_tools_guide",
-    "json_formatter_examples",
-    "json_format_guide",
-    "base64_encoding_guide",
-    "md5_hash_guide",
-    "url_encoding_guide",
-    "javascript_formatter_guide",
-    "text_diff_guide",
-    "text_count_guide",
-    "regex_tester_guide",
-    "unix_time_guide",
-    "calculator_guide"
+    "home"
   ],
   "neverAdPagePaths": [
     "404.html",
@@ -51,7 +38,7 @@
       "unixtime",
       "urlencode"
     ],
-    "adScriptScope": "Only home, approved core tools, and selected guide pages carry the AdSense loader during review.",
+    "adScriptScope": "Only home and approved core tools carry the AdSense loader during review.",
     "noindexScope": "Long-tail tool and thin guide pages remain crawlable but noindex and without AdSense loader until they receive unique editorial content."
   }
 }
