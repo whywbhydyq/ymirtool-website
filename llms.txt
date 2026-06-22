@@ -1,6 +1,6 @@
 # Ymir Tool
 
-> Ymir Tool is a free online developer toolbox for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison and difference checking, regular expression testing, timestamp conversion, calculators, and copy-review workflows. Most priority tools run in the browser and include usage notes, privacy boundaries, common mistakes, and related guides.
+> Ymir Tool is a free online developer toolbox for JSON formatting, Base64 encoding, MD5 checksums, URL encoding, JavaScript formatting, text comparison and difference checking, JavaScript regex testing, timestamp conversion, calculators, and copy-review workflows. Most priority tools run in the browser and include usage notes, privacy boundaries, common mistakes, and related guides.
 
 Website: https://ymirtool.com/  
 Sitemap: https://ymirtool.com/sitemap.xml  
@@ -25,7 +25,7 @@ Privacy policy: https://ymirtool.com/privacy.html
 - [JavaScript Formatter](https://ymirtool.com/formatjs/): Format minified JavaScript for review and debugging before copying.
 - [URL Encode/Decode](https://ymirtool.com/urlencode/): Encode or decode URL components, query values, path fragments, and copied links.
 - [Text Diff](https://ymirtool.com/textdiff/): Compare two text blocks line by line before release, documentation, or configuration changes.
-- [Regex Tester](https://ymirtool.com/regex/): Test JavaScript regular expressions, flags, escaping, capture groups, and review cases.
+- [JavaScript Regex Tester](https://ymirtool.com/regex/): Test JavaScript regex and RegExp patterns, flags, escaping, capture groups, and review cases.
 - [Unix Time Converter](https://ymirtool.com/unixtime/): Convert seconds, milliseconds, UTC, and local time, with timestamp mistake checks.
 - [Online Calculator](https://ymirtool.com/calculator/): Run quick calculations with parentheses, percentages, decimals, and copy-before-review cautions.
 
@@ -58,7 +58,7 @@ Privacy policy: https://ymirtool.com/privacy.html
 - [Base64 Tool summary](https://ymirtool.com/ai-context/base64.txt): Base64 encoding/decoding boundaries, padding, Unicode, and security cautions.
 - [MD5 Tool summary](https://ymirtool.com/ai-context/md5.txt): MD5 checksum use cases and secure-hash limitations.
 - [URL Encode/Decode summary](https://ymirtool.com/ai-context/urlencode.txt): Query value, path segment, full URL, and double-encoding guidance.
-- [Regex Tester summary](https://ymirtool.com/ai-context/regex.txt): JavaScript regex flags, escaping, and production-review cautions.
+- [JavaScript Regex Tester summary](https://ymirtool.com/ai-context/regex.txt): JavaScript regex flags, escaping, RegExp patterns, and production-review cautions.
 - [Text Diff summary](https://ymirtool.com/ai-context/textdiff.txt): Version comparison, whitespace, line-ending, and release-review checks.
 - [Calculator summary](https://ymirtool.com/ai-context/calculator.txt): Calculator task scope, percentage interpretation, decimals, and verification boundaries.
 
