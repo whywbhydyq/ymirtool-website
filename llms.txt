@@ -26,7 +26,7 @@ Privacy policy: https://ymirtool.com/privacy.html
 - [URL Encode/Decode](https://ymirtool.com/urlencode/): Encode or decode URL components, query values, path fragments, and copied links.
 - [Text Diff](https://ymirtool.com/textdiff/): Compare two text blocks line by line before release, documentation, or configuration changes.
 - [JavaScript Regex Tester](https://ymirtool.com/regex/): Test JavaScript regex and RegExp patterns, flags, escaping, capture groups, and review cases.
-- [Unix Time Converter](https://ymirtool.com/unixtime/): Convert seconds, milliseconds, UTC, and local time, with timestamp mistake checks.
+- [Unix Timestamp Converter](https://ymirtool.com/unixtime/): Convert seconds, milliseconds, date-to-Unix timestamp values, UTC, and local time with timestamp mistake checks.
 - [Online Calculator](https://ymirtool.com/calculator/): Run quick calculations with parentheses, percentages, decimals, and copy-before-review cautions.
 
 ## Core workflow guides
