@@ -54,9 +54,9 @@
 <h2>推荐入口</h2>
 <ul>
 <li><a href="/regex/">正则表达式测试工具</a></li>
-<li><a href="/txtreplace/">文本替换工具</a></li>
+<li><a href="/text-diff-guide.html">文本替换工具</a></li>
 <li><a href="/textdiff/">文本对比工具</a></li>
-<li><a href="/common-errors-guide.html">常见问题排查指南</a></li>
+<li><a href="/priority-tools-guide.html">常见问题排查指南</a></li>
 </ul>
 <h2>常见场景</h2>
 <ul>
@@ -109,14 +109,9 @@
 <h3>参考依据</h3>
 <p>浏览器端正则行为可参考 MDN JavaScript regular expressions。Ymir Tool 的正则页面适合快速验证表达式形状，不替代生产安全审查。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/regex-greedy-lazy-quantifier-guide.html">正则贪婪与惰性量词排查</a> — 用可复制样例解释 .*、.*?、字符类和边界条件，避免正则匹配过多或性能异常。</li><li><a href="/regex-capture-group-debugging.html">正则捕获组调试指南</a> — 说明括号分组、命名组、非捕获组、可选组和替换引用的排查方法，避免字段错位。</li><li><a href="/regex-javascript-flags-guide.html">JavaScript 正则 flags 使用指南</a> — 解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/regex-tester-guide.html">正则贪婪与惰性量词排查</a> — 用可复制样例解释 .*、.*?、字符类和边界条件，避免正则匹配过多或性能异常。</li><li><a href="/regex-tester-guide.html">正则捕获组调试指南</a> — 说明括号分组、命名组、非捕获组、可选组和替换引用的排查方法，避免字段错位。</li><li><a href="/regex-tester-guide.html">JavaScript 正则 flags 使用指南</a> — 解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid">
-<a href="/regexcode/">常用正则表达式</a>
-<a href="/regexdso/">正则在线手册</a>
-<a href="/regexsucha/">正则速查</a>
-<a href="/textdiff/">文本对比</a>
-</div>
+<div class="ymir-guide-related-grid"><a href="/regex-tester-guide.html">正则测试指南</a><a href="/textdiff/">文本对比</a></div>
 </section>
 <section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions" rel="noopener noreferrer" target="_blank">MDN Regular expressions</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" rel="noopener noreferrer" target="_blank">MDN RegExp</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>

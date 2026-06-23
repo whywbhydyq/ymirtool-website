@@ -54,9 +54,9 @@
 <h2>推荐入口</h2>
 <ul>
 <li><a href="/urlencode/">URL 编码/解码工具</a></li>
-<li><a href="/unicode/">Unicode / ASCII 转换</a></li>
-<li><a href="/json2get/">JSON 和 GET 参数互转</a></li>
-<li><a href="/encoding-tools-guide.html">编码转换工具指南</a></li>
+<li><a href="/url-encoding-guide.html">Unicode / ASCII 转换</a></li>
+<li><a href="/json-format-guide.html">JSON 和 GET 参数互转</a></li>
+<li><a href="/url-encoding-guide.html">编码转换工具指南</a></li>
 </ul>
 <h2>常见场景</h2>
 <ul>
@@ -102,14 +102,9 @@
 <h3>参考依据</h3>
 <p>URL 结构可参考 WHATWG URL Standard；浏览器 JavaScript 的组件编码行为可参考 MDN 的 <code>encodeURIComponent()</code> 与 <code>URLSearchParams</code> 文档。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/url-query-parameter-encoding-guide.html">URL 查询参数编码指南</a> — 说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。</li><li><a href="/encodeuri-vs-encodeuricomponent.html">encodeURI 与 encodeURIComponent 区别</a> — 用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。</li><li><a href="/url-double-encoding-debugging.html">URL 重复编码排查</a> — 定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。</li><li><a href="/url-plus-vs-percent20-guide.html">URL 中 + 与 %20 空格差异指南</a> — 解释 query、表单编码、路径和普通百分号编码中 + 与 %20 的差异，避免搜索词、邮箱和签名参数被误读。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/url-encoding-guide.html">URL 查询参数编码指南</a> — 说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。</li><li><a href="/url-encoding-guide.html">encodeURI 与 encodeURIComponent 区别</a> — 用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。</li><li><a href="/url-encoding-guide.html">URL 重复编码排查</a> — 定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。</li><li><a href="/url-encoding-guide.html">URL 中 + 与 %20 空格差异指南</a> — 解释 query、表单编码、路径和普通百分号编码中 + 与 %20 的差异，避免搜索词、邮箱和签名参数被误读。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid">
-<a href="/base64/">Base64 编解码</a>
-<a href="/unicode/">Unicode 编解码</a>
-<a href="/utf8/">UTF-8 编码转换</a>
-<a href="/encoding-tools-guide.html">编码工具指南</a>
-</div>
+<div class="ymir-guide-related-grid"><a href="/base64/">Base64 编解码</a><a href="/url-encoding-guide.html">URL 编码指南</a></div>
 </section>
 <section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://url.spec.whatwg.org/" rel="noopener noreferrer" target="_blank">WHATWG URL Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" rel="noopener noreferrer" target="_blank">MDN encodeURI()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" rel="noopener noreferrer" target="_blank">MDN encodeURIComponent()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" rel="noopener noreferrer" target="_blank">MDN URLSearchParams</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>

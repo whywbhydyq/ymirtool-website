@@ -54,8 +54,8 @@
 <h2>推荐入口</h2>
 <ul>
 <li><a href="/unixtime/">Unix 时间戳转换工具</a></li>
-<li><a href="/shizhong/">在线时钟</a></li>
-<li><a href="/time-tools-guide.html">时间工具指南</a></li>
+<li><a href="/unix-time-guide.html">在线时钟</a></li>
+<li><a href="/unix-time-guide.html">时间工具指南</a></li>
 <li><a href="/json/">JSON 格式化工具</a></li>
 </ul>
 <h2>常见场景</h2>
@@ -108,14 +108,9 @@
 <h3>参考依据</h3>
 <p>浏览器时间处理可参考 MDN <code>Date.prototype.getTime()</code>。涉及账单、交易、合同生效和日志取证时，应以系统记录的原始时间戳、时区字段和后端审计日志为准。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>新增案例排错页</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/unix-timestamp-seconds-vs-milliseconds.html">Unix 时间戳秒与毫秒区别</a> — 用位数、示例和排查步骤区分 10 位秒级、13 位毫秒级、16 位微秒级和 JavaScript Date 毫秒输入。</li><li><a href="/timezone-log-debugging-guide.html">日志时区错位排查指南</a> — 排查 UTC、本地时区、服务器时区、数据库时区和浏览器显示时区导致的日志时间错位。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/unix-time-guide.html">Unix 时间戳秒与毫秒区别</a> — 用位数、示例和排查步骤区分 10 位秒级、13 位毫秒级、16 位微秒级和 JavaScript Date 毫秒输入。</li><li><a href="/unix-time-guide.html">日志时区错位排查指南</a> — 排查 UTC、本地时区、服务器时区、数据库时区和浏览器显示时区导致的日志时间错位。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid">
-<a href="/worldtime/">世界时间</a>
-<a href="/calctime/">时间换算</a>
-<a href="/time-tools-guide.html">时间工具指南</a>
-<a href="/shizhong/">在线时钟</a>
-</div>
+<div class="ymir-guide-related-grid"><a href="/unixtime/">Unix 时间戳转换工具</a><a href="/unix-time-guide.html">Unix 时间指南</a><a href="/calculator-guide.html">在线计算器指南</a><a href="/json-format-guide.html">JSON 格式化指南</a></div>
 </section>
 <section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" rel="noopener noreferrer" target="_blank">MDN Date</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3339" rel="noopener noreferrer" target="_blank">RFC 3339 Date and Time on the Internet</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
 </body>

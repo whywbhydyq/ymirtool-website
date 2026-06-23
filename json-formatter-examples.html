@@ -54,9 +54,9 @@
 <h2>推荐入口</h2>
 <ul>
 <li><a href="/json/">JSON 格式化工具</a></li>
-<li><a href="/jsonzip/">JSON 压缩转义</a></li>
-<li><a href="/json2yaml/">JSON 转 YAML</a></li>
-<li><a href="/json2get/">JSON 和 GET 参数互转</a></li>
+<li><a href="/json-format-guide.html">JSON 压缩转义</a></li>
+<li><a href="/json-format-guide.html">JSON 转 YAML</a></li>
+<li><a href="/json-format-guide.html">JSON 和 GET 参数互转</a></li>
 </ul>
 <h2>示例输入</h2>
 <pre>{"user":{"id":123,"name":"demo"},"roles":["admin","editor"],"active":true}</pre>
@@ -92,7 +92,7 @@
 <tr><td>复制自日志后前面带 <code>INFO payload=</code></td><td>日志前缀不是 JSON 内容。</td><td>只保留第一个 <code>{</code> 到最后一个 <code>}</code> 或数组边界。</td></tr>
 </tbody></table>
 <h3>示例复核流程</h3>
-<ol><li>先在 <a href="/json/">JSON 格式化工具</a> 中运行短样本，确认工具能解析。</li><li>再加入一处疑似问题字段，例如包含换行、反斜杠或中文字符的字符串。</li><li>如果格式化失败，回到原文定位第一个未闭合的引号、括号或数组项。</li><li>需要转换格式时，再进入 <a href="/json2yaml/">JSON 转 YAML</a> 或 <a href="/json2xml/">JSON 转 XML</a>，不要在语法未通过时继续转换。</li></ol>
+<ol><li>先在 <a href="/json/">JSON 格式化工具</a> 中运行短样本，确认工具能解析。</li><li>再加入一处疑似问题字段，例如包含换行、反斜杠或中文字符的字符串。</li><li>如果格式化失败，回到原文定位第一个未闭合的引号、括号或数组项。</li><li>需要转换格式时，再进入 <a href="/json-format-guide.html">JSON 转 YAML</a> 或 <a href="/json-format-guide.html">JSON 转 XML</a>，不要在语法未通过时继续转换。</li></ol>
 <h3>隐私边界</h3>
 <p>示例页适合处理教学样本、公开 API 示例、脱敏配置和本地调试数据。不应粘贴访问令牌、Cookie、客户订单、身份证件、完整数据库导出或生产事故中的原始日志。确实要排查字段结构时，可以把值替换为 <code>demo</code>、<code>example@example.com</code>、<code>0000</code> 等占位符，只保留对象层级和数据类型。</p>
 <h3>参考依据</h3>
@@ -100,12 +100,7 @@
 </section>
 <section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid">
-<a href="/jsonzip/">JSON 压缩转义</a>
-<a href="/json2excel/">JSON 转 Excel</a>
-<a href="/json2java/">JSON 转 Java</a>
-<a href="/jsonlrview/">JSON 左右视图</a>
-</div>
+<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-format-guide.html">JSON 格式化指南</a><a href="/url-encoding-guide.html">URL 编码指南</a><a href="/javascript-formatter-guide.html">JavaScript 格式化指南</a></div>
 </section>
 <section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
 <h2>示例驱动：用真实场景判断 JSON 输出是否可信</h2>
@@ -116,7 +111,7 @@
 <p>案例：一个 webhook 示例中 payload 字段本身又是一段转义后的 JSON 字符串。第一层格式化只能说明外层事件结构正确，不能说明 payload 内层字段正确。正确做法是先格式化外层，复制 payload 的字符串值，再单独解码和格式化内层。</p>
 <h2>建议的工具链</h2>
 <p>单个工具只能完成一个局部动作。更稳妥的方式是把相关页面串成检查链，先整理输入，再做转换或对比，最后保存结论。</p>
-<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化</a><a href="/json2xml/">JSON 转 XML</a><a href="/json2excel/">JSON 转 Excel</a><a href="/textdiff/">文本对比</a></div>
+<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化</a><a href="/json-format-guide.html">JSON 格式化指南</a><a href="/textdiff/">文本对比</a></div>
 <h2>何时不要只依赖在线工具</h2>
 <p>当输入包含生产密钥、客户数据、内部主机名、财务数据、法律文本或会影响线上系统的配置时，应使用团队批准的本地流程或受控环境。在线工具适合快速阅读、格式化、转换和辅助排查，但最终结论应回到源系统、接口文档、代码仓库或业务记录中确认。</p>
 </section>
