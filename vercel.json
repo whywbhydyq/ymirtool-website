@@ -1741,6 +1741,10 @@
       "destination": "/api/csp-html?path=/rmbdaxie/index.html"
     },
     {
+      "source": "/rmbdaxie/:slug.html",
+      "destination": "/api/gone?path=/rmbdaxie/:slug.html"
+    },
+    {
       "source": "/runjs",
       "destination": "/api/csp-html?path=/runjs/index.html"
     },

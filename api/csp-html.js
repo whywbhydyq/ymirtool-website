@@ -242,6 +242,26 @@ function resolveHtmlFile(req) {
   return { rel, abs: path.join(process.cwd(), rel) };
 }
 
+function robotsMetaContent(html) {
+  const tags = html.match(/<meta\b[^>]*>/gi) || [];
+  for (const tag of tags) {
+    if (/\bname=["']robots["']/i.test(tag)) {
+      const match = tag.match(/\bcontent=["']([^"']+)["']/i);
+      return match ? match[1] : '';
+    }
+  }
+  return '';
+}
+
+function stripAdSenseSignalsForNoindex(html) {
+  if (!/\bnoindex\b/i.test(robotsMetaContent(html))) return html;
+
+  return html
+    .replace(/<meta\b(?=[^>]*\bname=["']google-adsense-account["'])[^>]*>\s*/gi, '')
+    .replace(/<link\b(?=[^>]*\brel=["']preconnect["'])(?=[^>]*\bhref=["']https:\/\/pagead2\.googlesyndication\.com["'])[^>]*>\s*/gi, '')
+    .replace(/<script\b(?=[^>]*\bsrc=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js[^"']*["'])[^>]*><\/script>\s*/gi, '');
+}
+
 function buildCsp(nonce) {
   // AdSense documents strict CSP as nonce + strict-dynamic, with https/http fallback for ad script endpoints.
   return [
@@ -308,7 +328,7 @@ module.exports = function cspHtmlHandler(req, res) {
   }
 
   const nonce = makeNonce();
-  const body = html.split(NONCE_PLACEHOLDER).join(nonce);
+  const body = stripAdSenseSignalsForNoindex(html).split(NONCE_PLACEHOLDER).join(nonce);
   setSecurityHeaders(res, nonce);
   res.statusCode = 200;
   if (req.method === 'HEAD') {
@@ -317,3 +337,5 @@ module.exports = function cspHtmlHandler(req, res) {
   }
   res.end(body);
 };
+
+module.exports.stripAdSenseSignalsForNoindex = stripAdSenseSignalsForNoindex;
