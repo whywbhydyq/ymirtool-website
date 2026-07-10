@@ -1,22 +1,22 @@
 (function () {
   'use strict';
   window.YmirToolsManifest = {
-  "version": "20260710-v62",
+  "version": "20260710-v63",
   "site": {
     "origin": "https://ymirtool.com",
     "name": "Ymir Tool",
     "lastmod": "2026-07-10",
-    "version": "20260710-v62",
-    "generator": "v62 audited catalog and tool runtime"
+    "version": "20260710-v63",
+    "generator": "v63 deterministic tool bootstrap and UI hotfix"
   },
-  "entrypoint": "/static/script/ymir-vue-loader.js",
+  "entrypoint": "/static/script/ymir-tool-runtime-v63.js",
   "runtime": {
     "vendor": [
-      "/static/script/ymir-tool-runtime-v62.js"
+      "/static/script/ymir-tool-runtime-v63.js"
     ],
     "sharedScripts": [],
     "coreToolScripts": [
-      "/static/script/ymir-tool-core-runtime-v62.js"
+      "/static/script/ymir-tool-core-runtime-v63.js"
     ],
     "coreApp": "/static/script/ymir-vue-tools-app.js"
   },
@@ -4635,7 +4635,7 @@
   },
   "policy": {
     "inlineExecutableScripts": false,
-    "generator": "v62 audited catalog and tool runtime",
+    "generator": "v63 deterministic tool bootstrap and UI hotfix",
     "indexing": {
       "indexableTools": 8,
       "additionalTools": 142,

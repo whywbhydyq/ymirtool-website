@@ -10,4 +10,4 @@ This repository includes third-party software. Copyright and license notices in 
 | JsBarcode | 3.9.0 | MIT | `static/script/pcjs/barcode.js` |
 | Compatibility data and algorithms | mixed retained notices | `static/script/pcjs/htpasswd/`, `static/script/pcjs/jianfan.js`, `static/script/pcjs/pinyin.js` |
 
-The generated `ymir-tool-runtime-v62.js` bundle contains Vue, Element Plus, and the shared Ymir runtime in source order. Original source files required to rebuild the bundle are retained. Unreferenced migration assets are excluded from the deployable project.
+The generated `ymir-tool-runtime-v63.js` bundle contains Vue, Element Plus, and the shared Ymir runtime in source order. Original source files required to rebuild the bundle are retained. Unreferenced migration assets are excluded from the deployable project.

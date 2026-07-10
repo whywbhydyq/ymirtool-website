@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var VERSION = '20260710-v62';
+  var VERSION = '20260710-v63';
   var MANIFEST_SRC = '/static/script/ymir-tools-manifest.js';
   var FAVORITES_KEY = 'ymir-tool-favorites-v1';
   var RECENTS_KEY = 'ymir-tool-recents-v1';
@@ -281,9 +281,9 @@
     var lead = qs('.ymir-static-tool-lead', main || document);
     var workspace = qs('.ymir-vue-tool-root', main || document);
     if (!main || !lead || !workspace) return;
-    main.classList.add('ymir-tool-page-v62');
+    main.classList.add('ymir-tool-page-v63');
     main.classList.remove('ymir-tool-page-v51');
-    main.setAttribute('data-ui-version', '62');
+    main.setAttribute('data-ui-version', '63');
     if (item && item.category) {
       main.setAttribute('data-tool-category', item.category);
       document.body.setAttribute('data-tool-category', item.category);

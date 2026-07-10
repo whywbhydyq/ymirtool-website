@@ -16,10 +16,14 @@ PATHS = [
     "/aesencrypt/",
     "/tools.html",
     "/methodology.html",
-    "/static/style/ymir-tool-bundle-v62.css",
-    "/static/script/ymir-tool-runtime-v62.js",
+    "/static/style/ymir-tool-bundle-v63.css",
+    "/static/script/ymir-tools-manifest.js",
+    "/static/script/ymir-tool-runtime-v63.js",
+    "/static/script/ymir-tool-core-runtime-v63.js",
+    "/static/script/ymir-vue-tools-app.js",
+    "/static/script/ymir-tool-shell-v63.js",
+    "/static/script/ymir-tool-watchdog-v63.js",
 ]
-
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:
@@ -32,18 +36,18 @@ def main() -> int:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     port = server.server_address[1]
-    failures = []
+    failures: list[str] = []
     try:
         for route in PATHS:
             url = f"http://127.0.0.1:{port}{route}"
             try:
                 with contextlib.closing(urllib.request.urlopen(url, timeout=10)) as response:
                     data = response.read()
-                    print(f"{route:<58} HTTP {response.status}, {len(data)} bytes")
+                    print(f"{route:<62} HTTP {response.status}, {len(data)} bytes")
                     if response.status != 200 or not data:
                         failures.append(route)
-            except Exception as exc:  # pragma: no cover - emitted in deployment logs
-                print(f"{route:<58} FAILED: {exc}")
+            except Exception as exc:
+                print(f"{route:<62} FAILED: {exc}")
                 failures.append(route)
     finally:
         server.shutdown()
@@ -52,9 +56,8 @@ def main() -> int:
     if failures:
         print(f"HTTP smoke failed for {len(failures)} route(s).", file=sys.stderr)
         return 1
-    print("Phase 5 local HTTP smoke passed.")
+    print("Phase 6 local HTTP smoke passed.")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

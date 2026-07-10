@@ -3,7 +3,7 @@
 
 The reachability scan starts from every non-static project file (HTML, deployment
 configuration, build/test scripts, manifests, and trust documents), then follows
-literal local asset references. Files required to rebuild v62 bundles remain
+literal local asset references. Files required to rebuild v63 bundles remain
 reachable through the final remediation script.
 """
 from __future__ import annotations
@@ -29,6 +29,10 @@ SUPERSEDED = (
     "scripts/phase4-ui-overhaul.mjs",
     "scripts/phase4-validate.mjs",
     "static/script/ymir-tool-shell-v61.js",
+    "scripts/phase5-audit.py",
+    "scripts/phase5-final-remediation.py",
+    "scripts/phase5-http-smoke.py",
+    "scripts/phase5-validate.mjs",
 )
 
 STATIC_LITERAL = re.compile(r"(?:(?:https?://(?:www\.)?ymirtool\.com)?/?)(static/[A-Za-z0-9_./-]+)", re.I)

@@ -14,11 +14,11 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = [
-    "static/style/ymir-tool-bundle-v62.css",
-    "static/script/ymir-tool-runtime-v62.js",
-    "static/script/ymir-tool-core-runtime-v62.js",
-    "static/script/ymir-tool-shell-v62.js",
-    "static/script/ymir-vue-loader.js",
+    "static/style/ymir-tool-bundle-v63.css",
+    "static/script/ymir-tool-runtime-v63.js",
+    "static/script/ymir-tool-core-runtime-v63.js",
+    "static/script/ymir-tool-shell-v63.js",
+    "static/script/ymir-tool-watchdog-v63.js",
 ]
 
 
@@ -168,7 +168,7 @@ def main() -> int:
     if failures:
         return 1
     print(
-        f"Phase 5 audit passed: {len(pages)} HTML, {checked_references} local references, "
+        f"Phase 6 audit passed: {len(pages)} HTML, {checked_references} local references, "
         "0 broken references, 0 repeated long-copy groups, and unique titles/descriptions/H1s."
     )
     return 0

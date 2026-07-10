@@ -11,7 +11,7 @@
     X-Permitted-Cross-Domain-Policies = "none"
     Reporting-Endpoints = 'ymir-csp-report="/api/csp-report"'
     Report-To = '{"group":"ymir-csp-report","max_age":604800,"endpoints":[{"url":"/api/csp-report"}],"include_subdomains":true}'
-    Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+    Cache-Control = "public, max-age=0, s-maxage=300, stale-while-revalidate=60"
 
 [[headers]]
   for = "/static/*"
