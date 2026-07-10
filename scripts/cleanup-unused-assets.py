@@ -3,7 +3,7 @@
 
 The reachability scan starts from every non-static project file (HTML, deployment
 configuration, build/test scripts, manifests, and trust documents), then follows
-literal local asset references. Files required to rebuild v63 bundles remain
+literal local asset references. Files required to rebuild the current v64 bundle remain
 reachable through the final remediation script.
 """
 from __future__ import annotations
