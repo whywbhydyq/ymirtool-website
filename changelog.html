@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="telephone=no" name="format-detection"/>
+<title>Ymir Tool 更新记录：工具、UI、性能与内容修复</title>
+<meta content="查看 Ymir Tool 在 2026 年 7 月完成的 150 个工具保留、全站 UI、性能缓存、内容去重、来源和许可证透明度等实际改动。" name="description"/>
+<link href="https://ymirtool.com/changelog.html" rel="canonical"/>
+<meta content="Ymir Tool 更新记录：工具、UI、性能与内容修复" property="og:title"/>
+<meta content="查看 Ymir Tool 在 2026 年 7 月完成的 150 个工具保留、全站 UI、性能缓存、内容去重、来源和许可证透明度等实际改动。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/changelog.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="Ymir Tool" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Ymir Tool 更新记录：工具、UI、性能与内容修复" name="twitter:title"/>
+<meta content="查看 Ymir Tool 在 2026 年 7 月完成的 150 个工具保留、全站 UI、性能缓存、内容去重、来源和许可证透明度等实际改动。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://ymirtool.com/changelog.html#webpage","url":"https://ymirtool.com/changelog.html","name":"Ymir Tool 更新记录：工具、UI、性能与内容修复","description":"查看 Ymir Tool 在 2026 年 7 月完成的 150 个工具保留、全站 UI、性能缓存、内容去重、来源和许可证透明度等实际改动。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"}}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">All Tools</a><a href="/guides.html">Guides</a><a href="/about.html">About</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page">
+<h1>更新记录</h1>
+<p>最后更新：2026 年 7 月 10 日</p>
+<section class="ymir-card"><h2>2026-07-10 · 冗余资源清理</h2><ul><li>移除旧阶段报告、过期验证脚本和 v61 shell 源文件。</li><li>删除未被页面、Manifest、构建或部署配置引用的迁移脚本、旧监听器、重复社交图片和废弃第三方组件。</li><li>保留 150 个工具页面、当前构建源文件、许可证声明和最终验证流程。</li></ul></section>
+<section class="ymir-card"><h2>2026-07-10 · v62 最终整改</h2><ul><li>保留全部 150 个工具 URL，同时为 142 个附加工具补充输入、输出、适用任务和结果复核说明。</li><li>将工具页的多层 CSS 和共享 JavaScript 合并为可缓存的 v62 资源，减少请求瀑布。</li><li>移除每次请求生成 CSP nonce 的 HTML 中转层，改用静态安全响应头和 CDN 缓存。</li><li>移除批量指南中的重复填充段落，增加来源、许可证、测试方法和更新记录页面。</li><li>广告运行时仅保留在首页；其他可索引页面保留站点所有权元数据，附加工具无广告且 noindex。</li><li>统一元描述长度、Schema 修改日期、页脚信任链接和全站无障碍元数据。</li></ul></section>
+<section class="ymir-card"><h2>2026-07-10 · v61 全站 UI</h2><p>统一 213 个页面的导航、搜索、主题、工具工作区、移动布局、键盘焦点、状态区域和内容卡片；150 个工具均接入同一 UI shell。</p></section>
+<section class="ymir-card"><h2>2026-07-10 · v60 首页与安全边界</h2><p>重做首页任务导航和工具发现，修正 Base64、Escape、哈希、DES、RC4、Triple DES 与 htpasswd 等页面的编码和安全表述。</p></section>
+<section class="ymir-card"><h2>2026-07-10 · 内容清理</h2><p>保留旧工具地址，清除批量重复文案，建立完整工具目录，并把附加工具限定为无广告、noindex 的直接访问页面。</p></section>
+<section class="ymir-card"><h2>反馈</h2><p>更新记录只描述已经进入源码的改动。功能异常、来源过期或说明错误可通过 <a href="/contact.html">联系页面</a> 提交可复现报告。</p></section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>浏览器端开发者工具与可复现测试说明。</span></footer>
+<script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
+</body>
+</html>

@@ -1,97 +1,83 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
-<title>Ymir Tool 使用指南：开发者工具流程与排错清单</title>
-<meta content="按 JSON、Base64、URL 编码、MD5、正则、文本对比、时间戳和复制复核查找指南、错误排查、隐私边界、工具入口、发布前检查流程和安全使用说明。" name="description"/>
+<link crossorigin="" href="https://cdn.vercel-insights.com" rel="preconnect"/>
+<title>Ymir Tool 指南中心：JSON、编码、正则、文本与时间排错</title>
+<meta content="按具体任务查找 Ymir Tool 指南：JSON 语法与 API 响应、Base64 与 Unicode、URL 参数编码、JavaScript 格式化、正则匹配、文本差异、文本统计和时间戳排错。" name="description"/>
 <link href="https://ymirtool.com/guides.html" rel="canonical"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
-<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
-<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Ymir Tool 使用指南：开发者工具流程与排错清单" property="og:title"/><meta content="Ymir Tool 使用指南：开发者工具流程与排错清单" name="twitter:title"/><meta content="按 JSON、Base64、URL 编码、MD5、正则、文本对比、时间戳和复制复核查找指南、错误排查、隐私边界和工具入口。" property="og:description"/><meta content="按 JSON、Base64、URL 编码、MD5、正则、文本对比、时间戳和复制复核查找指南、错误排查、隐私边界和工具入口。" name="twitter:description"/><meta content="https://ymirtool.com/guides.html" property="og:url"/>
+<meta content="Ymir Tool 指南中心：JSON、编码、正则、文本与时间排错" property="og:title"/>
+<meta content="按具体任务查找 Ymir Tool 指南：JSON 语法与 API 响应、Base64 与 Unicode、URL 参数编码、JavaScript 格式化、正则匹配、文本差异、文本统计和时间戳排错。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/guides.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
 <meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
 <meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
 <meta content="image/png" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Ymir Tool 使用指南社交分享图" property="og:image:alt"/>
+<meta content="Ymir Tool 指南中心" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
+<meta content="Ymir Tool 指南中心：JSON、编码、正则、文本与时间排错" name="twitter:title"/>
+<meta content="按具体任务查找 Ymir Tool 指南：JSON 语法与 API 响应、Base64 与 Unicode、URL 参数编码、JavaScript 格式化、正则匹配、文本差异、文本统计和时间戳排错。" name="twitter:description"/>
 <meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
-<meta content="Ymir Tool 使用指南社交分享图" name="twitter:image:alt"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ymir Tool 使用指南：开发者工具流程与排错清单","url":"https://ymirtool.com/guides.html","description":"按 JSON、Base64、URL 编码、MD5、正则、文本对比、时间戳和复制复核查找指南、错误排查、隐私边界和工具入口。","dateModified":"2026-06-07","publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"@id":"https://ymirtool.com/guides.html#collectionpage","isPartOf":{"@id":"https://ymirtool.com/#website"},"inLanguage":"zh-CN","image":"https://ymirtool.com/static/images/og.png","about":["developer tools","JSON formatting","Base64 encoding","URL encoding","regular expressions","text comparison","Unix timestamps","copy review"],"hasPart":[{"@type":"WebPage","name":"JSON 工具指南","url":"https://ymirtool.com/json-format-guide.html"},{"@type":"WebPage","name":"Base64 编解码指南","url":"https://ymirtool.com/base64-encoding-guide.html"},{"@type":"WebPage","name":"URL 编码指南","url":"https://ymirtool.com/url-encoding-guide.html"},{"@type":"WebPage","name":"正则表达式测试指南","url":"https://ymirtool.com/regex-tester-guide.html"},{"@type":"WebPage","name":"文本对比指南","url":"https://ymirtool.com/text-diff-guide.html"},{"@type":"WebPage","name":"Unix 时间戳指南","url":"https://ymirtool.com/unix-time-guide.html"}]}</script>
-<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"指南中心","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Ymir Tool 指南中心","item":"https://ymirtool.com/guides.html"}],"@id":"https://ymirtool.com/guides.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/guides.html#collectionpage"}}</script><link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<meta content="Ymir Tool 指南中心" name="twitter:image:alt"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://ymirtool.com/guides.html#collectionpage","url":"https://ymirtool.com/guides.html","name":"Ymir Tool 指南中心","description":"JSON、编码、正则、文本和时间戳的任务型排错指南。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"},"hasPart":[{"@type":"Article","url":"https://ymirtool.com/json-format-guide.html","name":"JSON 格式化与错误排查"},{"@type":"Article","url":"https://ymirtool.com/base64-encoding-guide.html","name":"Base64 编码与 Unicode 排查"},{"@type":"Article","url":"https://ymirtool.com/url-encoding-guide.html","name":"URL 参数编码排查"},{"@type":"Article","url":"https://ymirtool.com/javascript-formatter-guide.html","name":"JavaScript 格式化指南"},{"@type":"Article","url":"https://ymirtool.com/regex-tester-guide.html","name":"JavaScript 正则测试指南"},{"@type":"Article","url":"https://ymirtool.com/text-diff-guide.html","name":"文本差异比较指南"},{"@type":"Article","url":"https://ymirtool.com/text-count-guide.html","name":"文本统计指南"},{"@type":"Article","url":"https://ymirtool.com/unix-time-guide.html","name":"Unix 时间戳排查指南"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"指南中心","item":"https://ymirtool.com/guides.html"}]}</script>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
-<p><a href="/">首页</a> / 指南中心</p>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page">
 <h1>Ymir Tool 指南中心</h1>
-<p>按任务选择指南：JSON 格式化、Base64、URL 编码、文本对比、正则、时间戳、计算器和复制复核。每个指南都会指向可直接使用的工具入口。</p>
-<section class="ymir-answer-block ymir-card" data-second-group="answer-block"><h2>这个页面解决什么问题？</h2><p>本页用于说明工具使用场景、输入输出复核、常见误判和隐私边界，帮助你在复制、发布或提交结果前完成检查。</p><h2>什么时候应该停下来复核？</h2><p>当输入来自生产日志、接口响应、客户数据、密钥片段或待发布配置时，应先脱敏并保留原始样本，再比较工具输出是否只改变预期格式。</p></section>
-<section aria-label="工具入口" class="ymir-guide-cta">
-<div>
-<strong>指南中心</strong>
-<p>需要直接处理文本、编码、JSON 或时间戳时，先回到工具首页搜索。</p>
-</div>
-<a class="ymir-guide-cta-button" href="/">打开工具首页</a>
-</section>
-<section aria-label="Start here" class="ymir-guide-start">
-<h2>Start here / 推荐入口</h2>
-<div class="ymir-guide-start-grid">
-<a class="ymir-guide-card ymir-guide-card-primary" href="/priority-tools-guide.html"><span>Start here</span><strong>重点工具页使用指南</strong><p>先了解 JSON、Base64、URL、Text Diff、Regex、Timestamp 等高频工具。</p></a>
-<a class="ymir-guide-card" href="/priority-tools-guide.html"><span>Toolbox</span><strong>在线工具箱使用指南</strong><p>了解首页搜索、常用工具、分类目录和相关工具入口。</p></a>
-<a class="ymir-guide-card" href="/priority-tools-guide.html"><span>Troubleshooting</span><strong>常见问题与排查指南</strong><p>排查格式化失败、乱码、复制失败和浏览器兼容问题。</p></a>
+<p>这里仅收录当前持续维护的任务型指南。先选择正在解决的问题，再进入对应工具验证输入；不要从一组泛化文章中反复寻找相同答案。</p>
+<section class="ymir-card">
+<h2>数据与编码</h2>
+<div class="ymir-related-grid">
+<a href="/json-format-guide.html"><strong>JSON 格式化与错误排查</strong><span>定位尾随逗号、单引号、未转义字符、API 响应外壳和大整数风险。</span></a>
+<a href="/base64-encoding-guide.html"><strong>Base64 编码与 Unicode 排查</strong><span>区分标准 Base64 与 Base64URL，处理 padding、UTF-8、乱码和二进制边界。</span></a>
+<a href="/url-encoding-guide.html"><strong>URL 参数编码排查</strong><span>判断应编码完整 URL、路径片段还是 query value，并识别重复编码。</span></a>
 </div>
 </section>
-<section aria-label="Guide categories" class="ymir-guide-category-grid">
-<a class="ymir-guide-category" href="/json-format-guide.html"><span>{}</span><strong>JSON 工具</strong><p>格式化、校验、压缩、转义和转换。</p></a>
-<a class="ymir-guide-category" href="/url-encoding-guide.html"><span>64</span><strong>编码转换</strong><p>Base64、URL、Unicode、ASCII 和 UTF-8。</p></a>
-<a class="ymir-guide-category" href="/text-diff-guide.html"><span>Tx</span><strong>文本处理</strong><p>文本对比、替换、去重和字数统计。</p></a>
-<a class="ymir-guide-category" href="/javascript-formatter-guide.html"><span>&lt;/&gt;</span><strong>代码格式化</strong><p>JavaScript、HTML、CSS、SQL、XML 等片段整理。</p></a>
-<a class="ymir-guide-category" href="/unix-time-guide.html"><span>⏱</span><strong>时间与计算</strong><p>Unix 时间戳、科学计算和常见换算。</p></a>
-<a class="ymir-guide-category" href="/priority-tools-guide.html"><span>Ref</span><strong>开发者参考</strong><p>HTTP 状态码、Content-Type、端口和命令速查。</p></a>
-</section>
-<section aria-label="Featured guides" class="ymir-guide-featured">
-<h2>精选指南</h2>
-<div class="ymir-guide-featured-grid">
-<a href="/json-formatter-examples.html"><strong>JSON 格式化示例与错误排查</strong><p>用示例定位 JSON 语法、转义、层级和压缩问题。</p></a>
-<a href="/base64-encoding-guide.html"><strong>Base64 编解码使用说明</strong><p>理解编码、解码、Data URI、乱码和填充字符。</p></a>
-<a href="/url-encoding-guide.html"><strong>URL 编码解码使用说明</strong><p>处理中文、空格、百分号、查询参数和重复编码。</p></a>
-<a href="/javascript-formatter-guide.html"><strong>JavaScript 格式化工具使用说明</strong><p>整理压缩脚本、括号层级和代码阅读场景。</p></a>
-<a href="/text-diff-guide.html"><strong>文本对比工具使用说明</strong><p>核对配置、日志、文案版本和复制误差。</p></a>
-<a href="/regex-tester-guide.html"><strong>正则表达式测试工具使用说明</strong><p>测试匹配规则、分组、转义和多行模式。</p></a>
-<a href="/unix-time-guide.html"><strong>Unix 时间戳转换工具使用说明</strong><p>区分秒级、毫秒级、UTC、本地时间和时区。</p></a>
-<a href="/md5-hash-guide.html"><strong>MD5 哈希工具使用说明</strong><p>理解 MD5 摘要用途和不适合密码存储的边界。</p></a>
+<section class="ymir-card">
+<h2>代码与匹配</h2>
+<div class="ymir-related-grid">
+<a href="/javascript-formatter-guide.html"><strong>JavaScript 格式化指南</strong><span>理解格式化能解决什么、不能解决什么，并检查语法错误与输出差异。</span></a>
+<a href="/regex-tester-guide.html"><strong>JavaScript 正则测试指南</strong><span>用正例和反例检查 flags、转义、捕获组、Unicode 与潜在性能问题。</span></a>
 </div>
 </section>
-<section aria-label="相关工具入口" class="ymir-guide-related">
-<h2>相关工具入口</h2>
-<div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化</a><a href="/base64/">Base64 编解码</a><a href="/textdiff/">文本对比</a><a href="/unixtime/">Unix 时间戳</a></div>
+<section class="ymir-card">
+<h2>文本与时间</h2>
+<div class="ymir-related-grid">
+<a href="/text-diff-guide.html"><strong>文本差异比较指南</strong><span>区分内容变化、空白变化、换行符差异和 Unicode 规范化问题。</span></a>
+<a href="/text-count-guide.html"><strong>文本统计指南</strong><span>解释字符、单词、行、CJK 文本与 emoji 计数口径的差异。</span></a>
+<a href="/unix-time-guide.html"><strong>Unix 时间戳排查指南</strong><span>区分秒、毫秒与微秒，并核对 UTC、本地时区和夏令时显示。</span></a>
+</div>
 </section>
-<p data-ymir-content-note="20260601">指南中心会优先展示已经补充示例、边界说明和相关入口的核心页面。长尾工具仍可从首页目录访问；如果任务涉及生产数据、密钥、客户资料或正式发布内容，应先选择对应指南完成脱敏和复核。</p>
-<section class="ymir-container ymir-help ymir-card ymir-new-research-guides" data-new-research-guides="20260601">
-<h2>新增深度专题指南</h2>
-<p>以下专题按真实排查任务组织，覆盖 API 调试、URL 编码、Base64 padding、JSON 字段结构、正则上线复核、日志时间戳、复制安全、文本对比、MD5 校验和工具质量标准。</p>
-<ul><li><a href="/json-format-guide.html">API 响应调试工作流：从状态码到 JSON 结构复核</a><p>面向接口调试的完整工作流，说明如何区分状态码、响应头、JSON 正文、日志包装和复制前复核步骤。</p></li><li><a href="/url-encoding-guide.html">URL 查询参数编码案例：路径、参数和值不要混用</a><p>解释 URL 编码在 path、query、fragment 和表单字段中的差异，帮助排查二次编码、乱码和跳转失败。</p></li><li><a href="/base64-encoding-guide.html">Base64 Padding 与 URL-safe 排错指南</a><p>说明 Base64 padding、换行、URL-safe 字符和字符集问题，帮助区分编码兼容和安全加密。</p></li><li><a href="/json-format-guide.html">JSON 字段结构复核清单：从格式正确到业务可用</a><p>帮助开发者在 JSON 格式化之后继续检查字段类型、必填项、数组结构、null 和版本兼容。</p></li><li><a href="/regex-tester-guide.html">正则表达式上线前复核：匹配、反例和性能边界</a><p>提供正则表达式上线前的检查清单，覆盖反例、flags、转义、换行和回溯性能风险。</p></li><li><a href="/unix-time-guide.html">时间戳与日志排查：秒、毫秒、UTC 和本地时区</a><p>帮助排查日志时间、Unix 时间戳、毫秒时间戳和时区转换中的常见错误。</p></li><li><a href="/priority-tools-guide.html">开发者复制粘贴安全清单：在线工具使用前后怎么检查</a><p>总结在线工具处理文本、代码、编码、时间和配置前后的隐私边界与复制复核流程。</p></li><li><a href="/text-diff-guide.html">发布前文本对比指南：配置、文案和代码片段怎么复核</a><p>说明如何用文本对比检查发布前配置、文案、代码片段和说明文档，避免误判格式差异。</p></li><li><a href="/md5-hash-guide.html">MD5 校验和使用工作流：兼容场景、风险和替代方案</a><p>说明 MD5 适合文件指纹和兼容校验，不适合密码存储或安全签名，并提供复制前复核方法。</p></li><li><a href="/priority-tools-guide.html">Ymir Tool 工具质量标准：说明、边界、示例和复核</a><p>说明 Ymir Tool 如何组织工具页和指南页，为什么每个重要页面都包含用途、边界、示例和复制前检查。</p></li></ul>
+<section class="ymir-card">
+<h2>使用方法</h2>
+<ol>
+<li>在指南中确认输入类型和错误现象。</li>
+<li>使用指南给出的最小样例复现问题。</li>
+<li>打开对应工具，只粘贴非敏感或脱敏数据。</li>
+<li>把结果放回目标系统验证，不把网页输出视为最终权威。</li>
+</ol>
+<p>工具的测试方法、内容更新原则和隐私边界见 <a href="/about.html#editorial-policy">关于 Ymir Tool</a>。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-case-guides" data-sprint3="case-content-map"><h2>Sprint 3 案例与排错页</h2><p>这些页面按具体故障组织：JSON 语法、API 响应、大整数、Base64 变体、URL 查询参数、正则表达式、文本差异、时间戳和发布复核。每页都包含坏样例、修复样例、错误表、隐私边界和相关工具入口。</p><h3>JSON/API 调试</h3><ul><li><a href="/json-format-guide.html">JSON 尾随逗号与单引号错误排查</a><p>用最小样例定位 JSON 尾随逗号、单引号、未加引号 key、注释和日志前缀导致的格式化失败。</p></li><li><a href="/json-format-guide.html">API 响应 JSON 调试清单</a><p>从状态码、Content-Type、响应体外壳、JSON 结构和字段类型五个层次排查 API 响应异常。</p></li><li><a href="/json-format-guide.html">JSON.stringify 与 JSON.parse 数据丢失排查</a><p>说明 stringify/parse 往返中 undefined、函数、Date、大整数、NaN、Infinity 和循环引用的常见数据丢失。</p></li><li><a href="/json-format-guide.html">JSON 大整数精度丢失指南</a><p>排查订单号、雪花 ID、广告点击 ID、数据库主键等大整数在 JSON 与 JavaScript 中被舍入的问题。</p></li></ul><h3>Base64/编码</h3><ul><li><a href="/base64-encoding-guide.html">Base64 Padding 错误排查指南</a><p>解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。</p></li><li><a href="/base64-encoding-guide.html">Unicode 文本与 btoa/atob 乱码排查</a><p>说明中文、emoji 和非 Latin-1 字符在浏览器 btoa/atob 中出现异常的原因与 UTF-8 转换流程。</p></li><li><a href="/base64-encoding-guide.html">Base64URL 与标准 Base64 差异指南</a><p>对比标准 Base64 和 Base64URL 的字符表、padding、JWT 场景、URL 参数传输和互相转换风险。</p></li><li><a href="/base64-encoding-guide.html">Base64 不是加密：安全边界说明</a><p>解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。</p></li></ul><h3>URL/查询参数</h3><ul><li><a href="/url-encoding-guide.html">URL 查询参数编码指南</a><p>说明 query key、query value、完整 URL 和路径片段的编码边界，避免中文、空格、斜杠、问号和等号被误解析。</p></li><li><a href="/url-encoding-guide.html">encodeURI 与 encodeURIComponent 区别</a><p>用示例解释完整 URL 编码和组件编码的差异，避免斜杠、问号、井号、等号和 &amp; 被错误保留或转义。</p></li><li><a href="/url-encoding-guide.html">URL 重复编码排查</a><p>定位 %25、%252F、%253D 等重复编码现象，判断参数被前端、后端、代理或平台二次处理的位置。</p></li><li><a href="/url-encoding-guide.html">URL 中 + 与 %20 空格差异指南</a><p>解释 query、表单编码、路径和普通百分号编码中 + 与 %20 的差异，避免搜索词、邮箱和签名参数被误读。</p></li></ul><h3>Regex/文本处理</h3><ul><li><a href="/regex-tester-guide.html">正则贪婪与惰性量词排查</a><p>用可复制样例解释 .*、.*?、字符类和边界条件，避免正则匹配过多或性能异常。</p></li><li><a href="/regex-tester-guide.html">正则捕获组调试指南</a><p>说明括号分组、命名组、非捕获组、可选组和替换引用的排查方法，避免字段错位。</p></li><li><a href="/regex-tester-guide.html">JavaScript 正则 flags 使用指南</a><p>解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。</p></li><li><a href="/text-diff-guide.html">文本对比中的空格与换行差异指南</a><p>排查 CRLF/LF、尾随空格、Tab、不可见字符和格式化差异对配置、文案、代码片段的影响。</p></li></ul><h3>时间/校验/发布复核</h3><ul><li><a href="/unix-time-guide.html">Unix 时间戳秒与毫秒区别</a><p>用位数、示例和排查步骤区分 10 位秒级、13 位毫秒级、16 位微秒级和 JavaScript Date 毫秒输入。</p></li><li><a href="/unix-time-guide.html">日志时区错位排查指南</a><p>排查 UTC、本地时区、服务器时区、数据库时区和浏览器显示时区导致的日志时间错位。</p></li><li><a href="/md5-hash-guide.html">MD5 文件校验流程</a><p>说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。</p></li><li><a href="/text-diff-guide.html">发布前复制粘贴复核清单</a><p>面向配置、URL、JSON、正则、时间戳和文案发布，提供复制前后必须检查的输入来源、处理动作和目标系统验证清单。</p></li></ul></section><section class="ymir-container ymir-help ymir-card ymir-guide-review-map" data-adsense-remediation="20260601-v2">
-<h2>如何从指南进入正确工具</h2>
-<p>指南中心按任务组织，而不是按工具数量组织。遇到接口响应、编码失败、时间戳错位、文本差异或正则匹配异常时，先阅读对应指南，确认输入格式、边界条件和复核步骤，再打开工具页执行具体操作。</p>
-<ul>
-<li><strong>结构化数据：</strong>从 JSON 指南开始，先排除注释、尾逗号、引号和 HTML 错误页，再进入 JSON 格式化器。</li>
-<li><strong>编码转换：</strong>从 Base64 或 URL 编码指南开始，区分编码、转义、加密和传输场景。</li>
-<li><strong>发布复核：</strong>从文本对比、复制安全和正则复核专题开始，记录原始输入、工具输出和目标系统要求。</li>
-</ul>
-<p>如果任务涉及密钥、Cookie、访问令牌、内部接口地址或客户数据，应先脱敏或改用团队批准的内部工具。</p>
-</section>
-<section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-07。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
-</body></html>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><span>按具体问题查找工具和指南。</span></footer>
+<script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
+</body>
+</html>

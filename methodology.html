@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="telephone=no" name="format-detection"/>
+<title>Ymir Tool 测试方法：输入、边界、复核与发布检查</title>
+<meta content="了解 Ymir Tool 如何使用正常、错误和边界样例测试 150 个工具，如何检查复制、移动端、无障碍、来源和发布质量，并记录发布回归与用户纠错。" name="description"/>
+<link href="https://ymirtool.com/methodology.html" rel="canonical"/>
+<meta content="Ymir Tool 测试方法：输入、边界、复核与发布检查" property="og:title"/>
+<meta content="了解 Ymir Tool 如何使用正常、错误和边界样例测试 150 个工具，如何检查复制、移动端、无障碍、来源和发布质量，并记录发布回归与用户纠错。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/methodology.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="Ymir Tool" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Ymir Tool 测试方法：输入、边界、复核与发布检查" name="twitter:title"/>
+<meta content="了解 Ymir Tool 如何使用正常、错误和边界样例测试 150 个工具，如何检查复制、移动端、无障碍、来源和发布质量，并记录发布回归与用户纠错。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://ymirtool.com/methodology.html#webpage","url":"https://ymirtool.com/methodology.html","name":"Ymir Tool 测试方法：输入、边界、复核与发布检查","description":"了解 Ymir Tool 如何使用正常、错误和边界样例测试 150 个工具，如何检查复制、移动端、无障碍、来源和发布质量，并记录发布回归与用户纠错。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"}}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">All Tools</a><a href="/guides.html">Guides</a><a href="/about.html">About</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page">
+<h1>测试方法与发布检查</h1>
+<p>最后更新：2026 年 7 月 10 日</p>
+<section class="ymir-card"><h2>测试目标</h2><p>每个工具至少要回答四个问题：接受什么输入、产生什么输出、哪些边界会失败、结果如何在目标环境中复核。工具页面用于执行单次任务，指南用于解释错误模式；两者不会以重复段落替代真实测试。</p></section>
+<section class="ymir-card"><h2>最小测试矩阵</h2><div class="ymir-table-wrap"><table><thead><tr><th>测试类型</th><th>示例</th><th>通过条件</th></tr></thead><tbody>
+<tr><td>正常输入</td><td>短小、公开或合成样例</td><td>输出与标准或可独立计算的结果一致。</td></tr>
+<tr><td>空输入</td><td>空字符串、空数组、空表格</td><td>页面给出明确状态，不产生误导性结果。</td></tr>
+<tr><td>错误输入</td><td>无效 JSON、错误编码、非法单位</td><td>错误位置或原因可理解，页面保持可继续操作。</td></tr>
+<tr><td>边界输入</td><td>Unicode、换行、大整数、极小/极大数值</td><td>限制被说明，结果不会静默改变关键数据。</td></tr>
+<tr><td>复制与重置</td><td>复制、清空、加载样例、切换主题</td><td>键盘与触控操作可用，状态变化可被辅助技术读取。</td></tr>
+</tbody></table></div></section>
+<section class="ymir-card"><h2>发布检查</h2><ol><li>运行站内 SEO、链接、Schema、资源引用和工具清单检查。</li><li>对 JavaScript 执行语法检查，对 CSS 执行结构检查。</li><li>在桌面与移动端预览代表性工具组，检查输入、输出、复制、下载、表格、Canvas 和沙箱页面。</li><li>只有功能、来源、样例或结论发生实质变化时更新修改日期。</li><li>用户反馈必须包含页面 URL、脱敏输入、期望结果、实际结果和浏览器环境。</li></ol></section>
+<section class="ymir-card"><h2>隐私与复核</h2><p>测试样例不使用真实密码、令牌、私钥、客户数据或完整生产日志。浏览器输出只是一项辅助结果；生产配置、安全结论、工程数值和正式发布内容必须回到项目测试、官方文档或组织流程确认。</p><p>标准和数据来源见 <a href="/sources.html">参考来源</a>，第三方组件见 <a href="/licenses.html">许可证说明</a>，具体改动见 <a href="/changelog.html">更新记录</a>。</p></section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>浏览器端开发者工具与可复现测试说明。</span></footer>
+<script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
+</body>
+</html>

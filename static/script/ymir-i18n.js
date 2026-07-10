@@ -347,6 +347,6 @@
   function getLanguage() { return currentLang; }
 
   window.YmirI18n = { setLanguage: function (lang) { setLanguage(lang, true); }, getLanguage: getLanguage, translateMessage: translateMessage };
-  document.addEventListener('DOMContentLoaded', function () { setLanguage(detectLang(), false); });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setLanguage(detectLang(), false); }, { once: true }); else setLanguage(detectLang(), false);
   window.addEventListener('languagechange', function () { if (!storedLang()) setLanguage(browserLang(), false); });
 })();

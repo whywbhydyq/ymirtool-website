@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
-<meta content="index, follow" name="robots"/>
+<meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
 <title>JSON 格式化示例与错误排查：接口调试、错误定位与复制复核 | Ymir Tool</title>
 <meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
 <link href="https://ymirtool.com/json-formatter-examples.html" rel="canonical"/>
 <meta content="JSON 格式化示例与错误排查：接口调试、错误定位与复制复核 | Ymir Tool" property="og:title"/>
 <meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" property="og:description"/>
-<meta content="article" property="og:type">
+<meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/json-formatter-examples.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name">
+<meta content="Ymir Tool" property="og:site_name"/>
 <meta content="https://ymirtool.com/static/images/og-json.png" property="og:image"/>
 <meta content="https://ymirtool.com/static/images/og-json.png" property="og:image:secure_url"/>
 <meta content="image/png" property="og:image:type"/>
@@ -28,18 +25,17 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="JSON 格式化示例与错误排查：接口调试、错误定位与复制复核 | Ymir Tool" name="twitter:title"/>
 <meta content="JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 格式化示例与错误排查：接口调试、错误定位与复制复核","name":"JSON 格式化示例与错误排查：接口调试、错误定位与复制复核 | Ymir Tool","url":"https://ymirtool.com/json-formatter-examples.html","description":"JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-json.png","@id":"https://ymirtool.com/json-formatter-examples.html#article","mainEntityOfPage":"https://ymirtool.com/json-formatter-examples.html","inLanguage":"zh-CN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSON 格式化示例与错误排查：接口调试、错误定位与复制复核","name":"JSON 格式化示例与错误排查：接口调试、错误定位与复制复核 | Ymir Tool","url":"https://ymirtool.com/json-formatter-examples.html","description":"JSON 格式化示例与错误排查，说明常见 JSON 输入、格式化步骤、错误原因、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-07-10","author":{"@type":"Organization","name":"Ymir Tool Editorial","url":"https://ymirtool.com/about.html#editorial-policy"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-json.png","@id":"https://ymirtool.com/json-formatter-examples.html#article","mainEntityOfPage":"https://ymirtool.com/json-formatter-examples.html","inLanguage":"zh-CN","reviewedBy":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/methodology.html"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化示例与错误排查 - Ymir Tool","item":"https://ymirtool.com/json-formatter-examples.html"}],"@id":"https://ymirtool.com/json-formatter-examples.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/json-formatter-examples.html#article"}}</script><script data-ymir-ld="faq" data-ymir-schema-purpose="semantic-faq-ai-readability" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JSON 格式化会改变字段值吗？","acceptedAnswer":{"@type":"Answer","text":"正常情况下，格式化只改变缩进和换行，不应改变字段值。正式使用前仍应保留原始内容并复核。"}},{"@type":"Question","name":"为什么复制来的 JSON 校验失败？","acceptedAnswer":{"@type":"Answer","text":"常见原因是日志前后混入了额外文本、字符串转义不完整、末尾多逗号，或复制时少了括号。"}},{"@type":"Question","name":"JSON 压缩和转义有什么区别？","acceptedAnswer":{"@type":"Answer","text":"压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。 打开 JSON 格式化工具"}}],"@id":"https://ymirtool.com/json-formatter-examples.html#faq","url":"https://ymirtool.com/json-formatter-examples.html","isPartOf":{"@id":"https://ymirtool.com/json-formatter-examples.html#article"},"inLanguage":"zh-CN"}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JSON 格式化示例与错误排查 - Ymir Tool","item":"https://ymirtool.com/json-formatter-examples.html"}],"@id":"https://ymirtool.com/json-formatter-examples.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/json-formatter-examples.html#article"}}</script><link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / JSON 示例</p>
 <h1>JSON 格式化示例与错误排查</h1>
@@ -80,7 +76,7 @@
 <p>压缩会删除不必要的空白字符；转义会把引号、换行等字符处理成适合嵌入字符串的形式。</p>
 <p><a class="btn btn-primary" href="/json/">打开 JSON 格式化工具</a></p>
 <section class="ymir-guide-review ymir-card"><h2>示例如何用于排错</h2><p>排查 JSON 错误时，建议把失败输入缩小到最小可复现片段。先保留出错字段和相邻括号，再逐步加入其它字段，这样更容易发现逗号、引号、转义和数组层级问题。</p><ul><li>错误位置靠后时，先检查前一个字段结尾。</li><li>接口返回以 &lt; 开头时，通常不是 JSON，而是 HTML 错误页。</li><li>日志复制出的内容如果带时间戳前缀，需要先剥离前缀再校验。</li></ul></section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-json-examples">
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth">
 <h2>用示例判断 JSON 格式化是否真的解决了问题</h2>
 <p>JSON 示例页的价值不在于展示一段漂亮的缩进，而在于帮助用户把错误从“看起来像 JSON”收敛到一个可复现的最小输入。排查接口返回、Webhook payload、埋点日志或配置片段时，建议先复制 10 到 30 行非敏感样本，不要直接粘贴完整生产响应。样本越小，越容易确认错误是来自语法、转义、日志包装，还是来自上游服务返回了 HTML、JSONP 或纯文本错误页。</p>
 <h3>可复制排查样例</h3>
@@ -102,7 +98,7 @@
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid"><a href="/json/">JSON 格式化工具</a><a href="/json-format-guide.html">JSON 格式化指南</a><a href="/url-encoding-guide.html">URL 编码指南</a><a href="/javascript-formatter-guide.html">JavaScript 格式化指南</a></div>
 </section>
-<section class="ymir-guide-depth ymir-card" data-depth-upgrade="20260601-depth-v2">
+<section class="ymir-guide-depth ymir-card">
 <h2>示例驱动：用真实场景判断 JSON 输出是否可信</h2>
 <p>示例页的价值不在于展示更多按钮，而在于帮助用户形成可重复的判断方法。JSON 工具常见的输入包括接口响应、配置片段、日志字段和文档示例。它们看起来都是大括号和数组，但检查重点不同：接口响应关注字段契约，配置片段关注默认值和布尔开关，日志字段关注时间、请求 ID 与错误码，文档示例则关注可读性和可复制性。</p><p>处理示例时，不要只准备一个“完全正确”的样本。更有帮助的方式是同时准备正例、边界例和错误例。正例用于确认工具流程，边界例用于检查空数组、null、false、0、空字符串等容易混淆的值，错误例用于训练自己快速识别 trailing comma、单引号、注释和未转义换行。</p>
 <h2>操作前后的复核清单</h2>
@@ -125,6 +121,7 @@
 <p>JavaScript 里常见的对象写法允许单引号、未加引号的键、注释、尾随逗号、<code>undefined</code> 或函数值，但 JSON 规范不接受这些写法。排查时应把它们视为“需要转换的源码片段”，而不是格式化器错误。把键名改为双引号字符串、移除注释、删除尾随逗号、把非 JSON 值替换成字符串、数字、布尔值、null、数组或对象之后，才能进入严格 JSON 工作流。</p>
 <h2>复制前的逐项检查</h2>
 <ol><li>输入是否只包含有效 JSON，而不是 HTML、JSONP、日志前缀或 Markdown 代码围栏。</li><li>字符串里的换行、反斜杠、中文、emoji、百分号和引号是否仍保持原意。</li><li>数组顺序、对象层级、空值、布尔值和数字精度是否没有被误读。</li><li>复制结果会进入文档、issue、配置还是接口请求；不同目标对压缩、缩进和转义要求不同。</li><li>如果数据来自真实环境，是否已经移除 token、客户字段、邮箱、手机号、内部域名和业务机密。</li></ol>
-</section><section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-404/" rel="noopener noreferrer" target="_blank">ECMA-404 JSON Data Interchange Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" rel="noopener noreferrer" target="_blank">MDN JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" rel="noopener noreferrer" target="_blank">MDN JSON.stringify()</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
+</section><section class="ymir-reference-sources ymir-card"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-404/" rel="noopener noreferrer" target="_blank">ECMA-404 JSON Data Interchange Standard</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" rel="noopener noreferrer" target="_blank">MDN JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" rel="noopener noreferrer" target="_blank">MDN JSON.stringify()</a></li></ul></section></div>
+<footer class="ymir-footer"><span>© 2026 Ymir Tool</span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Practical browser-based tools with documented limits and review guidance.</span></footer><script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body>
 </html>

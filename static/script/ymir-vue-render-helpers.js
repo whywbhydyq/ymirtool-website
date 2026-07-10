@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var VERSION = '20260531-v58';
+  var VERSION = '20260710-v61';
   if (window.YmirVueRenderHelpers && window.YmirVueRenderHelpers.version === VERSION) return;
   var Core = window.YmirVueCore;
   if (!Core) return;
@@ -88,7 +88,10 @@
           readonly: !!options.readonly,
           spellcheck: 'false',
           placeholder: options.placeholder || '',
-          inputStyle: options.inputStyle || null
+          inputStyle: options.inputStyle || null,
+          'aria-label': options.ariaLabel || options.title || (options.readonly ? 'Output editor' : 'Input editor'),
+          'aria-readonly': options.readonly ? 'true' : 'false',
+          autocomplete: 'off'
         });
         var editor = h('div', { class: 'ymir-vue-editor-frame' + (options.readonly ? ' is-readonly' : '') }, [
           options.lineNumbers === false ? null : h('ol', { class: 'ymir-vue-line-gutter', 'aria-hidden': 'true' }, editorLineItems(h, options.value || '', rows)),
@@ -230,7 +233,7 @@
     options = options || {};
     var ElAlert = getEl(El, 'ElAlert');
     if (!ElAlert) return null;
-    return h('div', { class: 'ymir-vue-status' }, [h(ElAlert, { type: options.type || 'info', title: options.title || 'Ready.', description: options.description || '', showIcon: true, closable: false })]);
+    return h('div', { class: 'ymir-vue-status', role: 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }, [h(ElAlert, { type: options.type || 'info', title: options.title || 'Ready.', description: options.description || '', showIcon: true, closable: false })]);
   }
   function renderFooterTags(h, El, tags) {
     var ElTag = getEl(El, 'ElTag');
@@ -256,7 +259,7 @@
       nodes.push(renderStatus(h, El, { type: options.statusType, title: options.statusTitle, description: options.statusDescription }));
     }
     if (options.footerTags && options.footerTags.length) nodes.push(renderFooterTags(h, El, options.footerTags));
-    return h('div', { class: ('ymir-vue-app ymir-tool-shell-v51 ' + (options.appClass || '')).trim() }, [
+    return h('div', { class: ('ymir-vue-app ymir-tool-shell-v61 ' + (options.appClass || '')).trim() }, [
       h('section', { class: ('ymir-vue-workbench ' + (options.workbenchClass || '')).trim(), 'aria-label': options.title ? options.title + ' workbench' : 'Tool workbench' }, [renderToolHeader(h, El, options)].concat(nodes))
     ]);
   }
@@ -297,7 +300,7 @@
               ]),
               slots.body ? slots.body() : null,
               h('div', { class: 'ymir-vue-actions' }, slots.actions ? slots.actions() : []),
-              h('div', { class: 'ymir-vue-status' }, [h(ElAlert, { title: self.statusTitle || 'Ready.', type: self.statusType || 'info', closable: false, showIcon: true })]),
+              h('div', { class: 'ymir-vue-status', role: 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }, [h(ElAlert, { title: self.statusTitle || 'Ready.', type: self.statusType || 'info', closable: false, showIcon: true })]),
               h('div', { class: 'ymir-vue-footer-meta' }, slots.footer ? slots.footer() : [])
             ]; }
           })
@@ -330,7 +333,7 @@
         var h = (window.Vue && window.Vue.h) || function () {};
         var ElButton = getEl(window.ElementPlus, 'ElButton');
         var self = this;
-        return h('span', { class: 'ymir-vue-action-button-list' }, (self.actions || []).map(function (item) {
+        return h('div', { class: 'ymir-vue-action-button-list', role: 'group', 'aria-label': 'Tool actions' }, (self.actions || []).map(function (item) {
           return h(ElButton, { type: item.type || 'default', onClick: function () { self.$emit('run', item.key); } }, function () { return item.label; });
         }));
       }

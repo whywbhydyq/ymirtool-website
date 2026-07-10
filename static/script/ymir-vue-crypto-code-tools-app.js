@@ -50,13 +50,13 @@
 
   var pageMeta = {
     aesencrypt: { title: 'AES Encrypt / Decrypt', zhTitle: 'AES 加密 / 解密', desc: 'Encrypt with modern AES-GCM or decrypt legacy CryptoJS-compatible AES payloads.', category: 'Crypto utility', icon: 'AES', algorithm: 'aes', mode: 'cipher', runtimePolicy: 'full' },
-    deencrypt: { title: 'DES Legacy Compatibility Reference', zhTitle: 'DES 旧系统兼容参考', desc: 'DES execution is disabled here; use this page as a legacy compatibility reference for migration notes and non-sensitive samples.', category: 'Legacy crypto reference', icon: 'DES', algorithm: 'des', mode: 'cipher', runtimePolicy: 'reference-only' },
-    desencrypt: { title: 'DES Legacy Compatibility Reference', zhTitle: 'DES 旧系统兼容参考', desc: 'DES execution is disabled here; use this page as a legacy compatibility reference for migration notes and non-sensitive samples.', category: 'Legacy crypto reference', icon: 'DES', algorithm: 'des', mode: 'cipher', runtimePolicy: 'reference-only' },
+    deencrypt: { title: 'DES Migration Checklist', zhTitle: 'DES 迁移检查清单', desc: 'DES execution is disabled. Record the old mode, IV, padding, encoding, and test vectors before migrating historical data.', category: 'Legacy crypto migration', icon: 'DES', algorithm: 'des', mode: 'cipher', runtimePolicy: 'reference-only' },
+    desencrypt: { title: 'DES Ciphertext Format Reference', zhTitle: 'DES 密文格式记录参考', desc: 'DES execution is disabled. Use this reference to document ciphertext encoding, mode, IV, padding, and key derivation before migration.', category: 'Legacy format reference', icon: 'FMT', algorithm: 'des', mode: 'cipher', runtimePolicy: 'reference-only' },
     rabbitencrypt: { title: 'Rabbit Guarded Legacy Compatibility', zhTitle: 'Rabbit 旧系统兼容工具', desc: 'Run Rabbit only for guarded legacy compatibility checks with non-sensitive migration samples.', category: 'Legacy crypto', icon: 'RBT', algorithm: 'rabbit', mode: 'cipher', runtimePolicy: 'guarded' },
     rc4encrypt: { title: 'RC4 Legacy Compatibility Reference', zhTitle: 'RC4 旧系统兼容参考', desc: 'RC4 execution is disabled here; use this page as a legacy compatibility reference, not for new encryption work.', category: 'Legacy crypto reference', icon: 'RC4', algorithm: 'rc4', mode: 'cipher', runtimePolicy: 'reference-only' },
     tripledes: { title: 'Triple DES Legacy Decryption Compatibility', zhTitle: 'Triple DES 旧密文解密兼容', desc: 'Triple DES is limited to guarded historical decryption compatibility; creating new ciphertext is disabled.', category: 'Legacy crypto', icon: '3DES', algorithm: 'tripledes', mode: 'cipher', runtimePolicy: 'decrypt-only' },
-    allencrypt: { title: 'Hash Generator', zhTitle: '哈希摘要生成器', desc: 'Generate checksum and digest values for compatibility and verification workflows; do not use MD5 or SHA-1 for security-sensitive authenticity checks.', category: 'Hash utility', icon: '#', mode: 'hash' },
-    htpasswd: { title: 'htpasswd Generator', zhTitle: 'htpasswd 生成器', desc: 'Generate Apache htpasswd lines for Basic Auth compatibility checks.', category: 'Server utility', icon: 'HT', mode: 'htpasswd' },
+    allencrypt: { title: 'Multi-Algorithm Hash Digest Tool', zhTitle: '多算法哈希摘要工具', desc: 'Compare MD5, SHA-1, SHA-256, and SHA-512 outputs for checksums and compatibility; use HMAC or signatures when authenticity matters.', category: 'Hash utility', icon: '#', mode: 'hash' },
+    htpasswd: { title: 'Apache htpasswd Compatibility Generator', zhTitle: 'Apache htpasswd 兼容格式生成器', desc: 'Generate legacy Apache password-file entries for compatibility tests. Use the server-side htpasswd -B option for new bcrypt credentials.', category: 'Server compatibility utility', icon: 'HT', mode: 'htpasswd' },
     endecodejs: { title: 'JavaScript Encode / Decode', zhTitle: 'JavaScript 编码 / 解码', desc: 'Encode or decode JavaScript strings, URI text, Unicode escapes, and Base64 safely.', category: 'JavaScript utility', icon: 'JS', mode: 'jsencode' },
     confundirjs: { title: 'JavaScript String Encoding Helper', zhTitle: 'JavaScript 字符串编码辅助工具', desc: 'Create Base64 string wrappers and Unicode escape text for lightweight demos and compatibility checks.', category: 'JavaScript utility', icon: '{}', mode: 'obfuscate' }
   };
@@ -75,7 +75,7 @@
           legacyAcknowledged: false,
           htUser: 'admin',
           htPass: 'change-me',
-          htAlg: '3',
+          htAlg: '2',
           status: 'info',
           hashResults: [],
           meta: meta
@@ -377,11 +377,15 @@
           nodes.push(h('div', { class: 'ymir-vue-crypto-controls' }, [h('div', { class: 'ymir-vue-crypto-control-row' }, controlItems)]));
         }
         if (this.meta.mode === 'htpasswd') {
+          nodes.push(h('div', { class: 'ymir-vue-crypto-note ymir-vue-legacy-execution-guard', 'data-htpasswd-compatibility-note': 'true' }, [
+            h('strong', null, this.lang === 'zh' ? '仅用于旧格式兼容' : 'Legacy format compatibility only'),
+            h('p', null, this.lang === 'zh' ? '此浏览器工具只生成旧式 {SHA}、$apr1$ MD5、crypt 或 plain 条目。新凭证请在服务器端使用 Apache htpasswd -B 创建 bcrypt 记录；不要在网页中输入真实生产密码。' : 'This browser tool only generates legacy {SHA}, $apr1$ MD5, crypt, or plain entries. Create new credentials server-side with Apache htpasswd -B for bcrypt, and never enter real production passwords here.')
+          ]));
           nodes.push(h('div', { class: 'ymir-vue-crypto-controls' }, [h('div', { class: 'ymir-vue-crypto-control-row' }, [
             h(ElFormItem, { label: this.lang === 'zh' ? '用户名' : 'Username' }, function () { return h(ElInput, { modelValue: self.htUser, 'onUpdate:modelValue': function (v) { self.htUser = v; } }); }),
             h(ElFormItem, { label: this.lang === 'zh' ? '密码' : 'Password' }, function () { return h(ElInput, { modelValue: self.htPass, showPassword: true, 'onUpdate:modelValue': function (v) { self.htPass = v; } }); }),
             h(ElFormItem, { label: this.lang === 'zh' ? '算法' : 'Algorithm' }, function () { return h(ElSelect, { modelValue: self.htAlg, 'onUpdate:modelValue': function (v) { self.htAlg = v; } }, function () { return [
-              h(ElOption, { label: '{SHA}', value: '3' }), h(ElOption, { label: '$apr1$ MD5', value: '2' }), h(ElOption, { label: 'crypt', value: '1' }), h(ElOption, { label: 'plain', value: '0' })
+              h(ElOption, { label: '$apr1$ MD5 · legacy', value: '2' }), h(ElOption, { label: '{SHA} · legacy', value: '3' }), h(ElOption, { label: 'crypt · legacy', value: '1' }), h(ElOption, { label: 'plain · unsafe', value: '0' })
             ]; }); })
           ])]));
         }

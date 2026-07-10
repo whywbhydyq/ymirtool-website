@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="index, follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="telephone=no" name="format-detection"/>
+<title>Ymir Tool 参考来源：标准、注册表与数据边界</title>
+<meta content="查看 Ymir Tool 使用的 JSON、URL、Base64、Unicode、HTTP、时间、密码学和平台官方来源，以及静态参考表的适用边界和纠错方式。" name="description"/>
+<link href="https://ymirtool.com/sources.html" rel="canonical"/>
+<meta content="Ymir Tool 参考来源：标准、注册表与数据边界" property="og:title"/>
+<meta content="查看 Ymir Tool 使用的 JSON、URL、Base64、Unicode、HTTP、时间、密码学和平台官方来源，以及静态参考表的适用边界和纠错方式。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ymirtool.com/sources.html" property="og:url"/>
+<meta content="Ymir Tool" property="og:site_name"/>
+<meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
+<meta content="Ymir Tool" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Ymir Tool 参考来源：标准、注册表与数据边界" name="twitter:title"/>
+<meta content="查看 Ymir Tool 使用的 JSON、URL、Base64、Unicode、HTTP、时间、密码学和平台官方来源，以及静态参考表的适用边界和纠错方式。" name="twitter:description"/>
+<meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://ymirtool.com/sources.html#webpage","url":"https://ymirtool.com/sources.html","name":"Ymir Tool 参考来源：标准、注册表与数据边界","description":"查看 Ymir Tool 使用的 JSON、URL、Base64、Unicode、HTTP、时间、密码学和平台官方来源，以及静态参考表的适用边界和纠错方式。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"}}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script></head>
+<body class="ymir-modern-body">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">All Tools</a><a href="/guides.html">Guides</a><a href="/about.html">About</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page">
+<h1>参考来源与数据边界</h1>
+<p>最后更新：2026 年 7 月 10 日</p>
+<section class="ymir-card"><h2>来源原则</h2><p>Ymir Tool 优先引用规范制定组织、浏览器标准、官方项目文档和公共注册表。参考表用于快速查找，不替代目标平台当前版本的正式文档。数据或行为可能随标准、浏览器和供应商版本变化，因此页面会标注适用边界，并在实质性复测后更新日期。</p></section>
+<section class="ymir-card"><h2>核心标准与官方资料</h2><ul class="ymir-source-list">
+<li><strong>JSON</strong><a href="https://www.rfc-editor.org/rfc/rfc8259" rel="external noopener">RFC 8259</a> 与 <a href="https://www.json.org/" rel="external noopener">JSON.org</a>，用于严格语法、字符串转义、数字和结构边界。</li>
+<li><strong>URL 与编码</strong><a href="https://url.spec.whatwg.org/" rel="external noopener">WHATWG URL Standard</a>、<a href="https://www.rfc-editor.org/rfc/rfc3986" rel="external noopener">RFC 3986</a> 与 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" rel="external noopener">MDN encodeURIComponent</a>。</li>
+<li><strong>Base64</strong><a href="https://www.rfc-editor.org/rfc/rfc4648" rel="external noopener">RFC 4648</a>，用于标准 Base64、Base64URL 和 padding 规则。</li>
+<li><strong>JavaScript 与正则</strong><a href="https://tc39.es/ecma262/" rel="external noopener">ECMAScript 语言规范</a> 与 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_expressions" rel="external noopener">MDN Regular Expressions</a>。</li>
+<li><strong>Unicode</strong><a href="https://www.unicode.org/standard/standard.html" rel="external noopener">The Unicode Standard</a>，用于字符、码点、规范化和文本计数边界。</li>
+<li><strong>时间</strong><a href="https://datatracker.ietf.org/doc/html/rfc3339" rel="external noopener">RFC 3339</a> 与 <a href="https://www.iana.org/time-zones" rel="external noopener">IANA Time Zone Database</a>。</li>
+<li><strong>HTTP、MIME、状态码和端口</strong><a href="https://www.iana.org/assignments/http-fields/http-fields.xhtml" rel="external noopener">IANA HTTP Fields</a>、<a href="https://www.iana.org/assignments/media-types/media-types.xhtml" rel="external noopener">Media Types</a>、<a href="https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml" rel="external noopener">HTTP Status Codes</a> 与 <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" rel="external noopener">Service Names and Port Numbers</a>。</li>
+<li><strong>密码学兼容性说明</strong><a href="https://csrc.nist.gov/publications" rel="external noopener">NIST CSRC publications</a>、<a href="https://www.rfc-editor.org/rfc/rfc7465" rel="external noopener">RFC 7465</a> 与 <a href="https://httpd.apache.org/docs/current/programs/htpasswd.html" rel="external noopener">Apache htpasswd</a>。</li>
+<li><strong>Android 参考</strong><a href="https://developer.android.com/reference/android/Manifest.permission" rel="external noopener">Manifest permissions</a> 与 <a href="https://developer.android.com/reference/android/view/KeyEvent" rel="external noopener">KeyEvent constants</a>。</li>
+<li><strong>Linux 命令</strong><a href="https://www.kernel.org/doc/man-pages/" rel="external noopener">Linux man-pages</a> 与 <a href="https://www.gnu.org/software/coreutils/manual/" rel="external noopener">GNU Coreutils manual</a>。</li>
+</ul></section>
+<section class="ymir-card"><h2>站内数据集边界</h2><p>DNS、节日、行政区号、历史时间线、货币代码和其他参考表可能包含静态快照。它们适合快速查询和构造测试样例，不适合直接作为路由、安全、合规、支付或生产配置的唯一依据。正式使用前应向运营商、政府、标准组织或目标系统文档复核。</p><p>发现来源过期或条目错误时，请通过 <a href="/contact.html">联系页面</a> 提交页面 URL、具体条目和可核验来源。</p></section>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>浏览器端开发者工具与可复现测试说明。</span></footer>
+<script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
+</body>
+</html>

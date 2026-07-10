@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ymirtool.com/</loc><lastmod>2026-06-01</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://ymirtool.com/base64/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/calculator/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/formatjs/</loc><lastmod>2026-06-01</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/json/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/md5/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/regex/</loc><lastmod>2026-06-22</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/textdiff/</loc><lastmod>2026-06-22</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/txtcount/</loc><lastmod>2026-06-01</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/unixtime/</loc><lastmod>2026-06-22</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ymirtool.com/urlencode/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ymirtool.com/</loc><lastmod>2026-07-10</lastmod></url>
+  <url><loc>https://ymirtool.com/json/</loc><lastmod>2026-06-07</lastmod></url>
+  <url><loc>https://ymirtool.com/base64/</loc><lastmod>2026-06-07</lastmod></url>
+  <url><loc>https://ymirtool.com/urlencode/</loc><lastmod>2026-06-07</lastmod></url>
+  <url><loc>https://ymirtool.com/formatjs/</loc><lastmod>2026-06-01</lastmod></url>
+  <url><loc>https://ymirtool.com/regex/</loc><lastmod>2026-06-22</lastmod></url>
+  <url><loc>https://ymirtool.com/textdiff/</loc><lastmod>2026-06-22</lastmod></url>
+  <url><loc>https://ymirtool.com/txtcount/</loc><lastmod>2026-06-01</lastmod></url>
+  <url><loc>https://ymirtool.com/unixtime/</loc><lastmod>2026-06-22</lastmod></url>
 </urlset>

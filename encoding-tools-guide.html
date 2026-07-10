@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
 <title>编码转换工具使用指南 - Ymir Tool</title>
 <meta content="Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="description"/>
 <link href="https://ymirtool.com/encoding-tools-guide.html" rel="canonical"/>
-<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58" nonce="__CSP_NONCE__"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="编码转换工具使用指南 - Ymir Tool" property="og:title"/>
@@ -27,15 +24,15 @@
 <meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
 <meta content="编码转换工具使用指南 - Ymir Tool social preview image" name="twitter:image:alt"/>
 <meta content="编码转换工具使用指南 - Ymir Tool" name="twitter:title"/>
-<meta content="Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"编码转换工具使用指南","name":"编码转换工具使用指南 - Ymir Tool","url":"https://ymirtool.com/encoding-tools-guide.html","description":"Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"@id":"https://ymirtool.com/encoding-tools-guide.html#article","mainEntityOfPage":"https://ymirtool.com/encoding-tools-guide.html","inLanguage":"zh-CN","image":"https://ymirtool.com/static/images/og.png"}</script>
+<meta content="Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"编码转换工具使用指南","name":"编码转换工具使用指南 - Ymir Tool","url":"https://ymirtool.com/encoding-tools-guide.html","description":"Base64、URL、Unicode、ASCII、UTF-8 等编码转换工具的使用场景、常见问题和推荐入口。 包含使用场景、输入输出检查、常见错误和相关工具入口，适合复制结果前快速复核。","datePublished":"2026-06-01","dateModified":"2026-07-10","author":{"@type":"Organization","name":"Ymir Tool Editorial","url":"https://ymirtool.com/about.html#editorial-policy"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"@id":"https://ymirtool.com/encoding-tools-guide.html#article","mainEntityOfPage":"https://ymirtool.com/encoding-tools-guide.html","inLanguage":"zh-CN","image":"https://ymirtool.com/static/images/og.png","reviewedBy":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/methodology.html"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav><div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a></p>
 <h1>编码转换工具使用指南</h1>
 <p>编码转换工具常用于接口调试、网页参数处理、日志阅读和跨系统数据整理。不同编码方式解决的问题不同，选择前要先判断输入内容是链接参数、普通文本、二进制内容还是字符编码问题。</p>
@@ -57,7 +54,7 @@
 <p>如果结果看起来仍然是乱码，可能是原始内容经过了多层编码。可以先 URL 解码，再尝试 Base64 或 Unicode 转换。处理接口数据时，建议保留原始文本副本，避免多次转换后无法回退。</p>
 <h2>相关工具</h2>
 <p>如果编码后的内容是 JSON，可以继续使用 <a href="/json/">JSON 格式化</a>；如果内容是网页片段，可以使用 <a href="/htmlescape/">HTML 转义工具</a>。</p>
-<section class="ymir-guide-review ymir-card" data-adsense-hardening="20260601">
+<section class="ymir-guide-review ymir-card">
 <h2>审核与使用建议</h2>
 <p>编码转换工具使用指南 不应只作为入口列表存在。更可靠的使用方式是先明确输入来源、处理目标、输出去向和复核标准，再打开对应工具完成具体操作。</p>
 <ul>
@@ -66,7 +63,6 @@
 <li>如果结果会进入生产配置、客户交付、财务估算、法律文件或安全流程，应保留原始输入和操作记录，便于回滚和人工复核。</li>
 </ul>
 <h2>适合直接访问本站的用户</h2>
-<p>这类指南面向开发者、站长、运营、学生和办公用户。用户可以不经过搜索引擎，直接从首页、指南中心或收藏夹进入，按任务选择 JSON、编码、文本、时间、网络、计算和参考类工具。</p>
 <p>本站的目标不是堆砌关键词，而是把常见在线工具的使用边界写清楚：哪些输入适合浏览器里快速处理，哪些结果需要权威来源确认，哪些敏感信息不应该粘贴进通用网页工具。</p>
 </section>
 <section aria-label="相关工具入口" class="ymir-guide-related">
@@ -78,6 +74,7 @@
 <a href="/img2base64/">图片转 Base64</a>
 </div>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth"><h2>使用前复核说明</h2><p>本页作为辅助入口使用，适合先判断任务类型，再进入更具体的工具或深度指南。使用任何在线工具前，请先确认输入是否适合在线处理，并尽量使用短的脱敏样例完成第一次验证。</p><h3>推荐流程</h3><p>先保留原始输入，再打开相关工具运行样例，确认输出格式、编码、空格、换行、单位或时间范围符合预期。样例验证通过后，才处理更长文本，并在复制到正式流程前再次人工检查。</p><h3>停止条件</h3><p>如果任务涉及密钥、客户资料、生产事故、财务决策、工程安全、法律文本或受限制数据，请把本页只作为背景说明，实际处理应转到组织批准的系统、专业软件或权威文档。</p></section>
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth"><h2>使用前复核说明</h2><h3>推荐流程</h3><h3>停止条件</h3><p>如果任务涉及密钥、客户资料、生产事故、财务决策、工程安全、法律文本或受限制数据，请把本页只作为背景说明，实际处理应转到组织批准的系统、专业软件或权威文档。</p></section>
 </div>
+<footer class="ymir-footer"><span>© 2026 Ymir Tool</span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Practical browser-based tools with documented limits and review guidance.</span></footer><script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body></html>

@@ -7,17 +7,15 @@
   var lastResults = [];
   var favoritesExpanded = false;
   var panelOpen = false;
-  var ADSENSE_REVIEW_TOOL_IDS = {
+  var CORE_TOOL_IDS = {
     json: true,
     base64: true,
-    md5: true,
     urlencode: true,
     formatjs: true,
     unixtime: true,
     textdiff: true,
     txtcount: true,
-    regex: true,
-    calculator: true
+    regex: true
   };
 
   function manifest() { return window.YmirToolsManifest || null; }
@@ -39,13 +37,13 @@
       category: t.category || ''
     };
   }
-  function isReviewTool(t) {
-    return !!(t && ADSENSE_REVIEW_TOOL_IDS[t.id || t.slug]);
+  function isCoreTool(t) {
+    return !!(t && CORE_TOOL_IDS[t.id || t.slug]);
   }
   function manifestTools() {
     var m = manifest();
     if (!m || !Array.isArray(m.tools)) return null;
-    return m.tools.map(manifestTool).filter(isReviewTool);
+    return m.tools.map(manifestTool).filter(isCoreTool);
   }
 
   function lang() {
@@ -96,7 +94,7 @@
     var tools = manifestTools();
     if (tools) return tools;
     var seen = {};
-    return allToolElements().map(toolData).filter(isReviewTool).filter(function (t) {
+    return allToolElements().map(toolData).filter(isCoreTool).filter(function (t) {
       if (seen[t.href]) return false;
       seen[t.href] = true;
       return true;
@@ -130,10 +128,10 @@
       ' data-tool-href="' + escapeHtml(t.href) + '"' +
       ' data-tool-id="' + escapeHtml(t.id) + '">' +
       '<span aria-hidden="true" class="ymir-feature-icon">' + escapeHtml(t.icon || '{}') + '</span>' +
-      '<span class="ymir-feature-body"><strong><span class="ymir-feature-number">' + (index + 1) + '.</span> <span data-card-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span></strong>' +
+      '<span class="ymir-feature-body"><strong><span data-card-title="">' + escapeHtml(lang() === 'zh' ? zh : en) + '</span></strong>' +
       '<span data-card-desc="">' + escapeHtml(lang() === 'zh' ? descZh : descEn) + '</span></span>' +
       '<button aria-label="' + escapeHtml((lang() === 'zh' ? '收藏 ' : 'Favorite ') + (lang() === 'zh' ? zh : en)) + '" class="ymir-tool-star" data-star-tool="' + escapeHtml(t.id) + '" type="button">☆</button>' +
-      '<a aria-hidden="true" class="ymir-tool-open" data-i18n-en="Open" data-i18n-zh="打开" href="' + escapeHtml(t.href) + '" tabindex="-1">' + (lang() === 'zh' ? '打开' : 'Open') + '</a>' +
+      '<span class="ymir-feature-open" data-i18n-en="Open tool" data-i18n-zh="打开工具">' + (lang() === 'zh' ? '打开工具' : 'Open tool') + '</span>' +
       '</article>';
   }
   function directoryTabButton(cat, index) {
@@ -237,7 +235,7 @@
     });
 
     if (!scored.length) {
-      p.innerHTML = '<div class="ymir-mini-empty">' + (lang() === 'zh' ? '没有找到匹配工具。尝试 JSON、Base64、MD5、URL、时间戳、文本对比。' : 'No matching tools. Try JSON, Base64, MD5, URL, timestamp, or text diff.') + '</div>';
+      p.innerHTML = '<div class="ymir-mini-empty">' + (lang() === 'zh' ? '没有找到匹配工具。尝试 JSON、Base64、URL、正则、时间戳或文本对比。' : 'No matching tools. Try JSON, Base64, URL, regex, timestamp, or text diff.') + '</div>';
       lastResults = [];
       return;
     }

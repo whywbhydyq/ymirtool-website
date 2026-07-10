@@ -4,8 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "python3 scripts/cleanup-unused-assets.py",
     "seo:check": "node scripts/seo-check.mjs",
     "seo:cache": "node scripts/seo-check.mjs --write-cache",
-    "test": "npm run seo:check"
+    "remediate": "python3 scripts/phase5-final-remediation.py",
+    "validate": "node scripts/phase5-validate.mjs",
+    "audit": "python3 scripts/phase5-audit.py --output .seo-cache/final-audit.json",
+    "smoke": "python3 scripts/phase5-http-smoke.py",
+    "test": "npm run seo:check && npm run validate && npm run audit && npm run smoke"
   }
 }

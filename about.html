@@ -1,114 +1,81 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
-<title>关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool</title>
-<meta content="了解 Ymir Tool 的站点目的、核心工具范围、内容维护原则、隐私边界、广告策略和用户复核责任。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
+<link crossorigin="" href="https://cdn.vercel-insights.com" rel="preconnect"/>
+<title>关于 Ymir Tool：工具范围、测试方法与内容维护原则</title>
+<meta content="了解 Ymir Tool 的核心工具范围、浏览器端处理方式、测试方法、参考来源、内容更新规则、广告与隐私边界，以及如何提交可复现的错误反馈和页面修正建议。" name="description"/>
 <link href="https://ymirtool.com/about.html" rel="canonical"/>
-<meta content="关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool" property="og:title"/>
-<meta content="了解 Ymir Tool 的站点目的、核心工具范围、内容维护原则、隐私边界、广告策略和用户复核责任。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" property="og:description"/>
+<meta content="关于 Ymir Tool：工具范围、测试方法与内容维护原则" property="og:title"/>
+<meta content="了解 Ymir Tool 的核心工具范围、浏览器端处理方式、测试方法、参考来源、内容更新规则、广告与隐私边界，以及如何提交可复现的错误反馈和页面修正建议。" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://ymirtool.com/about.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name">
+<meta content="Ymir Tool" property="og:site_name"/>
 <meta content="https://ymirtool.com/static/images/og.png" property="og:image"/>
 <meta content="https://ymirtool.com/static/images/og.png" property="og:image:secure_url"/>
 <meta content="image/png" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool social preview image" property="og:image:alt"/>
+<meta content="关于 Ymir Tool" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
+<meta content="关于 Ymir Tool：工具范围、测试方法与内容维护原则" name="twitter:title"/>
+<meta content="了解 Ymir Tool 的核心工具范围、浏览器端处理方式、测试方法、参考来源、内容更新规则、广告与隐私边界，以及如何提交可复现的错误反馈和页面修正建议。" name="twitter:description"/>
 <meta content="https://ymirtool.com/static/images/og.png" name="twitter:image"/>
-<meta content="关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool social preview image" name="twitter:image:alt"/>
+<meta content="关于 Ymir Tool" name="twitter:image:alt"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<meta content="codeva-UksONlLJGB" name="baidu-site-verification">
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool" name="twitter:title"/>
-<meta content="了解 Ymir Tool 的站点目的、核心工具范围、内容维护原则、隐私边界、广告策略和用户复核责任。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"关于 Ymir Tool - 工具范围、维护原则：使用场景、错误边界与复核流程 | Ymir Tool","url":"https://ymirtool.com/about.html","description":"了解 Ymir Tool 的站点目的、核心工具范围、内容维护原则、隐私边界、广告策略和用户复核责任。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","dateModified":"2026-06-01","publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"inLanguage":"zh-CN","image":"https://ymirtool.com/static/images/og.png","@id":"https://ymirtool.com/about.html#webpage","isPartOf":{"@id":"https://ymirtool.com/#website"}}</script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Policy and trust pages","item":"https://ymirtool.com/about.html"},{"@type":"ListItem","position":3,"name":"关于 Ymir Tool - 工具范围、维护原则与审核边界","item":"https://ymirtool.com/about.html"}],"@id":"https://ymirtool.com/about.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/about.html#webpage"}}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","@id":"https://ymirtool.com/about.html#webpage","url":"https://ymirtool.com/about.html","name":"关于 Ymir Tool：工具范围、测试方法与内容维护原则","description":"Ymir Tool 的工具范围、测试方法、内容维护、广告与隐私边界说明。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"},"image":"https://ymirtool.com/static/images/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"关于 Ymir Tool","item":"https://ymirtool.com/about.html"}]}</script>
+<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
-<div class="container ymir-is-2a92ab516c">
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="container ymir-guide-page">
 <h1>关于 Ymir Tool</h1>
-<p>最后更新日期：2026年6月1日</p>
-<p>Ymir Tool 是一个面向开发者、站长、运营、内容编辑和日常办公用户的免费在线工具站。本站的主站 ymirtool.com 负责提供通用工具、任务型指南、隐私与条款说明，并作为 YmirTool Network 的公共入口。</p>
-<p>本站的核心定位不是简单堆叠工具名称，而是把常见的文本处理、编码转换、数据排错、时间换算、哈希校验和发布前复核流程整理成可直接使用的页面。每个重点页面都应说明输入边界、输出含义、常见误判和复制结果前的检查步骤。</p>
-<section class="ymir-card ymir-guide-review">
-<h2>我们维护哪些工具</h2>
-<p>主站优先维护那些能解决重复性小任务的浏览器工具。例如 JSON 格式化和校验、Base64 编解码、URL 编码、MD5 校验、JavaScript 格式化、正则表达式测试、文本对比、字数统计、Unix 时间戳转换和基础计算器。</p>
+<p>最后更新：2026 年 7 月 10 日</p>
+<p>Ymir Tool 是一个浏览器端开发者工具站，当前重点维护 JSON、Base64、URL 编码、JavaScript 格式化、正则表达式、文本对比、文本统计和 Unix 时间戳八类工具。网站由站点维护者持续更新，联系邮箱和反馈入口见 <a href="/contact.html">联系我们</a>。</p>
+<section class="ymir-card">
+<h2>我们发布什么</h2>
+<p>核心工具面向可重复的小型任务，例如检查 JSON 语法、处理 UTF-8 文本编码、定位 URL 参数编码问题、比较文本差异或确认时间戳单位。每个工具页应清楚说明输入类型、输出含义和已知限制，而不是只提供一个按钮。</p>
+<div class="ymir-related-grid"><a href="/json/">JSON 格式化与校验</a><a href="/base64/">Base64 编解码</a><a href="/urlencode/">URL 编码与解码</a><a href="/formatjs/">JavaScript 格式化</a><a href="/regex/">JavaScript 正则测试</a><a href="/textdiff/">文本差异比较</a><a href="/txtcount/">文本统计</a><a href="/unixtime/">Unix 时间戳转换</a></div>
+</section>
+<section class="ymir-card" id="editorial-policy">
+<h2>测试与内容维护方法</h2>
 <ul>
-<li><b>开发者调试</b>：JSON、JavaScript、Regex、URL、Base64、MD5 等页面用于检查数据格式、编码方式和复制前结果。</li>
-<li><b>内容和发布复核</b>：Text Diff、Text Count、Release Checklist 等页面用于比较文案、配置、版本说明和发布摘要。</li>
-<li><b>时间和计算辅助</b>：Unix Time、Calculator 等页面用于快速换算和人工复核，不代替财务、工程或法律判断。</li>
-<li><b>长尾参考工具</b>：旧工具页保留基础可用性，但复审面优先集中在已经增厚的核心工具和指南页。</li>
+<li><strong>可复现样例：</strong>使用不含真实凭证或客户数据的合成输入，覆盖正常输入、错误输入和常见边界情况。</li>
+<li><strong>结果核对：</strong>对照浏览器标准、ECMAScript、Unicode、WHATWG URL、RFC 等原始资料，并在当前浏览器运行环境中复测。</li>
+<li><strong>功能与说明分开：</strong>工具页负责执行操作，指南页解释特定错误和判断方法；不以重复段落填充页面。</li>
+<li><strong>修改日期：</strong>只有功能、样例、来源或结论发生实质变化时才更新页面日期。</li>
+<li><strong>纠错：</strong>收到可复现问题后，先确认输入和运行环境，再修正工具、说明或来源链接。</li>
 </ul>
+<p>当前指南索引见 <a href="/guides.html">指南中心</a>。完整测试流程见 <a href="/methodology.html">测试方法</a>，规范和数据出处见 <a href="/sources.html">参考来源</a>。</p>
 </section>
-<section class="ymir-card ymir-guide-review">
-<h2>内容维护原则</h2>
-<p>Ymir Tool 的内容维护采用“一个页面解决一个明确任务”的原则。可索引的重点页面应包含真实示例、常见错误、隐私边界、相关工具入口和复核清单。对于容易产生误用的页面，例如哈希、Base64、时间戳和正则表达式，页面会明确说明工具不等于安全系统、加密系统或最终验证系统。</p>
-<table><thead><tr><th>维护项</th><th>执行方式</th></tr></thead><tbody>
-<tr><td>示例</td><td>使用合成样例，避免展示真实密钥、客户数据、内部域名或生产日志。</td></tr>
-<tr><td>排错</td><td>把问题拆成可复现的输入、错误现象、确认方法和修复步骤。</td></tr>
-<tr><td>内链</td><td>从工具页连接到相邻指南，从指南页返回工具入口，减少孤立页面。</td></tr>
-<tr><td>安全边界</td><td>提醒用户不要把在线工具作为处理敏感资料的唯一环境。</td></tr>
-</tbody></table>
+<section class="ymir-card">
+<h2>隐私与数据处理边界</h2>
+<p>核心工具设计为在浏览器中处理输入，但这不意味着任何数据都适合粘贴到网页。请勿输入密码、访问令牌、私钥、认证 Cookie、客户记录、未公开源代码或完整生产日志。处理组织数据时，应遵守所在组织的安全政策。</p>
+<p>网站使用 HTTPS，并可能使用访问分析和广告服务。第三方服务可能接收页面 URL、设备信息、Cookie 标识和访问时间等标准请求数据。详细说明见 <a href="/privacy.html">隐私政策</a>。</p>
 </section>
-<section class="ymir-card ymir-guide-review" id="entity-summary">
-<h2>实体摘要和 AI 引用边界</h2>
-<p><strong>Ymir Tool</strong> 是一个免费在线工具站，重点服务开发者、站长、运营、内容编辑和日常办公用户。它的核心主题包括 JSON 格式化、Base64 编码、URL 编码、MD5 校验和、JavaScript 格式化、文本对比、正则测试、Unix 时间戳、计算器和复制前复核流程。</p>
-<table><thead><tr><th>实体信号</th><th>说明</th></tr></thead><tbody>
-<tr><td>站点名称</td><td>Ymir Tool</td></tr>
-<tr><td>官网</td><td><a href="https://ymirtool.com/">https://ymirtool.com/</a></td></tr>
-<tr><td>主要语言</td><td>中文和英文</td></tr>
-<tr><td>核心页面</td><td><a href="/json/">JSON</a>、<a href="/base64/">Base64</a>、<a href="/md5/">MD5</a>、<a href="/urlencode/">URL 编码</a>、<a href="/regex/">Regex</a>、<a href="/textdiff/">Text Diff</a></td></tr>
-<tr><td>AI 助手索引</td><td><a href="/llms.txt">llms.txt</a> 和 <a href="/llms-full.txt">llms-full.txt</a></td></tr>
-<tr><td>引用边界</td><td>可作为工具和排错指南引用，不应表述为专业审计、法律、财务、医疗、安全认证或加密系统。</td></tr>
-</tbody></table>
+<section class="ymir-card">
+<h2>广告与页面范围</h2>
+<p>广告用于承担网站的托管和维护成本。当前只有首页加载 AdSense 站点验证脚本，工具页、指南页、政策页、错误页和完整目录不加载广告运行时。未来如启用广告，也只会放在内容完整且不遮挡工具操作的主要页面。广告不会改变工具输出，也不参与内容结论。</p>
 </section>
-<section class="ymir-card ymir-guide-review" id="editorial-policy">
-<h2>编辑、测试和复核方法</h2>
-<p>Ymir Tool 的核心工具页由站点维护者按照“任务、示例、错误边界、隐私边界、复制前复核”五个维度定期检查。内容目标是帮助用户理解工具输出，而不是把在线工具包装成专业审计、财务、法律、医疗或安全系统。</p>
-<table><thead><tr><th>复核维度</th><th>执行方法</th></tr></thead><tbody>
-<tr><td>功能样例</td><td>为核心工具保留可复制的合成输入，检查输出是否与页面说明一致。</td></tr>
-<tr><td>错误边界</td><td>记录常见失败原因，例如 JSON 尾逗号、Base64 padding、URL 二次编码、Regex flags、时间戳单位和小数精度。</td></tr>
-<tr><td>隐私边界</td><td>页面示例避免真实密钥、客户资料、生产日志、内部接口和未公开商业数据。</td></tr>
-<tr><td>更新记录</td><td>页面在补充示例、边界说明、相关指南或结构化内容后更新修改日期。</td></tr>
-<tr><td>反馈处理</td><td>用户可通过 <a href="/contact.html">联系页面</a> 报告错误、过期说明、隐私问题或工具异常。</td></tr>
-</tbody></table>
+<section class="ymir-card">
+<h2>责任范围与反馈</h2>
+<p>Ymir Tool 提供通用工具和技术说明，不提供法律、医疗、财务、安全审计或工程认证。重要结果应在目标系统、官方工具或团队流程中再次验证。</p>
+<p>发现功能错误、来源过期、隐私问题或页面无法使用时，请通过 <a href="/contact.html">联系页面</a> 提交可复现步骤。使用网站前也可阅读 <a href="/terms.html">使用条款</a> 和 <a href="/disclaimer.html">免责声明</a>。</p>
 </section>
-<section class="ymir-card ymir-guide-review">
-<h2>隐私和本地处理边界</h2>
-<p>多数工具面向浏览器内的即时文本处理。即使页面在本地完成转换，用户也应按组织安全要求判断是否适合粘贴内容。默认安全做法是使用匿名样例、脱敏字段和非生产数据；不要粘贴密码、API Token、私钥、认证 Cookie、客户记录、未公开商业数据或完整生产日志。</p>
-<p>本站使用 HTTPS，并可能使用访问分析和广告服务来维护站点运营。广告和分析服务可能根据各自政策处理标准浏览器信息，例如页面 URL、设备类型、Cookie 标识和访问时间。详细说明见 <a href="/privacy.html">隐私政策</a>。</p>
-</section>
-<section class="ymir-card ymir-guide-review">
-<h2>推荐入口</h2>
-<ul>
-<li><a href="/guides.html">指南中心</a>：从任务类型选择工具和排错文章。</li>
-<li><a href="/json/">JSON Formatter</a>：检查 API 响应、配置片段和复制前 JSON。</li>
-<li><a href="/base64/">Base64 Encoder</a>：处理文本编码、JWT 片段和兼容性排查。</li>
-<li><a href="/urlencode/">URL Encoder</a>：确认 query 参数、路径片段和重复编码问题。</li>
-<li><a href="/textdiff/">Text Diff</a>：比较发布说明、配置差异和文案版本。</li>
-</ul>
-</section>
-<section class="ymir-card ymir-guide-review">
-<h2>站点责任边界</h2>
-<p>Ymir Tool 提供通用信息和辅助工具，不提供法律、财务、医疗、安全审计或工程最终结论。工具输出适合作为排查和复核的一步；重要场景仍需要使用官方文档、组织内部流程、专业软件或人工审核确认。</p>
-<p>如需报告页面错误、广告问题、隐私问题或功能建议，请访问 <a href="/contact.html">联系我们</a>。继续使用本站前，也建议阅读 <a href="/terms.html">使用条款</a> 和 <a href="/disclaimer.html">免责声明</a>。</p>
-</section>
-</div>
+</main>
+<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><span>浏览器端开发者工具与故障排查指南。</span></footer>
+<script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body>
 </html>

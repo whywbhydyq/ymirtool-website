@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
-<title>正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool</title>
-<meta content="正则表达式测试工具使用说明，介绍匹配规则、分组、转义、贪婪匹配、多行模式和常见错误排查。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
+<link crossorigin="" href="https://cdn.vercel-insights.com" rel="preconnect"/>
+<title>JavaScript 正则测试指南：反例、分组、Flags 与回溯风险 | Ymir Tool</title>
+<meta content="用正例、反例和长输入测试 JavaScript 正则表达式，检查分组、边界、Unicode、Flags、贪婪匹配与灾难性回溯风险，并说明上线前应保留的测试样例。" name="description"/>
 <link href="https://ymirtool.com/regex-tester-guide.html" rel="canonical"/>
 <meta content="正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool" property="og:title"/>
-<meta content="正则表达式测试工具使用说明，介绍匹配规则、分组、转义、贪婪匹配、多行模式和常见错误排查。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" property="og:description"/>
+<meta content="用正例、反例和长输入测试 JavaScript 正则表达式，检查分组、边界、Unicode、Flags、贪婪匹配与灾难性回溯风险，并说明上线前应保留的测试样例。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/regex-tester-guide.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
@@ -28,18 +26,18 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool" name="twitter:title">
-<meta content="正则表达式测试工具使用说明，介绍匹配规则、分组、转义、贪婪匹配、多行模式和常见错误排查。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"正则表达式测试工具使用说明：匹配验证、反例检查与上线复核","name":"正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool","url":"https://ymirtool.com/regex-tester-guide.html","description":"正则表达式测试工具使用说明，介绍匹配规则、分组、转义、贪婪匹配、多行模式和常见错误排查。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-regex.png","@id":"https://ymirtool.com/regex-tester-guide.html#article","mainEntityOfPage":"https://ymirtool.com/regex-tester-guide.html","inLanguage":"zh-CN"}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool" name="twitter:title"/>
+<meta content="用正例、反例和长输入测试 JavaScript 正则表达式，检查分组、边界、Unicode、Flags、贪婪匹配与灾难性回溯风险，并说明上线前应保留的测试样例。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"正则表达式测试工具使用说明：匹配验证、反例检查与上线复核","name":"正则表达式测试工具使用说明：匹配验证、反例检查与上线复核 | Ymir Tool","url":"https://ymirtool.com/regex-tester-guide.html","description":"正则表达式测试工具使用说明，介绍匹配规则、分组、转义、贪婪匹配、多行模式和常见错误排查。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-07-10","author":{"@type":"Organization","name":"Ymir Tool Editorial","url":"https://ymirtool.com/about.html#editorial-policy"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-regex.png","@id":"https://ymirtool.com/regex-tester-guide.html#article","mainEntityOfPage":"https://ymirtool.com/regex-tester-guide.html","inLanguage":"zh-CN","reviewedBy":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/methodology.html"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"正则表达式测试工具使用说明 - Ymir Tool","item":"https://ymirtool.com/regex-tester-guide.html"}],"@id":"https://ymirtool.com/regex-tester-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/regex-tester-guide.html#article"}}</script><script data-ymir-ld="faq" data-ymir-schema-purpose="semantic-faq-ai-readability" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"为什么本页能匹配，代码里不匹配？","acceptedAnswer":{"@type":"Answer","text":"常见原因是目标语言的正则语法、转义层级、匹配标志或输入换行不同。"}},{"@type":"Question","name":"什么是贪婪匹配？","acceptedAnswer":{"@type":"Answer","text":"贪婪匹配会尽可能多地匹配内容，可能超过你预期的范围。需要时可使用更精确的边界或非贪婪写法。"}},{"@type":"Question","name":"正则适合解析 HTML 吗？","acceptedAnswer":{"@type":"Answer","text":"简单片段可以辅助处理，但复杂 HTML 应使用解析器而不是依赖正则。 打开正则测试工具"}}],"@id":"https://ymirtool.com/regex-tester-guide.html#faq","url":"https://ymirtool.com/regex-tester-guide.html","isPartOf":{"@id":"https://ymirtool.com/regex-tester-guide.html#article"},"inLanguage":"zh-CN"}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"正则表达式测试工具使用说明 - Ymir Tool","item":"https://ymirtool.com/regex-tester-guide.html"}],"@id":"https://ymirtool.com/regex-tester-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/regex-tester-guide.html#article"}}</script><link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / 正则测试</p>
 <h1>正则表达式测试工具使用说明</h1>
@@ -89,7 +87,7 @@
 <h3>正则适合解析 HTML 吗？</h3>
 <p>简单片段可以辅助处理，但复杂 HTML 应使用解析器而不是依赖正则。</p>
 <p><a class="btn btn-primary" href="/regex/">打开正则测试工具</a></p>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-regex">
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth">
 <h2>正则测试应从最小样本开始，而不是直接处理整份日志</h2>
 <p>正则表达式最容易出现两类问题：匹配不到应该匹配的内容，或者匹配过多导致误伤。排查时应先准备正例、反例和边界样本，而不是把整份日志、HTML 或生产数据直接粘贴进去。一个好的测试集至少包含“应该匹配”“不应该匹配”“接近但不匹配”的三种文本。</p>
 <h3>可复制样例</h3>
@@ -109,10 +107,11 @@
 <h3>参考依据</h3>
 <p>浏览器端正则行为可参考 MDN JavaScript regular expressions。Ymir Tool 的正则页面适合快速验证表达式形状，不替代生产安全审查。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/regex-tester-guide.html">正则贪婪与惰性量词排查</a> — 用可复制样例解释 .*、.*?、字符类和边界条件，避免正则匹配过多或性能异常。</li><li><a href="/regex-tester-guide.html">正则捕获组调试指南</a> — 说明括号分组、命名组、非捕获组、可选组和替换引用的排查方法，避免字段错位。</li><li><a href="/regex-tester-guide.html">JavaScript 正则 flags 使用指南</a> — 解释 g、i、m、s、u、y 等 JavaScript 正则 flags 对匹配、换行、Unicode 和 lastIndex 的影响。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid"><a href="/regex-tester-guide.html">正则测试指南</a><a href="/textdiff/">文本对比</a></div>
 </section>
-<section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions" rel="noopener noreferrer" target="_blank">MDN Regular expressions</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" rel="noopener noreferrer" target="_blank">MDN RegExp</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
+<section class="ymir-reference-sources ymir-card"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions" rel="noopener noreferrer" target="_blank">MDN Regular expressions</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" rel="noopener noreferrer" target="_blank">MDN RegExp</a></li></ul></section></div>
+<footer class="ymir-footer"><span>© 2026 Ymir Tool</span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Practical browser-based tools with documented limits and review guidance.</span></footer><script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body>
 </html>

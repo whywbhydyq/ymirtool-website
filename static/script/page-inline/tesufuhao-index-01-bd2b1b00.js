@@ -1,1 +1,0 @@
-$(document).ready(function() {$("a[id^='tsfh_']").click(function(e) {var ss = $(e.target).attr("id").split("_");$("html, body").animate({scrollTop: $("#"+ss[1]).offset().top }, {duration: 500,easing: "swing"});return false;});});

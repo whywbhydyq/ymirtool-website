@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-<title id="title">Ymir Tool logo</title>
-<desc id="desc">A square Ymir Tool logo with the letter Y.</desc>
-<rect width="512" height="512" rx="112" fill="#102033"/>
-<circle cx="378" cy="132" r="128" fill="#28558f" opacity="0.72"/>
-<circle cx="112" cy="400" r="132" fill="#164767" opacity="0.82"/>
-<path d="M138 128h74l44 82 44-82h74l-86 146v110h-64V274L138 128z" fill="#f6f8fb"/>
-<path d="M160 398h192" stroke="#75a7e6" stroke-width="28" stroke-linecap="round"/>
-</svg>

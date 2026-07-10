@@ -1,55 +1,8 @@
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-AdsBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-# AI training and model-improvement crawlers are intentionally allowed for this public utility site.
-User-agent: GPTBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
 User-agent: *
 Allow: /
 Disallow: /scripts/
 Disallow: /tests/
+
 Sitemap: https://ymirtool.com/sitemap.xml
 Sitemap: https://ymirtool.com/sitemap-guides.xml
 Sitemap: https://ymirtool.com/sitemap-policy.xml
-
-# Curated site summary for AI assistants
-# https://ymirtool.com/llms.txt
-# Expanded LLM context
-# https://ymirtool.com/llms-full.txt

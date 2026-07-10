@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
-<meta content="index, follow" name="robots"/>
+<meta content="noindex, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
 <title>MD5 哈希工具使用说明：文件校验、兼容场景与安全边界 | Ymir Tool</title>
 <meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="description"/>
 <link href="https://ymirtool.com/md5-hash-guide.html" rel="canonical"/>
@@ -15,7 +12,7 @@
 <meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/md5-hash-guide.html" property="og:url"/>
-<meta content="Ymir Tool" property="og:site_name">
+<meta content="Ymir Tool" property="og:site_name"/>
 <meta content="https://ymirtool.com/static/images/og-md5.png" property="og:image"/>
 <meta content="https://ymirtool.com/static/images/og-md5.png" property="og:image:secure_url"/>
 <meta content="image/png" property="og:image:type"/>
@@ -28,18 +25,17 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="MD5 哈希工具使用说明：文件校验、兼容场景与安全边界 | Ymir Tool" name="twitter:title"/>
-<meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"MD5 哈希工具使用说明：文件校验、兼容场景与安全边界","name":"MD5 哈希工具使用说明：文件校验、兼容场景与安全边界 | Ymir Tool","url":"https://ymirtool.com/md5-hash-guide.html","description":"MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-md5.png","@id":"https://ymirtool.com/md5-hash-guide.html#article","mainEntityOfPage":"https://ymirtool.com/md5-hash-guide.html","inLanguage":"zh-CN"}</script>
+<meta content="MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"MD5 哈希工具使用说明：文件校验、兼容场景与安全边界","name":"MD5 哈希工具使用说明：文件校验、兼容场景与安全边界 | Ymir Tool","url":"https://ymirtool.com/md5-hash-guide.html","description":"MD5 哈希工具使用说明，解释 MD5 摘要用途、使用步骤、常见误区、安全边界和相关哈希工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。 重点覆盖操作步骤、错误边界和复制前检查。","datePublished":"2026-06-01","dateModified":"2026-07-10","author":{"@type":"Organization","name":"Ymir Tool Editorial","url":"https://ymirtool.com/about.html#editorial-policy"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-md5.png","@id":"https://ymirtool.com/md5-hash-guide.html#article","mainEntityOfPage":"https://ymirtool.com/md5-hash-guide.html","inLanguage":"zh-CN","reviewedBy":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/methodology.html"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"MD5 哈希工具使用说明 - Ymir Tool","item":"https://ymirtool.com/md5-hash-guide.html"}],"@id":"https://ymirtool.com/md5-hash-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/md5-hash-guide.html#article"}}</script><script data-ymir-ld="faq" data-ymir-schema-purpose="semantic-faq-ai-readability" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"MD5 可以还原原文吗？","acceptedAnswer":{"@type":"Answer","text":"标准 MD5 是单向摘要，不能可靠还原原文。网上所谓 MD5 解密通常是查表或猜测，并不是真正解密。"}},{"@type":"Question","name":"为什么两个看起来一样的文本 MD5 不同？","acceptedAnswer":{"@type":"Answer","text":"通常是空格、换行、编码、大小写或不可见字符不同。建议先复制到纯文本环境中检查。"}},{"@type":"Question","name":"什么时候该用 SHA256？","acceptedAnswer":{"@type":"Answer","text":"如果你需要更强的摘要算法或安全性要求更高的场景，优先考虑 SHA256，并结合具体业务安全要求评估。 打开 MD5 工具"}}],"@id":"https://ymirtool.com/md5-hash-guide.html#faq","url":"https://ymirtool.com/md5-hash-guide.html","isPartOf":{"@id":"https://ymirtool.com/md5-hash-guide.html#article"},"inLanguage":"zh-CN"}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"MD5 哈希工具使用说明 - Ymir Tool","item":"https://ymirtool.com/md5-hash-guide.html"}],"@id":"https://ymirtool.com/md5-hash-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/md5-hash-guide.html#article"}}</script><link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / MD5 说明</p>
 <h1>MD5 哈希工具使用说明</h1>
@@ -82,7 +78,7 @@
 <p>如果你需要更强的摘要算法或安全性要求更高的场景，优先考虑 SHA256，并结合具体业务安全要求评估。</p>
 <p><a class="btn btn-primary" href="/md5/">打开 MD5 工具</a></p>
 <section class="ymir-guide-review ymir-card"><h2>MD5 适合与不适合的场景</h2><p>MD5 可以用于非安全场景下的快速一致性检查，例如比较示例文本、确认下载片段或教学演示摘要变化。它不适合密码存储、签名校验或任何需要抗碰撞安全性的场景。</p><ul><li>计算前确认输入是否包含隐藏空格或换行。</li><li>比较摘要时确认大小写和编码一致。</li><li>安全需求应使用当前推荐的密码哈希或签名方案。</li></ul></section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-md5">
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth">
 <h2>MD5 适合做摘要核对，不适合做安全保护</h2>
 <p>MD5 的高价值使用场景是快速比较两段内容是否完全一致，例如下载文件校验、配置片段核对、缓存键排查或发布前确认文本没有被改动。它不适合密码存储、权限签名、支付签名、抗攻击完整性保护或任何需要抗碰撞能力的安全设计。页面必须把“可用于校验”与“可用于加密”明确区分，避免用户把摘要值当作密文。</p>
 <h3>校验样例</h3>
@@ -101,10 +97,11 @@
 <h3>参考依据</h3>
 <p>MD5 算法定义来自 RFC 1321。由于现代安全实践已经不推荐 MD5 作为抗攻击签名或密码保护方案，本指南只把它定位为低风险摘要核对工具。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/md5-hash-guide.html">MD5 文件校验流程</a> — 说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section class="ymir-container ymir-help ymir-card"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/md5-hash-guide.html">MD5 文件校验流程</a> — 说明如何使用 MD5 做下载文件、配置片段和发布包的一致性核对，并区分安全签名与兼容校验。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid"><a href="/md5/">MD5 工具</a><a href="/md5-hash-guide.html">MD5 哈希指南</a><a href="/base64-encoding-guide.html">Base64 编码指南</a><a href="/priority-tools-guide.html">重点工具指南</a></div>
 </section>
-<section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://www.rfc-editor.org/rfc/rfc1321" rel="noopener noreferrer" target="_blank">RFC 1321 The MD5 Message-Digest Algorithm</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" rel="noopener noreferrer" target="_blank">OWASP Password Storage Cheat Sheet</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
+<section class="ymir-reference-sources ymir-card"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://www.rfc-editor.org/rfc/rfc1321" rel="noopener noreferrer" target="_blank">RFC 1321 The MD5 Message-Digest Algorithm</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" rel="noopener noreferrer" target="_blank">OWASP Password Storage Cheat Sheet</a></li></ul></section></div>
+<footer class="ymir-footer"><span>© 2026 Ymir Tool</span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Practical browser-based tools with documented limits and review guidance.</span></footer><script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body>
 </html>

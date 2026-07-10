@@ -1,30 +1,22 @@
 (function () {
   'use strict';
   window.YmirToolsManifest = {
-  "version": "20260531-v58",
+  "version": "20260710-v62",
   "site": {
     "origin": "https://ymirtool.com",
     "name": "Ymir Tool",
-    "lastmod": "2026-06-07",
-    "version": "20260531-v58"
+    "lastmod": "2026-07-10",
+    "version": "20260710-v62",
+    "generator": "v62 audited catalog and tool runtime"
   },
   "entrypoint": "/static/script/ymir-vue-loader.js",
   "runtime": {
     "vendor": [
-      "/static/vendor/vue/vue.global.prod.js",
-      "/static/vendor/element-plus/index.full.min.js",
-      "/static/vendor/element-plus/index.css"
+      "/static/script/ymir-tool-runtime-v62.js"
     ],
-    "sharedScripts": [
-      "/static/script/ymir-vue-core.js",
-      "/static/script/ymir-vue-render-helpers.js",
-      "/static/script/ymir-vue-actions.js",
-      "/static/script/ymir-vue-app-factory.js",
-      "/static/script/ymir-vue-shared.js"
-    ],
+    "sharedScripts": [],
     "coreToolScripts": [
-      "/static/script/ymir-vue-core-tool-engines.js",
-      "/static/script/ymir-vue-core-tools-schema.js"
+      "/static/script/ymir-tool-core-runtime-v62.js"
     ],
     "coreApp": "/static/script/ymir-vue-tools-app.js"
   },
@@ -360,14 +352,12 @@
   "featured": [
     "json",
     "base64",
-    "md5",
     "urlencode",
     "formatjs",
     "unixtime",
     "textdiff",
     "txtcount",
-    "regex",
-    "calculator"
+    "regex"
   ],
   "categories": [
     {
@@ -380,7 +370,7 @@
     },
     {
       "id": "encode",
-      "labelZh": "\u7f16\u7801",
+      "labelZh": "编码",
       "labelEn": "Encoding",
       "tools": [
         "base64",
@@ -389,7 +379,7 @@
     },
     {
       "id": "hash",
-      "labelZh": "\u54c8\u5e0c",
+      "labelZh": "哈希",
       "labelEn": "Hash",
       "tools": [
         "md5"
@@ -397,7 +387,7 @@
     },
     {
       "id": "format",
-      "labelZh": "\u683c\u5f0f\u5316",
+      "labelZh": "格式化",
       "labelEn": "Formatter",
       "tools": [
         "formatjs",
@@ -406,7 +396,7 @@
     },
     {
       "id": "text",
-      "labelZh": "\u6587\u672c",
+      "labelZh": "文本",
       "labelEn": "Text",
       "tools": [
         "unixtime",
@@ -416,7 +406,7 @@
     },
     {
       "id": "calc",
-      "labelZh": "\u8ba1\u7b97",
+      "labelZh": "计算",
       "labelEn": "Calculator",
       "tools": [
         "calculator"
@@ -433,23 +423,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "AES加密/解密",
-      "titleEn": "AES Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt AES text with a passphrase. Use this tool for compatibility checks and non-sensitive test data.",
-      "descriptionEn": "Encrypt or decrypt AES text with a passphrase. Use this tool for compatibility checks and non-sensitive test data.",
-      "keywords": "aes加密/解密 AES Encryption / Decryption aesencrypt AES Encryption / Decryption AES加密/解密",
+      "titleZh": "AES-GCM 加密 / 解密测试工具",
+      "titleEn": "AES-GCM Encrypt / Decrypt Test Tool",
+      "descriptionZh": "使用 Web Crypto 创建或读取 Ymir Tool AES-GCM 测试载荷，并单独保留旧 CryptoJS 兼容模式。",
+      "descriptionEn": "Create or read Ymir Tool AES-GCM test payloads with Web Crypto, with a separate legacy CryptoJS compatibility mode.",
+      "keywords": "aes加密/解密 AES Encryption / Decryption aesencrypt AES加密/解密 AES-GCM 加密 解密测试工具 Encrypt Decrypt Test Tool",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 4,
       "shell": {
-        "title": "AES Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt AES text with a passphrase. Use this tool for compatibility checks and non-sensitive test data.",
+        "title": "AES-GCM Encrypt / Decrypt Test Tool - Ymir Tool",
+        "description": "Create or read Ymir Tool AES-GCM test payloads with Web Crypto, with a separate legacy CryptoJS compatibility mode.",
         "canonical": "https://ymirtool.com/aesencrypt/",
-        "heroTitle": "AES Encrypt / Decrypt",
-        "schemaName": "AES Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "AES-GCM Encrypt / Decrypt Test Tool",
+        "schemaName": "AES-GCM Encrypt / Decrypt Test Tool",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -477,7 +467,7 @@
         "canonical": "https://ymirtool.com/alldns/",
         "heroTitle": "Regional DNS Server Directory",
         "schemaName": "Regional DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -489,23 +479,23 @@
       "category": "hash",
       "categoryLabelZh": "哈希",
       "categoryLabelEn": "Hash",
-      "titleZh": "哈希摘要工具集合",
-      "titleEn": "Hash Digest Tools",
-      "descriptionZh": "Generate MD5, SHA-1, SHA-256, and SHA-512 digests quickly.",
-      "descriptionEn": "Generate MD5, SHA-1, SHA-256, and SHA-512 digests quickly.",
-      "keywords": "哈希摘要工具集合 Hash Digest Tools allencrypt Hash Digest Tools 哈希摘要工具集合",
+      "titleZh": "多算法哈希摘要工具",
+      "titleEn": "Multi-Algorithm Hash Digest Tool",
+      "descriptionZh": "比较 MD5、SHA-1、SHA-256 与 SHA-512 输出；需要真实性时应使用 HMAC 或数字签名。",
+      "descriptionEn": "Compare MD5, SHA-1, SHA-256, and SHA-512 outputs; use HMAC or signatures when authenticity matters.",
+      "keywords": "哈希摘要工具集合 Hash Digest Tools allencrypt 多算法哈希摘要工具 Multi-Algorithm Tool",
       "icon": "›",
       "accent": "amber",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 3,
       "shell": {
-        "title": "Hash Generator - Ymir Tool",
-        "description": "Generate MD5, SHA-1, SHA-256, and SHA-512 digests quickly.",
+        "title": "Multi-Algorithm Hash Digest Tool - Ymir Tool",
+        "description": "Compare MD5, SHA-1, SHA-256, and SHA-512 outputs; use HMAC or signatures when authenticity matters.",
         "canonical": "https://ymirtool.com/allencrypt/",
-        "heroTitle": "Hash Generator",
-        "schemaName": "Hash Generator",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Multi-Algorithm Hash Digest Tool",
+        "schemaName": "Multi-Algorithm Hash Digest Tool",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -519,8 +509,8 @@
       "categoryLabelEn": "Encoding",
       "titleZh": "Android按键码",
       "titleEn": "Android KeyCode Lookup",
-      "descriptionZh": "Search common Android KeyEvent key codes for keyboard, media, and navigation events. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common Android KeyEvent key codes for keyboard, media, and navigation events. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common Android KeyEvent key codes for keyboard, media, and navigation events.",
+      "descriptionEn": "Search common Android KeyEvent key codes for keyboard, media, and navigation events.",
       "keywords": "android按键码 Android KeyCode Lookup androidkeycode Android KeyCode Lookup Android按键码",
       "icon": "›",
       "accent": "cyan",
@@ -529,11 +519,11 @@
       "directoryRank": 20,
       "shell": {
         "title": "Android KeyCode Reference | Ymir Tool",
-        "description": "Search common Android KeyEvent key codes for keyboard, media, and navigation events. Search rows quickly with a compact table UI.",
+        "description": "Search common Android KeyEvent key codes for keyboard, media, and navigation events.",
         "canonical": "https://ymirtool.com/androidkeycode/",
         "heroTitle": "Android KeyCode Reference",
         "schemaName": "Android KeyCode Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -547,8 +537,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "Android Manifest权限",
       "titleEn": "Android Manifest Permissions",
-      "descriptionZh": "Search common Android manifest permissions and review their risk level before declaring them. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common Android manifest permissions and review their risk level before declaring them. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common Android manifest permissions and review their risk level before declaring them.",
+      "descriptionEn": "Search common Android manifest permissions and review their risk level before declaring them.",
       "keywords": "android manifest权限 Android Manifest Permissions androidmanifest Android Manifest Permissions Android Manifest权限",
       "icon": "›",
       "accent": "blue",
@@ -557,11 +547,11 @@
       "directoryRank": 10,
       "shell": {
         "title": "Android Manifest Permission Reference | Ymir Tool",
-        "description": "Search common Android manifest permissions and review their risk level before declaring them. Search rows quickly with a compact table UI.",
+        "description": "Search common Android manifest permissions and review their risk level before declaring them.",
         "canonical": "https://ymirtool.com/androidmanifest/",
         "heroTitle": "Android Manifest Permission Reference",
         "schemaName": "Android Manifest Permission Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -575,8 +565,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "各国区号时差查询",
       "titleEn": "Country Code and Time Zone Lookup",
-      "descriptionZh": "Search common country calling codes, time offsets, and internet country code hints. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search common country calling codes, time offsets, and internet country code hints. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search common country calling codes, time offsets, and internet country code hints.",
+      "descriptionEn": "Search common country calling codes, time offsets, and internet country code hints.",
       "keywords": "各国区号时差查询 Country Code and Time Zone Lookup areacode Country Code and Time Zone Lookup 各国区号时差查询",
       "icon": "›",
       "accent": "amber",
@@ -585,11 +575,11 @@
       "directoryRank": 22,
       "shell": {
         "title": "Country Calling Code Lookup | Ymir Tool",
-        "description": "Search common country calling codes, time offsets, and internet country code hints. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search common country calling codes, time offsets, and internet country code hints.",
         "canonical": "https://ymirtool.com/areacode/",
         "heroTitle": "Country Calling Code Lookup",
         "schemaName": "Country Calling Code Lookup",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -617,7 +607,7 @@
         "canonical": "https://ymirtool.com/ascii/",
         "heroTitle": "ASCII Code Converter",
         "schemaName": "ASCII Code Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -645,7 +635,7 @@
         "canonical": "https://ymirtool.com/asciicode/",
         "heroTitle": "ASCII Code Converter",
         "schemaName": "ASCII Code Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -673,7 +663,7 @@
         "canonical": "https://ymirtool.com/autoformat/",
         "heroTitle": "Article Auto Formatter",
         "schemaName": "Article Auto Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -701,7 +691,7 @@
         "canonical": "https://ymirtool.com/barcode/",
         "heroTitle": "Barcode Generator",
         "schemaName": "Barcode Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -729,7 +719,7 @@
         "canonical": "https://ymirtool.com/base64/",
         "heroTitle": "Base64 Encoder & Decoder",
         "schemaName": "Base64 Encoder and Decoder",
-        "lastmod": "2026-06-07"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -743,8 +733,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "Bootstrap字体图标",
       "titleEn": "Bootstrap Icons",
-      "descriptionZh": "Search legacy Bootstrap 3 glyphicon class names and common usage hints. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search legacy Bootstrap 3 glyphicon class names and common usage hints. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search legacy Bootstrap 3 glyphicon class names and common usage hints.",
+      "descriptionEn": "Search legacy Bootstrap 3 glyphicon class names and common usage hints.",
       "keywords": "bootstrap字体图标 Bootstrap Icons bootstrapicon Bootstrap Icons Bootstrap字体图标",
       "icon": "›",
       "accent": "blue",
@@ -753,11 +743,11 @@
       "directoryRank": 9,
       "shell": {
         "title": "Bootstrap Glyphicons Reference | Ymir Tool",
-        "description": "Search legacy Bootstrap 3 glyphicon class names and common usage hints. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search legacy Bootstrap 3 glyphicon class names and common usage hints.",
         "canonical": "https://ymirtool.com/bootstrapicon/",
         "heroTitle": "Bootstrap Glyphicons Reference",
         "schemaName": "Bootstrap Glyphicons Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -785,7 +775,7 @@
         "canonical": "https://ymirtool.com/browserinfo/",
         "heroTitle": "Browser Information Checker",
         "schemaName": "Browser Information Checker",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -813,7 +803,7 @@
         "canonical": "https://ymirtool.com/calcangle/",
         "heroTitle": "Angle Converter",
         "schemaName": "Angle Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -841,7 +831,7 @@
         "canonical": "https://ymirtool.com/calcarea/",
         "heroTitle": "Area Converter",
         "schemaName": "Area Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -869,7 +859,7 @@
         "canonical": "https://ymirtool.com/calcdata/",
         "heroTitle": "Data Size Converter",
         "schemaName": "Data Size Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -897,7 +887,7 @@
         "canonical": "https://ymirtool.com/calcforce/",
         "heroTitle": "Force Converter",
         "schemaName": "Force Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -925,7 +915,7 @@
         "canonical": "https://ymirtool.com/calcheat/",
         "heroTitle": "Energy and Heat Converter",
         "schemaName": "Energy and Heat Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -953,7 +943,7 @@
         "canonical": "https://ymirtool.com/calclength/",
         "heroTitle": "Length Converter",
         "schemaName": "Length Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -981,7 +971,7 @@
         "canonical": "https://ymirtool.com/calcpower/",
         "heroTitle": "Power Converter",
         "schemaName": "Power Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1009,7 +999,7 @@
         "canonical": "https://ymirtool.com/calcpressure/",
         "heroTitle": "Pressure Converter",
         "schemaName": "Pressure Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1037,7 +1027,7 @@
         "canonical": "https://ymirtool.com/calcspeed/",
         "heroTitle": "Speed Converter",
         "schemaName": "Speed Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1065,7 +1055,7 @@
         "canonical": "https://ymirtool.com/calctemperature/",
         "heroTitle": "Temperature Converter",
         "schemaName": "Temperature Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1093,7 +1083,7 @@
         "canonical": "https://ymirtool.com/calcthickness/",
         "heroTitle": "Thickness Converter",
         "schemaName": "Thickness Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1121,7 +1111,7 @@
         "canonical": "https://ymirtool.com/calctime/",
         "heroTitle": "Time Converter",
         "schemaName": "Time Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1140,8 +1130,8 @@
       "keywords": "calculator scientific 科学计算器 在线计算器 在线科学计算器 Scientific Calculator online percentage brackets expression rounding units 百分比 括号 小数 单位 取整 在线计算器, 百分比计算器, 括号计算, 基础运算, 结果复核, 小数取整",
       "icon": "▣",
       "accent": "amber",
-      "featured": true,
-      "featuredRank": 10,
+      "featured": false,
+      "featuredRank": null,
       "directoryRank": 3,
       "shell": {
         "title": "在线计算器：百分比、括号、基础运算和结果复核 | Ymir Tool",
@@ -1149,7 +1139,7 @@
         "canonical": "https://ymirtool.com/calculator/",
         "heroTitle": "在线计算器",
         "schemaName": "在线计算器",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       },
       "lastmod": "2026-06-07"
     },
@@ -1178,7 +1168,7 @@
         "canonical": "https://ymirtool.com/calcvolume/",
         "heroTitle": "Volume Converter",
         "schemaName": "Volume Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1206,7 +1196,7 @@
         "canonical": "https://ymirtool.com/camelcase/",
         "heroTitle": "Camel Case Converter",
         "schemaName": "Camel Case Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1234,7 +1224,7 @@
         "canonical": "https://ymirtool.com/capital/",
         "heroTitle": "Capitalization Converter",
         "schemaName": "Capitalization Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1248,8 +1238,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "历史朝代时间查询",
       "titleEn": "Chinese Dynasty Timeline",
-      "descriptionZh": "Search Chinese dynasties, approximate date ranges, capitals, and short notes. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search Chinese dynasties, approximate date ranges, capitals, and short notes. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search Chinese dynasties, approximate date ranges, capitals, and short notes.",
+      "descriptionEn": "Search Chinese dynasties, approximate date ranges, capitals, and short notes.",
       "keywords": "历史朝代时间查询 Chinese Dynasty Timeline chaodai Chinese Dynasty Timeline 历史朝代时间查询",
       "icon": "›",
       "accent": "amber",
@@ -1258,11 +1248,11 @@
       "directoryRank": 25,
       "shell": {
         "title": "Chinese Dynasties Timeline | Ymir Tool",
-        "description": "Search Chinese dynasties, approximate date ranges, capitals, and short notes. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search Chinese dynasties, approximate date ranges, capitals, and short notes.",
         "canonical": "https://ymirtool.com/chaodai/",
         "heroTitle": "Chinese Dynasties Timeline",
         "schemaName": "Chinese Dynasties Timeline",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1290,7 +1280,7 @@
         "canonical": "https://ymirtool.com/confundirjs/",
         "heroTitle": "JavaScript String Encoding Helper",
         "schemaName": "JavaScript String Encoding Helper",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1304,8 +1294,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "Content-Type对照表",
       "titleEn": "Content-Type Reference",
-      "descriptionZh": "Search common file extensions and media types used in HTTP Content-Type headers. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common file extensions and media types used in HTTP Content-Type headers. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common file extensions and media types used in HTTP Content-Type headers.",
+      "descriptionEn": "Search common file extensions and media types used in HTTP Content-Type headers.",
       "keywords": "content-type对照表 Content-Type Reference contenttype Content-Type Reference Content-Type对照表",
       "icon": "›",
       "accent": "blue",
@@ -1314,11 +1304,11 @@
       "directoryRank": 2,
       "shell": {
         "title": "Content-Type / MIME Type Reference | Ymir Tool",
-        "description": "Search common file extensions and media types used in HTTP Content-Type headers. Search rows quickly with a compact table UI.",
+        "description": "Search common file extensions and media types used in HTTP Content-Type headers.",
         "canonical": "https://ymirtool.com/contenttype/",
         "heroTitle": "Content-Type / MIME Type Reference",
         "schemaName": "Content-Type / MIME Type Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1346,7 +1336,7 @@
         "canonical": "https://ymirtool.com/createmeta/",
         "heroTitle": "Meta Tag Generator",
         "schemaName": "Meta Tag Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1360,8 +1350,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "世界各地货币查询",
       "titleEn": "World Currency Lookup",
-      "descriptionZh": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool.",
+      "descriptionEn": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool.",
       "keywords": "世界各地货币查询 World Currency Lookup currency World Currency Lookup 世界各地货币查询",
       "icon": "›",
       "accent": "amber",
@@ -1370,11 +1360,11 @@
       "directoryRank": 21,
       "shell": {
         "title": "Currency Code Reference | Ymir Tool",
-        "description": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search common ISO currency codes, symbols, and currency names. This is not a live exchange-rate tool.",
         "canonical": "https://ymirtool.com/currency/",
         "heroTitle": "Currency Code Reference",
         "schemaName": "Currency Code Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1386,23 +1376,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "对称加密/解密",
-      "titleEn": "Symmetric Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
-      "descriptionEn": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
-      "keywords": "对称加密/解密 Symmetric Encryption / Decryption deencrypt Symmetric Encryption / Decryption 对称加密/解密",
+      "titleZh": "DES 迁移检查清单",
+      "titleEn": "DES Migration Checklist",
+      "descriptionZh": "记录旧 DES 的模式、IV、padding、编码与测试向量；运行时执行已禁用。",
+      "descriptionEn": "Record the old DES mode, IV, padding, encoding, and test vectors; runtime execution is disabled.",
+      "keywords": "对称加密/解密 Symmetric Encryption / Decryption deencrypt DES 迁移检查清单 Migration Checklist",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 3,
       "shell": {
-        "title": "DES Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
+        "title": "DES Migration Checklist - Ymir Tool",
+        "description": "Record the old DES mode, IV, padding, encoding, and test vectors; runtime execution is disabled.",
         "canonical": "https://ymirtool.com/deencrypt/",
-        "heroTitle": "DES Encrypt / Decrypt",
-        "schemaName": "DES Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "DES Migration Checklist",
+        "schemaName": "DES Migration Checklist",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1414,23 +1404,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "DES加密/解密",
-      "titleEn": "DES Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
-      "descriptionEn": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
-      "keywords": "des加密/解密 DES Encryption / Decryption desencrypt DES Encryption / Decryption DES加密/解密",
+      "titleZh": "DES 密文格式记录参考",
+      "titleEn": "DES Ciphertext Format Reference",
+      "descriptionZh": "记录 DES 密文的封装、模式、IV、padding 与密钥派生信息；运行时执行已禁用。",
+      "descriptionEn": "Document DES ciphertext encoding, mode, IV, padding, and key derivation; runtime execution is disabled.",
+      "keywords": "des加密/解密 DES Encryption / Decryption desencrypt DES加密/解密 密文格式记录参考 Ciphertext Format Reference",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 5,
       "shell": {
-        "title": "DES Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt DES text with a passphrase. DES is legacy and should only be used for compatibility checks.",
+        "title": "DES Ciphertext Format Reference - Ymir Tool",
+        "description": "Document DES ciphertext encoding, mode, IV, padding, and key derivation; runtime execution is disabled.",
         "canonical": "https://ymirtool.com/desencrypt/",
-        "heroTitle": "DES Encrypt / Decrypt",
-        "schemaName": "DES Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "DES Ciphertext Format Reference",
+        "schemaName": "DES Ciphertext Format Reference",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1458,7 +1448,7 @@
         "canonical": "https://ymirtool.com/dns/",
         "heroTitle": "Public DNS Resolver List",
         "schemaName": "Public DNS Resolver List",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1486,7 +1476,7 @@
         "canonical": "https://ymirtool.com/dnsdx/",
         "heroTitle": "China Telecom DNS Server Directory",
         "schemaName": "China Telecom DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1514,7 +1504,7 @@
         "canonical": "https://ymirtool.com/dnsedu/",
         "heroTitle": "China Education Network DNS Directory",
         "schemaName": "China Education Network DNS Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1542,7 +1532,7 @@
         "canonical": "https://ymirtool.com/dnslt/",
         "heroTitle": "China Unicom DNS Server Directory",
         "schemaName": "China Unicom DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1570,7 +1560,7 @@
         "canonical": "https://ymirtool.com/dnstt/",
         "heroTitle": "Tietong DNS Server Directory",
         "schemaName": "Tietong DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1598,7 +1588,7 @@
         "canonical": "https://ymirtool.com/dnsusa/",
         "heroTitle": "United States DNS Server Directory",
         "schemaName": "United States DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1626,7 +1616,7 @@
         "canonical": "https://ymirtool.com/dnsyd/",
         "heroTitle": "China Mobile DNS Server Directory",
         "schemaName": "China Mobile DNS Server Directory",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1654,7 +1644,7 @@
         "canonical": "https://ymirtool.com/editor/",
         "heroTitle": "HTML Rich Text Editor",
         "schemaName": "HTML Rich Text Editor",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1682,7 +1672,7 @@
         "canonical": "https://ymirtool.com/endecodejs/",
         "heroTitle": "JavaScript Encode / Decode",
         "schemaName": "JavaScript Encode / Decode",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1710,7 +1700,7 @@
         "canonical": "https://ymirtool.com/enlower/",
         "heroTitle": "Uppercase / Lowercase Converter",
         "schemaName": "Uppercase / Lowercase Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1722,23 +1712,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "Escape编码/解码",
-      "titleEn": "Escape Encoder / Decoder",
-      "descriptionZh": "Encode and decode legacy JavaScript escape text quickly.",
-      "descriptionEn": "Encode and decode legacy JavaScript escape text quickly.",
-      "keywords": "escape编码/解码 Escape Encoder / Decoder escape Escape Encoder / Decoder Escape编码/解码",
+      "titleZh": "JavaScript escape 编码 / 解码",
+      "titleEn": "Legacy JavaScript Escape Converter",
+      "descriptionZh": "检查旧式 JavaScript escape/unescape 表示；这是编码兼容工具，不是加密。",
+      "descriptionEn": "Inspect legacy JavaScript escape/unescape text for compatibility; this is encoding, not encryption.",
+      "keywords": "escape编码/解码 Escape Encoder / Decoder escape Escape编码/解码 JavaScript 编码 解码 Legacy Converter",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 2,
       "shell": {
-        "title": "JavaScript Escape Converter | Ymir Tool",
-        "description": "Encode and decode legacy JavaScript escape text quickly.",
+        "title": "Legacy JavaScript Escape Converter - Ymir Tool",
+        "description": "Inspect legacy JavaScript escape/unescape text for compatibility; this is encoding, not encryption.",
         "canonical": "https://ymirtool.com/escape/",
-        "heroTitle": "JavaScript Escape Converter",
-        "schemaName": "JavaScript Escape Converter",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Legacy JavaScript Escape Converter",
+        "schemaName": "Legacy JavaScript Escape Converter",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1766,7 +1756,7 @@
         "canonical": "https://ymirtool.com/excel2json/",
         "heroTitle": "CSV / Excel Text to JSON",
         "schemaName": "CSV / Excel Text to JSON",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1780,8 +1770,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "C语言代码格式化",
       "titleEn": "C Formatter",
-      "descriptionZh": "Format C snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format C snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format C snippets for quick review.",
+      "descriptionEn": "Format C snippets for quick review.",
       "keywords": "c语言代码格式化 C Formatter formatc C Formatter C语言代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -1790,11 +1780,11 @@
       "directoryRank": 14,
       "shell": {
         "title": "C Code Formatter | Ymir Tool",
-        "description": "Format C snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format C snippets for quick review.",
         "canonical": "https://ymirtool.com/formatc/",
         "heroTitle": "C Code Formatter",
         "schemaName": "C Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1808,8 +1798,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "C++代码格式化",
       "titleEn": "C++ Formatter",
-      "descriptionZh": "Format C++ snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format C++ snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format C++ snippets for quick review.",
+      "descriptionEn": "Format C++ snippets for quick review.",
       "keywords": "c++代码格式化 C++ Formatter formatcpp C++ Formatter C++代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -1818,11 +1808,11 @@
       "directoryRank": 15,
       "shell": {
         "title": "C++ Code Formatter | Ymir Tool",
-        "description": "Format C++ snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format C++ snippets for quick review.",
         "canonical": "https://ymirtool.com/formatcpp/",
         "heroTitle": "C++ Code Formatter",
         "schemaName": "C++ Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1836,8 +1826,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "C#代码格式化",
       "titleEn": "C# Formatter",
-      "descriptionZh": "Format C# snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format C# snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format C# snippets for quick review.",
+      "descriptionEn": "Format C# snippets for quick review.",
       "keywords": "c#代码格式化 C# Formatter formatcs C# Formatter C#代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -1846,11 +1836,11 @@
       "directoryRank": 9,
       "shell": {
         "title": "C# Code Formatter | Ymir Tool",
-        "description": "Format C# snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format C# snippets for quick review.",
         "canonical": "https://ymirtool.com/formatcs/",
         "heroTitle": "C# Code Formatter",
         "schemaName": "C# Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1864,8 +1854,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "SQL代码格式化",
       "titleEn": "SQL Code Formatter",
-      "descriptionZh": "Format SQL clauses with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format SQL clauses with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format SQL clauses for quick review.",
+      "descriptionEn": "Format SQL clauses for quick review.",
       "keywords": "sql代码格式化 SQL Code Formatter formatcsql SQL Code Formatter SQL代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -1874,11 +1864,11 @@
       "directoryRank": 11,
       "shell": {
         "title": "SQL Code Formatter | Ymir Tool",
-        "description": "Format SQL clauses with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format SQL clauses for quick review.",
         "canonical": "https://ymirtool.com/formatcsql/",
         "heroTitle": "SQL Code Formatter",
         "schemaName": "SQL Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1906,7 +1896,7 @@
         "canonical": "https://ymirtool.com/formatcss/",
         "heroTitle": "CSS Formatter & Minifier",
         "schemaName": "CSS Formatter & Minifier",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1934,7 +1924,7 @@
         "canonical": "https://ymirtool.com/formatfilter/",
         "heroTitle": "HTML Filter / Tag Stripper",
         "schemaName": "HTML Filter / Tag Stripper",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1948,8 +1938,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "HTML格式化/压缩",
       "titleEn": "HTML Formatter / Minifier",
-      "descriptionZh": "Format or minify HTML snippets with a tool workbench and copy-ready output.",
-      "descriptionEn": "Format or minify HTML snippets with a tool workbench and copy-ready output.",
+      "descriptionZh": "Format or minify HTML snippets.",
+      "descriptionEn": "Format or minify HTML snippets.",
       "keywords": "html格式化/压缩 HTML Formatter / Minifier formathtml HTML Formatter / Minifier HTML格式化/压缩",
       "icon": "›",
       "accent": "violet",
@@ -1958,11 +1948,11 @@
       "directoryRank": 1,
       "shell": {
         "title": "HTML Formatter & Minifier | Ymir Tool",
-        "description": "Format or minify HTML snippets with a tool workbench and copy-ready output.",
+        "description": "Format or minify HTML snippets.",
         "canonical": "https://ymirtool.com/formathtml/",
         "heroTitle": "HTML Formatter & Minifier",
         "schemaName": "HTML Formatter & Minifier",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -1976,8 +1966,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "JAVA代码格式化",
       "titleEn": "Java Formatter",
-      "descriptionZh": "Format Java snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format Java snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format Java snippets for quick review.",
+      "descriptionEn": "Format Java snippets for quick review.",
       "keywords": "java代码格式化 Java Formatter formatjava Java Formatter JAVA代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -1986,11 +1976,11 @@
       "directoryRank": 10,
       "shell": {
         "title": "Java Code Formatter | Ymir Tool",
-        "description": "Format Java snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format Java snippets for quick review.",
         "canonical": "https://ymirtool.com/formatjava/",
         "heroTitle": "Java Code Formatter",
         "schemaName": "Java Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2010,7 +2000,7 @@
       "icon": "JS",
       "accent": "violet",
       "featured": true,
-      "featuredRank": 5,
+      "featuredRank": 4,
       "directoryRank": 3,
       "shell": {
         "title": "JavaScript Formatter & Minifier | Ymir Tool",
@@ -2018,7 +2008,7 @@
         "canonical": "https://ymirtool.com/formatjs/",
         "heroTitle": "JavaScript Formatter & Minifier",
         "schemaName": "JavaScript Formatter and Minifier",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2032,8 +2022,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "Perl代码格式化",
       "titleEn": "Perl Formatter",
-      "descriptionZh": "Format Perl snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format Perl snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format Perl snippets for quick review.",
+      "descriptionEn": "Format Perl snippets for quick review.",
       "keywords": "perl代码格式化 Perl Formatter formatperl Perl Formatter Perl代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -2042,11 +2032,11 @@
       "directoryRank": 16,
       "shell": {
         "title": "Perl Code Formatter | Ymir Tool",
-        "description": "Format Perl snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format Perl snippets for quick review.",
         "canonical": "https://ymirtool.com/formatperl/",
         "heroTitle": "Perl Code Formatter",
         "schemaName": "Perl Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2060,8 +2050,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "PHP代码格式化",
       "titleEn": "PHP Formatter",
-      "descriptionZh": "Format PHP snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format PHP snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format PHP snippets for quick review.",
+      "descriptionEn": "Format PHP snippets for quick review.",
       "keywords": "php代码格式化 PHP Formatter formatphp PHP Formatter PHP代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -2070,11 +2060,11 @@
       "directoryRank": 7,
       "shell": {
         "title": "PHP Code Formatter | Ymir Tool",
-        "description": "Format PHP snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format PHP snippets for quick review.",
         "canonical": "https://ymirtool.com/formatphp/",
         "heroTitle": "PHP Code Formatter",
         "schemaName": "PHP Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2088,8 +2078,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "Python代码格式化",
       "titleEn": "Python Formatter",
-      "descriptionZh": "Format Python snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format Python snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format Python snippets for quick review.",
+      "descriptionEn": "Format Python snippets for quick review.",
       "keywords": "python代码格式化 Python Formatter formatpy Python Formatter Python代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -2098,11 +2088,11 @@
       "directoryRank": 12,
       "shell": {
         "title": "Python Code Formatter | Ymir Tool",
-        "description": "Format Python snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format Python snippets for quick review.",
         "canonical": "https://ymirtool.com/formatpy/",
         "heroTitle": "Python Code Formatter",
         "schemaName": "Python Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2116,8 +2106,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "Ruby代码格式化",
       "titleEn": "Ruby Formatter",
-      "descriptionZh": "Format Ruby snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format Ruby snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format Ruby snippets for quick review.",
+      "descriptionEn": "Format Ruby snippets for quick review.",
       "keywords": "ruby代码格式化 Ruby Formatter formatruby Ruby Formatter Ruby代码格式化",
       "icon": "›",
       "accent": "violet",
@@ -2126,11 +2116,11 @@
       "directoryRank": 13,
       "shell": {
         "title": "Ruby Code Formatter | Ymir Tool",
-        "description": "Format Ruby snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format Ruby snippets for quick review.",
         "canonical": "https://ymirtool.com/formatruby/",
         "heroTitle": "Ruby Code Formatter",
         "schemaName": "Ruby Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2158,7 +2148,7 @@
         "canonical": "https://ymirtool.com/formatsql/",
         "heroTitle": "SQL Formatter & Minifier",
         "schemaName": "SQL Formatter & Minifier",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2172,8 +2162,8 @@
       "categoryLabelEn": "Formatter",
       "titleZh": "VBScript格式化",
       "titleEn": "VBScript Formatter",
-      "descriptionZh": "Format VBScript snippets with a copy-ready formatter workbench and copy-ready output for review.",
-      "descriptionEn": "Format VBScript snippets with a copy-ready formatter workbench and copy-ready output for review.",
+      "descriptionZh": "Format VBScript snippets for quick review.",
+      "descriptionEn": "Format VBScript snippets for quick review.",
       "keywords": "vbscript格式化 VBScript Formatter formatvbs VBScript Formatter VBScript格式化",
       "icon": "›",
       "accent": "violet",
@@ -2182,11 +2172,11 @@
       "directoryRank": 17,
       "shell": {
         "title": "VBScript Code Formatter | Ymir Tool",
-        "description": "Format VBScript snippets with a copy-ready formatter workbench and copy-ready output for review.",
+        "description": "Format VBScript snippets for quick review.",
         "canonical": "https://ymirtool.com/formatvbs/",
         "heroTitle": "VBScript Code Formatter",
         "schemaName": "VBScript Code Formatter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2214,7 +2204,7 @@
         "canonical": "https://ymirtool.com/formatxml/",
         "heroTitle": "XML Formatter & Minifier",
         "schemaName": "XML Formatter & Minifier",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2233,8 +2223,8 @@
       "keywords": "guid uuid generator guid生成 uuid生成 guid在线生成 GUID Generator guid GUID Generator GUID 生成器",
       "icon": "GUID",
       "accent": "blue",
-      "featured": true,
-      "featuredRank": 11,
+      "featured": false,
+      "featuredRank": null,
       "directoryRank": 6,
       "shell": {
         "title": "GUID / UUID Generator - Ymir Tool",
@@ -2242,7 +2232,7 @@
         "canonical": "https://ymirtool.com/guid/",
         "heroTitle": "GUID / UUID Generator",
         "schemaName": "GUID / UUID Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2270,7 +2260,7 @@
         "canonical": "https://ymirtool.com/hexconvert/",
         "heroTitle": "Number Base Converter",
         "schemaName": "Number Base Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2298,7 +2288,7 @@
         "canonical": "https://ymirtool.com/hexrgb/",
         "heroTitle": "HEX / RGB Color Converter",
         "schemaName": "HEX / RGB Color Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2326,7 +2316,7 @@
         "canonical": "https://ymirtool.com/htaccess2nginx/",
         "heroTitle": "htaccess to Nginx Rewrite Helper",
         "schemaName": "htaccess to Nginx Rewrite Helper",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2354,7 +2344,7 @@
         "canonical": "https://ymirtool.com/html2all/",
         "heroTitle": "HTML to ASP / Perl Converter",
         "schemaName": "HTML to ASP / Perl Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2382,7 +2372,7 @@
         "canonical": "https://ymirtool.com/html2cj/",
         "heroTitle": "HTML to C# / JSP String Converter",
         "schemaName": "HTML to C# / JSP String Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2410,7 +2400,7 @@
         "canonical": "https://ymirtool.com/html2js/",
         "heroTitle": "HTML to JavaScript String",
         "schemaName": "HTML to JavaScript String",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2438,7 +2428,7 @@
         "canonical": "https://ymirtool.com/html2php/",
         "heroTitle": "HTML to PHP Echo Converter",
         "schemaName": "HTML to PHP Echo Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2466,7 +2456,7 @@
         "canonical": "https://ymirtool.com/html2ubb/",
         "heroTitle": "HTML to UBB Converter",
         "schemaName": "HTML to UBB Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2494,7 +2484,7 @@
         "canonical": "https://ymirtool.com/htmlescape/",
         "heroTitle": "HTML Escape & Unescape",
         "schemaName": "HTML Escape & Unescape",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2522,7 +2512,7 @@
         "canonical": "https://ymirtool.com/htmlescapechar/",
         "heroTitle": "HTML Entity Converter",
         "schemaName": "HTML Entity Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2550,7 +2540,7 @@
         "canonical": "https://ymirtool.com/htmlfromcsv/",
         "heroTitle": "CSV to HTML Table",
         "schemaName": "CSV to HTML Table",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2578,7 +2568,7 @@
         "canonical": "https://ymirtool.com/htmlmarkdown/",
         "heroTitle": "HTML ⇄ Markdown Converter",
         "schemaName": "HTML ⇄ Markdown Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2606,7 +2596,7 @@
         "canonical": "https://ymirtool.com/htmloutjs/",
         "heroTitle": "HTML / JS Output Converter",
         "schemaName": "HTML / JS Output Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2634,7 +2624,7 @@
         "canonical": "https://ymirtool.com/htmltable/",
         "heroTitle": "HTML Table Generator",
         "schemaName": "HTML Table Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2646,23 +2636,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "htpasswd生成",
-      "titleEn": "htpasswd Generator",
-      "descriptionZh": "Generate Apache htpasswd lines for Basic Auth compatibility checks.",
-      "descriptionEn": "Generate Apache htpasswd lines for Basic Auth compatibility checks.",
-      "keywords": "htpasswd生成 htpasswd Generator htpasswd htpasswd Generator htpasswd生成",
+      "titleZh": "Apache htpasswd 兼容格式生成器",
+      "titleEn": "Apache htpasswd Compatibility Generator",
+      "descriptionZh": "生成旧式 Apache 密码文件条目用于兼容测试；新凭证应在服务器端使用 htpasswd -B。",
+      "descriptionEn": "Generate legacy Apache password-file entries for compatibility tests; create new credentials server-side with htpasswd -B.",
+      "keywords": "htpasswd生成 htpasswd Generator Apache 兼容格式生成器 Compatibility",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 10,
       "shell": {
-        "title": "htpasswd Generator - Ymir Tool",
-        "description": "Generate Apache htpasswd lines for Basic Auth compatibility checks.",
+        "title": "Apache htpasswd Compatibility Generator - Ymir Tool",
+        "description": "Generate legacy Apache password-file entries for compatibility tests; create new credentials server-side with htpasswd -B.",
         "canonical": "https://ymirtool.com/htpasswd/",
-        "heroTitle": "htpasswd Generator",
-        "schemaName": "htpasswd Generator",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Apache htpasswd Compatibility Generator",
+        "schemaName": "Apache htpasswd Compatibility Generator",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2676,8 +2666,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "HTTP请求头大全",
       "titleEn": "HTTP Headers Reference",
-      "descriptionZh": "Search common HTTP request and response headers by category and purpose. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common HTTP request and response headers by category and purpose. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common HTTP request and response headers by category and purpose.",
+      "descriptionEn": "Search common HTTP request and response headers by category and purpose.",
       "keywords": "http请求头大全 HTTP Headers Reference httpheader HTTP Headers Reference HTTP请求头大全",
       "icon": "›",
       "accent": "blue",
@@ -2686,11 +2676,11 @@
       "directoryRank": 4,
       "shell": {
         "title": "HTTP Header Reference | Ymir Tool",
-        "description": "Search common HTTP request and response headers by category and purpose. Search rows quickly with a compact table UI.",
+        "description": "Search common HTTP request and response headers by category and purpose.",
         "canonical": "https://ymirtool.com/httpheader/",
         "heroTitle": "HTTP Header Reference",
         "schemaName": "HTTP Header Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2704,8 +2694,8 @@
       "categoryLabelEn": "Text",
       "titleZh": "火星文转换器",
       "titleEn": "Martian Text Converter",
-      "descriptionZh": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist.",
+      "descriptionEn": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist.",
       "keywords": "火星文转换器 Martian Text Converter huoxingwen Martian Text Converter 火星文转换器",
       "icon": "›",
       "accent": "emerald",
@@ -2714,11 +2704,11 @@
       "directoryRank": 5,
       "shell": {
         "title": "Mars Text Converter | Ymir Tool",
-        "description": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Convert Chinese text to stylized Mars text and convert it back to readable text where mappings exist.",
         "canonical": "https://ymirtool.com/huoxingwen/",
         "heroTitle": "Mars Text Converter",
         "schemaName": "Mars Text Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2746,7 +2736,7 @@
         "canonical": "https://ymirtool.com/img2base64/",
         "heroTitle": "Image to Base64 Converter",
         "schemaName": "Image to Base64 Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2774,7 +2764,7 @@
         "canonical": "https://ymirtool.com/ip2long/",
         "heroTitle": "IPv4 to Integer Converter",
         "schemaName": "IPv4 to Integer Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2788,8 +2778,8 @@
       "categoryLabelEn": "Text",
       "titleZh": "简繁字体转换",
       "titleEn": "Simplified / Traditional Chinese Converter",
-      "descriptionZh": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly.",
+      "descriptionEn": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly.",
       "keywords": "简繁字体转换 Simplified / Traditional Chinese Converter jianfan Simplified / Traditional Chinese Converter 简繁字体转换",
       "icon": "›",
       "accent": "emerald",
@@ -2798,11 +2788,11 @@
       "directoryRank": 3,
       "shell": {
         "title": "Simplified and Traditional Chinese Converter | Ymir Tool",
-        "description": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Convert text between Simplified Chinese, Traditional Chinese, and stylized variant text quickly.",
         "canonical": "https://ymirtool.com/jianfan/",
         "heroTitle": "Simplified and Traditional Chinese Converter",
         "schemaName": "Simplified and Traditional Chinese Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2816,8 +2806,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "世界节日查询",
       "titleEn": "World Holidays Lookup",
-      "descriptionZh": "Search common solar, lunar, and international festival names for quick calendar reference. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search common solar, lunar, and international festival names for quick calendar reference. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search common solar, lunar, and international festival names for quick calendar reference.",
+      "descriptionEn": "Search common solar, lunar, and international festival names for quick calendar reference.",
       "keywords": "世界节日查询 World Holidays Lookup jieri World Holidays Lookup 世界节日查询",
       "icon": "›",
       "accent": "amber",
@@ -2826,11 +2816,11 @@
       "directoryRank": 23,
       "shell": {
         "title": "Festival and Holiday Reference | Ymir Tool",
-        "description": "Search common solar, lunar, and international festival names for quick calendar reference. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search common solar, lunar, and international festival names for quick calendar reference.",
         "canonical": "https://ymirtool.com/jieri/",
         "heroTitle": "Festival and Holiday Reference",
         "schemaName": "Festival and Holiday Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2858,7 +2848,7 @@
         "canonical": "https://ymirtool.com/json/",
         "heroTitle": "JSON Formatter and Validator",
         "schemaName": "JSON Formatter and Validator",
-        "lastmod": "2026-06-07"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2886,7 +2876,7 @@
         "canonical": "https://ymirtool.com/json2cs/",
         "heroTitle": "JSON to C# Class Generator",
         "schemaName": "JSON to C# Class Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2914,7 +2904,7 @@
         "canonical": "https://ymirtool.com/json2excel/",
         "heroTitle": "JSON to CSV / Excel Text",
         "schemaName": "JSON to CSV / Excel Text",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2942,7 +2932,7 @@
         "canonical": "https://ymirtool.com/json2get/",
         "heroTitle": "JSON ⇄ GET Query Converter",
         "schemaName": "JSON ⇄ GET Query Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2970,7 +2960,7 @@
         "canonical": "https://ymirtool.com/json2go/",
         "heroTitle": "JSON to Go Struct Generator",
         "schemaName": "JSON to Go Struct Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -2998,7 +2988,7 @@
         "canonical": "https://ymirtool.com/json2java/",
         "heroTitle": "JSON to Java Class Generator",
         "schemaName": "JSON to Java Class Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3026,7 +3016,7 @@
         "canonical": "https://ymirtool.com/json2xml/",
         "heroTitle": "JSON ⇄ XML Converter",
         "schemaName": "JSON ⇄ XML Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3054,7 +3044,7 @@
         "canonical": "https://ymirtool.com/json2yaml/",
         "heroTitle": "JSON to YAML Converter",
         "schemaName": "JSON to YAML Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3082,7 +3072,7 @@
         "canonical": "https://ymirtool.com/jsonlrview/",
         "heroTitle": "JSON Left / Right Viewer",
         "schemaName": "JSON Left / Right Viewer",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3110,7 +3100,7 @@
         "canonical": "https://ymirtool.com/jsonudview/",
         "heroTitle": "JSON Up / Down Viewer",
         "schemaName": "JSON Up / Down Viewer",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3138,7 +3128,7 @@
         "canonical": "https://ymirtool.com/jsonzip/",
         "heroTitle": "JSON Minify / Escape Tool",
         "schemaName": "JSON Minify / Escape Tool",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3166,7 +3156,7 @@
         "canonical": "https://ymirtool.com/keyboardcode/",
         "heroTitle": "Keyboard KeyCode Tester",
         "schemaName": "Keyboard KeyCode Tester",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3194,7 +3184,7 @@
         "canonical": "https://ymirtool.com/keyboardtest/",
         "heroTitle": "Keyboard Tester",
         "schemaName": "Keyboard Tester",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3208,8 +3198,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "Linux常用命令大全",
       "titleEn": "Linux Command Reference",
-      "descriptionZh": "Search common Linux commands by category, example, and purpose. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common Linux commands by category, example, and purpose. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common Linux commands by category, example, and purpose.",
+      "descriptionEn": "Search common Linux commands by category, example, and purpose.",
       "keywords": "linux常用命令大全 Linux Command Reference linuxcmd Linux Command Reference Linux常用命令大全",
       "icon": "›",
       "accent": "blue",
@@ -3218,11 +3208,11 @@
       "directoryRank": 11,
       "shell": {
         "title": "Linux Command Reference | Ymir Tool",
-        "description": "Search common Linux commands by category, example, and purpose. Search rows quickly with a compact table UI.",
+        "description": "Search common Linux commands by category, example, and purpose.",
         "canonical": "https://ymirtool.com/linuxcmd/",
         "heroTitle": "Linux Command Reference",
         "schemaName": "Linux Command Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3241,8 +3231,8 @@
       "keywords": "md5 hash generator md5哈希 md5生成 MD5 Hash Generator 哈希生成器 checksum digest file verification legacy md5校验和 文件校验 摘要比对 非安全哈希 generator, checksum, text digest, non-security comparison",
       "icon": "盾",
       "accent": "amber",
-      "featured": true,
-      "featuredRank": 3,
+      "featured": false,
+      "featuredRank": null,
       "directoryRank": 1,
       "shell": {
         "title": "MD5 Hash Generator | 32-bit and 16-bit MD5 | Ymir Tool",
@@ -3250,7 +3240,7 @@
         "canonical": "https://ymirtool.com/md5/",
         "heroTitle": "MD5 Hash Generator",
         "schemaName": "MD5 Hash Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       },
       "lastmod": "2026-06-07"
     },
@@ -3279,7 +3269,7 @@
         "canonical": "https://ymirtool.com/morse/",
         "heroTitle": "Morse Code Converter",
         "schemaName": "Morse Code Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3291,23 +3281,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "Native/Unicode转换",
-      "titleEn": "Native / Unicode Converter",
-      "descriptionZh": "Convert native text to Unicode escapes and decode Unicode escapes back to readable text.",
-      "descriptionEn": "Convert native text to Unicode escapes and decode Unicode escapes back to readable text.",
-      "keywords": "native/unicode转换 Native / Unicode Converter navtiveunicode Native / Unicode Converter Native/Unicode转换",
+      "titleZh": "Native2ASCII 风格 Unicode 转换器",
+      "titleEn": "Native2ASCII-style Unicode Converter",
+      "descriptionZh": "生成适合 Java properties 与旧 native2ascii 流程的 UTF-16 \\uXXXX 转义。",
+      "descriptionEn": "Create UTF-16 \\uXXXX escapes for Java properties and older native2ascii workflows.",
+      "keywords": "native/unicode转换 Native / Unicode Converter navtiveunicode Native/Unicode转换 Native2ASCII 风格 转换器 Native2ASCII-style",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 18,
       "shell": {
-        "title": "Native Unicode Converter | Ymir Tool",
-        "description": "Convert native text to Unicode escapes and decode Unicode escapes back to readable text.",
+        "title": "Native2ASCII-style Unicode Converter - Ymir Tool",
+        "description": "Create UTF-16 \\uXXXX escapes for Java properties and older native2ascii workflows.",
         "canonical": "https://ymirtool.com/navtiveunicode/",
-        "heroTitle": "Native Unicode Converter",
-        "schemaName": "Native Unicode Converter",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Native2ASCII-style Unicode Converter",
+        "schemaName": "Native2ASCII-style Unicode Converter",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3321,8 +3311,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "利率计算器",
       "titleEn": "Interest Rate Calculator",
-      "descriptionZh": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term.",
+      "descriptionEn": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term.",
       "keywords": "利率计算器 Interest Rate Calculator nianlvli Interest Rate Calculator 利率计算器",
       "icon": "›",
       "accent": "amber",
@@ -3331,11 +3321,11 @@
       "directoryRank": 1,
       "shell": {
         "title": "Annual Interest Calculator | Ymir Tool",
-        "description": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Estimate simple interest, compound interest, monthly rate, and daily rate from principal, annual rate, and term.",
         "canonical": "https://ymirtool.com/nianlvli/",
         "heroTitle": "Annual Interest Calculator",
         "schemaName": "Annual Interest Calculator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3349,8 +3339,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "HTTP状态码",
       "titleEn": "HTTP Status Codes",
-      "descriptionZh": "Search common HTTP response status codes and their meanings. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common HTTP response status codes and their meanings. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common HTTP response status codes and their meanings.",
+      "descriptionEn": "Search common HTTP response status codes and their meanings.",
       "keywords": "http状态码 HTTP Status Codes pagecode HTTP Status Codes HTTP状态码",
       "icon": "›",
       "accent": "blue",
@@ -3359,11 +3349,11 @@
       "directoryRank": 5,
       "shell": {
         "title": "HTTP Status Code Reference | Ymir Tool",
-        "description": "Search common HTTP response status codes and their meanings. Search rows quickly with a compact table UI.",
+        "description": "Search common HTTP response status codes and their meanings.",
         "canonical": "https://ymirtool.com/pagecode/",
         "heroTitle": "HTTP Status Code Reference",
         "schemaName": "HTTP Status Code Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3382,8 +3372,8 @@
       "keywords": "password generator 密码生成 随机密码 密码生成器 Password Generator password Password Generator 密码生成器 random secure symbols length 强密码 符号 长度",
       "icon": "🔒",
       "accent": "rose",
-      "featured": true,
-      "featuredRank": 12,
+      "featured": false,
+      "featuredRank": null,
       "directoryRank": 4,
       "shell": {
         "title": "Password Generator with Length and Character Options - Ymir Tool",
@@ -3391,7 +3381,7 @@
         "canonical": "https://ymirtool.com/password/",
         "heroTitle": "Password Generator",
         "schemaName": "Password Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3405,8 +3395,8 @@
       "categoryLabelEn": "Text",
       "titleZh": "汉字转为拼音",
       "titleEn": "Chinese to Pinyin",
-      "descriptionZh": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary.",
+      "descriptionEn": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary.",
       "keywords": "汉字转为拼音 Chinese to Pinyin pinyin Chinese to Pinyin 汉字转为拼音",
       "icon": "›",
       "accent": "emerald",
@@ -3415,11 +3405,11 @@
       "directoryRank": 4,
       "shell": {
         "title": "Chinese Pinyin Converter | Ymir Tool",
-        "description": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Convert Chinese characters to pinyin output using the local legacy pinyin dictionary.",
         "canonical": "https://ymirtool.com/pinyin/",
         "heroTitle": "Chinese Pinyin Converter",
         "schemaName": "Chinese Pinyin Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3433,8 +3423,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "常见端口大全",
       "titleEn": "Common Ports",
-      "descriptionZh": "Search common service names, transport protocols, and port numbers. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common service names, transport protocols, and port numbers. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common service names, transport protocols, and port numbers.",
+      "descriptionEn": "Search common service names, transport protocols, and port numbers.",
       "keywords": "常见端口大全 Common Ports ports Common Ports 常见端口大全",
       "icon": "›",
       "accent": "blue",
@@ -3443,11 +3433,11 @@
       "directoryRank": 8,
       "shell": {
         "title": "Common TCP / UDP Port Reference | Ymir Tool",
-        "description": "Search common service names, transport protocols, and port numbers. Search rows quickly with a compact table UI.",
+        "description": "Search common service names, transport protocols, and port numbers.",
         "canonical": "https://ymirtool.com/ports/",
         "heroTitle": "Common TCP / UDP Port Reference",
         "schemaName": "Common TCP / UDP Port Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3475,7 +3465,7 @@
         "canonical": "https://ymirtool.com/px2rem/",
         "heroTitle": "PX / REM Converter",
         "schemaName": "PX / REM Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3503,7 +3493,7 @@
         "canonical": "https://ymirtool.com/quanbaojiao/",
         "heroTitle": "Full-width / Half-width Converter",
         "schemaName": "Full-width / Half-width Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3531,7 +3521,7 @@
         "canonical": "https://ymirtool.com/quchong/",
         "heroTitle": "Duplicate Line Remover",
         "schemaName": "Duplicate Line Remover",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3543,23 +3533,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "Rabbit加密/解密",
-      "titleEn": "Rabbit Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt Rabbit cipher text with a passphrase for legacy compatibility checks.",
-      "descriptionEn": "Encrypt or decrypt Rabbit cipher text with a passphrase for legacy compatibility checks.",
-      "keywords": "rabbit加密/解密 Rabbit Encryption / Decryption rabbitencrypt Rabbit Encryption / Decryption Rabbit加密/解密",
+      "titleZh": "Rabbit 受控旧系统兼容工具",
+      "titleEn": "Rabbit Guarded Legacy Compatibility Tool",
+      "descriptionZh": "仅在明确确认后使用非敏感测试向量复现旧 Rabbit 兼容结果。",
+      "descriptionEn": "Reproduce legacy Rabbit compatibility results only after explicit acknowledgement and with non-sensitive fixtures.",
+      "keywords": "rabbit加密/解密 Rabbit Encryption / Decryption rabbitencrypt Rabbit加密/解密 受控旧系统兼容工具 Guarded Legacy Compatibility Tool",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 7,
       "shell": {
-        "title": "Rabbit Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt Rabbit cipher text with a passphrase for legacy compatibility checks.",
+        "title": "Rabbit Guarded Legacy Compatibility Tool - Ymir Tool",
+        "description": "Reproduce legacy Rabbit compatibility results only after explicit acknowledgement and with non-sensitive fixtures.",
         "canonical": "https://ymirtool.com/rabbitencrypt/",
-        "heroTitle": "Rabbit Encrypt / Decrypt",
-        "schemaName": "Rabbit Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Rabbit Guarded Legacy Compatibility Tool",
+        "schemaName": "Rabbit Guarded Legacy Compatibility Tool",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3587,7 +3577,7 @@
         "canonical": "https://ymirtool.com/random/",
         "heroTitle": "Random Generator",
         "schemaName": "Random Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3599,23 +3589,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "RC4加密/解密",
-      "titleEn": "RC4 Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt RC4 text with a passphrase for legacy compatibility checks.",
-      "descriptionEn": "Encrypt or decrypt RC4 text with a passphrase for legacy compatibility checks.",
-      "keywords": "rc4加密/解密 RC4 Encryption / Decryption rc4encrypt RC4 Encryption / Decryption RC4加密/解密",
+      "titleZh": "RC4 旧系统兼容参考",
+      "titleEn": "RC4 Legacy Compatibility Reference",
+      "descriptionZh": "用于识别和淘汰 RC4 依赖的只读参考；运行时加解密已禁用。",
+      "descriptionEn": "Reference-only guidance for identifying and retiring RC4 dependencies; runtime execution is disabled.",
+      "keywords": "rc4加密/解密 RC4 Encryption / Decryption rc4encrypt RC4加密/解密 旧系统兼容参考 Legacy Compatibility Reference",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 6,
       "shell": {
-        "title": "RC4 Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt RC4 text with a passphrase for legacy compatibility checks.",
+        "title": "RC4 Legacy Compatibility Reference - Ymir Tool",
+        "description": "Reference-only guidance for identifying and retiring RC4 dependencies; runtime execution is disabled.",
         "canonical": "https://ymirtool.com/rc4encrypt/",
-        "heroTitle": "RC4 Encrypt / Decrypt",
-        "schemaName": "RC4 Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "RC4 Legacy Compatibility Reference",
+        "schemaName": "RC4 Legacy Compatibility Reference",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3643,7 +3633,7 @@
         "canonical": "https://ymirtool.com/refresh/",
         "heroTitle": "Meta Refresh Snippet Generator",
         "schemaName": "Meta Refresh Snippet Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3663,7 +3653,7 @@
       "icon": ".*",
       "accent": "violet",
       "featured": true,
-      "featuredRank": 9,
+      "featuredRank": 8,
       "directoryRank": 27,
       "shell": {
         "title": "Regex Tester for JavaScript Patterns - Ymir Tool",
@@ -3671,7 +3661,7 @@
         "canonical": "https://ymirtool.com/regex/",
         "heroTitle": "Regex Tester",
         "schemaName": "Regex Tester",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       },
       "lastmod": "2026-06-07"
     },
@@ -3700,7 +3690,7 @@
         "canonical": "https://ymirtool.com/regexcode/",
         "heroTitle": "Regex Code Generator",
         "schemaName": "Regex Code Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3728,7 +3718,7 @@
         "canonical": "https://ymirtool.com/regexdso/",
         "heroTitle": "Common Regex Pattern Reference",
         "schemaName": "Common Regex Pattern Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3756,7 +3746,7 @@
         "canonical": "https://ymirtool.com/regexsucha/",
         "heroTitle": "Regex Syntax Cheat Sheet",
         "schemaName": "Regex Syntax Cheat Sheet",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3770,8 +3760,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "Request请求大全",
       "titleEn": "HTTP Request Methods",
-      "descriptionZh": "Compare HTTP methods by semantics, safety, idempotency, and body usage. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Compare HTTP methods by semantics, safety, idempotency, and body usage. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Compare HTTP methods by semantics, safety, idempotency, and body usage.",
+      "descriptionEn": "Compare HTTP methods by semantics, safety, idempotency, and body usage.",
       "keywords": "request请求大全 HTTP Request Methods requestmethod HTTP Request Methods Request请求大全",
       "icon": "›",
       "accent": "blue",
@@ -3780,11 +3770,11 @@
       "directoryRank": 3,
       "shell": {
         "title": "HTTP Request Method Reference | Ymir Tool",
-        "description": "Compare HTTP methods by semantics, safety, idempotency, and body usage. Search rows quickly with a compact table UI.",
+        "description": "Compare HTTP methods by semantics, safety, idempotency, and body usage.",
         "canonical": "https://ymirtool.com/requestmethod/",
         "heroTitle": "HTTP Request Method Reference",
         "schemaName": "HTTP Request Method Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3812,7 +3802,7 @@
         "canonical": "https://ymirtool.com/rmbdaxie/",
         "heroTitle": "Chinese RMB Uppercase Converter",
         "schemaName": "Chinese RMB Uppercase Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3840,7 +3830,7 @@
         "canonical": "https://ymirtool.com/runjs/",
         "heroTitle": "HTML / CSS / JS Runner",
         "schemaName": "HTML / CSS / JS Runner",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3852,23 +3842,23 @@
       "category": "hash",
       "categoryLabelZh": "哈希",
       "categoryLabelEn": "Hash",
-      "titleZh": "SHA/SHA256摘要",
-      "titleEn": "SHA / SHA256 Digest",
-      "descriptionZh": "Generate SHA-1, SHA-256, and SHA-512 hashes using Web Crypto.",
-      "descriptionEn": "Generate SHA-1, SHA-256, and SHA-512 hashes using Web Crypto.",
-      "keywords": "sha/sha256摘要 SHA / SHA256 Digest shaencrypt SHA / SHA256 Digest SHA/SHA256摘要",
+      "titleZh": "SHA-1 / SHA-256 / SHA-512 摘要工具",
+      "titleEn": "SHA-1 / SHA-256 / SHA-512 Digest Tool",
+      "descriptionZh": "使用 Web Crypto 生成确定性的 SHA 十六进制摘要，用于校验和与兼容性测试。",
+      "descriptionEn": "Generate deterministic SHA hexadecimal digests with Web Crypto for checksums and compatibility tests.",
+      "keywords": "sha/sha256摘要 SHA / SHA256 Digest shaencrypt SHA/SHA256摘要 SHA-1 SHA-256 SHA-512 摘要工具 Tool",
       "icon": "›",
       "accent": "amber",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 2,
       "shell": {
-        "title": "SHA Hash Generator | Ymir Tool",
-        "description": "Generate SHA-1, SHA-256, and SHA-512 hashes using Web Crypto.",
+        "title": "SHA Digest Tool - Ymir Tool",
+        "description": "Generate deterministic SHA hexadecimal digests with Web Crypto for checksums and compatibility tests.",
         "canonical": "https://ymirtool.com/shaencrypt/",
-        "heroTitle": "SHA Hash Generator",
-        "schemaName": "SHA Hash Generator",
-        "lastmod": "2026-05-31"
+        "heroTitle": "SHA-1 / SHA-256 / SHA-512 Digest Tool",
+        "schemaName": "SHA-1 / SHA-256 / SHA-512 Digest Tool",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3882,8 +3872,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "少数民族分布查询",
       "titleEn": "Ethnic Groups Lookup",
-      "descriptionZh": "Search a compact reference table of ethnic group names and common regional notes. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search a compact reference table of ethnic group names and common regional notes. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search a compact reference table of ethnic group names and common regional notes.",
+      "descriptionEn": "Search a compact reference table of ethnic group names and common regional notes.",
       "keywords": "少数民族分布查询 Ethnic Groups Lookup shaoshuminzu Ethnic Groups Lookup 少数民族分布查询",
       "icon": "›",
       "accent": "amber",
@@ -3892,11 +3882,11 @@
       "directoryRank": 24,
       "shell": {
         "title": "China Ethnic Groups Reference | Ymir Tool",
-        "description": "Search a compact reference table of ethnic group names and common regional notes. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search a compact reference table of ethnic group names and common regional notes.",
         "canonical": "https://ymirtool.com/shaoshuminzu/",
         "heroTitle": "China Ethnic Groups Reference",
         "schemaName": "China Ethnic Groups Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3910,8 +3900,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "在线时钟",
       "titleEn": "Online Clock",
-      "descriptionZh": "Show the current local time with date, UTC offset, and seconds. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Show the current local time with date, UTC offset, and seconds. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Show the current local time with date, UTC offset, and seconds.",
+      "descriptionEn": "Show the current local time with date, UTC offset, and seconds.",
       "keywords": "在线时钟 Online Clock shizhong Online Clock 在线时钟",
       "icon": "›",
       "accent": "amber",
@@ -3920,11 +3910,11 @@
       "directoryRank": 18,
       "shell": {
         "title": "Online Clock | Ymir Tool",
-        "description": "Show the current local time with date, UTC offset, and seconds. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Show the current local time with date, UTC offset, and seconds.",
         "canonical": "https://ymirtool.com/shizhong/",
         "heroTitle": "Online Clock",
         "schemaName": "Online Clock",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3952,7 +3942,7 @@
         "canonical": "https://ymirtool.com/shortcut/",
         "heroTitle": "Desktop Shortcut Generator",
         "schemaName": "Desktop Shortcut Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -3980,7 +3970,7 @@
         "canonical": "https://ymirtool.com/shupai/",
         "heroTitle": "Vertical Text Layout",
         "schemaName": "Vertical Text Layout",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4008,7 +3998,7 @@
         "canonical": "https://ymirtool.com/sql2java/",
         "heroTitle": "SQL to Java Entity Field Generator",
         "schemaName": "SQL to Java Entity Field Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4022,8 +4012,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "子网掩码计算器",
       "titleEn": "Subnet Mask Calculator",
-      "descriptionZh": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR.",
+      "descriptionEn": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR.",
       "keywords": "子网掩码计算器 Subnet Mask Calculator subnetmask Subnet Mask Calculator 子网掩码计算器",
       "icon": "›",
       "accent": "amber",
@@ -4032,11 +4022,11 @@
       "directoryRank": 2,
       "shell": {
         "title": "Subnet Mask Calculator | Ymir Tool",
-        "description": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Calculate IPv4 subnet mask, wildcard mask, network address, broadcast address, and host range from CIDR.",
         "canonical": "https://ymirtool.com/subnetmask/",
         "heroTitle": "Subnet Mask Calculator",
         "schemaName": "Subnet Mask Calculator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4050,8 +4040,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "特殊符号大全",
       "titleEn": "Special Symbols",
-      "descriptionZh": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons.",
+      "descriptionEn": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons.",
       "keywords": "特殊符号大全 Special Symbols tesufuhao Special Symbols 特殊符号大全",
       "icon": "›",
       "accent": "amber",
@@ -4060,11 +4050,11 @@
       "directoryRank": 26,
       "shell": {
         "title": "Special Symbols Reference | Ymir Tool",
-        "description": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Search and copy common special symbols, arrows, math symbols, currency marks, and emoticons.",
         "canonical": "https://ymirtool.com/tesufuhao/",
         "heroTitle": "Special Symbols Reference",
         "schemaName": "Special Symbols Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4084,7 +4074,7 @@
       "icon": "⇄",
       "accent": "emerald",
       "featured": true,
-      "featuredRank": 7,
+      "featuredRank": 6,
       "directoryRank": 7,
       "shell": {
         "title": "Text Diff Checker | Compare Text Online | Ymir Tool",
@@ -4092,7 +4082,7 @@
         "canonical": "https://ymirtool.com/textdiff/",
         "heroTitle": "Text Diff Checker",
         "schemaName": "Text Diff Checker",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       },
       "lastmod": "2026-06-07"
     },
@@ -4121,7 +4111,7 @@
         "canonical": "https://ymirtool.com/textflip/",
         "heroTitle": "Text Reverse Tool",
         "schemaName": "Text Reverse Tool",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4135,8 +4125,8 @@
       "categoryLabelEn": "Network",
       "titleZh": "在线调色板",
       "titleEn": "Online Color Palette",
-      "descriptionZh": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes.",
+      "descriptionEn": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes.",
       "keywords": "在线调色板 Online Color Palette tiaoseban Online Color Palette 在线调色板",
       "icon": "›",
       "accent": "blue",
@@ -4145,11 +4135,11 @@
       "directoryRank": 16,
       "shell": {
         "title": "Color Palette Tool | Ymir Tool",
-        "description": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Pick a color, inspect HEX/RGB/HSL values, and generate tint and shade palettes.",
         "canonical": "https://ymirtool.com/tiaoseban/",
         "heroTitle": "Color Palette Tool",
         "schemaName": "Color Palette Tool",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4161,23 +4151,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "TripleDES加密/解密",
-      "titleEn": "TripleDES Encryption / Decryption",
-      "descriptionZh": "Encrypt or decrypt Triple DES text with a passphrase for legacy compatibility checks.",
-      "descriptionEn": "Encrypt or decrypt Triple DES text with a passphrase for legacy compatibility checks.",
-      "keywords": "tripledes加密/解密 TripleDES Encryption / Decryption tripledes TripleDES Encryption / Decryption TripleDES加密/解密",
+      "titleZh": "Triple DES 旧密文解密兼容",
+      "titleEn": "Triple DES Legacy Decryption Compatibility",
+      "descriptionZh": "仅解密受控的历史 Triple DES 测试向量；创建新密文已禁用。",
+      "descriptionEn": "Decrypt controlled historical Triple DES fixtures; creating new ciphertext is disabled.",
+      "keywords": "tripledes加密/解密 TripleDES Encryption / Decryption tripledes TripleDES加密/解密 Triple DES 旧密文解密兼容 Legacy Compatibility",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 8,
       "shell": {
-        "title": "Triple DES Encrypt / Decrypt - Ymir Tool",
-        "description": "Encrypt or decrypt Triple DES text with a passphrase for legacy compatibility checks.",
+        "title": "Triple DES Legacy Decryption Compatibility - Ymir Tool",
+        "description": "Decrypt controlled historical Triple DES fixtures; creating new ciphertext is disabled.",
         "canonical": "https://ymirtool.com/tripledes/",
-        "heroTitle": "Triple DES Encrypt / Decrypt",
-        "schemaName": "Triple DES Encrypt / Decrypt",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Triple DES Legacy Decryption Compatibility",
+        "schemaName": "Triple DES Legacy Decryption Compatibility",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4205,7 +4195,7 @@
         "canonical": "https://ymirtool.com/tuya/",
         "heroTitle": "Online Drawing Board",
         "schemaName": "Online Drawing Board",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4225,7 +4215,7 @@
       "icon": "Aa",
       "accent": "emerald",
       "featured": true,
-      "featuredRank": 8,
+      "featuredRank": 7,
       "directoryRank": 8,
       "shell": {
         "title": "Word Counter and Character Counter - Ymir Tool",
@@ -4233,7 +4223,7 @@
         "canonical": "https://ymirtool.com/txtcount/",
         "heroTitle": "Word and Character Counter",
         "schemaName": "Word and Character Counter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4261,7 +4251,7 @@
         "canonical": "https://ymirtool.com/txtreplace/",
         "heroTitle": "Text Replace Tool",
         "schemaName": "Text Replace Tool",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4273,23 +4263,23 @@
       "category": "encode",
       "categoryLabelZh": "编码",
       "categoryLabelEn": "Encoding",
-      "titleZh": "Unicode/ASCII转换",
-      "titleEn": "Unicode / ASCII Converter",
-      "descriptionZh": "Convert text to Unicode escape sequences and decode Unicode escapes back to text.",
-      "descriptionEn": "Convert text to Unicode escape sequences and decode Unicode escapes back to text.",
-      "keywords": "unicode/ascii转换 Unicode / ASCII Converter unicode Unicode / ASCII Converter Unicode/ASCII转换",
+      "titleZh": "JavaScript Unicode 转义转换器",
+      "titleEn": "JavaScript Unicode Escape Converter",
+      "descriptionZh": "在文本与 JavaScript Unicode 转义之间转换，支持代码点、UTF-16 与十六进制转义。",
+      "descriptionEn": "Convert text and JavaScript Unicode escapes, including code-point, UTF-16, and hexadecimal forms.",
+      "keywords": "unicode/ascii转换 Unicode / ASCII Converter unicode Unicode/ASCII转换 JavaScript 转义转换器 Escape",
       "icon": "›",
       "accent": "cyan",
       "featured": false,
       "featuredRank": null,
       "directoryRank": 15,
       "shell": {
-        "title": "Unicode Escape Converter | Ymir Tool",
-        "description": "Convert text to Unicode escape sequences and decode Unicode escapes back to text.",
+        "title": "JavaScript Unicode Escape Converter - Ymir Tool",
+        "description": "Convert text and JavaScript Unicode escapes, including code-point, UTF-16, and hexadecimal forms.",
         "canonical": "https://ymirtool.com/unicode/",
-        "heroTitle": "Unicode Escape Converter",
-        "schemaName": "Unicode Escape Converter",
-        "lastmod": "2026-05-31"
+        "heroTitle": "JavaScript Unicode Escape Converter",
+        "schemaName": "JavaScript Unicode Escape Converter",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4309,7 +4299,7 @@
       "icon": "◷",
       "accent": "blue",
       "featured": true,
-      "featuredRank": 6,
+      "featuredRank": 5,
       "directoryRank": 19,
       "shell": {
         "title": "Unix Timestamp Converter | Seconds, Milliseconds and Dates",
@@ -4317,7 +4307,7 @@
         "canonical": "https://ymirtool.com/unixtime/",
         "heroTitle": "Unix Timestamp Converter",
         "schemaName": "Unix Timestamp Converter",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4329,23 +4319,23 @@
       "category": "text",
       "categoryLabelZh": "文本",
       "categoryLabelEn": "Text",
-      "titleZh": "URL Encoder & Decoder",
-      "titleEn": "URL Encoder & Decoder",
-      "descriptionZh": "Encode and decode URL percent-encoded text quickly.",
-      "descriptionEn": "Encode and decode URL percent-encoded text quickly.",
-      "keywords": "urlcode URL Encoder & Decoder URL Encoder & Decoder",
+      "titleZh": "紧凑型 URL 组件编码器",
+      "titleEn": "Compact URL Component Encoder",
+      "descriptionZh": "编码或解码单个 query 值、路径段或 fragment 值；完整 URL 请使用核心 URL 工具。",
+      "descriptionEn": "Encode or decode one query value, path segment, or fragment value; use the core URL tool for full URLs.",
+      "keywords": "urlcode URL Encoder & Decoder 紧凑型 组件编码器 Compact Component",
       "icon": "›",
       "accent": "emerald",
       "featured": false,
       "featuredRank": null,
       "directoryRank": null,
       "shell": {
-        "title": "URL Encoder & Decoder | Ymir Tool",
-        "description": "Encode and decode URL percent-encoded text quickly.",
+        "title": "Compact URL Component Encoder - Ymir Tool",
+        "description": "Encode or decode one query value, path segment, or fragment value; use the core URL tool for full URLs.",
         "canonical": "https://ymirtool.com/urlcode/",
-        "heroTitle": "URL Encoder & Decoder",
-        "schemaName": "URL Encoder & Decoder",
-        "lastmod": "2026-05-31"
+        "heroTitle": "Compact URL Component Encoder",
+        "schemaName": "Compact URL Component Encoder",
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4365,7 +4355,7 @@
       "icon": "🔗",
       "accent": "cyan",
       "featured": true,
-      "featuredRank": 4,
+      "featuredRank": 3,
       "directoryRank": 17,
       "shell": {
         "title": "URL Encoder and Decoder for Query Strings - Ymir Tool",
@@ -4373,7 +4363,7 @@
         "canonical": "https://ymirtool.com/urlencode/",
         "heroTitle": "URL Encoder and Decoder",
         "schemaName": "URL Encoder and Decoder",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       },
       "lastmod": "2026-06-07"
     },
@@ -4402,7 +4392,7 @@
         "canonical": "https://ymirtool.com/urlthunder/",
         "heroTitle": "Thunder URL Encoder & Decoder",
         "schemaName": "Thunder URL Encoder & Decoder",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4416,8 +4406,8 @@
       "categoryLabelEn": "Reference",
       "titleZh": "常用User-Agent",
       "titleEn": "Common User Agents",
-      "descriptionZh": "Search common browser and bot user-agent examples. Use current client hints where possible. Search rows quickly with a compact table UI.",
-      "descriptionEn": "Search common browser and bot user-agent examples. Use current client hints where possible. Search rows quickly with a compact table UI.",
+      "descriptionZh": "Search common browser and bot user-agent examples. Use current client hints where possible.",
+      "descriptionEn": "Search common browser and bot user-agent examples. Use current client hints where possible.",
       "keywords": "常用user-agent Common User Agents useragent Common User Agents 常用User-Agent",
       "icon": "›",
       "accent": "blue",
@@ -4426,11 +4416,11 @@
       "directoryRank": 1,
       "shell": {
         "title": "User-Agent Reference | Ymir Tool",
-        "description": "Search common browser and bot user-agent examples. Use current client hints where possible. Search rows quickly with a compact table UI.",
+        "description": "Search common browser and bot user-agent examples. Use current client hints where possible.",
         "canonical": "https://ymirtool.com/useragent/",
         "heroTitle": "User-Agent Reference",
         "schemaName": "User-Agent Reference",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4458,7 +4448,7 @@
         "canonical": "https://ymirtool.com/utf8/",
         "heroTitle": "UTF-8 Percent Encoder",
         "schemaName": "UTF-8 Percent Encoder",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4486,7 +4476,7 @@
         "canonical": "https://ymirtool.com/uuid/",
         "heroTitle": "UUID Generator",
         "schemaName": "UUID Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4514,7 +4504,7 @@
         "canonical": "https://ymirtool.com/websocket/",
         "heroTitle": "WebSocket Test Client",
         "schemaName": "WebSocket Test Client",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4528,8 +4518,8 @@
       "categoryLabelEn": "Text",
       "titleZh": "文字特效工具",
       "titleEn": "Text Effects Tool",
-      "descriptionZh": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks.",
+      "descriptionEn": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks.",
       "keywords": "文字特效工具 Text Effects Tool wenzitexiao Text Effects Tool 文字特效工具",
       "icon": "›",
       "accent": "emerald",
@@ -4538,11 +4528,11 @@
       "directoryRank": 12,
       "shell": {
         "title": "Text Effects Generator | Ymir Tool",
-        "description": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Generate simple text effects such as spaced text, vertical text, wrapped symbols, and decorative blocks.",
         "canonical": "https://ymirtool.com/wenzitexiao/",
         "heroTitle": "Text Effects Generator",
         "schemaName": "Text Effects Generator",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4556,8 +4546,8 @@
       "categoryLabelEn": "Calculator",
       "titleZh": "世界各地时间",
       "titleEn": "World Time",
-      "descriptionZh": "Show current times for common world time zones using your browser Intl API. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Show current times for common world time zones using your browser Intl API. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Show current times for common world time zones using your browser Intl API.",
+      "descriptionEn": "Show current times for common world time zones using your browser Intl API.",
       "keywords": "世界各地时间 World Time worldtime World Time 世界各地时间",
       "icon": "›",
       "accent": "amber",
@@ -4566,11 +4556,11 @@
       "directoryRank": 19,
       "shell": {
         "title": "World Time Clock | Ymir Tool",
-        "description": "Show current times for common world time zones using your browser Intl API. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Show current times for common world time zones using your browser Intl API.",
         "canonical": "https://ymirtool.com/worldtime/",
         "heroTitle": "World Time Clock",
         "schemaName": "World Time Clock",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4598,7 +4588,7 @@
         "canonical": "https://ymirtool.com/xpath/",
         "heroTitle": "XPath Tester",
         "schemaName": "XPath Tester",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     },
     {
@@ -4612,8 +4602,8 @@
       "categoryLabelEn": "Text",
       "titleZh": "字符串文本压缩",
       "titleEn": "String Text Compressor",
-      "descriptionZh": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters. Runs quickly for quick text, lookup, or calculator work.",
-      "descriptionEn": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters. Runs quickly for quick text, lookup, or calculator work.",
+      "descriptionZh": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters.",
+      "descriptionEn": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters.",
       "keywords": "字符串文本压缩 String Text Compressor zipstringtext String Text Compressor 字符串文本压缩",
       "icon": "›",
       "accent": "emerald",
@@ -4622,16 +4612,41 @@
       "directoryRank": 13,
       "shell": {
         "title": "Text Whitespace Compressor | Ymir Tool",
-        "description": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters. Runs quickly for quick text, lookup, or calculator work.",
+        "description": "Remove duplicate whitespace, convert text to one line, or remove all whitespace characters.",
         "canonical": "https://ymirtool.com/zipstringtext/",
         "heroTitle": "Text Whitespace Compressor",
         "schemaName": "Text Whitespace Compressor",
-        "lastmod": "2026-05-31"
+        "lastmod": "2026-07-10"
       }
     }
   ],
   "sitemap": {
     "index": "/sitemap.xml",
+    "indexableToolUrls": [
+      "https://ymirtool.com/base64/",
+      "https://ymirtool.com/formatjs/",
+      "https://ymirtool.com/json/",
+      "https://ymirtool.com/regex/",
+      "https://ymirtool.com/textdiff/",
+      "https://ymirtool.com/txtcount/",
+      "https://ymirtool.com/unixtime/",
+      "https://ymirtool.com/urlencode/"
+    ]
+  },
+  "policy": {
+    "inlineExecutableScripts": false,
+    "generator": "v62 audited catalog and tool runtime",
+    "indexing": {
+      "indexableTools": 8,
+      "additionalTools": 142,
+      "additionalToolRobots": "noindex, follow"
+    },
+    "advertising": {
+      "ownershipMetadata": "indexable-pages",
+      "runtime": "homepage-only"
+    }
+  },
+  "catalog": {
     "toolUrls": [
       "https://ymirtool.com/aesencrypt/",
       "https://ymirtool.com/alldns/",
@@ -4784,10 +4799,6 @@
       "https://ymirtool.com/xpath/",
       "https://ymirtool.com/zipstringtext/"
     ]
-  },
-  "policy": {
-    "inlineScripts": false,
-    "generator": "v44 manifest-driven homepage directory"
   }
 };
 })();

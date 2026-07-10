@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 
-<html data-adsense-remediation="20260601-adsense-remediation-v2" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/>
 <meta content="index, follow" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://cdn.vercel-insights.com" crossorigin>
-<title>Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool</title>
-<meta content="Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="description"/>
+<link crossorigin="" href="https://cdn.vercel-insights.com" rel="preconnect"/>
+<title>Base64 编解码指南：UTF-8、Padding、Base64URL 与安全边界 | Ymir Tool</title>
+<meta content="解释标准 Base64、Base64URL、Padding、UTF-8 文本与二进制数据的差异，提供乱码、截断、Data URI 和令牌样例的排查步骤。" name="description"/>
 <link href="https://ymirtool.com/base64-encoding-guide.html" rel="canonical"/>
 <meta content="Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool" property="og:title"/>
-<meta content="Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" property="og:description"/>
+<meta content="解释标准 Base64、Base64URL、Padding、UTF-8 文本与二进制数据的差异，提供乱码、截断、Data URI 和令牌样例的排查步骤。" property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://ymirtool.com/base64-encoding-guide.html" property="og:url"/>
 <meta content="Ymir Tool" property="og:site_name"/>
@@ -28,18 +26,18 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" nonce="__CSP_NONCE__" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
+<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
-<script defer="" nonce="__CSP_NONCE__" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool" name="twitter:title">
-<meta content="Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。" name="twitter:description"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 编解码使用说明：编码解码、兼容问题与安全边界","name":"Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool","url":"https://ymirtool.com/base64-encoding-guide.html","description":"Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。","datePublished":"2026-06-01","dateModified":"2026-06-01","author":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-base64.png","@id":"https://ymirtool.com/base64-encoding-guide.html#article","mainEntityOfPage":"https://ymirtool.com/base64-encoding-guide.html","inLanguage":"zh-CN"}</script>
+<script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet" type="text/css"/><meta content="Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool" name="twitter:title"/>
+<meta content="解释标准 Base64、Base64URL、Padding、UTF-8 文本与二进制数据的差异，提供乱码、截断、Data URI 和令牌样例的排查步骤。" name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 编解码使用说明：编码解码、兼容问题与安全边界","name":"Base64 编解码使用说明：编码解码、兼容问题与安全边界 | Ymir Tool","url":"https://ymirtool.com/base64-encoding-guide.html","description":"Base64 编解码使用说明，解释 Base64 是编码不是加密，并提供常见场景、错误排查、隐私边界和相关工具入口。本页补充适用场景、输入输出复核、常见错误、隐私边界和相关工具入口，帮助你在调试、发布或复制结果前确认字段、格式、时间、编码或文本差异。","datePublished":"2026-06-01","dateModified":"2026-07-10","author":{"@type":"Organization","name":"Ymir Tool Editorial","url":"https://ymirtool.com/about.html#editorial-policy"},"publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-base64.png","@id":"https://ymirtool.com/base64-encoding-guide.html#article","mainEntityOfPage":"https://ymirtool.com/base64-encoding-guide.html","inLanguage":"zh-CN","reviewedBy":{"@type":"Organization","name":"Ymir Tool","url":"https://ymirtool.com/methodology.html"}}</script>
 <link href="/static/style/ymir-developer-aesthetics-v58.css?v=20260531-v58" rel="stylesheet"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 编解码使用说明 - Ymir Tool","item":"https://ymirtool.com/base64-encoding-guide.html"}],"@id":"https://ymirtool.com/base64-encoding-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/base64-encoding-guide.html#article"}}</script><script data-ymir-ld="faq" data-ymir-schema-purpose="semantic-faq-ai-readability" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Base64 是加密吗？","acceptedAnswer":{"@type":"Answer","text":"不是。Base64 只是编码，目的是转换表示形式，不是隐藏内容。"}},{"@type":"Question","name":"为什么 Base64 结尾有等号？","acceptedAnswer":{"@type":"Answer","text":"等号通常是填充字符，用来补齐编码分组。复制时不要随意删除。"}},{"@type":"Question","name":"为什么解码后乱码？","acceptedAnswer":{"@type":"Answer","text":"常见原因是原始内容不是文本、字符集不一致、内容复制不完整，或使用了不同的 Base64 变体。 打开 Base64 工具"}}],"@id":"https://ymirtool.com/base64-encoding-guide.html#faq","url":"https://ymirtool.com/base64-encoding-guide.html","isPartOf":{"@id":"https://ymirtool.com/base64-encoding-guide.html#article"},"inLanguage":"zh-CN"}</script><link href="/llms.txt" rel="alternate" title="Ymir Tool LLM guidance" type="text/plain"/>
-</head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Base64 编解码使用说明 - Ymir Tool","item":"https://ymirtool.com/base64-encoding-guide.html"}],"@id":"https://ymirtool.com/base64-encoding-guide.html#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/base64-encoding-guide.html#article"}}</script><link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/md5/">MD5</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
 <div class="container ymir-is-2a92ab516c">
 <p><a href="/">首页</a> / <a href="/guides.html">指南中心</a> / Base64 说明</p>
 <h1>Base64 编解码使用说明</h1>
@@ -83,7 +81,7 @@
 <p>常见原因是原始内容不是文本、字符集不一致、内容复制不完整，或使用了不同的 Base64 变体。</p>
 <p><a class="btn btn-primary" href="/base64/">打开 Base64 工具</a></p>
 <section class="ymir-guide-review ymir-card"><h2>Base64 使用边界</h2><p>Base64 只是一种编码表示方式，不是加密。它常用于接口样例、Data URI、二进制片段展示和配置传输，但不能隐藏敏感信息。</p><ul><li>解码乱码时先确认原始文本的字符集。</li><li>Data URI 需要同时检查 MIME 类型、逗号分隔符和编码主体。</li><li>复制前确认末尾的等号填充没有丢失。</li></ul><p>如果内容包含密钥、凭证、客户数据或内部文件，应使用项目认可的安全流程，而不是通用网页工具。</p></section>
-<section class="ymir-container ymir-help ymir-card ymir-guide-depth" data-sprint2="guide-depth-base64">
+<section class="ymir-container ymir-help ymir-card ymir-guide-depth">
 <h2>Base64 编解码的正确边界</h2>
 <p>Base64 是二进制到文本的编码方式，不是加密、签名或权限控制。它常见于图片 data URI、Basic Auth、JWT 片段、邮件附件、API 参数和配置文件。排查时首先要确认当前文本属于标准 Base64、Base64URL，还是被再次 URL 编码后的片段；三者混用会导致 padding 错误、乱码或无法还原。</p>
 <h3>可复制样例</h3>
@@ -102,10 +100,11 @@ Base64：WW1pciBUb29sIEpTT04gZ3VpZGU=</code></pre>
 <h3>参考依据</h3>
 <p>Base64 字母表、padding 和 URL 安全变体可对照 RFC 4648；浏览器端字符串处理可参考 MDN 的 <code>btoa()</code> 与 <code>atob()</code> 说明。页面内容只用于解释和排错，密钥、生产 token 和用户隐私数据应在受控系统内处理。</p>
 </section>
-<section class="ymir-container ymir-help ymir-card ymir-sprint3-guide-links" data-sprint3-guide-links="case-pages"><h2>本指南覆盖的排错主题</h2><p>以下专题把本指南中的常见问题拆成更小的可复现案例，适合在复制、发布或提交 issue 前逐项核对。</p><ul><li><a href="/base64-encoding-guide.html">Base64 Padding 错误排查指南</a> — 解释 Base64 末尾等号、长度不是 4 的倍数、换行、URL-safe 字符和复制截断导致的解码失败。</li><li><a href="/base64-encoding-guide.html">Unicode 文本与 btoa/atob 乱码排查</a> — 说明中文、emoji 和非 Latin-1 字符在浏览器 btoa/atob 中出现异常的原因与 UTF-8 转换流程。</li><li><a href="/base64-encoding-guide.html">Base64URL 与标准 Base64 差异指南</a> — 对比标准 Base64 和 Base64URL 的字符表、padding、JWT 场景、URL 参数传输和互相转换风险。</li><li><a href="/base64-encoding-guide.html">Base64 不是加密：安全边界说明</a> — 解释为什么 Base64 只能编码不能保密，适合传输和表示字节，不适合保存密码、隐藏 token 或保护隐私。</li></ul></section><section aria-label="相关工具入口" class="ymir-guide-related">
+<section aria-label="相关工具入口" class="ymir-guide-related">
 <h2>相关工具入口</h2>
 <div class="ymir-guide-related-grid"><a href="/base64-encoding-guide.html">Base64 编码指南</a><a href="/urlencode/">URL 编码/解码</a><a href="/url-encoding-guide.html">URL 编码指南</a></div>
 </section>
-<section class="ymir-reference-sources ymir-card" data-second-group="reference-sources"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://www.rfc-editor.org/rfc/rfc4648" rel="noopener noreferrer" target="_blank">RFC 4648 Base-N Encodings</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" rel="noopener noreferrer" target="_blank">MDN Window.btoa()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/atob" rel="noopener noreferrer" target="_blank">MDN Window.atob()</a></li></ul></section><section class="ymir-card ymir-editorial-note" data-ymir-editorial-note="20260601"><h2>编辑与复核说明</h2><p>本页由 Ymir Tool editorial review 维护，最后更新于 2026-06-01。页面示例使用合成输入，避免展示真实密钥、客户资料或生产日志。复制结果到正式流程前，请结合对应工具页、官方规范和你自己的运行环境再次确认。</p></section></div>
+<section class="ymir-reference-sources ymir-card"><h2>参考资料和规范来源</h2><p>本页的排查建议结合浏览器行为、公开标准和常见开发实践整理。涉及线上发布、安全决策或兼容性判断时，请以官方规范和你自己的运行环境为准。</p><ul><li><a href="https://www.rfc-editor.org/rfc/rfc4648" rel="noopener noreferrer" target="_blank">RFC 4648 Base-N Encodings</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" rel="noopener noreferrer" target="_blank">MDN Window.btoa()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/atob" rel="noopener noreferrer" target="_blank">MDN Window.atob()</a></li></ul></section></div>
+<footer class="ymir-footer"><span>© 2026 Ymir Tool</span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><span>Practical browser-based tools with documented limits and review guidance.</span></footer><script defer="" src="/static/script/ymir-tool-shell-v62.js?v=20260710-v62"></script>
 </body>
 </html>
