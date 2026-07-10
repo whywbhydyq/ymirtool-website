@@ -6,9 +6,9 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "20260710-v64"
-OLD_CSS = ROOT / "static/style/ymir-tool-bundle-v63.css"
-NEW_CSS = ROOT / "static/style/ymir-tool-bundle-v64.css"
+VERSION = "20260710-v65"
+OLD_CSS = ROOT / "static/style/ymir-tool-bundle-v64.css"
+NEW_CSS = ROOT / "static/style/ymir-tool-bundle-v65.css"
 
 TOOL_FIRST_CSS = r'''
 
@@ -127,6 +127,40 @@ body.ymir-modern-body main[data-ymir-tool][data-tool-first="true"] .ymir-lead-ac
 /* ===== end v64 tool-first layout ===== */
 '''
 
+
+OUTPUT_READABILITY_CSS = r'''
+/* ===== Ymir Tool v65 readable output editor hotfix =====
+   Prevent legacy readonly textarea rules from painting a dark editor while
+   the active light theme still supplies dark text. Keep output contrast
+   theme-aware and consistent across every Vue/Element Plus tool page. */
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-editor-frame.is-readonly,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-editor-input {
+  background: var(--yt-surface-2) !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output textarea.el-textarea__inner[readonly],
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly textarea.el-textarea__inner[readonly],
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-inline-output textarea.el-textarea__inner[readonly] {
+  background: transparent !important;
+  color: var(--yt-text) !important;
+  -webkit-text-fill-color: var(--yt-text) !important;
+  caret-color: transparent !important;
+  opacity: 1 !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output textarea.el-textarea__inner[readonly]::placeholder,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly textarea.el-textarea__inner[readonly]::placeholder,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-inline-output textarea.el-textarea__inner[readonly]::placeholder {
+  color: var(--yt-text-3) !important;
+  -webkit-text-fill-color: var(--yt-text-3) !important;
+  opacity: 1 !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-line-gutter,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly .ymir-vue-line-gutter {
+  color: var(--yt-text-3) !important;
+  background: var(--yt-surface-3) !important;
+}
+/* ===== end v65 readable output editor hotfix ===== */
+'''
+
 LEAD_ROOT_RE = re.compile(
     r'(?P<lead><section\s+class="[^"]*\bymir-static-tool-lead\b[^"]*"[^>]*>.*?</section>)'
     r'(?P<space1>\s*)'
@@ -169,8 +203,8 @@ def update_html(path: Path) -> bool:
     if lead_pos < root_pos:
         text = reorder(text, rel)
     text = mark_main(text)
-    text = text.replace('/static/style/ymir-tool-bundle-v63.css?v=20260710-v63', '/static/style/ymir-tool-bundle-v64.css?v=' + VERSION)
-    text = text.replace('/static/style/ymir-tool-bundle-v63.css', '/static/style/ymir-tool-bundle-v64.css')
+    text = text.replace('/static/style/ymir-tool-bundle-v64.css?v=20260710-v64', '/static/style/ymir-tool-bundle-v65.css?v=' + VERSION)
+    text = text.replace('/static/style/ymir-tool-bundle-v64.css', '/static/style/ymir-tool-bundle-v65.css')
     path.write_text(text, encoding='utf-8')
     return True
 
@@ -182,11 +216,15 @@ def main() -> None:
         shutil.copy2(OLD_CSS, NEW_CSS)
         css = NEW_CSS.read_text(encoding='utf-8')
     else:
-        raise SystemExit('Missing v63/v64 CSS bundle')
+        raise SystemExit('Missing v64/v65 CSS bundle')
 
     marker = 'Ymir Tool v64 tool-first page layout'
     if marker not in css:
-        NEW_CSS.write_text(css.rstrip() + TOOL_FIRST_CSS + '\n', encoding='utf-8')
+        css = css.rstrip() + TOOL_FIRST_CSS + '\n'
+    output_marker = 'Ymir Tool v65 readable output editor hotfix'
+    if output_marker not in css:
+        css = css.rstrip() + OUTPUT_READABILITY_CSS + '\n'
+    NEW_CSS.write_text(css, encoding='utf-8')
 
     changed = 0
     for path in sorted(ROOT.rglob('*.html')):

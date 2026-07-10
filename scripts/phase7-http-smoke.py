@@ -16,7 +16,7 @@ PATHS = [
     "/aesencrypt/",
     "/tools.html",
     "/methodology.html",
-    "/static/style/ymir-tool-bundle-v64.css",
+    "/static/style/ymir-tool-bundle-v65.css",
     "/static/script/ymir-tools-manifest.js",
     "/static/script/ymir-tool-runtime-v63.js",
     "/static/script/ymir-tool-core-runtime-v63.js",

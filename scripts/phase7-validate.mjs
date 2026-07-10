@@ -32,7 +32,7 @@ for (const file of htmlFiles) {
   const app = manifest.appByTool[slug];
   assert(app, `${rel}: missing app mapping for ${slug}`);
   assert(html.includes('data-tool-first="true"'), `${rel}: tool-first marker missing`);
-  assert(count(html, '/static/style/ymir-tool-bundle-v64.css') === 1, `${rel}: v64 CSS must appear once`);
+  assert(count(html, '/static/style/ymir-tool-bundle-v65.css') === 1, `${rel}: v65 CSS must appear once`);
   assert(!html.includes('/static/style/ymir-tool-bundle-v63.css'), `${rel}: stale v63 CSS remains`);
 
   const mainStart = html.search(/<main\b[^>]*data-ymir-tool=/i);
@@ -53,9 +53,12 @@ for (const file of htmlFiles) {
 assert(toolPages === 150, `Expected 150 tool pages, found ${toolPages}`);
 assert(toolFirstPages === 150, `Expected 150 tool-first pages, found ${toolFirstPages}`);
 
-const css = read('static/style/ymir-tool-bundle-v64.css');
-assert(css.length > 250000, 'v64 CSS bundle appears incomplete');
+const css = read('static/style/ymir-tool-bundle-v65.css');
+assert(css.length > 250000, 'v65 CSS bundle appears incomplete');
 assert(css.includes('Ymir Tool v64 tool-first page layout'), 'v64 tool-first CSS marker missing');
+assert(css.includes('Ymir Tool v65 readable output editor hotfix'), 'v65 output readability marker missing');
+assert(css.includes('textarea.el-textarea__inner[readonly]'), 'specific readonly Element Plus selector missing');
+assert(css.includes('-webkit-text-fill-color: var(--yt-text) !important'), 'WebKit output text fill fix missing');
 assert(css.includes('main[data-ymir-tool][data-tool-first="true"] > .ymir-vue-tool-root'), 'Tool workbench first-panel rule missing');
 assert((css.match(/\{/g) || []).length === (css.match(/\}/g) || []).length, 'v64 CSS braces are unbalanced');
 assert(!fs.existsSync(path.join(root, 'static/style/ymir-tool-bundle-v63.css')), 'Obsolete v63 CSS bundle still exists');

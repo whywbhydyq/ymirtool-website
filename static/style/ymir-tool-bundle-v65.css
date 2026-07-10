@@ -4331,3 +4331,34 @@ body.ymir-modern-body main[data-ymir-tool][data-tool-first="true"] .ymir-lead-ac
 }
 /* ===== end v64 tool-first layout ===== */
 
+/* ===== Ymir Tool v65 readable output editor hotfix =====
+   Prevent legacy readonly textarea rules from painting a dark editor while
+   the active light theme still supplies dark text. Keep output contrast
+   theme-aware and consistent across every Vue/Element Plus tool page. */
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-editor-frame.is-readonly,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-editor-input {
+  background: var(--yt-surface-2) !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output textarea.el-textarea__inner[readonly],
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly textarea.el-textarea__inner[readonly],
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-inline-output textarea.el-textarea__inner[readonly] {
+  background: transparent !important;
+  color: var(--yt-text) !important;
+  -webkit-text-fill-color: var(--yt-text) !important;
+  caret-color: transparent !important;
+  opacity: 1 !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output textarea.el-textarea__inner[readonly]::placeholder,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly textarea.el-textarea__inner[readonly]::placeholder,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-inline-output textarea.el-textarea__inner[readonly]::placeholder {
+  color: var(--yt-text-3) !important;
+  -webkit-text-fill-color: var(--yt-text-3) !important;
+  opacity: 1 !important;
+}
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-output .ymir-vue-line-gutter,
+body.ymir-modern-body main[data-ymir-tool] .ymir-vue-editor-frame.is-readonly .ymir-vue-line-gutter {
+  color: var(--yt-text-3) !important;
+  background: var(--yt-surface-3) !important;
+}
+/* ===== end v65 readable output editor hotfix ===== */
+

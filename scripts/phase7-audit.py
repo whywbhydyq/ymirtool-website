@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = [
-    "static/style/ymir-tool-bundle-v64.css",
+    "static/style/ymir-tool-bundle-v65.css",
     "static/script/ymir-tool-runtime-v63.js",
     "static/script/ymir-tool-core-runtime-v63.js",
     "static/script/ymir-tool-shell-v63.js",
