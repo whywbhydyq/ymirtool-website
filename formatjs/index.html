@@ -32,20 +32,21 @@
 <script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JavaScript Formatter and Minifier","url":"https://ymirtool.com/formatjs/","description":"Format JavaScript snippets for readability or run a lightweight minify pass. Copy output and review syntax in your own environment.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","url":"https://ymirtool.com/formatjs/"},"dateModified":"2026-07-10","inLanguage":"en","publisher":{"@type":"Organization","@id":"https://ymirtool.com/#organization","name":"Ymir Tool","url":"https://ymirtool.com/"},"image":"https://ymirtool.com/static/images/og-formatjs.png","@id":"https://ymirtool.com/formatjs/#webapplication","isAccessibleForFree":true,"browserRequirements":"Requires a modern web browser with JavaScript enabled.","isPartOf":{"@id":"https://ymirtool.com/#website"},"softwareVersion":"2026.07","softwareHelp":{"@type":"CreativeWork","url":"https://ymirtool.com/methodology.html"},"featureList":["Use it for a focused JavaScript Formatter task when a quick browser workbench is appropriate.","formatted text or a compact representation"]}</script>
 <script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JavaScript Formatter & Minifier | Ymir Tool","item":"https://ymirtool.com/formatjs/"}],"@id":"https://ymirtool.com/formatjs/#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/formatjs/#webapplication"}}</script><link href="/static/style/ymir-tool-bundle-v65.css?v=20260710-v65" rel="stylesheet"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"JavaScript Formatter & Minifier | Ymir Tool","item":"https://ymirtool.com/formatjs/"}],"@id":"https://ymirtool.com/formatjs/#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/formatjs/#webapplication"}}</script><link href="/static/style/ymir-fast-core-v66.css?v=20260809-v66" rel="stylesheet"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
-<main class="ymir-page ymir-tool-page-v63" data-ymir-tool="formatjs" data-tool-first="true">
-<section aria-label="formatjs tool workbench" class="ymir-vue-tool-root" data-tool="formatjs" id="ymir-vue-tool-app"></section><noscript><div class="ymir-vue-noscript">This tool needs JavaScript to run. Please enable JavaScript and reload the page.</div></noscript><section aria-label="Static fallback example for JavaScript Formatter" class="ymir-container ymir-card ymir-static-tool-fallback" data-sxo-static-fallback="formatjs"><h2>Static fallback example</h2>
-<p>The live JavaScript Formatter workbench runs in the browser. If it does not load, use this static example to confirm the expected input and output pattern, then enable JavaScript or reload the page to run the tool.</p>
-<div class="ymir-static-fallback-grid">
-<label>Sample input<textarea readonly="" rows="4">function demo(){return [1,2,3].map(x=&gt;x*2)}</textarea></label>
-<label>Expected output<textarea readonly="" rows="4">function demo() {
-  return [1, 2, 3].map((x) =&gt; x * 2);
-}</textarea></label>
-</div>
-<button disabled="" type="button">Format JavaScript with JavaScript enabled.</button>
-<p class="ymir-static-fallback-note">This static fallback is for preview only. Full JavaScript formatting, indentation, minification, and copy actions run in the browser workbench after scripts load.</p></section>
+<main class="ymir-page ymir-tool-page-v63" data-ymir-tool="formatjs" data-tool-first="true" data-fast-core="v66">
+<!-- ymir-fast-workbench:start -->
+<section aria-labelledby="ymir-fast-formatjs-title" class="ymir-fast-workbench" data-fast-primary-action="formatJavaScript" data-fast-tool="formatjs">
+<header class="ymir-fast-head"><div><p class="ymir-fast-eyebrow">Instant browser tool</p><p class="ymir-fast-title" id="ymir-fast-formatjs-title">JavaScript Formatter</p><p class="ymir-fast-description">Apply lightweight indentation or minification to a JavaScript snippet before reviewing and copying it.</p></div><span class="ymir-fast-badge">Local · ready on load</span></header>
+<div class="ymir-fast-body"><div class="ymir-fast-grid">
+<section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong>JavaScript input</strong><span>Input</span></div><textarea class="ymir-fast-input" data-fast-input="input" data-fast-sample="function hello(name){if(name){return &quot;Hello, &quot;+name;}return &quot;Ymir Tool&quot;;}" placeholder="Paste a JavaScript snippet" spellcheck="false"></textarea></section>
+<section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong>Formatted output</strong><span>Output</span></div><textarea class="ymir-fast-output" data-fast-output="output" placeholder="Run an action to see the result" readonly spellcheck="false"></textarea></section>
+</div></div>
+<div class="ymir-fast-actions"><button class="ymir-fast-button ymir-fast-button--primary" data-fast-action="formatJavaScript" data-fast-target="output" type="button">Format</button><button class="ymir-fast-button" data-fast-action="minifyJavaScript" data-fast-target="output" type="button">Light minify</button><span class="ymir-fast-actions-spacer"></span><button class="ymir-fast-button" data-fast-action="sample" type="button">Load sample</button><button class="ymir-fast-button" data-fast-action="copy" data-fast-target="output" type="button">Copy result</button><button class="ymir-fast-button" data-fast-action="clear" type="button">Clear</button></div>
+<div aria-live="polite" class="ymir-fast-status" data-fast-status role="status">Ready.</div>
+</section><noscript><div class="ymir-fast-noscript">JavaScript is disabled. The workbench is visible, but local transformations require JavaScript.</div></noscript>
+<!-- ymir-fast-workbench:end -->
 
 <section class="ymir-static-tool-lead ymir-container" data-static-tool-lead="formatjs">
 <p class="ymir-breadcrumb">Home / Code formatting tools / JavaScript Formatter</p>
@@ -77,11 +78,6 @@
 </section>
 </main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><a href="/tools.html">All Tools</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><span>Open a tool, process the input, and copy the result.</span></footer>
-<script defer src="/static/script/ymir-tools-manifest.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-runtime-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-core-runtime-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-vue-tools-app.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-shell-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-watchdog-v63.js?v=20260710-v63"></script>
+<script type="module" src="/static/script/ymir-fast-core-v66.mjs?v=20260809-v66"></script>
 </body>
 </html>

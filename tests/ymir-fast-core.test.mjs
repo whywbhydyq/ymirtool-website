@@ -111,3 +111,10 @@ test('fast CSS is standalone, responsive, and below the 100 KB budget', () => {
   assert.match(css, /@media \(max-width:/);
   assert.equal((css.match(/{/g) || []).length, (css.match(/}/g) || []).length);
 });
+
+test('generated core workbenches preserve literal regex escapes and contain no control bytes', () => {
+  const html = fs.readFileSync(new URL('../regex/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /data-fast-sample="\\b\(error\|warning\)\\b"/);
+  assert.doesNotMatch(html, /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/);
+});

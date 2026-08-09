@@ -32,18 +32,18 @@
 <script defer="" src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <meta content="Unix Timestamp Converter | Seconds, Milliseconds and Dates" name="twitter:title"/>
 <meta content="Convert Unix timestamps in seconds or milliseconds to dates, or convert a date to Unix timestamp values. Copy UTC, local time and ISO output." name="twitter:description"/>
-<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Unix Timestamp Converter | Seconds, Milliseconds and Dates","item":"https://ymirtool.com/unixtime/"}],"@id":"https://ymirtool.com/unixtime/#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/unixtime/#webapplication"}}</script><link href="/static/style/ymir-tool-bundle-v65.css?v=20260710-v65" rel="stylesheet"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
+<script data-ymir-ld="breadcrumb" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ymirtool.com/guides.html"},{"@type":"ListItem","position":3,"name":"Unix Timestamp Converter | Seconds, Milliseconds and Dates","item":"https://ymirtool.com/unixtime/"}],"@id":"https://ymirtool.com/unixtime/#breadcrumb","isPartOf":{"@id":"https://ymirtool.com/unixtime/#webapplication"}}</script><link href="/static/style/ymir-fast-core-v66.css?v=20260809-v66" rel="stylesheet"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
 <body class="ymir-modern-body">
 <nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JavaScript</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
-<main class="ymir-page ymir-tool-page-v63" data-ymir-tool="unixtime" data-tool-first="true">
-<section aria-label="unixtime tool workbench" class="ymir-vue-tool-root" data-tool="unixtime" id="ymir-vue-tool-app"></section><noscript><div class="ymir-vue-noscript">This tool needs JavaScript to run. Please enable JavaScript and reload the page.</div></noscript><section aria-label="Static fallback example for Unix Time Converter" class="ymir-container ymir-card ymir-static-tool-fallback" data-sxo-static-fallback="unixtime"><h2>Static fallback example</h2>
-<p>The live Unix Time Converter workbench runs in the browser. If it does not load, use this static example to confirm the expected input and output pattern, then enable JavaScript or reload the page to run the tool.</p>
-<div class="ymir-static-fallback-grid">
-<label>Sample input<textarea readonly="" rows="4">1717200000</textarea></label>
-<label>Expected output<textarea readonly="" rows="4">Expected: readable date/time after choosing seconds or milliseconds.</textarea></label>
-</div>
-<button disabled="" type="button">Convert timestamps with JavaScript enabled.</button>
-<p class="ymir-static-fallback-note">This static fallback explains timestamp conversion only. Live seconds, milliseconds, timezone, and date parsing checks run in the browser workbench after scripts load.</p></section>
+<main class="ymir-page ymir-tool-page-v63" data-ymir-tool="unixtime" data-tool-first="true" data-fast-core="v66">
+<!-- ymir-fast-workbench:start -->
+<section aria-labelledby="ymir-fast-unixtime-title" class="ymir-fast-workbench" data-fast-primary-action="timestampToDate" data-fast-tool="unixtime">
+<header class="ymir-fast-head"><div><p class="ymir-fast-eyebrow">Instant browser tool</p><p class="ymir-fast-title" id="ymir-fast-unixtime-title">Unix Timestamp Converter</p><p class="ymir-fast-description">Convert Unix seconds or milliseconds to ISO time and convert a date back to both timestamp units.</p></div><span class="ymir-fast-badge">Local · ready on load</span></header>
+<div class="ymir-fast-body"><div class="ymir-fast-grid"><section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong>Timestamp to ISO date</strong><span>Seconds or milliseconds</span></div><label class="ymir-fast-field">Unix timestamp<input class="ymir-fast-single-input" data-fast-input="timestamp" data-fast-sample="1767225600" inputmode="numeric" placeholder="1767225600" type="text"/></label><label class="ymir-fast-field">ISO result<textarea class="ymir-fast-output" data-fast-output="dateOutput" placeholder="Run timestamp conversion" readonly></textarea></label></section><section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong>Date to timestamp</strong><span>ISO or local date</span></div><label class="ymir-fast-field">Date<input class="ymir-fast-single-input" data-fast-input="date" data-fast-sample="2026-01-01T00:00:00Z" placeholder="2026-01-01T00:00:00Z" type="text"/></label><label class="ymir-fast-field">Seconds and milliseconds<textarea class="ymir-fast-output" data-fast-output="timestampOutput" placeholder="Run date conversion" readonly></textarea></label></section></div></div>
+<div class="ymir-fast-actions"><button class="ymir-fast-button ymir-fast-button--primary" data-fast-action="timestampToDate" data-fast-target="dateOutput" type="button">Timestamp → date</button><button class="ymir-fast-button" data-fast-action="dateToTimestamp" data-fast-target="timestampOutput" type="button">Date → timestamp</button><span class="ymir-fast-actions-spacer"></span><button class="ymir-fast-button" data-fast-action="sample" type="button">Load sample</button><button class="ymir-fast-button" data-fast-action="copy" data-fast-target="dateOutput" type="button">Copy result</button><button class="ymir-fast-button" data-fast-action="clear" type="button">Clear</button></div>
+<div aria-live="polite" class="ymir-fast-status" data-fast-status role="status">Ready.</div>
+</section><noscript><div class="ymir-fast-noscript">JavaScript is disabled. The workbench is visible, but local transformations require JavaScript.</div></noscript>
+<!-- ymir-fast-workbench:end -->
 
 <section class="ymir-static-tool-lead ymir-container" data-static-tool-lead="unixtime">
 <p class="ymir-breadcrumb">Home / Time tools / Unix Timestamp Converter</p>
@@ -75,11 +75,6 @@
 </section>
 </main>
 <footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><a href="/tools.html">All Tools</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><span>Open a tool, process the input, and copy the result.</span></footer>
-<script defer src="/static/script/ymir-tools-manifest.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-runtime-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-core-runtime-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-vue-tools-app.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-shell-v63.js?v=20260710-v63"></script>
-<script defer src="/static/script/ymir-tool-watchdog-v63.js?v=20260710-v63"></script>
+<script type="module" src="/static/script/ymir-fast-core-v66.mjs?v=20260809-v66"></script>
 </body>
 </html>
