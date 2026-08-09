@@ -85,6 +85,19 @@ assert(toolPages === 150, `Expected 150 tool pages, found ${toolPages}`);
 assert(fastPages === 8, `Expected 8 fast pages, found ${fastPages}`);
 assert(legacyPages === 142, `Expected 142 legacy pages, found ${legacyPages}`);
 
+const homepage = read('index.html');
+const homeWorkbenchIndex = homepage.indexOf('data-fast-home="true"');
+const homeHeroIndex = homepage.indexOf('class="ymir-home-hero');
+assert(homeWorkbenchIndex > -1, 'Homepage fast workbench is missing');
+assert(homeHeroIndex > homeWorkbenchIndex, 'Homepage fast workbench must render before the hero');
+assert(homepage.includes('data-fast-action="formatJson"'), 'Homepage format action is missing');
+assert(count(homepage, FAST_CSS) === 1, 'Homepage fast CSS must appear exactly once');
+assert(count(homepage, FAST_SCRIPT) === 1, 'Homepage fast module must appear exactly once');
+assert(!/<script[^>]+src="\/static\/script\/ymir-tools-manifest\.js/i.test(homepage), 'Homepage must not statically load the full manifest');
+for (const slug of ['base64', 'urlencode', 'formatjs', 'regex', 'textdiff', 'txtcount', 'unixtime']) {
+  assert(homepage.includes(`href="/${slug}/"`), `Homepage fast workbench link missing: ${slug}`);
+}
+
 for (const relativePath of [FAST_CSS, FAST_SCRIPT].map((item) => item.slice(1))) {
   const fullPath = path.join(root, relativePath);
   assert(fs.existsSync(fullPath), `Missing fast asset: ${relativePath}`);
@@ -97,4 +110,4 @@ assert(!fastCss.includes('.el-'), 'Fast CSS must not include Element Plus select
 assert((fastCss.match(/{/g) || []).length === (fastCss.match(/}/g) || []).length, 'Fast CSS braces are unbalanced');
 execFileSync(process.execPath, ['--check', path.join(root, FAST_SCRIPT.slice(1))], { stdio: 'pipe' });
 
-console.log(`Phase 8 validation passed: ${fastPages} fast pages, ${legacyPages} unchanged legacy pages, and both fast assets are below 100 KB.`);
+console.log(`Phase 8 validation passed: homepage plus ${fastPages} fast pages, ${legacyPages} unchanged legacy pages, and both fast assets are below 100 KB.`);

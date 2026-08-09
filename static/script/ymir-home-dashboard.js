@@ -7,6 +7,7 @@
   var lastResults = [];
   var favoritesExpanded = false;
   var panelOpen = false;
+  var manifestPromise = null;
   var CORE_TOOL_IDS = {
     json: true,
     base64: true,
@@ -19,6 +20,33 @@
   };
 
   function manifest() { return window.YmirToolsManifest || null; }
+  function ensureHomeManifest() {
+    if (manifest()) return Promise.resolve(manifest());
+    if (manifestPromise) return manifestPromise;
+
+    manifestPromise = new Promise(function (resolve) {
+      var script = document.querySelector('script[data-ymir-home-manifest]');
+      var shouldAppend = false;
+      if (!script) {
+        script = document.createElement('script');
+        script.src = '/static/script/ymir-tools-manifest.js?v=20260710-v63';
+        script.async = true;
+        script.setAttribute('data-ymir-home-manifest', '');
+        shouldAppend = true;
+      }
+      script.addEventListener('load', function () {
+        refreshAfterManifest();
+        resolve(manifest());
+      }, { once: true });
+      script.addEventListener('error', function () {
+        if (script.parentNode) script.parentNode.removeChild(script);
+        manifestPromise = null;
+        resolve(null);
+      }, { once: true });
+      if (shouldAppend) document.head.appendChild(script);
+    });
+    return manifestPromise;
+  }
   function slugFromHref(href) {
     var match = String(href || '').match(/^\/([^/?#]+)\/?/);
     return match ? match[1] : String(href || '').replace(/^\/+|\/+$/g, '');
@@ -43,7 +71,17 @@
   function manifestTools() {
     var m = manifest();
     if (!m || !Array.isArray(m.tools)) return null;
-    return m.tools.map(manifestTool).filter(isCoreTool);
+    return m.tools.map(manifestTool);
+  }
+  function coreTools() {
+    var tools = manifestTools();
+    if (tools) return tools.filter(isCoreTool);
+    var seen = {};
+    return allToolElements().map(toolData).filter(isCoreTool).filter(function (t) {
+      if (seen[t.href]) return false;
+      seen[t.href] = true;
+      return true;
+    });
   }
 
   function lang() {
@@ -82,7 +120,7 @@
   function allToolElements() { return Array.prototype.slice.call(document.querySelectorAll('[data-home-tool],[data-directory-tool]')); }
   function featuredTools() {
     var m = manifest();
-    var tools = manifestTools();
+    var tools = coreTools();
     if (m && tools && Array.isArray(m.featured)) {
       var byId = {};
       tools.forEach(function (t) { byId[t.id] = t; });
@@ -93,21 +131,16 @@
   function allTools() {
     var tools = manifestTools();
     if (tools) return tools;
-    var seen = {};
-    return allToolElements().map(toolData).filter(isCoreTool).filter(function (t) {
-      if (seen[t.href]) return false;
-      seen[t.href] = true;
-      return true;
-    });
+    return coreTools();
   }
-  function toolById() {
+  function toolById(tools) {
     var byId = {};
-    allTools().forEach(function (t) { byId[t.id] = t; });
+    (tools || allTools()).forEach(function (t) { byId[t.id] = t; });
     return byId;
   }
   function featuredToolList() {
     var m = manifest();
-    var byId = toolById();
+    var byId = toolById(coreTools());
     if (m && Array.isArray(m.featured)) {
       return m.featured.map(function (id) { return byId[id]; }).filter(Boolean);
     }
@@ -174,7 +207,7 @@
     var panel = document.getElementById('toolDirectory');
     var m = manifest();
     if (!tabs || !panel || !m || !Array.isArray(m.categories)) return false;
-    var byId = toolById();
+    var byId = toolById(coreTools());
     var categories = m.categories.filter(function (cat) { return Array.isArray(cat.tools) && cat.tools.some(function (id) { return byId[id]; }); });
     if (!categories.length) return false;
     tabs.innerHTML = categories.map(directoryTabButton).join('');
@@ -186,6 +219,14 @@
   function hydrateHomeFromManifest() {
     renderFeaturedFromManifest();
     renderDirectoryFromManifest();
+  }
+  function refreshAfterManifest() {
+    hydrateHomeFromManifest();
+    var input = document.getElementById('toolSearch');
+    renderCommand(input ? input.value : '');
+    if (!panelOpen) setPanelOpen(false);
+    syncStars();
+    renderSide();
   }
   function norm(s) { return String(s || '').toLowerCase().replace(/\s+/g, ' ').trim(); }
   function scoreTool(t, query) {
@@ -419,6 +460,7 @@
       var jsonOut = patternOutput('json');
       var raw = jsonIn ? jsonIn.value : '';
       if (action === 'json-copy') { copyText(jsonOut && jsonOut.value, 'json'); return; }
+      if (jsonOut) jsonOut.value = '';
       try {
         var parsed = JSON.parse(raw);
         if (action === 'json-minify') jsonOut.value = JSON.stringify(parsed);
@@ -494,7 +536,13 @@
       input.setAttribute('aria-expanded', 'false');
       renderCommand('');
       setPanelOpen(false);
-      input.addEventListener('focus', function () { openCommand(input); });
+      input.addEventListener('pointerdown', function () { ensureHomeManifest(); }, { once: true, passive: true });
+      input.addEventListener('focus', function () {
+        ensureHomeManifest().then(function () {
+          if (document.activeElement === input) renderCommand(input.value);
+        });
+        openCommand(input);
+      });
       input.addEventListener('input', function () { activeIndex = 0; setPanelOpen(true); renderCommand(input.value); });
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { e.preventDefault(); closeCommand(); input.blur(); return; }
@@ -604,6 +652,11 @@
     renderSide();
     updateQuickActionLabels();
     initPatternTools();
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(function () { ensureHomeManifest(); }, { timeout: 2500 });
+    } else {
+      window.setTimeout(function () { ensureHomeManifest(); }, 2500);
+    }
   }
   document.addEventListener('DOMContentLoaded', attach);
 })();

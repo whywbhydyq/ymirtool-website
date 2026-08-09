@@ -118,3 +118,28 @@ test('generated core workbenches preserve literal regex escapes and contain no c
   assert.match(html, /data-fast-sample="\\b\(error\|warning\)\\b"/);
   assert.doesNotMatch(html, /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/);
 });
+
+test('homepage renders a usable JSON workbench before the hero without blocking on the manifest', () => {
+  const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const workbenchIndex = html.indexOf('data-fast-tool="json"');
+  const heroIndex = html.indexOf('class="ymir-home-hero');
+
+  assert.ok(workbenchIndex > -1, 'homepage must contain the fast JSON workbench');
+  assert.ok(heroIndex > workbenchIndex, 'workbench must appear before the homepage hero');
+  assert.match(html, /data-fast-action="formatJson"/);
+  assert.match(html, /href="\/base64\/"/);
+  assert.doesNotMatch(html, /<script[^>]+src="\/static\/script\/ymir-tools-manifest\.js/);
+});
+
+test('homepage dashboard defers the full manifest until intent or idle time', () => {
+  const source = fs.readFileSync(
+    new URL('../static/script/ymir-home-dashboard.js', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(source, /function ensureHomeManifest/);
+  assert.match(source, /ymir-tools-manifest\.js/);
+  assert.match(source, /requestIdleCallback/);
+  assert.match(source, /pointerdown/);
+  assert.match(source, /if \(jsonOut\) jsonOut\.value = '';/);
+});

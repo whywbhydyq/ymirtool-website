@@ -16,6 +16,8 @@ PATHS = [
     "/aesencrypt/",
     "/tools.html",
     "/methodology.html",
+    "/static/style/ymir-fast-core-v66.css",
+    "/static/script/ymir-fast-core-v66.mjs",
     "/static/style/ymir-tool-bundle-v65.css",
     "/static/script/ymir-tools-manifest.js",
     "/static/script/ymir-tool-runtime-v63.js",
@@ -56,7 +58,7 @@ def main() -> int:
     if failures:
         print(f"HTTP smoke failed for {len(failures)} route(s).", file=sys.stderr)
         return 1
-    print("Phase 7 local HTTP smoke passed.")
+    print("Phase 8 local HTTP smoke passed.")
     return 0
 
 if __name__ == "__main__":

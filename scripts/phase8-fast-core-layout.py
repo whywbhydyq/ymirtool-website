@@ -11,6 +11,8 @@ FAST_CSS = f'/static/style/ymir-fast-core-v66.css?v={VERSION}'
 FAST_SCRIPT = f'/static/script/ymir-fast-core-v66.mjs?v={VERSION}'
 START = '<!-- ymir-fast-workbench:start -->'
 END = '<!-- ymir-fast-workbench:end -->'
+HOME_START = '<!-- ymir-fast-home:start -->'
+HOME_END = '<!-- ymir-fast-home:end -->'
 
 TOOL_CONFIGS = {
     "json": {
@@ -160,6 +162,31 @@ def build_workbench(slug: str, config: dict[str, object]) -> str:
 {END}'''
 
 
+def build_home_workbench() -> str:
+    links = [
+        ("/base64/", "Base64"),
+        ("/urlencode/", "URL 编码"),
+        ("/formatjs/", "JavaScript"),
+        ("/regex/", "正则"),
+        ("/textdiff/", "文本对比"),
+        ("/txtcount/", "字数统计"),
+        ("/unixtime/", "时间戳"),
+    ]
+    link_html = "".join(f'<a href="{href}">{label}</a>' for href, label in links)
+    sample = escape('{"name":"Ymir Tool","ready":true,"tools":8}')
+    return f'''{HOME_START}
+<section aria-labelledby="ymir-fast-home-title" class="ymir-fast-workbench ymir-fast-workbench--home" data-fast-home="true" data-fast-primary-action="formatJson" data-fast-primary-target="output" data-fast-tool="json">
+<header class="ymir-fast-head"><div><p class="ymir-fast-eyebrow" data-i18n-en="USE IT NOW" data-i18n-zh="现在就能用">现在就能用</p><p class="ymir-fast-title" id="ymir-fast-home-title" data-i18n-en="Instant JSON formatter" data-i18n-zh="JSON 即时格式化">JSON 即时格式化</p><p class="ymir-fast-description" data-i18n-en="The real workbench is already in the page. Paste JSON and format, minify, validate or copy it without waiting for the full tool directory." data-i18n-zh="真实工具框已直接写入页面。粘贴 JSON 后可立即格式化、压缩、校验或复制，不必等待完整工具目录加载。">真实工具框已直接写入页面。粘贴 JSON 后可立即格式化、压缩、校验或复制，不必等待完整工具目录加载。</p><nav aria-label="其他核心工具" class="ymir-fast-links">{link_html}</nav></div><span class="ymir-fast-badge" data-i18n-en="Local · ready" data-i18n-zh="本地处理 · 已就绪">本地处理 · 已就绪</span></header>
+<div class="ymir-fast-body"><div class="ymir-fast-grid">
+<section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong data-i18n-en="JSON input" data-i18n-zh="JSON 输入">JSON 输入</strong><span>Input</span></div><textarea aria-label="JSON 输入" class="ymir-fast-input" data-fast-input="input" data-fast-sample="{sample}" placeholder='{{"name":"Ymir Tool"}}' spellcheck="false">{{"name":"Ymir Tool","ready":true,"tools":8}}</textarea></section>
+<section class="ymir-fast-panel"><div class="ymir-fast-panel-head"><strong data-i18n-en="Reviewed output" data-i18n-zh="检查后的输出">检查后的输出</strong><span>Output</span></div><textarea aria-label="JSON 输出" class="ymir-fast-output" data-fast-output="output" placeholder="点击格式化、压缩或校验" readonly spellcheck="false"></textarea></section>
+</div></div>
+<div class="ymir-fast-actions"><button class="ymir-fast-button ymir-fast-button--primary" data-fast-action="formatJson" data-fast-target="output" type="button">格式化</button><button class="ymir-fast-button" data-fast-action="minifyJson" data-fast-target="output" type="button">压缩</button><button class="ymir-fast-button" data-fast-action="validateJson" data-fast-target="output" type="button">校验</button><span class="ymir-fast-actions-spacer"></span><button class="ymir-fast-button" data-fast-action="sample" type="button">载入样例</button><button class="ymir-fast-button" data-fast-action="copy" data-fast-target="output" type="button">复制结果</button><button class="ymir-fast-button" data-fast-action="clear" type="button">清空</button></div>
+<div aria-live="polite" class="ymir-fast-status" data-fast-status role="status">已就绪。</div>
+</section><noscript><div class="ymir-fast-noscript ymir-fast-workbench--home">工具框已经显示，但本地转换需要启用 JavaScript。</div></noscript>
+{HOME_END}'''
+
+
 def replace_workbench(text: str, workbench: str) -> str:
     generated = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
     if generated.search(text):
@@ -212,11 +239,55 @@ def update_tool(slug: str, config: dict[str, object]) -> bool:
     return False
 
 
+def update_home() -> bool:
+    path = ROOT / "index.html"
+    original = path.read_text(encoding="utf-8")
+    text = original
+    home_pattern = re.compile(re.escape(HOME_START) + r".*?" + re.escape(HOME_END), re.S)
+    workbench = build_home_workbench()
+    text = re.sub(r"\s*" + re.escape(HOME_START) + r".*?" + re.escape(HOME_END) + r"\s*", "\n", text, count=1, flags=re.S)
+    main_anchor = '<main class="ymir-page ymir-home-page">'
+    if main_anchor not in text:
+        raise RuntimeError("Could not find the homepage main element")
+    text = text.replace(main_anchor, f"{main_anchor}\n{workbench}", 1)
+
+    fast_css_tag = f'<link href="{FAST_CSS}" rel="stylesheet"/>'
+    text = re.sub(r"\s*" + re.escape(fast_css_tag) + r"\s*", "\n", text)
+    css_anchor = '<link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>'
+    if css_anchor not in text:
+        raise RuntimeError("Could not find the homepage CSS anchor")
+    text = text.replace(css_anchor, f"{fast_css_tag}\n{css_anchor}", 1)
+
+    text = re.sub(
+        r'\s*<script\s+defer(?:="")?\s+src="/static/script/ymir-tools-manifest\.js\?v=[^"]+"\s*></script>',
+        "",
+        text,
+        flags=re.I,
+    )
+    text = re.sub(
+        r'/static/script/ymir-home-dashboard\.js\?v=[^"\s]+',
+        f'/static/script/ymir-home-dashboard.js?v={VERSION}',
+        text,
+        count=1,
+    )
+    module_pattern = re.compile(r'\s*<script type="module" src="/static/script/ymir-fast-core-v66\.mjs\?v=[^"]+"></script>')
+    text = module_pattern.sub("", text)
+    text = text.replace("</body>", f'<script type="module" src="{FAST_SCRIPT}"></script>\n</body>', 1)
+
+    if text != original:
+        path.write_text(text, encoding="utf-8", newline="\n")
+        return True
+    return False
+
+
 def main() -> None:
     changed = [slug for slug, config in TOOL_CONFIGS.items() if update_tool(slug, config)]
-    print(f"Phase 8 generated {len(TOOL_CONFIGS)} fast core pages; changed {len(changed)} file(s).")
+    home_changed = update_home()
+    print(f"Phase 8 generated {len(TOOL_CONFIGS)} fast core pages and the homepage workbench; changed {len(changed) + int(home_changed)} file(s).")
     if changed:
         print("Changed: " + ", ".join(changed))
+    if home_changed:
+        print("Changed: homepage")
 
 
 if __name__ == "__main__":
