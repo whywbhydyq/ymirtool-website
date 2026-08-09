@@ -1,0 +1,248 @@
+/* Shared discovery UI for the Chinese guide center and complete tool directory. */
+.ymir-discovery-page {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 34px 0 72px;
+  color: var(--yt-text);
+}
+
+.ymir-discovery-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: end;
+  padding: clamp(26px, 4vw, 48px);
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-xl);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(var(--yt-accent-rgb), .15), transparent 19rem),
+    linear-gradient(135deg, var(--yt-surface), var(--yt-surface-2));
+  box-shadow: var(--yt-shadow-md);
+}
+.ymir-discovery-eyebrow,
+.ymir-discovery-group > header p,
+.ymir-guide-workflow > header p {
+  margin: 0 0 7px;
+  color: var(--yt-accent);
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: .08em;
+}
+.ymir-discovery-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--yt-text);
+  font-size: clamp(2rem, 4.3vw, 3.7rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+.ymir-discovery-hero > div > p:last-child {
+  max-width: 760px;
+  margin: 17px 0 0;
+  color: var(--yt-text-2);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.ymir-discovery-hero dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(74px, 1fr));
+  gap: 9px;
+  margin: 0;
+}
+.ymir-discovery-hero dl div {
+  min-width: 80px;
+  padding: 14px 12px;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-md);
+  background: color-mix(in srgb, var(--yt-surface) 88%, transparent);
+  text-align: center;
+}
+.ymir-discovery-hero dt { color: var(--yt-text); font-size: 1.55rem; font-weight: 840; line-height: 1; }
+.ymir-discovery-hero dd { margin: 7px 0 0; color: var(--yt-text-2); font-size: 11px; }
+
+.ymir-discovery-control {
+  position: sticky;
+  z-index: 10;
+  top: calc(var(--yt-topbar) + 12px);
+  display: grid;
+  gap: 13px;
+  margin: 22px 0 28px;
+  padding: 17px;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-lg);
+  background: color-mix(in srgb, var(--yt-surface) 94%, transparent);
+  box-shadow: var(--yt-shadow-sm);
+  backdrop-filter: blur(16px);
+}
+.ymir-discovery-search { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 14px; }
+.ymir-discovery-search > span { color: var(--yt-text); font-size: 13px; font-weight: 800; }
+.ymir-discovery-search input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--yt-border-strong);
+  border-radius: 12px;
+  outline: 0;
+  background: var(--yt-surface-2);
+  color: var(--yt-text);
+}
+.ymir-discovery-search input::placeholder { color: var(--yt-text-3); }
+.ymir-discovery-search input:focus {
+  border-color: var(--yt-accent);
+  box-shadow: 0 0 0 4px rgba(var(--yt-accent-rgb), .13);
+}
+.ymir-discovery-filters { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 1px; scrollbar-width: thin; }
+.ymir-discovery-filters button,
+.ymir-discovery-summary button,
+.ymir-discovery-empty button {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--yt-border);
+  border-radius: 999px;
+  background: var(--yt-surface);
+  color: var(--yt-text-2);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.ymir-discovery-filters button:hover,
+.ymir-discovery-summary button:hover,
+.ymir-discovery-empty button:hover { border-color: var(--yt-accent); color: var(--yt-accent); }
+.ymir-discovery-filters button.is-active {
+  border-color: var(--yt-primary);
+  background: var(--yt-primary);
+  color: var(--yt-on-primary);
+}
+.ymir-discovery-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ymir-discovery-summary p { margin: 0; color: var(--yt-text-2); font-size: 12px; }
+.ymir-discovery-summary button { min-height: 30px; padding: 4px 10px; }
+
+.ymir-discovery-group { margin: 30px 0 0; scroll-margin-top: 190px; }
+.ymir-discovery-group[hidden],
+.ymir-discovery-empty[hidden],
+[data-discovery-card][hidden] { display: none !important; }
+.ymir-discovery-group > header,
+.ymir-guide-workflow > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 14px;
+  padding: 0 2px;
+}
+.ymir-discovery-group > header h2,
+.ymir-guide-workflow > header h2 { margin: 0; color: var(--yt-text); font-size: clamp(1.25rem, 2vw, 1.65rem); letter-spacing: -.025em; }
+.ymir-discovery-group > header > span { flex: none; color: var(--yt-text-3); font-size: 12px; }
+
+.ymir-tool-directory-grid,
+.ymir-guide-directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ymir-tool-directory-card,
+.ymir-guide-directory-card {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-lg);
+  background: var(--yt-surface);
+  color: var(--yt-text);
+  box-shadow: var(--yt-shadow-sm);
+  text-decoration: none;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.ymir-tool-directory-card:hover,
+.ymir-guide-directory-card:hover {
+  border-color: color-mix(in srgb, var(--yt-accent) 48%, var(--yt-border));
+  box-shadow: var(--yt-shadow-md);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.ymir-tool-directory-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  padding: 16px;
+}
+.ymir-tool-directory-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--yt-border);
+  border-radius: 12px;
+  background: var(--yt-primary-soft);
+  color: var(--yt-accent);
+  font-family: var(--yt-mono);
+  font-size: 12px;
+  font-weight: 850;
+}
+.ymir-tool-directory-copy { min-width: 0; }
+.ymir-tool-directory-copy strong { display: block; overflow: hidden; color: var(--yt-text); font-size: 14px; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+.ymir-tool-directory-copy > span { display: -webkit-box; min-height: 42px; margin-top: 7px; overflow: hidden; color: var(--yt-text-2); font-size: 12px; line-height: 1.55; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.ymir-tool-directory-meta { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 2px; }
+.ymir-tool-directory-meta code { overflow: hidden; color: var(--yt-text-3); font-family: var(--yt-mono); font-size: 10px; text-overflow: ellipsis; }
+.ymir-tool-badge { flex: none; padding: 3px 7px; border-radius: 999px; background: var(--yt-success-soft); color: var(--yt-success); font-size: 10px; font-weight: 800; }
+.ymir-tool-badge.is-secondary { background: var(--yt-surface-2); color: var(--yt-text-3); }
+
+.ymir-guide-directory-card { display: flex; min-height: 218px; flex-direction: column; padding: 20px; }
+.ymir-guide-card-kicker { color: var(--yt-accent); font-size: 11px; font-weight: 800; }
+.ymir-guide-directory-card strong { margin-top: 13px; color: var(--yt-text); font-size: 17px; line-height: 1.35; }
+.ymir-guide-directory-card > span:not(.ymir-guide-card-kicker) { margin-top: 10px; color: var(--yt-text-2); font-size: 13px; line-height: 1.65; }
+.ymir-guide-directory-card em { margin-top: auto; padding-top: 18px; color: var(--yt-accent); font-size: 12px; font-style: normal; font-weight: 800; }
+
+.ymir-discovery-empty {
+  margin: 30px 0;
+  padding: 42px 22px;
+  border: 1px dashed var(--yt-border-strong);
+  border-radius: var(--yt-radius-lg);
+  background: var(--yt-surface-2);
+  color: var(--yt-text-2);
+  text-align: center;
+}
+.ymir-discovery-empty strong { display: block; color: var(--yt-text); font-size: 18px; }
+.ymir-discovery-empty p { margin: 8px 0 17px; }
+
+.ymir-guide-workflow {
+  margin-top: 44px;
+  padding: 26px;
+  border: 1px solid var(--yt-border);
+  border-radius: var(--yt-radius-xl);
+  background: var(--yt-surface-2);
+}
+.ymir-guide-workflow ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
+.ymir-workflow-step { padding: 16px; border: 1px solid var(--yt-border); border-radius: var(--yt-radius-md); background: var(--yt-surface); }
+.ymir-workflow-step > span { color: var(--yt-accent); font-family: var(--yt-mono); font-size: 11px; font-weight: 850; }
+.ymir-workflow-step strong { display: block; margin-top: 9px; color: var(--yt-text); font-size: 14px; }
+.ymir-workflow-step p { margin: 7px 0 0; color: var(--yt-text-2); font-size: 12px; line-height: 1.6; }
+
+@media (max-width: 960px) {
+  .ymir-discovery-hero { grid-template-columns: 1fr; align-items: start; }
+  .ymir-discovery-hero dl { width: min(100%, 420px); }
+  .ymir-tool-directory-grid,
+  .ymir-guide-directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ymir-guide-workflow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .ymir-discovery-page { width: min(100% - 24px, 1180px); padding: 16px 0 48px; }
+  .ymir-discovery-hero { gap: 22px; padding: 23px 19px; border-radius: 20px; }
+  .ymir-discovery-hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
+  .ymir-discovery-hero dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ymir-discovery-hero dl div { min-width: 0; padding: 11px 7px; }
+  .ymir-discovery-control { position: relative; top: auto; margin: 14px 0 24px; padding: 13px; border-radius: 16px; }
+  .ymir-discovery-search { grid-template-columns: 1fr; gap: 7px; }
+  .ymir-discovery-filters { margin-right: -13px; padding-right: 13px; }
+  .ymir-discovery-group > header,
+  .ymir-guide-workflow > header { display: block; }
+  .ymir-discovery-group > header > span { display: block; margin-top: 5px; }
+  .ymir-tool-directory-grid,
+  .ymir-guide-directory-grid,
+  .ymir-guide-workflow ol { grid-template-columns: 1fr; }
+  .ymir-guide-directory-card { min-height: 190px; }
+  .ymir-guide-workflow { padding: 19px; border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ymir-tool-directory-card,
+  .ymir-guide-directory-card { transition: none; }
+}

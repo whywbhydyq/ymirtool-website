@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "clean": "node scripts/run-python.mjs scripts/cleanup-unused-assets.py",
-    "test:fast": "node --test tests/ymir-fast-core.test.mjs",
+    "test:fast": "node --test tests/ymir-fast-core.test.mjs tests/ymir-ui-consistency.test.mjs",
     "seo:check": "node scripts/seo-check.mjs",
     "seo:cache": "node scripts/seo-check.mjs --write-cache",
-    "remediate": "node scripts/run-python.mjs scripts/phase8-fast-core-layout.py",
+    "ui:generate": "node scripts/run-python.mjs scripts/refine-discovery-pages.py && node scripts/run-python.mjs scripts/phase8-fast-core-layout.py",
+    "remediate": "npm run ui:generate",
     "validate": "node scripts/phase8-validate.mjs",
     "audit": "node scripts/run-python.mjs scripts/phase7-audit.py --output .seo-cache/final-audit.json",
     "smoke": "node scripts/run-python.mjs scripts/phase7-http-smoke.py",

@@ -16,6 +16,7 @@
   --yt-primary: #1d4ed8;
   --yt-primary-hover: #1e40af;
   --yt-primary-soft: #eff6ff;
+  --yt-on-primary: #ffffff;
   --yt-accent: #2563eb;
   --yt-accent-rgb: 37, 99, 235;
   --yt-success: #047857;
@@ -51,6 +52,7 @@ html[data-theme="dark"] {
   --yt-primary: #60a5fa;
   --yt-primary-hover: #93c5fd;
   --yt-primary-soft: rgba(37, 99, 235, .14);
+  --yt-on-primary: #08111f;
   --yt-accent: #60a5fa;
   --yt-accent-rgb: 96, 165, 250;
   --yt-success: #34d399;
@@ -258,6 +260,8 @@ body.ymir-modern-body .ymir-mobile-menu-trigger:hover { color: var(--yt-accent) 
 body.ymir-modern-body .ymir-theme-toggle { font-size: 0 !important; }
 body.ymir-modern-body .ymir-theme-toggle::before { content: ""; width: 18px; height: 18px; border: 2px solid currentColor; border-radius: 50%; box-shadow: -6px 0 0 -3px var(--yt-surface); transform: translateX(2px); }
 html[data-theme="dark"] body.ymir-modern-body .ymir-theme-toggle::before { border-radius: 5px; box-shadow: none; transform: rotate(45deg) scale(.78); }
+body.ymir-modern-body .ymir-theme-toggle > svg,
+body.ymir-modern-body .ymir-theme-toggle > [data-theme-icon] { display: none !important; }
 body.ymir-modern-body .ymir-mobile-menu-trigger { display: none !important; }
 body.ymir-modern-body .ymir-mobile-menu {
   width: min(var(--yt-container), calc(100% - 28px));
@@ -423,9 +427,9 @@ body.ymir-modern-body .ymir-lead-action {
   transition: transform .16s ease, color .16s ease, border-color .16s ease, background .16s ease;
 }
 body.ymir-modern-body .ymir-lead-action:hover { color: var(--yt-accent); border-color: rgba(var(--yt-accent-rgb), .34); background: var(--yt-primary-soft); transform: translateY(-1px); }
-body.ymir-modern-body .ymir-lead-action.is-primary { grid-column: 1 / -1; color: #fff; border-color: var(--yt-accent); background: var(--yt-accent); }
-body.ymir-modern-body .ymir-lead-action.is-primary:hover { color: #fff; filter: brightness(.94); }
-body.ymir-modern-body .ymir-lead-action.is-active { color: #fff; border-color: var(--yt-accent); background: var(--yt-accent); }
+body.ymir-modern-body .ymir-lead-action.is-primary { grid-column: 1 / -1; color: var(--yt-on-primary); border-color: var(--yt-accent); background: var(--yt-accent); }
+body.ymir-modern-body .ymir-lead-action.is-primary:hover { color: var(--yt-on-primary); filter: brightness(.94); }
+body.ymir-modern-body .ymir-lead-action.is-active { color: var(--yt-on-primary); border-color: var(--yt-accent); background: var(--yt-accent); }
 body.ymir-modern-body .ymir-lead-action.is-success { color: var(--yt-success); border-color: color-mix(in srgb, var(--yt-success) 34%, var(--yt-border)); background: var(--yt-success-soft); }
 
 /* Loading and fallback states */
@@ -729,12 +733,12 @@ body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button {
 }
 body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button:hover { color: var(--yt-accent) !important; border-color: rgba(var(--yt-accent-rgb), .42) !important; background: var(--yt-primary-soft) !important; transform: translateY(-1px) !important; }
 body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button--primary {
-  color: #fff !important;
+  color: var(--yt-on-primary) !important;
   border-color: var(--yt-accent) !important;
   background: var(--yt-accent) !important;
   box-shadow: 0 8px 18px rgba(var(--yt-accent-rgb), .18) !important;
 }
-body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button--primary:hover { color: #fff !important; filter: brightness(.94); }
+body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button--primary:hover { color: var(--yt-on-primary) !important; filter: brightness(.94); }
 body.ymir-modern-body .ymir-page[data-ymir-tool] .el-button.is-disabled { opacity: .48 !important; transform: none !important; }
 
 /* Status, alerts, notes */
@@ -1304,7 +1308,7 @@ body.ymir-modern-body:not(.ymir-home-v60) .ymir-guide-cta-button {
   padding: 10px 15px !important;
   border: 1px solid var(--yt-accent) !important;
   border-radius: 12px !important;
-  color: #fff !important;
+  color: var(--yt-on-primary) !important;
   background: var(--yt-accent) !important;
   box-shadow: 0 10px 22px rgba(var(--yt-accent-rgb), .18) !important;
   font-size: 12px !important;

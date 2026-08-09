@@ -445,12 +445,72 @@ function clearOutputs(root) {
   root.querySelectorAll('[data-fast-metric]').forEach((metric) => { metric.textContent = '0'; });
 }
 
+function isChineseWorkbench(root) {
+  const workbenchLanguage = root?.getAttribute?.('data-fast-language') || '';
+  const documentLanguage = typeof document === 'undefined'
+    ? ''
+    : document.documentElement.getAttribute('lang') || '';
+  return /^zh(?:-|$)/i.test(workbenchLanguage || documentLanguage);
+}
+
+function localizeUiText(root, value) {
+  const text = String(value || '');
+  if (!isChineseWorkbench(root)) return text;
+
+  const exactMessages = new Map([
+    ['Valid JSON', 'JSON 有效'],
+    ['No matches', '未找到匹配'],
+    ['Ready to copy.', '已可复制。'],
+    ['Cleared.', '已清空。'],
+    ['Sample loaded.', '已载入示例。'],
+    ['Run the tool before copying.', '请先运行工具再复制。'],
+    ['Copied to clipboard.', '已复制到剪贴板。'],
+    ['Ready.', '已就绪。'],
+  ]);
+  if (exactMessages.has(text)) return exactMessages.get(text);
+
+  const prefixTranslations = [
+    ['Characters:', '字符数:'],
+    ['No spaces:', '非空白字符:'],
+    ['Words/CJK chars:', '单词/CJK 字符:'],
+    ['Lines:', '行数:'],
+    ['Invalid JSON:', 'JSON 无效:'],
+    ['Base64 encode failed:', 'Base64 编码失败:'],
+    ['Base64 decode failed:', 'Base64 解码失败:'],
+    ['URL encode failed:', 'URL 编码失败:'],
+    ['URL decode failed:', 'URL 解码失败:'],
+    ['JavaScript format failed:', 'JavaScript 格式化失败:'],
+    ['JavaScript minify failed:', 'JavaScript 压缩失败:'],
+    ['Regex error:', '正则表达式错误:'],
+    ['Timestamp error:', '时间戳错误:'],
+    ['Date error:', '日期错误:'],
+    ['Copy failed:', '复制失败:'],
+  ];
+
+  return prefixTranslations.reduce(
+    (localized, [english, chinese]) => localized
+      .split('\n')
+      .map((line) => line.startsWith(english) ? `${chinese}${line.slice(english.length)}` : line)
+      .join('\n'),
+    text,
+  );
+}
+
+function localizeResultValue(root, result) {
+  const value = String(result.value || '');
+  const isUiOnlyResult = value === 'Valid JSON'
+    || value === 'No matches'
+    || ['characters', 'charactersNoSpaces', 'words', 'lines']
+      .every((key) => Object.hasOwn(result.meta || {}, key));
+  return isUiOnlyResult ? localizeUiText(root, value) : value;
+}
+
 function setStatus(root, message, type = 'info') {
   const status = root.querySelector('[data-fast-status]');
   if (!status) return;
   status.setAttribute('aria-live', 'polite');
   status.setAttribute('data-status-type', type);
-  status.textContent = String(message || '');
+  status.textContent = localizeUiText(root, message);
 }
 
 function renderMetrics(root, meta = {}) {
@@ -469,7 +529,8 @@ function renderResult(root, result, targetName) {
     ? `[data-fast-output="${globalThis.CSS?.escape ? CSS.escape(targetName) : targetName}"]`
     : '[data-fast-output]';
   const output = root.querySelector(selector) || root.querySelector('[data-fast-output]');
-  if (output) setControlValue(output, result.value);
+  // Do not translate arbitrary transformed user data. Only localize known UI-only results.
+  if (output) setControlValue(output, localizeResultValue(root, result));
   renderMetrics(root, result.meta);
   setStatus(root, 'Ready to copy.', 'success');
 }

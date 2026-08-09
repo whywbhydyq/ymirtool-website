@@ -1,6 +1,6 @@
 (function () {
   var STORAGE_KEY = 'ymir_lang';
-  var currentLang = 'en';
+  var currentLang = 'zh';
 
   function normalizeLang(value) {
     value = String(value || '').toLowerCase();
@@ -14,6 +14,9 @@
   function storedLang() {
     try { return normalizeLang(localStorage.getItem(STORAGE_KEY)); } catch (e) { return ''; }
   }
+  function documentLang() {
+    return normalizeLang(document.documentElement.lang);
+  }
   function browserLang() {
     var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
     for (var i = 0; i < langs.length; i++) {
@@ -22,7 +25,7 @@
     }
     return 'en';
   }
-  function detectLang() { return queryLang() || storedLang() || browserLang() || 'en'; }
+  function detectLang() { return queryLang() || storedLang() || documentLang() || browserLang() || 'zh'; }
   function textFor(value) { return value && value[currentLang] != null ? value[currentLang] : ''; }
   function setText(el, value) { if (el && value != null) el.textContent = value; }
   function setPlaceholder(id, value) { var el = document.getElementById(id); if (el && value != null) el.setAttribute('placeholder', value); }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html class="ymir-modern-html" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="index, follow" name="robots"/>
@@ -28,7 +28,6 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/static/images/ymir-tool-icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="/static/images/ymir-tool-apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" src="/static/script/ymir-theme.js?v=20260531-v58"></script>
 <link href="/static/style/bootstrap-compat.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/tool.css?v=20260531-v58" rel="stylesheet"/>
 <link href="/static/style/inline-style-migration.css?v=20260531-v58" rel="stylesheet"/>
@@ -37,47 +36,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://ymirtool.com/guides.html#collectionpage","url":"https://ymirtool.com/guides.html","name":"Ymir Tool 指南中心","description":"JSON、编码、正则、文本和时间戳的任务型排错指南。","dateModified":"2026-07-10","inLanguage":"zh-CN","isPartOf":{"@id":"https://ymirtool.com/#website"},"publisher":{"@id":"https://ymirtool.com/#organization"},"hasPart":[{"@type":"Article","url":"https://ymirtool.com/json-format-guide.html","name":"JSON 格式化与错误排查"},{"@type":"Article","url":"https://ymirtool.com/base64-encoding-guide.html","name":"Base64 编码与 Unicode 排查"},{"@type":"Article","url":"https://ymirtool.com/url-encoding-guide.html","name":"URL 参数编码排查"},{"@type":"Article","url":"https://ymirtool.com/javascript-formatter-guide.html","name":"JavaScript 格式化指南"},{"@type":"Article","url":"https://ymirtool.com/regex-tester-guide.html","name":"JavaScript 正则测试指南"},{"@type":"Article","url":"https://ymirtool.com/text-diff-guide.html","name":"文本差异比较指南"},{"@type":"Article","url":"https://ymirtool.com/text-count-guide.html","name":"文本统计指南"},{"@type":"Article","url":"https://ymirtool.com/unix-time-guide.html","name":"Unix 时间戳排查指南"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ymir Tool","item":"https://ymirtool.com/"},{"@type":"ListItem","position":2,"name":"指南中心","item":"https://ymirtool.com/guides.html"}]}</script>
 <link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>
-<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/></head>
+<link href="/static/style/ymir-discovery-pages.css?v=20260809-v67" rel="stylesheet"/>
+<meta content="ca-pub-1653188471819736" name="google-adsense-account"/><meta content="light dark" name="color-scheme"/><meta content="telephone=no" name="format-detection"/>
+<script defer src="/static/script/ymir-theme.js?v=20260809-v67"></script>
+</head>
 <body class="ymir-modern-body">
-<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL</a><a href="/formatjs/">JS Formatter</a><a href="/textdiff/">Text Diff</a><a href="/guides.html">Guides</a></div><div class="ymir-topbar-actions"></div></div></nav>
-<main class="container ymir-guide-page">
-<h1>Ymir Tool 指南中心</h1>
-<p>这里仅收录当前持续维护的任务型指南。先选择正在解决的问题，再进入对应工具验证输入；不要从一组泛化文章中反复寻找相同答案。</p>
-<section class="ymir-card">
-<h2>数据与编码</h2>
-<div class="ymir-related-grid">
-<a href="/json-format-guide.html"><strong>JSON 格式化与错误排查</strong><span>定位尾随逗号、单引号、未转义字符、API 响应外壳和大整数风险。</span></a>
-<a href="/base64-encoding-guide.html"><strong>Base64 编码与 Unicode 排查</strong><span>区分标准 Base64 与 Base64URL，处理 padding、UTF-8、乱码和二进制边界。</span></a>
-<a href="/url-encoding-guide.html"><strong>URL 参数编码排查</strong><span>判断应编码完整 URL、路径片段还是 query value，并识别重复编码。</span></a>
-</div>
+<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL 编码</a><a href="/formatjs/">JavaScript 格式化</a><a href="/textdiff/">文本对比</a><a href="/guides.html">使用指南</a></div><div class="ymir-topbar-actions"></div></div></nav>
+<main class="ymir-discovery-page ymir-guides-page" data-discovery-root data-discovery-unit="指南">
+<header class="ymir-discovery-hero"><div><p class="ymir-discovery-eyebrow">使用指南</p><h1>从具体问题出发，找到可执行的排查步骤</h1><p>按数据、代码或文本任务筛选指南。每篇内容都连接到对应工具，避免在泛化文章中反复寻找答案。</p></div><dl><div><dt>8</dt><dd>任务指南</dd></div><div><dt>3</dt><dd>问题分类</dd></div><div><dt>4</dt><dd>验证步骤</dd></div></dl></header>
+<section aria-label="搜索和筛选指南" class="ymir-discovery-control">
+<label class="ymir-discovery-search" for="guideSearch"><span>搜索指南</span><input autocomplete="off" data-discovery-search id="guideSearch" placeholder="输入 JSON、Base64、正则、文本差异或时间戳" type="search"/></label>
+<div aria-label="按分类筛选" class="ymir-discovery-filters" role="group"><button aria-pressed="true" class="is-active" data-discovery-filter="all" type="button">全部</button><button aria-pressed="false" data-discovery-filter="data" type="button">数据与编码</button><button aria-pressed="false" data-discovery-filter="code" type="button">代码与匹配</button><button aria-pressed="false" data-discovery-filter="text" type="button">文本与时间</button></div>
+<div class="ymir-discovery-summary"><p id="guideCount" aria-live="polite" data-discovery-count>显示 8 篇指南</p><button data-discovery-reset type="button">清除筛选</button></div>
 </section>
-<section class="ymir-card">
-<h2>代码与匹配</h2>
-<div class="ymir-related-grid">
-<a href="/javascript-formatter-guide.html"><strong>JavaScript 格式化指南</strong><span>理解格式化能解决什么、不能解决什么，并检查语法错误与输出差异。</span></a>
-<a href="/regex-tester-guide.html"><strong>JavaScript 正则测试指南</strong><span>用正例和反例检查 flags、转义、捕获组、Unicode 与潜在性能问题。</span></a>
-</div>
-</section>
-<section class="ymir-card">
-<h2>文本与时间</h2>
-<div class="ymir-related-grid">
-<a href="/text-diff-guide.html"><strong>文本差异比较指南</strong><span>区分内容变化、空白变化、换行符差异和 Unicode 规范化问题。</span></a>
-<a href="/text-count-guide.html"><strong>文本统计指南</strong><span>解释字符、单词、行、CJK 文本与 emoji 计数口径的差异。</span></a>
-<a href="/unix-time-guide.html"><strong>Unix 时间戳排查指南</strong><span>区分秒、毫秒与微秒，并核对 UTC、本地时区和夏令时显示。</span></a>
-</div>
-</section>
-<section class="ymir-card">
-<h2>使用方法</h2>
-<ol>
-<li>在指南中确认输入类型和错误现象。</li>
-<li>使用指南给出的最小样例复现问题。</li>
-<li>打开对应工具，只粘贴非敏感或脱敏数据。</li>
-<li>把结果放回目标系统验证，不把网页输出视为最终权威。</li>
-</ol>
-<p>工具的测试方法、内容更新原则和隐私边界见 <a href="/about.html#editorial-policy">关于 Ymir Tool</a>。</p>
-</section>
+<section class="ymir-discovery-empty" data-discovery-empty id="guideEmpty" hidden><strong>没有找到匹配的指南</strong><p>换一个问题关键词，或清除当前分类后再试。</p><button data-discovery-reset type="button">查看全部指南</button></section>
+<section class="ymir-discovery-group" data-discovery-group data-guide-group="data"><header><div><p>数据与编码</p><h2>从语法、字符集和传输层定位问题</h2></div><span>3 篇指南</span></header><div class="ymir-guide-directory-grid"><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="data" data-guide-card="" data-search="数据与编码 定位尾随逗号、单引号、未转义字符、API 响应外壳和大整数风险。 JSON 严格语法 API 响应" href="/json-format-guide.html"><span class="ymir-guide-card-kicker">数据与编码</span><strong>JSON 格式化与错误排查</strong><span>定位尾随逗号、单引号、未转义字符、API 响应外壳和大整数风险。</span><em>打开指南 →</em></a><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="data" data-guide-card="" data-search="数据与编码 区分标准 Base64 与 Base64URL，处理 padding、UTF-8、乱码和二进制边界。 Base64 Unicode padding 乱码" href="/base64-encoding-guide.html"><span class="ymir-guide-card-kicker">数据与编码</span><strong>Base64 编码与 Unicode 排查</strong><span>区分标准 Base64 与 Base64URL，处理 padding、UTF-8、乱码和二进制边界。</span><em>打开指南 →</em></a><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="data" data-guide-card="" data-search="数据与编码 判断应编码完整 URL、路径片段还是 query value，并识别重复编码。 URL query 路径 重复编码" href="/url-encoding-guide.html"><span class="ymir-guide-card-kicker">数据与编码</span><strong>URL 参数编码排查</strong><span>判断应编码完整 URL、路径片段还是 query value，并识别重复编码。</span><em>打开指南 →</em></a></div></section><section class="ymir-discovery-group" data-discovery-group data-guide-group="code"><header><div><p>代码与匹配</p><h2>检查格式、语法边界和匹配规则</h2></div><span>2 篇指南</span></header><div class="ymir-guide-directory-grid"><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="code" data-guide-card="" data-search="代码与匹配 理解格式化能解决什么、不能解决什么，并检查语法错误与输出差异。 JavaScript 格式化 语法" href="/javascript-formatter-guide.html"><span class="ymir-guide-card-kicker">代码与匹配</span><strong>JavaScript 格式化指南</strong><span>理解格式化能解决什么、不能解决什么，并检查语法错误与输出差异。</span><em>打开指南 →</em></a><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="code" data-guide-card="" data-search="代码与匹配 用正例和反例检查 flags、转义、捕获组、Unicode 与潜在性能问题。 正则 RegExp flags 捕获组" href="/regex-tester-guide.html"><span class="ymir-guide-card-kicker">代码与匹配</span><strong>JavaScript 正则测试指南</strong><span>用正例和反例检查 flags、转义、捕获组、Unicode 与潜在性能问题。</span><em>打开指南 →</em></a></div></section><section class="ymir-discovery-group" data-discovery-group data-guide-group="text"><header><div><p>文本与时间</p><h2>核对内容差异、计数口径与时间单位</h2></div><span>3 篇指南</span></header><div class="ymir-guide-directory-grid"><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="text" data-guide-card="" data-search="文本与时间 区分内容变化、空白变化、换行符差异和 Unicode 规范化问题。 文本差异 空白 换行" href="/text-diff-guide.html"><span class="ymir-guide-card-kicker">文本与时间</span><strong>文本差异比较指南</strong><span>区分内容变化、空白变化、换行符差异和 Unicode 规范化问题。</span><em>打开指南 →</em></a><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="text" data-guide-card="" data-search="文本与时间 解释字符、单词、行、CJK 文本与 emoji 计数口径的差异。 字数 字符 CJK emoji" href="/text-count-guide.html"><span class="ymir-guide-card-kicker">文本与时间</span><strong>文本统计指南</strong><span>解释字符、单词、行、CJK 文本与 emoji 计数口径的差异。</span><em>打开指南 →</em></a><a class="ymir-guide-directory-card" data-discovery-card data-discovery-category="text" data-guide-card="" data-search="文本与时间 区分秒、毫秒与微秒，并核对 UTC、本地时区和夏令时显示。 Unix 时间戳 UTC 时区" href="/unix-time-guide.html"><span class="ymir-guide-card-kicker">文本与时间</span><strong>Unix 时间戳排查指南</strong><span>区分秒、毫秒与微秒，并核对 UTC、本地时区和夏令时显示。</span><em>打开指南 →</em></a></div></section>
+<section class="ymir-guide-workflow"><header><p>推荐流程</p><h2>不要停在网页结果，完成一次闭环验证</h2></header><ol><li class="ymir-workflow-step"><span>01</span><strong>确认问题</strong><p>记录输入类型、错误提示和预期结果。</p></li><li class="ymir-workflow-step"><span>02</span><strong>缩小样例</strong><p>用不含敏感数据的最小样例复现。</p></li><li class="ymir-workflow-step"><span>03</span><strong>使用工具</strong><p>按指南步骤处理输入并查看边界提示。</p></li><li class="ymir-workflow-step"><span>04</span><strong>回到目标系统</strong><p>把结果放回真实环境再次验证。</p></li></ol></section>
 </main>
-<footer class="ymir-footer"><span>Copyright ©2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">All Tools</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a><a href="/methodology.html">Methodology</a><a href="/sources.html">Sources</a><a href="/licenses.html">Licenses</a><a href="/changelog.html">Changelog</a><span>按具体问题查找工具和指南。</span></footer>
+<footer class="ymir-footer"><span>© 2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于我们</a><a href="/privacy.html">隐私政策</a><a href="/terms.html">使用条款</a><a href="/contact.html">联系我们</a><a href="/methodology.html">测试方法</a><a href="/sources.html">资料来源</a><a href="/licenses.html">开源许可</a><a href="/changelog.html">更新记录</a><a href="/disclaimer.html">免责声明</a><span>所有工具均以公开或脱敏样例进行测试。</span></footer>
+<script defer src="/static/script/ymir-discovery-pages.js?v=20260809-v67"></script>
 <script defer src="/static/script/ymir-tool-shell-v63.js?v=20260710-v63"></script>
 </body>
 </html>
