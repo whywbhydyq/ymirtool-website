@@ -100,3 +100,14 @@ test('browser controller has stable accessible selectors and clears output befor
   assert.match(source, /output\.value = ''/);
   assert.match(source, /aria-live/);
 });
+
+test('fast CSS is standalone, responsive, and below the 100 KB budget', () => {
+  const cssUrl = new URL('../static/style/ymir-fast-core-v66.css', import.meta.url);
+  const css = fs.readFileSync(cssUrl, 'utf8');
+
+  assert.ok(Buffer.byteLength(css) < 100_000);
+  assert.doesNotMatch(css, /@import|\.el-/);
+  assert.match(css, /\.ymir-fast-workbench/);
+  assert.match(css, /@media \(max-width:/);
+  assert.equal((css.match(/{/g) || []).length, (css.match(/}/g) || []).length);
+});
