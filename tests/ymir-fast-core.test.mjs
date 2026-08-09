@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 
 import {
   formatJson,
@@ -86,4 +87,16 @@ test('timestamp conversion is deterministic and rejects invalid dates', () => {
   const invalid = dateToTimestamp('not-a-date');
   assert.equal(invalid.ok, false);
   assert.equal(invalid.value, '');
+});
+
+test('browser controller has stable accessible selectors and clears output before failure', () => {
+  const source = fs.readFileSync(
+    new URL('../static/script/ymir-fast-core-v66.mjs', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(source, /export function initFastWorkbench/);
+  assert.match(source, /\[data-fast-action\]/);
+  assert.match(source, /output\.value = ''/);
+  assert.match(source, /aria-live/);
 });

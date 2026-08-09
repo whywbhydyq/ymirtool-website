@@ -397,3 +397,180 @@ export function dateToTimestamp(input) {
     return failure(errorMessage('Date error', error));
   }
 }
+
+const ACTIONS = {
+  formatJson: ({ input }) => formatJson(input),
+  minifyJson: ({ input }) => minifyJson(input),
+  validateJson: ({ input }) => validateJson(input),
+  encodeBase64: ({ input }) => encodeBase64(input),
+  decodeBase64: ({ input }) => decodeBase64(input),
+  encodeUrl: ({ input }) => encodeUrl(input),
+  decodeUrl: ({ input }) => decodeUrl(input),
+  formatJavaScript: ({ input }) => formatJavaScript(input),
+  minifyJavaScript: ({ input }) => minifyJavaScript(input),
+  testRegex: ({ pattern, flags, text }) => testRegex(pattern, flags, text),
+  compareText: ({ original, changed }) => compareText(original, changed),
+  countText: ({ input }) => countText(input),
+  timestampToDate: ({ timestamp }) => timestampToDate(timestamp),
+  dateToTimestamp: ({ date }) => dateToTimestamp(date),
+};
+
+function setControlValue(control, value) {
+  if ('value' in control) control.value = String(value ?? '');
+  else control.textContent = String(value ?? '');
+}
+
+function readWorkbenchValues(root) {
+  const values = {};
+  root.querySelectorAll('[data-fast-input]').forEach((control) => {
+    const key = control.getAttribute('data-fast-input');
+    if (!key) return;
+    if (control instanceof HTMLInputElement && control.type === 'checkbox') {
+      values[key] = control.checked ? control.value : '';
+    } else {
+      values[key] = control.value ?? control.textContent ?? '';
+    }
+  });
+  values.flags = Array.from(root.querySelectorAll('[data-fast-flag]:checked'))
+    .map((control) => control.getAttribute('data-fast-flag') || '')
+    .join('');
+  return values;
+}
+
+function clearOutputs(root) {
+  root.querySelectorAll('[data-fast-output]').forEach((output) => {
+    if ('value' in output) output.value = '';
+    else output.textContent = '';
+  });
+  root.querySelectorAll('[data-fast-metric]').forEach((metric) => { metric.textContent = '0'; });
+}
+
+function setStatus(root, message, type = 'info') {
+  const status = root.querySelector('[data-fast-status]');
+  if (!status) return;
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('data-status-type', type);
+  status.textContent = String(message || '');
+}
+
+function renderMetrics(root, meta = {}) {
+  root.querySelectorAll('[data-fast-metric]').forEach((metric) => {
+    const key = metric.getAttribute('data-fast-metric');
+    if (key && Object.hasOwn(meta, key)) metric.textContent = String(meta[key]);
+  });
+}
+
+function renderResult(root, result, targetName) {
+  if (!result.ok) {
+    setStatus(root, result.error, 'error');
+    return;
+  }
+  const selector = targetName
+    ? `[data-fast-output="${globalThis.CSS?.escape ? CSS.escape(targetName) : targetName}"]`
+    : '[data-fast-output]';
+  const output = root.querySelector(selector) || root.querySelector('[data-fast-output]');
+  if (output) setControlValue(output, result.value);
+  renderMetrics(root, result.meta);
+  setStatus(root, 'Ready to copy.', 'success');
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', 'readonly');
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand('copy');
+  textarea.remove();
+  if (!copied) throw new Error('Copy command was rejected');
+}
+
+function fillSamples(root) {
+  root.querySelectorAll('[data-fast-input]').forEach((control) => {
+    const sample = control.getAttribute('data-fast-sample');
+    if (sample !== null && 'value' in control) control.value = sample;
+  });
+}
+
+function clearWorkbench(root) {
+  root.querySelectorAll('[data-fast-input]').forEach((control) => {
+    if (control instanceof HTMLInputElement && control.type === 'checkbox') {
+      control.checked = control.hasAttribute('data-fast-default');
+    } else if ('value' in control) {
+      control.value = '';
+    }
+  });
+  clearOutputs(root);
+  setStatus(root, 'Cleared.', 'info');
+}
+
+export function initFastWorkbench(root) {
+  if (!root || root.getAttribute('data-fast-ready') === 'true') return;
+  root.setAttribute('data-fast-ready', 'true');
+  const run = (actionName, targetName) => {
+    const action = ACTIONS[actionName];
+    if (!action) return;
+    clearOutputs(root);
+    const result = action(readWorkbenchValues(root));
+    renderResult(root, result, targetName);
+  };
+
+  root.querySelectorAll('[data-fast-action]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const actionName = button.getAttribute('data-fast-action');
+      if (actionName === 'sample') {
+        fillSamples(root);
+        const primary = root.getAttribute('data-fast-primary-action');
+        if (primary) run(primary, root.getAttribute('data-fast-primary-target'));
+        else setStatus(root, 'Sample loaded.', 'info');
+        return;
+      }
+      if (actionName === 'clear') {
+        clearWorkbench(root);
+        return;
+      }
+      if (actionName === 'copy') {
+        const targetName = button.getAttribute('data-fast-target');
+        const selector = targetName ? `[data-fast-output="${targetName}"]` : '[data-fast-output]';
+        const output = root.querySelector(selector) || root.querySelector('[data-fast-output]');
+        const value = output ? ('value' in output ? output.value : output.textContent) : '';
+        if (!value) { setStatus(root, 'Run the tool before copying.', 'error'); return; }
+        try {
+          await copyText(value);
+          setStatus(root, 'Copied to clipboard.', 'success');
+        } catch (error) {
+          setStatus(root, errorMessage('Copy failed', error), 'error');
+        }
+        return;
+      }
+      run(actionName, button.getAttribute('data-fast-target'));
+    });
+  });
+
+  const automaticAction = root.getAttribute('data-fast-auto-action');
+  if (automaticAction) {
+    root.querySelectorAll('[data-fast-input]').forEach((control) => {
+      control.addEventListener('input', () => run(automaticAction, root.getAttribute('data-fast-primary-target')));
+    });
+    run(automaticAction, root.getAttribute('data-fast-primary-target'));
+  }
+  setStatus(root, 'Ready.', 'info');
+}
+
+export function initFastWorkbenches(scope = document) {
+  scope.querySelectorAll('[data-fast-tool]').forEach(initFastWorkbench);
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => initFastWorkbenches(document), { once: true });
+  } else {
+    initFastWorkbenches(document);
+  }
+}
