@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "clean": "python3 scripts/cleanup-unused-assets.py",
+    "test:fast": "node --test tests/ymir-fast-core.test.mjs",
     "seo:check": "node scripts/seo-check.mjs",
     "seo:cache": "node scripts/seo-check.mjs --write-cache",
     "remediate": "python3 scripts/phase7-tool-first-layout.py",
