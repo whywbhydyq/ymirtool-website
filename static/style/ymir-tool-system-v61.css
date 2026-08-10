@@ -86,6 +86,12 @@ html[data-theme="dark"].ymir-modern-html { color-scheme: dark; }
 html.ymir-modern-html.ymir-dialog-open,
 html.ymir-modern-html.ymir-menu-open { overflow: hidden; }
 body.ymir-modern-body {
+  /* Reset the three canonical tokens that the pre-v61 component layer also
+     defines on body. Without this local reset those light values shadow the
+     active html[data-theme] tokens through custom-property inheritance. */
+  --yt-surface: #ffffff;
+  --yt-border: #dbe3ed;
+  --yt-danger: #be123c;
   min-height: 100vh !important;
   margin: 0 !important;
   overflow-x: clip !important;
@@ -102,6 +108,11 @@ body.ymir-modern-body {
   line-height: 1.6 !important;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+html[data-theme="dark"] body.ymir-modern-body {
+  --yt-surface: #101722;
+  --yt-border: #273448;
+  --yt-danger: #fb7185;
 }
 body.ymir-modern-body *, body.ymir-modern-body *::before, body.ymir-modern-body *::after { box-sizing: border-box; }
 body.ymir-modern-body a { color: inherit; }

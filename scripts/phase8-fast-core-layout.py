@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "20260809-v67"
+VERSION = "20260810-v68"
 FAST_CSS = f'/static/style/ymir-fast-core-v66.css?v={VERSION}'
 FAST_SCRIPT = f'/static/script/ymir-fast-core-v66.mjs?v={VERSION}'
 START = '<!-- ymir-fast-workbench:start -->'
@@ -229,7 +229,7 @@ def build_tool_content(slug: str, config: dict[str, object]) -> str:
 
 
 def build_topbar() -> str:
-    return '''<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL 编码</a><a href="/formatjs/">JavaScript 格式化</a><a href="/textdiff/">文本对比</a><a href="/guides.html">使用指南</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
+    return '''<nav aria-label="主导航" class="ymir-topbar" data-shell-language="zh-CN"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
 
 
 def build_footer() -> str:
@@ -237,7 +237,7 @@ def build_footer() -> str:
 
 
 def localize_tool_page(text: str, slug: str, config: dict[str, object]) -> str:
-    text = re.sub(r'<html\b[^>]*>', '<html class="ymir-modern-html" lang="zh-CN">', text, count=1, flags=re.I)
+    text = re.sub(r'<html\b[^>]*>', '<html class="ymir-modern-html" lang="zh-CN" data-shell-language="zh-CN">', text, count=1, flags=re.I)
     text = re.sub(r'<title>.*?</title>', f'<title>{escape(str(config["title"]))} | Ymir Tool</title>', text, count=1, flags=re.S | re.I)
     text = text.replace('"inLanguage":"en"', '"inLanguage":"zh-CN"')
     text = re.sub(r'<nav\b[^>]*class="ymir-topbar"[^>]*>.*?</nav>', build_topbar(), text, count=1, flags=re.S | re.I)

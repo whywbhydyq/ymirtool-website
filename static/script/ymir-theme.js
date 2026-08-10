@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var STORAGE_KEY = 'ymir-theme';
-  var VERSION = '20260809-v67';
+  var VERSION = '20260810-v68';
   var preference = 'system';
   var mql = null;
   var THEME_COLORS = { light: '#f4f7fb', dark: '#080c14' };
@@ -29,8 +29,11 @@
     value = normalize(value);
     return value === 'system' ? (prefersDark() ? 'dark' : 'light') : value;
   }
+  function interfaceLanguage(lang) {
+    return lang || document.documentElement.getAttribute('data-shell-language') || document.documentElement.lang || '';
+  }
   function isZh(lang) {
-    return /^zh/i.test(lang || document.documentElement.lang || '');
+    return /^zh/i.test(interfaceLanguage(lang));
   }
   function ariaFor(theme, lang) {
     if (theme === 'dark') return isZh(lang) ? '切换到浅色主题' : 'Switch to light theme';
@@ -73,7 +76,7 @@
   }
   function updateToggle() {
     var theme = document.documentElement.getAttribute('data-theme') || resolvedTheme(preference);
-    var lang = document.documentElement.lang;
+    var lang = interfaceLanguage();
     document.querySelectorAll('[data-ymir-theme-toggle]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
       btn.setAttribute('aria-label', ariaFor(theme, lang));

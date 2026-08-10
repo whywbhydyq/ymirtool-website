@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var VERSION = '20260710-v63';
+  var VERSION = '20260810-v68';
   var MANIFEST_SRC = '/static/script/ymir-tools-manifest.js';
   var FAVORITES_KEY = 'ymir-tool-favorites-v1';
   var RECENTS_KEY = 'ymir-tool-recents-v1';
@@ -10,7 +10,10 @@
 
   function qs(selector, root) { return (root || document).querySelector(selector); }
   function qsa(selector, root) { return Array.prototype.slice.call((root || document).querySelectorAll(selector)); }
-  function isZh() { return /^zh/i.test(document.documentElement.lang || navigator.language || ''); }
+  function isZh() {
+    var shellLanguage = document.documentElement.getAttribute('data-shell-language');
+    return /^zh/i.test(shellLanguage || document.documentElement.lang || navigator.language || '');
+  }
   function text(zh, en) { return isZh() ? zh : en; }
   function safeParse(value, fallback) {
     try { var parsed = JSON.parse(value); return parsed == null ? fallback : parsed; } catch (error) { return fallback; }
