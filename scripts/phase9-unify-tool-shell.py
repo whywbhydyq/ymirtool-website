@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from pathlib import Path
 
 
@@ -39,6 +40,7 @@ ROBOTS_RE = re.compile(r'<meta\b[^>]*content="([^"]+)"[^>]*name="robots"[^>]*/>'
 ASSET_REF_RE = re.compile(
     rf'({"|".join(re.escape(asset) for asset in CACHE_BUSTED_ASSETS)})\?v=[^"\']+'
 )
+SAFE_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 
 def read_utf8(path: Path) -> str:
@@ -142,9 +144,46 @@ def synchronize_runtime_i18n() -> bool:
     return True
 
 
+def validate_tool_pages(
+    tools: list[dict[str, object]],
+    *,
+    root: Path = ROOT,
+    expected_count: int = 150,
+    resolve_path: Callable[[Path], Path] | None = None,
+) -> list[Path]:
+    if len(tools) != expected_count:
+        raise RuntimeError(f"phase 9 expected {expected_count} manifest tools; found {len(tools)}")
+
+    root_resolved = root.resolve()
+    slugs: set[str] = set()
+    resolved_pages: set[Path] = set()
+    tool_pages: list[Path] = []
+    resolver = resolve_path or (lambda path: path.resolve())
+    for tool in tools:
+        slug_value = tool.get("slug")
+        if not isinstance(slug_value, str) or not SAFE_SLUG_RE.fullmatch(slug_value):
+            raise RuntimeError(f"phase 9 rejected unsafe tool slug: {slug_value!r}")
+        if slug_value in slugs:
+            raise RuntimeError(f"phase 9 rejected duplicate tool slug: {slug_value}")
+        slugs.add(slug_value)
+
+        page = resolver(root / slug_value / "index.html")
+        try:
+            page.relative_to(root_resolved)
+        except ValueError as error:
+            raise RuntimeError(f"phase 9 tool page escapes the site root: {slug_value}") from error
+        if page in resolved_pages:
+            raise RuntimeError(f"phase 9 rejected duplicate resolved tool page: {page}")
+        if not page.is_file():
+            raise RuntimeError(f"phase 9 tool page is missing: {slug_value}/index.html")
+        resolved_pages.add(page)
+        tool_pages.append(page)
+    return tool_pages
+
+
 def managed_html_paths(tools: list[dict[str, object]]) -> list[Path]:
     root_pages = sorted(path for path in ROOT.glob("*.html") if path.is_file())
-    tool_pages = [ROOT / str(tool["slug"]) / "index.html" for tool in tools]
+    tool_pages = validate_tool_pages(tools)
     managed_pages = root_pages + tool_pages
     if len(root_pages) != 67:
         raise RuntimeError(f"phase 9 expected 67 managed root HTML pages; found {len(root_pages)}")

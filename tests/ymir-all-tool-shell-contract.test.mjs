@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const read = (relativePath) => fs.readFileSync(new URL(`../${relativePath}`, import.meta.url), 'utf8');
 const manifest = JSON.parse(read('static/script/ymir-vue-tool-manifest.json'));
@@ -145,6 +147,72 @@ test('phase 9 scopes cache-key generation to the deterministic 217 managed HTML 
   assert.match(generator, /ROOT\.glob\(["']\*\.html["']\)/);
   assert.match(generator, /len\(root_pages\)\s*!=\s*67/);
   assert.match(generator, /len\(managed_pages\)\s*!=\s*217/);
+});
+
+test('phase 9 rejects unsafe, duplicate, aliased, and missing manifest tool paths before writing', () => {
+  const probe = String.raw`
+import importlib.util
+import pathlib
+import tempfile
+
+spec = importlib.util.spec_from_file_location("phase9", pathlib.Path("scripts/phase9-unify-tool-shell.py"))
+phase9 = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(phase9)
+
+def expect_bad(tools, expected_count, message, **kwargs):
+    try:
+        phase9.validate_tool_pages(tools, root=root, expected_count=expected_count, **kwargs)
+    except RuntimeError:
+        return
+    raise AssertionError(message)
+
+with tempfile.TemporaryDirectory() as temp:
+    root = pathlib.Path(temp)
+    for slug in ("alpha", "beta"):
+        page = root / slug / "index.html"
+        page.parent.mkdir(parents=True)
+        page.write_text(slug, encoding="utf-8")
+
+    valid = phase9.validate_tool_pages([{"slug": "alpha"}, {"slug": "beta"}], root=root, expected_count=2)
+    assert len(valid) == 2
+    before = sorted((path.relative_to(root).as_posix(), path.read_bytes()) for path in root.rglob("*index.html"))
+
+    for slug in ("../escape", "nested/path", r"nested\path", "/absolute", r"C:\absolute"):
+        expect_bad([{"slug": slug}], 1, f"unsafe slug accepted: {slug}")
+    expect_bad([{"slug": "alpha"}, {"slug": "alpha"}], 2, "duplicate slug accepted")
+    expect_bad([{"slug": "missing"}], 1, "missing tool page accepted")
+
+    physical = root / "physical" / "index.html"
+    physical.parent.mkdir()
+    physical.write_text("physical", encoding="utf-8")
+    expect_bad(
+        [{"slug": "alpha"}, {"slug": "beta"}],
+        2,
+        "duplicate resolved path accepted",
+        resolve_path=lambda _path: physical.resolve(),
+    )
+
+    outside = root.parent / "outside-index.html"
+    outside.write_text("outside", encoding="utf-8")
+    try:
+        expect_bad(
+            [{"slug": "alpha"}],
+            1,
+            "out-of-root resolved path accepted",
+            resolve_path=lambda _path: outside.resolve(),
+        )
+    finally:
+        outside.unlink()
+
+    after = sorted((path.relative_to(root).as_posix(), path.read_bytes()) for path in root.rglob("*index.html"))
+    assert before == [item for item in after if item[0] in {"alpha/index.html", "beta/index.html"}]
+`;
+  const result = spawnSync('python', ['-c', probe], {
+    cwd: fileURLToPath(new URL('../', import.meta.url)),
+    encoding: 'utf8',
+  });
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
 });
 
 test('theme and legacy shell runtimes resolve interface language from the explicit shell marker', () => {
