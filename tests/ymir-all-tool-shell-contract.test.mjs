@@ -6,6 +6,19 @@ const read = (relativePath) => fs.readFileSync(new URL(`../${relativePath}`, imp
 const manifest = JSON.parse(read('static/script/ymir-vue-tool-manifest.json'));
 const tools = manifest.tools || [];
 const indexable = new Set((manifest.sitemap?.indexableToolUrls || []).map((url) => new URL(url).pathname));
+const CACHE_VERSION = '20260814-v69';
+const CHINESE_CONTENT_SLUGS = new Set([
+  'base64', 'calculator', 'formatjs', 'json', 'regex', 'textdiff', 'txtcount', 'unixtime', 'urlencode',
+]);
+
+function htmlFiles(relativePath = '') {
+  const absolutePath = new URL(`../${relativePath}`, import.meta.url);
+  return fs.readdirSync(absolutePath, { withFileTypes: true }).flatMap((entry) => {
+    const child = relativePath ? `${relativePath}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) return htmlFiles(child);
+    return entry.isFile() && entry.name.endsWith('.html') ? [child] : [];
+  });
+}
 
 function openingTag(html, tagName) {
   return html.match(new RegExp(`<${tagName}\\b[^>]*>`, 'i'))?.[0] || '';
@@ -68,6 +81,53 @@ test('all 150 tool pages expose the same Chinese shell before JavaScript runs', 
     }
     assert.doesNotMatch(footer, forbiddenEnglishShell, `${tool.slug}: English footer navigation remains`);
     assert.equal(count(html, '/static/script/ymir-theme.js'), 1, `${tool.slug}: shared theme runtime must load exactly once`);
+  }
+});
+
+test('Chinese shell markers do not relabel the 141 existing English tool documents', () => {
+  const counts = { en: 0, 'zh-CN': 0 };
+
+  for (const tool of tools) {
+    const html = read(`${tool.slug}/index.html`);
+    const documentLanguage = openingTag(html, 'html').match(/\blang="([^"]+)"/i)?.[1];
+    const expectedLanguage = CHINESE_CONTENT_SLUGS.has(tool.slug) ? 'zh-CN' : 'en';
+
+    assert.equal(documentLanguage, expectedLanguage, `${tool.slug}: document language boundary changed`);
+    assert.match(openingTag(html, 'html'), /\bdata-shell-language="zh-CN"/i);
+    counts[expectedLanguage] += 1;
+  }
+
+  assert.deepEqual(counts, { en: 141, 'zh-CN': 9 });
+});
+
+test('all changed immutable assets use the current generated cache key', () => {
+  const assets = new Map([
+    ['/static/script/ymir-tool-runtime-v63.js', 142],
+    ['/static/style/ymir-tool-bundle-v65.css', 142],
+    ['/static/style/ymir-tool-system-v61.css', 67],
+    ['/static/style/ymir-fast-core-v66.css', 9],
+  ]);
+
+  const pages = htmlFiles();
+  for (const [asset, expectedReferences] of assets) {
+    let references = 0;
+    for (const page of pages) {
+      const html = read(page);
+      const matches = [...html.matchAll(new RegExp(`${asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\?v=([^"']+)`, 'g'))];
+      references += matches.length;
+      for (const match of matches) {
+        assert.equal(match[1], CACHE_VERSION, `${page}: stale immutable cache key for ${asset}`);
+      }
+    }
+    assert.equal(references, expectedReferences, `${asset}: reference coverage changed`);
+  }
+
+  for (const generator of [
+    'scripts/refine-discovery-pages.py',
+    'scripts/phase8-fast-core-layout.py',
+    'scripts/phase9-unify-tool-shell.py',
+  ]) {
+    assert.match(read(generator), new RegExp(`ASSET_VERSION = ["']${CACHE_VERSION}["']`));
   }
 });
 

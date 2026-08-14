@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "20260809-v67"
+ASSET_VERSION = "20260814-v69"
 MANIFEST = ROOT / "static" / "script" / "ymir-vue-tool-manifest.json"
 CORE_SLUGS = {"json", "base64", "urlencode", "formatjs", "regex", "textdiff", "txtcount", "unixtime"}
 CATEGORY_ORDER = ["json", "encode", "format", "text", "hash", "calc", "network", "reference"]
@@ -160,11 +161,12 @@ def update_page(path: Path, main_html: str) -> bool:
     text = re.sub(r'<main\b[^>]*>.*?</main>', lambda _match: main_html, text, count=1, flags=re.S | re.I)
     text = re.sub(r'<footer\b[^>]*class="ymir-footer"[^>]*>.*?</footer>', lambda _match: footer(), text, count=1, flags=re.S | re.I)
     text = re.sub(r'\s*<link href="/static/style/(?:ymir-tools-directory|ymir-discovery-pages)\.css\?v=[^"]+" rel="stylesheet"/>', '', text)
-    system_link = '<link href="/static/style/ymir-tool-system-v61.css?v=20260710-v62" rel="stylesheet"/>'
+    system_link = f'<link href="/static/style/ymir-tool-system-v61.css?v={ASSET_VERSION}" rel="stylesheet"/>'
     discovery_link = f'<link href="/static/style/ymir-discovery-pages.css?v={VERSION}" rel="stylesheet"/>'
-    if system_link not in text:
+    system_pattern = re.compile(r'<link href="/static/style/ymir-tool-system-v61\.css\?v=[^"]+" rel="stylesheet"/>')
+    if not system_pattern.search(text):
         raise RuntimeError(f"{path.name}: shared tool-system stylesheet is missing")
-    text = text.replace(system_link, system_link + "\n" + discovery_link, 1)
+    text = system_pattern.sub(system_link + "\n" + discovery_link, text, count=1)
     text = re.sub(
         r'\s*<script\b(?=[^>]*\bsrc="/static/script/ymir-theme\.js\?v=[^"]+")[^>]*>\s*</script>',
         '',

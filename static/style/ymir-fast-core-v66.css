@@ -366,8 +366,9 @@ th { background: var(--yt-surface-2); }
 .ymir-footer a { color: var(--yt-text-2); }
 
 @media (max-width: 900px) {
-  .ymir-topbar-inner { width: min(100% - 24px, 1180px); gap: 12px; flex-wrap: nowrap; }
-  .ymir-nav { display: none; }
+  .ymir-topbar-inner { width: min(100% - 24px, 1180px); gap: 12px; flex-wrap: wrap; }
+  .ymir-home-v60 .ymir-topbar-inner { flex-wrap: nowrap; }
+  .ymir-home-v60 .ymir-nav { display: none; }
   .ymir-page, .ymir-fast-workbench--home, .ymir-footer { width: min(100% - 24px, 1180px); }
   .ymir-fast-grid,
   .ymir-fast-grid--three { grid-template-columns: 1fr; }

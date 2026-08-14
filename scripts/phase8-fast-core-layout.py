@@ -7,7 +7,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "20260810-v68"
-FAST_CSS = f'/static/style/ymir-fast-core-v66.css?v={VERSION}'
+ASSET_VERSION = "20260814-v69"
+FAST_CSS = f'/static/style/ymir-fast-core-v66.css?v={ASSET_VERSION}'
 FAST_SCRIPT = f'/static/script/ymir-fast-core-v66.mjs?v={VERSION}'
 START = '<!-- ymir-fast-workbench:start -->'
 END = '<!-- ymir-fast-workbench:end -->'

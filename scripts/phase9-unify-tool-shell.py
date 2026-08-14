@@ -12,7 +12,13 @@ SYSTEM_CSS = ROOT / "static" / "style" / "ymir-tool-system-v61.css"
 LEGACY_BUNDLE = ROOT / "static" / "style" / "ymir-tool-bundle-v65.css"
 I18N_SOURCE = ROOT / "static" / "script" / "ymir-i18n.js"
 RUNTIME_BUNDLE = ROOT / "static" / "script" / "ymir-tool-runtime-v63.js"
-ASSET_VERSION = "20260810-v68"
+ASSET_VERSION = "20260814-v69"
+CACHE_BUSTED_ASSETS = (
+    "/static/script/ymir-tool-runtime-v63.js",
+    "/static/style/ymir-tool-bundle-v65.css",
+    "/static/style/ymir-tool-system-v61.css",
+    "/static/style/ymir-fast-core-v66.css",
+)
 
 SYSTEM_MARKER = "/* ===== static/style/ymir-tool-system-v61.css ===== */"
 SYSTEM_SUFFIX_MARKER = "/* ===== v62 final additions ===== */"
@@ -30,6 +36,9 @@ THEME_SRC_RE = re.compile(r'/static/script/ymir-theme\.js\?v=[^"\']+')
 SHELL_SRC_RE = re.compile(r'/static/script/ymir-tool-shell-v63\.js\?v=[^"\']+')
 CANONICAL_RE = re.compile(r'<link\b[^>]*href="([^"]+)"[^>]*rel="canonical"[^>]*/>', re.I)
 ROBOTS_RE = re.compile(r'<meta\b[^>]*content="([^"]+)"[^>]*name="robots"[^>]*/>', re.I)
+ASSET_REF_RE = re.compile(
+    rf'({"|".join(re.escape(asset) for asset in CACHE_BUSTED_ASSETS)})\?v=[^"\']+'
+)
 
 
 def read_utf8(path: Path) -> str:
@@ -133,6 +142,18 @@ def synchronize_runtime_i18n() -> bool:
     return True
 
 
+def synchronize_asset_cache_keys() -> int:
+    changed_pages = 0
+    for path in ROOT.rglob("*.html"):
+        original = read_utf8(path)
+        updated = ASSET_REF_RE.sub(lambda match: f"{match.group(1)}?v={ASSET_VERSION}", original)
+        if updated == original:
+            continue
+        write_utf8_lf(path, updated)
+        changed_pages += 1
+    return changed_pages
+
+
 def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     tools = manifest.get("tools") or []
@@ -150,10 +171,12 @@ def main() -> None:
 
     css_changed = synchronize_legacy_tokens()
     runtime_changed = synchronize_runtime_i18n()
+    asset_pages_changed = synchronize_asset_cache_keys()
     print(
         f"Phase 9 unified the Chinese shell across {len(tools)} tool pages; "
         f"changed {len(changed_pages)} page(s), legacy token bundle changed={str(css_changed).lower()}, "
-        f"runtime i18n changed={str(runtime_changed).lower()}."
+        f"runtime i18n changed={str(runtime_changed).lower()}, "
+        f"immutable asset cache keys changed on {asset_pages_changed} page(s)."
     )
 
 

@@ -150,8 +150,21 @@ test('homepage keeps the mobile primary action between input and output', () => 
 test('fast core mobile header stays on one compact row', () => {
   const css = read('../static/style/ymir-fast-core-v66.css');
 
-  assert.match(css, /\.ymir-topbar-inner\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*\}/);
-  assert.match(css, /\.ymir-nav\s*\{[^}]*display:\s*none;[^}]*\}/);
+  assert.match(css, /\.ymir-home-v60 \.ymir-topbar-inner\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*\}/);
+  assert.match(css, /\.ymir-home-v60 \.ymir-nav\s*\{[^}]*display:\s*none;[^}]*\}/);
+  assert.doesNotMatch(css, /(?:^|,)\s*\.ymir-nav\s*\{[^}]*display:\s*none;/m);
+});
+
+test('eight fast tool pages keep mobile navigation without requiring a replacement menu', () => {
+  const css = read('../static/style/ymir-fast-core-v66.css');
+  const coreSlugs = ['json', 'base64', 'urlencode', 'formatjs', 'regex', 'textdiff', 'txtcount', 'unixtime'];
+
+  for (const slug of coreSlugs) {
+    const html = read(`../${slug}/index.html`);
+    assert.match(html, /class="[^"]*\bymir-nav\b[^"]*"/, `${slug}: primary navigation missing`);
+    assert.doesNotMatch(html, /\bymir-home-v60\b/, `${slug}: homepage-only nav hiding must not apply`);
+  }
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.ymir-topbar-inner\s*\{[^}]*flex-wrap:\s*wrap;/);
 });
 
 test('Python bytecode artifacts are ignored', () => {
