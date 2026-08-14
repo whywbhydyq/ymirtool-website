@@ -173,6 +173,7 @@ body.ymir-modern-body .ymir-brand {
   color: var(--yt-text) !important;
   text-decoration: none !important;
 }
+body.ymir-modern-body .ymir-brand::before { content: none !important; display: none !important; }
 body.ymir-modern-body .ymir-brand-mark {
   width: 38px !important;
   height: 38px !important;

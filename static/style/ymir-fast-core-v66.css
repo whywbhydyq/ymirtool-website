@@ -236,6 +236,7 @@ th { background: var(--yt-surface-2); }
 }
 .ymir-fast-body { padding: 18px 20px 16px; }
 .ymir-fast-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.ymir-fast-mobile-primary { display: none; }
 .ymir-fast-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ymir-fast-panel {
   min-width: 0;
@@ -365,9 +366,8 @@ th { background: var(--yt-surface-2); }
 .ymir-footer a { color: var(--yt-text-2); }
 
 @media (max-width: 900px) {
-  .ymir-topbar-inner { width: min(100% - 24px, 1180px); gap: 12px; }
-  .ymir-nav { order: 3; width: 100%; }
-  .ymir-topbar-inner { flex-wrap: wrap; padding: 9px 0; }
+  .ymir-topbar-inner { width: min(100% - 24px, 1180px); gap: 12px; flex-wrap: nowrap; }
+  .ymir-nav { display: none; }
   .ymir-page, .ymir-fast-workbench--home, .ymir-footer { width: min(100% - 24px, 1180px); }
   .ymir-fast-grid,
   .ymir-fast-grid--three { grid-template-columns: 1fr; }
@@ -384,6 +384,8 @@ th { background: var(--yt-surface-2); }
   .ymir-fast-badge { display: inline-block; margin-top: 11px; }
   .ymir-fast-body { padding: 12px; }
   .ymir-fast-input, .ymir-fast-output { min-height: 190px; padding: 12px; }
+  .ymir-fast-workbench--home .ymir-fast-mobile-primary { display: flex; width: 100%; align-items: center; justify-content: center; }
+  .ymir-fast-workbench--home > .ymir-fast-actions > [data-fast-action="formatJson"] { display: none; }
   .ymir-fast-actions { padding: 0 12px 12px; }
   .ymir-fast-button { flex: 1 1 125px; }
   .ymir-fast-status { padding: 9px 12px; }

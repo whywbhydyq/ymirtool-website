@@ -102,6 +102,7 @@
     var topbar = qs('.ymir-topbar');
     if (!topbar) return;
     topbar.setAttribute('data-ymir-shell', VERSION);
+    topbar.setAttribute('lang', isZh() ? 'zh-CN' : 'en');
     var inner = qs('.ymir-topbar-inner', topbar);
     if (!inner) {
       inner = document.createElement('div');

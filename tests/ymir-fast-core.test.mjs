@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
+const read = (relativePath) => fs.readFileSync(new URL(relativePath, import.meta.url), 'utf8');
+
 import {
   formatJson,
   minifyJson,
@@ -129,6 +131,34 @@ test('homepage renders a usable JSON workbench before the hero without blocking 
   assert.match(html, /data-fast-action="formatJson"/);
   assert.match(html, /href="\/base64\/"/);
   assert.doesNotMatch(html, /<script[^>]+src="\/static\/script\/ymir-tools-manifest\.js/);
+});
+
+test('homepage keeps the mobile primary action between input and output', () => {
+  const html = read('../index.html');
+  const css = read('../static/style/ymir-fast-core-v66.css');
+  const workbench = html.match(/<!-- ymir-fast-home:start -->([\s\S]*?)<!-- ymir-fast-home:end -->/)?.[1] || '';
+  const inputIndex = workbench.indexOf('data-fast-input="input"');
+  const mobileActionIndex = workbench.indexOf('ymir-fast-mobile-primary');
+  const outputIndex = workbench.indexOf('data-fast-output="output"');
+
+  assert.ok(inputIndex >= 0 && mobileActionIndex > inputIndex && outputIndex > mobileActionIndex);
+  assert.match(css, /\.ymir-fast-mobile-primary\s*\{\s*display:\s*none;/);
+  assert.match(css, /\.ymir-fast-workbench--home \.ymir-fast-mobile-primary\s*\{[^}]*display:\s*flex;/);
+  assert.match(css, /\.ymir-fast-workbench--home > \.ymir-fast-actions > \[data-fast-action="formatJson"\]\s*\{[^}]*display:\s*none;/);
+});
+
+test('fast core mobile header stays on one compact row', () => {
+  const css = read('../static/style/ymir-fast-core-v66.css');
+
+  assert.match(css, /\.ymir-topbar-inner\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*\}/);
+  assert.match(css, /\.ymir-nav\s*\{[^}]*display:\s*none;[^}]*\}/);
+});
+
+test('Python bytecode artifacts are ignored', () => {
+  const gitignore = read('../.gitignore');
+
+  assert.match(gitignore, /^__pycache__\/$/m);
+  assert.match(gitignore, /^\*\.py\[cod\]$/m);
 });
 
 test('homepage dashboard defers the full manifest until intent or idle time', () => {

@@ -70,11 +70,11 @@ def build_filters(items: list[tuple[str, str]]) -> str:
 
 
 def footer() -> str:
-    return '''<footer class="ymir-footer"><span>© 2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于我们</a><a href="/privacy.html">隐私政策</a><a href="/terms.html">使用条款</a><a href="/contact.html">联系我们</a><a href="/methodology.html">测试方法</a><a href="/sources.html">资料来源</a><a href="/licenses.html">开源许可</a><a href="/changelog.html">更新记录</a><a href="/disclaimer.html">免责声明</a><span>所有工具均以公开或脱敏样例进行测试。</span></footer>'''
+    return '''<footer class="ymir-footer" lang="zh-CN"><span>© 2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于我们</a><a href="/privacy.html">隐私政策</a><a href="/terms.html">使用条款</a><a href="/contact.html">联系我们</a><a href="/methodology.html">测试方法</a><a href="/sources.html">资料来源</a><a href="/licenses.html">开源许可</a><a href="/changelog.html">更新记录</a><a href="/disclaimer.html">免责声明</a><span>所有工具均以公开或脱敏样例进行测试。</span></footer>'''
 
 
 def topbar() -> str:
-    return '''<nav class="ymir-topbar"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL 编码</a><a href="/formatjs/">JavaScript 格式化</a><a href="/textdiff/">文本对比</a><a href="/guides.html">使用指南</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
+    return '''<nav class="ymir-topbar" lang="zh-CN"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/"><span aria-hidden="true" class="ymir-brand-mark">Y</span><span>Ymir Tool</span></a><div class="ymir-nav"><a href="/json/">JSON</a><a href="/base64/">Base64</a><a href="/urlencode/">URL 编码</a><a href="/formatjs/">JavaScript 格式化</a><a href="/textdiff/">文本对比</a><a href="/guides.html">使用指南</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
 
 
 def build_tools_main(manifest: dict[str, object]) -> str:

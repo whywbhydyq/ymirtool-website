@@ -10,14 +10,18 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "static" / "script" / "ymir-vue-tool-manifest.json"
 SYSTEM_CSS = ROOT / "static" / "style" / "ymir-tool-system-v61.css"
 LEGACY_BUNDLE = ROOT / "static" / "style" / "ymir-tool-bundle-v65.css"
+I18N_SOURCE = ROOT / "static" / "script" / "ymir-i18n.js"
+RUNTIME_BUNDLE = ROOT / "static" / "script" / "ymir-tool-runtime-v63.js"
 ASSET_VERSION = "20260810-v68"
 
 SYSTEM_MARKER = "/* ===== static/style/ymir-tool-system-v61.css ===== */"
 SYSTEM_SUFFIX_MARKER = "/* ===== v62 final additions ===== */"
+I18N_MARKER = "/* ===== static/script/ymir-i18n.js ===== */"
+I18N_SUFFIX_MARKER = "/* ===== static/vendor/vue/vue.global.prod.js ===== */"
 
-TOPBAR = '''<nav aria-label="主导航" class="ymir-topbar" data-shell-language="zh-CN"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
+TOPBAR = '''<nav aria-label="主导航" class="ymir-topbar" data-shell-language="zh-CN" lang="zh-CN"><div class="ymir-topbar-inner"><a class="ymir-brand" href="/">Ymir Tool</a><div class="ymir-nav"><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于</a></div><div class="ymir-topbar-actions"></div></div></nav>'''
 
-FOOTER = '''<footer class="ymir-footer"><span>© 2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于我们</a><a href="/privacy.html">隐私政策</a><a href="/terms.html">使用条款</a><a href="/contact.html">联系我们</a><a href="/methodology.html">测试方法</a><a href="/sources.html">资料来源</a><a href="/licenses.html">开源许可</a><a href="/changelog.html">更新记录</a><a href="/disclaimer.html">免责声明</a><span>使用公开或脱敏样例进行测试。</span></footer>'''
+FOOTER = '''<footer class="ymir-footer" lang="zh-CN"><span>© 2026 <a href="/">Ymir Tool</a></span><a href="/tools.html">全部工具</a><a href="/guides.html">使用指南</a><a href="/about.html">关于我们</a><a href="/privacy.html">隐私政策</a><a href="/terms.html">使用条款</a><a href="/contact.html">联系我们</a><a href="/methodology.html">测试方法</a><a href="/sources.html">资料来源</a><a href="/licenses.html">开源许可</a><a href="/changelog.html">更新记录</a><a href="/disclaimer.html">免责声明</a><span>使用公开或脱敏样例进行测试。</span></footer>'''
 
 HTML_TAG_RE = re.compile(r"<html\b[^>]*>", re.I)
 TOPBAR_RE = re.compile(r'<nav\b[^>]*class="[^"]*\bymir-topbar\b[^"]*"[^>]*>.*?</nav>', re.I | re.S)
@@ -111,6 +115,24 @@ def synchronize_legacy_tokens() -> bool:
     return True
 
 
+def synchronize_runtime_i18n() -> bool:
+    original = read_utf8(RUNTIME_BUNDLE)
+    source_start = original.find(I18N_MARKER)
+    suffix_start = original.find(I18N_SUFFIX_MARKER, source_start)
+    if source_start < 0 or suffix_start <= source_start:
+        raise RuntimeError("legacy runtime bundle is missing its i18n or vendor marker")
+
+    prefix = original[: source_start + len(I18N_MARKER)].rstrip()
+    suffix = original[suffix_start:].lstrip()
+    i18n = read_utf8(I18N_SOURCE).replace("\r\n", "\n").strip()
+    updated = f"{prefix}\n{i18n}\n\n{suffix.rstrip()}\n"
+    updated = updated.replace("\r\n", "\n")
+    if updated == original:
+        return False
+    write_utf8_lf(RUNTIME_BUNDLE, updated)
+    return True
+
+
 def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     tools = manifest.get("tools") or []
@@ -127,9 +149,11 @@ def main() -> None:
             changed_pages.append(slug)
 
     css_changed = synchronize_legacy_tokens()
+    runtime_changed = synchronize_runtime_i18n()
     print(
         f"Phase 9 unified the Chinese shell across {len(tools)} tool pages; "
-        f"changed {len(changed_pages)} page(s), legacy token bundle changed={str(css_changed).lower()}."
+        f"changed {len(changed_pages)} page(s), legacy token bundle changed={str(css_changed).lower()}, "
+        f"runtime i18n changed={str(runtime_changed).lower()}."
     )
 
 

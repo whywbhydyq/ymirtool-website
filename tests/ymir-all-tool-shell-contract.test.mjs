@@ -56,11 +56,13 @@ test('all 150 tool pages expose the same Chinese shell before JavaScript runs', 
     assert.match(htmlTag, /\bdata-shell-language="zh-CN"/i, `${tool.slug}: Chinese shell language marker missing`);
     assert.match(bodyTag, /\bclass="[^"]*\bymir-modern-body\b[^"]*"/i, `${tool.slug}: modern body class missing`);
     assert.ok(topbar, `${tool.slug}: topbar missing`);
+    assert.match(topbar, /\blang="zh-CN"/i, `${tool.slug}: Chinese topbar needs an explicit language boundary`);
     assert.match(topbar, />全部工具</);
     assert.match(topbar, />使用指南</);
     assert.match(topbar, />关于</);
     assert.doesNotMatch(topbar, forbiddenEnglishShell, `${tool.slug}: English shell navigation remains`);
     assert.ok(footer, `${tool.slug}: footer missing`);
+    assert.match(footer, /\blang="zh-CN"/i, `${tool.slug}: Chinese footer needs an explicit language boundary`);
     for (const label of ['全部工具', '使用指南', '关于我们', '隐私政策', '使用条款', '联系我们']) {
       assert.match(footer, new RegExp(`>${label}<`), `${tool.slug}: footer label ${label} missing`);
     }
@@ -75,9 +77,23 @@ test('theme and legacy shell runtimes resolve interface language from the explic
 
   assert.match(theme, /getAttribute\(['"]data-shell-language['"]\)/);
   assert.match(shell, /getAttribute\(['"]data-shell-language['"]\)/);
+  assert.match(shell, /topbar\.setAttribute\('lang', isZh\(\) \? 'zh-CN' : 'en'\)/);
   assert.match(theme, /localStorage\.setItem\(STORAGE_KEY, value\)/);
   assert.match(theme, /data-theme-state/);
   assert.match(shell, /text\('全部工具', 'All tools'\)/);
+});
+
+test('legacy runtime embeds the maintained document-language preference logic', () => {
+  const runtime = read('static/script/ymir-tool-runtime-v63.js');
+  const i18n = read('static/script/ymir-i18n.js').trim();
+  const marker = '/* ===== static/script/ymir-i18n.js ===== */';
+  const nextMarker = '/* ===== static/vendor/vue/vue.global.prod.js ===== */';
+  const start = runtime.indexOf(marker);
+  const end = runtime.indexOf(nextMarker, start);
+
+  assert.ok(start >= 0 && end > start, 'legacy runtime is missing its maintained i18n section');
+  assert.equal(runtime.slice(start + marker.length, end).trim(), i18n);
+  assert.match(i18n, /queryLang\(\) \|\| storedLang\(\) \|\| documentLang\(\) \|\| browserLang\(\)/);
 });
 
 test('legacy bundle embeds the canonical light and dark token system used by fast pages', () => {
@@ -147,4 +163,14 @@ test('canonical body tokens override legacy component-level light values in dark
       `canonical dark body must reset legacy ${name}`,
     );
   }
+});
+
+test('canonical shell removes the obsolete generated brand square', () => {
+  const system = read('static/style/ymir-tool-system-v61.css');
+
+  assert.match(
+    system,
+    /body\.ymir-modern-body \.ymir-brand::before\s*\{[^}]*content:\s*none\s*!important/i,
+    'the legacy brand pseudo-element otherwise renders beside the real logo on tools and legacy pages',
+  );
 });
