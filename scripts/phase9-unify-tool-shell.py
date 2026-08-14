@@ -142,9 +142,23 @@ def synchronize_runtime_i18n() -> bool:
     return True
 
 
-def synchronize_asset_cache_keys() -> int:
+def managed_html_paths(tools: list[dict[str, object]]) -> list[Path]:
+    root_pages = sorted(path for path in ROOT.glob("*.html") if path.is_file())
+    tool_pages = [ROOT / str(tool["slug"]) / "index.html" for tool in tools]
+    managed_pages = root_pages + tool_pages
+    if len(root_pages) != 67:
+        raise RuntimeError(f"phase 9 expected 67 managed root HTML pages; found {len(root_pages)}")
+    if len(managed_pages) != 217 or len(set(managed_pages)) != 217:
+        raise RuntimeError("phase 9 requires exactly 217 unique managed HTML pages")
+    missing = [path.relative_to(ROOT).as_posix() for path in managed_pages if not path.is_file()]
+    if missing:
+        raise RuntimeError(f"phase 9 managed HTML pages are missing: {', '.join(missing)}")
+    return managed_pages
+
+
+def synchronize_asset_cache_keys(managed_pages: list[Path]) -> int:
     changed_pages = 0
-    for path in ROOT.rglob("*.html"):
+    for path in managed_pages:
         original = read_utf8(path)
         updated = ASSET_REF_RE.sub(lambda match: f"{match.group(1)}?v={ASSET_VERSION}", original)
         if updated == original:
@@ -159,6 +173,7 @@ def main() -> None:
     tools = manifest.get("tools") or []
     if manifest.get("toolCount") != 150 or len(tools) != 150:
         raise RuntimeError("phase 9 requires the complete 150-tool manifest")
+    managed_pages = managed_html_paths(tools)
 
     changed_pages: list[str] = []
     for tool in tools:
@@ -171,7 +186,7 @@ def main() -> None:
 
     css_changed = synchronize_legacy_tokens()
     runtime_changed = synchronize_runtime_i18n()
-    asset_pages_changed = synchronize_asset_cache_keys()
+    asset_pages_changed = synchronize_asset_cache_keys(managed_pages)
     print(
         f"Phase 9 unified the Chinese shell across {len(tools)} tool pages; "
         f"changed {len(changed_pages)} page(s), legacy token bundle changed={str(css_changed).lower()}, "

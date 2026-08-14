@@ -11,13 +11,13 @@ const CHINESE_CONTENT_SLUGS = new Set([
   'base64', 'calculator', 'formatjs', 'json', 'regex', 'textdiff', 'txtcount', 'unixtime', 'urlencode',
 ]);
 
-function htmlFiles(relativePath = '') {
-  const absolutePath = new URL(`../${relativePath}`, import.meta.url);
-  return fs.readdirSync(absolutePath, { withFileTypes: true }).flatMap((entry) => {
-    const child = relativePath ? `${relativePath}/${entry.name}` : entry.name;
-    if (entry.isDirectory()) return htmlFiles(child);
-    return entry.isFile() && entry.name.endsWith('.html') ? [child] : [];
-  });
+function managedHtmlFiles() {
+  const rootPages = fs.readdirSync(new URL('../', import.meta.url), { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+    .map((entry) => entry.name)
+    .sort();
+  const toolPages = tools.map((tool) => `${tool.slug}/index.html`).sort();
+  return { rootPages, pages: [...rootPages, ...toolPages] };
 }
 
 function openingTag(html, tagName) {
@@ -108,7 +108,9 @@ test('all changed immutable assets use the current generated cache key', () => {
     ['/static/style/ymir-fast-core-v66.css', 9],
   ]);
 
-  const pages = htmlFiles();
+  const { rootPages, pages } = managedHtmlFiles();
+  assert.equal(rootPages.length, 67);
+  assert.equal(pages.length, 217);
   for (const [asset, expectedReferences] of assets) {
     let references = 0;
     for (const page of pages) {
@@ -129,6 +131,20 @@ test('all changed immutable assets use the current generated cache key', () => {
   ]) {
     assert.match(read(generator), new RegExp(`ASSET_VERSION = ["']${CACHE_VERSION}["']`));
   }
+});
+
+test('phase 9 scopes cache-key generation to the deterministic 217 managed HTML files', () => {
+  const generator = read('scripts/phase9-unify-tool-shell.py');
+  const { rootPages, pages } = managedHtmlFiles();
+  const ignoredFixture = '.tmp/ignored-cache-key-fixture.html';
+
+  assert.equal(rootPages.length, 67);
+  assert.equal(pages.length, 217);
+  assert.ok(!pages.includes(ignoredFixture));
+  assert.doesNotMatch(generator, /ROOT\.rglob\(["']\*\.html["']\)/);
+  assert.match(generator, /ROOT\.glob\(["']\*\.html["']\)/);
+  assert.match(generator, /len\(root_pages\)\s*!=\s*67/);
+  assert.match(generator, /len\(managed_pages\)\s*!=\s*217/);
 });
 
 test('theme and legacy shell runtimes resolve interface language from the explicit shell marker', () => {
